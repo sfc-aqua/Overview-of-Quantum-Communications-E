@@ -10,9 +10,41 @@ Teleportation is one of the most wonderful and most fundamental protocols in qua
 
 % Step One: Introduction
 
-How do we transmit information in a quantum network? Before we answer that let's see what happens classically. In Ch. 1, we saw the example of the Great Wall of China. If a guard tower was under attack, they lit a fire to alert the other guard towers and ask for help. That message really was carried by the photons which originated from the fire and reached the other guard towers, where they entered the eyes of the other guards, who then were able to act. In modern times, if we want to download some data or we want to communicate over the classical Internet, the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, when we transmit some message, we have to transmit the physical system itself  -- that is to say, the set of photons -- that is encoding the message. 
+How do we transmit information in a quantum network? Before we answer that let's see what happens classically. In Ch. 1, we saw the example of the Great Wall of China. If a guard tower was under attack, they lit a fire to alert the other guard towers and ask for help. That message really was carried by the photons which originated from the fire and reached the other guard towers, where they entered the eyes of the other guards, who then were able to act. In modern times, if we want to download some data or we want to communicate over the classical Internet, the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, when we transmit some message, we have to transmit the physical system itself  -- that is to say, the set of photons -- that is encoding the message.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson8/quantum-network.png}
+        \caption{A quantum network consists of quantum nodes, and quantum channels that we will call links.}
+    \label{fig:quantum-network}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson8/hop-by-hop.png}
+        \caption{Physically moving a quantum message}
+    \label{fig:hop-by-hop}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson8/link-down.png}
+        \caption{Rerouting when a link goes down.}
+    \label{fig:link-down}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson8/partitioned.png}
+        \caption{A partitioned network.}
+    \label{fig:partition}
+\end{figure}
+
 
 However in quantum physics, it's a little bit different. We can also transmit the (quantum) message without transmitting the (quantum) physical system. Consider a quantum network like this, \rdv{figure!} and let's say that we want to use the old-fashioned way of transmitting the message with the physical system that is encoding it. In this network, the circles represent our nodes and these lines represent the links or quantum channels between the nodes. The sender, represented by the blue node in the figure, is in possession of some pure state $\ket{psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target given by the orange network node. The sender can decide (or the network can decide) to send it first to this network node, then to this network node, and then finally to reach the target. But what happens if one of the quantum links is not working? Well, in this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target. But what happens if another link is down? Well in this case, the network is \emph{partitioned} and it seems like we cannot transmit the message to the target...unless we use teleportation! We can teleport this state from the sender to the target, provided that some initial conditions are met. We can move the information itself without moving the actual physical system. That physical system remains stationary.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson8/teleportation.png}
+        \caption{Teleportation.}
+    \label{fig:teleportation}
+\end{figure}
 
 This is the outline of the protocol: We will consider our sender and call her "Alice", and she wants to send this quantum state $\ket{\psi}$ to her friend "Bob".  Alice and Bob start by sharing an entangled pair of qubits. Then Alice does a two-qubit measurement on both of her qubits. That measurement provides her with two classical bits, because the measurement is on two qubits.  Naturally, this means that there are four possible outcomes. Alice then communicates this outcome to Bob via a classical channel, and she can do it because the outcome is represented by two classical bits.  Bob then receives this classical message, applies some local corrections, and he ends up with the desired state $\ket{\psi}$.  
 
@@ -26,9 +58,9 @@ Let's look at the protocol in more mathematical detail.  First, consider the ini
 \begin{align}
     \ket{\psi} = \alpha\ket{0} + \beta\ket{1}.
 \end{align}
-So, here's our Alice and that's her qubit. Alice and Bob are also sharing an entangled state, and the entire state is given here. It's one of the Bell states- it's $\ket{\Phi^+}$ (phi plus), which is equal superposition of zero zero and one one, and we represent it here on the right as this wavy line, and we are going to label the qubits as follows: A1 is the first qubit of Alice which is her state that she is trying to communicate to Bob. A2 is her second qubit which is one part of the entangled bell pair, and by B we designate Bob's qubit which is part of the entangled pair that he is sharing with Alice.
+Alice and Bob are also sharing an entangled state, and the entire state is given here. It's one of the Bell states- it's $\ket{\Phi^+}$ (phi plus), which is equal superposition of zero zero and one one, and we represent it here on the right as this wavy line, and we are going to label the qubits as follows: A1 is the first qubit of Alice which is her state that she is trying to communicate to Bob. A2 is her second qubit which is one part of the entangled bell pair, and by B we designate Bob's qubit which is part of the entangled pair that he is sharing with Alice.
 
-So if we write out the initial state in its full form, it's as follows,
+If we write out the initial state in its full form, it's as follows,
 \begin{align}
     \begin{aligned}
 |\psi\rangle_{A_{1}}\left|\Phi^{+}\right\rangle_{A_{2} B} &=(\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \\
