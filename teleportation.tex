@@ -1,28 +1,28 @@
 \chapter{Teleportation}
 
-\begin{abstract}
+%\begin{abstract}
 % Hi, and welcome to Lesson 8 on "Teleportation".
 
 Teleportation is one of the most wonderful and most fundamental protocols in quantum information processing. It is extensively used in quantum computation and quantum communication, so let's learn about it.
-\end{abstract}
+%\end{abstract}
 
 \section{Introduction}
 
 % Step One: Introduction
 
-How do we transmit information in a quantum network? So, before we answer that let's see what happens classically. In lesson one, we saw the example of the Great Wall of China, where if a guard tower was under attack, they lit a fire to alarm the other guard towers and ask for help. So how that message really traveled- it was carried by the photons which originated from the fire and reached the other guard towers where they were picked up by the other guards, and then they were able to act. In modern times for example, we want to download some data or we want to communicate over the classical internet, so the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, always if we want to transmit some message, we have to transmit the physical system itself that is encoding the message. 
+How do we transmit information in a quantum network? Before we answer that let's see what happens classically. In Ch. 1, we saw the example of the Great Wall of China. If a guard tower was under attack, they lit a fire to alert the other guard towers and ask for help. That message really was carried by the photons which originated from the fire and reached the other guard towers, where they entered the eyes of the other guards, who then were able to act. In modern times, if we want to download some data or we want to communicate over the classical Internet, the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, when we transmit some message, we have to transmit the physical system itself  -- that is to say, the set of photons -- that is encoding the message. 
 
-However in quantum physics, it's a little bit different. What we can do- we can also transmit the message without transmitting the physical system. Consider a network- a quantum network like this, and let's say that we want to use the old-fashioned way of transmitting the message with the physical system that is encoding it. So in this network, the circles represent our nodes and these lines represent the links between the nodes. So if we have a sender, for example this blue node here that is in possession of some pure state "psi" given by "alpha zero plus beta one", and the sender wants to send this state to its target given by this orange network node. So the sender can decide or the network can decide to send it first to this network node, then to this network node, and then finally to reach the target. But what happens if one of the links- one of the quantum channels is not working, it's down? Well, in this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target. But what happens if another link is down? Well in this case, it seems like we cannot transmit the message to the target unless we use teleportation. So we can teleport this state from the sender to the target, provided that some initial conditions are met. So we can move the information itself without moving the actual physical system. That physical system remains stationary.
+However in quantum physics, it's a little bit different. We can also transmit the (quantum) message without transmitting the (quantum) physical system. Consider a quantum network like this, \rdv{figure!} and let's say that we want to use the old-fashioned way of transmitting the message with the physical system that is encoding it. In this network, the circles represent our nodes and these lines represent the links or quantum channels between the nodes. The sender, represented by the blue node in the figure, is in possession of some pure state $\ket{psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target given by the orange network node. The sender can decide (or the network can decide) to send it first to this network node, then to this network node, and then finally to reach the target. But what happens if one of the quantum links is not working? Well, in this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target. But what happens if another link is down? Well in this case, the network is \emph{partitioned} and it seems like we cannot transmit the message to the target...unless we use teleportation! We can teleport this state from the sender to the target, provided that some initial conditions are met. We can move the information itself without moving the actual physical system. That physical system remains stationary.
 
-And this is the outline of the protocol. We will consider our sender and call her "Alice", and she wants to send this quantum state psi to her friend "Bob". What they do, is they start by sharing an entangled pair of qubits. Then what Alice does is a two-qubit measurement on both of her qubits. What that does is it provides her with two classical bits, because the measurement is on two qubits- it means there are four possible outcomes. She then communicates this outcome by a classical channel, and she can do it because the outcome is represented by two classical bits.
+This is the outline of the protocol: We will consider our sender and call her "Alice", and she wants to send this quantum state $\ket{\psi}$ to her friend "Bob".  Alice and Bob start by sharing an entangled pair of qubits. Then Alice does a two-qubit measurement on both of her qubits. That measurement provides her with two classical bits, because the measurement is on two qubits.  Naturally, this means that there are four possible outcomes. Alice then communicates this outcome to Bob via a classical channel, and she can do it because the outcome is represented by two classical bits.  Bob then receives this classical message, applies some local corrections, and he ends up with the desired state $\ket{\psi}$.  
 
-Bob then receives this classical message, applies some local corrections, and he ends up with the desired state "plus".
+Now you see the two conditions necessary to maintain our ability to teleport quantum data even when the quantum network is partitioned: we must have a supply of entanglement, and we must have the ability to exchange classical messages.
 
 \section{Teleportation protocol}
 
 % Step Two: Teleportation Protocol
 
-Let's consider the initial state in our protocol. Alice has an arbitrary qubit given by "psi equals alpha zero plus beta one",
+Let's look at the protocol in more mathematical detail.  First, consider the initial state in our protocol. Alice has an arbitrary qubit given by
 \begin{align}
     \ket{\psi} = \alpha\ket{0} + \beta\ket{1}.
 \end{align}
@@ -54,7 +54,7 @@ So to help us with answering that question, we have to rewrite our initial state
 \end{array}
 \end{align}
 
-So, let's actually rewrite Alice's initial state. This is her state, and we are trying to do a two qubit measurement on her qubits.
+Let's rewrite Alice's initial state. This is her state, and we are trying to do a two qubit measurement on her qubits.
 \begin{align}
     \begin{aligned}
 |\psi\rangle_{A_{1}}\left|\Phi^{+}\right\rangle_{A_{2} B} &=(\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \\
@@ -62,7 +62,7 @@ So, let's actually rewrite Alice's initial state. This is her state, and we are 
 \end{aligned}
 \end{align}
 
-So we go term by term, and we first look at Alice's qubit zero zero. We said that that can be rewritten with the help of these following tricks. So we look at zero zero, and we substitute for it our superposition of Bell states- psi plus and psi minus. We do the same thing for the next term in the initial state zero one, and we substitute for it superposition of psi plus and psi minus, and so on and so forth. So in full, what we get is the following superposition- the first term transforms into (alpha times a superposition of Bell state psi plus psi minus times Bob's state zero), and that is in a superposition with this term over here, this third term, and this fourth term.
+We go term by term, and we first look at Alice's qubit zero zero. We said that that can be rewritten with the help of these following tricks. So we look at zero zero, and we substitute for it our superposition of Bell states- psi plus and psi minus. We do the same thing for the next term in the initial state zero one, and we substitute for it superposition of psi plus and psi minus, and so on and so forth. So in full, what we get is the following superposition- the first term transforms into (alpha times a superposition of Bell state psi plus psi minus times Bob's state zero), and that is in a superposition with this term over here, this third term, and this fourth term.
 
 \begin{align}
     \begin{aligned}
@@ -88,6 +88,7 @@ So, she performs the measurement and the outcome of a measurement determines the
 
 How about these other cases? Remember we said that all of these outcomes are equally likely, so Alice might get a phi minus or psi plus or psi minus as the outcome of her bell state measurement. In that case, Bob's qubit represents to different states. It does not correspond to the state that Alice was trying to communicate to him given by the state psi.  Summarizing:
 
+\noindent
 If Alice measures $\left|\Phi^{+}\right\rangle$, Bob has $\alpha|0\rangle+\beta|1\rangle$.\\
 If Alice measures $\left|\Phi^{-}\right\rangle$, Bob has $\alpha|0\rangle-\beta|1\rangle$.\\
 If Alice measures $\left|\Psi^{+}\right\rangle$, Bob has $\alpha|1\rangle+\beta|0\rangle$.\\
@@ -96,7 +97,7 @@ If Alice measures $\left|\Psi^{-}\right\rangle$, Bob has $\alpha|1\rangle-\beta|
 So what does it mean? Does it mean that our teleportation has failed? No. Luckily, these other states corresponding to the different bell states can be brought into psi by suitable application of a unitary, in particular, notice that if we apply a Pauli Z on the state psi, then we obtain alpha zero minus beta one, which is Bob's state right here. Corresponding to the Bell state psi minus, if we apply X to the state psi, then we get alpha one plus beta zero, which is this state over here. And similarly if we apply the product of X and Z on our initial state psi, then we get alpha one minus beta zero, which is this state over here. 
 
 \begin{align}
-    \begin{aligned}
+\begin{aligned}
 |\psi\rangle &=\alpha|0\rangle+\beta|1\rangle \\
 Z|\psi\rangle &=\alpha|0\rangle-\beta|1\rangle \\
 X|\psi\rangle &=\alpha|1\rangle+\beta|0\rangle \\
@@ -106,6 +107,7 @@ X Z|\psi\rangle &=\alpha|1\rangle-\beta|0\rangle
 
 So what Alice needs to do is she needs to let Bob know which measurement outcome she obtained, and she does it by sending two classical bits. And then Bob knows exactly which correction he has to apply. If Alice measures phi plus, he does nothing because he already has the state psi. If Alice measures phi minus, then Bob knows he has to apply a Pauli Z to his qubit. If she tells him that she obtained the measurement outcome psi plus, he simply applies Pauli X, and if she obtains a psi minus then he just needs to apply Z times X to his qubit.  Summarizing,
 
+\noindent
 If Alice measures $\left|\Phi^{+}\right\rangle$, Bob applies $I$.\\
 If Alice measures $\left|\Phi^{-}\right\rangle$, Bob applies $Z$.\\
 If Alice measures $\left|\Psi^{+}\right\rangle$, Bob applies $X$.\\
