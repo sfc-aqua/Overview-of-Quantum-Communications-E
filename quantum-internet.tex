@@ -1,0 +1,419 @@
+\chapter{Quantum Internet}
+
+\section{Networks of networks}
+
+\rdv{Missing subtitles!}
+
+\section{Integration with classical systems}
+\label{sec:classical-integration}
+
+00:00
+step two integration with classical systems rod the title of these steps is
+integration with classical systems does that mean that the quantum internet
+is not going to replace the classical internet
+that's a good question but yes the the quantum internet will not replace the
+classical internet there will be two networks right so how are they going to
+talk to each other how are they going to integrate together
+let's see so on this diagram here we've got what says quantum network and an ip
+network what's the quantum network do well we've seen that in a number of
+lessons here the main purpose is to distribute
+entanglement between parties whether it be bipartite entanglement multipartite
+entanglement so that it can be used as a resource for
+communication tasks such as teleportation
+and qkd whether it's entanglement based or single photon based
+
+00:01
+and qkd is in fact the example that's written here on on the on the diagram so
+the qkd devices what are they doing across across the quantum network remind
+us what's what's the service they provide well the
+thing that they're trying to do is they're trying to establish a secret
+correlated key between one communicating party and the other one
+without any eavesdropper knowing what the key is right so what's a key in this
+in this context the key is the key is a secret secret a bit of strings
+classical bit of strings that we can use to hide our message
+all right so it's a string of random bits that are guaranteed to be
+secret based on on what we've done so far so what we want to do once we've got
+those is to use them ah they're classical bits yes they're classical bits yes
+no no no no no okay good that's why we can use them with the classical internet
+yes so in fact that's what we're going to do next is we're going to actually
+use them with with the classical internet so the first job that happens
+
+00:02
+is the quantum network makes those keys and it makes those classical
+bits out of it and then it's going to share those bits
+with a couple of boxes that are connected to an ip network
+that are called ipsec gateways and there will be one of those at each end
+have you heard of ipsec not really no okay so ipsec is one of the standard
+internet protocols for how you encrypt data that you're going to share across
+across the network one of the other famous protocols is a
+protocol that's called tls which is used for web browsing and for a lot of other
+things ipsec is actually slightly older than tls and
+its original design was to connect one network to another network
+securely and so the the you send data to your eye to
+your nearby ipsec gateway and it encrypts the data and sends it to
+another ipsec gateway at the other end where it gets decrypted and sent to
+your partner over there so it's a standard protocol for doing that
+
+00:03
+now so once we've got the keys to the ipsec gateways
+before qkd the way that these ipsec gateways work together is they have to
+negotiate a a key exchange of some sort so we talked
+in the encryption lesson about three phases of an encrypted
+conversation right there was a authentication
+key generation and then the bulk data encryption right so
+the uh the authentication is often done using public key
+the key generation prior to qkd was primarily done using a mechanism called
+diffie-hellman key exchange so that's what we're going to replace with
+the qkd and then that data will be used to actually
+that key that comes out of the qkd network or the quantum internet and the qkd
+devices attached to it will be used to create the keys that are used by the
+ipsec gateways for encrypting large amounts of data which gets sent
+
+00:04
+using an encryption mechanism well most commonly
+these days an encryption mechanism called aes the advanced encryption standard
+so that's so you get this encrypted connection um and
+yeah it's important to note here that the qkd connection
+itself actually requires that you also have an authenticated classical channel
+between the nodes in order to prevent someone
+standing in the middle of the network and pretending to be
+alice in one direction and pretending to be bob in the other direction
+and that's what's called a man in the middle attack and we want to try to get
+rid of try to avoid having that happen i see
+so let me get this straight the role of the quantum network really is just
+one step in the whole number of steps uh during a secret communication exactly
+so we start classically we authenticate classically
+but then when we require the generation of the key
+that's where the quantum part comes in that's where the quantum magic happens
+
+00:05
+either through no non-fully distinguishable states such
+such as we saw in the bb-84 protocol or entanglement based quantum key
+distribution using the e91 protocol right and whatever the result that of
+that is it should be a secret correlated key
+that's not known to any other malicious party which then gets passed back
+into the classical network and we proceed classically again exactly
+good and so all of this put together makes for an integrated quantum and
+classical system so you're the expert on a couple of
+these other things that we might want to do
+right oh yeah yeah we've we've talked about
+distributed quantum computation where uh alice bob eve dave and charlie they
+share some quantum resources but they're individually they cannot
+perform the computation that they want to they don't
+have enough quantum power so they have to figure out how to share this quantum
+
+00:06
+power with each other and to create something that allows them then to
+tackle much larger quantum problems so for that again they have to share
+some quantum resources that's done by the quantum network but
+then they have to coordinate with classical messages using the classical network
+what they need to perform they need to call they basically use the classical
+control of the classical provided by the classical network to
+then perform the quantum computation on the quantum part of their memories
+their processors and so on so in that in that case this network of
+quantum computers that's going to do this distributed computation
+is that distributed computation is that a complete application is that like
+quantum photoshop or or quantum oracle database or some something or
+well i would say never say never but for me but for now the the problems that we
+envision tackling with quantum stuff are things that are genuinely quantum where
+
+00:07
+classical problem classical computers can help but are too slow
+for example diagonalizing large matrices finding new properties of new drugs new
+materials and so on i don't think that there will
+be an application of a quantum photoshop where we can
+where we can i don't even know how that would work in reality i don't either so
+the chemistry one's a really good example because because they're
+as i understand it there will be some classical pre-processing and then
+we'll do a quantum step and then after you get back your quantum answers
+then there's going to be some more classical computing to do something
+that's true that's true that's known as the vqe or the variation
+quantum eigensolver where really again the the quantum part
+in the entire computation is just one tiny step in a series of steps
+but it's a very important one that's particularly slow using only classical
+computation and classical devices okay and so all of that will fit together
+
+00:08
+into a distributed and integrated quantum and classical that's right
+system the information system that other people will then use that's right
+okay what's the other one well the other one is our
+clock synchronization where we mentioned that
+having a global time standard where everybody agrees on the same time is of
+crucial importance in many many areas of our modern life and again
+it's not that we want to do something special with quantum time
+the time is classical but the way on how we agree
+on the same global standard of time comes through using quantum resources
+such as entanglements such as bipartite entanglement and so on
+okay and then once you've got that then it gets used in
+it goes back it gets bumped back into the classical network and it's very
+important for transportation for gps so global positioning system financial
+market where even fractions of a second are crucial
+uh they can either gain you millions or you can lose millions
+
+00:09
+and and so on and so forth so time time is very important and keeping
+keeping uh the same time as somebody on the other side of the world
+is very very important as well right so all of this will fit together
+so there's going to be a quantum network and there's going to be some ip network
+you know the existing classical internet or what have you
+and these two things are going to have to come together in order to build these
+complete integrated hybrid quantum classical distributed systems
+synchronized synchronized synchronous that's an important point too
+okay so let's see in the next step how we can bring these things together
+all right so with standardization right the first thing you're going to do of
+course is you're going to actually build and test some
+sort of system you've got a prototype that's up and running right
+um and then what well then once that is working we would like everybody else to
+
+00:10
+use it yeah and in communications one of the things that means
+is that it's really nice if my communications device will talk to your
+communications yes even though i was the one who made
+my device and you were the one who created your device
+maybe using completely different means so
+how do we standardize these things well there are a lot of meetings and things
+that go on in making all this happen but in particular for a concrete example
+we might have to worry about the physical layer and the protocol
+layer and those might actually be standardized
+by different organizations that are actually involved in this so
+at the physical layer so i know how you might do that with like you know
+electrical signals for the ethernet or something
+and the organizations will define voltage levels and how long signals
+are allowed for and one of the things you talked about
+earlier was distortion of signals due to modal dispersion we were talking about
+that in terms of optical fibers right but that same kind
+of phenomenon happens with any kind of signal and so one of the things you have
+
+00:11
+to worry about is how much of that is allowed so that you
+can still guarantee that the end nodes will be able to reconstruct things
+so all that's for for classical signals what are sort of the equivalence of that
+for photons well we said that in quantum communication we're
+interested in exchanging information via single photons so we have to think
+about how do we get two different devices to talk
+particularly at the border of two networks so they will have to exchange
+photons so how can we ensure that whatever photons i provide
+to the other network it gets accepted recognized and vice versa
+so i imagine things that will be important will be the wavelength
+of the photons with the shape of the wave packet of the photons
+and basically ensuring that if we are trying to establish an entangled
+link between two networks we saw that that happens with the bsa
+
+00:12
+right and we mentioned we stressed that the two photons that are coming in
+in order for them to interfere they must be indistinguishable
+so somehow we must have a procedure and a standard procedure that makes sure
+that whatever photons you are sending me are the same photons as i'm sending to
+you and then they can hit each other interfere at the bsa and create
+entanglement between us and between the two networks that we are part of
+sounds good to me so the kinds of organizations that do that
+are organizations that like um the ietf and the ieee and enc
+and organizations like that they'll be involved in all of this at some point too
+
+\section{Putting it all together}
+
+00:00
+step three putting it all together right so let's put all of these things
+that we learned in this module into some context
+all right but before we do that let's say this is the last video of this entire
+module it's not the last step there are a couple of other things after this but
+we should thank everybody who's helped us put all of this together so we should
+thank you know husnie and we should thank the editors uh
+and we should thank all of the students who have done all of the work on all of
+this without you guys it wouldn't have happened right okay thank you very
+very much so what else let's see so just to go all the way back to the
+core idea here there are four things that a repeater
+has to do and then once you have repeaters
+you can build a network up right so the first thing
+well establish entanglement between two neighboring nodes so
+link level entanglement good that involves handling loss of photons
+
+00:01
+oh yeah second thing we extend this from neighboring nodes to nodes which
+are separated by larger distance by multiple hops so we
+establish end-to-end entanglement the primary mechanism we used for doing that
+was entanglement swapping that's right then we have to think about how do we
+handle state and operation errors so we saw a few examples which we used
+in our calculations of unitary errors but there's also other types of errors
+and the main protocol that we used was the purification
+all right and then the last thing and the last thing we have to think more
+uh in terms of networking and how to handle things like
+routing uh how to handle things like multiplexing
+when there's uh contention for resources and how to manage all of these things
+things including security so that's things like the routing protocol
+that we talked about in the multi-level system and the internet and things like
+
+00:02
+that in this earlier in this lesson but also a lot of that back in lesson
+12 i think possibly all right so all of those are technical
+requirements for how you go about building boxes and an internet but
+people who are taking this module they're people they're people
+right and so people are the ones who design and build and operate these networks
+so this is the first module in what will be a pretty
+extensive and pretty in-depth sequence on quantum communications and quantum
+computation you can choose sort of your specialty
+within that area but primarily here we're focusing on the quantum communications
+and they're going to be a whole lot of jobs that are that are possible a whole
+lot of career paths for you to go forward with this
+as you complete this entire set of modules and complete a degree
+or just even for your own purposes so so what are these specializations
+
+00:03
+well i'm an architect so i list architecture first
+that involves defining the subsystems within a larger system and defining the
+relationships so you define block a and block b and what's the
+relationship between the two what's the contractual agreement between
+them what messages do they exchange what uh behavior are expected of the
+different subsystems and with all of that that allows you to
+make forward progress by dividing the problem a large problem into a set of
+smaller problems and then each of those can be worked on
+to a certain extent independently protocols so the protocols define
+the messages that get exchanged on the wire and the behavior what you do when
+you get a message but also what you do when you don't get a message and sort of
+other sets of rules you have to follow what sort of promises you make as
+participating in in a particular network communication for example
+
+00:04
+as we saw just recently we talked about standardization right
+hardware oh hardware is very important that's
+closer to my heart the physicist but hardware are the
+physical things that basically allow all of these more abstract things such as
+architecture and protocols to work so we need to design the hardware we need to
+analyze it we have to ensure that really our boxes are quantum boxes
+our memories that are sitting at quantum notes they are distributing
+entanglement if something goes wrong what do we do and uh uh
+how do we test things and how do we build them
+yeah so all of that everything we're talking about here is all
+super critical you have to have all of these things in order to build a network
+but fundamentally if the hardware doesn't work we're just toast right off
+the bat right so all right software you got to have software too
+right and that some of that is software that's internal to the boxes you're
+building and so nobody cares if you change that as long as they
+
+00:05
+what they care about is the external behavior of the box but software also
+includes implementation of those protocols that we talked about earlier
+right and that building hardware is hard right yep building software
+people think it's easy but it doesn't happen automatically
+yeah yeah and it's also the case that software can be iterated more quickly
+than hardware can you can make small changes to things in in
+software and redeploy hardware redeploy software fairly quickly
+but where software meets protocols once the protocols are defined it starts
+to get to be a lot harder to change and even that software that you're
+actually iterating quickly even getting that right also takes a lot of work
+and so you have to have the right balance between hardware and software
+although it often seems like it's easier to get
+software up and running quickly and easily building a complete and robust
+system that does everything that's expected and nothing it's not expected to do
+
+00:06
+that's all hard work too right we also have to have operations and
+management of the networks so once all these boxes are built you know
+we talked about the routing protocols and talked about all these other things
+somebody's job is going to be to order boxes from the companies that provide
+this stuff and bring them into your building and unbox
+them and set them up and turn them on and run them
+and make sure that they connect to the local systems and that everything works
+and that keep track of what's working what's not all of that's operations and
+maintenance and that's an important career path
+in the classical internet as well next one is education and community
+exactly what we're doing now we are educating people and we're
+participating in the community yes so we're both researchers and educators
+but this applies not only at the university level where we are right now
+but it also includes high school and and also post-secondary
+education so it can be educating the public as well as educating people
+within a formal school context um so all that's really important
+
+00:07
+so some of you could wind up as high school teachers and that's a perfectly fine
+career path for going forward because i'm certain that there are going to be
+quantum classes in high schools in the future and somebody's got to be
+trained the people who teach those one other aspect
+of this is where we included a community is there's also a lot of discussion
+these days about the ethics of artificial intelligence or ai
+there is just beginning to be a conversation about the ethics of of quantum
+as well but there's also relationships with how all this is going to fit into
+society and legal things as well because in particular quantum networks
+and quantum computers both have a significant impact on
+cryptography which is considered to be a sensitive issue
+it seems like a very disruptive technology anything quantum whether it's
+communication or computation oh yeah yeah and so businesses and governments
+both care about this and how it's going to affect
+
+00:08
+their their own operations as well as their own societies
+and then theory that would be you wouldn't that would be me yes
+there's always theories needed particularly when it comes to quantum
+computation and quantum technologies the the things that are made quite
+important are information theory so the the formal mathematical theory of
+how to process information how to distribute information
+how to communicate information uh these are these are all included under under
+the theory and it doesn't need to be quantum it can be also classical uh but
+quantum is the the more fun one more more surprising one
+and the design of new algorithms of course we we
+always want to know how to do things better or how to do things which we
+haven't thought of and quantum is the perfect playground for
+that there there's a truly a large opportunity for creativity to kind of like
+uh let it run free and and see what uh amazing new algorithms and applications
+
+00:09
+we can we can come up with so all of this um there's it's a
+fantastic and exciting time to be in quantum whether it's quantum networking
+or quantum communication i've been doing this since 2003
+prior to that i was doing primarily classical systems
+and you know every year it gets to be more and more
+more and more exciting and more and more real particularly with the
+recent developments in by ibm and google and other new startup
+companies like ironco inq psi quantum it's a truly
+truly mesmerizing time to be in quantum whether it's computation or
+communication and now it's a great time for you all to
+be quantum natives and to come to come join join
+all of us in the process of this so thank you all for participating in this
+module and we'll see you again see you bye
+
+
+\newpage
+\begin{exercises}
+\exer{Consider the following quantum state:}
+\begin{equation*}
+\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
+\end{equation*}
+\subexer{Find the probability of measuring a zero.}
+\subexer{Find the probability of measuring a one.}
+
+
+\end{exercises}
+
+
+\newpage
+\section{Quiz}
+
+% \section{Learning more}
+
+\section{Further reading Lessons 14-15}
+
+Lesson 14
+
+For those interested in how GHZ state can be produced with linear optics we recommend:
+
+Dirk Bouwmeester, Jian-Wei Pan, Matthew Daniell, Harald Weinfurter, Anton Zeilinger, Observation of three-photon Greenberger-Horne-Zeilinger entanglement, Physical Review Letters 82, 1345 (1999).
+
+Freely accessible version of this paper can be found here.
+
+Extension of the Bell inequality to three particles and its experimental violation is reported here:
+
+Jian-Wei Pan, Dirk Bouwmeester, Matthew Daniell, Harald Weinfurter, Anton Zeilinger, Experimental test of quantum nonlocality in three-photon Greenberger-Horne-Zeilinger entanglement, Nature 403, 515 (2000).
+
+This paper can be accessed freely here.
+
+Lesson 15
+
+For discussion of the physical layer aspect of the Quantum Internet we recommend:
+
+H. Jeff Kimble, The quantum internet, Nature 453, 1023 (2008).
+
+Freely accessible version can be found here.
+
+Kimble’s paper focuses on the hardware and does not discuss any of the networking aspects. For that we recommend Van Meter’s textbook:
+
+Rodney Van Meter, Quantum Networking, Wiley-ISTE, 2014.

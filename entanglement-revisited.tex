@@ -1,0 +1,544 @@
+\chapter{Entanglement Revisited}
+
+\section{Bipartite entanglement}
+
+00:00
+hi and welcome to lesson 14 entanglement revisited here we will talk
+a little bit more in depth about bipartite entanglement
+we will also talk about multipartite entanglement so entanglement between
+more than two parties and then we will conclude
+with some applications of entanglement in quantum networks
+step one bipartite entanglement so the one of the main jobs of quantum
+network is to distribute entanglement so let's start by
+considering a concrete example where we have the following networks
+where these circles represent quantum nodes and these dashed lines represent
+physical links between certain nodes of the network
+and let's say that these green nodes are trying to engage
+in a quantum communication so they would like to establish an entangled pair
+between themselves so we're going to label them n1
+
+00:01
+and n2 and we saw in previous lessons that how this works in a quantum network
+is at first we have to establish link level entanglement
+so entanglement between neighboring networks that are connected directly by
+via physical link and then we can use entanglement swapping and the intermediate
+uh nodes in order to end up with a entangled connection between n1
+and n2 and we also talked about that the network has to consider things
+like routing and multiplexing in order to be satisfy
+the need for quantum communication between multiple users of the quantum network
+so but one question which we have not addressed in detail
+is how do we evaluate the quality of the established
+entanglement after all we saw that the quality directly impacts some of the
+
+00:02
+protocols so we saw that in entanglement-based qkd
+the end quality of the entanglement that's shared between
+alice and bob directly impacts the key that they're trying to
+establish namely if the entanglement is not perfect
+if they don't share a pure maximally entangled state
+then the key that they are going to end up with after at the end of the protocol
+will also be only partially correlated more crucially the uh
+quality of the entanglement also tells us something about the security of the
+entire protocol if they are not sharing a maximally
+entangled state there is some chance that their state their qubit is
+correlated with some qubit that alice has in her possession
+which means that clever alice can find some information about the secret key
+that alice and bob are trying to establish
+so in this in this scenario we see that better quality of entangled states
+
+00:03
+lead to stronger security during establishing
+during the establishment of a secret key so what are the different methods of
+evaluating the quality of the distributed entanglement when we talk
+about bipartite entanglement we saw that fidelity is one function
+that we can use to talk about the quality of a state at the output either of a
+quantum communication task or a quantum computation task
+here we have some reference state which is a pure state that describes our ideal
+state that we are aiming to get that's our desired state
+but due to noise usually what we have is is some mixed state and if the noise
+doesn't have much effect if it's very weak noise
+this state will be close in some sense to the ideal state our reference states
+psi and we can evaluate how close we are using the fidelity
+which i remind you is computed in the following way
+
+00:04
+we have the fidelity f between the actual state rho
+and our ideal state psi given simply as this inner product
+in the context of quantum networks generally we are trying to establish
+bipartite entanglement between end to end nodes
+so we are mainly interested in the following expression and that's the fidelity
+of the state that and two nodes are sharing
+and the ideal state that they wish to share which is
+a maximally entangled state in this case we will consider the phi plus state
+and let's compute some examples so let's say that we have the ideal case
+meaning there is no noise there's no eavesdroppers and the actual state
+that the two parties are sharing is really the pure state
+phi plus here written as a density matrix
+well we can just simply substitute that into our expression for the fidelity
+
+00:05
+and we see that what we get is the square of the inner product between 5
+plus and 5 plus which of course we have seen many times
+is 1 because the state is normalized so good we get
+fidelity of one meaning we have the ideal state now
+what if we um end up with an orthogonal state
+so maybe something has gone wrong um and due to some noise paulie z
+matrix was applied to our ideal state and the two parties end up with the
+following state it's still a pure state but it's not the desired status in this
+case it's phi minus if we substitute that into our expression for the fidelity
+we will see that fidelity drops to zero and that's because
+uh our state that the two parties are sharing is orthogonal
+with the desired state five plus but here's the problem we care that the
+two states that the two parties alice and bob are entangled
+
+00:06
+and here they are clearly entangled they manage to share entanglement
+it's not their desired entanglement it's not the desired belt state five plus
+but it's still an entangled state nonetheless but if we just simply
+evaluate the fidelity we get a zero meaning that our state is no good
+and that's not quite what we're looking for so
+we see that fidelity in this scenario is not a very good measure
+so what can we do well we saw previously in the entanglement based qkd protocol
+that we can test quantum correlations by violating the chsh inequality
+to remind you we have considered the chsh inequality
+and the state psi plus which we used in the e 91 protocol
+and there alice measured in two different bases given
+by these vertical and horizontal lines in the
+
+00:07
+exact plane of the block sphere so a1 corresponds to measurement of the pauli
+z observable a2 corresponds to the measurement of the pauli x observable
+and pop measures in this rotated bases b1 and b2 given by this following
+expression so b1 is given by z minus x whereas b2 is given by z plus x
+and alice and bob they have to repeat this process many times
+perform these measurements build up statistics so that they can compute
+their expectation values for the following measurement settings where
+alice measures in a1 and bob measures in
+b1 alex measures in a1 but both measures in b2
+and so on and together we can form this following expression
+known as the chsh expression and if this is larger than two then we
+can conclude that the state that alice and bob
+are sharing is really in fact entangled so okay that seems to work let's try and
+
+00:08
+use uh the chsh inequality for our state 5 that we are trying to verify
+well we can again consider the same measurements and we construct the same chsh
+expression if you go through the calculation for the expectation values
+you can quickly find out that the expectation value for a1b1
+for a is equal to a1 b2 and also a2b2 and it's given by 1 over square root of 2.
+and the expectation value for a to b 1 is
+negative 1 over square root of 2. so we can substitute
+all these values back into our expression for the chsh expression
+so here we have 1 over square root of 2 plus
+1 over square root of 2 and we have here we have
+minus 1 over square root of 2 because we are substituting this expression
+and then minus 1 over square root of 2. so we get that s is equal to 0 and we
+
+00:09
+said that in order to certify that this the state is truly entangled it has to
+be larger than 2. but phi plus is clearly entangled so
+what went wrong well the answer is actually very simple
+and it's the fact that this inequality has been constructed specifically for
+the state psi plus but now we are trying to use it on the state phi plus so
+in order to use chsh inequality as a test for entanglement we need to fix our
+current expression for s luckily in this case it's very simple
+all we have to do is just swap these signs this negative side negative sign
+with a plus sign over here and with this new expression
+we can actually find out that truly s is equal to 2 root 2 which is the
+maximum violation of chsh inequality which always has to be true if they are
+
+00:10
+sharing maximally entangled state so we saw here that chsh inequality can detect
+bipartite entanglement and to remind you if we go through the chsh test and we
+obtain the value s larger than 2 then we have an entangled state
+row if s is equal to 2 root 2 then we can say that the state that the
+alice and bob are sharing is maximally entangled and if the
+value of s is less or equal to 2 then the test is inconclusive
+now notice that i have not said that the test does
+means that the state is separable and that's because
+there are some entangled states which do not violate this inequality
+however if we find violation then we can
+automatically conclude that the state is entangled
+and also we have to be mindful of what a chsh expression we are using make sure
+
+00:11
+that it's the correct one make sure that you're using the right
+combination of those four expectation values with the correct plus or minus
+signs depending on which state you are trying to test is it five plus
+five minus psi plus or psi minus you
+
+\section{Multipartite entanglement}
+
+00:00
+step 2 multipartite entanglement in the previous step we have seen how
+we can establish a bipartite entanglement that means entanglement only between
+two nodes and between two qubits but of course we can consider also other
+types of entanglement namely entangling between more than two nodes for example
+in a network we we may wish to entangle three nodes like this
+then we refer to to this case as tripartite entanglement
+or it could be entanglement share between four nodes
+so a four pie tart entanglement and we can go up and up
+until we have entanglement between n a number of nodes or we have
+multipartite entanglement so let's consider just three qubits
+as starters how many basis states are there
+we saw that for the case of two qubits there are four basis states zero zero
+
+00:01
+zero one one zero one one well you can guess that for the case of three qubits
+there are eight basis states and they're
+given by all these possibilities we have the three qubits being zero zero zero
+zero zero one and so on and so forth all the way to one one
+one and any general pure state can be written as a general superposition of
+all of these eight basis states for example we can write any general pure
+cubits three-qubit state as follows here as a superposition of all of these with
+some arbitrary probability amplitudes given by c1 c2 all the way up to c8
+now depending on the particular particularities of the superposition
+that we take we may end up in a separable state or an entangled state
+so let's consider some examples of entangled states
+let's look at all of our possible 8 basis states
+
+00:02
+and take a very simple superposition of just the term 0 0 0 and 1
+1 1. and to keep things simple we will consider this superposition to be an
+equal superposition so we've got equal chance to be found in 0 0 0 and 1 1 1.
+now this state is known as ghz state and plays a very important role in
+quantum communication as we will see shortly
+let's consider a measurement on one of the qubits of the three cubic zerj state
+and let's say that we measure it in the z basis
+and for concreteness let's just measure qubit one
+so here's our three qubit g exit state it's an equal superposition of zero zero
+zero one one one with probability of a half we can get the plus one outcome that
+means we project the state of qubit one onto a zero and if that happens
+we can see that we end up with the state of the three qubits collapsing
+
+00:03
+onto the following state all of them can be found in zero
+zero zero so we can see that the qubits are correlated
+the other possibility is that we measure the outcome minus one
+this happens with equal probability of a half and then you can see from this
+expression that the state of all three qubits collapses
+onto one one one so again they are correlated and we saw similar
+behavior when we were talking about establishing a secret
+key in entanglement based qkd what we are looking for was a scenario
+where performing measurements in the same basis can establish
+establish a secret key between two parties here you can see that you can
+do that uh do the same thing between three parties which is why
+jirget states are used in quantum communication
+in fact you can see that by doing that just like in the case for the
+entanglement based qkd measurements consume the
+
+00:04
+entanglement that was shared between the three parties
+so by measuring just one qubit in the um in the state means the total
+uh entanglement is destroyed and in fact it doesn't matter which
+qubit we measure in the z basis we would have ended up with the same
+case with the same probabilities if we had measured in the qubit 2 or qubit
+3. now let's move on to a different example known as a w
+state again here are our eight possible basis states and this time
+we'll choose a different superposition we will consider these three states
+and we will take an equal superposition of these states
+now the normalization factor is one over square root of three
+because we have three states uh three basis states in the superposition
+rather than two that we had in the previous example of the ghz state
+
+00:05
+and as i said this is known as the w state so how do measurements affect the w
+state again let's measure in the z basis and
+perform this measurement on qubit 1. what can happen is that with probability
+two-thirds we get the outcome of plus one because we have
+these two contributions from these two terms in the superposition
+therefore the probability is equal to two-thirds
+when that happens our first qubit is projected on
+onto the state zero but our remaining two qubits qubits two and three
+uh remain in an entangled state and this time they share
+the maximally entangled bell pair denoted by phi plus
+and the other outcome is the minus outcome of the z measurement on qubit one
+which can happen with probability one third and if that happens
+then we just end up in a separable state one zero zero
+so we see that unlike in the case of a ghz state
+here we don't necessarily always destroy the entanglement
+
+00:06
+that was initially present in the system and in this sense we can say that w
+state and ghj state are not equivalent now
+we have been talking about the various correlations that three parties can
+share we said that ghz state if we measure in the z basis one of the qubits
+all of the entanglement is destroyed whereas if we take the w state and we
+measure we don't necessarily destroy all of the entanglement so somehow
+this tells you that the correlations that are shared
+with in these two states are not quite the same but there must be some
+constraints on how correlated the various parties
+of the state can be how correlated one and two are with three and so on
+so here we have our three qubits qubits one two and three and they are in some
+correlated state maybe in some entangled state
+
+00:07
+how strongly can various qubits be correlated well
+that there is a constraint known as monogamy of entanglement which we have seen
+uh uh in a previous lesson on the e91 protocol the entanglement with qkd
+protocol and we see that there is a trade-off if
+two pairs of the qubits are strongly correlated
+then their correlation with the third party is limited
+in particular if qubits 1 and 2 are in a maximally entangled state
+then we know that the total state must be of this form
+we have the maximally entangled state of qubits one and two
+tens of product with some arbitrary single qubit state so we say that qubit 3 is
+completely uncorrelated with the remainder of the state of
+winning qubits 1 and 2. similarly if we have maximal
+entanglement between 1 and 3 then qubit 2 must be completely uncorrelated
+
+00:08
+with the with the pair 1 and 3. this this principle of monogamy is one
+of the most fundamental properties of quantum mechanics
+it's unlike anything that exists in classical
+classical physics and is one of the cornerstones and building blocks
+which we use in quantum technologies and particularly in quantum communication
+so we have seen examples of three qubit states can we extend the ghz state and w
+state to many qubits let's say n qubits and of course
+we can do that quite easily the gh state for n n parties or n qubits has the
+following form again here we pick only two terms
+one corresponding to n zero zero zero zero and the other one we have
+n one so 1 1 1 1 1 1 1 and we take the equal superposition of them notice that
+
+00:09
+the normalization factor here has not changed even though we have n
+n qubits that's because we only have two terms in the superposition
+on the other hand the w state for n parties we have the following superposition
+of n terms therefore the normalization factor must change to 1
+over square root of n and what it is is really we have n
+minus 1 0's and then 1 1 and we place this one at all the possible places
+and we take the superposition of all the
+possible cases where we have n minus one zeros and
+a single one so we have n qubits and n terms
+but this is not the only example of a useful entangled state of many qubits
+there are many other examples but two are extremely important both in quantum
+computation and quantum communication let's say that we have a network of
+
+00:10
+qubits and we prepare every qubit in the state plus so this is
+an equal superposition of 1 and 0. and then we apply an
+entangling gate known as a control z gate in the matrix form it looks
+something like this so it's very similar to a c not gate a control not gate
+but this time instead of applying the pauli x
+in a controlled way we are applying the pauli z in the controlled way
+so if the control qubit is in the state zero we don't do anything
+if it's in a state one we apply the pauli z matrix
+and this gate is entangling and entangles all of the qubits together into into a
+multipartite entangled state and this is the preparation procedure
+for a state called a graph state normally denoted by ket
+g now if the state has a regular lattice structure
+we can still refer to as a graph state but commonly is referred to as
+
+00:11
+a cluster state and denoted by ket c and by regular structure i mean
+the following the following topology like this
+now graph states and cluster states are very important in quantum computation
+they form the resource states for a particular
+computational model known as measurement based quantum computation
+but they are also very useful in content communication where
+multiple parties are trying to communicate and they are crucial in quantum
+error correction as well which will which you will see in a different module
+
+\section{Clock synchronization}
+
+00:00
+step three clock synchronization so we have seen in this module the
+applications of uh how we can use entanglement we saw the
+example of teleportation and we saw the example of entanglement
+based qkd here in the remaining two steps of this lesson we will consider a
+few other examples of applying entanglement and in
+here in step three we will look at clock synchronization
+so before we say how we can synchronize clocks
+let's ask the question why we want to synchronize clocks
+well establishing universal time standard is fundamentally important
+in many areas of modern life the telecommunications networks require
+synchronized clocks global positioning system financial
+markets transportation networks these are all just a few examples of
+crucial importance to modern way of living
+for example if we look at the gps how it works
+
+00:01
+how it uh calculates the exact the very accurate position where we are is
+it computes the distances to four uh satellites
+and then from that it can locate with very high degree of accuracy
+where we are placed on earth and in order to calculate this distance is
+this r1 r2 r3 and r4 accurate timing is very important because even tiny errors
+in in timing can result in huge positional errors
+so how can we synchronize clocks well there are really two classical methods
+and one quantum method which we will mention
+the first one is due to einstein imagine that we have two clocks
+one is in possession of alice and the other one is in possession bob
+and they are trying to synchronize alice is trying to synchronize
+her clock with bob's clock so what she can do is she can
+
+00:02
+fire a pulse of light towards bob so the light is traveling to bob and it
+reaches bob as soon as it reaches his clock it bounces back and as it's
+doing that it sets the bob's clock ticking alice is measuring the time that it
+takes for the photon for the light pulse to travel from her to bob and bounce
+back from that she knows uh she can estimate
+the distance to bob she calculate the distance to bob
+and also she will know what's the round trip time and also what's the
+time in order for the photon to reach from bob to alice
+therefore she knows how she can set her clock
+and this will synchronize the two clocks together
+however in this scheme alice needs to know where bob is located
+in order to correctly synchronize their clocks
+a different scheme is uh to for alice to have some other
+smaller clock which she synchronizes locally
+with her clock and then the small clock is
+
+00:03
+very slowly in fact adiabatically slowly
+transferred to bob where he receives the clock and then he can locally
+synchronize his clock with this received clock and this scheme has to be done
+adiabatically slowly in order because of a theory of relativity
+now the third scheme is realizing that qubits can act as
+tiny clocks how does that work well qubits they evolved in time
+for example if we prepare a qubit in an equal position superposition of 0 and 1
+we can make it change its state in time such that it goes around this
+x y plane in the block sphere with angular frequency capital omega
+so it starts we can initialize it in the state plus
+and after some time capital t which is the period of precession
+
+00:04
+it completes one full circle so it goes around an angle of 2 pi
+radians so the period of precession is given by 2 pi
+divided by the angular frequency of precession
+so really in this sense it's it's the same as a grandfather clock
+if we can track how many times it goes around the x y plane
+we can track time knowing the the angular frequency of precession
+so the question now is how can we synchronize two qubits
+let's say alice has qubit 1 that is processing at a frequency a capital omega
+and bob also has one that's also processing at the same frequency
+but this time there is some offset so it's lagging behind alice's
+cubit clock so this uh this delta is quantifying
+the lag between in terms of the angle between the point that's on the on the
+
+00:05
+block sphere in the xy plane for bob and for
+alice and what we are trying to do is we are trying to eliminate
+this uh offset delta in order for their clocks to be synchronized and show
+exactly the same time so where is the main problem well the
+problem is that alice has her local time frame and bob has his
+own local time frame and somehow they need to communicate like say my time
+frame is this what is your time frame and they have to
+exchange messages in order to agree on a global time frame
+in fact what they can do is they can do that by sharing
+entangled pairs of qubits they can use these qubits
+to establish a global global time frame so in that sense entanglement is used as
+a global resource and we have seen the similar scenario
+also in the entanglement based qkd there we use entanglement and classical
+
+00:06
+communication to correlate to in order to establish a correlated secret key
+between alice and bob that was the e 91 protocol
+in clock synchronization of qubits we are using
+the global correlations that are present in a maximally entangled state
+in order to establish a global tie frame and correlate
+these two qubit clocks together therefore synchronizing them
+and quantum networks are instrumental in distributing bipartite entanglement
+therefore allowing the various nodes in the network to
+synchronize their clocks and establish a global global time frame
+
+\section{Distributed and blind quantum computation}
+
+
+00:00
+step 4 distributed and blind quantum computation
+this will be our final example of the application of entanglement
+and quantum network in this lesson so let's talk about distributed quantum
+computation first there is no reason for alice to perform
+all of her quantum computation locally let's say that her resources are limited
+maybe she doesn't have a the large number of qubits or the cubits that she has
+are not sufficient of sufficient quality but that doesn't mean that she cannot
+perform her quantum computation what she can do is she can contact her
+friends bob charlie dave and eve who are also in possession of some
+limited computational resources they also have some small
+quantum computers and together they can coordinate
+their resources and perform a larger quantum computation
+
+00:01
+um compared to if alice did it only locally
+so here alice bob charlie dave and eve they all share some number small number
+of qubits and they can entangle in some them in
+some way and also they can exchange quantum information
+uh by using the quantum network or they can also exchange some entangled qubits
+they can connect those local uh cluster states
+together in some larger cluster states and then perform computation on that and
+there are many questions of interest such as what is the most efficient way
+of networking the quantum processors together how many messages do they need to
+exchange in order to coordinate their computational efforts
+and also issues like trust how can alice trust maybe she doesn't trust
+all of the parties involved in the quantum computation what does she need
+to do how can net quantum network help her in this situation
+
+00:02
+also here we are assuming that she has some quantum
+resources what if her quantum resources are extremely limited
+so what do we mean by extremely limited let's say that she cannot do anything
+she doesn't have a quantum computer but she would still like to delegate her
+quantum computation and for simplicity let's just assume
+that bob has a full-fledged very powerful large quantum computer where he can
+perform any quantum computation that he wishes or that alice would ask him to do
+so in this scenario what she can just do is she can send him
+a classical message composed of many bits describing to bob
+exactly what computation she wishes him to perform
+so she needs to describe the input of the computation
+the computation itself and then the bot will
+just take this information and carry out the computation and then
+tell alice the output the result of the computation
+
+00:03
+but in the process what happens is he learns everything there is to know about
+the computation he learns the input he learns the computation itself
+and he learns the output now what if alice doesn't want bob to learn
+some of this information or any of this information
+maybe she's trying to gain a competitive edge by performing some simulation of a
+molecule or a new material and she doesn't want
+bob to find it out because it's a trade secret
+can she can she still do something in this case
+well she can if she's allowed to have some quantum resources
+and particularly we assume that alice has the ability to generate single qubit
+states so what she can do is she generates these states
+and then she can randomly rotate them then she takes these keywords and she
+sends those to quantum uh those to bob so she's using a quantum
+
+00:04
+channel to communicate with bob but these uh these qubits are not
+entangled there's really just a bunch of single qubit states randomly uh rotated
+and then she sends him classical uh instructions about the computation
+so she directs bob take qubit 1 perform this operation take ub2 perform that
+operation take these two qubits and entangle them using this gate and so on
+and in this way bob can perform whatever she is instructing him to do and then
+just return the final outcome he communicates either
+in quantum way or classically to alice about the result of the computation
+and in this way bob does not know the random rotations
+because those are still kept secret by alice so this prevents him from learning
+anything about the input anything about the computation itself and also
+anything about the output he's basically doing this computation
+
+00:05
+blind he's performing some operations according to alice's instructions
+but because he doesn't know the initial states of the keywords
+he doesn't really know what these uh operations
+mean he cannot interpret them therefore whatever he gets he just performs the
+in the operations blindly he gets some output
+but he cannot uh interpret this output he just returns it to alice
+the only thing that he can learn is the upper limit to alice's computation
+for example if she sends him four qubits then he knows that she alice
+could not have performed any computation that requires more than four qubits
+
+
+\newpage
+\begin{exercises}
+\exer{Consider the following quantum state:}
+\begin{equation*}
+\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
+\end{equation*}
+\subexer{Find the probability of measuring a zero.}
+\subexer{Find the probability of measuring a one.}
+
+
+\end{exercises}
+

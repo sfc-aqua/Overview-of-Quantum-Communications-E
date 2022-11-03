@@ -1,0 +1,462 @@
+\chapter{BB84: Single-photon QKD}
+
+
+\section{Three phases of cryptographically secure communication}
+
+00:00
+hi and welcome to lesson nine this lesson will be on a single photon qkd
+and particularly on the first single photon qkd protocol known as bb84
+so step one what are the three phases of cryptographic secure communication
+so secure communication proceeds roughly in the following
+three phases first the parties need to authenticate each other meaning that
+they and they they identify to each other that they are really the parties
+that they want to communicate with and not somebody else
+then they have to generate a key that they will use for encoding their message
+after the key is generated they can get into encoding their message and encrypt
+their data send it to the other party where it will be decrypted
+
+00:01
+so authentication between alice and bob usually proceeds in the following
+following way so first alice says that i'm alice to bob then bob can say okay
+you're alice i'm bob then also anybody could say that so the question
+is why should i believe you why should i trust you why are you really the person
+that you're claiming to be and bob of course has the same question
+so generally the message and the procedure how
+two parties can authenticate each other is
+who are you what do you have and what do you know
+and in particular the last one is quite important
+because you know that the party that you are trying to communicate
+knows something for example like a public key or a pre-shared search secret
+and that can be used as an authentication device
+
+00:02
+so after authentication they have to generate a key now the key is then
+will be subsequently used for encrypting the
+message and the key can be for example there are many different
+ways of exchanging keys such as diffie-hellman key exchange
+is one such method but the problem with the key is that once it is generated it
+can be used but it cannot be used forever it always has to be changed
+and it has to be changed frequently in order to ensure
+that the data is encrypted in a secure manner so once the key is generated alice
+can encrypt her message with the key she can send it to bob
+where bob will use his generated his part of the generated key
+to decrypt the message and read it and common forms are are the following ds
+
+00:03
+3ds aes less common one is one-time pad and we will describe what one-time pad
+is sometimes it's known as the vernam cipher
+
+\section{Private vs public key}
+
+
+00:00
+step 2 private versus public keys so one way to establish a private key
+between alice and bob is to use public channel
+and keys that are established in such a way are known as public keys
+so here's how it works we've got two parties that are trying to communicate
+alice and bob and they can communicate over a public channel
+public means that anybody has access to this channel so any message that they
+transmit that they used to communicate with can be heard and intercepted
+by any other party so this channel is not secure in the sense that anybody
+can read any message that they sent so what alice does is she generates two
+keys one is known as the public key and the other one is known as the
+private key what she then does is she sends the public key to bob that she
+
+00:01
+generated he uses that to encrypt his message and then what he does is he
+can just send it back to alice then she uses the private key
+that she did not communicate to bob to decrypt bob's message
+and read what it is so in public key cryptography
+public key is used to encrypt the message but it cannot be used to decrypt the
+message the message is decrypted by the private key that alice
+generated but did not share with over the public channel
+and it works but it has some disadvantages it is slow it is expensive and more
+importantly it is what's known as computationally secure
+meaning that anybody listening to the channel is able in principle to break the
+
+00:02
+encryption if either they have a large amount of computational resources
+or computational time so it is not unconditionally secure
+a different way of establishing and this is the crucial point is that
+quantum computers can in principle break computationally
+secure protocols like this with relative ease so how can we how can we actually
+establish secure connection between alice and bob
+the other alternative method is to use a private key
+here what happens is that there is some generator some hypothetical device that
+can generate private key and that key is then sent to alice and sent to bob
+now alice and bob are sharing some correlated secret key that only they know
+and they can use it to encrypt their message
+
+00:03
+for example bob encrypts his message he sends it to alice
+where alice uses her part of the secret key to decrypt it and read the message
+this is known as one time pad or the vernam cipher
+and it is secure it cannot be broken provided that is used only once so
+if bob has a message of n bits that he's trying to send to alice
+he requires a private key that's at least n bits long
+and once he uses that private key to encrypt his message
+he cannot use it again if he has some other thing to say to alice
+they require a completely new and fresh private key to ensure security
+so as we said it's not very efficient in the sense that it
+requires large amount of key bits the number of keys has to be at least as
+high as big as the message itself so that's actually pretty good but
+
+00:04
+there is one remaining question and that's uh
+how do we actually distribute this key in this scenario we just assume
+that the private key generator can distribute this private key to alice and bob
+but of course there is a question of what channel should the private key
+generator use because public channels are monitored by
+whoever is listening and this is where quantum mechanics comes into
+play as we will see in the next step you
+
+\section{BB84 Protocol}
+
+
+00:00
+step 3 bb-84 protocol this protocol is a quantum protocol
+therefore alice and bob can utilize a public quantum channel as well
+as their public classical channel so here we've got alice and bob again
+and they can communicate over this public quantum channel what alice does
+to begin the protocol is she generates two n-bit strings
+we're going to call the first n-bit string a
+so there's n bits in her string a we're going to denote them a1
+a2 up to a n and the second bit string we're going to denote is b and there's
+b1 b2 all the way up to bn and then what she does is she creates quantum states
+according to these bit strings as follows for each two bits from a and b
+
+00:01
+she takes them and creates one qubit and then she creates n such qubits and
+the whole state will be denoted by psi so if her qubits a k and b k are 0 0 then
+she encodes this qubit she prepares the qubit in the state 0.
+if ak and bk are 1 0 then she prepares state 1. similarly if they are 0 1
+she prepares state plus and if they are one one she prepares the state minus
+so we can see that the bit coming from the bit string b determines the basis of
+alice's if it's zero as we can see in both of these cases here and here she
+prepares the qubit in the z basis if it's one as we see in this case and in this
+case then she prepares the qubits in the x spaces
+
+00:02
+and ak then chooses which state from the basis she prepares if a is zero
+she prepares the plus one ideal state if it's one she prepares the minus one i
+guess state notice that these states are not orthogonal
+for example if we take the inner product between psi 0 0 and psi 1 0 psi 0 1
+like here we see that they are not orthogonal meaning that their inner
+product is non-zero in this particular case it's 1 over square root of 2.
+same if we take for example the state psi 1 0 and psi 1 1.
+again we will get that the inner product is non-zero
+when this happens when the inner product
+is non-zero it means that the two states are not perfectly distinguishable
+and this is crucial ingredient in this protocol
+so what does it mean for two states to be non distinguishable
+
+00:03
+let's consider the case where we are measuring in the z basis
+and we are given two states one state is the zero state
+and the other state is the one state if this happens
+we see that they are orthogonal it means we can perfectly distinguish them
+so if we just keep measuring the incoming qubits
+if the qubit is in zero we will always get a plus one outcome
+on the other hand if the qubit is in one we will
+always get minus one outcome so with certainty we can distinguish whether the
+incoming qubit is a zero or a 1. same thing applies
+if we are measuring in the x basis and we are given only state plus
+or state minus like here if we keep measuring
+x and we get this state then it will the outcome will be always
+plus one with hundred percent um probability if on the other hand we get a minus
+state and we measured in the x we will get outcome minus one all the
+
+00:04
+time so in this sense we can distinguish plus and minus
+if we're measuring the x bases on the other hand let's say that we are
+given this following states zero or a plus and we measure in the z basis
+so if we measure the zero state like we said we always get the plus one outcome
+that's fine but if we measure the second state the plus state
+there's a fifty percent probability that we get the outcome plus one
+and fifty percent probability that we get the probability
+that we get the outcome minus one so if we get a state zero all is good but
+if we get the state plus sometimes we will get a plus one and
+sometimes we will get a minus one if we get the minus one state fine we
+can say we know that this state is plus but if we get the plus one outcome we
+are unsure whether the state is a plus or whether it's a zero
+in this sense the states are non-distinguishable
+
+00:05
+we can do the same thing in the x spaces and here the scenario is reversed
+we can all we with certainty we can say that we get plus one
+outcome here but if we get in the x if we measure in the x basis and we
+receive the state 0 sometimes it will be a plus 1 and sometimes a minus 1.
+so let's consider an example of the encoding
+let's say that alice generates string a which is 0 1 1 0 1 and string b
+1 1 0 0 1. so then she starts encoding she looks at the first
+bit in her string b which is one so she knows now i have to encode in the x
+spaces and the state that she prepares is a plus state
+because uh her first bit in the a string is a zero
+so that's her first qubit that she prepares the second qubit
+she looks at the second bit in her string b which is again one
+
+00:06
+so again she knows she has to prepare a state from the x basis
+and the state is given by this uh second bit in string a which is one
+therefore she prepares the state minus and then she goes on and on until she
+prepares all n qubits what she does then is she sends these qubits to bob
+over the public quantum channel now let's consider what bob knows at this time
+he actually doesn't know what these states are
+because alice did not share the secret uh string b containing information about
+the preparation basis with anybody she kept it secret
+therefore all bob knows is that he's receiving qubits and they can be
+any of the four possible states 0 1 plus minus
+but what he does he goes on anyway and he creates his own
+random bit string which we are going to denote as
+
+00:07
+b prime and again because uh he's expecting n qubits
+he generates n uh bits b one prime b two prime on
+all the way until b n prime and what he then does
+he just measures in the basis given by this bit string so
+similarly to alice if b prime if the bit b prime k is zero then he
+measures in the z basis and if it's in one then he measures in the x basis
+this allows him to generate his own random bit string which we will denote a
+prime so if the outcome of the k-th measurement
+on the qubits is plus one then he will assign zero to a bit a prime k
+if it's minus one then he assigns a bit one to uh uh a prime k
+
+00:08
+and this way he generates his own a prime random bit string
+what then happens is that alice and bob they share information with each other
+over a public classical channel alice shares her randomly generated bit string n
+and bob shares his randomly generated bit string b prime
+so they exchange information about the basis in which the qubits were prepared
+and in which they were measured and what they do is if they measured and
+prepared in the same basis they will keep the corresponding bits from
+a and a prime if they measured in different bases then they just discard
+the bits a and a k and a prime why because as we said if alice prepares in
+a certain basis and bob measures in that basis the two
+states the two possible states are orthogonal meaning they are
+
+00:09
+perfectly distinguishable by measurement it does basis so it allows
+bob and alice to generate a perfectly correlated
+key so the so the bits that they keep we're going to denote as a uh bar and a
+bar prime and they are perfectly correlated meaning that these two shorter bit
+strings that they generated are in fact equal
+and now they are sharing a key that they can use
+in the next step which is encryption of the data
+so for example how does it work let's again consider case where
+n is equal to five so alice has randomly generated five bit strings a
+and b b tells her in which basis she should encode a tells her what the
+state should be so she prepares the following states minus zero plus
+minus one bob generates his own random b string b prime again this
+
+00:10
+bit string is different from alice's b because he doesn't know alice's b at
+this time and he just measured in the basis given by b
+prime so here the first bit in b prime is one therefore he measures in x
+on the second bit it's again one therefore he measures in x
+and so on and so forth and you can see that since
+in the first for the first qubit alice encoded the qubit in basis x
+and bob measured in basis x therefore bob will
+always with hundred percent probability get the outcome
+minus one which we said corresponds to uh bit string a
+prime which is equal to one and we see that in this case
+a prime one is the same as alice's a one on the other hand
+in this for the second qubit alice prepared the qubit in the z basis
+
+00:11
+but because bob's uh random bit b prime two is given by one
+he measured in the x basis so with fifty percent probability he can obtain zero
+with fifty percent probability he can obtain one
+so they cannot be sure that they are really sharing a correlated
+bit therefore they discard this bit for the third qubit again the the alice
+prepared in the same basis as bob measured therefore they know in this place
+they can share they can keep this bit and use it as part of their secret key
+and this way they can generate shorter keys
+but which are 100 correlated so here we see in the first for the first bit they
+keep it second one they discard third one they keep it
+fourth one they discard and the last one they also keep
+so the shared key that they have is given by one zero one
+so here's the summary of the protocol so far
+
+00:12
+alice starts by generating two n-bit strings a and b b is used for
+basis of the measure of the preparation whereas
+a tells which state of that particular basis alice should prepare the qubit in
+if b k is equal to zero then she prepares in the z basis
+if b k is equal to one she prepares in the x basis
+then alice sends these qubits to bob over a public quantum channel
+bob measures randomly either in z or x spaces
+after the measurements are completed and only after that
+they are allowed to share the information about the preparation basis
+and the measurement basis and they keep the bits only where they prepared and
+measured in the same basis again they do that because they are guaranteed
+that in this scenario the results that are generated are 100
+
+00:13
+correlated and whatever is left of the key they use as a secret key for
+encoding and decoding their messages now so far we have only considered the
+ideal scenario where there was no eavesdropper
+now let's say that somebody is listening to both the public classical channel
+but also the public quantum channel so we are going to consider the effect of an
+eavesdropper which we are who we are going to name eve
+and see uh what effect that has on the protocol and how the protocol can
+actually discover the presence of such an eavesdropper
+
+
+\section{Eavesdropper detection}
+
+
+00:00
+step four eavesdropper detection in the previous step we have seen how
+the ideal protocol works now let's see what happens when we
+include the effect of an eavesdropper trying to gain
+access to the secret key that alice and bob are trying to generate
+so we've got the following scenario we've got our alice communicating over a
+public quantum channel with bob and there is some third party eve
+that wants to intercept their messages so what can what can eve do
+let's assume that she can take these qubits that alice is sending over the
+public quantum channel to bob she intercepts them can she copy them
+and then resend them to bob that would give her access to the protocol
+and the qubits and also subsequently the secret quantum key
+luckily she cannot do that due to the no cloning theorem
+
+00:01
+as we have seen in the previous lesson in the teleportation lesson so
+she cannot simply take them make a copy of the qubit
+and then resend the qubits to bob that's good so in order for if to gain
+any access um and to the information that alice is trying to share with bob
+she has to measure these qubits so what can happen then she has to guess
+the basis of measurement because remember the
+preparation basis stored in the b string b
+is still kept a secret by alice that has not been communicated over a public
+classical channel to bob therefore alif does not have access to this information
+so in order to measure these qubits she just has to pick a random basis
+but she knows that the basis the the two choices for the basis is either z or x
+
+00:02
+so if she measures in some basis this has a chance to disturb the qubit
+for example if alice prepares the qubit in the x basis
+and if measures in the x basis then we have seen that in such a scenario
+there is no disturbance the qubit is still projected onto the same state that
+it was prepared in so it doesn't change the state of the
+qubit and it doesn't change the basis of the qubit
+however in the second case let's say that alice's preparation basis is zed
+and eve's measurement basis in is x so the qubit originally prepared by
+alice was either in a zero state or a one state these are just two
+possible states in the z basis but by measuring them in the x basis
+alice is now projecting onto the either plus state
+or a minus state so she disturbed both bases and the state similarly in
+
+00:03
+this scenario here where alice is prepared alice prepares in the x basis and eve
+measures in the z-basis and this is the basis this is the main
+principle how alice will be detected by alice and bob
+so if she guesses wrong if if guess is wrong
+she will change the basis of the qubit so let's see what happens alice prepares
+her qubits she starts sending them over the public quantum channel
+eve intercepts these keywords and she measures them in a random basis
+and then she passes on these qubits to bob so some of these cubits where she
+guesses correctly so she measures in the preparation basis
+they do do not get disturbed but some of these qubits represented by
+these black qubits they become disturbed this is when alice
+
+00:04
+measures in a different basis than the preparation basis
+then this gives alice and bob an opportunity
+to detect that there is an eavesdropper present how does that happen
+basically what they need to do is they go through with their
+bb-84 protocol they compare their bases in which alice prepared and both
+measured they keep only those bits where they measure the qubits in
+the same basis and then they dedicate a portion
+of this new shorter key to finding to detecting an eavesdropper eve
+so eve has a chance of measuring in the same basis as the preparation basis
+of one half so fifty percent and also bob chooses the same basis as alice with
+probability fifty percent so this gives alice and bob a
+probability of one quarter to detect an existence of if because remember
+
+00:05
+if alice prepared in one basis and both measured in the same basis
+they are expecting this classical measurement outcomes to be the same
+in they are expecting to share a perfectly correlated key
+but if alice measured this qubit and disturbed this qubit then there is a
+chance that these two bits will not coincide and if they don't coincide then
+bob and alice know that something went wrong and there's a pr
+ease dropper present trying to gain access to their secret key
+so we said that alice can be detected with probability one quarter
+when it comes to measuring a single qubit when there's
+n qubits that she measures the overall probability
+of detecting alice is given by the following expression
+one minus three quarter to the power of n so let's see how this scales with the
+number of n here it is on the horizontal axis we're
+
+00:06
+plotting the length of the bit string that we dedicated to detecting
+an eavesdropper if and on the vertical axis we've got the probability of
+detecting if so you see as the number is very small so we don't
+small n is very small we don't dedicate too many bits to actually trying to
+detect the eavesdropper then also the probability that ev's
+detective is relatively small but very quickly this probability shoots
+very close to one so with nearly a probability of hundred percent alice
+and eve can detect the presence of an eavesdropper
+even for n equals to 25 so if they dedicate 25 bits to detect alice
+the chance is one in a thousand that if will not be detected
+so it's very very small meaning with very high probability alice and bob
+know that somebody's eavesdropping onto their channel so
+they can just say we know that we are not sharing a
+
+00:07
+secure secret key therefore we choose not to continue
+with the rest of our communication and we don't allow eve to gain access to our
+sensitive message
+
+\section{Existing QKD network testbeds}
+
+
+00:00
+step five existing qkd network testbeds in the previous steps we have seen how
+alice and bob can use quantum mechanics to discover an eavesdropper and generate
+a secret random key for communic for secret communication
+in this step we will demonstrate that actually these things are not only
+in the realm of theoretical research but also have been tested
+uh by building real networks so the very first network that was built
+was known as the darpa qkd network all the way back in 2004 and this included
+10 nodes in a network and it was built in the state of massachusetts in the usa
+and in particular it included different physical links for example
+here you had a communication over free space here you had a communication
+over over a fiber so this was unlike any of the previous experimental
+
+00:01
+implementations where secure quantum communication
+in the form of a single photon based qcd was done
+only on a point-to-point basis over a single link
+this was the first network experiment demonstrating the viability of quantum
+key distribution the next experimental effort was in
+in europe known as the seacock qkd network
+seacock stands for secure communication based on quantum cryptography
+and it was around the year 2008. it launched
+in vienna and it comprised of six nodes and eight links and involved the layered
+architecture and finally there was a there are many
+other experiments but one notable one was done in tokyo around
+2010 and it was known as the tokyo qkd network here you can see the
+
+00:02
+physical map actually which places in tokyo were connected
+you have hunger campus here in tokyo university
+you've got otemachi over there and it reached all the way to nict in kogane
+and the interesting part about this network that actually it was used
+for a secure quantum secure video conference which really demonstrate
+the viability of using quantum mechanics for securing communication in a network
+
+
+
+\newpage
+\begin{exercises}
+\exer{Consider the following quantum state:}
+\begin{equation*}
+\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
+\end{equation*}
+\subexer{Find the probability of measuring a zero.}
+\subexer{Find the probability of measuring a one.}
+
+
+\end{exercises}
+
