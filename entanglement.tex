@@ -15,9 +15,9 @@ In this lesson, we will finally learn about \emph{entanglement}: a special, very
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_table.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{CHSH game}
-    \end{center}
+    
 \end{figure}
 \fi
 
@@ -32,10 +32,8 @@ We will begin with a game, and the rules of the game are the following: consider
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lesson4/CHSH_diagram.pdf}
-    \label{fig:chsh-game}
-    \begin{center}
         \caption{CHSH game view. The players A and B attempt to collaborate to beat the referee R.}
-    \end{center}
+    \label{fig:chsh-game}
 \end{figure}
 
 The game, as shown in Fig.~\ref{fig:chsh-game}, begins with R generating two classical bits $x$ and $y$, fully at random, and sending the $x$ bit to player A and the $y$ bit to player B. Then the players A and B reply with their own classical bits. A replies with $a$ and B replies with bit $b$. They win one round of the game if the product $xy$ is equal to the binary sum of $a + b$. But there is one very important constraint: once the game begins, players A and B are not allowed to communicate. You see, if they could communicate, A could just tell B: hey, my bit $x$ is equal to zero or is equal to one, and they could very easily win every round.
@@ -45,10 +43,8 @@ But this doesn't mean that they are not cooperating. Before the game begins, the
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_rounds.pdf}
-    \label{fig:chsh-game-rounds}
-    \begin{center}
         \caption{Three rounds of the CHSH game.}
-    \end{center}
+    \label{fig:chsh-game-rounds}
 \end{figure}
 
 In the next round, maybe $x$ and $y$ are still zero and one, but this time $a = b = 1$. Now the binary sum $a + b = 1 + 1 = 0$. So we see that they satisfy the winning condition: $xy$ is equal to $a + b$, therefore they win. In round three, maybe the $x$ and $y$ actually change. They're both one, and A and B reply with one and zero, respectively. In this case we can see again that they win because the product of $x$ and $y$ is equal to the binary sum of $a$ and $b$. They keep going on and on like this, repeating the game. But the main question is: what strategy should A and B follow in order to maximize the win rate? Of course they could just randomly generate their bits and be satisfied that sometimes they win and sometimes they lose, but our players are actually competitive and they try to win every single round, so let's see if that's actually possible.
@@ -57,10 +53,8 @@ In the next round, maybe $x$ and $y$ are still zero and one, but this time $a = 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_annotated_table.pdf}
-    \label{fig:chsh-table}
-    \begin{center}
         \caption{CHSH game and outcomes for the four possible $x, y$ values, when A and B both have chosen zero for their secret bits.}
-    \end{center}
+    \label{fig:chsh-table}
 \end{figure}
 
 The table shown in Fig.~\ref{fig:chsh-table} lists all the possible inputs that the referee can distribute to A and B, (0, 0), (0, 1), (1, 0), and (1, 1). We have the products, and some values of $a_x$ and $b_y$. We are calling them $a_x$ because we are saying that the output bit $a$ can actually depend on the bit $x$ that the player A received, and similarly $b$ can depend on the bit $y$ that B receives from the referee. You can try and substitute any values for $a_x$ and $b_y$, and in fact you will see that they cannot satisfy the winning condition all the time. It's just inevitable that in some cases they will lose.
@@ -72,9 +66,7 @@ In these three cases, the product of $x$ and $y$ is always zero. It's only in th
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lesson4/CHSH_quantum_diagram.pdf}
-    \begin{center}
         \caption{Quantum version}
-    \end{center}
     \label{fig:chsh-quantum}
 \end{figure}
 
@@ -82,9 +74,7 @@ In these three cases, the product of $x$ and $y$ is always zero. It's only in th
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_quantum_guide.pdf}
-    \begin{center}
         \caption{Summary of quantum version}
-    \end{center}
     \label{fig:chsh-quantum-summary}
 \end{figure}
 
@@ -148,7 +138,7 @@ Requirement number two is that in the global state, we don't have any contributi
 So did we make a mistake somewhere? In fact, no. It's just a contradiction, and it's just the property of this particular state that we are trying to find local states for. In fact, \emph{not all global states can be written as a tensor product of local states}, and this is the definition of an entangled state.
 
 So we have two major classes of states: first, we have \emph{product states}\index{product state}. % \marginpar{product state}. 
-\emph{A product state is one that can be written as a tensor product of local states.} Given some local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state just by forming the tensor product, and this implies that perfect knowledge of local states (remember that kets represent states about which we have perfect knowledge), so perfect knowledge of global states implies perfect knowledge of local states.
+\emph{A product state is one that can be written as a tensor product of local states.} Given some local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state just by forming the tensor product, and this implies that perfect knowledge of local states implies perfect knowledge of global states.
 
 Second, we have the other class of quantum states which are \emph{entangled states}\index{entangled state}. \emph{An entangled state is a state whose global state cannot be written as the tensor product of local states.} In the previous example, we have demonstrated that for an equal superposition of $\ket{00}$ and $\ket{11}$, this is in fact the case. There are no local kets $\ket{\psi}_A$ and $\ket{\psi}_B$ such that when we take them and form a tensor product, we get the global state back. Mathematically, we can write this as
 \begin{equation}
@@ -166,9 +156,9 @@ This is very interesting because this implies that \emph{we only have perfect kn
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/Qubit_A.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{A measurement result}
-    \end{center}
+    
 \end{figure}
 
 % B Qubit measurement results
@@ -176,9 +166,9 @@ This is very interesting because this implies that \emph{we only have perfect kn
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/Qubit_B.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{B measurement result}
-    \end{center}
+    
 \end{figure}
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,10 +176,8 @@ This is very interesting because this implies that \emph{we only have perfect kn
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{lesson4/4.3_Recap.pdf}
-    \label{fig: 1}
-    \begin{center}
         \caption{When entangled states are considered, it is possible to have complete information about the global state but have no information about the local state.}
-    \end{center}
+    \label{fig:incomplete-information}
 \end{figure}
 
 %Step Three: Bell States.
@@ -254,17 +242,17 @@ Just to stress how strange this is that we have a full knowledge of the global s
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/pump.pdf}
     \label{fig:spdc}
-    \begin{center}
-        \caption{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy entangled photons, with some very low probability. The two output photons are called \emph{signal} and \emph{idler}.}
-    \end{center}
+    
+        \caption[Symmetric parametric down conversion (SPDC)]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy entangled photons, with some very low probability. The two output photons are called \emph{signal} and \emph{idler}.}
+    
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lesson4/state1.pdf}
-    \begin{center}
-        \caption{A representation of the pump photon and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state. \rdv{should we have diagram with an arrow from g to e, as is common for absorption?}}
-    \end{center}
+    
+        \caption[pump photon and the energy levels of the atom]{A representation of the pump photon and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state. \rdv{should we have diagram with an arrow from g to e, as is common for absorption?}}
+    
     \label{fig:spdc-energy-levels}
 \end{figure}
 
@@ -289,27 +277,27 @@ Just to stress how strange this is that we have a full knowledge of the global s
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/linear_polarization.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Horizontally, vertically and diagonally polarized light}
-    \end{center}
+    
+        \caption[Horizontally, vertically and diagonally polarized light]{If horizontally and vertically polarized light are used to encode $\ket{0}$ and $\ket{1}$, then diagonally polarized light encodes $\ket{+}$.}
+    
+    \label{fig:hvd-light}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson4/horizontal_optical_axis.pdf}
-    \begin{center}
+    
         \caption{Horizontally polarized light matching the optical axis of the crystal.}
-    \end{center}
+    
     \label{fig:horizontal-opt-axis}
 \end{figure}
 
 \begin{figure}[H]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson4/vertical_optical_axis.pdf}
-    \begin{center}
+    
         \caption{Vertically polarized light matching the optical axis of the crystal.}
-    \end{center}
+    
     \label{fig:vertical-opt-axis}
 \end{figure}
 
@@ -320,7 +308,7 @@ In a spontaneous process, no other input is needed, only the incoming photon of 
 In a stimulated process you need the input photon and some other photon as well. A good example would be lasing. “parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. “parametric” in the context of SPDC means there is a relationship between the input and output electric fields.}
 
 We will demonstrate it here with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light
-represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, and it's very popular case to use in practice, we are using a beta barium borate, or BBO, crystal. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two levels. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after short time the atom de-excites and ejects two photons with energy $E_s$ for the signal photon, and energy $E_i$ for the idler photon.  Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. So this is the basic process of spontaneous parametric down-conversion.
+represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, and it's very popular case to use in practice, we are using a beta barium borate, or BBO, crystal. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two levels. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after short time the atom de-excites and ejects two photons with energy $E_s$ for the signal photon, and energy $E_i$ for the idler photon.  Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. So this is the basic process of spontaneous parametric down-conversion.
 
 Now let's see how polarization of light interacts with this process. Consider linearly polarized light. If we again take our green pump laser, we can make it oscillate only in one plane. For example, if we make it oscillate in the horizontal plane, this can encode our $\ket{0}$ state of a qubit. We can also make the light oscillate only in the vertical plane, in that case we will say that this encodes a $\ket{1}$. We already know from previous steps and lessons that we can talk about superpositions of these states. When we go to the polarization picture, we can get diagonally polarized light which we call D, and this will encode our equal superposition of $\ket{0}$ and $\ket{1}$, or as we call it a $\ket{+}$ state. That's the next ingredient that we're going to need in producing entangled pairs of photons.
 
@@ -360,9 +348,9 @@ There are many details around SPDC that we have not introduced here, but this ba
 \begin{figure}[H]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
-    \begin{center}
+    
         \caption{In the CHSH game, each time the players play, they collapse (break) one entangled state.}
-    \end{center}
+    
     \label{fig:chsh-broken}
 \end{figure}
 
