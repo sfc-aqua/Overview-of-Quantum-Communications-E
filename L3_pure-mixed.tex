@@ -221,6 +221,7 @@ The bit-flip channel is fairly simple, the input is either affected by a Pauli $
 We will denote the output by the Greek letter $\rho$,
 \begin{equation}
     \rho = (1-p) |\psi\rangle\langle\psi| + p X|\psi\rangle\langle\psi|X.
+    \label{eq:3-3_bit_flip}
 \end{equation}
 Let's explore how this channel works by considering few simple example inputs.
 When the input is $|\psi\rangle = |0\rangle$, the output is
@@ -385,114 +386,65 @@ The deviation of this state from the target state is given by the fidelity $F$, 
 Note that other more general definitions for fidelity are sometimes used as well, particularly when the target state is not pure but mixed.
 However, we will only consider scenarios where the target state is pure and therefore Eq.~(\ref{eq:3-5_fidelity}) will be sufficient.
 
-Let's consider an example 
-When $F(\rho, |\psi\rangle) = 0$, the two states are orthogonal and therefore perfectly distinguishable.
-This means that the real state is as far from the target state as can be.
 Let's consider the case where the real state is equal to the target state, $\rho=|\psi\rangle\langle\psi|$.
 The fidelity is then
 \begin{equation}
     F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle = |\langle \psi|\psi \rangle|^2 = 1.
 \end{equation}
-
-So let's say that the output is actually the desired output, so we have rho: it's this pure state written in density matrix formalism. Then we just substitute it into our formula for fidelity and we get that fidelity is equal to the inner product between $\ket{\psi}$ and $\ket{\psi}$ squared, and we know that the inner product of a normalized state with itself is just one, so there we go we have fidelity of one, as we said on the previous slide. Now what if we are trying to prepare a particular state, let's say state zero? In many communication protocols, and also the usual case on quantum computation, is that you are first you need to initialize your quantum state to zero. So our desired output state $\ket{\psi}$ is zero, but we have a very noisy process, very noisy channel, our equipment is very bad, so what we get at the output- the actual output is a maximally mixed state. So with probability half it's in the zero state, and with probability half it's in the one state. What's the fidelity then? Well, we can just compute it: we substitute it in and it's very simple. Here you can see that the inner product between zero and zero is just one, and between zero and one it is zero. It vanishes because zero is orthogonal to one, so the final fidelity at the output is one-half. Notice that it's not zero, it is zero only for orthogonal states. This is a little bit counter-intuitive because after all this pure state which had undergone a very noisy process turned into a maximally mixed state, so intuitively this is a most useless state for us, yet the fidelity with the input state is still a half- it's not a zero. What if we have two quantum bits- and we are trying to initialize them in the zero state, but due to the imperfections in our laboratory we get again a maximally mixed state, but this time of two qubits written as that. Then we can again compute the fidelity, and it's one quarter. So you can see the pattern here that, in fact, for n qubits, if we are trying to initialize all of them in the zero state, but at the end our actual output is a maximally mixed state of n qubits, the fidelity scales as follows: one over two to the n.
-
-Now let's go back and consider our flip channel which we introduced in Sec.~\ref{sec:dm}. Just to remind you, this is a very simple channel where the input state $\ket{\psi}$ changes with some probability into this state. We apply the Pauli X operator to it, and with the remaining probability of one minus $\ket{\psi}$, actually nothing happens to it. We apply the identity operator and we get the input state out. So again, we write down what's the output- we have to write it in the matrix form, so in the density matrix formalism, and it's written as one minus p, the projector onto the state $\ket{\psi}$, plus probability p times the projector onto the other state where we are applying the Pauli X operator to the pure input. And again we substitute into our formula. And what we get again because zero and zero- the inner product between zero and zero is one, and the inner product between zero and one is zero, because they're orthogonal, we get that the final fidelity is one minus p.
-
-So why do we care about a single number that describes what happens at the output? Well as we said, fidelity measures the quality of the state. When it's zero, we are completely in the wrong state, when it's one, we are in the desired state. And often, fidelity can be interpreted as the probability that the state that we have at the output actually passes a test for being the desired output state. What this means that even if you get some state which is fidelity less than one, it's not a completely useless state, and you can still use it in your protocol. Although not with a certain certainty- you will have some probability of failing. And also many protocols in communication and quantum computation use fidelity as some type of requirement for your task to work. For example, if you want to do entanglement purification in quantum networks, your initial fidelity has to satisfy a certain criterion of being higher than some critical fidelity. Similarly if you want to do fault tolerance in quantum computation, there are thresholds theorems which tell you that in order to be able to apply for tolerant quantum computation, you must satisfy some initial fidelity requirement.
-
-% insert noisy channel 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson3/noisy_channel_buildup.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Noisy Channel}
-    \end{center}
-\end{figure}
-
+On the other hand, when the real state $|\phi\rangle$ if pure but orthogonal to the target state,
 \begin{equation}
-F(\rho,|\psi\rangle)=\langle\psi|\rho| \psi\rangle
+    F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle = |\underbrace{\langle \psi|\phi \rangle}_{=0}|^2 = 0.
+\end{equation}
+Orthogonal states are as far from each other as can be and this is signified by a vanishing fidelity.
+In fact, these cases are the two extreme ones, and for any mixed state,
+\begin{equation}
+    0 \leq F(\rho,|\psi\rangle) \leq 1.
 \end{equation}
 
-% Fidelity definition with annotations
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson3/Annotated_Fidelity_defn.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Definition of fidelity}
-    \end{center}
-\end{figure}
+Let's continue with another example.
+Consider the case where we would like to prepare the state $|0\rangle$.
+But something goes very wrong with our quantum hardware and the real state that we obtain after the preparation procedure is the maximally mixed state $\rho = (|0\rangle\langle0| + |1\rangle\langle1|)/2$.
+The fidelity can be computed as follows,
+\begin{align}
+    F(\rho,|0\rangle) & = \langle 0 | \rho | 0 \rangle \nonumber\\
+    & = \frac{1}{2} \underbrace{\langle0|0\rangle^2}_{=1} + \frac{1}{2} \underbrace{\langle0|1\rangle^2}_{=0} \nonumber\\
+    & = \frac{1}{2}.
+\end{align}
+It is interesting to note that the fidelity does not vanish.
+We said that the maximally mixed state is where we have maximum uncertainty whether it is $|0\rangle$ or $|1\rangle$, yet the fidelity with a pure state only drops to a half.
 
+We can extend this example to two qubits and consider the fidelity between the pure target state $|00\rangle$ and the maximally mixed state $\rho = (|00\rangle\langle00|+|01\rangle\langle01|+|10\rangle\langle10|+|11\rangle\langle11|)/4$,
+\begin{align}
+    F(\rho, |00\rangle) & = \langle00| \rho | 00\rangle \nonumber\\
+    & = \frac{1}{4} \underbrace{\langle00|00\rangle^2}_{=1} + \frac{1}{4} \underbrace{\langle00|01\rangle^2}_{=0} + \frac{1}{4} \underbrace{\langle00|10\rangle^2}_{=0} + \frac{1}{4} \underbrace{\langle00|11\rangle^2}_{=0} \nonumber\\
+    & = \frac{1}{4}.
+\end{align}
+This calculation can be quickly extended to $N$ qubits.
+The fidelity between the state $|0\rangle^{\otimes N}$ and a maximally mixed state of $N$ qubits is
 \begin{equation}
-0 \leq F(\rho,|\psi\rangle) \leq 1
+    F(\rho,|0\rangle^{\otimes N}) = \frac{1}{2^N}.
 \end{equation}
+We see that the fidelity scales with the number of qubits but never quite reaches zero.
 
+As our last example, we will consider the bit-flip channel of Eq.~(\ref{eq:3-3_bit_flip}).
+Let's again consider the initial state to be $|0\rangle$ and compute how the fidelity changes depending on the probability of error $p$.
+We have
 \begin{equation}
-\rho=|\psi\rangle\langle\psi| \quad F(\rho,|\psi\rangle)=\langle\psi \mid \psi\rangle^{2}=1
+    F(\rho,|\psi\rangle) = \langle0| \rho | 0\rangle = (1-p) \langle0|0\rangle^2 + p \langle1|1\rangle^2 = 1 - p.
 \end{equation}
+The fidelity does depend the probability of error as we anticipated.
+When $p=0$ and there is no noise affecting the input state, so the fidelity of the output state is 1.
+On the other hand, if the bit-flip channel is maximally noisy, $p=1/2$, the output state is the maximally mixed state.
+This is also evidenced by the fidelity dropping to $F(\rho,|0\rangle)=1/2$.
 
-$\rho= \frac{1}{2}\ket{0}\bra{0} + \frac{1}{2}\ket{1}\bra{1}$
-
-\begin{equation}
-\begin{aligned}
-F(\rho,|\psi\rangle) &=\langle 0|\rho| 0\rangle \\
-&=\frac{1}{2}\langle 0 \mid 0\rangle^{2}+\frac{1}{2}\langle 0 \mid 1\rangle^{2} \\
-&=\frac{1}{2}
-\end{aligned}
-\end{equation}
-
-\begin{equation}
-\rho=\frac{1}{4}(|00\rangle\langle 00|+| 01\rangle\langle 01|+| 10\rangle\langle 10|+| 11\rangle\langle 11|)
-\end{equation}
-
-\begin{equation}
-F(\rho,|\psi\rangle)=\langle 00|\rho| 00\rangle=\frac{1}{4}
-\end{equation}
-
-% N qubit equation
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson3/N_qubits_relation.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Fidelity for $n$ qubits}
-    \end{center}
-\end{figure}
-
-% noisy channel ex
-% N qubit equation
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson3/noisy_channel_ex.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Noisy channel fidelity}
-    \end{center}
-\end{figure}
-
-\begin{equation}
-\rho=(1-p)|\psi\rangle\langle\psi|+p X| \psi\rangle\langle\psi| X
-\end{equation}
-
-$Fidelity=1-p$:
-\begin{equation}
-\begin{aligned}
-F(\rho,|0\rangle) &=\langle 0|\rho| 0\rangle \\
-&=(1-p)\langle 0 \mid 0\rangle^{2}+p|\langle 0 \mid 1\rangle|^{2} \\
-&=1-p
-\end{aligned}
-\end{equation}
-
-% Insert final summary slide 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson3/summary_fidelity.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Fidelity summary}
-    \end{center}
-\end{figure}
+We mentioned that the fidelity is an important tool in quantifying the quality of a quantum state with respect to the ideal noiseless case.
+It can be interpreted as the probability that real state is the target state.
+Many protocols in quantum communication as well quantum computation do not work when the real state is too noisy.
+Often this condition is expressed in the form of a \textit{\textbf{threshold fidelity}} $F_{crit}$.
+If the fidelity of the real state is above this critical value, $F > F_{crit}$, then the protocol can be successfully executed.
+On the other hand, if $F < F_{crit}$, the protocol cannot be used.
+An example of such a protocol include entanglement purification, where the fidelity of noisy entangled pairs can be boosted provided the initial pairs are not too noisy.
+Another example is fault-tolerant quantum computation, where scalable universal quantum computation can be achieved even with noisy components, provided the noise is below a threshold.
 
 
 \newpage
