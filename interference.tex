@@ -1,81 +1,16 @@
 \chapter{Interference}
+% Lesson Six: Interference
+
+In this chapter, we will talk about one of the most fundamental phenomena concerning waves: interference. We will start by considering interference with normal single frequency waves when they superpose. Then we will move to interference of single photons, and we will conclude with interference of qubits.
 
 \section{Constructive and destructive interference}
 
-00:00
-lesson six interference in this lesson we will talk about one of
-the most fundamental phenomena when it comes to waves the interference
-we will start by considering interference with normal
-single frequency waves when they superpose what happens to them
 
-\begin{equation}
-E=E_{0} \sin [\omega t-(k x+\phi)]
-\end{equation}
-% k=1, k=0
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/k.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Wave with $k=1, k=0.5$}
-    \end{center}
-\end{figure}
+% Step One: Constructive and Destructive Interference
 
-then we will move to interference of single photons
-and we will conclude with interference of qubits
-so let's begin step one constructive and destructive interference
-let's consider that we have a single frequency wave propagating in time
-how do we write down a mathematical expression that describes the
-propagation of such a wave well we do it as follows we denote the wave
-with e and it's some constant e naught times the sine of the following argument
-where e naught designates the amplitude of
+Let's consider that we have a single frequency wave propagating in time. How do we write down a mathematical expression that describes the propagation of such a wave? Well, we do it as follows:
 
-00:01
-oscillations that means how far the how much the wave is disturbing
-omega is the angular frequency and it determines
-how quickly the wave is propagating in time time here is denoted by this small t
-k is the wave number it also it's related to
-how fast the wave is propagating as well and in three dimensions it also
-gives you the direction of propagation however here we're only considering
-propagation in one dimension therefore it's just a number
-and phi is called the initial phase so omega the angular frequency is
-related to the period of oscillations as follows omega is equal to 2 pi over t
-whereas k the wave number is related to the wavelength of the oscillations
-% phi = 0, phi = pi/2
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/phi.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{$\phi = 0, \phi = \pi / 2$}
-    \end{center}
-\end{figure}
-
-$\phi = 0$ and $\phi = \frac{\pi}{2}$
-
-00:02
-and k is equal to 2 pi over lambda so let's have a look at some examples
-for example if we freeze the wave in time so we set
-time equals to zero and for convenience we also set phi
-equals to zero and we only vary k the blue wave here is for k
-equals to one whereas the orange one is for k equals to 0.5
-and these two dots the distance between them
-represents the wavelength of the wave and as we said the wave number k
-is related to the wavelength the larger the wave number is the shorter the
-wavelength so we see for k equals to one the wavelength is shorter
-than for the other wave where k equals to 0.5 represent it over here
-now let's consider what happens when we fix the wave number
-
-% gif two waves [insert pic]
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/w.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Wave with $\omega = 0.1, \omega = 0.2$}
-    \end{center}
-\end{figure}
-
+\if0
 \begin{equation}
 \begin{array}{ll}
 E_{1}=E_{01} \sin \left(\omega t+\alpha_{1}\right), & \alpha_{1}=-\left(k x+\phi_{1}\right) \\
@@ -83,16 +18,60 @@ E_{2}=E_{02} \sin \left(\omega t+\alpha_{2}\right), & \alpha_{2}=-\left(k x+\phi
 \end{array}
 \end{equation}
 
+
 \begin{equation}
 E = E_0 sin(\omega t - \alpha)
 \end{equation}
+\fi
 
+\begin{equation}
+E=E_0 \sin [\omega t-(k x+\phi)].
+\end{equation}
+We denote the wave with $E$, and it's some constant $E_0$ ("E naught") times the sine of the following argument, where $E_0$ designates the \emph{amplitude} of oscillations, which means how how much the wave is displaced from its rest state. The symbol $\omega$ (small omega) is the \emph{angular frequency}, which determines how quickly the wave is propagating in time. Time is denoted by $t$. $k$ is the \emph{wave number}. It's related to how fast the wave is propagating as well, and in three dimensions it also gives you the direction of propagation. However here, we're only considering propagation in one dimension, therefore it's just a scalar (a number). Finally, $\phi$ (small phi) is called the initial phase.
+
+$\omega$, the angular frequency, is related to the period of oscillations as follows,
+\begin{equation}
+\omega=\frac{2 \pi}{T} \quad k=\frac{2 \pi}{\lambda}
+\end{equation}
+where $k$, the wave number, is related to $\lambda$ (lower case lambda), the wavelength of the oscillations, as shown. Let's have a look at some examples.
+
+Let's freeze the wave at time $t=0$, and for convenience we also set $\phi = 0$, and only vary $k$. The blue wave in Fig.~\ref{fig:two-waves} is for $k=1$, whereas the orange one is for $k=0.5$, and the distance between the two dots at the top of the blue wave and bottom of the orange wave represents the wavelength of the wave. As we said, the wave number $k$ is related to the wavelength. The larger the wave number, the shorter the wavelength, so we see for $k=1$, the wavelength is shorter than for $k=0.5$.
+
+Now, let's consider what happens when we fix the wave number but we vary the initial phase, as in Fig.~\ref{fig:phase-diff-waves}. The only thing that happens is that we shift the wave along the X-axis. We are just translating the wave a little bit by this angle, by this initial phase $\phi$. In this case, we have shifted the two waves by initial phase of pi over two, but this doesn't really affect how fast the wave is propagating, or it doesn't affect its wavelength.
+
+So finally, let's add time dependence into the picture, as in Figs.~\ref{fig:two-waves} and \ref{fig:propagating-waves}. We set $k=1$, and we also set the initial phase $\phi=0$, and now the waves are actually propagating in time. For the first wave represented by the blue, we have $\omega=0.1$, whereas for the second wave we have $\omega=0.2$. Remember, we said that $\omega$ determines how fast the wave is propagating in time, and we can clearly see that the orange wave is faster than the blue wave.
+
+Now, let's consider two waves that are actually interacting together and creating a new, third wave. How do we describe this new disturbance? So let's say that we've got two waves, $E_1$ and $E_2$, each with different amplitude, same frequency, and we grouped the spatial variation into these factors $\alpha$: $\alpha_1$ and $\alpha_2$.
+
+\begin{equation}
+\begin{array}{ll}
+E_1=E_{01} \sin \left(\omega t+\alpha_1\right), & \alpha_1=-\left(k x+\phi_1\right) \\
+E_2=E_{02} \sin \left(\omega t+\alpha_2\right), & \alpha_2=-\left(k x+\phi_2\right)
+\end{array}
+\label{eq:superposition}
+\end{equation}
+
+This new wave that $E_1$ and $E_2$ produce is actually relatively simple, you just add them together
+\begin{equation}
+E=E_1+E_2.
+\end{equation}
+This is known as the \emph{principle of superposition}, and the idea is that we are looking for a description of the new resultant wave of the form
+%, where now we have to find out what is this new amplitude $E_0$ in terms of the composite waves, and also we want to find out this new factor of $\alpha$.
+\begin{equation}
+E=E_0 \sin (\omega t-\alpha),
+\end{equation}
+so we need to determine the values for $E_0$ and $\alpha$. Using the trigonometric identity $\sin (a + b)=\sin a \cos b +\cos a \sin b$, we can rewrite Eq.~\ref{eq:superposition} as
 \begin{equation}
 \begin{aligned}
 E &=E_{01}\left(\sin \omega t \cos \alpha_{1}+\cos \omega t \sin \alpha_{1}\right) \\
 &+E_{02}\left(\sin \omega t \cos \alpha_{2}+\cos \omega t \sin \alpha_{2}\right)
 \end{aligned}
 \end{equation}
+%, so let's see how we can do that. We just add the two waves together, and we begin by expanding these sines. The first wave can be written as this (see pointer)- we have the initial amplitude of the first wave, E zero one, and then we've got sine omega t times cos alpha one, plus cos omega t times sine alpha one, and similarly for the second wave. 
+We add them together then group the time dependent terms. 
+%So we see that these two terms (blue box), they both vary in time as sine omega t, whereas these two terms (red box) vary as cos omega t. So let's group them together and 
+We get the following expression: 
+%we've got some spatial variation here, times sine omega t, and another spatial variation here, times cos omega t. And what we can do now is 
 
 \begin{equation}
 \begin{aligned}
@@ -100,6 +79,8 @@ E &=\left(E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}\right) \sin \omega t \\
 &+\left(E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}\right) \cos \omega t
 \end{aligned}
 \end{equation}
+We can define
+%E naught cos alpha as the whole first expression to the left of $\sin\omega t$, and E naught sine alpha as the second expression.
 
 \begin{equation}
 \begin{aligned}
@@ -108,148 +89,78 @@ E &=\left(E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}\right) \sin \omega t \\
 \end{aligned}
 \end{equation}
 
+And now with a little bit of algebra, we arrive at the following expression:
+
 \begin{equation}
 \begin{aligned}
-&E_{0}^{2}=E_{01}^{2}+E_{02}^{2}+2 E_{01} E_{02} \cos \left(\alpha_{2}-\alpha_{1}\right) \\
-&\tan \alpha=\frac{E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}}{E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}}
+E_{0}^{2} &=E_{01}^{2}+E_{02}^{2}+2 E_{01} E_{02} \cos \left(\alpha_{2}-\alpha_{1}\right)
 \end{aligned}
+\label{eq:superposition-simplified}
+\end{equation}
+We can find our overall value for $\alpha$ using the expression
+\begin{equation}
+\begin{aligned}
+\tan \alpha &=\frac{E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}}{E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}}.
+\end{aligned}
+\label{eq:superposition-simplified}
 \end{equation}
 
-\begin{equation}
-E = E_0 sin(\omega t + \alpha)
-\end{equation}
-\begin{equation}
-E_{0}^{2}=E_{01}^{2}+E_{02}^{2}+2 E_{01} E_{02} \cos \left(\alpha_{2}-\alpha_{1}\right)
-\end{equation}
+% so if we square this first expression (follow pointer) and add it to the square of the second expression, cos squared alpha plus sine squared alpha is equal to one (that's a very important trigonometric identity), so on this side (blue box LHS) we get E naught squared, and then we just have the squares which we have expanded over here (RHS) and simplified with some trigonometric identities. Also, if we take this orange expression, the second expression over here, and we divide by this blue expression over here, we can get an expression for tangent of alpha given as this following ratio. And this is our new wave.
 
-\begin{equation}
-    \delta = 0, \pm2\pi, \pm4\pi, \pm6\pi, \pm8\pi, \pm10\pi
-\end{equation}
+We started with two waves with the same frequency, which means that the resultant disturbance also travels at the same frequency, which makes sense, but this new wave has different amplitude and also different phase. Before we look at an example, let's look at the amplitude of the superposition. The amplitude squared is equal to the sum of the squares of the component amplitudes, which makes sense. But then, there is the extra term on the end of Eq.~\ref{eq:superposition-simplified}, and this extra term is very important. It's called the \emph{interference term}. You can see that it actually oscillates as a result of the difference $\delta = \alpha_2 - \alpha_1$. This difference is called the "phase difference". The entire expression for $E_0^2$ is maximized when $\delta$ is either zero or multiples of $2\pi$, which we call \emph{constructive interference} because it's adding to the new resultant amplitude. On the other hand, if the phase difference is an odd integer multiple of $\pi$, e.g. $\pm\pi$ or $\pm 3\pi$, then what we get is \emph{destructive interference}.
 
-\begin{equation}
-    \delta = \pm1\pi, \pm3\pi, \pm5\pi
-\end{equation}
-
+So let's look at the example in Fig.~\ref{fig:decaying-superposition}: we have two waves, we set their amplitudes to be equal to one for convenience, their $\omega = 0.1$ values are the same, and the only thing that is different between them is their wave numbers $k$,
 \begin{equation}
 \begin{aligned}
 &E_{1}=\sin (0.1 t-x) \\
 &E_{2}=\sin (0.1 t-0.8 x) \\
-&E=E_{1}+E_{2}
+&E=E_{1}+E_{2}.
 \end{aligned}
 \end{equation}
+For the first wave $k=1$, for the second wave $k=0.8$. We add the two together and we get the following: with the blue and orange waves, we see the waves traveling independently, whereas the green wave is the superposition of these two waves, and you can see the interference at play. At the beginning, where $x$ is small, the waves travel in such a way that the crest of one wave seems to be on top of the crest of the other wave. Therefore, we get constructive interference. The waves are reinforcing each other, adding together producing something larger. Whereas, as the wave propagates into the region of larger $x$, they are propagating at different speed. They go out of phase, so the crest of one wave is meeting the trough of the other wave, so they are destructively interfering. They're cancelling each other out, and you can see that in the green wave, where the amplitude becomes very, very low, nearly zero. And that's how interference works.
+
+\if0
+\begin{equation}
+E=E_{0} \sin [\omega t-(k x+\phi)]
+\end{equation}
+% k=1, k=0
+$\phi = 0$ and $\phi = \frac{\pi}{2}$
+\fi
+
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=0.8\textwidth]{lesson6/k.pdf}
+        \caption{Two independent waves with $k=1, k=0.5$}    
+    \label{fig:two-waves}
+\end{figure}
+
+% phi = 0, phi = pi/2
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=0.8\textwidth]{lesson6/phi.pdf}
+        \caption{Two waves with the same wavelength but different initial phase, $\phi = 0, \phi = \pi / 2$.}
+    \label{fig:phase-diff-waves}
+\end{figure}
+
+% gif two waves [insert pic]
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=0.8\textwidth]{lesson6/w.pdf}
+        \caption{The same two waves as in the previous figure, after some time.  The orange wave propagates faster than the blue wave.}
+    \label{fig:propagating-waves}    
+\end{figure}
 
 % superposition two waves
 \begin{figure}[H]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/wave_superposition.pdf}
-    \label{fig: 1}
-    \begin{center}
-        \caption{Waves in superposition}
-    \end{center}
+    \includegraphics[width=0.8\textwidth]{lesson6/wave_superposition.pdf}    
+        \caption{Waves in superposition. Notice the decay of the green wave as the two component waves move from in phase to out of phase.}
+    \label{fig:decaying-superposition}    
 \end{figure}
 
-00:03
-but we vary the initial phase the only thing that happens
-is that we shift the wave along the x-axis so really what we are doing we
-are just translating the wave a little bit by this angle
-by this initial phase phi so in this case we have shifted
-the two waves by uh initial phase of pi over two but this doesn't really affect
-how fast the wave is propagating or it doesn't affect its um um its wavelength
-so finally let's add time independ time dependence into the picture
-we set k equals to one and we also set the initial phase
-phi to be zero and now the wave is actually propagating in time
-here we have two waves again for the first wave represented by the blue
-we have omega equals to 0.1 whereas for the second wave
-
-00:04
-we've got 0.2 remember we said that omega determines how fast
-the wave is propagating in time and we can clearly see that the orange wave
-is faster than the blue wave so now let's consider two waves that are
-actually interacting together and creating a new third wave how do we
-how do we describe this new disturbance so let's say that we've got two waves e1
-and e2 each with different amplitude same frequency and
-we grouped the spatial depend spatial variation into these factors
-alpha alpha 1 and alpha 2. and to get this new wave that e1 and e2 produce
-is actually relatively simple you just add them together and this is known as
-the principle of superposition and the idea is
-
-00:05
-that we are looking for a description of the new
-resultant wave also in this form where now we have to
-find out what is this new amplitude e naught in terms of uh in terms of the
-composite waves and also we want to find out this new factor of alpha
-so let's see how we can do that what we do is
-we just add the two waves together and we begin by expanding
-these signs so the first wave can be written as this
-we have the initial amplitude of the first wave e
-0 1 and then we've got sine omega t times cos alpha 1 plus cos omega t
-times sine alpha 1 and similarly for the second wave so we add them
-together and now what we do is we group the time dependent terms so we see
-that these two terms they both vary in time as sine omega t
-
-00:06
-whereas these two terms vary as cos omega t so let's group them together
-and we get the following expression we've got some spatial
-variation here times sine omega t and another spatial variation here times cos
-omega t and what we can do now is we can define e naught cos alpha
-s this whole first expression and e naught sine alpha as the second expression
-and now with a little bit of algebra what we arrive at is
-are the following expressions so if we square this first expression and add it
-to the square of the second expression cos squared alpha plus sine squared
-alpha is equal to one that's a very important trigonometric
-identity so on this side we get e naught squared and then we just have
-the squares which we have expanded over here
-and simplified with some trigonometric identities
-
-00:07
-also if we take this orange expression the second expression over here
-and we divide by this blue expression over here
-we can get an expression for tangent of alpha given as this following
-ratio and this is our new wave so we started with two waves with same
-frequencies which means that the the resultant disturbance also
-travels at the same frequency which makes sense but this new wave has different
-amplitude and also different phase so let's look at some examples but
-before that actually let's look at the let's look at the
-amplitude of the superposition so we've got the amplitude squared is
-equal to the sum of the squares of the component amplitudes which makes sense
-but then there is this extra term and this extra term is very important
-it's called the interference term you can see that it actually
-oscillates as a result of the difference
-
-00:08
-between alpha two and alpha one and this this difference is called the phase
-difference so the entire expression for e naught
-squared is maximized when delta is either zero
-or multiples of two pi and we call this constructive interference because it's
-adding to the new resultant amplitude on the other hand if the phase difference
-is an integer multiple of pi as plus or minus pi or plus or minus 3 pi
-then what we get is destructive interference because
-this interference term over here is minimized
-so let's look at some examples we've got two waves
-we set their amplitudes to be equal for convenience both are one
-their omegas are the same 0.1 and the only thing that is different
-between them are the wave numbers k for the first wave k equals
-
-00:09
-1 for the second wave k equals 0.8 so we add the two together and what we get
-is the following here with this blue and orange waves we see the waves traveling
-independently whereas the green wave is the superposition of these two waves
-and you can see the interference at play at the beginning
-over here where x is small in this region
-the waves travel in such a way that the crest seems to be on top of the
-crest of the other wave therefore we get constructive uh interference the waves
-are reinforcing each other they're adding together producing something larger
-whereas as the wave propagates into this uh
-region of larger x they are propagating at different
-speed so what happens they go out of phase so the crest of one wave
-is meeting the trough of the other wave so they are destructively interfering
-and they're cancelling each other out and you can see that in this
-green wave where the amplitude becomes very very low
-
-00:10
-nearly zero and that's how interference works
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Phase and group velocities}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{equation}
 E=E_{0} \sin (\omega t-k x-\phi)
@@ -267,9 +178,9 @@ E=\sin (0.1 t-x)
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/black_dot.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Phase velocity of a single wave.}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -312,9 +223,9 @@ v_g = \frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/t=0.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -333,9 +244,9 @@ v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/vp_less_vg.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{A superposition with $v_p < v_g$.}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -350,9 +261,9 @@ v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/vp_equal_vg.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{A superposition with $v_p = v_g$}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -366,9 +277,9 @@ v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/vp_greater_vg.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{A superposition with $v_p > v_g$.}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -383,9 +294,9 @@ E &=\sum_{k=2}^{3} \sin (-k x), \quad k \text { increasing in steps of } 0.1 \\
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/pulse.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{}
-    \end{center}
+    
 \end{figure}
 
 
@@ -537,9 +448,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/standard_double_slit.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{The canonical two-slit experiment.}
-    \end{center}
+    
 \end{figure}
 
 % constructive interference
@@ -547,9 +458,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/double_slit_constructive.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Constructive interference.}
-    \end{center}
+    
 \end{figure}
 
 % destructive inteference
@@ -557,9 +468,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/double_slit_destructive.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Destructive interference.}
-    \end{center}
+    
 \end{figure}
 
 % attenuated laser
@@ -567,9 +478,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/attenuate_laser.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Attenuated laser light.}
-    \end{center}
+    
 \end{figure}
 
 % block bottom
@@ -577,9 +488,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/block_bottom.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Bottom of the block?}
-    \end{center}
+    
 \end{figure}
 
 % block top
@@ -587,9 +498,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/block_top.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Hole in the top of the block?}
-    \end{center}
+    
 \end{figure}
 
 % block netiher expectation
@@ -597,9 +508,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/block_neither.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Neither: the idea?}
-    \end{center}
+    
 \end{figure}
 
 % block neither reality
@@ -607,9 +518,9 @@ very important in communication theory
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Neither: the reality?}
-    \end{center}
+    
 \end{figure}
 
 
@@ -754,9 +665,9 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/mach_zehnder.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Mach-Zehnder interferometer.}
-    \end{center}
+    
 \end{figure}
 
 % Single photon Mach-Zehnder case
@@ -764,9 +675,9 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/mach_zehnder_single_photon.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Mach-Zehnder interferometer with a single photon.}
-    \end{center}
+    
 \end{figure}
 
 % 0 ket top
@@ -774,9 +685,9 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/0_ket_botttom.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{$\ket{0}$ state is represented by a photon in the upper path.}
-    \end{center}
+    
 \end{figure}
 
 % 1 ket bottom
@@ -784,9 +695,9 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/1_ket_bottom.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{$\ket{1}$ state is represented by a photon in the lower path.}
-    \end{center}
+    
 \end{figure}
 
 \begin{equation}
@@ -798,9 +709,9 @@ B S 2 \cdot B S 1|1\rangle=|0\rangle
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/d0_always_clicks.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{$D0$100\% probability.}
-    \end{center}
+    
 \end{figure}
 
 % block bottom path
@@ -808,9 +719,9 @@ B S 2 \cdot B S 1|1\rangle=|0\rangle
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/bottom_blocked.pdf}
     \label{fig: 1}
-    \begin{center}
+    
         \caption{Lower path blocked.}
-    \end{center}
+    
 \end{figure}
 
 
@@ -946,13 +857,10 @@ at beam splitter two that is why we see both possibilities d0 and d1
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
 
+\exer{Write some code to reproduce the static plot in Fig.~\ref{fig:decaying-superposition}.  Try to make your code represent the equations as nearly exactly as possible.  The plots and animations in our course were created using the Python package {\tt manim}, but your instructor may have different instructions for you.}
+
+\exer{Write some code to reproduce the animated plot in Fig.~\ref{fig:propagating-waves}.  Try to make your code represent the equations as nearly exactly as possible.  The plots and animations in our course were created using the Python package {\tt manim}, but your instructor may have different instructions for you.}
 
 \end{exercises}
 
