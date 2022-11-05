@@ -3,573 +3,138 @@
 
 \section{Introduction}
 
-00:00
-hi and welcome to lesson 13 on physical layer components
-in lesson 12 you saw the basics of a quantum repeater and how it can
-distribute entanglement over long distances in here we will go a
-little bit deeper and see how each individual physical components of a
-quantum repeater work we will begin with step one the introduction
-so here we have a basic scheme for a quantum repeater we've got our
-network nodes represented by these blue boxes over here and they have some
-qubits and then the network nodes they fire photons towards this middle
-note here which we know it implements a bell state measurement
-and that way we can establish entanglement over long distances but what are the
-individual physical components of a quantum repeater and more
+Hi, and welcome to Lesson Thirteen on Physical Layer Components.
 
-00:01
-importantly how can we implement them so first we need optical fibers to carry
-our photons that's kind of obvious and already we have covered
-optical fibers in some length the next thing that we need is the bell
-state analyzer in the middle the analyzer implements our bell state measurement
-it is crucial for implementing entanglement swapping
-but while the photons are in flight and traveling towards our battle state
-analyzer these qubits they are stored in the nodes
-they are stationary they are not moving anywhere so we must have some physical
-means of storing these qubits and we do that with the help of
-quantum memories now the difference between classical memories and quantum
-memories is quite substantial classical memories
-are usually stored as zeros and ones only classical bits
-whereas quantum memories have to be able to store one
+In lesson twelve, you saw the basics of a quantum repeater and how it can distribute entanglement over long distances. In here, we will go a little bit deeper and see how each individual physical components of a quantum repeater work.
 
-00:02
-zero but also any superposition and in fact any entangled state and
-that way they can share entanglement over the entire quantum network then so
-after talking about these three basic well two basic
-components because we covered fibers already we will consider how all of
-these components work together to implement a quantum repeater and
-most importantly we will also consider what are the various factors that affect
-the success rate of our quantum repeater and entanglement swapping scheme
-so after this introduction we will spend the first half of this lesson talking
-about battle state analyzer we will revisit measurements
-and how they can actually be implemented and what does it mean
-really to measure in different bases and how can we implement
-different basis measurements with polyzat measurements and some unitaries
-then we will move on to the quantum circuit for a bell state measurement
+We will begin with "Step One: The Introduction".
 
-00:03
-and from that we will talk about implementation of bell state
-measurements with linear optics so we will consider how barrel state
-measurements are done in real life and then in the latter half of this lesson
-we will talk about memories we will begin with considerations about
-what a good quantum memory should be like what are the requirements
-then we'll move on to the candidate systems because at the moment there is no
-leading physical system that is considered to be
-the best quantum memory all of the existing candidate systems have some
-advantages and some drawbacks which we will consider in the latter half of this
-lesson so let's begin
+So here, we have a basic scheme for a quantum repeater. We've got our network nodes, represented by these blue boxes over here, and they have some qubits, and then the network nodes, they fire photons towards this middle node here, which we know implements a Bell-state measurement. And that way, we can establish entanglement over long distances. But, what are the individual physical components of a quantum repeater, and more importantly how can we implement them? So first, we need optical fibers to carry our photons. That's kind of obvious, and already we have covered optical fibers in some length. The next thing that we need is the Bell-state analyzer in the middle. The analyzer implements our Bell-state measurement, it is crucial for implementing entanglement swapping.
+
+But, while the photons are in flight and traveling towards our Bell-state analyzer, these qubits (see pointer), they are stored in the nodes, they are stationary. They are not moving anywhere, so we must have some physical means of storing these qubits, and we do that with the help of "quantum memories". Now the difference between classical memories and quantum memories is quite substantial. Classical memories are usually stored as zeros and ones- only classical bits, whereas quantum memories have to be able to store one, zero, but also any superposition, and in fact any entangled state, and that way they can share entanglement over the entire quantum network. Then, so after talking about these three basic- well two basic components because we covered fibers already, we will consider how all of these components work together to implement a quantum repeater. And, most importantly, we will also consider what are the various factors that affect the success rate of our quantum repeater and entanglement swapping scheme. So, after this introduction, we will spend the first half of this lesson talking about Bell-state analyzer. We will revisit measurements and how they can actually be implemented, and what does it mean really to measure in different bases, and how can we implement different basis measurements with Pauli z measurements and some unitaries. Then, we will move on to the quantum circuit for a Bell-state measurement, and from that we will talk about implementation of Bell-state measurements with linear optics. So we will consider how Bell-state measurements are done in real life. And then, in the latter half of this lesson we will talk about memories. We will begin with considerations about what a good quantum memory should be like, what are the requirements, then we'll move on to the candidate systems because at the moment, there is no leading physical system that is considered to be the best quantum memory. All of the existing candidate systems have some advantages and some drawbacks, which we will consider in the latter half of this lesson. So, let's begin!
+
+
 
 \section{Bell State Measurements I}
 
+Step Two: Bell-State Measurements - One
 
-00:00
-step two battle state measurements one so let's remind ourselves what those
-states look like sobel states are four entangled states
-and they can be written in this form in the computational basis
-5 plus is a superposition of 0 0 and 1 1. so is 5 minus but
-with an a negative phase between the two and this is the expression for psi plus
-and psi minus we saw that these states are orthonormal what that means
-is that if you take the inner product of a
-bell state with itself for example five plus then
-you get a one it means it is normalized but if you take an inner product of
-uh one of these states with some other state then you get a zero for example
-the inner product between five minus and five plus is zero and so on
-what this means is that we can take any state
+So, let's remind ourselves what Bell-states look like.
 
-00:01
-any pure state of two qubits and write it out in the bell
-basis for example let's consider a general pure two-qubit state in the
-computational basis with probability amplitudes given by alpha beta
-gamma and delta we saw in previous lessons how to rewrite this state
-in the bell bases so now it's a superposition of
-all the four bell states where of course these probability amplitudes have
-changed for example the probability amplitude for
-state 5 plus is alpha plus beta and so on for the other bell states
-and we have been treating measurements as a question that we ask about the state
-of our physical system and the question in this case
-is which of the four bell states is our state in
-is it the state phi plus is it the state 5 minus
-psi plus or psi minus this is what the measurement reveals
+So, Bell-states are four entangled states, and they can be written in this form in the computational basis (see slide). Phi plus is a superposition of zero zero, and one one. So is phi minus, but with an a negative phase between the two, and this (follow pointer) is the expression for psi plus, and psi minus. We saw that these states are orthonormal. What that means is that if you take the inner product of a Bell-state with itself, for example, phi plus, then you get a one, it means it is normalized. But if you take an inner product of one of these states with some other state, then you get a zero. For example, the inner product between phi minus and phi plus is zero, and so on. What this means is that we can take any state- any pure state of two qubits, and write it out in the Bell-basis. For example, let's consider a general pure two-qubit state in the computational basis with probability amplitudes given by alpha, beta, gamma, and delta. We saw in previous lessons how to rewrite this state in the Bell-basis. So now, it's a superposition of all the four Bell-states, where of course, these probability amplitudes have changed. For example, the probability amplitude for state phi plus is alpha plus beta, and so on for the other Bell-states. And we have been treating measurements as a question that we ask about the state of our physical system, and the question in this case is: which of the four Bell-states is our state in? Is it the state phi plus? Is it the state phi minus, psi plus, or psi minus? This is what the measurement reveals about our system, and usually we say that we get the answer with some probability. For example, depending on the initial state psi, we might get the answer that the state is phi plus. In this case, it would be with probability which is the modulus squared of this probability amplitude. This is a very abstract notion of what a measurement actually is, and it's not very useful when it comes to doing calculations. So, let's see how to actually implement such a measurement in terms of a quantum circuit. That will tell us more about what these measurements are actually doing and how we can implement them in a laboratory.
 
-00:02
-about our system and usually we get we say that we get the answer
-with some probability for example depending on the initial state
-psi we might get the answer that the state
-is 5 plus in this case it would be with probability
-which is the modulus squared of this probability amplitude
-this is a very abstract notion of what a measurement actually is and it's not
-very useful when it comes to doing calculations
-so let's see how to actually implement uh such a
-such a measurement in terms of a quantum circuit that will tell us more about
-what these measurements are actually doing and how we can implement them in a
-laboratory so but before we do that let's step back a little bit and consider
-something simpler let's look at measurement of a single qubit
-and let's in let's be particular and say
-that we want to measure the single qubit in a polyz basis
-in the quantum circuit notation we would write it as this we've got some input
+So, but before we do that, let's step back a little bit and consider something simpler. Let's look at measurement of a single qubit, and let's be particular and say that we want to measure the single qubit in a Pauli z basis.
 
-00:03
-state psi and then we measure it this is the symbol for measurement and
-here this little z is just reminding us that we are measuring in the z
-basis so what we get is that initially if the state is some general
-superposition of zero and one with probability amplitudes alpha and beta
-then the measurement can give us a plus 1 outcome with corresponding probability
-which is given by the inner product between the initial state
-and our basis state zero modulus squared which is just
-alpha modulus squared or we can get the minus one outcome
-which is given by the probability given by beta modulus squared
-the probability amplitude of the basis state 1.
-now let's try to do a measurement in the x-bases
-again in the quantum circuit notation it would look like this we've got our
+In the quantum circuit notation, we would write it as this: we've got some input state psi, and then we measure it- this is the symbol for measurement (see figure), and here, this little "z" is just reminding us that we are measuring in the z basis. So, what we get is that initially, if the state is some general superposition of zero and one with probability amplitudes alpha and beta, then the measurement can give us a plus one outcome with corresponding probability, which is given by the inner product between the initial state and our basis state zero modulus squared, which is just alpha modulus squared. Or, we can get the minus one outcome which is given by the probability given by beta modulus squared, the probability amplitude of the basis state one.
 
-00:04
-initial state psi and we're doing a measurement and now it's in the x basis
-which is over here written by this little x
-again we are considering some general input state but in order to
-be able to determine the probabilities of the different outcomes
-we are going to rewrite this state in the x basis
-so we have seen that zero is equal superposition
-of the plus state and the minus state and similarly one is an equals
-equal superposition as well but this time we have a negative phase between
-plus and minus states so we can rewrite the initial state in this following form
-and from this form we can easily read out the probabilities
-of obtaining the plus one outcome of the measurement
-which is given by half alpha plus beta the whole thing modulus squared and the
-probability for the minus one outcome but now let's impose a restriction of
+Now, let's try to do a measurement in the x basis.
 
-00:05
-our on ourselves let's say that we cannot perform
-measurement in the x basis let's say we're only allowed to do measurements in
-the z basis what do we do then well we can consider the following quantum
-circuit we've got the initial state and then we do some unitary operation on
-that state here we are choosing the hadamard
-and then we perform our measurement but this time in the z basis
-so we start with the usual initial state it's a superposition of zero and one
-but then after application of the hadamard gate
-we get a new state which we are denoting psi plus
-and this new state is given in this form just to remind you hadamard when it's
-applied on zero gives us a plus state so an equal equal
-superposition of zero and one whereas hadamard applied to one gives us the minus
-state and then if we just expand the plus state and the minus state again in
+Again, in the quantum circuit notation, it would look like this: we've got our initial state psi, and we're doing a measurement, and now it's in the x basis which is over here (see figure) written by this little x. Again, we are considering some general input state, but in order to be able to determine the probabilities of the different outcomes, we are going to rewrite this state in the x basis. So we have seen that zero is equal superposition of the plus state and the minus state, and similarly one is an equal superposition as well, but this time we have a negative phase between plus and minus states. So, we can rewrite the initial state in this following form (see pointer, RHS eq), and from this form we can easily read out the probabilities of obtaining the plus one outcome of the measurement, which is given by half alpha plus beta, the whole thing modulus squared, and the probability for the minus one outcome.
 
-00:06
-the computational basis we arrive at this form for our state psi plus
-and now because we are doing measurement in the z basis again it's easy to read
-out the probabilities corresponding to outcomes plus one and minus one but look
-even though here we have a different quantum circuit
-we are obtaining the outcomes plus 1 and minus 1
-with the same probabilities as we had done on the previous slide
-so what this shows is that there are two ways of implementing a pauli x
-measurement we can do it directly writing it like this
-or if we want we can just measure in the z basis
-but then we have to apply some unitary transformation on our pure state side
-so why is that well the clue is in the probabilities if you look at
-the probability of the plus one outcome in in this scheme where we are
+But now, let's impose a restriction on ourselves. Let's say that we cannot perform measurement in the x basis. Let's say we're only allowed to do measurements in the z basis, what do we do then? Well, we can consider the following quantum circuit: we've got the initial state and then we do some unitary operation on that state. Here (see figure), we are choosing the Hadamard, and then we perform our measurement but this time in the z basis.
 
-00:07
-measuring uh the x basis directly then it's given by
-the inner product of psi and the plus state modulus squared
-if we do it in our other scheme where we are using the hadamard followed by a z
-measurement then it's given by the corresponding expression here
-now it's the inner product between the state psi prime
-so this is our initial state after we apply hadamard to it
-and the inner product is with a plus state and then what we get is
-psi times hadamard times zero so what we are getting is really if we
-are comparing these two probabilities we see that this psi state in a
-with a has an inner product with a plus and plus it's just written as
-hadamard applied to a zero state so that's what we are doing here
-so what we are really uh doing is we are asking
+So, we start with the usual initial state, it's a superposition of zero and one, but then after application of the Hadamard gate we get a new state, which we are denoting psi prime, and this new state is given in this form (follow pointer). Just to remind you, Hadamard, when it's applied on zero, gives us a plus state, so an equal superposition of zero and one, whereas Hadamard applied to one gives us the minus state, and then if we just expand the plus state and the minus state again in the computational basis, we arrive at this form for our state psi plus. And now, because we are doing measurement in the z basis, again it's easy to read out the probabilities corresponding to outcomes plus one and minus one.
 
-00:08
-what unitary takes me from a plus state to a zero state or from a zero state to
-a plus state and we already know this unitary it's
-the hadamard similarly for the minus one outcome
-we look at the different probabilities and what we get is again
-we go from a minus state to a one state via the hadamard transformation
-so the halamart transforms our desired basis of measurement
-which in this case is a polyx into a powly z basis
-now how to do a bell measurement using only pauli zeds
-well we have two qubits so we're going to need two poly measurements
-and we are going to need to apply some two-qubit unitary before we
-actually measure the state so the question now is how do we find this unitary
-well we know one thing that the unitary should when applied to a state
+But look, even though here we have a different quantum circuit, we are obtaining the outcomes plus one and minus one with the same probabilities as we had done on the previous slide. So, what this shows is that there are two ways of implementing a Pauli x measurement. We can do it directly, writing it like this, or if we want we can just measure in the z basis, but then we have to apply some unitary transformation on our pure state psi.
 
-00:09
-psi plus should give us a 0 0 when applied to state 5 minus it should give
-us state 1 0 and so on and so forth so this is our rule of transforming from our
-bell bases into our computational basis and if we can do that then we can just
-measure in the z uh basis in the same way we saw how it
-worked for the pauli x basis we had to find a unitary that transforms from the
-x spaces into the z basis which was given by hadamard
-here we are looking for a more general unitary because it's acting on two qubits
-so without further ado this is the circuit that actually achieves
-our desired transformation it's given by a c note gate
-which is given by this two qubit gate followed by a hadamard on the first qubit
-and then two measurements in the z basis and what happens that if we get uh
-outcomes zero zero which rep which corresponds to plus one plus one
+So, why is that? Well, the clue is in the probabilities. If you look at the probability of the plus one outcome in this scheme (see pointer), where we are measuring the x basis directly, then it's given by the inner product of psi and the plus state modulus squared. If we do it in our other scheme where we are using the Hadamard followed by a z-measurement, then it's given by the corresponding expression here (see pointer), now it's the inner product between the state psi prime, so this is our initial state after we apply Hadamard to it, and the inner product is with a zero state.
 
-00:10
-then we know that we have a bell state five plus and similarly for all the
-other three possible measurement outcomes and each individual
-measurement outcome represents uniquely a bell state measurement
-so this is true in general that any measurement
-basis can be implemented by polyz measurements and a suitable unitary
-applied before we measure our qubits and this trick is very useful
-particularly in quantum computation and also in quantum communication and in
-the next step we will actually see how we can do this in real life using
-linear optics
+And then, what we get is psi times Hadamard times zero. So what we are getting is, really, if we are comparing these two probabilities (follow pointer), we see that this psi state has an inner product with plus, and plus is just written as Hadamard applied to a zero state. So that's what we are doing here (top right red box circuit).
+
+So what we are really doing is we are asking: what unitary takes me from a plus state to a zero state, or from a zero state to a plus state? And we already know this unitary, it's the Hadamard. Similarly for the minus one outcome, we look at the different probabilities and what we get is, again, we go from a minus state to a one state via the Hadamard transformation.
+
+So the Hadamard transforms our desired basis of measurement, which in this case is a Pauli x into a Pauli z basis.
+
+Now, how to do a Bell measurement using only Pauli z? Well, we have two qubits, so we're going to need two Pauli measurements, and we are going to need to apply some two-qubit unitary before we actually measure the state. So the question now is, how do we find this unitary?
+
+Well, we know one thing that the unitary when applied to a state psi plus should give us a zero zero. When applied to state phi minus, it should give us state one zero, and so on and so forth. So this is our rule of transforming from our Bell-basis into our computational basis, and if we can do that, then we can just measure in the z basis. In the same way we saw how it worked for the Pauli x basis, we had to find a unitary that transforms from the x basis into the z basis which was given by Hadamard. Here, we are looking for a more general unitary because it's acting on two qubits.
+
+So, without further ado, this is the circuit that actually achieves our desired transformation (fig. on slide). It's given by a C-NOT gate, which is given by this two qubit gate, followed by a Hadamard on the first qubit, and then two measurements in the z basis. And what happens, that if we get outcomes zero zero, which corresponds to plus one plus one, then we know that we have a Bell-state phi plus, and similarly for all the other three possible measurement outcomes, and each individual measurement outcome represents uniquely a Bell-state measurement.
+
+So, this is true in general, that any measurement basis can be implemented by Pauli z measurements and a suitable unitary applied before we measure our qubits.
+
+And this trick is very useful, particularly in quantum computation, and also in quantum communication, and in the next step we will actually see how we can do this in real life using linear optics.
+
+
 
 \section{Bell State Measurements II}
 
-00:00
-step three barrel state measurements two in this step we will talk about how to
-actually implement a bell state measurement with linear optics
-so the actual scheme of how to do it really depends on our encoding
-so let's just pick some encoding for our
-qubits and let's choose linear polarized single photons
-there's two reasons behind that one is that it's one of the most nearly used
-encodings in real experiments and two it's very easy to imagine what's
-going on therefore it's it is intuitive and in this accounting we encode our
-qubit in a state 0 as a single photon that's polarized in the vertical direction
-and our other computational basis state one as a single photon polarized in the
-horizontal direction so the first question that we should ask
+Step Three: Bell-State Measurements - Two
 
-00:01
-is how do we implement a pauli set measurement with this encoding
-well we have to measure and distinguish the two different
-polarizations we have to distinguish horizontal and vertical that can be done
-with a little piece of crystal called polarizing beam splitter what happens
-is that if you have some photons or some light coming in
-with some polarization it splits the beam of light into two beams
-one that is transmitted through the polarizing beam splitter
-but comes out at the other end only with a vertical polarization and the
-other one that gets reflected by the polarizing beam splitter
-and that's that one is polarized in the horizontal direction
-so we see that we are splitting our beam of light
-into two beams one for r0 and one for r1
+In this step, we will talk about how to actually implement a Bell-state measurement with linear optics.
 
-00:02
-so consider that we have a single photon polarized in the vertical direction
-and we place two detectors after the polarizing beam splitter to detect in which
-path was which path was taken by the single photon
-so what happens as we saw before if the photon is vertically polarized
-it gets transmitted through the polarizing beam splitter
-therefore it gets detected by this detector here
-with probability one this represents our measurement
-for plus one it never happens that a vertically polarized photon gets
-reflected therefore this detector never gets triggered so
-the probability of the outcome minus one is always zero on the other hand
-if our initial photon is horizontally polarized
-then you might guess it always gets reflected
+So, the actual scheme of how to do it really depends on our encoding. So let's just pick some encoding for our qubits, and let's choose linear polarized single photons. There's two reasons behind that: one, is that it's one of the most nearly used encodings in real experiments, and two, it's very easy to imagine what's going on, therefore it's it is intuitive.
 
-00:03
-and travels down into this detector here triggers it and always gets detected so
-the probability of the outcome minus one is one and the probability of
-the outcome plus one is always zero now can you guess what happens if we
-actually put in a superposition of these two linear polarizations our state
-is given by alpha v plus beta h what happens is that the photon has a chance
-to get transmitted and this probability is given by
-mod alpha squared and it also has a chance to get reflected
-and travel down into this other beam splitter corresponding to the
-measurement outcome minus one and the probability of getting a minus one
-which means probability of triggering this detector is given by mod beta squared
-so this implements our z measurement but we have seen in the previous step that
-for a ball state measurement we need two measurements in the z basis
+And in this encoding, we encode our qubit in a state zero as a single photon that's polarized in the vertical direction, and our other computational basis state one, as a single photon polarized in the horizontal direction.
 
-00:04
-and a suitable unitary so let's let's see what happens when we actually take
-two polarizing beam splitter we beam splitters each with two detectors
-and we have just a regular 50 50 beam splitter over here and we've
-got two photons coming from the these parts
-so let's to be able to analyze this we actually
-have not developed the proper tools for that we need
-a little bit more of quantum optics but we can give you the result so
-depending on which of these detectors trigger we will know
-which bell state has been measured so let's see what the different patterns
-are and to not get confused we will label our detectors as detector d1
+So the first question that we should ask is, "how do we implement a Pauli z measurement with this encoding"?
 
-00:05
-d2 d3 and d4 so if we get a joint detection in detectors d1 and d4
-this means that we have implemented a successful build measurement
-and the outcome corresponds to the projection onto the state psi minus also
-if we get a joint detection in these two detectors
-in d2 and d3 joint detection means that both of these detectors trigger
-then we can also say that we have implemented a successful measurement
-and the result corresponds to the state psi
-minus a different pattern of detection that we can get
-is a joint detection at these two detectors in the lower branch of our
-belt state analyzer so if both d1 and d2 trigger
-then we can conclude that we have a state psi plus so this corresponds to
-another successful bell measurement equally
+Well, we have to measure and distinguish the two different polarizations. We have to distinguish horizontal and vertical. That can be done with a little piece of crystal called "polarizing beam splitter" (PBS). What happens is that if you have some photons or some light coming in with some polarization, it splits the beam of light into two beams. One, that is transmitted through the polarizing beam splitter but comes out at the other end only with a vertical polarization, and the other one, that gets reflected by the polarizing beam splitter and that one is polarized in the horizontal direction. So we see that we are splitting our beam of light into two beams: one for r0 and one for r1.
 
-00:06
-if we get detectors triggering in these in the right branch of our ball state
-analyzer so if both d3 and d4 trigger then we can also conclude
-they've got we've got a bale state psi plus what can also happen is that both
-photons travel into a single detector for example a d1 or they might travel
-into d2 or d3 or d4 all of these are equally probable
-however then we cannot say that whether we have
-5 plus or a five minus so whenever we get only one of these detectors triggering
-we know that we have one of the state psi plus or psi minus but we cannot tell
-which one and this is a bit of a problem because we cannot
-fully implement a battle state measurement we cannot distinguish
-all four bell states we can only distinguish two of them psi plus and psi minus
+So, consider that we have a single photon polarized in the vertical direction, and we place two detectors after the polarizing beam splitter to detect which path was taken by the single photon. So what happens, as we saw before, if the photon is vertically polarized, it gets transmitted through the polarizing beam splitter. Therefore, it gets detected by this detector here (top right) with probability one. This represents our measurement for plus one. It never happens that a vertically polarized photon gets reflected, therefore this detector (bottom) never gets triggered, so the probability of the outcome minus one is always zero. On the other hand, if our initial photon is horizontally polarized, then you might guess, it always gets reflected and travels down into this detector here (bottom), triggers it, and always gets detected. So the probability of the outcome minus one is one, and the probability of the outcome plus one is always zero.
 
-00:07
-so this means that a better state measurement cannot always be successfully
-implemented with linear optics actually the maximum
-probability is limited to only 50 percent
-so we we have seen in a previous lesson that quantum repeaters have to contend
-with a lot of noise we have to deal with that noise we have to purify our states
-to counteract the effects of this noise we have also seen in previous lessons
-that we have to deal with uh lossy fibers which was the reason why we
-started talking about quantum repeaters but even if we take away all of these
-sources of error there is still a fundamental error
-in the fact that bell state measurement cannot be
-always successfully executed with linear optics
-on top of that what we have to take into account is that the two photons
-coming into our bell state analyzer have to be
+Now, can you guess what happens if we actually put in a superposition of these two linear polarizations? Our state is given by "alpha V plus beta H". What happens is that the photon has a chance to get transmitted, and this probability is given by mod alpha squared, and it also has a chance to get reflected and travel down into this other beam splitter corresponding to the measurement outcome minus one (bottom), and the probability of getting a minus one, which means probability of triggering this detector is given by mod beta squared. So this implements our z measurement, but we have seen in the previous step that for a Bell-state measurement, we need two measurements in the z basis and a suitable unitary. So, let's see what happens when we actually take two polarizing beam splitters each with two detectors, and we have just a regular fifty-fifty beam splitter over here (see pointer), and we've got two photons coming from the these paths (top-down and left-right). So to be able to analyze this, we actually have not developed the proper tools, for that we need a little bit more of quantum optics, but we can give you the result. So, depending on which of these detectors trigger, we will know which Bell-state has been measured. So, let's see what the different patterns are, and to not get confused we will label our detectors as detector D1, D2, D3 and D4.
 
-00:08
-synchronized they have to arrive at the same time
-if they don't arrive at the same time we fail our bell state measurement
-and we cannot establish entanglement between the network nodes
+So, if we get a joint detection in detectors D1 and D4, this means that we have implemented a successful Bell measurement, and the outcome corresponds to the projection onto the state psi minus. Also, if we get a joint detection in these two detectors- in D2 and D3, joint detection means that both of these detectors trigger, then we can also say that we have implemented a successful Bell measurement, and the result corresponds to the state psi minus. A different pattern of detection that we can get is a joint detection at these two detectors (see pointer) in the lower branch of our Bell-state analyzer, so if both D1 and D2 trigger, then we can conclude that we have a state psi plus, so this corresponds to another successful Bell measurement. Equally, if we get detectors triggering in these in the right branch of our Bell-state analyzer, so if both D3 and D4 trigger, then we can also conclude that we've got a Bell-state psi plus.
+
+What can also happen is that both photons travel into a single detector, for example a D1, or they might travel into D2, or D3, or D4. All of these are equally probable. However, then we cannot say that whether we have phi plus or a phi minus. So whenever we get only one of these detectors triggering, we know that we have one of the state psi plus or psi minus, but we cannot tell which one, and this is a bit of a problem because we cannot fully implement a Bell-state measurement. We cannot distinguish all four Bell-states, we can only distinguish two of them, psi plus and psi minus.
+
+So, this means that a Bell-state measurement cannot always be successfully implemented with linear optics. Actually, the maximum probability is limited to only fifty percent. So, we have seen in a previous lesson that quantum repeaters have to contend with a lot of noise. We have to deal with that noise, we have to purify our states to counteract the effects of this noise. We have also seen in previous lessons that we have to deal with lossy fibers, which was the reason why we started talking about quantum repeaters. But even if we take away all of these sources of error, there is still a fundamental error in the fact that Bell-state measurement cannot be always successfully executed with linear optics. On top of that, what we have to take into account is that the two photons coming into our Bell-state analyzer have to be synchronized. They have to arrive at the same time. If they don't arrive at the same time, we fail our Bell-state measurement and we cannot establish entanglement between the network nodes.
+
+
 
 \section{Stationary and flying qubits}
 
+Step Four: Stationary and Flying Qubits
 
-00:00
-step four stationary and flying qubits first let's begin talking about
-what is important what does a good memory look like and what requirements should
-it satisfy and we will start with the divincenzo criteria
-these criterias were introduced in the context of quantum computation
-but we will see that a lot of them apply also in the context of quantum
-networking so first if you want to build a good quantum computer
-you need a well-defined qubit now qubits
-don't come for free in nature usually we have very complicated systems with many
-different energy levels and in order to have a
-good well-defined qubit you must be able to take a system
-for which you can only address two levels
-and distinguish them and control them in a very
+First, let's begin talking about what is important, what does a good memory look like, and what requirements should it satisfy, and we will start with the DiVincenzo criteria. These criterias were introduced in the context of quantum computation, but we will see that a lot of them apply also in the context of quantum networking.
 
-00:01
-good way then you need to be able to initialize this qubit initialization is
-important because then you know uh exactly from what state your
-quantum computation can start so if you have a good procedure for initializing
-your qubit that allows you to also carry out good quantum computation
-also you want long lifetimes meaning that your qubits when you put them in a
-superposition of states they don't decohere very quickly long
-lifetimes allow you to carry out longer and longer quantum computations
-which is of course needed if you want to solve harder and harder problems
-also you must be able to implement a universal set of gates
-meaning that what your qubit and your physical system need to do
-is be able to implement a finite set of gates which when put
-together in some order can allow you to simulate a much more
+So first, if you want to build a good quantum computer, you need a well-defined qubit. Now qubits don't come for free in nature. Usually, we have very complicated systems with many different energy levels, and in order to have a good well-defined qubit, you must be able to take a system for which you can only address two levels and distinguish them and control them in a very good way. Then, you need to be able to initialize this qubit. Initialization is important because then you know exactly from what state your quantum computation can start, so if you have a good procedure for initializing your qubit, that allows you to also carry out good quantum computation.
 
-00:02
-complicated evolution and or you need efficient measurements uh
-just carrying out and transforming the state in a quantum manner is not enough
-you somehow have to extract the information at the end of the quantum
-computation and in the context of quantum communication there's few more
-requirements that we have to consider we already saw that it's we have to
-somehow convert or entangle stationary and flying qubits stationary
-quads are those qubits that are sitting in our
-quantum network nodes they're loaded into the quantum memories
-they don't really move which is why we call them stationary
-flying qubits are those qubits that are used for
-entanglement swapping in the bsas to create link level entanglement between
-between the quantum memories and we must be able to
-entangle photons i.e the flying qubits with the stationary qubits inside the
-memories but also we must be able to use entanglement swapping to create
+Also, you want long lifetimes, meaning that your qubits when you put them in a superposition of states, they don't decohere very quickly. Long lifetimes allow you to carry out longer and longer quantum computations, which is of course needed if you want to solve harder and harder problems.
 
-00:03
-end-to-end entanglement so perform entanglement swapping on
-stationary memories themselves and then we also must be able to
-transport flying qubits over long distances
-so here we will in this lesson sorry in this step we will uh
-look at these three requirements so why is memory lifetime important well
-we said that in computers uh if our memory lifetime is long and also our
-gate speeds are fast we we are able to implement
-implement uh longer computations we can implement more steps of a computation
-in the context of quantum communication what's really important is not the gate
-speed itself but the number of gates that we can apply
-per round trip time or per rt uh let's consider how we establish link
+Also you must be able to implement a universal set of gates, meaning that what your qubit and your physical system need to do is be able to implement a finite set of gates, which when put together in some order can allow you to simulate a much more complicated evolution.
 
-00:04
-level entanglement we start with quantum memories and they
-emit photons these photons are entangled with the memories and they travel
-let's say to a bsa analyzer which is found halfway between
-the quantum nodes there we perform a bell state measurement
-but then we also have to uh communicate classically
-back to the notes about the outcome of the bell state measurements
-and this is our round trip time so if our if our lifetime
-of the memory is shorter than that then we cannot really do much because even if
-we can perform the bell state measurements on those
-photon pairs by the time this happens our memories
-decohere and are not useful anymore so just to give you some idea of the
-numbers that we're talking about the speed of light
-in a fiber is approximately 200 millimeters per nanosecond
-so if our nodes are separated one kilometer away
+And, you need efficient measurements. Just carrying out and transforming the state in a quantum manner is not enough, you somehow have to extract the information at the end of the quantum computation.
 
-00:05
-one round trip from one node to the other and back that takes
-10 microseconds for 100 kilometers it increases to
-one millisecond and for 10 000 kilometers it goes all the way up to
-100 milliseconds per round trip time now what are the processes that are
-degrading our memories the two main processes are energy relaxation
-and dephasing and they are characterized by two different
-time scales they are referred to as t1 time scale and t2 time scale
-t1 characterizes the energy relaxation time
-whereas t2 gives us the characteristic dephasing time
-so first let's consider the energy relaxation time given by the time t1
-this basically tells us how likely or how quickly does
-our qubit decay from the excited state or from state one into a state zero
+And in the context of quantum communication, there's few more requirements that we have to consider. We already saw that we have to somehow convert or entangle stationary and flying qubits. Stationary qubits are those qubits that are sitting in our quantum network nodes, they're loaded into the quantum memories. They don't really move which is why we call them stationary. Flying qubits are those qubits that are used for entanglement swapping in the BSAs to create link level entanglement between between the quantum memories, and we must be able to entangle photons i.e. the flying qubits with the stationary qubits inside the memories, but also we must be able to use entanglement swapping to create end-to-end entanglement, so perform entanglement swapping on stationary memories themselves.
 
-00:06
-and the probability that we if we initialize our state in the state one
-the probability that after some time small t we still find it
-in the state one is given by this expression it's e to the power of negative t
-over capital t one so the energy relaxation time
-so the probability that after t1 seconds we find our state in uh
-in the in the state 1 is given by 1 over e and
-this process of going from 1 to zero captures the
-fact that usually zero is um encoded into a
-state of an of an atom for example that has a higher energy that's why we call
-it the energy relaxation time now for the dephasing time this gives us
-a time scale where um we we lose phase coherence in our qubit remember if
+And then, we also must be able to transport flying qubits over long distances.
 
-00:07
-we are only using zeros and ones so basically we're using qubits
-but implementing only classical communication t1 is important but t2 not so much
-because there's no coherence there we are not using superpositions
-but in quantum networking and quantum communication um superpositions uh are
-crucial and those superpositions can be destroyed by this defacing
-defacing process so if we start in a in an equal superposition of zero and
-one so we are starting in the plus state the t1 is the characteristic time scale
-that tells us uh when we will end in a completely
-mixed state so completely mixed state is given over here it's a sum it's a
-mixture of these outer products of 0 0 and 1 1 divided by 2.
-and we saw in one of the earlier lessons the crucial difference between complete
+So here, in this step, we will look at these three requirements (see slide).
 
-00:08
-mixtures and equal superpositions so here after some time t if we prepare
-the state in the pure state sub after some time t we will have the following
-mixed state where with probability p we will still be
-in the ideal initial state and with probability one minus p
-we will have the d cohered into a completely mixed state
-and this probability is now given by the following expression
-of e to the negative uh t over capital t two now both of these processes the
-relaxation process and the dephasing process
-are poisson process processes that's a little bit ironic since we're talking
-about memories but these processes are memoryless dk processes
-so we talked about the lifetimes of memories and why they are important
-and we gave you some characteristic time scales
-which are very important when you are talking about communication over
-longer distances now let's address the question of
+So why is memory lifetime important? Well, we said that in computers, if our memory lifetime is long, and also our gate speeds are fast, we are able to implement longer computations, we can implement more steps of a computation. In the context of quantum communication, what's really important is not the gate speed itself, but the number of gates that we can apply per round trip time, or per RRT. Let's consider how we establish link level entanglement. We start with quantum memories, and they emit photons. These photons are entangled with the memories, and they travel, let's say to a BSA analyzer, which is found halfway between the quantum nodes. There, we perform a Bell-state measurement, but then we also have to communicate classically back to the notes about the outcome of the Bell-state measurements, and this is our round trip time. So, if our lifetime of the memory is shorter than that, then we cannot really do much, because even if we can perform the Bell-state measurements on those photon pairs, by the time this happens our memories decohere and are not useful anymore. So just to give you some idea of the numbers that we're talking about, the speed of light in a fiber is approximately two hundred millimeters per nanosecond, so if our nodes are separated one kilometer away, one round trip from one node to the other and back, that takes ten microseconds. For a hundred kilometers, it increases to one millisecond, and for ten thousand kilometers it goes all the way up to a hundred milliseconds per round trip time.
 
-00:09
-how do we actually entangle atoms and photons so
-how where is our qubit zero and one where in our quantum memory so our
-quantum memory is a two level system for now uh and it has a ground state g
-and some excited state of higher energy which we can label e
-so these are natural candidates for representing 0 and 1.
-for example here this is our two level atom
-this is the state g this is the excited state e
-and in this particular case we prepared the uh the memory in the excited state
-therefore it is in the state 1. now how do we represent
-how do we represent the flying qubits where are the flying qubits
-well there's different ways of encoding the information
-into flying qubits and one possibility is that if we send a photon down a fiber
+Now, what are the processes that are degrading our memories? The two main processes are energy relaxation and dephasing, and they are characterized by two different time scales. They are referred to as T1 time scale, and T2 time scale. T1 characterizes the energy relaxation time, whereas T2 gives us the characteristic dephasing time. So first, let's consider the energy relaxation time given by the time T1.
 
-00:10
-so there is a photon we can say that this is r1
-so if we detect this photon we know that we send a one
-however we can if we don't send the photon so there's nothing
-that can encode our zero and here we can see that if the atom
-decays from the excited state into its ground state
-or if it makes a transition from one to zero
-represented over here that can emit a photon now how about coherences how about
-superpositions well we can prepare our memory in a superposition of the ground
-state and the excited state so it's an equal superposition of
-zero and one by applying an appropriately timed energy pulse and our question is
-well what happens to the photon does it can get emitted does it not get emitted
-and if it does get emit if it does get emitted in what state will it be
+This basically tells us how likely or how quickly does our qubit decay from the excited state or from state one into a state zero.
 
-00:11
-well here we see that the atom has an equal probability to be found in
-the ground state so if it's in the ground state then it cannot emit any
-any energy so our photon will be in the zero state
-there is no photon or it has an uh fifty percent probability
-to be in the excited state from where it can emit and when it does emit
-then we will have a photon over here so in this way
-we can think about the photon of being in a super position of zero
-and one there is a photon and there is not a photon
-so we are transferring the state plus from the atomic memory to the flying
-qubit this is a very naive naive picture that demonstrates
-only some of the basic uh principles of how stationary and flying qubits
-interact together in real systems things are a lot more complicated
+And the probability that- if we initialize our state in the state one, the probability that after some time small t, we still find it in the state one, is given by this expression: it's e to the power of negative t, over capital T1, so the energy relaxation time. So, the probability that after T1 seconds, we find our state in the state one, is given by one over e. And this process of going from one to zero captures the fact that usually zero is encoded into a state of an atom, for example, that has a higher energy, that's why we call it the energy relaxation time. Now for the dephasing time, this gives us a time scale where we lose phase coherence in our qubit. Remember, if we are only using zeros and ones, so basically we're using qubits but implementing only classical communication, T1 is important but T2 not so much, because there's no coherence there, we are not using superpositions. But in quantum networking and quantum communication, superpositions are crucial, and those superpositions can be destroyed by this dephasing process.
 
-00:12
-in particular when we look at this encoding of just having two levels for our
-quantum memory then this is usable but it's not a very good qubit
-because due to the energy relaxation process our
-excited state will eventually decay into a zero so it will destroy
-whatever message of whatever state we have encoded into the quantum memory
-similarly this encoding for the flying qubits of having a no photon and a
-photon representing our zero and one is not very good due to the attenuation
-of light in fibers we described it in some detail that as
-we send photons down fibers they're very likely to be lost and attenuated
-so if we are waiting for some message at the end of the fiber and we don't
-receive a photon we cannot be sure was the original message really zero
-so uh is it correct that we are finding no photon or was the
-initial message one and the photon just got lost along the way
+So, if we start in an equal superposition of zero and one, so we are starting in the plus state, the T1 is the characteristic time scale that tells us when we will end in a completely mixed state, so completely mixed state is given over here (follow pointer), it's a sum- it's a mixture of these outer products of (zero zero) and (one one), divided by two. And we saw in one of the earlier lessons, the crucial difference between complete mixtures and equal superpositions. So here, after some time t, if we prepare the state in the pure state, after some time t we will have the following mixed state, where with probability P, we will still be in the ideal initial state, and with probability one minus P, we will have decohered into a completely mixed state, and this probability is now given by the following expression of e to the negative t over capital T two. Now both of these processes, the relaxation process and the dephasing process, are Poisson processes. That's a little bit ironic since we're talking about memories, but these processes are memoryless decay processes.
 
-00:13
-so we have to be a little bit more careful and think how to
-encode our information in a better more robust way
-consider the following following atomic structure
-we've got two degenerate ground states and we will label them as ground state up
-and ground state down and these can represent the two spins of of our atom
-for our flying qubits we can consider polarization
-so zero will be represented by vertical polarization
-and one will be represented by horizontal polarization
-we can prepare our atom initially in the excited state
-and then what can happen is that the atom can decay either
-to the ground state would spin up or to the ground state would spin down
-the thing is we can only see that there's a photon coming out
+So, we talked about the lifetimes of memories and why they are important, and we gave you some characteristic time scales which are very important when you are talking about communication over longer distances. Now, let's address the question of how do we actually entangle atoms and photons.
 
-00:14
-and we don't actually know into which ground state the atom decayed so
-we are effectively implementing the following following transformation
-we go from the excited state of the atom to a superposition of the atom being
-found in the spin up state if that's true then the photon that gets emitted
-just happens to have a vertical polarization
-on the other hand if it decays into the other
-ground state given by spin down then the photon will have a horizontal
-polarization so really what we are doing is we are obtaining the following
-superposition of two qubits we have an equal superposition of the
-atom being in the spin up state and the emitted photon being in the
-vertically polarized and the other term which is the atom being
-found in the spin down state and the photon being horizontally polarized so
+So, where is our qubit zero and one in our quantum memory? So, our quantum memory is a two level system for now, and it has a ground state g, and some excited state of higher energy which we can label e. So, these are natural candidates for representing zero and one. For example, here (follow pointer), this is our two level atom, this is the state g, this is the excited state e, and in this particular case we prepared the memory in the excited state, therefore it is in the state one. Now, how do we represent the flying qubits? Where are the flying qubits? Well, there's different ways of encoding the information into flying qubits, and one possibility is that if we send a photon down a fiber, so there is a photon- we can say that this is our one, so if we detect this photon, we know that we send a one. However, if we don't send the photon, so there's nothing that can encode our zero.
 
-00:15
-in this way we are entangling the flying photon with the stationary qubit of the
-memory and to bring this all back this is another representation of our
-bell state analyzer which we have before drawn very
-abstractly but now you have a much better idea
-how it actually works in practice so here we have two single mode fibers
-and at the end we've got quantum memories each memory is prepared in
-initially in the excited state it decays into one of its um ground states either
-spin up or spin down we don't know which one therefore the flying photon is
-entangled with its respective memory these flying photons now that
-travel through the single mode fibers they hit the beam splitter
-they interfere and we perform a bell state measurement
-and in this way we can establish uh link level entanglement
+And here, we can see that if the atom decays from the excited state into its ground state or if it makes a transition from one to zero represented over here (top right fig.), that can emit a photon.
 
-00:16
-between the atomic memories sitting at the end of the ends of the link
-so and this is exactly the scheme that we have described previously
-with memory interference memory mim or it can also be used in the following
-scenario where we have direct memory to memory connection you
+Now, how about coherences? How about superpositions? Well, we can prepare our memory in a superposition of the ground state and the excited state. So it's an equal superposition of zero and one by applying an appropriately timed energy pulse, and our question is, "well, what happens to the photon? Does it get emitted, does it not get emitted, and if it does get emitted, in what state will it be?" Well here (see pointer), we see that the atom has an equal probability to be found in the ground state, so if it's in the ground state then it cannot emit any energy, so our photon will be in the zero state, there is no photon. Or it has a fifty percent probability to be in the excited state from where it can emit, and when it does emit then we will have a photon over here. So in this way, we can think about the photon of being in a super position of zero and one, there is a photon and there is not a photon.
+
+So we are transferring the state plus, from the atomic memory to the flying qubit. This is a very naive picture that demonstrates only some of the basic principles of how stationary and flying qubits interact together. In real systems, things are a lot more complicated. In particular, when we look at this encoding of just having two levels for our quantum memory (see slide), then this is usable but it's not a very good qubit, because due to the energy relaxation process, our excited state will eventually decay into a zero. So it will destroy whatever message- whatever state we have encoded into the quantum memory. Similarly, this encoding for the flying qubits of having a no photon and a photon representing our zero and one, is not very good due to the attenuation of light in fibers. We described it in some detail that as we send photons down fibers, they're very likely to be lost and attenuated. So, if we are waiting for some message at the end of the fiber and we don't receive a photon, we cannot be sure. Was the original message really zero, so is it correct that we are finding no photon, or was the initial message one and the photon just got lost along the way? So we have to be a little bit more careful and think how to encode our information in a better, more robust way.
+
+Consider the following atomic structure: we've got two degenerate ground states, and we will label them as ground state up and ground state down.
+
+And these can represent the two spins of of our atom.
+
+For our flying qubits, we can consider polarization. So zero will be represented by vertical polarization, and one will be represented by horizontal polarization. We can prepare our atom initially in the excited state, and then what can happen is that the atom can decay, either to the ground state with spin up, or to the ground state with spin down. The thing is, we can only see that there's a photon coming out, and we don't actually know into which ground state the atom decayed. So, we are effectively implementing the following transformation: we go from the excited state of the atom to a superposition of the atom being found in the spin up state. If that's true, then the photon that gets emitted just happens to have a vertical polarization. On the other hand, if it decays into the other ground state given by spin down, then the photon will have a horizontal polarization. So really, what we are doing is we are obtaining the following superposition of two qubits (top right eq.). We have an equal superposition of the atom being in the spin up state, and the emitted photon being in the vertically polarized, and the other term which is the atom being found in the spin down state, and the photon being horizontally polarized. So, in this way, we are entangling the flying photon with the stationary qubit of the memory.
+
+And, to bring this all back, this is another representation of our Bell-state analyzer (see slide), which we have before drawn very abstractly, but now you have a much better idea how it actually works in practice. So here, we have two single mode fibers (see pointer),
+
+and at the end we've got quantum memories. Each memory is prepared initially in the excited state, it decays into one of its ground states, either spin up or spin down. We don't know which one, therefore the flying photon is entangled with its respective memory. These flying photons, that travel through the single mode fibers, they hit the beam splitter, they interfere and we perform a Bell-state measurement. And in this way, we can establish link-level entanglement between the atomic memories sitting at the ends of the link.
+
+So, and this is exactly the scheme that we have described previously with midpoint interference memory, MIM, or it can also be used in the following scenario where we have direct memory to memory connection (MM).
+
 
 
 \newpage
