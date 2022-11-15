@@ -160,177 +160,168 @@ $\phi = 0$ and $\phi = \frac{\pi}{2}$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Phase and group velocities}
+\label{sec:6-2_phase_group_velocity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In this section, we will investigate the speed at which a wave propagates.
+We will begin by considering how the speed of propagation for waves of single frequency before moving onto more complicated waves resulting from interference of multiple waves.
 
+First, let's consider a single wave of a single frequency propagating through space and ask the question: at what speed does this wave travel?
+We saw in the previous section that we can write down such a wave as
+\begin{equation}
+    E = E_{0} \sin (\omega t-k x-\phi),
+\end{equation}
+where the phase at a particular point in time $t$ and space $x$ is $\theta(x,t)=\omega t-k x-\phi$.
+Since the wave is described by a single frequency, the speed of propagation of the wave is given by the speed of point of constant phase.
+How fast does this point of constant phase propagate?
+To answer this question we just need to differentiate the expression for phase with respect to time and set it equal to zero,
+\begin{equation}
+    \frac{d\theta(x,t)}{d t} = \omega - k \underbrace{\frac{dx}{dt}}_{= v_p} = 0, \longrightarrow v_p = \frac{\omega}{k}.
+    \label{eq:6-2_phase_velocity}
+\end{equation}
+We have defined a new quantity called the \textit{\textbf{phase velocity}} $v_p$.
 
-% graph, black dot
-\begin{figure}[H]
+\begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/black_dot.pdf}    
-        \caption{Phase velocity of a single wave.  The black point will propagate to the right at the velocity of the wave.}
-        \label{fig:black-dot}
+    \includegraphics[width=0.8\textwidth]{lesson6/6-2_phase_velocity.pdf}    
+        \caption[Phase velocity]{The black points represent points of same phase and are separated by the wavelength $\lambda$.}
+        \label{fig:6-2_phase_velocity}
 \end{figure}
 
-% t = 0 graph
-\begin{figure}[H]
+We can check that the expression for phase velocity in Eq.~(\ref{eq:6-2_phase_velocity}) makes sense in the following way.
+Consider two points on the wave with same phase as shown in Fig.~\ref{fig:6-2_phase_velocity}.
+These points are separated by a distance of exactly one wavelength $\lambda$.
+The time needed for the left black point to traverse this distance is one period $T$.
+Therefore the speed at which the wave moves is given by the ratio $\lambda / T$.
+The wavelength of the wave can be expressed in terms of the wave number, $\lambda = 2\pi / k$.
+Similarly, the period can be written in terms of the frequency, $T = 2\pi / \omega$.
+The speed of propagation can then be written as
+\begin{equation}
+    \frac{\frac{2\pi}{k}}{\frac{2\pi}{\omega}} = \frac{\omega}{k} = v_p,
+\end{equation}
+which is the phase velocity of Eq.~(\ref{eq:6-2_phase_velocity}).
+
+% Let's look at an example. We have a wave propagating at angular frequency $0.1$ and the wave number is $1$,
+% \begin{equation}
+% E=\sin (0.1 t-x).
+% \end{equation}
+% And then, as you can see, I marked one black point here (follow pointer), this is a point of constant phase and it's propagating through space like that.
+
+How is the speed of the wave affected when the wave itself is a superposition of multiple single-frequency waves?
+Let's take two waves, and this time we allow their angular frequencies to be different, but for simplicity assume the two waves to have same amplitude $E_0$,
+\begin{align}
+    E_1 & = E_0 \sin \left(\omega_1 t-k_1 x\right) \\
+    E_2 & = E_0 \sin \left(\omega_2 t-k_2 x\right).
+\end{align}
+The phase velocities of these waves are given according to Eq.~(\ref{eq:6-2_phase_velocity}),
+\begin{equation}
+    v_{p1} = \frac{\omega_1}{k_1}, \qquad v_{p2} = \frac{\omega_2}{k_2}.
+\end{equation}
+\begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/t=0.pdf}
-    \label{fig: 1}
-    
-        \caption{}
-    
+    \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_velocity.pdf}    
+        \caption[Group velocity]{Superposition of two sinusoidal waves. The fast oscillations are modulated by a slowly-varying envelope.}
+        \label{fig:6-2_superposition}
 \end{figure}
-
-% red square, black dot
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/vp_less_vg.pdf}
-    \label{fig: 1}
-    
-        \caption{A superposition with $v_p < v_g$.}
-    
-\end{figure}
-
-% vp = vg
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/vp_equal_vg.pdf}
-    \label{fig: 1}
-    
-        \caption{A superposition with $v_p = v_g$}
-    
-\end{figure}
-% vg < vp
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/vp_greater_vg.pdf}
-    \label{fig: 1}
-    
-        \caption{A superposition with $v_p > v_g$.}
-    
-\end{figure}
-
-% pulse
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/pulse.pdf}
-    \label{fig: 1}
-    
-        \caption{}
-    
-\end{figure}
-
-In this section, we will see what effect interference has on the speed with which waves propagate.
-
-First, let's consider a single wave of a single frequency propagating through space and ask the question: at what speed does this wave travel? We saw in the previous section that we can write down such a wave in the form
+Let's compute an expression for the superposition,
+\begin{align} 
+    E & = E_{1} + E_{2} \nonumber\\
+     & = E_{0}\left[\sin \left(\omega_{1} t-k_{1} x\right)+\sin \left(\omega_{2} t-k_{2} x\right)\right] \nonumber\\
+    & = 2 E_{0} \underbrace{\sin \left( \frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x \right)}_{\text{fast oscillations}} \underbrace{ \cos \left( \frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x \right)}_{\text{slow oscillations}}.
+\end{align}
+We see that he superposition can be split into two terms.
+The first captures the fast oscillations of the superposition at frequency $\omega_1+\omega_2$.
+These fast oscillations are pictured in blue in Fig.~\ref{fig:6-2_superposition}.
+Similarly to the case of a single-frequency wave we can ask the question at what speed a point of constant phase travels to obtain the \textit{\textbf{phase velocity}} for the superposition.
+This information is contained in the fast-oscillation term of Eq.~(\ref{eq:6-2_phase_velocity}),
 \begin{equation}
-E=E_{0} \sin (\omega t-k x-\phi)
+    v_p = \frac{\omega_1 + \omega_2}{k_1 + k_2}.
 \end{equation}
-where the phase at a particular point in time and space is $\theta=\omega t-k x-\phi$.  The wave velocity is given as the ratio of the wavelength $\lambda$, and its period $T$, $v = \frac{\lambda}{T}$. We saw in the previous section that $\lambda$ is related to the wave number $k$ as follows: $\lambda = \frac{2\pi}{k}$. And similarly, the period of oscillation capital $T$ is related to $\omega$, the angular frequency, $T = \frac{2\pi}{\omega}$. Substituting for $\lambda$ and substituting for $T$, we can obtain the expression for wave velocity in terms of $\omega$ and $k$, $v = \frac{\omega}{k}$. Let's look at an example. We have a wave propagating at angular frequency $0.1$ and the wave number is $1$,
+These fast oscillations are modulated by a slowly-varying envelope as seen in by the oranged dashed line in Fig.~\ref{fig:6-2_superposition}.
+This is captured by the second term in Eq.~(\ref{eq:6-2_phase_velocity}) and the frequency of these slow oscillations is $\omega_1-\omega_2$.
+This term also gives rise to \textit{\textbf{group velocity}},
 \begin{equation}
-E=\sin (0.1 t-x).
+    v_g = \frac{\omega_1 - \omega_2}{k_1 - k_2}.
 \end{equation}
-And then, as you can see, I marked one black point here (follow pointer), this is a point of constant phase and it's propagating through space like that.
-
-So now, what happens when we superpose two waves? At what velocity and what speed does the resultant superposition travel? Well, let's take two waves, and this time we allow their angular frequencies to be different, but for simplicity assume the two waves to have same amplitude $E_0$,
+It is the group velocity that tells us how fast the entire group travels.
+The phase and group velocities of a superposition are in general different.
+We can have scenarios where one is larger than the other but also when they are equal,
 \begin{equation}
-\begin{aligned}
-&E_{1}=E_{0} \sin \left(\omega_{1} t-k_{1} x\right) \\
-&E_{2}=E_{0} \sin \left(\omega_{2} t-k_{2} x\right).
-\end{aligned}
+    v_p > v_g, \quad v_p = v_g, \quad v_p < v_g.
 \end{equation}
+Real wavepackets and signals are rarely single-frequency waves but rather results of a superposition of a number of single-frequency components.
+When we talk about the speed of such a wave, we usually refer to the group velocity.
+It is also the group velocity that tells us how quickly a the signal carries information.
 
-When we add them together, we arrive at the expression
-\begin{equation}
-\begin{aligned}
-E =&E_{1}+E_{2} \\
-=&E_{0}\left[\sin \left(\omega_{1} t-k_{1} x\right)+\sin \left(\omega_{2} t-k_{2} x\right)\right] \\
-=&2 E_{0} \sin \left[\frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x\right] \\
-& \times \cos \left[\frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x\right]
-\end{aligned}
-\end{equation}
-
-\if0
-\begin{equation}
-E=2 E_{0} \sin \left[\frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x\right] \times \cos \left[\frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x\right]
-\end{equation}
-\fi
-
-%(see pointer): here both of them have some amplitude so we can just take out E naught out and write down the two waves in this form, and what we do next is we apply a trigonometric identity. 
-Applying a trigonometric identity allows us to write this superposition $E$ as a product of two wave signals. 
-%One is a sine signal and the other one is a cos signal.For the sine, the angular frequency is the following- (omega one plus omega two) over two, and the new wave number is (k1 plus k2) over two. And for the cos signal, we take the difference of the angular frequencies omega one and omega two, and the wave numbers k1 and k2. 
-Let's have a look at the shape of this superposition. We have these two terms (sine and cosine) that determine our superposition. If we only look at the sine, we see that it's oscillating at a much faster frequency, because here we are adding the angular velocities $\omega_1$ and $\omega_2$, and we are adding the wave numbers $k_1$ and $k_2$. Whereas the cosine term, we call that the slow oscillating term because the new angular frequency is dependent on the difference between $\omega_1$ and $\omega_2$, and the difference between $k_1$ and $k_2$. We define the \emph{phase velocity}\index{phase velocity} as the velocity of this fast oscillating term. Previously, we said that for a single wave it's just $\omega/k$, but here, we saw the new angular frequency and the new wave number for the fast oscillations, so $v_p$, the phase velocity, is
-\begin{equation}
-v_p = \frac{\omega_{1}+\omega_{2}}{k_{1}+k_{2}}.
-\end{equation}
-
-The \emph{group velocity}\index{group velocity} is defined in a similar way but for the slow oscillations. So $v_g$, which we use to denote group velocity, is
-\begin{equation}
-v_g = \frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}.
-\end{equation}
-%omega one minus omega two divided by k1 minus k2. So 
-From this you can immediately see that even though we have a single superposition, there are two notions of velocity, phase velocity and group velocity which are not necessarily the same, as we will see later in this section.
-
-
-Let's illustrate it with an example. We consider two waves $E_1$ and $E_2$,
-\begin{equation}
-\begin{aligned}
-&E_{1}=\sin (0.1 t-2.0 x) \\
-&E_{2}=\sin (0.2 t-2.1 x).
-\end{aligned}
-\end{equation}
-They have different angular frequencies. $E_1$ has angular frequency $\omega_1 = 0.1$, whereas $E_2$ has angular frequency $\omega_2 = 0.2$. They have different wave numbers, as well. $E_1$ has $k_1 = 2.0$, and $E_2$ has $k_2=2.1$. So, let's plot this initially at time equals to zero, and as we said, we expect the shape of the superposition to to be composed of two waves. One is this fast oscillating blue line, and on top of that we have this slowly varying \emph{envelope}\index{envelope}. Again, this blue fast oscillating term is given by the sine term from previous slides, and this orange dashed line gives us the envelope which is proportional to the cosine. 
+% Let's illustrate it with an example. We consider two waves $E_1$ and $E_2$,
+% \begin{equation}
+% \begin{aligned}
+% &E_{1}=\sin (0.1 t-2.0 x) \\
+% &E_{2}=\sin (0.2 t-2.1 x).
+% \end{aligned}
+% \end{equation}
+% They have different angular frequencies. $E_1$ has angular frequency $\omega_1 = 0.1$, whereas $E_2$ has angular frequency $\omega_2 = 0.2$. They have different wave numbers, as well. $E_1$ has $k_1 = 2.0$, and $E_2$ has $k_2=2.1$. So, let's plot this initially at time equals to zero, and as we said, we expect the shape of the superposition to to be composed of two waves. One is this fast oscillating blue line, and on top of that we have this slowly varying \emph{envelope}\index{envelope}. Again, this blue fast oscillating term is given by the sine term from previous slides, and this orange dashed line gives us the envelope which is proportional to the cosine. 
 % Now let's get things moving, and in time again it propagates through space.
 
-So now, let's actually compute what the phase and group velocities are for our example. We just substitute into our expressions,
-\rdv{Are these expressions backwards?}
-\begin{equation}
-\begin{gathered}
-v_{p}=\frac{\omega_{1}+\omega_{2}}{k_{1}+k_{2}}=\frac{0.3}{4.1} \approx 0.07 \\
-%v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 & 
-v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 
-\begin{array}{l}
-\end{array} \\
-v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
-\end{gathered}
-\end{equation}
+% So now, let's actually compute what the phase and group velocities are for our example. We just substitute into our expressions,
+% \rdv{Are these expressions backwards?}
+% \begin{equation}
+% \begin{gathered}
+% v_{p}=\frac{\omega_{1}+\omega_{2}}{k_{1}+k_{2}}=\frac{0.3}{4.1} \approx 0.07 \\
+% %v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 & 
+% v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 
+% \begin{array}{l}
+% \end{array} \\
+% v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
+% \end{gathered}
+% \end{equation}
 %so omega one plus omega two, we just add them together, so 0.1 plus 0.2 is 0.3. k1 plus k2, again we add them together, 2.0 plus 2.1 is 4.1. And this (v-p) is approximately 0.07 (zero point zero seven). For the group velocity, we do the same thing and we obtain that the group velocity is equal to one. 
-We can see that the group velocity in this case is larger than the phase velocity, and in fact it's about fourteen times larger.
+% We can see that the group velocity in this case is larger than the phase velocity, and in fact it's about fourteen times larger.
 
-Let's go back to our propagating wave, so you can see what actually happens to the points on our wave. The black dot oscillating up and down represents our phase velocity. This black point is moving through space with the phase velocity, so you can see that it's moving up and down quite a lot, but actually it's not propagating through space very much, because it's in this example equal to 0.07, whereas this red square that occasionally you can see at the top, that goes zooming- it's sitting on the envelope over there and it goes to zooming through space. That point represents the group velocity. Well you can't actually see that it's fourteen times faster but mathematically that's true. And as we said in this case that we picked the phase velocity is smaller than the group velocity. But this is not always the case.
+% Let's go back to our propagating wave, so you can see what actually happens to the points on our wave. The black dot oscillating up and down represents our phase velocity. This black point is moving through space with the phase velocity, so you can see that it's moving up and down quite a lot, but actually it's not propagating through space very much, because it's in this example equal to 0.07, whereas this red square that occasionally you can see at the top, that goes zooming- it's sitting on the envelope over there and it goes to zooming through space. That point represents the group velocity. Well you can't actually see that it's fourteen times faster but mathematically that's true. And as we said in this case that we picked the phase velocity is smaller than the group velocity. But this is not always the case.
 
-Let's look at this following example: we kept the same angular frequencies for the two waves, but we changed the wave numbers. Now E1 has k equal to zero point one and E2 has k equal to zero point two. Let's see what that looks like. As you can see, now the group velocity and the phase velocity are the same. The black point and the red square move at the same velocity.
+% Let's look at this following example: we kept the same angular frequencies for the two waves, but we changed the wave numbers. Now E1 has k equal to zero point one and E2 has k equal to zero point two. Let's see what that looks like. As you can see, now the group velocity and the phase velocity are the same. The black point and the red square move at the same velocity.
 
+% \begin{equation}
+% \begin{aligned}
+% &E_{1}=\sin (0.1 t-0.1 x) \\
+% &E_{2}=\sin (0.2 t-0.2 x)
+% \end{aligned}
+% \end{equation}
+
+% So far, we have looked at cases when both velocities are in the same direction. Now, let's look at a very peculiar case.
+
+% Again, we keep the angular frequencies fixed, but this time we change k1 to two point zero and k2 to one point five, and let's see what happens. You see that again, the black dot representing our phase velocity is moving in the positive x direction as was the case before, but on the other hand this red square is moving backwards, because the group velocity in this case is actually negative. So you can see that you can have a lot of fun with the group and phase velocities. there are many different scenarios depending on omega one and omega two and k1 and k2.
+
+
+% \begin{equation}
+% \begin{aligned}
+% &E_{1}=\sin (0.1 t-2.0 x) \\
+% &E_{2}=\sin (0.2 t-1.5 x)
+% \end{aligned}
+% \end{equation}
+
+% So far, we have been looking at superposition of only two waves. What happens if we consider superposition of more than two waves?
+
+\begin{figure}[t]
+   \centering
+    \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_many.pdf}    
+        \caption[Pulse]{Superposition of multiple sinusoidal waves given in Eq.~(\ref{eq:6-2_pulse}).}
+        \label{fig:6-2_pulse}
+\end{figure}
+We can consider the case where we interfere more than two single-frequency waves.
+Let's say we have a superposition of the following form,
 \begin{equation}
-\begin{aligned}
-&E_{1}=\sin (0.1 t-0.1 x) \\
-&E_{2}=\sin (0.2 t-0.2 x)
-\end{aligned}
+    E = E_0 [\sin(-2.0x) + \sin(-2.1x) + \ldots + \sin(-3.0x)].
+    \label{eq:6-2_pulse}
 \end{equation}
+We have assumed that we are looking at the superposition frozen in time at $t=0$, hence the simple form.
+The resultant superposition is pictured in Fig.~\ref{fig:6-2_pulse}.
+Unlike before, we can observe long regions where destructive interference results in almost no disturbance.
+Then the constructive interference kicks in and observe a short \textit{\textbf{pulse}}.
+It is these pulse that can be used to carry information at the group velocity of the superposition.
 
-So far, we have looked at cases when both velocities are in the same direction. Now, let's look at a very peculiar case.
 
-Again, we keep the angular frequencies fixed, but this time we change k1 to two point zero and k2 to one point five, and let's see what happens. You see that again, the black dot representing our phase velocity is moving in the positive x direction as was the case before, but on the other hand this red square is moving backwards, because the group velocity in this case is actually negative. So you can see that you can have a lot of fun with the group and phase velocities. there are many different scenarios depending on omega one and omega two and k1 and k2.
-
-
-\begin{equation}
-\begin{aligned}
-&E_{1}=\sin (0.1 t-2.0 x) \\
-&E_{2}=\sin (0.2 t-1.5 x)
-\end{aligned}
-\end{equation}
-
-So far, we have been looking at superposition of only two waves. What happens if we consider superposition of more than two waves?
-
-Let's consider a particular example where our superposition is given as a sum of some very simple waves. Here, we have frozen time and basically set t equals to zero, so we only have sine of minus kx, where this k vary from two to three in steps of zero point one. So really, what we have is a sum of sine of minus 2x, plus a sine of minus 2.1x, and so on until we reach the 11th term of sine minus 3x. And in fact, what we get is the following shape: what we call this shape is a "pulse". You can see that for most of x, the superposition is close to zero. There are some disturbances, there are some oscillations, but they're close to zero, and then suddenly constructive interference kicks in and you have this big pulse over there. And pulses are very important because using pulses, we can encode information so it's very important in communication theory.
-
-\begin{equation}
-\begin{aligned}
-E &=\sum_{k=2}^{3} \sin (-k x), \quad k \text { increasing in steps of } 0.1 \\
-&=\sin (-2.0 x)+\sin (-2.1 x)+\ldots+\sin (-3.0 x)
-\end{aligned}
-\end{equation}
 
 \section{Interference with single photons}
 
@@ -552,7 +543,7 @@ Let's consider our initial state to be $\ket{1}$, meaning it enters our Mach-Zeh
 
 Now you see why we have called those previous transformations BS1 and BS2. They correspond to the mathematical description of how these beam splitters affect the probability amplitudes of our qubit~\footnote{In fact, the quantum mechanical description of a beam splitter always has to involve writing down the state of both of the input ports to the beam splitter; here, we are being a little loose with the description. BS2 in this figure shows the correct accounting for photons coming from above and below the beam splitter, but for BS1 we have ignored the fact that we need to count the number of photons coming in from both above and below it, as well.  In future courses in this sequence, you will see a more rigorous treatment.}. We proved before that if we first act on our qubit with beam splitter one, and subsequently with beam splitter two, then we know that if the initial state is in the bottom half, then the output state will always be found in the top half, meaning D0 detector always clicks, as in Fig.~\ref{fig:m-z-d0}. The situation is very similar to the previous section. Here, there is only a single photon found in the Mach-Zehnder Interferometer. A photon is a single unit. There's always just one and it can't be divided, yet somehow it knows that it has to interfere with itself and always goes towards detector D0.
 
-Now, let's do a simple test to better understand the behavior. Let's actually put some absorbing material and block the possibility of the photon going through the lower half of the Mach-Zehnder Interferometer, as in Fig.~\ref{fig:m-z-blocked}. What do we see? Well, the photon coming from below can get reflected at BS1. If it does get reflected, then it hits the block, gets absorbed and we don't get any clicks. However, if it gets transmitted at BS1, it bounces off the upper mirror and it is incident onto the second beam splitter, where again, it has an equal probability of being reflected or passing through the beam splitter. Therefore, it has a probability of being detected by both detector D0 and the detector D1. So what we have effectively done by blocking this path of photon in the bottom of the Mach-Zehnder Interferometer is we have prevented interference from taking place at BS2. That is why we see both possibilities D0 and D1.
+Now, let's do a simple test to better understand the behavior. Let's actually put some absorbing material and block the possibility of the photon going through the lower half of the Mach-Zehnder Interferometer, as in Fig.~\ref{fig:m-z-blocked}. What do we see? Well, the photon coming from below can get reflected at BS1. If it does get reflected, then it hits the block, gets absorbed and we don't get any clicks. However, if it gets transmitted at BS1, it bounces off the upper mirror and it is incident onto the second beam splitter, where again, it has an equal probability of being reflected or passing through the beam splitter. Therefore, it has a probability of being detected by both detector D0 and the detector D1. Effectively, by blocking this path of photon in the bottom of the Mach-Zehnder Interferometer, we have prevented interference from taking place at BS2. That is why we see both possibilities D0 and D1.
 
 \if0
 \begin{equation}

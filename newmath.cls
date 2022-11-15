@@ -1114,11 +1114,19 @@ chapendnote\the\endnotenum\string\endcsname{%
 
 {\vrule height 108pt width0pt\authorfont \theauthor}
 
+%\vfill\imprintfont
+% The MIT Press\\
+% Cambridge, Massachusetts\\
+% London, England
+%}
+
 \vfill\imprintfont
- The MIT Press\\
- Cambridge, Massachusetts\\
- London, England
-}}
+ Released by \\
+ the AQUA Group\\
+ Keio University Shonan Fujisawa Campus\\
+ Fujisawa, Japan
+}
+}
 
 \long\def\copyrightpage{%
 \newpage\thispagestyle{empty}\bgroup\parindent=0pt \parskip=18pt

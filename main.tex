@@ -9,7 +9,7 @@
 
 \documentclass[6x9]{newmath}
 \usepackage[utf8]{inputenc}
-\usepackage{braket}
+%\usepackage{braket}
 \usepackage{amssymb}
 \usepackage[
 type={CC},
@@ -23,11 +23,11 @@ version={4.0},
 %
 % Inner products bras kets etc 
 %
-%\newcommand{\bra}[1]{%  dirac 'bra'
-%    \ensuremath{\left\langle #1 \right|}\xspace}
+\newcommand{\bra}[1]{%  dirac 'bra'
+    \ensuremath{\left\langle #1 \right|}\xspace}
 
-%\newcommand{\ket}[1]{%  dirac 'ket'
-%    \ensuremath{\left|  #1 \right\rangle}\xspace}
+\newcommand{\ket}[1]{%  dirac 'ket'
+    \ensuremath{\left|  #1 \right\rangle}\xspace}
 
 \newcommand{\innp}[2]{%  dirac style inner product
     \ensuremath{\langle #1 \mid #2 \rangle}}
@@ -38,7 +38,7 @@ version={4.0},
 \newcommand{\norm}[1]{% define command to get spacing right
         \ensuremath{\left| #1 \right| }}
 
-%\newcommand{\braket}[2]{\ensuremath{\langle #1|#2 \rangle}}
+\newcommand{\braket}[2]{\ensuremath{\langle #1|#2 \rangle}}
 \newcommand{\ketbra}[2]{\ensuremath{|#1 \rangle \langle #2|}}
 \newcommand{\ro}[1]{\ensuremath{|#1 \rangle \langle #1|}}
 \newcommand{\av}[1]{\ensuremath{\langle #1 \rangle}}
@@ -105,7 +105,7 @@ version={4.0},
 \title{Overview of Quantum Communications}
 \subtitle{Online Lecture Notes}
 % \edition{First Edition}
-\edition{This is not an official edition, but is instead a temporary facsicle made available only for the Workshop for Quantum Repeaters and Networks Tutorial, "Quantum Networks from Scratch", August 2022. It is very, very far from complete or even ready for human consumption. Also, it is not really MIT Press, we are just building off of their \LaTeX template.}
+\edition{This is not an official edition, but is instead a temporary facsicle made available only for review purposes on \today. It is very, very far from complete or even ready for human consumption. So far, Chapters 1-4, 6 and 8 are ready for reading and feedback. Also, the book is not being published by MIT Press, we are just building off of their \LaTeX template.}
 \author{Michal Hajdu\v{s}ek and Rodney Van Meter}
 
 \begin{document}
@@ -193,7 +193,7 @@ Keio University
 
 \part{Fundamentals of Optics}
 \input{intro-block-2}
-\input{light-single-photons}
+\input{L5_coherent_light_single_photons}
 \input{interference}
 \input{waveguides}
 
