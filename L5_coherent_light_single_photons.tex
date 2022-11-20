@@ -1,45 +1,235 @@
 \chapter{Coherent Light and Single Photons}
+\label{sec:5_coherent_light_single_photons}
+
+In this Lesson, we will look at why light is such an integral part of modern day communication.
+We will discuss the difference between coherent and incoherent light, and outline the basic principle behind producing coherent light using lasers.
+Finally, we will transition to talking about light in the context of quantum communication that relies on single photons as information carriers.
 
 \section{Introduction}
+\label{sec:5-1_intoduction}
 
-%Hi, and welcome to Lesson Five, "Coherent Light and Single Photons". This is the first lesson in the series called "Fundamentals of Quantum Optics".
+Why do we want to encode information as optical signals?
+Light is a very good carrier of information because it is incredibly \textit{\textbf{fast}}.
+Table~\ref{tab:5-1_speed_light} summarizes the speed of light in various media.
+\begin{table}[b!]
+    \centering
+    \begin{tabular}{c|c|c}
+        vacuum & $c$ & $2.998\times10^{8} \; \text{ms}^{-1}$  \\
+        \hline
+        air & $c/1.0003$ & $2.998\times10^{8} \; \text{ms}^{-1}$  \\
+        \hline
+        silica fiber & $c/1.47$ & $2.039\times10^{8} \; \text{ms}^{-1}$
+    \end{tabular}
+    \caption[Speed of light]{Speed of light in various media.}
+    \label{tab:5-1_speed_light}
+\end{table}
+In vacuum, the speed of light by $c=2.998\times 10^8$ $\text{ms}^{-1}$.
+We do not send light through vacuum most of the time.
+However, even in air the light slows by only a factor of 1.0003.
+Most often, we use fiber optic cables made from pure silica glass with refractive index of 1.47.
+This decreases the speed of light somewhat but still remains very fast.
 
-%Step One, "Introduction". 
+Apart from being fast, light is also relatively \textit{\textbf{easy to produce}}.
+Even in the early days, a reliable source of light was fire.
+We saw an example of this when we learnt about optical telegraphy used for rapid communication on the Great Wall of China in Lesson~\ref{sec:1_Introduction}.
+Today, we mainly use lasers and send the optical signals through fibers.
+Due to their ability to produce highly coherent light, lasers had a transformative impact not only on the way we communicate but on many other aspects of our lives. 
 
-Why do we want to encode information as optical signals? Well, for one, light is a very good carrier of information because it's fast. How fast exactly? In vacuum we denote the speed of light by c and it's given by 2.997 times 10 to the 8th meters per second. However, we don't send light through vacuum. When we communicate, we can send it through air, where the light slows down by a factor of 1.0003 so really that doesn't limit the speed of light that much and it's still given by the same number virtually. Or, we can send light through optical fibers. These are pieces of glass where the speed of light  decreases by a factor of 1.467, which results in 2.045 times 10 to the 8 meters per second, so that's still very very fast. Apart from being fast, light is also relatively easy to produce. In the early days, if you wanted light you could just light the fire. Nowadays, of course, we just use lasers and send those laser signals down optical fibers. And also light does not interact with other things that easily, and therefore it is robust to noise. For example, if you compare it with copper wires where each copper wire is carrying electrons, electric signals, these create electric fields and magnetic fields that affect other wires which are carrying some other signals and therefore introduce noise, whereas this is not the case in optical fibers and you can generally pack these fibers very compactly to one in one each other and without affecting any of the messages.
+The third reason why light is so useful in communication is that photons do not interact easily with each other.
+Once in flight, photons will continue speeding to their destination nearly unaffected.
+This makes optical signals \textit{\textbf{robust to noise}}.
+Compare this with copper wires carrying electric signals.
+The moving electrons are susceptible to external electric and magnetic noise and require thorough shielding to protect the integrity of the signal.
+Furthermore, the moving electrons themselves produce electromagnetic fields which may affect other nearby carriers of electric signals.
+This means that copper wires cannot be packed too closely to each other.
+In contrast, this is not the case for optical fibers.
 
-So, optics has always played an important role in communication. We saw a couple of examples of that already in the Great Wall of China and Napoleon's semaphore where we are basically sending optical signals to communicate some things. However, these methods were limited in the sense that you had to have a direct visual path between the sender and the receiver and also you needed good weather conditions and they usually worked only in the daylight. Then we learned how to control light and actually guide it through waveguides known as optical fibers and all of these previous requirements disappeared and this sparked an expansion in how quickly and how far we can communicate. This is a map of the main optical fibers that go across the seas and oceans, so submarine optical fibers, and you can see how many there are connecting all the continents, basically allowing us to communicate from one side of the world to the other within a matter of milliseconds.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson5/5-1_underwater_cable_map.png}
+    \caption[Underwater cabel map]{Map of submarine cables.}
+    \label{fig:5-1_underwater_cable_map}
+\end{figure}
 
-So in this lesson, we're going to be concerned with how to produce light and in particular we will look at three types of light. We will begin with incoherent light. So, this is light that can be produced by burning fuel or heating gas and it's called incoherent because it doesn't have any coherence in it and we will explain exactly what this means. It's very easy to produce, which is why it has played a very important historical role as we have discussed already. This type of light is known as a classical state of light, so it doesn't manifest any quantum behavior. We will then move on to coherent light produced by lasers and the main mechanism behind producing this light is known as stimulated emission, which we will discuss in the next couple of steps. This light is coherent. It's also relatively easy to produce, which sparked the first information revolution, but again it's still just a classical state of light and we will explain exactly why that is. And lastly, we will conclude this lesson by looking at single photon sources. We will look at three main ways of producing single photons: by attenuating laser light; we will consider another scheme known as heralded photons; and then also we will look at a particular physical system known as nitrogen vacancy centers in diamond, which are among many other things good sources of single photons. Compared to the previous two types of light, single photons are very difficult to make. They can be only made under very, very stringent requirements in laboratories, but they can display quantum behavior which is why they are crucial in quantum communication.
+Optics has always played an important role in communication.
+We saw a couple of examples of that already in the Great Wall of China and Napoleon's semaphore in Lesson~\ref{sec:1_Introduction}.
+These methods were limited in the sense that you had to have a direct visual path between the sender and the receiver, you needed good weather conditions, and in the case of Napoleon's semaphore, it only worked during the day.
+\textit{\textbf{Waveguides}} circumvent all these problems.
+Use of electric wires and optical fibers sparked a rapid expansion in our ability to communicate fast and far.
+Figure~\ref{fig:5-1_underwater_cable_map} shows a map of submarine cables \footnote{This map was obtained from TeleGeography at \href{https://www.submarinecablemap.com/}{https://www.submarinecablemap.com/} under the \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0} license.}, connecting the continents.
+It is these cables that allow seamless global communication at incredible speeds.
+
+In this lesson, we are going to be concerned with how to produce three types of light.
+We will begin with \textit{\textbf{incoherent light}}.
+This is light that can be produced by burning fuel or heating a gas.
+We will explain in what sense is this light incoherent and what it means in Section~\ref{sec:5-2_coherent_vs_incoherent}.
+Incoherent light is very easy to produce, which is why it played an important historical role as we have discussed already.
+This type of light is known as a classical state of light as it does not manifest any quantum behavior.
+
+We will compare incoherent light with \textit{\textbf{coherent light}} produced by lasers. The main mechanism behind producing this light is known as stimulated emission, which we will discuss in Sec.~\ref{sec:5-3_lasers1} and Sec.~\ref{sec:5-4_lasers2}.
+Lasers sparked the first information revolution and therefore play an important historical role.
+Despite its coherent nature, light produced by lasers is still not fully quantum. 
+Developments in laser technology over the last decades have led to great proliferation of available sources of coherent light.
+Lasers range from large and powerful ones found in high-tech laboratories to small pointer devices hanging from our keychains.
+
+We will conclude this lesson by looking at \textit{\textbf{single photon sources}} in Sec~\ref{sec:5-5_single_photons}.
+We will discuss three ways of producing single photons.
+The first one is by attenuation of laser light.
+the second method is by using heralded photons.
+The third way is to use genuine emitters of single photons, such as nitrogen vacancy centres in diamond.
+Compared to the previous two types of light, single photons are very difficult to make.
+They can be only produced under very stringent requirements in laboratories, but they can display quantum behavior which is why they are crucial in quantum communication.
+
 
 \section{Coherent vs incoherent light}
+\label{sec:5-2_coherent_vs_incoherent}
 
-%Step two: coherent versus incoherent light. 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{lesson5/5-2_spontaneous_emission.pdf}
+    \caption[Spontaneous emission]{A two-level atom is excited either thermally or radiatively. After some time it deexcites via spontaneous emission producing a photon of light.}
+    \label{fig:5-2_spontaneous_emission}
+\end{figure}
 
-How does matter radiate light? What are the sources of light? Let's consider a model of a simple two-level atom. We've got our ground state with energy Eg, and we've got an excited state with energy Ee, and this green circle denotes in which state the atom is found. So currently it's in the ground state. In order to make light, we want to excite the atom to its higher state. We can do this thermally, so we give the atom thermal energy, or we can do also do it with another photon, and if the energy of the photon is tuned just right so that it is equal to the energy difference between the energy of the excited state and the energy of the ground state, then the atom will become excited and move to a state of higher energy. When it's there we'll leave it alone for a while, and at random time it will spontaneously de-excite, jump back into the ground state, releasing its energy in the form of a photon. And the energy of this photon will be given by the energy difference between the excited state and the energy of the ground state. This process is known as spontaneous emission. As I said, it is spontaneous -- it happens at random time and we don't have much control exactly when it happens. 
-Now let's consider two such excited atoms. They're both sitting in their excited states, Ee and Ee, and if we wait some time one of them de-excites into its ground state and so does the other one and while this happens both of them give out light as we said, and this light is traveling in some random directions and also in some random phases. So the two photons that now we have two sources of light. The phases between these photons are different and so are the directions of travel. When this happens, we call such light incoherent light. Now you can ask yourself, what happens if we have many of these photons? Well, basically what you have is you've got a light bulb. So you've got some gas inside the light bulb and you've got a filament. If you turn on the switch, the electricity runs through the filament, it heats it up and starts giving off light. All those atoms inside the filament, they become excited, but this time the filament the atoms in the filament don't just have a simple two level structure. There are many different levels and as you give it thermal energy, atoms, they become excited to higher levels, some to slightly lower levels. So when they spontaneously emit, they give out light of different frequencies and again this light is traveling in all the possible directions and because the emissions happen at different times the light has different phases. So to conclude, incoherent light has different frequencies, it has different directions in which it is traveling, and it is out of phase so it has different phases. On the other hand, coherent light is the exact opposite of incoherent light. It is monochromatic, which means it only has a component of one frequency, it travels in the same direction, and as travels it is in phase.
+How does matter radiate light?
+Let's consider a model of a simple two-level atom as shown in Fig.~\ref{fig:5-2_spontaneous_emission}.
+The ground state has energy $E_g$ and the excited state has energy $E_e$.
+The state in of the atom is pictured by the blue circle.
+In order to produce light, the atom needs to first receive energy.
+One way to do that is through het.
+If this is the case, we say the atom becomes \textit{\textbf{thermally excited}}.
+Another way is to excite the atom with radiation.
+A different way of exciting the atom is to irradiate it with light of the right energy.
+The atom can absorb radiation of energy equal to the difference of energies between the excited and ground states, $E_p = E_e - E_g$.
+When this happens, we say the atoms has be \textit{\textbf{radiatively excited}}.
+After some time, the atom releases the stored energy in the form of a photon of light.
+This process happens without an external stimulus at a random time and is called \textit{\textbf{spontaneous emission}}.
 
-So the question now is what device outputs such a light? We saw a light bulb is a source of incoherent light, so what is the source of  coherent light? We're going to find it out in the next two steps.
+Let's consider two such excited atoms as shown in Fig.~\ref{fig:5-2_incoherent_emission}.
+After some time, both atoms undergo the process of spontaneous emission producing one photon each.
+The direction of emission is random and therefore different for both atoms.
+Furthermore, both photons have random and different phases.
+We call such light to be incoherent.
 
-\section{Lasers I}
+We can go one step further and consider a large amount of atoms emitting light.
+To be more specific, we can consider an incandescent light bulb.
+Here, a filament is heated up by an electric current running through it.
+This in turn excites the atoms in the filament which eventually undergo spontaneous emission producing a large amount of photons.
+Not only are these photons travelling in all possible directions and are out to phase, their energies are different as well.
+This is because the atoms in the filament have much more complicated energy level structure than our simple two-level model.
+In conclusion, incoherent light is composed of components with different energies travelling in different directions, each having a different phase.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson5/5-2_incoherent_emission.pdf}
+    \caption[Incoherent emission]{Caption}
+    \label{fig:5-2_incoherent_emission}
+\end{figure}
+
+The question that you might be asking yourself is what does it take to produce light the opposite is true.
+How can we make light where it has a single component of the same energy, travelling in the same direction and is of the same phase?
+We will answer this question in the next two sections.
+
+
+
+\section{Lasers I: Stimulated emission}
+\label{sec:5-3_lasers1}
 
 %Step three: lasers, one.
 
-In the previous step, we said that we are looking for the source of coherent light. To remind you, coherent light is in phase, it's monochromatic, and it travels in the same direction. So you may have guessed that this source is a laser, but what does laser stand for? It's an acronym for "light amplification by stimulated emission of radiation", so let's break down this title a little bit and see what it means. First, we will talk about stimulated emission. This is the physical process behind lasing. It's a new type of light-matter interaction, and it is responsible for producing coherent light. We will also see that in the process of producing this coherent light, the light itself gets amplified. This allows us to create very intense light, much more intense when compared to incandescent light sources. So let's review the three fundamental light matter interactions. We have already seen two of those. The first one, let's consider our again our two level atom which is in the excited state. After some time, we said that such an atom will de-excite. It will transition into its ground state and in the process of doing that it will give out energy in the form of a photon traveling in some random direction. This is a spontaneous emission. We have also seen how to excite an atom.
+In this step, we address the question that was raised at the end of the previous step.
+What are the basic ingredients to make coherent light.
+Such light is in-phase, monochromatic and travels in the same direction.
+Typical example of a source that produces light with these properties is the \textit{\textbf{laser}}.
+Laser stands for ``light amplification via stimulated emission of radiation''.
+Let's have a look at what these individual words mean.
 
-By having it interact with a photon tuned to the energy difference between the energies of the excited state and the ground state, such a photon can interact with an atom in its ground state. The atom then receives this energy, becomes excited and transitions to the excited state. This is known as stimulated absorption. The third fundamental light matter interaction is the following: we have the atom. It is sitting in the excited state, and this time a photon of the right frequency corresponding to the energy difference between the excited state and the ground state comes along and it stimulates the atom, and what can happen is that the atom transitions down to its ground state without absorbing the initial photon, of course. So the initial photon is there, but while the atom is transitioning from the excited state to the ground state it also has to give out energy and it does it in a form of another photon and this process is known as stimulated emission.
+We begin with \textit{\textbf{stimulated emission}}, which is the physical process behind lasing.
+We have encountered two of the three fundamental ways in which light interacts with matter, namely stimulated absorption and spontaneous emission, also shown in Fig.~\ref{fig:5-3_light_matter_interaction}.
+Stimulated absorption is when an atom, initially in the ground state interacts with an incoming photon. If the frequency of the photon is just right, the atom may absorb this photon, and the atom becomes excited.
+Spontaneous emission is when an initially excited atom emits a photon of light without any external stimulus.
+Stimulated emission on the other hand is when an initially excited atom interacts with an incoming photon.
+This causes the atom to emit a photon of light.
+But this time, the emitted photon of light has the same energy as the external photon, same phase and crucially it is emitted in the same direction.
+In other words, the two photons are coherent, and it is through the process of stimulated emission that coherent light can be produced.
 
-And these two photons, they have the same frequencies, they travel in the same direction, they are of the same phase, and on top of that they also have a same polarization. So these two photons are coherent with each other. Therefore stimulated emission produces coherent light.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.55\textwidth]{lesson5/5-3_three_interactions.pdf}
+    \caption[Light-matter interactions]{Three fundamental types of light-matter interactions.}
+    \label{fig:5-3_light_matter_interaction}
+\end{figure}
 
-And as you may have seen or understood from the previous slide, such a light also gets amplified. Why is that? Imagine that this green box represents our excited atom. So we have one excited atom that interacts with some incoming photon. And we saw that this scenario produces two photons. Now these two photons can separately interact with two more excited atoms. So after stimulated emission what we get is we've got four photons. So you see we've got this cascading effect where excited atoms are producing more and more photons which are coherent. However, there is one problem, and that's that not all of the atoms are usually found in the excited state. Getting an atom into an excited state is actually quite a difficult process. Getting all of them into an excited state is way more difficult. So let's do some basic accounting. Let's say that we've got an atom and then we've got one incoming photon. What can happen is that this photon completely ignores the atom, nothing happens. So we've got one photon in and we've got one photon out. Then we've got the other scenario where the atom is found in the ground state and it interacts with an incoming photon. And what happens through stimulated absorption the photon gets absorbed, atom gets excited, so there are no photons coming out. Or, we saw what can happen through the process of stimulated emission. If the atom is in the excited state the incoming photon stimulates the atom. It jumps, it transitions to the ground state, and we obtain two photons coming out. So let's look at the first first one. When no interaction occurs we've got one photon coming in, one photon coming out. The number of photons is conserved. If there is some interaction, like in these two cases, we've got two photons coming in and also we have two photons coming out, so again number of photons has not really changed.
+We can see from Fig.~\ref{fig:5-3_light_matter_interaction} that stimulated emission starts begins with a single photon and finishes with two coherent photons.
+This opens up the possibility of amplifying light, which brings us to the ``light amplification'' part of the laser.
+Imagine having a large number of atoms in the excited state.
+A single photon of light can stimulate the first atom to emit a photon.
+Both photons (the initial one and the newly emitted one) can now stimulate further atoms to emit triggering an cascade of emissions and producing a coherent beam of highly intense light. 
+However, there is one catch to the above scheme, and that's that not all of the atoms are usually found in the excited state.
+When left alone, the atoms are much more likely to be in the ground state.
+Getting all of them into an excited state is no easy task.
 
-Let's consider the following scenario. Let's start with all the atoms (in this case we have four of them) in the ground state. This capital Ng represents the number of photons [should be atoms] in the ground state and capital Ne represents the number of photons [should be atoms] in the excited state. And let's say that we've got some photon coming along. What can happen is that only stimulated absorption because all of the atoms are found in the ground state. So let's say that the second one becomes excited. It absorbs the photon and transitions to the excited state. So fine, now we've got three atoms in the ground state and one atom in the excited state. Then another photon comes along, again of the right frequency, and what can happen? Well, now we have two possibilities. One possibility is that the atom [should be photon] gets absorbed and excites one of the three remaining atoms, or it interacts with that one atom in the excited state and causes stimulated emission. But there's only one atom in the excited state and there are three atoms in the ground state, so it's far more likely that stimulated absorption occurs. So let's just say for the sake of concreteness that this is the case. So again stimulated absorption is more likely to occur so and let's say that the first atom gets excited. Now we've got equal number of atoms in the ground state as atoms in the excited state. So let's go on and consider another photon coming along. Now the probability that this photon will become absorbed or that it stimulates emission from one of the excited atoms is equal, because two atoms are in the ground state, two atoms are in the excited state. But let's say that this particular photon becomes absorbed. So what happens? One of the photons [should be atoms] from the ground state transitions into the excited state. And now you see that if another photon comes along, it is far more likely that actually it stimulates an emission from one of these three atoms in the excited state, because there's more of them. So this shows us that in order to have a good chance of stimulated emission, we require most of the atoms, or the majority of the atoms, to be in the excited state. So we write it down as follows. We require that Ne is larger than Ng. And this condition this situation is referred to as population inversion, and that's because we inverted the population from the ground state, where majority is in the excited state
 
-However, there's still one more obstacle. How do we actually achieve population inversion? Because consider this: if the majority of our atoms are in the ground state then it's far more likely to absorb the incoming photon so the Ne, the number of excited atoms, increases. On the other hand, if we already have population inversion, if we have the majority of the atoms in the excited state, then we are more likely to cause stimulated emission, which increases the number of photons in the ground state, meaning we are losing the atoms contributing towards the population inversion. So what tends to happen in a two-level system is that the system likes to pick some type of equilibrium where the number of excited states and the number of atoms in the ground state are approximately equal. So this is not exactly what we want. We are aiming to maintain our atoms in the excited state. We want population inversion. So how do we do it? And the answer to that we will find lies in abandoning our two level atomic friends and moving at least to a three-level atom. And we're going to explain exactly how that works in the next step.
+Let's do some simple accounting to see what happens to our lasing scheme if we do not assume that the atoms start in the excited state.
+The three possibilities when a photon is incident on an atom are compiled in the Table~\ref{tab:5-3_three_possibilities}.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+        Photons in & Atom & Photons out \\
+        \hline
+        1 & no interaction & 1 \\
+        \hline
+        1 & ground state & 0 \\
+        1 & excited state & 2 \\
+    \end{tabular}
+    \caption[Stimulated emission accounting]{Number of photons initially and after the process of stimulated emission between a single photon and single atom.}
+    \label{tab:5-3_three_possibilities}
+\end{table}
+The first possibility is the trivial one, the photon does not interact with the atom and nothing happens.
+The photon continues travelling past the atom and the atom remains in whatever state it was.
+This is represented by the first row of Table~\ref{tab:5-3_three_possibilities}.
+The second possibility is that the photons interacts with the atom while it is in the ground state.
+The atom absorbs the energy of the photon meaning the number of photons after the process drops to zero, as seen in the second row of Table~\ref{tab:5-3_three_possibilities}.
+The last possibility is that the photon interacts with an atom in the excited state, the atom is stimulated to emit a photon of light which is coherent, resulting in two coherent photons after the interaction as seen in the last row of Table~\ref{tab:5-3_three_possibilities}.
+We see that the average number of photons is conserved.
+We have three photons before the interaction and three photons after the interaction, meaning a single atom is not able to amplify light purely via stimulated emission.
 
-\section{Lasers II}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson5/5-3_population_inversion.pdf}
+    \caption[Population inversion]{Stimulated emission becomes likely only when most of the atoms are found in the excited state.}
+    \label{fig:5-3_population_inversion}
+\end{figure}
 
-%Step Four: Lasers - Two
+Therefore it makes sense to consider multiple atoms.
+Figure~\ref{fig:5-3_population_inversion} depicts four two level atoms.
+Number of atoms in the ground state is denoted by $N_g$, while $N_e$ is the number of excited atoms.
+All atoms are initially in the ground state, $N_g=4$.
+The only interaction that is possible for an incoming photon is to get absorbed by one of the atoms.
+At a later time $t_1$ there is a new incoming photon.
+This time $N_e=1$ and $N_g=3$, meaning both stimulated absorption and emission are possible.
+However, stimulated absorption is more likely because more atoms are in the ground state.
+Let's say that the photon is absorbed by one of the atoms in the ground state.
+At time $t_2$, when a new photon is incident on our group of atoms, both stimulated absorption and emission are equally likely since $N_e=N_g=2$.
+For the sake of this example, let's say that this photon is absorbed as well, bring the totally tally to $N_e=3$ and $N_g=1$.
+Finally, when another photon at time $t_3$ comes along, it has higher chance of stimulating an emission from one of the excited atoms.
+This example demonstrates that if we want to achieve light amplification, we require
+\begin{equation}
+    N_e > N_g.
+\end{equation}
+This condition is known as \textit{\textbf{population inversion}}.
+
+It seems that we now have a way of producing an intense and highly coherent light.
+There is however one final obstacle that needs to be overcome.
+We have seen in Fig.~\ref{fig:5-3_population_inversion} that if $N_g > N_e$, then the incoming photon is more likely to be absorbed and contribute to the population of the excited state.
+On the other hand, when $N_g < N_e$, then the incoming photon is more likely to stimulate an emission from one of the excited atoms, contributing to the population of the atoms in the ground state.
+This means that in the long-time limit, the population of atoms approaches an equal distribution where $N_g = N_e$.
+This means that population inversion is not possible to be achieved for an ensemble of two-level atoms.
+
+
+
+\section{Lasers II: Population inversion}
+\label{sec:5-4_lasers2}
 
 We said in the previous step that in order to create "population inversion", we require a three level atom. So, this is our new atom. It's got three levels and we rename the ground state to E1, the previous excited state was E, but now we're going to call it E2, and then there's another level of higher energy which we are going to call E3.
 
@@ -78,6 +268,7 @@ And we can see that if we plot the number of photons as a function of the pumpin
 And in the region where N-zero is less than k over G, our fixed point in terms of n is just zero. Always, we lose all of the photons from our gain medium. But once we increase the pumping strength past this threshold given by k over G, we see that the fixed point for n keeps increasing and is finite. So, in the region where N-zero is less than k over G, we basically have a light bulb. The only source of light that comes from our gain medium is incoherent light. On the other hand, if the pumping is strong enough and N-zero is larger than k over G, we have a laser.
 
 \section{Single photons}
+\label{sec:5-5_single_photons}
 
 %Step Five: Single Photons
 
