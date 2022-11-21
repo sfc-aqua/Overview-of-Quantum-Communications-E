@@ -288,20 +288,65 @@ Some of the photons emitted from the transition $E_2 \rightarrow E_1$ will be re
 These photons will move through the gain medium again where they will encounter a significant population in the middle level $E_2$.
 Now the atoms will decay through stimulated emission, producing coherent photons with the ones that were reflected by the mirrors.
 Each time the photons get reflected from the mirrors, they stimulate further emission from the lasing transition leading to very intense coherent light inside the optical cavity.
-In order to extract this light, one of the mirrors is only partially reflective and a portion of the coherent light is transmitted resulting in an intense and coherent beam of light outside .
+In order to extract this light, one of the mirrors is only partially reflective and a portion of the coherent light is transmitted resulting in an intense and coherent beam of light outside the optical cavity.
+Eventually, the number of photons inside the optical cavity reaches a steady state where the rate of production of new photons via stimulated emission balances the rate of loss of photons due to partially reflective mirror.
 
 Having learned about the fundamental working principles and basic construction of the laser, it is time to make our discussion a bit more quantitative.
 If the pump is weak, we cannot observe any lasing.
 once the rate at which the gain medium is pumped reaches a certain \textit{\textbf{threshold}}, lasing takes place.
-In the remainder of this section, we discuss a very simple model that captures this behavior.
+In the remainder of this section, we discuss a simplified nonlinear dynamical model that captures this behavior.
 
-The 
+The two variables of interest are the number of photons inside the optical cavity, denoted by $n(t)$, and the number of atoms in the state $E_2$, denoted by $N_2(t)$.
+We added explicit time dependence $t$ as we are interested how the two variables change in time.
+During the lasing process, the number of photons rapidly increases resulting in a large  positive rate of change of the number of photons, denoted by $\dot{n}(t)$.
+This rate of change is given by the following difference,
+\begin{equation}
+    \dot{n}(t) = \text{gain} - \text{loss}.
+    \label{eq:5-4_n_dot_basic}
+\end{equation}
+The gain represents processes that contribute to the number of photons $n(t)$.
+In our case, this captures the effect of stimulated emission.
+The amount of gain depends on both the number of photons $n(t)$ as well as the population of excited atoms $N_2(t)$.
+In the absence of either, the gain vanishes, therefore we can write
+\begin{equation}
+    \text{gain} = G n (t) N_2(t).
+    \label{eq:5-4_gain}
+\end{equation}
+We have introduce the gain coefficient $G>0$ which captures the strength of the pumping process.
+The loss represents photons escaping the optical cavity.
+More photons inside the optical cavity lead to larger loss term,
+\begin{equation}
+    \text{loss} = k n(t),
+    \label{eq:5-4_loss}
+\end{equation}
+where $k>0$ is the loss coefficient.
+Substituting Eqs.~(\ref{eq:5-4_gain}) and (\ref{eq:5-4_loss}) into Eq.~(\ref{eq:5-4_n_dot_basic}), we obtain
+\begin{equation}
+    \dot{n}(t) = G n(t) N_2(t) - k n(t).
+    \label{eq:5-4_n_dot_detailed}
+\end{equation}
 
-And the rate of change of photons inside the gain medium is given by the difference between some gain process and some loss process. So let's examine what's the gain. Well, the gain depends both, on the number of photons that are already in the gain medium, and on the number of excited atoms. If we don't have any photons, then we cannot cause any stimulated emission. If we don't have any excited atoms, again we don't get any stimulated emission. So we can model the gain term as follows- we've got some "G"- some proportionality constant, which we're just going to call the "gain coefficient", times the number of photons, times the number of excited atoms. Okay, how about the loss? Well as you saw, we lose photons by these photons escaping through the partially reflective mirror. So we can just model it simply as some coefficient "k", which we're going to refer as the "loss coefficient", times the number of photons that are already in the gain medium. If we don't have any photons we have nothing to lose. If we have more photons we are more likely to lose them.
+Next, we make the crucial observation that stimulated emission decreases the the population $N_2(t)$.
+The more photons present in the optical cavity the more likely that stimulated emission takes place.
+Equally importantly, we must realize that in the absence of lasing, the pump maintains a constant population $N_2(t) = N_0$.
+This allows us to write the population of excited atoms as
+\begin{equation}
+    N_2(t) = N_0 - \alpha n(t),
+    \label{eq:5-4_population}
+\end{equation}
+where $\alpha$ is the rate of stimulated emission.
+Substituting Eq.~(\ref{eq:5-4_population}) into Eq.~(\ref{eq:5-4_n_dot_detailed}) leads to our final expression for the rate of change of photons inside the optical cavity,
+\begin{equation}
+    \dot{n}(t) = (G N_0 - k) n(t) - \alpha G n^2(t).
+    \label{eq:5-4_n_dot_final}
+\end{equation}
 
-So, this is our model, that the rate of change of the photons inside the gain medium is given by these two terms- gain minus loss. And now comes the crucial bit- this capital N, the number of excited atoms, also depends on time, mainly the stimulated emission that happens decreases the number of excited atoms. And let's say that our pump has the ability to keep the number of excited atoms at some constant level "N-zero" if there is no lasing action, so if there is no stimulated emission happening, this is the number of excited atoms that we have due to the pumping process.
-
-So we can write down an equation for the number of excited atoms simply as: N-zero minus alpha-n, where this "alpha" is the rate of stimulated emission. So substituting everything back into the rate equation for the number of photons, we get the following non-linear dynamical process.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{lesson5/5-4_lasing.pdf}
+    \caption[Dynamical model of a laser]{Solutions to the dynamical model of a laser in Eq.~(\ref{eq:5-4_n_dot_final}).}
+    \label{fig:5-4_lasing}
+\end{figure}
 
 We've got this linear term "n", which depends depends on some combination of these parameters, and then we've got a non-linear term n-squared, which depends on alpha times g. And as you can see, all of our parameters are positive, therefore the graph of this "n-dot" is always a concave parabola. So let's consider one case and plot this graph. On this vertical axis we've got the rate of change, and on the horizontal axis we've got number of photons inside the gain medium. So if n-dot is positive, it means we are increasing the number of photons in the gain medium, and this happens when we have lasing. However, if n-dot is negative, it means that the number of photons is decreasing, there is no lasing, we are simply losing photons, and you can see that if N-zero is such that it is less than k over G, this first linear term in our n-dot equation is negative, and then what happens is our n-dot looks looks like that, and the little arrow on the horizontal axis means that it doesn't matter with how many photons you start in your gain medium. You will eventually lose all of them, meaning the fixed point of this process is at n equals to zero, so no matter how many photons you start, at the end of the day you will always lose your photons. And that's because the coefficient in front of the linear term is negative, but of course we can increase zero, we can just increase the pumping strength such that the coefficient of the linear term is positive, and that's the following scenario. And you see that now, we've got two fixed points- one is still at n equals to zero, but this time this fixed point is unstable, meaning if we have zero photons in the gain medium to start with, of course we will not see any lasing action, and we will remain at n equals zero. However if we just slightly perturb from this situation, if we increase the photon number just slightly, n-dot in that region is positive. It means that we are getting more photons, so we will move along the n-axis until we reach this black circle which is our new stable fixed point. On the other hand, if we start on the right of this fixed point, we start with more photons. We will lose some of them, but we will stop at this finite fixed point, meaning that in this regime when N-zero is larger than the ratio of k and G, we get lazing action.
 

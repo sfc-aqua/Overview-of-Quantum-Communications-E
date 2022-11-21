@@ -1,6 +1,6 @@
 \chapter{BB84: Single-photon QKD}
 
-This chapter introduces single-photon QKD, and particularly the first single-photon QKD protocol known as BB84.
+This chapter introduces single-photon QKD, and particularly the first single-photon QKD protocol known as BB84, named for Charles Bennett and Giles Brassard, who developed it in 1984.
 
 \section{Three phases of cryptographically secure communication}
 
@@ -35,29 +35,57 @@ A crucial point is that quantum computers can in principle break some computatio
 
 The bulk encryption mechanism can be AES, introduced in the last section, but the details are beyond the scope of this book. Or, we can encrypt one bit of message using one bit of key material.  One way to do this using an XOR operation.  If $m_i$ is the $i$th bit of the message, $k_i$ is the $i$th bit of the key, and $c_i$ is the $i$th bit of the ciphertext, or encrypted message, then $c_i = m_i \oplus k_i$.  This approach is known as \emph{one time pad}\index{one-time pad} or the \emph{Vernam cipher}\index{Vernam cipher}, and it is provably secure. It cannot be broken, provided that the key material is used only once. So, if Alice has a message of $n$ bits that she's trying to send to Bob, she requires a secret key that's at least $n$ bits long, and once she uses that private key to encrypt her message she cannot use it again. If she has some other thing to say to Bob, they require a completely new and fresh secret key to ensure security. So, it's not very efficient in the sense that it requires large amount of key bits, at least as many as the message itself.
 
-That's actually pretty good, but there is one remaining question if we want to use the one-time pad, and that's how we actually distribute this key.  Perhaps our hypothetical key generator is used only during Alice and Bob's face-to-face meeting.  But, we already know that that is impractical.  Our only alternative is to use the public channel available.  The classical public channel is subject to being recorded, as noted above, but a quantum channel offers unique properties that allow us to guarantee that no one is listening in.  We will see how this can be achieved in the next section.
+That's actually pretty good, but there is one remaining question if we want to use the one-time pad, and that's how we actually distribute this key.  Perhaps our hypothetical key generator is used only during Alice and Bob's face-to-face meeting.  But, we already know that that is impractical.  Our only alternative is to use the public channels available.  The classical public channel is subject to being recorded, as noted above, but a quantum channel, even if nominally public, offers unique properties that allow us to guarantee that no one is listening in.  We will see how this can be achieved in the next section.
 
 \section{BB84 Protocol}
+\label{sec:bb84-protocol}
 
-This protocol is a quantum protocol, therefore Alice and Bob can utilize a public quantum channel, as well as their public classical channel.
+BB84 is a quantum protocol.  Alice and Bob can utilize a public quantum channel, as well as their public classical channel.  Alice begins the protocol by generating two $n$-bit random strings. We're going to call the first $n$-bit string $a$.  We denote the bits $a_1$, $a_2$, up to $a_n$. The second bit string is $b$, with $b_1$, $b_2$, all the way up to $b_n$.  Then, Alice creates quantum states according to these bit strings.
 
-So here (on slide) we've got Alice and Bob again, and they can communicate over this public quantum channel. What Alice does to begin the protocol, is she generates two n-bit strings. We're going to call the first n-bit string "a", so there's n bits in her string a, we're going to denote them a1, a2, up to a-n, and the second bit string we're going to denote is "b", and there's b1, b2, all the way up to b-n.
+Alice uses one bit from each string $a$ and $b$ to create one qubit. She creates $n$ such qubits, and the whole state will be denoted by \ket{\psi}. If her bits $a_k = 0$ and $b_k = 0$, then she encodes the qubit $\ket{\psi_{00}} = \ket{0}$.  For different values of $a_k$ and $b_k$, she will encode a different qubit state.  More completely, she uses the values $a_k$ to determine the encoded bit and $b_k$ to determine the encoding basis, giving the states
+\begin{equation}
+\begin{array}{ll}
+\left|\psi_{00}\right\rangle=|0\rangle, & \left|\psi_{01}\right\rangle=|+\rangle \\
+\left|\psi_{10}\right\rangle=|1\rangle, & \left|\psi_{11}\right\rangle=|-\rangle
+\end{array}
+\end{equation}
+to make the complete qubit string
+\begin{equation}
+|\psi\rangle=\bigotimes_{k=1}^n\left|\psi_{a_k b_k}\right\rangle.
+\end{equation}
+We can see that the bit coming from the bit string $b$ determines the basis of Alice's encoding. If it's zero, she prepares the qubit in the $Z$ basis. If it's one, then she prepares the qubits in the $X$ basis. Then, $a_k$ chooses which state from the basis she prepares. If $a_k$ is zero, she prepares the $+1$ eigenstate, if it's one, she prepares the $-1$ eigenstate.
 
-And then what she does is she creates quantum states according to these bit strings as follows:
+Notice that these states are not orthogonal. For example, if we take the inner product between \ket{\psi_{00}} and \ket{\psi_{01}}, we see that they are not orthogonal, meaning that their inner product is non-zero,
+\begin{equation}
+\left\langle\psi_{00} \mid \psi_{01}\right\rangle=\frac{1}{\sqrt{2}} \ne 0.
+\end{equation}
+In this particular case, the inner product is $1/\sqrt{2}$. It will be the same if we take, for example, 
+$\braket{\psi_{10}}{\psi_{11}} \ne 0$. When the inner product is non-zero, it means that the two states are not perfectly distinguishable, and this is the crucial ingredient in this protocol. 
 
-For each two bits from a and b, she takes them and creates one qubit, and then she creates n such qubits and the whole state will be denoted by psi. So, if her qubits a-k and b-k are (in state) (zero zero), then she encodes this qubit, she prepares the qubit in the state zero. If a-k and b-k are (one zero), then she prepares state one. Similarly, if they are (zero one), she prepares state plus, and if they are (one one), she prepares the state minus. So, we can see that the bit coming from the bit string b, determines the basis of Alice's encoding. If it's zero, as we can see in both of these cases here and here (see pointer), she prepares the qubit in the z basis. If it's one, as we see in this case and in this case (psi 01, 11), then she prepares the qubits in the x basis. And a-k then chooses which state from the basis she prepares. If a is zero, she prepares the plus one eigenstate, if it's one, she prepares the minus one eigenstate.
+So what does it mean for two states to be non-distinguishable? Let's consider the case where we are measuring in the $Z$ basis, and we are given two states. Assume one state is \ket{0}, and the other state is \ket{1}. If this happens, we see that they are orthogonal, and we can perfectly distinguish them. So if we just keep measuring the incoming qubits, if the qubit is in zero, we will always get a $+1$ outcome. On the other hand, if the qubit is in one, we will always get a $-1$ outcome. With certainty, we can distinguish whether the incoming qubit is a zero or a one.
 
-Notice that these states are not orthogonal. For example, if we take the inner product between psi zero zero and psi zero one, like here, we see that they are not orthogonal, meaning that their inner product is non-zero. In this particular case, it's one over square root of two. Same if we take, for example, the state psi one zero and psi one one, again we will get that the inner product is non-zero. When this happens, when the inner product is non-zero, it means that the two states are not perfectly distinguishable, and this is crucial ingredient in this protocol. So what does it mean for two states to be non distinguishable? Let's consider the case where we are measuring in the z basis, and we are given two states. One state is the "zero state", and the other state is the "one state". If this happens, we see that they are orthogonal, it means we can perfectly distinguish them. So if we just keep measuring the incoming qubits, if the qubit is in zero, we will always get a plus one outcome. On the other hand, if the qubit is in one, we will always get minus one outcome. So with certainty, we can distinguish whether the incoming qubit is a zero or a one.
+The same thing applies if we are measuring in the $X$ basis, and we are given only \ket{+} or \ket{-}. If we keep measuring in $X$ and we are given the \ket{+} state, then the outcome will be always $+1$ with hundred percent probability. If on the other hand we are given the \ket{-} state, and we measured in the $X$ basis, we will get outcome $-1$ all the time. In this sense, we can distinguish plus and minus if we're measuring in the $X$ basis.
 
-Same thing applies if we are measuring in the x basis, and we are given only state plus or state minus, like here (follow pointer). If we keep measuring x and we get this state, then the outcome will be always plus one with hundred percent probability. If on the other hand we get a minus state, and we measured in the x (basis), we will get outcome minus one all the time. So in this sense, we can distinguish plus and minus if we're measuring in the x basis.
+On the other hand, let's say that we are given the states \ket{0} or \ket{+}, and we measure in the $Z$ basis. So if we measure the \ket{0} state, as above we always get the $+1$ outcome, that's fine. But if we measure the second state, the \ket{+} state, there's a fifty percent probability that we get the outcome $+1$ and fifty percent probability that we get the outcome $-1$.
 
-On the other hand, let's say that we are given this following states- zero or a plus, and we measure in the z basis. So if we measure the zero state like we said we always get the plus one outcome, that's fine. But if we measure the second state, the plus state, there's a fifty percent probability that we get the outcome plus one and fifty percent probability that we get the outcome minus one.
+So, if we are given a state \ket{0}, all is good, but if we are given the state \ket{+}, sometimes we will get a $+1$ and sometimes we will get a $-1$. If we get the $-1$ state, fine, we can say we know that this state is \ket{+}, but if we get the $+1$ outcome, we are unsure whether the state is a \ket{+} or whether it's a \ket{0}. In this sense, the states are non-distinguishable. We can do the same thing in the $X$ basis, and here the scenario is reversed. With certainty, we can say that we get a $+1$ outcome if we were given a \ket{+}, but if we were given a \ket{0}, sometimes it will be a $+1$ and sometimes a $-1$.
 
-So, if we get a state zero, all is good, but if we get the state plus, sometimes we will get a plus one and sometimes we will get a minus one. If we get the minus one state, fine, we can say we know that this state is plus, but if we get the plus one outcome, we are unsure whether the state is a plus or whether it's a zero. In this sense, the states are non-distinguishable. We can do the same thing in the x basis, and here the scenario is reversed. With certainty, we can say that we get plus one outcome here (yellow box RHS), but if we measure in the x basis and we receive the state zero, sometimes it will be a plus one and sometimes a minus one.
+Let's consider an example of the encoding, shown in Tab.~\ref{tab:bb84-example}. Let's say that Alice generates "string a", which is (zero one one zero one), and "string b" (one one zero zero one). So then, she starts encoding, she looks at the first bit in her string b, which is one, so she knows, "now I have to encode in the x basis", and the state that she prepares is a plus state because her first bit in the a-string is a zero. So, that's her first qubit that she prepares. The second qubit, she looks at the second bit in her string-b, which is again one, so again she knows she has to prepare a state from the x basis, and the state is given by this second bit in string-a, which is one, therefore she prepares the state minus, and then she goes on and on until she prepares all n-qubits.
 
-So let's consider an example of the encoding. Let's say that Alice generates "string a", which is (zero one one zero one), and "string b" (one one zero zero one). So then, she starts encoding, she looks at the first bit in her string b, which is one, so she knows, "now I have to encode in the x basis", and the state that she prepares is a plus state because her first bit in the a-string is a zero. So, that's her first qubit that she prepares. The second qubit, she looks at the second bit in her string-b, which is again one, so again she knows she has to prepare a state from the x basis, and the state is given by this second bit in string-a, which is one, therefore she prepares the state minus, and then she goes on and on until she prepares all n-qubits.
+\begin{table}
+\begin{tabular}{|c||c|c|c|c|c|}
+\hline $i$ & 1 & 2 & 3 & 4 & 5 \\
+\hline string $a$ & 0 & 1 & 1 & 0 & 1 \\
+string $b$ & 1 & 1 & 0 & 0 & 1 \\
+basis & $X$ & $X$ & $Z$ & $Z$ & $X$ \\
+Encoded qubits & $|+\rangle$ & $|-\rangle$ & $|1\rangle$ & $|0\rangle$ & $|-\rangle$ \\
+\hline
+\end{tabular}
+\caption[BB84 encoding example]{Alice encodes the qubits she sends, choosing a basis using a bit from $b$ and an eigenstate based on the corresponding bit from $a$.}
+\label{tab:bb84-example}
+\end{table}
 
-What she does then is she sends these qubits to Bob over the public quantum channel. Now, let's consider what Bob knows at this time. He actually doesn't know what these states are, because Alice did not share the secret string-b containing information about the preparation basis with anybody, she kept it secret. Therefore, all Bob knows is that he's receiving qubits and they can be any of the four possible states: zero, one, plus, minus. But, what he does, he goes on anyway and he creates his own random bit string which we are going to denote as b-prime. And again, because he's expecting n-qubits, he generates n-bits: b1 prime, b2 prime, all the way until b-n prime. And what he then does, he just measures in the basis given by this bit string.
+She sends these qubits to Bob over the public quantum channel. Now, let's consider what Bob knows at this time. He actually doesn't know what these states are, because Alice did not share the secret string-b containing information about the preparation basis with anybody, she kept it secret. Therefore, all Bob knows is that he's receiving qubits and they can be any of the four possible states: zero, one, plus, minus. But, what he does, he goes on anyway and he creates his own random bit string which we are going to denote as b-prime. And again, because he's expecting n-qubits, he generates n-bits: b1 prime, b2 prime, all the way until b-n prime. And what he then does, he just measures in the basis given by this bit string.
 
 So, similarly to Alice, if the bit "b-prime k" is zero, then he measures in the z basis, and if it's in one then he measures in the x basis. This allows him to generate his own random bit string which we will denote "a-prime". So if the outcome of the k-th measurement on the qubits is plus one, then he will assign zero to bit "a-prime k", if it's minus one, then he assigns a bit one to "a-prime k", and this way he generates his own "a-prime" random bit string. What then happens is that Alice and Bob, they share information with each other over a public classical channel. Alice shares her randomly generated bit string n, and Bob shares his randomly generated bit string b-prime.
 
@@ -87,7 +115,7 @@ So, if she measures in some basis, this has a chance to disturb the qubit.
 
 For example, if Alice prepares the qubit in the x basis, and Eve measures in the x basis, then we have seen that in such a scenario, there is no disturbance. The qubit is still projected onto the same state that it was prepared in, so it doesn't change the state of the qubit and it doesn't change the basis of the qubit. However, in the second case, let's say that Alice's preparation basis is "z", and Eve's measurement basis in is x, so the qubit originally prepared by Alice was either in a zero state or a one state. These are just two possible states in the z basis. But by measuring them in the x basis, Alice is now projecting onto the either plus state or a minus state. So, she disturbed both bases and the state. Similarly in this scenario here (follow pointer), where Alice prepares in the x basis and Eve measures in the z-basis. And this is the main principle how Eve will be detected by Alice and Bob.
 
-So, if she guesses wrong, if Eve guesses wrong, she will change the basis of the qubit.
+So, if Eve guesses wrong, she will change the basis of the qubit.
 
 So let's see what happens. Alice prepares her qubits, she starts sending them over the public quantum channel, Eve intercepts these qubits and she measures them in a random basis, and then she passes on these qubits to Bob. So, some of these qubits where she guesses correctly, so she measures in the preparation basis, they do not get disturbed. But some of these qubits, represented by these black qubits (see slide), they become disturbed. This is when Alice measures in a different basis than the preparation basis. Then, this gives Alice and Bob an opportunity to detect that there is an eavesdropper present. How does that happen?
 
@@ -101,19 +129,21 @@ Here it is (see slide): on the horizontal axis, we're plotting the length of the
 
 In the previous sections, we have seen how Alice and Bob can use quantum mechanics to discover an eavesdropper and generate a secret random key for secret communication. In this step, we will demonstrate that actually these things are not only in the realm of theoretical research, but also have been tested by building real networks.
 
-The very first network that was built was known as the DARPA QKD network, all the way back in 2004. This included ten nodes in a network, and it was built in the state of Massachusetts in the USA. It included different physical links, for example, you had a communication over free space, here you had a communication over a fiber. So this was unlike any of the previous experimental implementations where secure quantum communication in the form of a single photon-based QKD was done only on a point-to-point basis over a single link. This was the first network experiment demonstrating the viability of quantum key distribution.
+The very first network that was built was known as the DARPA QKD network, all the way back in 2004. This included ten nodes in a network, and it was built in the state of Massachusetts in the USA. It included different physical links, for example, you had a communication over free space, here you had a communication over a fiber. This was unlike any of the previous experimental implementations, where secure quantum communication in the form of a single photon-based QKD was done only on a point-to-point basis over a single link. This was the first network experiment demonstrating the viability of quantum key distribution.  This work was led by Chip Elliott of BBN, and included a version of the IPsec Internet protocol security suite adapted for QKD.  IPsec usually uses the canonical RSA or pre-shared secret for authentication, Diffie-Hellman for key establishment, and 3-DES or AES for bulk data encryption.  The Diffie-Hellman process was replaced with keys generated by QKD.
 
-The next experimental effort was in Europe known as the SECOQC QKD network. SECOQC stands for "Secure Communication based on Quantum Cryptography", and it was around the year 2008. It launched in Vienna, and it comprised of six nodes and eight links, and involved the layered architecture. And finally, there are many other experiments but one notable one was done in Tokyo around 2010, and it was known as the Tokyo QKD network. Here (follow pointer), you can see the physical map actually, which places in Tokyo were connected. You have Hongo campus here in Tokyo University, you've got Otemachi over there, and it reached all the way to NICT in Kogane, and the interesting part about this network that actually it was used for a quantum secure video conference which really demonstrated the viability of using quantum mechanics for securing communication in a network.
+The next experimental effort was in Europe, known as the SECOQC QKD network. SECOQC stands for "Secure Communication based on Quantum Cryptography", around the year 2008. It launched in Vienna, and it comprised six nodes and eight links. This project developed a layered architecture for the communication services. And finally, there are many other experiments but one notable one was done in Tokyo around 2010, known as the Tokyo QKD network. The University of Tokyo Hongo campus and a facility in Otemachi, a place in central Tokyo where many telecommunication providers converge over there, are only a few kilometers apart.  The network reached all the way to the National Institute of Information and Communications Technology (NICT) in Kogane, in the western Tokyo suburbs. The interesting part about this network is that actually it was used for a quantum secure video conference, which really demonstrated the viability of using quantum mechanics for securing communication in a network.
 
+\rdv{China?}
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
+\exer{Prove that an eavesdropper can retrieve at least some information if Alice reuses the one-time page key bits $c$ to encrypt two separate messages $m$ and $m'$.}
+
+\exer{In Sec.~\ref{sec:bb84-protocol}, we asserted that \ket{0} and \ket{+} are not orthogonal, and made statements about measurement probabilities without working through the mathematics.\
+\subexer{Prove that the states are not orthogonal.}
+\subexer{Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $Z$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.}
+\subexer{Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $X$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.}
+}
 
 
 \end{exercises}
