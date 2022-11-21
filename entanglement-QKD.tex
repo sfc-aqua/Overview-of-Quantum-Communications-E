@@ -6,7 +6,7 @@ Continuing with our study of Quantum Key Distribution (QKD), in this chapter we 
 
 % Step One: Introduction
 
-In the previous lesson, we learned about the BB84 single photon-based quantum key distribution protocol. However, that's not the end of the story for QKD.  In fact, in this book we are more concerned with entanglement-based services than single-photon states.  Before we get into the \emph{how} of entanglement-based QKD, let's look at one reason \emph{why}, beginning with a little review of BB84.
+In the previous chapter, we learned about the BB84 single photon-based quantum key distribution protocol. However, that's not the end of the story for QKD.  In fact, in this book we are more concerned with entanglement-based services than single-photon states.  Before we get into the \emph{how} of entanglement-based QKD, let's look at one reason \emph{why}, beginning with a little review of BB84.
 
 In BB84, Alice and Bob use a public quantum channel to establish a secret key.  Alice prepares qubits in four different states at random. The states can be either \ket{0}, \ket{1}, \ket{+}, or \ket{-}. Then she transmits these states to Bob. Then Bob randomly measures them either in the $X$ or $Z$ basis. After the measurement is finished, Alice and Bob exchange information about the preparation bases and the measurement bases, and if these coincide, they keep results for those measurements, and that forms the basis for their secret key. If they dedicate a portion of the security key to eavesdropper detection, they can determine if anyone is listening in on the state thanks to the non-orthogonality of the original encoded qubit states.
 
@@ -358,7 +358,7 @@ Let's conclude this chapter by talking about some entanglement-based QKD experim
 
 A different, more recent experiment was done over a distance of hundreds of kilometers, but it was done in a lab and over optical fiber. The fiber was very long and it was wound around a spool in the lab.  Two distances were tested. The  first distance was 311 kilometers over standard fiber, and the other distance was 404 kilometers over an ultra-low loss fiber.  In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol, so if we wish to use this scheme in real life, we would actually have to add these functions, which would further drop the bit rate.
 
-Another fantastic experiment was performed with satellites, where the satellite actually distributed entangled pairs between two ground stations, and the ground stations were $1,120$ kilometers apart. Remember, we said that the light travels in a straight line, whereas using a satellite we can overcome the complication of curved earth's surface to establish a quantum key over much longer distances. So the total distance was over one thousand kilometers, and the measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation. The obtained bit rate was 0.12 bits per second. Now, one could ask the question what if we actually used a single fiber to connect these two ground stations? Well, the paper that reported these results estimated that that would have been around eleven orders of magnitude less efficient than using the satellites, which is quite incredible.
+Another fantastic experiment was performed with satellites, where the satellite actually distributed entangled pairs between two ground stations, and the ground stations were $1,120$ kilometers apart. Remember, we said that the light travels in a straight line, whereas using a satellite we can overcome the complication of curved earth's surface to establish a quantum key over much longer distances. So the total distance was over one thousand kilometers, and the measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation. The obtained bit rate was 0.12 bits per second. Now, one could ask the question what if we actually used a single fiber to connect these two ground stations? Well, the paper that reported these results estimated that that would have been around eleven orders of magnitude less efficient than using the satellites, which is quite incredible.  At the beginning of the chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{ch:long} and beyond.
 
 This concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems.
 
@@ -368,7 +368,7 @@ This concludes our discussion of quantum key distribution protocols as a key use
 In E91, Alice and Bob each have three choices of measurement basis, which they are expected to select randomly.  We described how six different pairs of choices are used to generate the secret key and to calculate the CHSH inequality to check for the presence of an eavesdropper.
 % A2B1, A3B1, A3B2 aren't mentioned.  A2B1 is orthogonal bases and should be just random. A3B1 and A3B2 are equivalent to two of the other measurements, and could be included in a CHSH calculation, with appropriate normalization.
 \subexer{
-In the explanation we neglected three choices of basis.  Which ones did we not mention, and why?  What should be done with the data collected when those bases are chosen?
+Sharp-eyed readers may have recognized that, in the explanation, we neglected three choices of basis.  Which ones did we not mention, and why?  What should be done with the data collected when those bases are chosen?
 }
 \subexer{Taking into account the answer to the prior question, what fraction of total measurements are dedicated to key generation, and what fraction to CHSH testing?}
 }
@@ -376,6 +376,10 @@ In the explanation we neglected three choices of basis.  Which ones did we not m
 \exer{We described E91 using \ket{\Psi+} Bell pairs.  Does anything change if we use a different kind of Bell pair?}
 
 \exer{Calculate the value of $\mathcal{S}$ for a CHSH inequality based on \rdv{add some data here, whether real or fake.  Maybe one real one each from an IBM machine and the QuTools?}.}
+
+\exer{If the success probability for transmitting a photon through $1,120$km of fiber is $10^{-14}$, determine the loss per kilometer, in dB.}
+
+\exer{On the Bloch sphere, the four basis choice angles for CHSH are 45\degree apart.  Derive an expression for the maximum $\mathcal{S}$ value as a function of that angle, assuming the four bases are all the same distance apart.  Prove that the canonical choice of 45\degree is optimal.}
 
 \end{exercises}
 
@@ -387,6 +391,10 @@ In the explanation we neglected three choices of basis.  Which ones did we not m
 
 \section*{Further reading for Lessons 8-10}
   \addcontentsline{toc}{section}{Further reading for Lessons 8-10}
+
+Anton Zeilinger, Alain Aspect and John Clauser were awarded the 2022 Nobel Prize in Physics for their experimental demonstrations of the existence of entanglement, with teleportation being referenced indirectly.
+
+A good, popular science treatment of the history of this area is \emph{The Age of Entanglement}, by Louisa Gilder.
 
 Lesson 8
 
@@ -400,6 +408,8 @@ An enlightening discussion of the BB84 protocol can be found in Chapter 12 of â€
 The original paper can be found here:
 
 Charles H. Bennett, Gilles Brassard, Quantum cryptography: Public key distribution and coin tossing, Theoretical Computer Science 560, 7 (2014).
+
+For a further discussion of classical cryptography aimed at those working in quantum computing, see the forthcoming paper "What Every Quantum Researcher and Engineer Should Know about Classical Cryptography", by Van Meter and Aono.  Portions of this paper are available on Van Meter's blog.
 
 Lesson 10
 

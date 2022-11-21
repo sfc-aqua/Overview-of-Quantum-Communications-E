@@ -231,29 +231,71 @@ This means that population inversion is not possible to be achieved for an ensem
 \section{Lasers II: Population inversion}
 \label{sec:5-4_lasers2}
 
-We said in the previous step that in order to create "population inversion", we require a three level atom. So, this is our new atom. It's got three levels and we rename the ground state to E1, the previous excited state was E, but now we're going to call it E2, and then there's another level of higher energy which we are going to call E3.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson5/5-4_three-level-atom.pdf}
+    \caption[Laser cycle]{Three-stage cycle consisting of pumping via stimulated absorption followed by a quick decay to the middle level via spontaneous emission. The cycle is completed by stimulated emission $E_2 \rightarrow E_1$ contributing to lasing.}
+    \label{fig:5-4_three_level_atom}
+\end{figure}
 
-And, this new introduced level is an unstable level, meaning that whenever we excite the atom to energy E3, then it quickly decays- it doesn't spend much time in this highest level, and this transition between E3 and E1 will be referred to as the "pumping transition".
+We said in the previous step that we cannot achieve population inversion with a simple two-level atom.
+Three-level atoms on the other hand are much more suitable for this task as we will learn in this step.
+Figure~\ref{fig:5-4_three_level_atom} shows an example of such a three-level atom and demonstrates the basic working principle of a laser.
+The ground state is labelled with $E_1$, the middle excited state with $E_2$, and the top excited level with $E_3$.
+We assume that the new level $E_3$ is \textit{\textbf{unstable}}, meaning that whenever the atom is excited to level $E_3$, it very quickly decays via spontaneous emission to the middle level $E_2$.
+We also assume that level $E_2$ is \textit{\textbf{metastable}}, meaning the atom does not quickly decay to the group state.
 
-And this transition between E2 and E1 is our original "lasing transition".
+Before addressing the issue of population inversion, let's have a look at the lasing cycle, which consists of the following three stages:
+\newline
+\textit{\textbf{1. Pumping:}}
+We assume that the atom is initially in the ground state $E_1$.
+The atom is then pumped to the excited level $E_3$ by a strong pump laser represented by the blue arrow in Fig.~\ref{fig:5-4_three_level_atom}.
+Provided that the energy levels $E_2$ and $E_3$ are well separated, the pump laser has small probability of exciting the atom to level $E_2$.
+\newline
+\textit{\textbf{2. Fast decay:}}
+Due to the instability of level $E_3$, the atom quickly decays to the middle level $E_2$ represented by the red arrow in Fig.~\ref{fig:5-4_three_level_atom}.
+We have learnt that photons produced via spontaneous emission travel in a random direction.
+These photons do not contribute to the amplification of light.
+\newline
+\textit{\textbf{3. Stimulated emission:}}
+Finally, a photon of energy $E_2-E_1$, interacts with the atom causing it to decay to the ground state via stimulated emission.
+The transition $E_2\rightarrow E_1$ is known as \textit{\textbf{lasing transition}}.
+Photons produced via this transition are the ones contributing to light amplification.
 
-So the goal is to create population inversion by exciting the atom to E2, but without actually affecting the lasing transition, meaning somehow we need to excite the atom to E2 without causing stimulated absorption between E1 and E2. So let's see how to do that. Consider a photon coming in that's tuned to the pumping transition's energy, so its energy is equal to the difference between E3 and E1. What that does it causes stimulated absorption of the ground state atom. It absorbs the energy of the photon and it gets excited to energy level E3. And at the same time, it does not affect the lasing transition at all, so the atom does not get excited from E1 to E2 purely because the photon- the blue photon that caused the stimulated absorption is tuned to the transition between E3 and E1. And as we said, the level E3 is unstable, so it quickly decays to level E2, and then once it's there it can interact with an incoming photon that's of the correct frequency given by the lasing transition, and as we saw what can happen is stimulated emission, and we obtain two photons of the same frequency, traveling in the same direction, and that are both in phase meaning that they are coherent. So this is the cycle. We are irradiating the photon by two light sources. One light source- this black one, is tuned to the lasing transition and it's responsible for causing the stimulated emission, and that's basically our laser light. And there is also this pumping photon coming in that's responsible for exciting the atom to E3 which then quickly decays to E2. So the pumping photon is responsible for creating a population inversion.
+This demonstrates why we need the pump.
+Its role is to make sure there are enough atoms in the middle level $E_2$.
+Now we see how population inversion can be achieved using three-level atoms.
+By using an intense pump, we decrease the population of the ground state $N_1$.
+The instability of level $E_3$ and relative stability of $E_2$ ensure that
+\begin{equation}
+    N_2 > N_1.
+\end{equation}
 
-%And that's what we said.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson5/5-4_laser construction.pdf}
+    \caption[Laser construction]{Basic construction of a laser.}
+    \label{fig:5-4_laser_construction}
+\end{figure}
 
-This is what we predicted. \rdv{? okay ?}
+Having described the basic working principle of a laser, let's see what are the main components of a laser.
+Figure~\ref{fig:5-4_laser_construction} depicts the basic construction of a laser.
+The \textit{\textbf{gain medium}} is the ensemble of our three-level atoms.
+Left to their devices, the atoms will mostly be found in the ground state.
+Turning on the pump will begin the lasing cycle.
+Initially, the excited atoms will decay via transitions $E_3 \rightarrow E_2 \rightarrow E_1$ through spontaneous emission and the produced photons will mostly be incoherent.
+Some of the photons emitted from the transition $E_2 \rightarrow E_1$ will be reflected by the mirrors and remain in the \textit{\textbf{optical cavity}}.
+These photons will move through the gain medium again where they will encounter a significant population in the middle level $E_2$.
+Now the atoms will decay through stimulated emission, producing coherent photons with the ones that were reflected by the mirrors.
+Each time the photons get reflected from the mirrors, they stimulate further emission from the lasing transition leading to very intense coherent light inside the optical cavity.
+In order to extract this light, one of the mirrors is only partially reflective and a portion of the coherent light is transmitted resulting in an intense and coherent beam of light outside .
 
-What we end up with is if we have many such three-level atoms, we end up in the situation where N2- so the number of atoms in the level E2, is larger than the number of atoms in level E1, and if the pumping rate is high enough then all of the atoms that are in the ground state, they are more likely to get pumped into E2 rather than absorbing the incoming black photons and getting excited to level E2.
+Having learned about the fundamental working principles and basic construction of the laser, it is time to make our discussion a bit more quantitative.
+If the pump is weak, we cannot observe any lasing.
+once the rate at which the gain medium is pumped reaches a certain \textit{\textbf{threshold}}, lasing takes place.
+In the remainder of this section, we discuss a very simple model that captures this behavior.
 
-So, now let's start to build our laser. All of these dots- they represent our three level atoms, and we're going to refer to this as a "gain medium". And a gain medium can be either solid, it can be a gas, or it can be a liquid. So without doing anything, most of the atoms are found in the ground state. Occasionally, some of them get excited and what happens is they decay via spontaneous emission, and they are giving out light in all directions. But, we want to obtain lasing action- we want all of the light to be coherent. So what we do- as we saw, we must create population inversion, and to do that we start pumping the medium represented by these blue arrows, so what that does it excites our atoms first to level E3, then it quickly decays to level E2.
-
-We, in fact, do get some stimulated emission, but still we are getting also some spontaneous emission, but most importantly the photons that we get via stimulated emission- they are escaping our gain medium. What we can do to prevent this is actually build mirrors from both sides. This will increase the number of photons inside the gain medium that will later be part of this cascading process of creating more and more coherent photons. So now we are pumping our gain medium, we've got 100 percent reflective mirrors on both sides, and what happens, in fact, we see lasing action inside the medium. The pumping creates population inversion and then the existing photons that are inside the gain medium stimulate emission on the lasing transition, creating more copies of those photons and again cascading into a lasing action.
-
-So, we created a laser. The only problem is- the light is confined within the gain medium, and somehow we need to get it out. So what we do- we take one of these mirrors and we make it partially reflective, and "partially" here means that it's 99 percent reflective. So what happens, the photons inside the gain medium, they've got some probability to actually escape out and they in fact do, and what we get is a nice, monochromatic, in-phase, traveling-in-the-same-direction light, and this is basically the basic principle of constructing a laser.
-
-And as we said, the output is coherent.
-
-So, we said that we have to pump our three-level atoms in the gain medium at some level, we have to pump it hard enough. So can we get some physical understanding where the threshold is? And for that, we will write down a very simple, a little bit naive model of how our laser works. Let's say that the number of photons in the gain medium is given by small "n", and that's a function of time (t), the number of excited atoms that we care about because they contribute towards the stimulated emission process, is denoted by capital "N", and that's also a function of time (t).
+The 
 
 And the rate of change of photons inside the gain medium is given by the difference between some gain process and some loss process. So let's examine what's the gain. Well, the gain depends both, on the number of photons that are already in the gain medium, and on the number of excited atoms. If we don't have any photons, then we cannot cause any stimulated emission. If we don't have any excited atoms, again we don't get any stimulated emission. So we can model the gain term as follows- we've got some "G"- some proportionality constant, which we're just going to call the "gain coefficient", times the number of photons, times the number of excited atoms. Okay, how about the loss? Well as you saw, we lose photons by these photons escaping through the partially reflective mirror. So we can just model it simply as some coefficient "k", which we're going to refer as the "loss coefficient", times the number of photons that are already in the gain medium. If we don't have any photons we have nothing to lose. If we have more photons we are more likely to lose them.
 
