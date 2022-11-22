@@ -348,18 +348,60 @@ Substituting Eq.~(\ref{eq:5-4_population}) into Eq.~(\ref{eq:5-4_n_dot_detailed}
     \label{fig:5-4_lasing}
 \end{figure}
 
-We've got this linear term "n", which depends depends on some combination of these parameters, and then we've got a non-linear term n-squared, which depends on alpha times g. And as you can see, all of our parameters are positive, therefore the graph of this "n-dot" is always a concave parabola. So let's consider one case and plot this graph. On this vertical axis we've got the rate of change, and on the horizontal axis we've got number of photons inside the gain medium. So if n-dot is positive, it means we are increasing the number of photons in the gain medium, and this happens when we have lasing. However, if n-dot is negative, it means that the number of photons is decreasing, there is no lasing, we are simply losing photons, and you can see that if N-zero is such that it is less than k over G, this first linear term in our n-dot equation is negative, and then what happens is our n-dot looks looks like that, and the little arrow on the horizontal axis means that it doesn't matter with how many photons you start in your gain medium. You will eventually lose all of them, meaning the fixed point of this process is at n equals to zero, so no matter how many photons you start, at the end of the day you will always lose your photons. And that's because the coefficient in front of the linear term is negative, but of course we can increase zero, we can just increase the pumping strength such that the coefficient of the linear term is positive, and that's the following scenario. And you see that now, we've got two fixed points- one is still at n equals to zero, but this time this fixed point is unstable, meaning if we have zero photons in the gain medium to start with, of course we will not see any lasing action, and we will remain at n equals zero. However if we just slightly perturb from this situation, if we increase the photon number just slightly, n-dot in that region is positive. It means that we are getting more photons, so we will move along the n-axis until we reach this black circle which is our new stable fixed point. On the other hand, if we start on the right of this fixed point, we start with more photons. We will lose some of them, but we will stop at this finite fixed point, meaning that in this regime when N-zero is larger than the ratio of k and G, we get lazing action.
+Eq.~(\ref{eq:5-4_n_dot_final}) is not easily solved analytically.
+And frankly, such a solution would not be very enlightening anyway.
+To gain better understanding of the dynamics between the number of photons in the optical cavity $n(t)$ and the number of excited atoms $N_2(t)$, we proceed by using graphical methods of analysis.
+We are interested in how the rate of change of the photon number $\dot{n}(t)$ changes as a function of $n(t)$ in different parameter regimes.
+We observe from Eq.~(\ref{eq:5-4_n_dot_final}) that when the gain is such that $G < k / N_0$, the right-hand-side of the equation is negative, $\dot{n}(t) < 0$, for any $n(t)$ because the number of photons can only be non-negative.
+This means that regardless of how many photons with start with, eventually they will all leak from the cavity and $n(t)$ will always tend to zero.
+The left panel of Fig.~\ref{fig:5-4_lasing} shows a plot of $\dot{n}(t)$ versus $n(t)$ in this weak-gain regime.
+We see that the rate of change of the photon number is indeed negative as predicted.
+The arrow on the horizontal axis represents the flow of $n(t)$ as time progresses.
+It always decreases and asymptotically approaches the stable \textit{\textbf{fixed point}} $n_{\infty} = 0$, where $\dot{n}(t) = 0$.
+There is no lasing when we are in this weak-gain regime.
 
-And we can see that if we plot the number of photons as a function of the pumping strength, which in our model corresponds to capital N-zero.
+Now let's look at the strong-gain regime when $G > k / N_0$.
+In this case, the right-hand-side of Eq.~(\ref{eq:5-4_n_dot_final}) may be positive as well as negative.
+This means that for some starting values of $n(t)$ the photon number will decrease.
+But for some starting values, $n(t)$ will increase as lasing will take place.
+The middle panel of Fig.~\ref{fig:5-4_lasing} depict this regime.
+This time, $\dot{n}(t) = 0$ has two solutions and therefore there are two fixed points.
+One of them is our old fixed point $n_{\infty} = 0$.
+Unlike before, this fixed point is now unstable, meaning that any small deviation from it will result in further increase of $n(t)$ which will flow towards a new stable fixed point at a finite value.
+The unstable fixed point is represented by an empty circle in Fig.~\ref{fig:5-4_lasing} while the stable fixed point is solid.
+We can observe amplification of the photon number which is a clear sign of lasing.
 
-And in the region where N-zero is less than k over G, our fixed point in terms of n is just zero. Always, we lose all of the photons from our gain medium. But once we increase the pumping strength past this threshold given by k over G, we see that the fixed point for n keeps increasing and is finite. So, in the region where N-zero is less than k over G, we basically have a light bulb. The only source of light that comes from our gain medium is incoherent light. On the other hand, if the pumping is strong enough and N-zero is larger than k over G, we have a laser.
+The last panel on the right of Fig.~\ref{fig:5-4_lasing} summarizes our analysis of Eq.~(\ref{eq:5-4_n_dot_final}) by plotting the fixed points $n_{\infty}$ and their stability.
+When $G < k / N_0$, there is only a single fixed point at $n_{\infty} = 0$.
+In this regime the atoms are weakly pumped and decay via spontaneous emission producing incoherent light, just like a light bulb.
+When $G > k / N_0$, two fixed points exist.
+The stable fixed point is represented by the solid while, while the unstable one is represented by the dashed line.
+It is in this regime where lasing takes place.
+
 
 \section{Single photons}
 \label{sec:5-5_single_photons}
 
-%Step Five: Single Photons
+Lasers are excellent sources of intense coherent light and are indispensable in modern fiber-optic communication.
+Pulses of laser light can be used to encode classical bits.
+Presence of a pulse can encode a 1 and absence of a pulse can encode a 0.
+Such encoding has a number of desired properties making it suitable for classical communication.
+It is robust against \textit{\textbf{attenuation}}.
+Due to the large number of photons constituting a single pulse, loss of a few of them along the fiber presents no issue, and the message remains legible to a decoder at the destination.
+Even if the pulse travels a large distance along the fiber and attenuation becomes a problem, the message can be read and \textit{\textbf{amplified}} along the way.
+Finally, producing these pulses of light is relatively easy and therefore \textit{\textbf{reliable}}.
 
-So we have seen how to generate light in an incoherent state. We have seen how to generate light in the coherence state. And satellite is very useful in classical communication. In particular, it uses- in order to encode zeros and ones in order to code classical bits, it uses large numbers of photons. So on a on a graph, where on the horizontal axis we've got time, and the number of photons on the vertical axis, all of these ones and zeros- these classical bits, here they are represented by some very, very large number. And this has a number of advantages. Number one- it's robust. Even if you lose some of the photons, it's no real big deal. Of course, eventually you will lose most of your photons and your signal will deteriorate, so then what you can do, you can just easily amplify and boost the signal back to its original strength. And also, it allows for quick and deterministic generation. However, such signals are not very useful because we cannot put them in a quantum superposition, and on top of that, because we also cannot entangle such signals between each other, and therefore it's not very useful for quantum communication. Our signals, in order to truly take advantage of quantum mechanics, have to be quantum as well, and for that we have to go beyond lasers and look at single photon sources.
+On the other hand, intense pulses of laser light cannot be put in a superposition and they cannot be entangled with other systems.
+This makes the above encoding scheme entirely unsuitable for quantum communication.
+In order to exploit the full toolbox of quantum mechanics, we have to use single photons.
+In this section, we outline the three basic methods of producing single photons.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{lesson5/5-5_single_photons.pdf}
+    \caption[Single photon sources]{Different approaches to creating single photons.}
+    \label{fig:5-5_single_photons}
+\end{figure}
 
 One way of generating single photons is by using attenuated light.
 
