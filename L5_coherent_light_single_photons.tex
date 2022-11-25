@@ -122,7 +122,7 @@ In conclusion, incoherent light is composed of components with different energie
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{lesson5/5-2_incoherent_emission.pdf}
-    \caption[Incoherent emission]{Caption}
+    \caption[Incoherent emission]{Two or more atoms emitting incoherently.}
     \label{fig:5-2_incoherent_emission}
 \end{figure}
 
@@ -391,7 +391,7 @@ Due to the large number of photons constituting a single pulse, loss of a few of
 Even if the pulse travels a large distance along the fiber and attenuation becomes a problem, the message can be read and \textit{\textbf{amplified}} along the way.
 Finally, producing these pulses of light is relatively easy and therefore \textit{\textbf{reliable}}.
 
-On the other hand, intense pulses of laser light cannot be put in a superposition and they cannot be entangled with other systems.
+On the other hand, intense pulses of laser light cannot be put in a quantum superposition and they cannot be entangled with other systems.
 This makes the above encoding scheme entirely unsuitable for quantum communication.
 In order to exploit the full toolbox of quantum mechanics, we have to use single photons.
 In this section, we outline the three basic methods of producing single photons.
@@ -403,19 +403,54 @@ In this section, we outline the three basic methods of producing single photons.
     \label{fig:5-5_single_photons}
 \end{figure}
 
-One way of generating single photons is by using attenuated light.
+The first method relies on gradual \textit{\textbf{attenuation of laser light}} as shown in
+the top panel of Fig.~\ref{fig:5-5_single_photons}.
+The intense laser pulse exiting the optical cavity is passed through a series of attenuator plates.
+Each plate transmits only a portion of the laser light and therefore decreases the pulses intensity.
+This process is repeated until the average energy of the pulse, $\lambda$, is less than that of a single photon.
 
-Consider the following scenario- you've got your laser source, and then you've got a bunch of attenuator plates over here represented by these bands. You turn on your laser, it starts at some intensity, but as it passes through the attenuators it loses its intensity until it's so faint that you truly get only single photons represented by these discrete dots over here after the last attenuator. And in principle, this works and we will use this in the next lesson when we look at interference between single photons. However, one big problem of this is that the arrival of these photons is random- it's given by Poissonian statistics, and in order to really be useful in quantum communication, we need something that's not random. So for the purpose of quantum communication, such a scheme is not very valuable and completely not practical. A different scheme that yields single photons is using some kind of heralding mechanism. For example, you can produce two photons, detect one which will also herald the presence of the other, and we already saw such a process in previous lessons, and to remind you it's called "spontaneous parametric down-conversion" (SPDC). So here, you've got some nonlinear crystal, you shine light of certain frequency at the crystal and that produces two photons as your output. Before we used it to produce entangled photons- they were entangled in their polarization. However, here what we can do, we can just detect one of the photons, and if we do then we know that the other photon is also present.
+This approach to producing single photons is conceptually simple but suffers from a number of serious issues.
+Firstly, this source of single photons is probabilistic.
+The number of photons contained in the pulse after the attenuation process follows a Poissonian distribution.
+If the average number of photons per pulse is $\lambda = 0.1$, then the probability of there being zero photons is 90.5\%, probability of a single photon is 9.1\%, and probability of two photons is 0.4\%.
+Most of the time, the pulse becomes completely attenuated and the process of generation of a single photons fails.
+There is also a finite probability that this method generates more than one photon, which is highly undesirable in quantum communication.
 
-And a couple of advantages of this heralded scheme is that these photons- they travel along a predetermined path, meaning if we detect a photon by our detector, if the detector goes click, then we know exactly where the other photon is traveling. Not only its presence, but also in which direction it's traveling. So it's very easy to couple it to some fiber and then send it off across our quantum network. And on top of that, the rarity of SPDC is actually an advantage. If you recall from previous lessons, this parametric down-conversion, this process, is actually very rare. At best, only we get one pair out of a million photons in state-of-the-art experiments. However here, in this context, that's actually a good thing. It guarantees that if our detector goes click, we've got very high probability that we truly have a single photon and not two or more photons. If SPDC process was more efficient, then it could happen that our detector goes click and here we've got just too many photons, which is not useful for quantum communication.
+The second issue is quite technical but very important, and has to do with something called the \textit{\textbf{second-order correlation function}} $g^{(2)}(\tau)$.
+The full derivation of this function is well beyond the scope of these lectures but we its meaning is not so complicated.
+The second-order correlation function $g^{(2)}(\tau)$ tells us how likely it is to detect two photons, one at time $t$, and the other one at time $t+\tau$.
+Particular case of interest in our discussion is when the time interval between the detection events vanishes, $\tau = 0$.
+For ideal single photons the second-order correlation function $g^{(2)}(0) = 0$.
+This is quite intuitive since we should not detect the same photon twice.
+We say that a single-photon source produces light which is \textit{\textbf{anti-bunched}}.
+For realistic sources, as long as $g^{(2)}(0) < 1$, we say the light is anti-bunched and possesses quantum properties.
+On the other hand, for classical light $g^{(2)}(0) \geq 1$, and when it is strictly larger than unity, we say the light is \textit{\textbf{bunched}}.
+Laser light is neither bunched not anti-bunched as $g^{(2)}(0)=1$.
+Since the single photons produced by attenuation started as a laser they are not anti-bunched.
+This is a problem because numerous protocols in quantum computation require anti-bunched light.
 
-However, this whole process is still random. Sometimes we get this pair of photons, and even if we get a pair of photons, we have to consider the inefficiencies in the detector. Sometimes it goes click when there isn't a photon. These are known as "dark counts". Sometimes there is a photon and the detector doesn't detect it. So what we are looking for is a single photon, nearly-deterministic source. And such schemes actually do exist.
+The second method of producing single photons is via \textit{\textbf{heralded spontaneous parametric down-conversion}} shown in the lower left panel of Fig.~\ref{fig:5-5_single_photons}.
+We have discussed the basics of SPDC in Section~\ref{sec:4-4_spdc} where we used it to produce entangled pairs of photons.
+Conversion of a single high energy photon into two photons of lower energy can be also used as a source of single photons by using the fact that the two produced photons have a well-defined direction of travel.
+We can detect one of these photons in order to herald presence of a single photon in the other mode.
+The high-energy photon is sometimes called the \textit{\textbf{pump}}, the low-energy photon that gets detected is the \textit{\textbf{signal}}, and the heralded photon is the \textit{\textbf{idler}}.
+This scheme is still probabilistic as the SPDC is a very rare process meaning we have to try many times before we produce a heralded single photon.
+In some cases this rarity can be an advantage because once we detect the signal photon we have a very high probability that the idler mode contains only a single photon.
+The properties of the detector also affect this scheme.
+Real detectors are not 100\% efficient, meaning sometimes a signal photon goes undetected.
+This might be annoying but really it just means that we need have to try the whole process again.
+More importantly, real detectors have a finite \textit{\textbf{dark count rate}}, meaning occasionally they register a detection event even in the absence of a signal photon.
+This ``heralds'' a non-existent idler photon and has a deleterious effect on any quantum communication protocol relying on single photons produced by this scheme.
 
-In particular, you can consider the following structure- again, it's a three-level structure with levels E1, E2, E3, and what you can do is you can excite the atom to level three, which again is short-lived as we saw in our discussion of lasers. It quickly decays to a long-lived level two, and in particular, this level two is long-lived enough such that the pulse that is used to excite to level E3 is finished. So there's a very clear separation between when the exciting pulse is finished and when the atom de-excites from level two to level one, emitting a photon, and it's this photon that is nearly deterministic due to the stability of level two.
-
-Do such materials exist that have this property? In fact, yes, and one example of such a material is known as nitrogen vacancy (NV) centers in diamond. This is a particular material that has many, many nice properties which are very useful in quantum information processing and in quantum communication, and we will come across it again and again. Basically, what it is is- you've got a crystal structure. These green dots- they represent carbon, and you knock one of the carbons out and you replace it with a nitrogen and you knock the other one, and you create a vacancy.
-
-And in particular, these systems have very long coherence times, so we will see them again when we talk about quantum communication protocols, and also quantum memories.
+The last approach to producing single photons is through \textit{\textbf{fluorescence}} of atoms and molecules.
+The idea is basically the same as the one we have been discussing throughout this Chapter.
+A physical system with discrete levels is first excited to a higher energy level and later transitions back to a lower energy level by emitting a single photon.
+However, the two- and three-level systems we have been using so far are simplifications of real physical systems.
+One promising source of single photons that is currently under intense research focus are \textit{\textbf{nitrogen-vacancy centers in diamond}}, shown in the lower right panel of Fig.~\ref{fig:5-5_single_photons}.
+The NV center consists of a nitrogen atom $N$ located next to a vacant site $V$ of a diamond lattice.
+This vacancy is used to trap an electron whose spin then acts as a qubit.
+The electron qubit can be manipulated optically, can retain its quantum properties even at room temperatures, and acts as an excellent source of single photons with nearly vanishing second-order correlation function $g^{(2)}(0)$.
+All these properties make NV centers in diamond very promising physical systems for quantum communication.
 
 
 \newpage
