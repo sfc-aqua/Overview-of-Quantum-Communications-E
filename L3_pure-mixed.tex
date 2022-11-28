@@ -65,7 +65,7 @@ Let's multiply the ket $|b\rangle$ from the right by the bra $\langle a|$,
     | b\rangle \langle a | = \begin{pmatrix} b_0 \\ b_1 \end{pmatrix} \begin{pmatrix} a_0^* & a_1^* \end{pmatrix} = \begin{pmatrix} a_0^*b_0 & a_1^*b_0 \\ a_0^*b_1 & a_1^*b_1 \end{pmatrix}.
 \end{equation}
 By changing the order of multiplication, we obtained a complex matrix.
-The above product of a ket with a bra is called an \textit{\textbf{outer product}} and it is used in describing measurements as well as noisy quantum states as we will discuss shortly.
+The above product of a ket with a bra is called an \textit{\textbf{outer product}} \index{outer product} and it is used in describing measurements as well as noisy quantum states as we will discuss shortly.
 
 Let's consider an example of a particular outer product, namely $|0\rangle\langle0|$.
 We have said that the outer product can be represented by a complex matrix.
@@ -360,7 +360,7 @@ On the other hand, when the state is mixed, purity is strictly less than 1.
     \label{tab:3-4_pure_vs_mixed}
 \end{table}
 
-This brings our discussion of the differences between pure and mixed states to en end.
+This brings our discussion of the differences between pure and mixed states to an end.
 Table~\ref{tab:3-4_pure_vs_mixed} provides a summary of the important points.
 
 
@@ -391,7 +391,7 @@ The fidelity is then
 \begin{equation}
     F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle = |\langle \psi|\psi \rangle|^2 = 1.
 \end{equation}
-On the other hand, when the real state $|\phi\rangle$ if pure but orthogonal to the target state,
+On the other hand, when the real state $|\phi\rangle$ is pure but orthogonal to the target state,
 \begin{equation}
     F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle = |\underbrace{\langle \psi|\phi \rangle}_{=0}|^2 = 0.
 \end{equation}
@@ -411,7 +411,7 @@ The fidelity can be computed as follows,
     & = \frac{1}{2}.
 \end{align}
 It is interesting to note that the fidelity does not vanish.
-We said that the maximally mixed state is where we have maximum uncertainty whether it is $|0\rangle$ or $|1\rangle$, yet the fidelity with a pure state only drops to a half.
+We said that the maximally mixed state is where we have maximum uncertainty whether it is \ket{0} or \ket{1}, yet the fidelity with a pure state only drops to a half.
 
 We can extend this example to two qubits and consider the fidelity between the pure target state $|00\rangle$ and the maximally mixed state $\rho = (|00\rangle\langle00|+|01\rangle\langle01|+|10\rangle\langle10|+|11\rangle\langle11|)/4$,
 \begin{align}

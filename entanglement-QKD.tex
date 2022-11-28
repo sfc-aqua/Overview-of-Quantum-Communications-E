@@ -210,8 +210,7 @@ which we are going to denote by this $\mathcal{S}$,
 This inequality is known 
 as the CHSH inequality.
 Any set of classical random variables $A$,
-$\bar{A}$, $B$, and $\bar{B}$, have to satisfy this constraint.
-\rdv{even if A and B are classically correlated?}
+$\bar{A}$, $B$, and $\bar{B}$, have to satisfy this constraint, even if A and B are classically correlated.
 
 Okay, that was the classical case. What happens 
 in the quantum case? We can consider $A$,
@@ -266,13 +265,12 @@ computing the expectation values, and in fact, we find that for a maximally enta
 \begin{equation}
 \begin{aligned}
 \mathcal{S} &= |\langle A B\rangle+\langle A \bar{B}\rangle+\langle\bar{A} B\rangle-\langle\bar{A} \bar{B}\rangle| \\
-&= | -0.64 -0.74 - 0.54 - 0.68 | \\
+&= | -0.64 -0.74 - 0.68 - 0.54 | \\
 &= 2.60 \geq 2,
 \end{aligned}
 \label{eq:chsh-example}
 \end{equation}
 giving us a strong CHSH inequality violation.  (This value of 2.60 is a little less than $2\sqrt{2}$; more about this in the next section.)
-\rdv{Michal, can you check the signs in the equations and the table?}
 
 % This example with all 16 values in the table and calculate the results isn't in the video. Original for the book.
 
@@ -285,11 +283,11 @@ giving us a strong CHSH inequality violation.  (This value of 2.60 is a little l
          \hline
         $AB$ & 0.1 & 0.08 & 0.4 & 0.42 & -0.64 \\
          $A\bar{B}$ & 0.04 & 0.09 & 0.43 & 0.44 & -0.74 \\
-        $\bar{A}\bar{B}$ & 0.12 & 0.04 & 0.44 & 0.44 & -0.68 \\
-         $\bar{A}B$ & 0.36 & 0.42 & 0.15 & 0.07 & 0.54 \\
+        $\bar{A}B$ & 0.12 & 0.04 & 0.44 & 0.44 & -0.68 \\
+         $\bar{A}\bar{B}$ & 0.36 & 0.42 & 0.15 & 0.07 & 0.54 \\
 \hline
 \end{tabular}
-    \caption{Calculation of the CHSH $\mathcal{S}$ value.}
+    \caption{Calculation of the CHSH $\mathcal{S}$ value. $P_{00}$ is the probability of getting the $+1$ eigenstate for both measurements when measuring in the basis in the left column, etc.  $\langle MN \rangle$ is the expectation value calculated using $\langle MN \rangle = \bra{\psi}M\otimes N\ket{B} = P_{00} + P_{11} - P_{01} - P_{10}$ where $M$ is either $A$ or $\bar{A}$ and $N$ is $B$ or $\bar{B}$, the bases in the left column.}
     \label{tab:chsh-calculation}
 \end{table}
 
@@ -339,6 +337,9 @@ They exchange the information about these bases and they look at the places wher
 %So in this case, it's over here. Here, Alice measures A1 and Bob measures B1, meaning both of them measured in the $Z$ basis. If they do that, as we saw, they get anti-correlated outcomes, which they can use to generate a correlated classical key. Over here, again, they measure in the $Z$ basis, and here they measure both in the rotated A3 B3 basis.
 
 Those two cases where Alice and Bob chose the same measurement basis take care of generating the key. In some other cases, they will not measure in bases that coincide, but that's all right. They don't discard these results, but instead  use them to compute the CHSH expression and check for a violation of the classical bound on the CHSH inequality. In particular, they look for scenarios where they chose $(A_1,B_3), (A_1,B_2), (A_2,B_2),$ or $(A_2,B_3)$.
+
+\rdv{Equation and figure from slide to be added here.}
+
 % So, visually it does correspond to Alice looking for cases where she measures in the $Z$ basis and in the $X$ basis, and Bob measures in this rotated bases B2 and B3, and then they use those measurement results to compute the following expression, which is just the sum of expectation values where Alice measured B1 and Bob measured B2, Alice measured A1 and Bob measured B3, and so on. 
 This way, they don't need to discard information as was done in BB84. They get to use the information to calculate either the secret correlated key or the CHSH violation. (See the exercises for more on this.) If they obtain a CHSH expression of less or equal to two, they say "okay, we cannot conclude whether or not we have an entangled state, but it's safer to just abort."  If they have a CHSH expression larger than two, then they conclude, "yes, we are sharing an entangled state, therefore we can proceed with the protocol." Remember, we said that monogamy of entanglement ensures that if they have an entangled state, then Eve cannot be not strongly correlated with either of them.  In particular, if Alice and Bob have a maximally entangled state, then Eve is not correlated with them at all, so they are looking for as strong a violation as they can get.
 

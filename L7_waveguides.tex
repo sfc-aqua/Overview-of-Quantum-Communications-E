@@ -8,14 +8,6 @@ We conclude this chapter by looking at the basic construction of optical fibers 
 \section{Brief history of guiding light}
 \label{sec:7-1_history}
 
-% EVEREST -> Everest
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{lesson7/everest.pdf}
-    \label{図: 1}
-    \caption{The disadvantage of direct transmission of light.}
-\end{figure}
-
 Light is an excellent information carrier.
 In previous chapters, we have focused mainly on light's speed and robustness to noise as the reasons that make it so suitable for communication.
 We have not really discussed another important property of light, namely that is travels in \textit{\textbf{straight lines}}.
@@ -26,8 +18,15 @@ Due to the curvature of the Earth, the range of direct transmission is limited.
 This range depends on the altitude at which the source of light as well as the receiver are found.
 In order to increase the range, both need be placed as high as possible.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{lesson7/7-1_everest.pdf}
+    \caption[Two Everests]{The disadvantage of direct transmission of light.}
+    \label{fig:7-1_everest}
+\end{figure}
+
 Let's perform a little thought experiment in order to get an intuition for the maximum distance the transmitter and receiver can be separated by before they lose direct line of sight due to the curvature of the Earth.
-Consider placing the light source at the highest point on Earth, the top of Mount Everest at 8849 meters above sea level.
+Consider placing the light source at the highest point on Earth, the top of Mount Everest at 8849 meters above sea level as shown in Fig.~\ref{fig:7-1_everest}.
 And let's say that there is another Mount Everest with the receiver placed at its top.
 How far the two mountains be such that they are just able to maintain direct line of sight, assuming there are no obstacles between them?
 With some basic trigonometry, the answer comes to a mere 672 kilometers.
@@ -38,128 +37,290 @@ Weather conditions are no concern anymore.
 Absorption is still an issue but not a fundamental obstacle as we will learn in Chapter \ref{sec:11_long-distance}.
 Before learning how optical fibers work, it is worth at some brief history of guiding light.
 
-One of the earliest 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.45\textwidth]{lesson7/7-1_tyndall.pdf}
+    \caption[Tyndall's experiment]{An early observation of light being guided by water pouring out of a bucket.}
+    \label{fig:7-1_tyndall}
+\end{figure}
 
-Let's see how it all began with John Tyndall's experiment. In 1870, he took a big bucket, filled it with water, and created a small hole on one side of the bucket at the bottom. He noticed that sunlight that was going into the water was also exiting through this opening in the bucket. But to his surprise, the sunlight not only came out the hole, but also followed the trail that was being taken by the water itself. The sun's rays did not just exit the water bucket in a straight line, but they were being guided by the water itself. So this was one of the first examples of actual fiber, where light was being reflected inside the fiber and guided, and not traveling just in a straight line.
+One of the earliest demonstrations of guiding light in a waveguide was in an experiment by John Tyndall in 1870.
+He filled a large vessel with water and let the water pour out from one of the sides.
+He observed that light entering the water vessel did not exit the bucket through the hole in a straight line.
+Remarkably, the light rays were guided by the water and seemingly followed the water's path.
+Tyndall noticed that the rays were being reflected at the boundary between the water and air, confining them to stay within the streaming water.
 
-Here's a brief historical outline of the journey that fiber optics have taken. It all began in 1870 with John Tyndall's experiment. From that point on, people were slowly investigating fiber optics and how to guide light, particularly in glass, but it was only really in 1960 with the invention of the laser when people truly realized the potential of using laser light coupled to fiber optics. They spent a lot of effort in researching how to do that, and in 1966 people managed to couple lasers with fiber optics. This really sparked the first information revolution (and was rewarded with a Nobel Prize in Physics for it). Just to give you some idea how far we've come, in 1970 it was possible to transmit about one percent of the original light over a distance of one kilometer, meaning that if you put in light of some power at the beginning, after one kilometer, you only had one hundredth of the original signal remaining. Twenty years later in 1990, it was possible to transmit ninety six percent (96\%) of the original power over the same distance of one kilometer.
+This observation made many researchers investigate fiber optics and how to guide light, particularly in glass.
+But it was only in 1960 with the invention of the laser when people truly realized the potential of using laser light coupled to fiber optics.
+They spent a lot of effort in researching how to do that, and in 1966 people managed to couple lasers with fiber optics.
+This really sparked the first information revolution (and was rewarded with a Nobel Prize in Physics for it).
+Just to give you some idea how far we've come, in 1970 it was possible to transmit about one percent of the original light over a distance of one kilometer.
+If you put in light of some power at the beginning, after one kilometer, you only had one hundredth of the original signal remaining.
+Twenty years later, in 1990, it was possible to transmit 96\% of the original power over the same distance of one kilometer.
 
-And where are we now? In 2021, well, let's have a look at the map of a submarine fiber optic cables. So you can see how many, many cables there are connecting the continents across the Pacific, across the Atlantic, also going from different continents to other continents like this (follow pointer), and this is only the map of the submarine cables. Even more cables go over land than under the ocean, so truly the fiber optic network is the nervous system of mankind, allowing us to communicate within milliseconds from one side of the Earth to the other.
-
-Let's have a quick look at what we're going to talk about in this chapter. First, we're going to begin with two basic phenomena of how light behaves when it hits the interface of two materials. We're going to talk about reflection and refraction. These two are crucial for understanding how fiber optics works. Then we will talk about total internal reflection, where we're going to combine reflection and refraction and derive the condition for total internal reflection. Total internal reflection is what we have seen in Tyndall's experiment, where light was not escaping the water stream but it was being reflected and guided by the water stream. We will conclude by some basics of fiber optic cables, in particular how they are constructed and the differences between various types of optical fibers.
+Let's have a quick look at what we're going to discuss in this chapter.
+First, we're going to begin with two basic phenomena of how light behaves when it hits the interface of two materials.
+We're going to talk about reflection and refraction.
+These two are crucial for understanding how fiber optics works.
+Then we will talk about total internal reflection where we're going to combine reflection and refraction and derive the condition for total internal reflection.
+Total internal reflection is what we have seen in Tyndall's experiment, where light was not escaping the water stream but it was being reflected.
+We will conclude by some basics of fiber optic cables, in particular how they are constructed and what the differences between various types of optical fibers are.
 
 
 \section{Light at an interface}
+\label{sec:7-2_light_at_interface}
 
-Let's see what happens when light is trying to go from one medium into a different medium.  To make this quantitative, we need a way to describe light.  There are three major descriptions we can use, useful in different circumstances.  First, light can be viewed as a particle traveling in straight lines, basically like a ray (or vector). In order to describe that ray, all we need is \emph{geometric optics}. This is the easiest scenario. Geometric optics relies basically on the laws of trigonometry to describe how the path of light changes as it travels from one medium to the other.
+In this section, we will look how light behaves when it travels from one medium to another.
+To make this quantitative, we need a way to describe light. 
+There are three major descriptions we can use, all useful in different circumstances.
+Light can be viewed as a particle traveling in straight lines.
+This scenario is described by \textit{\textbf{geometric optics}} and all that is required is some basic knowledge of trigonometry, making this scenario the easiest of the three to work with.
 
-If we are interested in the properties of light as a wave, such as we saw with the double-slit experiment, the next step up is to embrace that wave behavior.  The wave description holds whether it's coherent light as from a laser, or in the form of single photons. In order to describe laser light, particularly when it's traveling down very narrow fibers, we need Maxwell's equations and the full theory of electromagnetism. This description is a lot harder and we're not going to use it here~\footnote{Maxwell's equations are covered in the second module in this series, "From Classical to Quantum Light".  They use partial differential equations (PDEs), which we briefly introduce in that module, but we recommend taking a math class that covers PDEs if you can. The more you have worked with PDEs the easier Maxwell's equations will be.}.
+However, light possesses wave properties as well.
+We have seen this on the example of the double-slit experiment in Section~\ref{sec:6-4_interference_single_photons}. 
+In order to correctly account for these phenomena, we have to abandon geometric optics and resort to the use of \textit{\textbf{wave optics}}.
+This description is necessary in some cases when light is travelling down a very narrow fiber.
+In such a case we need the full power of Electromagnetism and Maxwell's equations.
+This description is a lot harder and we're not going to use it here~\footnote{Maxwell's equations are covered in the second module in this series, "From Classical to Quantum Light".  They use partial differential equations (PDEs), which we briefly introduce in that module, but we recommend taking a math class that covers PDEs if you can. The more you have worked with PDEs the easier Maxwell's equations will be.}.
 
-Finally, the third description is quantum field theory, because light fundamentally is a quantum field. Surprisingly given the theme of of this book, we're not going to worry about this at all. We're only going to use geometric optics, so the most simple description because mainly we will consider the diameter of the fiber to be much larger than the wavelength of the light, so here $d$ is the diameter of the fiber and $\lambda$ (lambda) is the wavelength of light. To give you some ballpark of the numbers that we're going to consider, $d$ varies somewhere from 10 all the way up to 200 micrometers, whereas the wavelength of the light we are considering is around of the order of fifteen hundred nanometers (1500nm), in what is known as the near infrared band.
+Finally, the third description is \textit{\textbf{quantum electrodynamics}}, because light is fundamentally a quantum field.
+In this course, we will only use geometric optics.
+There are a number of reasons for this.
+Quantum electrodynamics describes interaction of light with matter at the atomic level.
+We will not worry about such detailed description in this Chapter.
+Similarly, wave optics are really only necessary for single-mode fibers that have cross-section $d$ comparable to the wavelength of light $\lambda$, where wave effects become important.
+We will mainly discuss multi-mode fibers with cross-sections much larger than the wavelength of light.
+Such fibers have cross-sections anywhere between $d=10$ micrometers to $d=200$ micrometers.
+And they often carry light of wavelength $\lambda=1550$ nanometers.
 
-Let's see what happens when the light arrives at an interface of two media. We're going to consider one medium, usually the air, and then some denser medium, let's say that it's glass. The light ray is going to arrive at some angle, and this angle will always be measured with respect to the normal to the surface. So we're not going to talk about the angle of incidence as that angle (follow pointer) but the angle between the light ray and then this orthogonal normal line to the surface. So this is the angle of incidence, and we're going to denote it $\theta_i$ (theta i).
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.65\textwidth]{lesson7/7-2_light-interface.pdf}
+    \caption[Angle of incidence]{Light arriving at the interface between air and glass.}
+    \label{fig:7-2_interface}
+\end{figure}
 
-The light can actually reflect off the surface, as this (see pointer), at some angle which we're going to call $\theta_R$ ("theta capital R"), the angle of reflection, and also some portion of the light will get refracted, so it will travel into the medium at some angle $\theta_r$ ("theta small r"), the angle of refraction. Notice that all of these angles are defined with respect to the dotted line which is the normal to the surface, that's very important.
+Having settled on geometric optics as the means to describe how light behaves, let's see how to apply it to the case of light arriving at an interface of two different media.
+To be more concrete, let's consider the light ray travelling in air, and being incident onto a piece of glass.
+The \textit{\textbf{angle of incidence}} $\theta_i$ is measured with respect to the normal to the surface as shown in Fig.~\ref{fig:7-2_interface}.
+At the interface between air and glass, portion of the incoming light is reflected back at the \textit{\textbf{angle of reflection}} $\theta_R$, again measured with respect to the normal.
+The rest of the light enters the glass but the angle at which it travels changes to the \textit{\textbf{angle of refraction}} $\theta_r$.
 
-Often, some portion of the light is reflected, some portion of the light is transmitted into the other medium, getting refracted as it does so. In this case, we're saying that, for example, ninety percent of the light is refracted and enters the glass whereas ten percent gets reflected back. But, we're not going to be too interested in the relationship of how much gets reflected and how much gets refracted, we are more interested in the angles of reflection and angles of refraction. So what is the angle of reflection? Well, that's very simple. The angle of reflection is just the angle of incidence, so $\theta_i = \theta_R$. For example, if we keep increasing the angle of incidence, so we started with this light right here (follow pointer), but then we consider a different light ray, and then a different one, all with different angles of incidence, the corresponding angles of reflection are also increasing.
-
-Now, let's talk about angle of refraction. This is going to be a little bit more complicated. As you can see from this image here, the angle of incidence and angle of refraction are different. So let's see how we can actually compute them, and for that, we need something called refractive index of a material.
-
-Refractive index is defined as follows: we're going to denote it as $n$, and it's given as $c/v$, where $c$ is the speed of light in vacuum, and v is the speed of light in the medium. So really, what refractive index tells us is how much does the speed of light change in this new medium. For example, this refractive index of vacuum is just one. Why? Because in vacuum, the light travels with the same speed c, so $c$ over $c$ is equal to one. Air has a slightly larger refractive index, but for our purposes it's basically just one, so the speed of light does not change very much, it slows down a little bit but very very small amount. Glass on the other hand, has a refractive index of 1.46, so it means that the light travels 1.46 times slower in the glass than when we compare it with the speed of light in vacuum. And in diamond, it travels even slower by a factor of 2.42, which is the refractive index of diamond.
-
-Let's get back to our example of light ray being incident on a surface.
-
-We're going to denote the refractive index of the top medium as $n_i$. $i$ stands for anything that's incident onto the surface. $n_r$ is the refractive index of the material into which the light ray transmits and gets refracted. The angles follow this relationship (eq. on top right), so the sine of the incidence angle, divided by the speed of light in that medium, is equal to the sine of the refracted angle$\theta$R, over the speed of light in the new medium.
-
-$n_i=c / v_i, n_r=c / v_r$
-
-We can use this relationship between the refractive index and the speed of light in the medium, and we just substitute for $v_i$, and we substitute for $v_r$, and we obtain the following relationship: it's $n_i$ times sin(theta i), is equal to $n_r$ sin($\theta_r$). So the refractive index of the medium on top here ($n_i$), times the sine of the incidence angle $\theta_i$, is equal to the product of the refractive index of the new medium and times the sine of angle of refraction. This is known as \emph{Snell's law}\index{Snell's law}, and this law is very useful and we're going to use it extensively in this and following lessons.
+The amount of light that is reflected and refracted is not important to our discussion right now, but we will return to it in our next module ``From Classical to Quantum Light''.
+We are going to focus on the angles of reflection $\theta_R$ and refraction $\theta_r$.
+The relationship between the angle of incidence and the angle of reflection is straightforward,
 \begin{equation}
-\frac{\sin \theta_i}{v_i}=\frac{\sin \theta_r}{v_r}
+    \theta_R = \theta_i.
 \end{equation}
 
+The relationship between the angles of incidence and refraction is a little bit more involved.
+We can observe from Fig.~\ref{fig:7-2_interface} that $\theta_r \neq \theta_i$.
+Important quantity that helps with determining how much the angle of travel changes as light travels from one medium into another is the \textit{\textbf{refractive index}} $n$, defined as the ratio of the speed of light in vacuum $c$ and the speed of light in the medium $v$,
 \begin{equation}
-n_i \sin \theta_i=n_r \sin \theta_r
+    n = \frac{c}{v}.
+    \label{eq:7-2_refractive_index}
+\end{equation}
+Refractive index tells us how much the speed of light changes when travelling through different media.
+The speed of light is greatest in vacuum and therefore $n\geq1$.
+The refractive index of air is slightly larger than one, meaning that light slows down when travelling in air only very slightly.
+Glass on the other hand, has a refractive index of $n_{glass} = 1.46$, meaning the light travels 1.46 times slower in the glass than when we compare it with the speed of light in vacuum.
+Light slows down even more in diamond, which has refractive index of $n_{diamond} = 2.42$, giving diamond its unique and prized sparkling properties.
+
+Let's return to the setting of Fig.~\ref{fig:7-2_interface}.
+The light is initially travelling in some material, in our case air, at speed $v_i$, giving the refractive index $n_i = c / v_i$.
+The refracted portion of light travels at a different speed $v_r$, resulting in refractive index $n_r = c / v_r$.
+The angles of incident and refraction are related according to \textit{\textbf{Snell's law}},
+\begin{equation}
+    \frac{\sin\theta_i}{v_i} = \frac{\sin\theta_r}{v_r}.
+\end{equation}
+Using the relationship between the refractive index and the speed of light in a material in Eq.~(\ref{eq:7-2_refractive_index}), we can rewrite Snell's law in its more usual form,
+\begin{equation}
+    n_i \sin \theta_i = n_r \sin \theta_r.
+    \label{eq:7-2_snell}
 \end{equation}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson7/7-2_snell.pdf}
+    \caption[Snell's law]{Angle of refraction can be larger or smaller than the angle of incidence.}
+    \label{fig:7-2_snell_law}
+\end{figure}
+
+Using Snell's law of Eq.~(\ref{eq:7-2_snell}), let's look at how light behaves when entering into a new material.
+We start with the case pictured on the left of Fig.~\ref{fig:7-2_snell_law}, where the light is travelling \textit{\textbf{from air to glass}}.
+We can rearrange Eq.~(\ref{eq:7-2_snell}) to obtain
 \begin{equation}
-\begin{gathered}
-n_i \sin \theta_i=n_r \sin \theta_r \\
-\frac{n_i}{n_r}=\frac{\sin \theta_r}{\sin \theta_i} \\
-<1
-\end{gathered}
+    \frac{n_i}{n_r} = \frac{\sin\theta_r}{\sin\theta_i}.
 \end{equation}
-
-Before we do any computations, let's see what actually happens with the angles as light travels from, let's say a less dense medium into a more dense medium, which will give us the relationship $n_i < n_r$. For example, consider the example of light traveling in air and then trying to move into glass. Again, substituting into our Snell's law and rearranging a little bit, we've got $n_i$ over $n_r$, so we brought this $n_r$ on to the other side (LHS), and then we also divided by sine$\theta_i$, so we've got that the fraction of $n_i / n_r$, has to be equal to sine$\theta_r$ over sine$\theta_i$. And from our assumption that we are traveling from less dense medium into more dense medium, we can see that the fraction of the left-hand side is smaller than one. What this means that this fraction over here (RHS) also has to be smaller than one, and that's achieved when $\theta_r < \theta_i$, meaning that the angle of refraction is smaller than the angle of incidence. So we see that when light travels from a less dense medium into more dense medium, it bends towards the normal. 
-
-What happens in the opposite scenario when we are traveling from a more dense medium into a less dense medium? Well, we can go through the same calculation again, but this time we assume that $n_i > n_r$, and we substitute it in. We see that the ratio on the left hand side of $n_i/n_r > 1$, therefore we conclude that the angle of refraction has to be larger than the angle of incidence, so if we are going from a more dense medium into a less dense medium, we are refracting away from the normal.
+Light travels faster in air than in glass, therefore we have $n_i / n_r < 1$.
+This in turn means that $\sin\theta_r / \sin\theta_i < 1$ must be true.
+This can be satisfied only when the angle of refraction is smaller than the angle of incidence,
+\begin{equation}
+    \theta_r < \theta_i, \qquad \text{when } \; n_i < n_r.
+\end{equation}
+We can also consider the opposite case when the light travels from \textit{\textbf{glass to air}}, as shown on the right of Fig.~\ref{fig:7-2_snell_law}.
+This time, the refractive indices are reversed and we have $n_i > n_r$.
+Repeating the same argument as above we discover that the light moves away from the normal to the surface,
+\begin{equation}
+    \theta_r > \theta_i, \qquad \text{when } \; n_i > n_r.
+\end{equation}
+This second case when light travels from a denser material to a less dense one will be studied in more detail in the next section.
 
 
 \section{Total internal reflection}
 
-
-In the previous section, we saw that if light is incident on a surface and traveling from a more dense medium into a less dense medium, then it gets bent away from the normal axis. The angle of refraction is larger than the angle of incidence, $\theta_r > \theta_i$. Consider the scenario where we are increasing steadily the angle of incidence, and the refracted beam of light is being bent further and further away from the normal axis that's perpendicular to the surface of the material. So we can ask the question: is there such an angle of incidence where the refracted beam travels parallel to the surface to the interface between the two media? Meaning, we are looking for a scenario where the angle of refraction is ninety degrees, and yes, there is. So we are looking for this scenario (see slide), we have our incident beam hitting the interface between glass and air at such an angle such that the refracted beam travels at ninety degrees to the normal, or parallel to the surface between air and glass. Let's now compute this angle using Snell's law.  Replacing $\theta_i$ with $\theta_c$ to represent this critical angle,
-
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{lesson7/7-3_total_internal_reflection.pdf}
+    \caption[Total internal reflection]{At the critical angle, light travels just along the surface of the glass.}
+    \label{fig:7-3_total_internal_reflection}
+\end{figure}
+We saw that if light is incident on an interface between two materials and traveling from a more dense material into a less dense one, then it gets refracted away from the normal.
+The angle of refraction is larger than the angle of incidence, $\theta_r > \theta_i$. Consider the scenario where we are steadily increasing the angle of incidence as pictured in Fig.~\ref{fig:7-3_total_internal_reflection}.
+The refracted beam is moving correspondingly moving further away from the normal.
+An interesting question to ask is at what angle of incidence will the refracted beam travel parallel to the surface between the two materials.
+We can answer this question by setting $\theta_r=90^{\circ}$ in Eq.~(\ref{eq:7-2_snell}).
+The \textit{\textbf{critical angle}} $\theta_c$ is the angle at which this is true, s owe also replace the angle of incidence $\theta_i$ with $\theta_c$,
 \begin{equation}
-\begin{aligned}
-&n_i \sin \theta_i=n_r \sin \theta_r \\
-&n_i \sin \theta_c=n_r \sin 90^{\circ} \\
-&n_i \sin \theta_c=n_r \\
-&\sin \theta_c=\frac{n_r}{n_i} \\
-&\theta_c=\sin ^{-1}\left(\frac{n_r}{n_i}\right).
-\end{aligned}
+    n_i \sin \theta_c = n_r \sin 90^{\circ}.
+\end{equation}
+Using $\sin 90^{\circ} = 1$, we can obtain an expression for the critical angle,
+\begin{equation}
+    \theta_c=\sin ^{-1}\left(\frac{n_r}{n_i}\right).
+    \label{eq:7-3_crit_angle}
 \end{equation}
 
 %We have that the $n_i$, the refractive index of glass, times the sine of the angle of incidence, is equal to the refractive index of air $n_r$, times the sine of $\theta_r$, but we know that here we are looking for a scenario where the sine of $\theta_r$ is just sine of ninety degrees which is equal to one. So we have the following relationship (see pointer), and we have changed the subscript here on this $\theta$ to "$\theta_c$" which stands for "critical angle", because that's the critical angle where we obtain angle of refraction of ninety degrees. Now we can just rearrange to get sine of $\theta_c$, equal to as a simple fraction of $n_r / n_i$. In our case, here $n_r$ is the refractive index of air and $n_i$ is the refractive index of glass, and we can just take the arc sine ($\sin^{-1}$) to obtain this expression for the critical angle. 
 
-When light is at this angle $\theta_c$, then after reaching the interface the light ray travels parallel to the surface. We  can also keep increasing the angle of incidence so that $\theta_i$ is larger than the critical angle $\theta_c$.  When $theta_i > \theta_c$, we get "total internal reflection", so the light ray comes in and gets totally reflected back to inside the glass. This is the case that we saw in the first section of this chapter, where the light in Tyndall's experiment was being internally reflected and guided by the stream of water.
+When light is at this angle $\theta_c$, then after reaching the interface the light ray travels parallel to the surface.
+We can keep increasing the angle of incidence so that $\theta_i > \theta_c$.
+In this case, all of the light gets reflected back, undergoing \textit{\textbf{total internal reflection}}.
+This is the basic working principle behind optical fibers and it is in fact responsible for observations made by Tyndall in his experiment.
 
-Let's consider some numerical examples. We keep the refractive index of the outside medium, which for us is air, fixed. It's just 1.00028, which we can round to just $1$. If we consider different choices for the material of the fiber, with differences in refractive index of $n_i$, we can find the value of the critical angle beyond which total internal reflection can occur. If we plot the arcsin of the previous expression for the $\theta_c$, then we get the curve in Fig.~\ref{fig:critical-angle}. So we see that as we are increasing the density \rdv{is this literally g/cc, or some other definition?} of the material, we are decreasing the critical angle beyond which we get total internal reflection. For example, if we look at the interface of water and air, water has a refractive index of 1.33, and we obtain a critical angle of around fifty degrees. Glass is a little bit more dense than water, it has refractive index of 1.46 and the critical angle beyond which we get total internal reflection is a little bit smaller than the critical angle for water. For diamond, which has a very large refractive index of 2.42, then the angle is slightly over twenty degrees. So what does all this mean, that the critical angle is decreasing? Well, it means that in glass, if we want to obtain total internal reflection, then the angle of incidence has to be large, meaning that the angle between the surface interface between air and glass has to be quite small.  So, light that hits that interface at a very shallow angle will experience total internal reflection. Whereas in diamond, the light is confined more strongly. It can have a incident angle which is smaller than it is in glass, so even if light is incident on the surface at a much steeper angle, it still can get reflected and be contained and guided by the fiber.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{lesson7/7-3_crit_angle.pdf}
+    \caption[Critical angle]{Critical angle gets smaller as the refractive index increases.}
+    \label{fig:7-3_crit_angle}
+\end{figure}
+
+In the left panel of Fig.~\ref{fig:7-3_crit_angle}, we can the plot of how the critical angle $\theta_c$ changes with the refractive index $n_i$ of the material the waveguide is made from.
+We assume that the material outside of the waveguide is still just air with a refractive index of $n_r = 1.00028$.
+As the refractive index of the waveguide increases, the critical angle decreases.
+This has important implications for the design of an optical fiber.
+Fibers with smaller refractive indices must ensure that the light is incident on the surface at a larger angle, otherwise the light will escape.
+On the other hand, fibers made from material with high refractive index make very good waveguides because they are capable of containing the light better as shown in the right panel of Fig.~\ref{fig:7-3_crit_angle}.
 
 
 
 \section{Optical fibers}
+\label{sec:7-4_optical fibers}
 
-Let's have a look at the composition of a typical optical fiber.  Often, many fibers are bundled into a fiber-optic cable, but here we will look at an individual fiber.  The outermost layer is the \emph{jacket}, and this is to protect the inside components of the fiber. The next layer is the \emph{buffer}. The buffer is there also for protection, but it can also bundle multiple optical fibers.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson7/7-4_fiber.pdf}
+    \caption[Anatomy of an optical fiber]{Anatomy of an optical fiber.}
+    \label{fig:7-4_fiber}
+\end{figure}
 
-Then we've got the \emph{cladding}, and this is the material that is responsible for reflecting light back and keeping it contained within the innermost layer, which is the \emph{core}. Cladding serves as a form of protection and prevents crosstalk, because if you have two cores next to each other, then light can easily escape to the other core, so you must separate them somehow and that's the purpose of the cladding. So these two components (cladding and core) are the ones that are optically important parts. Core is the one that carries the light signal and it has some refractive index$n_f$, "f" for fiber, whereas cladding has a smaller refractive index $n_c$, and that's the one that is responsible for reflecting light back into the core and keeping it constrained inside the fiber. There are two main types of fibers. One is the \emph{multimode fiber}\index{multimode fiber}, over here (see slide), so you can see that here the modes are represented by different spatial beams bouncing inside the fiber, \rdv{clearer definition of "mode" here would be good} whereas \emph{single-mode fibers}\index{single-more fiber} which are so narrow that there's only one mode permitted to travel inside the fiber.
+Let's have a look at the composition of a typical optical fiber.
+Often, many fibers are bundled into a fiber-optic cable, but here we will look at an individual fiber as shown in Fig.~\ref{fig:7-4_fiber}. 
+The outermost layer is the \textit{\textbf{jacket}}.
+Its function is to protect the inside components of the fiber from the environment.
+Under the jacket is the \textit{\textbf{buffer}}.
+The buffer offers further protection, and sometimes bundles multiple optical fibers.
+The next layer under the buffer is the \textit{\textbf{cladding}}.
+This is the material that is responsible for reflecting light back and keeping it contained within the innermost layer, which is the \textit{\textbf{core}}.
+Cladding serves as a form of protection and prevents cross-talk in the case of multiple fibers bundled within the buffer.
+Having two cores next to each other would result in light leaking from one core to the other.
+The refractive index of the cladding must be smaller than the refractive index of the core in order for the light signal to have a chance of undergoing total internal reflection.
 
-Let's look at multimode fibers first. As we said, here all of these rays (see slide), they represent various modes of light traveling inside the fiber, and what's important for multimode fibers is the angle of acceptance. This is the angle represented by this gray cone over here, and if the light comes traveling inside the fiber within this light cone, then it will couple to the fiber and undergo many internal reflections inside the fiber, and basically be carried inside and be guided by the fiber. But, if the incident angle of the light is such that it is outside of the acceptance cone, then it will just hit the cladding and get refracted outside and get absorbed, so it will not be coupled to the fiber. So, let's apply Snell's law and actually calculate what is the maximum permissible permitted angle such that we couple to the fiber.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson7/7-4_multi_single_fiber.pdf}
+    \caption[Multimode and singlemode fibers]{Two main types of optical fibers, multimode and singlemode.}
+    \label{fig:7-4_multimode_singlemode_fiber}
+\end{figure}
 
-We have the following scenario: in here we actually have two interfaces. One interface is the usual between the fiber with refractive index $n_f$, and the cladding with refractive index $n_c$, but now we also have to consider the light coming into the fiber, so we also consider refractive index of some material that's outside of the fiber and we will denote it by $n_i$. And we've got these three angles (see slide). We are looking for the maximum $\theta$- maximum permitted angle, and if we multiply it by two, this is called the acceptance angle. And we want this angle to be such that when the light gets refracted into the fiber and then hits the cladding, it gets reflected completely and totally back into inside the fiber. So this angle, we set to $\theta_c$, which is the critical angle needed for total internal reflection. Using basic trigonometry, then we know that this angle of refraction at the surface of the fiber and whatever material is outside of the fiber has to be ninety degrees minus $\theta_c$.
+Depending on the thickness of the core, optical fibers are classified into two types as shown in Fig.~\ref{fig:7-4_multimode_singlemode_fiber}.
+\textit{\textbf{Multimode fiber}}\index{multimode fiber} has cross-section diameter much larger than the wavelength of light.
+The mode of light here refers to the spatial direction in which each beam of light travels.
+The multimode fiber in Fig.~\ref{fig:7-4_multimode_singlemode_fiber} has three modes coupling to it but only two modes making the journey all the way to the end.
+We will discuss why this is shortly.
+\textit{\textbf{Singlemode fiber}} \index{single-mode fiber} has cross-section diameter comparable with the wavelength of light and is able to support only a single mode of light.
+This mode is called \textit{\textbf{transverse mode}} \index{transverse mode} of light.
 
-And we all know from previous section that if we take the sine of this critical angle, so this angle over here (see pointer), it has to be equal to the ratio of the refractive indices of the cladding and the fiber, so sine $\theta_c$ is equal to $n_c$ over $n_f$.
+Let's look at multimode fibers first.
+Figure~\ref{fig:7-4_multimode_singlemode_fiber} shows one of the modes of light being lost in the multimode fiber.
+This mode leaks out of the fiber due to its angle of incidence onto the cladding being less than the critical angle.
+Modes of light can couple to a multimode fiber only if they are within the \textit{\textbf{acceptance cone}} \index{acceptance angle}, represented by the dashed lines.
+Any modes that arriving at the entrance of the fiber from outside of this cone will be refracted by the cladding and leak out of the fiber.
+This suggests there is a relationship between the angle of acceptance and the critical angle.
 
-Then we continue using our Snell's law, so at this interface between the fiber and the outside material (see pointer), we write that $n_i$, the refractive index of the outside material, times sine $\theta$ max, has to be equal to the refractive index of the fiber times sin(ninety degrees minus $\theta_c$), which is the angle of refraction over here measured with respect to the normal of the surface, which in this case is given by this horizontal dashed line.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{lesson7/7-4_acceptance_cone.pdf}
+    \caption[Acceptance cone]{Maximum incidence angle of the light beam onto the fiber's core such that it hits the cladding at the critical angle.}
+    \label{fig:7-4_acceptance_cone}
+\end{figure}
 
-We can simplify using a trigonometric identity.  sin(ninety degrees minus $\theta_c$) is just equal to the cosine of that angle $\theta_c$, and we can use another trigonometric identity where we use the fact that sine squared of an angle plus the cosine squared of the angle has to be equal to one. So cosine of $\theta_c$ is just equal to one minus sine squared $\theta_c$, the whole expression square rooted.
-
-And using the expression that we have over here for the critical angle (see pointer), we can just substitute an expression for sine squared $\theta_c$, which is just $n_c$ squared over $n_f$ squared.
-
-So finally, we have the following expression: multiplying this (see pointer) by $n_f$, we get that the $n_i$ times sine$\theta_{max}$, is equal to the square root of $n_f$ squared minus $n_c$ squared, and this gives us the "theta max", the maximum angle of acceptance and therefore also, the cone of acceptance.
+Let's make this relationship more quantitative.
+Consider the situation of Fig.~\ref{fig:7-4_acceptance_cone} where a light beam is incident onto the core of a fiber at point $A$, gets refracted, and is later incident onto the cladding at point $B$.
+Our aim is to find the maximum angle of incidence $\theta_{max}$ onto the core such that angle of incidence onto the cladding is the critical angle $\theta_c$.
+We denote the refractive index of the material outside the fiber by $n_i$, the refractive index of the core by $n_f$, and the refractive index of the cladding by $n_c$.
+Using Snell's law at point $A$, we have $n_i \sin \theta_i = n_f \sin \theta_r$.
+We can use the right-hand triangle in Fig.~\ref{fig:7-4_acceptance_cone} to see that $\theta_r = 90^{\circ} - \theta_c$.
+In that case we can set the incidence angle at point $A$ to $\theta_i = \theta_{max}$,
 \begin{equation}
-\begin{aligned}
-n_i \sin \theta_{\max } &=n_f \sin \left(90-\theta_c\right) \\
-&=n_f \cos \theta_c \\
-&=n_f\left(1-\sin ^2 \theta_c\right)^{1 / 2} \\
-&=n_f\left(1-n_c^2 / n_f^2\right)^{1 / 2}
-\end{aligned}
+    n_i \sin \theta_{max} = n_f \sin (90^{\circ} - \theta_c).
 \end{equation}
-
+Using the trigonometric identity $\sin(\theta + \phi) = \sin\theta\cos\phi + \sin\phi\cos\theta$, we obtain
 \begin{equation}
-n_i \sin \theta_{\max }=\left(n_f^2-n_c^2\right)^{1 / 2}
+    n_i \sin \theta_{max} = n_f \cos\theta_c,
 \end{equation}
-And this number on the left hand side, this product of the refractive index times the max sine of the maximum acceptance angle, is known as numerical aperture, and the higher the numerical aperture is, the better we can couple to the fiber, meaning that this incident angle over here which we are calling$\theta_{max}$, is allowed to be larger.
+where we used $\cos(-\theta_c) = \cos\theta_c$.
+We express the cosine of the the critical angle in terms of sine, $\cos\theta_c = \sqrt{1 - \sin^2\theta_c}$, and using Eq.~(\ref{eq:7-3_crit_angle}),
+\begin{equation}
+    n_i \sin \theta_{max} = n_f \sqrt{1 - \left( \frac{n_c}{n_f} \right)^2}.
+\end{equation}
+Bringing the refractive index of the fiber under square root, we obtain
+\begin{equation}
+    n_i \sin \theta_{max} = \sqrt{n_f^2 -  n_c^2}.
+    \label{eq:7-4_theta_max}
+\end{equation}
+The expression on the left of Eq.~(\ref{eq:7-4_theta_max}), $n_i \sin \theta_{max}$, is known as \textit{\textbf{numerical aperture}} \index{numerical aperture}.
+Larger numerical aperture means that it is easier to couple to the fiber as the acceptance cone is wider.
+Equation~(\ref{eq:7-4_theta_max}) allows us to calculate the maximum incidence angle given the three refractive indices $n_i$, $n_c$, and $n_f$.
+The acceptance cone is given by twice this angle, $2 \theta_{max}$.
 
-So, what are some properties of multimode fibers? Well, we said that their diameter is much larger than the wavelength of the light, and typically they've got diameters larger than ten micrometers, and they can go up to something like two hundred micrometers. So we said, in order to describe their behavior, it is enough to consider light traveling as a particle traveling in straight lines, and using basic trigonometry, so we can use geometric optics which we have been doing so far in order to derive some useful properties of the multimode fiber.
+We said that the diameter of the core for a multimode fiber is much larger than the wavelength of light, leading to core being able to support a number of modes.
+The speed of light in the core is the same for all these modes, however the time it takes for individual modes to reach the end of the fiber is different.
+Due to the different angles of incidence of different modes, they have to cover different total distances before reaching the end.
+This is known as \textit{\textbf{mode dispersion}} \index{mode dispersion}.
+We will cover mode dispersion in more detail in Section~\ref{sec:11-2_mode_dispersion}.
+Because of this, multimode fibers are more suitable for short distances, such as in office and campus networks.
+On the other hand, because the core does not need to extremely small, multimode fibers are easier to manufacture leading to savings in production costs.
 
-Second, the light inside travels at different angles, meaning that it can carry multiple modes at the same time. Because the path lengths of the various light rays differ, we get \emph{mode dispersion}\index{mode dispersion}, which we will describe in more detail in a later lesson. Such a fiber, because of mode dispersion, is more suited for short distances, meaning inside office networks or campus networks. Also, it is relatively cheap to manufacture, mainly because it's quite thick. 
+In contrast, singlemode fibers are much more difficult to produce, as their core diameter is typically less than $10$ micrometers.
+For comparison, the average width of a human hair is larger than $20$ micrometers.
+Singlemode fibers support only the transverse mode, therefore there is no mode dispersion.
+Mode dispersion changes the shape of the signal received at the far end, so the rate at which a signal can be changed while maintaining a clean signal at the receiver is determined by the amount of this dispersion.
+Singlemode fibers allow for high rate of transfer of data, making them suitable for long distance communications.
+They have to be boosted by repeaters approximately every 50 kilometers because they are still susceptible to attenuation.
+We will discuss how to combat attenuation in Section~\ref{sec:11-4_overcoming_losses}.
 
-On the other hand, a single-mode fiber can carry only a single mode of light, so there's only one ray traveling in one direction like this (follow pointer). The core diameter for single-mode fiber is typically smaller than ten micrometers. Just to give you an idea how thin that is, the human hair is usually larger than twenty micrometers. There's a large variance, but the core diameter between twenty, and perhaps two hundred micrometers \rdv{wait, single-mode or multimode is 200um?  Above we said multimode. Also, this is about the third time we have said this in this chapter.}, so they're extremely extremely thin. Because they are so thin, it is no longer possible to describe light inside them using geometric optics. We have to resort to using electromagnetic theory and Maxwell's equations.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson7/7-4_TAT8.pdf}
+    \caption[TAT-8]{The first transatlantic communications cable, TAT-8.}
+    \label{fig:7-4_TAT8}
+\end{figure}
 
-Because they are so thin, restricting the propagation of light to a single mode, there is no mode dispersion.  Mode dispersion changes the shape of the signal received at the far end, so the rate at which a signal can be changed while maintaining a clean signal at the receiver is determined by the amount of this dispersion. That is why single-mode fibers allow for very high rate of transfer of data, and therefore they are suitable for long distance communications. They have to be boosted by repeaters approximately every fifty kilometers, but we will see how that can be achieved in a later lesson. One disadvantage of single-mode fibers is that because they are so thin, they are quite expensive to produce.
-
-Let's end this chapter with a small note: the first transatlantic fiber optic cable, which was called TAT-8, was laid in 1988 between Tuckerton, New Jersey, and then it traveled across the Atlantic and then split into the UK and France. The submarine cable was constructed at a cost of approximately 335 million US dollars, and it was retired in 2002. It was predicted that the bandwidth of this fiber optic cable would last for a long time and perhaps never be reached. The bandwidth was two hundred eighty megabits per second (280 Mbits/s), which can carry around forty thousand phone circuits simultaneously. This capacity was reached in eighteen months, necessitating the laying of more cables. This demonstrates how quickly how quickly we can consume available data bandwidth~\footnote{rdv finds it an interesting historical anecdote that one of Japan's first undersea cables came ashore in the seaside town of Kamakura, where he lives, in 1931.  At that time, the cable would have been copper rather than fiber.  It connected to Midway, Hawaii, then the continental U.S.  It was in use for around a dozen years.}
+The first transatlantic fiber optic cable, called TAT-8, was laid in 1988 between Tuckerton, New Jersey, and the UK and France.
+The submarine cable was constructed at a cost of approximately 335 million US dollars, and it was retired in 2002.
+It was predicted that the bandwidth of this fiber optic cable would last for a long time and probably will never be reached.
+The bandwidth was 280 Mbits/s, which can carry around 40,000 phone circuits simultaneously.
+This capacity was reached in eighteen months, necessitating the laying of more cables.
 
 \newpage
 \begin{exercises}
