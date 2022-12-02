@@ -1,14 +1,14 @@
 \chapter[Pure and Mixed States]{Pure and Mixed States}
 \label{sec:3_pure_mixed}
 
-This lesson will expand on what we learned in the previous lesson.
+This chapter will expand on what we learned in the previous chapter.
 It will deal with pure and mixed states, and finally we will get to the description of real noisy quantum states.
-The notation and mathematical tools that we develop in this this lesson will be extremely useful in the rest of these lecture notes.
+The notation and mathematical tools that we develop in this chapter will be extremely useful in the rest of these lecture notes.
 
 \section{Noisy world}
 \label{sec:3-1_noisy_world}
 
-In this step, we will talk about the noisy world.
+In this section, we will talk about the noisy world.
 Up until now, we have only discussed quantum states which were noiseless, meaning they
 were always in the exact state that we wanted them to be.
 There was no uncertainty in our knowledge of the description of the state.
@@ -44,7 +44,7 @@ Even though we do not process the prepared state in any way, optical fibers them
 The state received by your friend will be affected by coherent and incoherent errors.
 On top of these, the state may even get lost and never arrive.
 This is due to various processes such as absorption or scattering in the fiber.
-Photon loss is a huge headache in quantum communication and we will discuss it in more detail in later lessons.
+Photon loss is a huge headache in quantum communication and we will discuss it in more detail in later chapters.
 
 
 
@@ -53,7 +53,7 @@ Photon loss is a huge headache in quantum communication and we will discuss it i
 \section{Outer product}
 \label{sec:3-2_outer_product}
 
-We have seen in the previous lesson that the inner product of two vector states $|a\rangle$ and $|b\rangle$ is formed by transforming the first ket into a bra and then multiplying them together,
+We have seen in the previous chapter that the inner product of two vector states $|a\rangle$ and $|b\rangle$ is formed by transforming the first ket into a bra and then multiplying them together,
 \begin{equation}
     \langle a | b\rangle = \begin{pmatrix} a_0^* & a_1^* \end{pmatrix} \begin{pmatrix} b_0 \\ b_1 \end{pmatrix} = a_0^* b_0 + a_1^* b_1.
 \end{equation}
@@ -92,7 +92,7 @@ In matrix form, we have
 \begin{equation}
     |1\rangle\langle1| = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0  \\ 0 & 1 \end{pmatrix}.
 \end{equation}
-Since $|0\rangle\langle0|$ projects onto the state $|0\rangle$, we expect that $|0\rangle\langle0|$ projects onto $|1\rangle$.
+Since $|0\rangle\langle0|$ projects onto the state $|0\rangle$, we expect that $|1\rangle\langle1|$ projects onto $|1\rangle$.
 Let's confirm this by acting on a general state vector $|\psi\rangle$,
 \begin{align}
     |1\rangle\langle1|\psi\rangle & = |1\rangle\langle1| \left( \alpha|0\rangle + \beta|1\rangle \right) \label{eq:projector_11}\\
@@ -101,7 +101,7 @@ Let's confirm this by acting on a general state vector $|\psi\rangle$,
 \end{align}
 just as we expected.
 
-Recall from Lesson 2.3 (proper hyperref!!!) that measurement in the Z basis of a general qubit $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$ has two possible outcomes.
+Recall from Sec.~\ref{sec:measurement} that measurement in the Z basis of a general qubit $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$ has two possible outcomes.
 Outcome +1 is obtained with probability $|\alpha|^2$ and the post-measurement state is $|0\rangle$.
 We just saw that this post-measurement state is obtained after application of the projector $|0\rangle\langle0|$.
 Similarly for the -1 outcome of the measurement, obtained with probability $|\beta|^2$.
@@ -175,7 +175,7 @@ The state vector $|\psi\rangle$ and the projector $|\psi\rangle\langle\psi|$ rep
 You might wonder why would we want to represent states as matrices when vectors have worked for us just fine.
 The reason is that so far we have only discussed idealized states without any errors.
 If we want to consider noisy systems, we must resort to describing the states using matrices as vectors are not enough.
-We will see why that is in the next step.
+We will see why that is in the next section.
 
 
 
@@ -200,13 +200,13 @@ How can we describe such an incoherent output mathematically?
 The output is not a single state that we know can be represented by a vector, rather it is a probabilistic distribution of such states.
 Therefore we cannot represent it as a superposition.
 Superposition of various state vectors is still a state that represents perfect knowledge of the quantum system, which we do not have.
-The correct way of describing the incoherent output in Fig.~\ref{fig:3-3_noisy_communication} is by using the outer product that we learnt about in the previous step.
+The correct way of describing the incoherent output in Fig.~\ref{fig:3-3_noisy_communication} is by using the outer product that we learnt about in the previous section.
 The output state is a projector $|\psi_i\rangle\langle\psi_i|$ with probability $p_i$, and the whole output state can be described as a sum of all such projectors,
 \begin{equation}
     p_1 |\psi_1\rangle\langle\psi_1| + p_2 |\psi_2\rangle\langle\psi_2| + \ldots + p_n |\psi_n\rangle\langle\psi_n|.
     \label{eq:3-3_mixture}
 \end{equation}
-The state represented by the sum in Eq.~(\ref{eq:3-3_mixture}) is called a \textit{\textbf{mixed state}}.
+The state represented by the sum in Eq.~(\ref{eq:3-3_mixture}) is called a \textit{\textbf{mixed state}}\index{mixed state}.
 Important thing to remember is that the $p_i$'s are probabilities and therefore they must sum to unity, that is $\sum_{i=1}^n=1$.
 
 \begin{figure}[t]
@@ -245,7 +245,7 @@ Note that the density matrix can describe both pure as well as mixed states.
 When all $p_i$'s vanish except for one, that is $\rho=|\psi\rangle\langle\psi|$, the state $\rho$ is pure.
 On the other hand, if more than one $p_i$'s are non-zero, the state $\rho$ is mixed.
 
-We saw in the previous Lesson that all vectors representing quantum states must be normalized.
+We saw in the previous chapter that all vectors representing quantum states must be normalized.
 What does this normalization condition look like when we write the state as a density matrix?
 To answer this question, let's first define the \textit{\textbf{trace}} of a matrix $A$,
 \begin{equation}

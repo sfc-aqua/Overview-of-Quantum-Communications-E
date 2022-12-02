@@ -1,31 +1,89 @@
 \chapter{Quantum repeaters}
+\label{sec:12_quantum_repeaters}
+\label{ch:repeaters}
 
 \section{The need for repeaters}
+\label{sec:12-1_need_for_repeaters}
 
-% Hi, and welcome to Lesson 12 on Quantum Repeaters.
+In the previous Chapter, we have seen that there is one big problem when trying to communicate over long distances, and that's photon loss in fibers.
+The further that we are trying to communicate, the more likely we are to lose the photon.
+There's also another problem, and that's the number of devices that are connected to the network. Currently (2022) there are 8 billion people, and an estimated 31 billion Internet of Things devices.
+Despite this staggering number, all of these devices can communicate with each other.
+How is this achieved?
+One way is to establish a direct connection between each device that is present in the network as shown in the left panel of Fig.~\ref{fig:12-1_all_to_all}.
+Two devices are connected by a single link.
+Three devices require three links, four devices require six links and so on.
+For $N$ devices, $N (N - 1) / 2$ links are needed in order to have all-to-all coupling.
 
-% Step One: The Need for Repeaters
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.85\textwidth]{lesson12/12-1_all_to_all.pdf}
+    \caption[All-to-all coupling]{Right panel shows how many links are required to have all-to-all coupling. Left panel shows a more realistic network topology and the path along which a qubit needs to be teleported from sender to a receiver.}
+    \label{fig:12-1_all_to_all}
+\end{figure}
 
-In the previous lesson, we have seen that there is one big problem when trying to communicate over long distances, and that's photon loss in fibers. So the further that we are trying to communicate, the more likely we are to actually lose the photon, and we saw how we can handle it classically. There's also another problem, and that's the number of devices that are connected to the network. So currently there are 7.8 billion people, and estimated 31 billion Internet of things devices. That means that somehow, all of these devices can communicate with each other. how is that achieved? Well, one way is to actually establish a direct connection between each device that are present in the network. In other words we could have something like a complete graph. If we start with two, they are just connected by a single link, if we have three we have three links, and we can see that as we are adding more and more devices into the network, more and more nodes into the network, then the number of links is also increasing, and in fact it's increasing as the quadratic order of the number of nodes in the network.
+Real networks do not use all-to-all coupling.
+Each individual link requires dedicated hardware that is allowing communication between two devices in the network.
+Adding a single device to the network would also require to add links to all existing devices.
+Such an approach is clearly not practical even for relatively small networks.
+The right panel of Fig.~\ref{fig:12-1_all_to_all} shows a much more realistic network, where an arbitrary sender can still transmit a message to the intended receiver, even in the absence of a direct link between the two.
 
-Is this how real networks work? Actually, no, because each individual link for example the link between this node, and this node, requires specialized dedicated hardware that is allowing communication between these nodes, and if we are adding such a device- such a hardware for every single possible connection, we see that it's not practical. For example, if if we just have five nodes in the network, then each individual node requires five dedicated connections in order to be able to communicate with any arbitrary network node. That's fine for small networks, but clearly it does not scale with the size of the network. Further complication is that if we add a new node to the network. Just by adding a new node, we have to go back to each node that are already existing in the network and install a new hardware with dedicated link to this new node. So, how does it work? How do we communicate in real life? Well, we use networks, and the point of a network is that we don't have all-to-all connection. We don't have a complete graph representing the network, yet we can still communicate between arbitrary nodes. For example, we can communicate from this little guy over here, all the way down to this guy that's down here in the network, and the job of a network is to establish a connection between these two nodes.
+In quantum networks, information encoded in qubits is not transmitted directly.
+Rather we use entangled pairs to teleport the state of the qubit as discussed in Chapter~\ref{sec:8_teleportation}.
+Each link connecting two devices shares a Bell pair which is used to pass the state of the qubit carrying the quantum message from one device to the next.
+We can go back to the right panel of Fig.~\ref{fig:12-1_all_to_all} and this time think of as a quantum network, where the quantum sender wishes to pass the state of a qubit to the recipient.
+The state of the sender's qubit can be teleported hop-by-hop along the red path until it reaches the recipient.
+A problem with this approach is that the operations required by the teleportation protocol as well as the memories used to store Bell pairs are not perfect.
+This in turn decreases the fidelity of the teleported qubit.
+Repeating the teleportation in this hop-by-hop approach deteriorates the fidelity further resulting in a completely garbled quantum state being teleported to the recipient.
+A way around this problem is to use the link-level Bell pairs to create a direct entangled connection between the sender and the recipient so that the quantum state can be teleported in one hop.
+The quantum nodes that achieving this splicing of link-level entanglement are called \textit{\textbf{quantum repeaters}}, and they are indispensable in the design of long-distance quantum networks.
 
-But, so- if we want to do it in a quantum way, what do we do? Well, we saw that one way of transferring quantum information is via teleportation. So, we could say that- well, we can have an entangled pair between the neighboring networks and use that to teleport our quantum information from this node onto its neighbor, and then we can hop from neighbor to neighbor all the way across to the target node. But as we do this, we have to apply the same operations again and again, and these operations are noisy. The entangled states that are shared between the neighboring nodes are also noisy. So by the time we reach our target node, the information encoded in the quantum state will have deteriorated by a large amount, rendering the state impractical and basically useless. So, now we actually go back and we kind of wish that we actually had a direct connection between these two nodes. If these nodes were sharing a direct entangled pair, then we could just directly teleport our information from the sender node to the target node, and we will see in this lesson that this is in fact possible without having dedicated hardware hardware and all-to-all physical connections in a quantum network.
-
-So we will address four requirements in this lesson. First we will show how to establish entanglement between neighboring nodes, and we will refer to this as "link level entanglement". So we will have physical connection between neighboring nodes and see how these nodes can be entangled. Then we will address the question- "how can we extend this entanglement over larger distances and many hops in the network without having a dedicated physical connection between these two distant networks?" Of course, we said that there's always going to be some noise and sources of error, so we will address the question of how to handle these sources of error and imperfections. And finally, we will look at management of networks, and in particular, routing and multiplexing and resource management.
+We will address four requirements in this lesson.
+First, we will show how to establish entanglement between neighboring nodes of a quantum network. This is known link-level entanglement.
+Next, we will discuss how the link-level entanglement can be used to create a long-distance entangled connection between end nodes using entanglement swapping.
+After this, we will deal with the issues presented by the adverse effects of noise.
+Finally, we will look at management of networks, routing, multiplexing and resource management.
 
 
 \section{Making link-level entanglement}
+\label{sec:12-2_making_link_level_rantanglement}
 
-% Step Two: Making Link-Level Entanglement
+In this section, we consider the task of creating link-level entanglement between two neighboring repeaters of a quantum network.
+One way of entangling two quantum memories and creating link-level entanglement is pictured in Fig.~\ref{fig:12-2_MIM}, and is known as \textit{\textbf{memory-interfere-memory}} (MIM) link architecture.
+Other names for this architecture are memory-interfere-memory or meet-in-the-middle.
+Each repeater node is equipped with a quantum memory, and is coupled to an optical fiber.
+The fibers lead to a \textit{\textbf{Bell state analyzer}} (BSA), an optical device which is capable of measuring incoming photons in the Bell basis.
+We will discuss an implementation of the BSA in Section~\ref{sec:13-3_Bell_state_measurement_2}.
 
-So, now we will begin by considering two neighboring nodes in a network and see how we can establish entanglement between these nodes. A usual way how to do that is in the following scenario: these blue boxes, they represent our network nodes, so we've got one over here and one node over here, and each of these nodes is holding quantum memory. What this is, here- it's represented by these little atoms, and these are specialized quantum memories that can store any arbitrary state of a qubit. And in here, in the middle, what we have is something known as Bell State Analyzer, or BSA for short, and this setup is referred to as MIM, or Memory-Interference-Memory, and we will see why. So how can the network nodes establish entangled pairs between each other?
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson12/12-2_MIM.pdf}
+    \caption[MIM link architecture]{MIM link architecture.}
+    \label{fig:12-2_MIM}
+\end{figure}
 
-So what happens is that these atoms can be made to generate- emit a photon. This atom over here, so the photon is represented by the yellow circle, and this atom over here, this quantum memory over there, and if we have two qubits or two quantum memories, both of them can be made to generate and emit photons. These photons are then collected into these fibers that lead to the BSA that's found in the middle. Furthermore, these photons can emit can be emitted in such a way that they are entangled with their quantum memories. So here the entanglement is represented by the squiggly line, so this bottom memory is entangled with the second photon, and the top memory is entangled with the first photon, and similarly on the right side with the other neighboring network node. So these photons are then traveling down the fiber, and we said in the previous lesson that no matter how good our fibers are, there is always going to be some attenuation in the fibers, meaning that there is always a probability that we are going to lose some photons, and that's what also happens here. So in this particular case, we are considering that we lost the first photon on the left and the first photon on the right, meaning that the entanglement that was between the photon and the quantum memory sitting in the network node has also been destroyed. But let's assume that the second photon from the left and second photon from the right actually make it all the way to the middle point, where they meet in the Bell state analyzer. What happens there is a bell state measurement. If the photons arrive at the same time, they are indistinguishable and depending on the details of which detectors here click, we can say that we obtained some Bell state of the photons that projects the photons onto one of these states, and by that it also projects these quantum memories onto one of the Bell pairs depending on the outcome of the measurement in the Bell state analyzer.
+The protocol to generate entanglement between the quantum memories is the following.
+The quantum memories are made to emit a photon which is entangled with the memory, represented by the red dashed line in Fig.~\ref{fig:12-2_MIM}.
+These photons are captured and coupled to a fiber which guides them to the BSA.
+At the BSA they are measured in the Bell basis and destroyed in the process.
+The success probability of the Bell state measurement depends on the implementation of the BSA.
+For BSA implemented using linear optics elements, which is one of the more straightforward implementations, the success probability is at most $50\%$.
+This is a assuming ideal couplers (to collect photons emitted by the memories), fibers, and detectors at the BSA.
+Once the measurement is successful, the entanglement between the memory-photon pairs is transferred to be between the memories and the link-level entanglement is established.
 
-So this way, what we can do is we can establish a link-level entanglement between quantum memory in this node and the quantum memory in the node on the right hand side. We will see the details mathematical details of exactly why and how this works in the next step where we consider using this method to establish entanglement between far separated network nodes.
+Crucial point about this scheme, and other link-level architectures, is that the photons arriving at the BSA to be measured in the Bell basis must be \textit{\textbf{indistinguishable}}.
+This can be achieved by arranging that the photons arrive simultaneously. 
+Even relatively small delays in their arrival times reduce the indistinguishability of the photons resulting in a vanishing success probability of the Bell state measurement.
 
-Another method of establishing entanglement is also a direct memory-to-memory, where maybe the distance between the quantum memories is not so large or the fiber is very, very good with very low attenuation levels. Then we can just directly send the photons all the way to the memory here. But still we need some method of performing a Bell state measurement, so we assume that the Bell state analyzer is included in the network node.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.85\textwidth]{lesson12/12-2_MM_MSM.pdf}
+    \caption[MM and MSM architectures]{Memory-memory and Memory-source-memory link-level architectures.}
+    \label{fig:12-2_MM_MSM}
+\end{figure}
+
+Figure~\ref{fig:12-2_MM_MSM} shows two more link-leve
 
 
 \section{Reaching for distance: Entanglement swapping}
