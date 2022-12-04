@@ -95,7 +95,7 @@ Our last example of optical telegraphy is known as \textit{\textbf{Napoleon's se
 This system was a lot more expressive than the signalling system of the Great Wall.
 It worked on the basis of crane arms which could be arranged at certain angles.
 An operator controlled levers and pulleys in order to arrange the arms at various angles. Each configuration of the arms carried its own meaning.
-The arm configuration in Fig.~\ref{fig:1-1_napoleon} corresponds letter ``A".
+The leftmost arm configuration in Fig.~\ref{fig:1-1_napoleon} corresponds to the letter ``A".
 Network of semaphores, each located around 10 kilometers apart, spanned all of France.
 It was possible to send a message from Paris all the way to Venice, a distance of 1100 kilometers, in as little as few hours.
 The record time of sending a message between Paris and Strasbourg in the east of France, is an astounding 1 hour.
@@ -141,7 +141,7 @@ The all-to-all approach is intuitive but simply does not \textit{\textbf{scale}}
 \end{figure}
 
 The solution came with the introduction of a \textit{\textbf{switchboard}}.
-In order the call anybody on the network, each unit had to be connected only to the switchboard.
+In order to call anybody on the network, each unit had to be connected only to the switchboard.
 You first called the switchboard which would then connect you to the desired telephone unit.
 With this approach, adding a new telephone to the network required to add a single connection to the switchboard, presenting a \textit{\textbf{constant scaling}}.
 In other words, the effort of adding new users to the network did not increase with the size of the network.
@@ -165,7 +165,7 @@ They represent entire networks!
 The edges are the virtual connections between these networks.
 The reason why this map of Internet is not accurate is due to its sheer size as well as as the fact that networks are constantly being added or removed.
 Any ``map'' of the Internet that we might want to produce presents a monumental task, results of which would quickly be outdated.
-The only purpose such a map would serve would be to make us realize how far humamity's ability to communicate has come and make us wonder what is the next step in evolution of communication.
+The only purpose such a map would serve would be to make us realize how far humanity's ability to communicate has come and make us wonder what is the next step in the evolution of communication.
 
 % Today, we have the Internet which is a global spanning network of networks. Meaning that there are many different heterogeneous networks all connected to each other. So if you are using your phone, maybe you are connected to some telco tower which then relays the signal through the internet to wherever you wish. Also our computers are connected to modems via wi-fi, then these modems are connected to the Internet via ethernet cables. And basically everything is connected nowadays. We consume voice, and video entertainment, and news, and virtually we have access to any form of information that we wish to. And it's within a very short brief of time. So this image of internet is actually quite a simplification. In reality, what it looks like is more like this.
 
@@ -191,16 +191,16 @@ There, another operator receives these electrical signals, decodes them and prod
     \label{fig:1-2_communication}
 \end{figure}
 
-Immediate question that arises is what are some good ways of encoding the message.
+The immediate question that arises is finding some good ways of encoding the message.
 The first method that we consider is encoding the message using an \textit{\textbf{analog}} signal.
 Analog signals can admit a continuum of values.
 We perceive the world around us as analog.
 The loudness of sounds varies continuously from a quiet whisper to a loud music concert.
-Temperature rises and falls in a continuous way as measured by our thermometers.
+The temperature rises and falls in a continuous way as measured by our thermometers.
 The three primary colors can be mixed together to produce a continuous spectrum of colors.
 We have evolved to process these types of analog signals, therefore it makes sense to try and use analog signals to encode our messages.
 The key is that analog signals can take on values from a continuous interval, representing the range of some quantity.
-For example the voltage of an electric circuit can varied continuously depending on the pressure of sound waves in the microphone of a old telephone.
+For example, the voltage of an electric circuit can vary continuously depending on the pressure of sound waves in the microphone of an old telephone.
 Early AM radio signals and old TV broadcasting used continuous sinusoidal waves that required simple technology to produce and decode.
 
 \begin{figure}[t]
@@ -223,7 +223,7 @@ Alternative to analog signals is \textit{\textbf{digital}} signals.
 Digital signals are very different from analog signals, they only use a discrete set of values to represent the message and encode it.
 We can take the original analog signal, and try to encode it digitally.
 A way to do it is to \textit{\textbf{sample}} the analog signal at discrete time steps $t_0$, $t_1$, $t_2$, $t_3$ and so on, as shown on the right side of Fig.~\ref{fig:1-2_signals}.
-The encoded digital signal is now a set of discrete vales,
+The encoded digital signal is now a set of discrete values,
 \begin{equation}
     S_0, S_1, S_2, S_3, \ldots,
 \end{equation}
@@ -305,12 +305,12 @@ Bits can be used to encode decimal numbers.
 Let's examine how decimal notation works first.
 The decimal system uses ten numerals; 0-9.
 In a decimal number, the rightmost digit represents ones, the next digit to the left represents tens, the next hundreds and so on.
-For example, the number 1024 can be written in terms if powers of ten as follows,
+For example, the number 1024 can be written in terms of powers of ten as follows,
 \begin{equation}
     1024 = 1 * 10^3 + 0 * 10^2 + 2 * 10^1 + 4 * 10^0.
 \end{equation}
 This idea carries over to binary numbers where the digits can only take values of 0 or 1, and represent multiples of powers of two.
-Let7s see how we can write the binary number 1001 in decimal notation,
+Let's see how we can write the binary number 1001 in decimal notation,
 \begin{equation}
     1001 = 1 * 2^3 + 0 * 2^2 + 0 * 2^1 + 1 * 2^0 = 9.
 \end{equation}
@@ -340,12 +340,12 @@ Furthermore, considering new laws of physics, and applying them to information p
 These reasons in themselves are very fundamental, but there are also practical reasons.
 The current computing technology is hitting a classical to quantum boundary.
 Maybe you have heard of the Moore's law, which despite its name is an observation rather than a physical law.
-Moore's Law states that the number of transistors on in an integrated circuit doubles about every two years.
+Moore's Law states that the number of transistors in an integrated circuit doubles about every two years.
 It is astonishing that this observation has held for decades.
-Chip manufactures have been able to pack orders of magnitudes more transistors onto The chips themselves are not getting any bigger, so in order for Moore's Law to hold is for the transistors to get smaller and smaller.
+Chip manufacturers have been able to pack orders of magnitudes more transistors onto the same area. The chips themselves are not getting any bigger, so in order for Moore's Law to hold, the transistors must get smaller and smaller.
 In the beginning, the transistors were approximately 10 microns across.
 In the 1990s, they moved to about 600 nanometers.
-And now we are at the level of single nanometers.
+And now we are at the level of single-digit nanometers.
 The transistors have got so small that they need to worry about the effects quantum mechanics have on the transistors' operation.
 
 \begin{figure}[t]
@@ -404,7 +404,7 @@ Either way, messages sent over public channels are encrypted to preserve the pri
 Let's consider a third party, an eavesdropper, who is trying to listen in on the conversation by intercepting the message.
 Current classical encryption techniques offer \textit{\textbf{computational security}}, meaning that cracking them is not impossible, merely very difficult and would require enormous classical resources to do so.
 Quantum algorithms exist that break this encryption.
-An eavesdropper with access to a quantum computer could in principle intercept the encrypted message, use its quantum computer to break the code and listen in on the conversation with impunity.
+An eavesdropper with access to a quantum computer could in principle intercept the encrypted message, use their quantum computer to break the code and listen in on the conversation with impunity.
 
 To overcome this problem, the communicating parties need to resort to using \textit{\textbf{quantum key distribution}} (QKD).
 With the help of the superposition principle or entanglement, the sender and the receiver can discover the eavesdropper's attempts to intercept and tamper with their messages.

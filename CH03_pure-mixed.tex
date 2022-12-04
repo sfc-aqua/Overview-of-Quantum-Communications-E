@@ -192,7 +192,7 @@ We will see why that is in the next section.
 Let's consider the scenario of sending an ideal quantum state $|\psi\rangle$ through an optical fiber as shown in Fig.~\ref{fig:3-3_noisy_communication}.
 The state of the quantum system inevitably changes as it travels through the optical fiber.
 The fiber affects the state of the quantum system probabilistically.
-The system remains unaffected with some probability, but also with some probability if suffers from unwanted transformations.
+The system remains unaffected with some probability, but also with some probability it suffers from unwanted transformations.
 The incoherent output becomes a distribution of states $\{p_i, |\psi_i\rangle\}$.
 With probability $p_i$ the output is described by the state vector $|\psi_i\rangle$.
 
@@ -215,7 +215,7 @@ Important thing to remember is that the $p_i$'s are probabilities and therefore 
     \caption[Bit-flip channel]{Bit-flip channel. Pauli $X$ is applied to the input with probability $p$. The input is unaffected with probability $1-p$.}
     \label{fig:3-3_bit_flip_channel}
 \end{figure}
-In order to illustrate this, let's consider a simple case of a \textit{\textbf{bi-flip channel}} depicted in Fig.~\ref{fig:3-3_bit_flip_channel}.
+In order to illustrate this, let's consider a simple case of a \textit{\textbf{bit-flip channel}} depicted in Fig.~\ref{fig:3-3_bit_flip_channel}.
 The input is a known quantum state $|\psi\rangle$.
 The bit-flip channel is fairly simple, the input is either affected by a Pauli $X$ transformation with probability $p$, or it is transmitted without errors with probability $1-p$.
 We will denote the output by the Greek letter $\rho$,
@@ -240,7 +240,7 @@ We have in fact seen it already in Eq.~(\ref{eq:3-3_mixture}),
 \begin{equation}
     \rho = \sum_i p_i |\psi_i\rangle\langle\psi_i|.
 \end{equation}
-The vector state representation is known is a ket, while this more general representation using a sum of outer products is called a \textit{\textbf{density matrix}}.
+The vector state representation is known as a ket, while this more general representation using a sum of outer products is called a \textit{\textbf{density matrix}}.
 Note that the density matrix can describe both pure as well as mixed states.
 When all $p_i$'s vanish except for one, that is $\rho=|\psi\rangle\langle\psi|$, the state $\rho$ is pure.
 On the other hand, if more than one $p_i$'s are non-zero, the state $\rho$ is mixed.
@@ -371,13 +371,13 @@ Table~\ref{tab:3-4_pure_vs_mixed} provides a summary of the important points.
 
 We have seen that it's impossible to prepare the desired pure states as outputs.
 Sometimes the prepared state is pure but not quite the target state we were aiming for.
-Other times is can be affected by incoherent noise resulting in a mixed state.
+Other times it can be affected by incoherent noise resulting in a mixed state.
 It is crucial that we have a way of quantifying the difference between the real and the target states.
 
 A convenient tool that tells us how close the real state is to the target state is the \textit{\textbf{fidelity}}.
 Consider the case where the target state is some pure state $|\psi\rangle$.
-This state could be the desired output of a quantum computer, or a state distributed by a quantum networks.
-However, due to noise and imperfections in the hardware and our control of it, the actual state some mixture $\rho$.
+This state could be the desired output of a quantum computer, or a state distributed by a quantum network.
+However, due to noise and imperfections in the hardware and our control of it, the actual state is inevitably some mixture $\rho$.
 The deviation of this state from the target state is given by the fidelity $F$, defined as
 \begin{equation}
     F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle.
@@ -432,19 +432,19 @@ We have
 \begin{equation}
     F(\rho,|\psi\rangle) = \langle0| \rho | 0\rangle = (1-p) \langle0|0\rangle^2 + p \langle1|1\rangle^2 = 1 - p.
 \end{equation}
-The fidelity does depend the probability of error as we anticipated.
+The fidelity does depend on the probability of error, as we anticipated.
 When $p=0$ and there is no noise affecting the input state, so the fidelity of the output state is 1.
 On the other hand, if the bit-flip channel is maximally noisy, $p=1/2$, the output state is the maximally mixed state.
 This is also evidenced by the fidelity dropping to $F(\rho,|0\rangle)=1/2$.
 
 We mentioned that the fidelity is an important tool in quantifying the quality of a quantum state with respect to the ideal noiseless case.
 It can be interpreted as the probability that real state is the target state.
-Many protocols in quantum communication as well quantum computation do not work when the real state is too noisy.
+Many protocols in quantum communication as well as quantum computation do not work when the real state is too noisy.
 Often this condition is expressed in the form of a \textit{\textbf{threshold fidelity}} $F_{crit}$.
 If the fidelity of the real state is above this critical value, $F > F_{crit}$, then the protocol can be successfully executed.
 On the other hand, if $F < F_{crit}$, the protocol cannot be used.
 An example of such a protocol include entanglement purification, where the fidelity of noisy entangled pairs can be boosted provided the initial pairs are not too noisy.
-Another example is fault-tolerant quantum computation, where scalable universal quantum computation can be achieved even with noisy components, provided the noise is below a threshold.
+Another example is fault-tolerant quantum computation, where scalable universal quantum computation can be achieved even with noisy components, provided the noise is below a certain threshold.
 
 
 \newpage
