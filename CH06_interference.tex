@@ -37,11 +37,11 @@ where $k$, the wave number, is related to $\lambda$ (lower case lambda), the wav
 
 Let's freeze the wave at time $t=0$, and for convenience we also set $\phi = 0$, and only vary $k$. The blue wave in Fig.~\ref{fig:two-waves} is for $k=1$, whereas the orange one is for $k=0.5$, and the distance between the two dots at the top of the blue wave and bottom of the orange wave represents the wavelength of the wave. As we said, the wave number $k$ is related to the wavelength. The larger the wave number, the shorter the wavelength, so we see for $k=1$, the wavelength is shorter than for $k=0.5$.
 
-Now, let's consider what happens when we fix the wave number but we vary the initial phase, as in Fig.~\ref{fig:phase-diff-waves}. The only thing that happens is that we shift the wave along the X-axis. We are just translating the wave a little bit by this angle, by this initial phase $\phi$. In this case, we have shifted the two waves by initial phase of pi over two, but this doesn't really affect how fast the wave is propagating, or it doesn't affect its wavelength.
+Now, let's consider what happens when we fix the wave number but we vary the initial phase, as in Fig.~\ref{fig:phase-diff-waves}. The only thing that happens is that we shift the wave along the X-axis. We are just translating the wave a little bit by this angle, by this initial phase $\phi$. In this case, we have shifted the two waves by an initial phase of $\pi/2$, but this doesn't really affect how fast the wave is propagating, nor does it affect its wavelength.
 
 So finally, let's add time dependence into the picture, as in Figs.~\ref{fig:two-waves} and \ref{fig:propagating-waves}. We set $k=1$, and we also set the initial phase $\phi=0$, and now the waves are actually propagating in time. For the first wave represented by the blue, we have $\omega=0.1$, whereas for the second wave we have $\omega=0.2$. Remember, we said that $\omega$ determines how fast the wave is propagating in time, and we can clearly see that the orange wave is faster than the blue wave.
 
-Now, let's consider two waves that are actually interacting together and creating a new, third wave. How do we describe this new disturbance? So let's say that we've got two waves, $E_1$ and $E_2$, each with different amplitude, same frequency, and we grouped the spatial variation into these factors $\alpha$: $\alpha_1$ and $\alpha_2$.
+Now, let's consider two waves that are actually interacting together and creating a new, third wave. How do we describe this new disturbance? So let's say that we have two waves, $E_1$ and $E_2$, each with different amplitude, same frequency, and we grouped the spatial variation into these factors $\alpha$: $\alpha_1$ and $\alpha_2$.
 
 \begin{equation}
 \begin{array}{ll}
@@ -67,11 +67,11 @@ E &=E_{01}\left(\sin \omega t \cos \alpha_{1}+\cos \omega t \sin \alpha_{1}\righ
 &+E_{02}\left(\sin \omega t \cos \alpha_{2}+\cos \omega t \sin \alpha_{2}\right)
 \end{aligned}
 \end{equation}
-%, so let's see how we can do that. We just add the two waves together, and we begin by expanding these sines. The first wave can be written as this (see pointer)- we have the initial amplitude of the first wave, E zero one, and then we've got sine omega t times cos alpha one, plus cos omega t times sine alpha one, and similarly for the second wave. 
+%, so let's see how we can do that. We just add the two waves together, and we begin by expanding these sines. The first wave can be written as this (see pointer)- we have the initial amplitude of the first wave, E zero one, and then we have sine omega t times cos alpha one, plus cos omega t times sine alpha one, and similarly for the second wave. 
 We add them together then group the time dependent terms. 
 %So we see that these two terms (blue box), they both vary in time as sine omega t, whereas these two terms (red box) vary as cos omega t. So let's group them together and 
 We get the following expression: 
-%we've got some spatial variation here, times sine omega t, and another spatial variation here, times cos omega t. And what we can do now is 
+%we have some spatial variation here, times sine omega t, and another spatial variation here, times cos omega t. And what we can do now is 
 
 \begin{equation}
 \begin{aligned}
@@ -229,7 +229,7 @@ Let's compute an expression for the superposition,
      & = E_{0}\left[\sin \left(\omega_{1} t-k_{1} x\right)+\sin \left(\omega_{2} t-k_{2} x\right)\right] \nonumber\\
     & = 2 E_{0} \underbrace{\sin \left( \frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x \right)}_{\text{fast oscillations}} \underbrace{ \cos \left( \frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x \right)}_{\text{slow oscillations}}.
 \end{align}
-We see that he superposition can be split into two terms.
+We see that the superposition can be split into two terms.
 The first captures the fast oscillations of the superposition at frequency $\omega_1+\omega_2$.
 These fast oscillations are pictured in blue in Fig.~\ref{fig:6-2_superposition}.
 Similarly to the case of a single-frequency wave we can ask the question at what speed a point of constant phase travels to obtain the \textit{\textbf{phase velocity}} for the superposition.
@@ -251,7 +251,7 @@ We can have scenarios where one is larger than the other but also when they are 
 \end{equation}
 Real wavepackets and signals are rarely single-frequency waves but rather results of a superposition of a number of single-frequency components.
 When we talk about the speed of such a wave, we usually refer to the group velocity.
-It is also the group velocity that tells us how quickly a the signal carries information.
+It is also the group velocity that tells us how quickly a signal carries information.
 
 % Let's illustrate it with an example. We consider two waves $E_1$ and $E_2$,
 % \begin{equation}
@@ -318,8 +318,8 @@ Let's say we have a superposition of the following form,
 We have assumed that we are looking at the superposition frozen in time at $t=0$, hence the simple form.
 The resultant superposition is pictured in Fig.~\ref{fig:6-2_pulse}.
 Unlike before, we can observe long regions where destructive interference results in almost no disturbance.
-Then the constructive interference kicks in and observe a short \textit{\textbf{pulse}}.
-It is these pulse that can be used to carry information at the group velocity of the superposition.
+Then the constructive interference kicks in and we observe a short \textit{\textbf{pulse}}.
+It is these pulses that can be used to carry information at the group velocity of the superposition.
 
 
 
@@ -337,7 +337,7 @@ It is these pulse that can be used to carry information at the group velocity of
 
 I'm sure you have already seen the the scenario of a double slit experiment with laser light in another of your physics classes, but let's review it again.
 
-In this experiment we've got a source of coherent light, canonically a laser. In Fig.~\ref{fig:two-slit}, the laser light is incident on a screen, where there are only two small slits where the light can go through, and then it propagates towards another screen where we detect a pattern. The pattern that we see looks something like this: we have fringes of bright light (pink in the figure), and then fringes where there is no light (blank, or white, in the figure). Why is that?  The pink lines represent the peaks of the electromagnetic waves. They are straight before coming to the screen, perpendicular to the direction of travel. After passing through the slits, they radiate out in a circular pattern.  Following the light blue lines, you can see that where the peaks from the two slits meet, the lines cross.  Those blue lines are where we get constructive interference, giving us the strong pink illumination on the screen. Halfway in between those blue lines, you can see that the wave from one slit is at its peak when the other is at its trough.  This will give us destructive interference.
+In this experiment we have a source of coherent light, canonically a laser. In Fig.~\ref{fig:two-slit}, the laser light is incident on a screen, where there are only two small slits where the light can go through, and then it propagates towards another screen where we detect a pattern. The pattern that we see looks something like this: we have fringes of bright light (pink in the figure), and then fringes where there is no light (blank, or white, in the figure). Why is that?  The pink lines represent the peaks of the electromagnetic waves. They are straight before coming to the screen, perpendicular to the direction of travel. After passing through the slits, they radiate out in a circular pattern.  Following the light blue lines, you can see that where the peaks from the two slits meet, the lines cross.  Those blue lines are where we get constructive interference, giving us the strong pink illumination on the screen. Halfway in between those blue lines, you can see that the wave from one slit is at its peak when the other is at its trough.  This will give us destructive interference.
 
 % As you can see, as the light is propagating through here (follow pointer), these lines, they represent the peaks of the electromagnetic wave, whereas the space in between them represent the valleys, the troughs. So as the two waves go through these slits, they have a chance to interfere constructively or destructively. Where their peaks meet, the wave- the interference of the two waves reinforces their amplitude. On the other hand, if a peak meets a trough or a valley, then the amplitudes cancel, and here we can see these light blue lines, these are the lines along which we see constructive interference.
 

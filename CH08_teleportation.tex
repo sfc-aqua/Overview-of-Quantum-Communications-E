@@ -4,7 +4,7 @@
 %\begin{abstract}
 % Hi, and welcome to Lesson 8 on "Teleportation".
 
-Teleportation is one of the most wonderful and most fundamental protocols in quantum information processing. It is extensively used in quantum computation and quantum communication, so let's learn about it.
+Teleportation is one of the most wonderful and most fundamental protocols in quantum information processing. It is used extensively in quantum computation and quantum communication, so let's learn about it.
 %\end{abstract}
 
 \section{Introduction}
@@ -12,7 +12,7 @@ Teleportation is one of the most wonderful and most fundamental protocols in qua
 
 % Step One: Introduction
 
-How do we transmit information in a quantum network? Before we answer that let's see what happens classically. In Ch. 1, we saw the example of the Great Wall of China. If a guard tower was under attack, they lit a fire to alert the other guard towers and ask for help. That message really was carried by the photons which originated from the fire and reached the other guard towers, where they entered the eyes of the other guards, who then were able to act. In modern times, if we want to download some data or we want to communicate over the classical Internet, the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, when we transmit some message, we have to transmit the physical system itself  -- that is to say, the set of photons -- that is encoding the message.
+How do we transmit information in a quantum network? Before we answer that let's see what happens classically. In Ch.~\ref{sec:1_Introduction}, we saw the example of the Great Wall of China. If a guard tower was under attack, they lit a fire to alert the other guard towers and ask for help. That message really was carried by the photons which originated from the fire and reached the other guard towers, where they entered the eyes of the other guards, who then were able to act. In modern times, if we want to download some data or we want to communicate over the classical Internet, the message is a bit string and again it is carried by photons in optical fibers. So in classical networks, when we transmit some message, we have to transmit the physical system itself  -- that is to say, the set of photons -- that is encoding the message.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson8/quantum-network.png}
@@ -39,7 +39,7 @@ How do we transmit information in a quantum network? Before we answer that let's
 \end{figure}
 
 
-However in quantum physics, it's a little bit different. We can also transmit the (quantum) message without transmitting the (quantum) physical system. Consider a quantum network like Fig.~\ref{fig:quantum-network}, and let's say that we want to use the old-fashioned way of transmitting the message with the physical system that is encoding it. In this network, the circles represent our nodes and the lines represent the links, or quantum channels, between the nodes. The sender, represented by the blue node in the figure, is in possession of some pure state $\ket{psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target given by the orange network node. As in Fig.~\ref{fig:hop-by-hop}, the sender can decide (or the network can decide) to send it first to its neighboring network node, then to the next network node, and then finally to reach the target. But what happens if one of the quantum links is not working? Well, in this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target. But what happens if another link is down? Well in this case, the network is \emph{partitioned} and it seems like we cannot transmit the message to the target...unless we use teleportation! We can teleport this state from the sender to the target, provided that some initial conditions are met. We can move the information itself without moving the actual physical system. That physical system remains stationary.
+However in quantum physics, it's a little bit different. We can also transmit the (quantum) message without transmitting the (quantum) physical system. Consider a quantum network like Fig.~\ref{fig:quantum-network}, and let's say that we want to use the old-fashioned way of transmitting the message using a physical system that is encoding it. In this network, the circles represent our nodes and the lines represent the links, or quantum channels, between the nodes. The sender, represented by the blue node in the figure, is in possession of some pure state $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target given by the orange network node. As in Fig.~\ref{fig:hop-by-hop}, the sender can decide (or the network can decide) to send it first to its neighboring network node, then to the next network node, and then finally to reach the target. But what happens if one of the quantum links is not working? Well, in this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target. But what happens if another link is down? Well in this case, the quantum portion of our network is \emph{partitioned} and it seems like we cannot transmit the message to the target...unless we use teleportation! (Here, we assume that the supporting classical network remains intact, only the quantum channels are going up or down.) We can teleport this state from the sender to the target, provided that some initial conditions are met. We can move the information itself without moving the actual physical system. That physical system remains stationary.
 
 \begin{figure}[H]
     \centering
@@ -80,7 +80,7 @@ If we write out the initial state in its full form, we have
 $\ket{\psi}_{A_1}$ is Alice's input state that she wants to communicate, and the state $\ket{\Phi^+}$ spans qubits $A_2$ and $B$.
 %We can write it out like this, and then expand to get the following superposition of basis states- (zero zero zero), (zero one one), (one zero zero), and (one one one), each with the corresponding probability amplitudes.
 
-Then, we said that Alice performs a two-qubit measurement. This is known as a \emph{Bell basis measurement} or just a \emph{Bell measurement}\index{Bell measurement}.
+Then, Alice performs a two-qubit measurement. This is known as a \emph{Bell basis measurement} or just a \emph{Bell measurement}\index{Bell measurement}.
 %So these are the following bell states- phi plus is given as a superposition of zero zero and one one. Phi minus is this similar superposition between (zero zero) (one one), but now we have a negative phase here. And psi plus is where the qubits are anti-correlated it's (zero one) plus (one zero), and psi minus is (zero one) minus (one zero). And 
 Doing a measurement in the Bell basis is basically asking the question: which of the following states is Alice's state in? 
 \begin{align}
@@ -89,7 +89,7 @@ Doing a measurement in the Bell basis is basically asking the question: which of
 \left|\Psi^{+}\right\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle) & \left|\Psi^{-}\right\rangle=\frac{1}{\sqrt{2}}(|01\rangle-|10\rangle)
 \end{array}
 \end{align}
-To help us with answering that question, we have to rewrite our initial state in a slightly different form. To do that we will use the following trick: instead of writing the state $\ket{00}$ for the two qubits that Alice has, we can write it as a superposition of two of the Bell states using the following identities:
+To help us with answering that question, we have to rewrite our initial state in a slightly different form. To do that we will use the following trick: instead of writing the state using normal terms like $\ket{00}$ for the two qubits that Alice has, we can write it as a superposition of two of the Bell states using the following identities:
 %, namely zero zero (you can check yourself can be written as superposition of phi plus and phi minus), zero one is then written as a superposition of psi plus and psi minus, and similarly the states one zero and one one can be written as superpositions but with negative phases over there.
 \begin{align}
     \begin{array}{ll}
@@ -106,9 +106,9 @@ Let's rewrite Alice's initial state. % This is her state, and we are trying to d
 \end{aligned}
 \end{align}
 
-Going term by term, we first look at the $\ket{00}$ state of Alice's qubits.
+Going term by term, we first look at the portion of Alice's state that is in $\ket{00}$.
 %We said that that can be rewritten with the help of these following tricks. So we look at zero zero, and 
-We substitute for it our superposition of Bell states  $\ket{\Phi^+}$ and $\ket{\Phi^-}$. We do the same thing for the next term in the initial state $\ket{01}$, and we substitute for it the superposition of $\Psi^+$ and $\Psi^-$, and so on and so forth. In full, we get the following superposition:
+We substitute for it our superposition of Bell states $\ket{\Phi^+}$ and $\ket{\Phi^-}$. We do the same thing for the next term in the initial state $\ket{01}$, and we substitute for it the superposition of $\Psi^+$ and $\Psi^-$, and so on and so forth. In full, we get the following superposition:
 %- the first term transforms into (alpha times a superposition of Bell state psi plus psi minus times Bob's state zero), and that is in a superposition with this term over here, this third term, and this fourth term.
 \begin{align}
     \begin{aligned}
@@ -120,7 +120,7 @@ We substitute for it our superposition of Bell states  $\ket{\Phi^+}$ and $\ket{
 &\left.+\beta\left(\left|\Phi^{+}\right\rangle-\left|\Phi^{-}\right\rangle\right)|1\rangle\right) \\
 \end{aligned}
 \end{align}
-Now let's collect all the terms that have the same Bell state for Alice's qubits $A_1$ and $A_2$.  For example, the first term has a $\ket{\Psi^+}$, and also the last term has a $\ket{\Psi^+}$, but they differ in their amplitudes and also in the state of Bob's qubit. For the first term, we have probability amplitude $\alpha$ and Bob's qubit in the state $\ket{0}$. For the last term, we've got probability amplitude $\beta$ and Bob's qubit is in the state $\ket{1}$. We collect them together, and we get the expression- we have $\ket{\Psi^+}$ for the state of qubits $A_1$ and $A_2$, and Bob's qubit is in this superposition $\alpha|1\rangle+\beta|0\rangle$. And we do this procedure for all of the other Bell states until we arrive at the expression
+Now let's collect all the terms that have the same Bell state for Alice's qubits $A_1$ and $A_2$. For example, the first term has a $\ket{\Psi^+}$, and also the last term has a $\ket{\Psi^+}$, but they differ in their amplitudes and also in the state of Bob's qubit. For the first term, we have probability amplitude $\alpha$ and Bob's qubit in the state $\ket{0}$. For the last term, we have probability amplitude $\beta$ and Bob's qubit is in the state $\ket{1}$. We collect them together, and we get the expression- we have $\ket{\Psi^+}$ for the state of qubits $A_1$ and $A_2$, and Bob's qubit is in this superposition $\alpha|1\rangle+\beta|0\rangle$. And we do this procedure for all of the other Bell states until we arrive at the expression
 \begin{align}
     \begin{aligned}
 =&\frac{1}{2}\left|\Phi^{+}\right\rangle_{A_{1} A_{2}}(\alpha|0\rangle+\beta|1\rangle)_{B} \\
@@ -166,16 +166,16 @@ If Alice measures $\left|\Phi^{-}\right\rangle$, Bob applies $Z$.\\
 If Alice measures $\left|\Psi^{+}\right\rangle$, Bob applies $X$.\\
 If Alice measures $\left|\Psi^{-}\right\rangle$, Bob applies $Z X$.
 
-And in all of these cases, Bob ends up with the desired state $\ket{psi}$, so our teleportation has succeeded and Alice managed to communicate her state $\ket{\psi}$ to Bob without actually sending it through the network. That's amazing!
+And in all of these cases, Bob ends up with the desired state $\ket{\psi}$, so our teleportation has succeeded and Alice managed to communicate her state $\ket{\psi}$ to Bob without actually sending it through the network. That's amazing!
 
 Also, one thing that teleportation demonstrates is the interchangeability of resources in quantum communication and quantum computation. The different resources are the following: we have exchanged one qubit of communication for one entangled pair and two classical bits. What does this mean? It means that we achieved the task of sending the information about state $\ket{\psi}$ from Alice to Bob in two different ways. We could have just send it directly (Fig.~\ref{fig:hop-by-hop}), which is considered as one qubit of communication. That will definitely get the state from Alice to Bob. Or, as we outlined with the teleportation protocol, rather than sending the state directly, if Alice and Bob share an entangled pair, \emph{and} are allowed to communicate two classical bits, then they can achieve the same task.
 
 \section{No-cloning theorem and Faster-than-light (FTL) communication}
 \label{sec:8-3_no-cloning}
 
-Let's go back to the teleportation protocol and ask a few questions. Alice communicated her state to Bob. Did she clone it while teleporting it? After all, she started with the state $\ket{\psi}$ and she did not send the physical qubit to Bob. Yet at the end of the protocol, we saw that Bob does have the qubit $\ket{\psi}$. So what was going on there? Well, initially Bob's qubit was part of a maximally entangled state. He had one part of the entangled state and Alice had the other. At the end of the protocol, Alice's qubit $A_1$ was part of a maximally entangled state. She performed a measurement in the Bell basis and that projected her two qubits onto one of the four possible Bell states where all of them are maximally entangled~\footnote{Implementations commonly \emph{destructively} measure the two qubits at Alice as part of this process, in which case a more accurate description is, "The two qubits \emph{were} in Bell state..." rather than, "The two qubits \emph{are} in Bell state..." The mathematical implications for Bob's qubit and the no-cloning theorem remain the same.}. So what that means is that initially the state of the qubit A1 was $\ket{\psi}$, and the state of the qubit that Bob had in his possession was a maximally mixed state, and then after the protocol the state of Alice's qubit $A_1$ became the maximally mixed state, whereas Bob's qubit became the state $\ket{\psi}$. So we see that there was no cloning or copying of the state even though there was no direct physical transmission of the state $\ket{\psi}$ from Alice to Bob. But this is an interesting question: "is cloning possible?"  Let's have a look at this question.
+Let's go back to the teleportation protocol and ask a few questions. Alice communicated her state to Bob. Did she clone it while teleporting it? After all, she started with the state $\ket{\psi}$ and she did not send the physical qubit to Bob. Yet at the end of the protocol, we saw that Bob does have the qubit $\ket{\psi}$. So what was going on there? Well, initially Bob's qubit was part of a maximally entangled state. He had one part of the entangled state and Alice had the other. At the end of the protocol, Alice's qubit $A_1$ was part of a maximally entangled state. She performed a measurement in the Bell basis and that projected her two qubits onto one of the four possible Bell states where all of them are maximally entangled~\footnote{Implementations commonly \emph{destructively} measure the two qubits at Alice as part of this process, in which case a more accurate description is, "The two qubits \emph{were} in Bell state..." rather than, "The two qubits \emph{are} in Bell state..." The mathematical implications for Bob's qubit and the no-cloning theorem remain the same.}. So what that means is that initially the state of the qubit $A_1$ was $\ket{\psi}$, and the state of the qubit that Bob had in his possession was a maximally mixed state, and then after the protocol the state of Alice's qubit $A_1$ became the maximally mixed state, whereas Bob's qubit became the state $\ket{\psi}$. So we see that there was no cloning or copying of the state even though there was no direct physical transmission of the state $\ket{\psi}$ from Alice to Bob. But this is an interesting question: "is cloning possible?"  Let's have a look at this question.
 
-Let's only consider cloning of pure states, and let's say that we've got some device, as in Fig.~\ref{fig:cloner}. Our hypothetical cloning device executes some unitary operation $U$. The input states is some arbitrary state $\ket{\psi}$ with some other state which is initialized in state $\ket{0}$. So it's a two qubit input state and we've got a two qubit output state where both of the qubits are now in the state $\ket{\psi}$. Now the question that we are trying to answer- is such a transformation possible? What does the unitary look like that can achieve such a transformation?
+Let's only consider cloning of pure states, and let's say that we have some device, as in Fig.~\ref{fig:cloner}. Our hypothetical cloning device executes some unitary operation $U$. The input states is some arbitrary state $\ket{\psi}$ with some other state which is initialized in state $\ket{0}$. So it's a two qubit input state and we have a two qubit output state where both of the qubits are now in the state $\ket{\psi}$. Now we are trying to answer the question, is such a transformation possible? What does the unitary look like that can achieve such a transformation?
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson8/cloning-device.png}
@@ -187,7 +187,7 @@ For example if we start in the state $\ket{0}\ket{0}$, after applying our clonin
 
 Before we present a proof of what's going on, let's consider some examples to get some intuition.
 
-Let's consider a CNOT gate as our unitary $U$. A CNOT gate represented in the Dirac notation and in the matrix notation is
+As a first guess for what our unitary $U$ might be, let's consider a CNOT gate. A CNOT gate represented in the Dirac notation and in the matrix notation is
 \begin{equation}
 \begin{aligned}
 \operatorname{CNOT} &=|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X \\
@@ -199,7 +199,7 @@ Let's consider a CNOT gate as our unitary $U$. A CNOT gate represented in the Di
 \end{array}\right)
 \end{aligned}
 \end{equation}
-What this means is that if the state of the first qubit is zero, then apply the identity to the second qubit, meaning "don't do anything". If the state of the first qubit is one, then apply Pauli $X$ to the second qubit.
+This means that if the state of the first qubit is zero, then apply the identity to the second qubit, meaning "don't do anything". If the state of the first qubit is one, then apply Pauli $X$ to the second qubit.
 
 Let's consider some inputs and their results,
 \begin{equation}
@@ -235,11 +235,11 @@ Now we can take these two expressions and we can take the inner product of the l
 \braket{\phi}{\psi} &= \braket{\phi}{\psi}^2
 \end{aligned}
 \end{equation}
-The right hand side of the equations is quite simple. We take the inner product of $\ket{\phi}$ of the first qubit with $\ket{\psi}$ of the first qubit, giving us $\braket{\phi}{\psi}$, and we multiply it by the inner product of this second $\ket{\phi}$ and this second $\ket{\psi}$, so we get the inner product of $\braket{\phi}{\psi}^2$. On the left hand side of the two equations, we have the states modified by the unitary operations $U$.  When we take the inner product, the second unitary turns into a $U^\dagger$, and we know that one of the defining properties of a unitary is that $U^\dagger U = I$. So, those unitaries cancel, and what we get is the inner product of $\ket{\phi}$ and $\ket{\psi}$, multiplied by the inner product $\braket{0}{0}$. But we know what the inner product of $\braket{0}{0} = 1$.
+The right hand side of the equations is quite simple. We take the inner product of $\ket{\phi}$ of the first qubit with $\ket{\psi}$ of the first qubit. To take the inner product, we have to change \ket{\phi} into \bra{\phi}, giving us $\braket{\phi}{\psi}$ in the middle of the equation. That inner product is a scalar (just a number), so we are allowed to move it to the left of the other \ket{\phi}, so we see that we also have the inner product of the second $\ket{\phi}$ and the second $\ket{\psi}$, giving us the value $\braket{\phi}{\psi}^2$. On the left hand side of the two equations, we have the states modified by the unitary operations $U$.  When we take the inner product, the second unitary turns into a $U^\dagger$, and we know that one of the defining properties of a unitary is that $U^\dagger U = I$. So, those unitaries cancel, and what we get is the inner product of $\ket{\phi}$ and $\ket{\psi}$, multiplied by the inner product $\braket{0}{0}$. We know that the inner product $\braket{0}{0} = 1$, so that just cancels out.
 
-On the left hand side, we end up with just the inner product of $\ket{\phi}$ and $\ket{\psi}$, and that has to be equal to the same inner product squared. Now we can easily solve for what the inner product between these two arbitrary states should be. For any scalar $x$, if we have $x = x^2$, then in order to satisfy this equation, $x$ has to be 0 or 1. So what does this actually mean? When the inner product of two states is one, it means that the two states are actually identical, and mathematically we get an identity statement that doesn't tell us anything.
+On the left hand side, we end up with just the inner product of $\ket{\phi}$ and $\ket{\psi}$, and that has to be equal to the same inner product squared. Now we can easily solve for what the inner product between these two arbitrary states should be. For any scalar $x$, if we have $x = x^2$, then in order to satisfy this equation, $x$ has to be 0 or 1. So what does this actually mean? When the inner product of two states is one, it means that the two states are actually identical, and mathematically we get an identity statement that doesn't tell us anything. On the other hand, when the inner product is zero, it means that the two states are orthogonal.
 
-On the other hand, when the inner product is zero, it means that the two states are orthogonal. This proves that our cloning really works, as we saw in the example before, for states that can be distinguished with certainty -- there is no ambiguity or overlap in their superpositions. (Remember, orthogonal states are always distinguishable deterministically.) So we can say that we cannot clone an arbitrary state in quantum mechanics, which is in stark contrast to classical physics. This is the \emph{no-cloning theorem}.
+This proves that our cloning really works, as we saw in the example before, for states that can be distinguished with certainty -- there is no ambiguity or overlap in their superpositions. (Remember, orthogonal states are always distinguishable deterministically.) So we can say that we cannot clone an arbitrary state in quantum mechanics, which is in stark contrast to classical physics. This is the \emph{no-cloning theorem}.
 
 Now let's ask a second interesting question: is teleportation instantaneous? Does it allow us to communicate faster than the speed of light? In order to answer that question, we have to consider the timeline of events that are going on during our teleportation protocol, as in Fig.~\ref{fig:teleportation-timeline}. We start at time $t_0$, when we initialize our system. At some later time $t_1$, Alice performs her measurement in the Bell basis on the two qubits that she has. Then at some later time $t_2$, Alice sends the outcome of the measurements to Bob, and he receives these outcomes at time $t_3$.
 
@@ -247,7 +247,7 @@ Let's go step by step and consider what is going on with Bob's state. At time $t
 \begin{equation}
 \left|\Phi^{+}\right\rangle_{A_2 B}=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle) \longrightarrow \rho_B=\frac{1}{2}\ketbra{0}{0} +\frac{1}{2}\ketbra{1}{1}.
 \end{equation}
-This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get the outcome zero ($+1$ eigenvalue) with probability one half, or the outcome one ($-1$ eigenvalue) with probability one half. In fact, if he measures in any basis, he will get the outcome $+1$ or $-1$ with the same probability, so he's maximally unsure about his own state. That also means that he has no idea about Alice's state.
+This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get the outcome zero ($+1$ eigenvalue) with probability one half, or the outcome one ($-1$ eigenvalue) with probability one half. In fact, if he measures in any basis, he will get the outcome $+1$ or $-1$ with the same probability, so he's maximally unsure about his own state. That also means that he has no idea what state Alice is trying to send him.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson8/teleportation-timeline.png}
@@ -255,9 +255,9 @@ This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get th
     \label{fig:teleportation-timeline}
 \end{figure}
 
-At time $t_1$, Alice performs her measurement. Just before the measurement, the total state of all three qubits is given by the expression in Eq.~\ref{eq:teleport-alice-basis}. We can rewrite the initial state in terms of the Bell basis for Alice's qubits, which leaves Bob's qubit in the following states subscripted with $B$, depending on which state Alice has. So at this time does Bob know anything about Alice's state $A_1$? He doesn't, because nothing really happened. We have only rewritten the initial state.
+At time $t_1$, Alice performs her measurement. Just before the measurement, the total state of all three qubits is given by the expression in Eq.~\ref{eq:teleport-alice-basis}. We can rewrite the initial state in terms of the Bell basis for Alice's qubits, which leaves Bob's qubit in the following states subscripted with $B$, depending on which state Alice has. At this time does Bob know anything about Alice's state $A_1$? He doesn't, because nothing really happened. We have only rewritten the initial state.
 
-Then we ask what happens just after $t_1$, just after Alice measures in the Bell basis. Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained the other three remaining Bell states. So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,\\
+Then we ask what happens just after $t_1$, just after Alice measures in the Bell basis. Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained each of the other three  Bell states. So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,\\
 $\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$\\
 $\operatorname{Prob}\left(\left|\Phi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle-\beta|1\rangle$\\
 $\operatorname{Prob}\left(\left|\Psi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle+\beta|0\rangle$\\

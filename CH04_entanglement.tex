@@ -125,7 +125,7 @@ Let's form a tensor product of $\ket{\psi}_A$ with $\ket{\psi}_B$. We write it o
 \end{aligned}
 \end{equation}
 We get four terms, one probability amplitude for each computational basis term.
-%, we've got a-zero b-zero for state $\ket{00}$, a-zero b-one for the state zero-one, a-one b-zero for one-zero, and a-one b-one for $\ket{11}$. 
+%, we have a-zero b-zero for state $\ket{00}$, a-zero b-one for the state zero-one, a-one b-zero for one-zero, and a-one b-one for $\ket{11}$. 
 
 Remember, the global state that we are looking for is the following: $\ket{00}+\ket{11}$ (normalized appropriately, of course). 
 So when we compare this general tensor product of A and B with our desired global state and try to determine the values of $a_i$ and $b_i$ we need, we see that
@@ -250,30 +250,31 @@ Just to stress how strange this is that we have a full knowledge of the global s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/state1.pdf}
+    \includegraphics[width=0.8\textwidth]{lesson4/4-8_spdc.pdf}
     
-        \caption[pump photon and the energy levels of the atom]{A representation of the pump photon and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state. \rdv{should we have diagram with an arrow from g to e, as is common for absorption?}}
+        \caption[pump photon and the energy levels of the atom]{A representation of the pump photon of energy $E_p$ and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state.
+        The atom absorbs the energy provided by the pump photon and transitions to the excited state. The atom decays spontaneously after some time, releasing energy in the form of two photons with energies $E_s$ and $E_i$. Due to conservation of energy, we have $E_p = E_s + E_i$.}
     
     \label{fig:spdc-energy-levels}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \begin{minipage}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{lesson4/state1.pdf}
-    \caption{A representation of the pump photon and the energy levels of the atom.}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{lesson4/state2.pdf}
-    \caption{After absorption of the photon, the electron moves to the excited state.}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{lesson4/state3.pdf}
-    \caption{A representation of the emission of two photons when the electron decays from the excited state back to the ground state.}
-  \end{minipage}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \begin{minipage}[b]{0.3\textwidth}
+%     \includegraphics[width=\textwidth]{lesson4/state1.pdf}
+%     \caption{A representation of the pump photon and the energy levels of the atom.}
+%   \end{minipage}
+%   \hfill
+%   \begin{minipage}[b]{0.3\textwidth}
+%     \includegraphics[width=\textwidth]{lesson4/state2.pdf}
+%     \caption{After absorption of the photon, the electron moves to the excited state.}
+%   \end{minipage}
+%   \hfill
+%   \begin{minipage}[b]{0.3\textwidth}
+%     \includegraphics[width=\textwidth]{lesson4/state3.pdf}
+%     \caption{A representation of the emission of two photons when the electron decays from the excited state back to the ground state.}
+%   \end{minipage}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
