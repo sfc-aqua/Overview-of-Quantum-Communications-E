@@ -299,7 +299,9 @@ In the remainder of this section, we discuss a simplified nonlinear dynamical mo
 
 The two variables of interest are the number of photons inside the optical cavity, denoted by $n(t)$, and the number of atoms in the state $E_2$, denoted by $N_2(t)$.
 We added explicit time dependence $t$ as we are interested how the two variables change in time.
-During the lasing process, the number of photons rapidly increases resulting in a large  positive rate of change of the number of photons, denoted by $\dot{n}(t)$.
+During the lasing process, the number of photons rapidly increases resulting in a large positive rate of change of the number of photons.
+\michal{This rate of change is given by the time derivative of the number of photons by $dn(t)/dt$.
+Time derivatives are often written with a ``dot'' above the changing variable, $dn(t)/dt = \dot{n}(t)$, which we will use in the rest of this Section as well.}
 This rate of change is given by the following difference,
 \begin{equation}
     \dot{n}(t) = \text{gain} - \text{loss}.
@@ -348,6 +350,8 @@ Substituting Eq.~(\ref{eq:5-4_population}) into Eq.~(\ref{eq:5-4_n_dot_detailed}
     \caption[Dynamical model of a laser]{Solutions to the dynamical model of a laser in Eq.~(\ref{eq:5-4_n_dot_final}).}
     \label{fig:5-4_lasing}
 \end{figure}
+
+\rdv{maybe use "derivative"? Recheck description of stable point for clarity. Possibly describe as bathtub?}
 
 Eq.~(\ref{eq:5-4_n_dot_final}) is not easily solved analytically.
 And frankly, such a solution would not be very enlightening anyway.

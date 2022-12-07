@@ -310,11 +310,11 @@ Then, Alice and Bob randomly choose a measurement basis in which they measure th
 
 Why do we have three different measurements for Alice and three different measurements for Bob rather than two, like we had in the previous protocol, BB84?
 
-Some of these measurements are overlapping, which is needed for generating the secret random key. Remember, we said that if both Alice and Bob measure the entangled state in the same basis, they can use that information via our classical outcomes to generate and establish a classical, correlated random key. Data from the basis choices $(A_1, B_1)$ or $A_3,B_3)$ can be used for this. On the other hand, we need some rotated bases in order to compute the CHSH expression and see if it violates the classical CHSH inequality in order to establish that Alice and Bob are really sharing an entangled state. For this, we use the basis choices $(A_1,B_3), (A_1,B_2), (A_2,B_2), (A_2,B_3)$.
+Some of these measurements are overlapping, which is needed for generating the secret random key. Remember, we said that if both Alice and Bob measure the entangled state in the same basis, they can use that information via our classical outcomes to generate and establish a classical, correlated random key. Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for this. On the other hand, we need some rotated bases in order to compute the CHSH expression and see if it violates the classical CHSH inequality in order to establish that Alice and Bob are really sharing an entangled state. For this, we use the basis choices $(A_1,B_3), (A_1,B_2), (A_2,B_2), (A_2,B_3)$.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{lesson10/e91-example.png}
+    \includegraphics[width=0.8\textwidth]{lesson10/10-3-bases_key.pdf}
         \caption{E91 example of a series of basis choices for measurements.}
     \label{fig:e91-example}
 \end{figure}

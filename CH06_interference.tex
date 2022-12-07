@@ -249,7 +249,7 @@ We can have scenarios where one is larger than the other but also when they are 
 \begin{equation}
     v_p > v_g, \quad v_p = v_g, \quad v_p < v_g.
 \end{equation}
-Real wavepackets and signals are rarely single-frequency waves but rather results of a superposition of a number of single-frequency components.
+Real wave packets and signals are rarely single-frequency waves but rather results of a superposition of a number of single-frequency components.
 When we talk about the speed of such a wave, we usually refer to the group velocity.
 It is also the group velocity that tells us how quickly a signal carries information.
 
@@ -401,13 +401,13 @@ Now, let's consider the scenario where we attenuate the laser light to such low 
     
 \end{figure}
 
-In fact, what we see is the following: we start firing photons at the screen. Originally, there's not much pattern that we can discern, as on the left side of Fig.~\ref{fig:two-slit-single-photon-pattern}, but as the time progresses, as more and more photons hit the screen, we can clearly see these fringes being formed, as on the right side of the figure. These fringes are the same fringes as we could see before with strong laser light as shown here. Let's pause and appreciate really what's going on. We saw these fringes on the right with a strong laser light, and it wasn't very surprising, however here, somehow each individual photon knows that they still need to follow the same pattern, still they are drawn towards these bright fringes on the screen, and they avoid these dark fringes in between them. This is because of interference of different possible paths. Even though we always have a single photon in our interferometer, still it obeys the same rules of interference as if we had a strong laser pulse.
+In fact, what we see is the following: we start firing photons at the screen. Originally, there's not much pattern that we can discern, as on the left side of Fig.~\ref{fig:two-slit-single-photon-pattern}, but as the time progresses, as more and more photons hit the screen, we can clearly see these fringes being formed, as on the right side of the figure. These fringes are the same fringes as we could see before with strong laser light as shown here. Let's pause and appreciate really what's going on. We saw these fringes on the right with a strong laser light, and it wasn't very surprising, however here, somehow each individual photon knows that they still need to follow the same pattern, still they are drawn towards these bright fringes on the screen, and they avoid these dark fringes in between them. This is because of interference of different possible paths. Even though we only have a single photon between the laser and the screen, still it obeys the same rules of interference as if we had a strong laser pulse.
 
 
 % block neither reality
 \begin{figure}[H]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.pdf}    
+    \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.png}    
         \caption{In fact, when both slits are open, even single photons will create the same pattern after a large number of individual photons have accumulated.}
         \label{fig:two-slit-single-photon-pattern}
 
@@ -495,7 +495,7 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
 \end{equation}
 We apply the Hadamard gate to the vector (zero one), and after simple multiplication we get the superposition $\ket{0}-\ket{1}$. Then, we apply BS2, and what we get is in fact another translation. The probability amplitudes corresponding to state $\ket{0}$, they constructively interfere, whereas the probability amplitudes contributing towards state $\ket{1}$, they destructively interfere, and therefore the probability amplitude for state $\ket{1}$ becomes zero. The minus term that appears on the front is not important, it has no consequence because it's just a global phase, so we can just ignore it.
  
-Now, let's consider an optical instrument called a Mach-Zehnder Interferometer, as shown in Fig.~\ref{fig:mach-zehnder}.
+Now, let's consider an optical instrument called a \emph{Mach-Zehnder Interferometer}\index{Mach-Zehnder interferometer}\index{interferometer}, as shown in Fig.~\ref{fig:mach-zehnder}.
 % Mach-Zehnder set-up
 \begin{figure}[H]
    \centering
@@ -565,7 +565,7 @@ B S 2 \cdot B S 1|1\rangle=|0\rangle
 % block bottom path
 \begin{figure}[H]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/bottom_blocked.pdf}
+    \includegraphics[width=0.8\textwidth]{lesson6/bottom_blocked.png}
     
         \caption{Lower path blocked. Because there is no photon coming from the lower path at BS2, no interference occurs, and any photon coming from above has a 50/50 chance of being directed to either detector.}
     \label{fig:m-z-blocked}
