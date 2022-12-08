@@ -30,7 +30,7 @@ Just before the widespread deployment of the telegraph, communication was extrem
 Then, between 1902 and 1906, the first transpacific cables were laid, connecting mainland US with Hawaii, Guam, and later Philippines, and finally Japan~\footnote{rdv finds it an interesting historical anecdote that one of Japan's first undersea cables came ashore in the seaside town of Kamakura, where he lives, in 1931.  It connected to Midway, Hawaii, then the continental U.S.  It was in use for around a dozen years.}. After the telegraphic cables came telephone cables, and in 1956 we had the first transatlantic telecommunications cable, called TAT-1. This coaxial telephone cable initially was able to handle 36 concurrent telephone conversations, later upgraded to 72. 
 Compare that with the state two decades later, when the last of the coaxial copper 
 %\rdv{dedicated? analog? coaxial? non-fiber?} 
-telephone cables, TAT-7, was in use. It could handle a staggering 4000 telephone conversations concurrently. After this came the fiber optic cables. As we saw in Ch.~\ref{sec:7_waveguides}}, in 1988, the first transatlantic fiber optic cable, called TAT-8, was laid and increased the bandwidth to the equivalent of forty thousand telephone conversations.
+telephone cables, TAT-7, was in use. It could handle a staggering 4000 telephone conversations concurrently. After this came the fiber optic cables. As we saw in Ch.~\ref{sec:7_waveguides}, in 1988, the first transatlantic fiber optic cable, called TAT-8, was laid and increased the bandwidth to the equivalent of forty thousand telephone conversations.
 
 All of these cables, both copper coaxial cables as in TAT-1 through TAT-7 and fiber optic cables from TAT-8 to the present day, carry more than one conversation over a single physical connection.  The earliest telephone wires, in the nineteenth century, supported only a single conversation, because they used \emph{baseband communication}\index{baseband communication}. In baseband communication, the signal to be sent is, well, sent on the wire, unadorned.  If you want to send a 3kHz sine wave, then the wire carries your 3kHz sine wave. This requires one physical connection for every concurrent conversation, which obviously incurs enormous cost.  It would not be practical to have one pair of copper wires for each phone conversation crossing the Atlantic.  Instead, \emph{signal modulation}\index{signal modulation} is used.  The original data signal is used to modulate, or modify, a \emph{carrier signal}\index{carrier signal}. For example, if your data signal is just binary data, the simplest form of modulation might be \emph{on-off keying}\index{on-off keying}, where the carrier is simply turned on and off, like blinking a light. For both analog and digital data signals, many modulation schemes have been developed, but this topic is beyond the scope of this book. See the "Further Reading" at the end of the chapter for more.  Generally speaking, the carrier signal must be a higher frequency than the baseband signal you are modulating. By using separate carrier frequencies, we can have a copper cable or optical fiber carry more than one conversation at the same time. These frequencies are divided into \emph{channels}\index{channel (frequency or wavelength)}~\footnote{In this book, usually when we use the term "channel", we are referring to the physical fiber or connection, instead of this frequency-based concept.}.  This is a form of \emph{frequency division multiplexing}, or FDM\index{frequency division multiplexing (FDM)}, the same scheme used for radio stations and television channels. When applied to fiber optics, this technique is usually referred to as \emph{wavelength division multiplexing} (WDM)\index{wavelength division multiplexing (WDM)}, instead of FDM.  We will see other multiplexing schemes for sharing physical resources in the next chapter.
 
@@ -55,31 +55,44 @@ In this chapter, we will first talk about the dispersion in optical fibers, then
 \section{Mode dispersion}
 \label{sec:11-2_mode_dispersion}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{lesson11/11-2_dispersion.pdf}
+    \caption[Mode dispersion]{Different modes traverse the length of the fiber in different times leading to mode dispersion. Initially sharp signals become difficult to decode.}
+    \label{fig:11-2_mode_dispersion}
+\end{figure}
 Mode dispersion\index{mode dispersion} is the first source of signal degradation in the fiber that we're going to consider.
-
-\rdv{fig from slide p. 13 (with L marked)}
-Let's consider the propagation of different modes in a multimode fiber\index{multimode fiber}, as in Fig.~\ref{fig:}. A multimode fiber can contain many modes, all traveling with different paths. For example, you can have the axial path which travels directly down the fiber, or you can have other modes which totally reflect internally within the fiber. And as you can see, the different modes propagate down the fiber at different speeds because they have to traverse different lengths. It's very important to compute the time difference introduced by the different modes traveling at different speeds down the fiber, and as you might expect, this depends on the launch angle. Depending on the angle with which the light is coupled to the fiber, the path that it takes will be different, and therefore the time that it takes that mode to traverse the fiber will be also different.
+Let's consider the propagation of different modes in a multimode fiber\index{multimode fiber}, as in Fig.~\ref{fig:11-2_mode_dispersion}.
+A multimode fiber can contain many modes, all traveling with different paths. For example, you can have the axial path which travels directly down the fiber, or you can have other modes which totally reflect internally within the fiber. And as you can see, the different modes propagate down the fiber at different speeds because they have to traverse different lengths. It's very important to compute the time difference introduced by the different modes traveling at different speeds down the fiber, and as you might expect, this depends on the launch angle. Depending on the angle with which the light is coupled to the fiber, the path that it takes will be different, and therefore the time that it takes that mode to traverse the fiber will be also different.
 
 The fastest mode, as you can clearly see, travels directly down the center of the fiber. This is known as the \emph{axial mode} because it travels down the axis of the fiber. The slowest mode is the one that is incident on the cladding just at the critical angle, meaning it just barely gets internally reflected.
-% Let's compute the time delay between the fastest mode and the slowest mode.
 
-\rdv{fig from bottom half of p. 12; maybe label "0" and "1"?}
-Your initial digitized signal may look something like the clean modulated square wave in the top half of Fig.~\ref{fig:}. It's very sharp and it's very easy to read out when you have a zero and when you have a one. But as the different modes propagate down the fiber, the whole packet will spread and disperse. After some distance, it will look something like the bottom half of the figure.
+Your initial digitized signal may look something like the clean modulated square wave in the uppere right of Fig.~\ref{fig:11-2_mode_dispersion}. It's very sharp and it's very easy to read out when you have a zero and when you have a one. But as the different modes propagate down the fiber, the whole packet will spread and disperse. After some distance, it will look something like the bottom right of the figure.
 This means that the readability of the output signal worsens, meaning it's more easy to make a mistake when you're actually trying to decode your signal after it propagates through the fiber.
 
-How quickly this dispersion happens depends on the time delay between the fastest mode and the slowest mode. We're going to consider some length $L$ that the fastest axial mode traverses, and we will call the time that it takes for this mode to traverse this distance $t_{\mathrm{min}}$. We can very easily compute this value:
-\begin{equation}
-\begin{aligned}
-t_{\min } &=\frac{L}{v_f}, \quad v_f=\frac{c}{n_f} \\
-t_{\min } &=\frac{\operatorname{Ln}_f}{c}
-\end{aligned}
-\end{equation}
-This $t_{\mathrm{min}}$ is just the distance traversed divided by the speed of light in the fiber, and we have seen that the speed of the light in the fiber is determined from the refractive index of the fiber material.
-%So v-f is equal to c over n-f. We can substitute that into our expression for $t_{\mathrm{min}}$ and we obtain the following: $t_{\mathrm{min}}$ is equal to length $L$, times the refractive index of the fiber, all divided by the speed of light in vacuum c.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson11/11-2_dispersion_delay.pdf}
+    \caption[Time delay due to mode dispersion]{Time delay due to mode dispersion.}
+    \label{fig:11-2_dispersion_delay}
+\end{figure}
 
-\rdv{combine figs from p. 14, 15, 16 somehow?}
-Now, let's consider the time that it takes for a non-axial mode to traverse the same axial distance $L$. The total distance that this mode travels is larger than $L$, and let's denote it by $l$.
-The distance travelled before the internal reflection is $l_1$, and the distance traveled after the internal reflection is $l_2$. Naturally, we have that $l = l_1 + l_2$.
+\michal{I started the rewrite from here until the end of this section.}
+How quickly this dispersion occurs can be quantified by the time between the fastest mode and the slowest mode.
+We're going to consider a horizontal length $L$ that the fastest axial mode traverses. The time that it takes for this mode to traverse this distance is $t_{\text{min}}$,
+\begin{equation}
+    t_{\min } =\frac{L}{v_f}.
+\end{equation}
+The speed of of light in the fiber depends on the fiber's refractive index, $v_f = c / n_f$.
+Therefore the minimum time can be written as
+\begin{equation}
+    t_{\min } =\frac{Ln_f}{c}.
+\end{equation}
+
+Before considering the time $t_{\max}$ that the horizontal distance $L$ is covered by the slowest mode, we consider a general non-axial mode as shown in Fig.~\ref{fig:11-2_dispersion_delay}.
+The total distance $l$ that this mode travels is larger than $L$.
+The distance travelled before the internal reflection is $l_1$, and the distance traveled after the internal reflection is $l_2$.
+Naturally, we have $l = l_1 + l_2$.
 
 Let's start by computing $l_1$,
 \begin{equation}
@@ -91,62 +104,65 @@ Therefore the total distance that the light travels is given in terms of the axi
 \begin{equation}
     l=\frac{L_1}{\cos \theta_r}+\frac{L_2}{\cos \theta_r}=\frac{L}{\cos \theta_r}.
 \end{equation}
-% We know from basic trigonometry that the length $l_1$ is equal to $L_1$ divided by the cosine of the refraction angle $\theta_r$.
-
-% That gives us $l_1$, now how do we compute $l_2$? We can use a neat little trick and reflect the arrow that describes our distance $l_2$, extending the distance of the original ray, and then $l_2$ is given just as $L_2$ divided by cosine of the refraction angle $\theta_r$. We can just sum them together and  see that the path length that the light ray traverses $l$ is just the sum of these two terms $l_1 + l_2$, given just as $L$ over cosine of $\theta_r$.
-
-From that value, we can also compute the time that it takes to traverse the length $l$, and again it's given by $l$ divided by the speed of light in the fiber. Substituting for $l$ and for $v_f$, we obtain the expression
+The time needed for this non-axial mode to cover the horizontal distance $L$ is
 \begin{equation}
-\begin{aligned}
-t &=\frac{l}{v_f}=\frac{L}{v_f \cos \theta_r} \\
-&=\frac{L n_f}{c \cos \theta_r}
-\end{aligned}
+    t = \frac{l}{v_f} = \frac{L}{v_f \cos \theta_r} = \frac{L n_f}{c \cos \theta_r}.
+    \label{eq:11-2_time_nonaxial}
 \end{equation}
 
-% Now, let's return to computing $t_{\mathrm{max}}$.
-
-\rdv{the next couple of paragraphs are a little hard to follow, Michal can you fix?}
-
-
-The time to travel a critical non-axial path is $t_{\mathrm{max}}$. As we said, that such a path where we are just being reflected internally in, meaning that the angle of incidence on the cladding is $\theta_c$, our critical angle, and we have seen in previous chapters that $\sin{\theta_c}$ is related to the cosine of the refraction angle over here (see figure). $\cos \theta_r=\sin \theta_c=n_c / n_f$
-
-So $t_{\mathrm{max}}$ can then be computed as (small) l times the refractive index of the fiber squared, over the speed of light in vacuum, times the refractive index of the cladding. 
+We are now in position to compute $t_{\max}$.
+The slowest mode is the one that has to cover the longest distance $l$.
+In order for this to happen, the angle at which this mode is incident at the cladding is maximized while still being completely reflected.
+The mode needs to be incident at the cladding at the critical angle $\theta_c$, which in turn fixes the maximum angle of refraction such that
 \begin{equation}
-t_{\max }=\frac{L n_f^2}{c n_c}
+    \cos\theta_r = \sin\theta_c = n_c / n_f,
+    \label{eq:11-2_cos_theta_r}
 \end{equation}
-Now, it's very easy to just put the expressions for $t_{\mathrm{max}}$ and $t_{\mathrm{min}}$ together, and we obtain the time delay between the fastest and slowest pathos or modes, 
+where the last equality comes from Eq.~(\ref{eq:7-4_crit_angle}).
+Substituting for $\cos\theta_r$ in Eq.~(\ref{eq:11-2_cos_theta_r}), we obtain the time it takes for the slowest mode to traverse the horizontal distance $L$,
 \begin{equation}
-\begin{aligned}
-\Delta t &=t_{\max }-t_{\min } \\
-\Delta t &=\frac{L n_f}{c}\left(\frac{n_f}{n_c}-1\right)
-\end{aligned}
+    t_{\max }=\frac{L n_f^2}{c n_c}.
 \end{equation}
-Now, we are going to plug in some numbers and see why this time delay is actually important.
-
-Let's consider a particular example where the refractive index of the fiber is given by $n_f = 1.500$, and the refractive index of the cladding is a little bit less, $n_c = 1.489$. We can plug these numbers into our previous expression for the time delay, and obtain the time delay per kilometer as follows,
+Now, it's very easy to just put the expressions for $t_{\mathrm{max}}$ and $t_{\mathrm{min}}$ together, and we obtain the time delay between the fastest and slowest modes, 
 \begin{equation}
-\frac{\Delta t}{L}=37 \mathrm{~ns} / \mathrm{km}.
+    \Delta t = t_{\max} - t_{\min} = \frac{L n_f}{c}\left(\frac{n_f}{n_c}-1\right).
+    \label{eq:11-2_time_delay}
 \end{equation}
-This doesn't seem like a very long time delay, but let's see how big the effect can be. The speed of light in this fiber is given by $c$ divided by the refractive index of this fiber, which is just $v_f=c / n_f=2 \times 10^8 \mathrm{~m} / \mathrm{s}$.
 
+Let's consider an example to gain some intuition about time delays introduced by mode dispersion and their effect on the encoded message.
+Let's consider a fiber with refractive index $n_f = 1.500$, and cladding with refractive index $n_c = 1.489$.
+Using Eq.~(\ref{eq:11-2_time_delay}), we obtain the following time delay per kilometer,
+\begin{equation}
+    \frac{\Delta t}{L}=37 \mathrm{~ns} / \mathrm{km}.
+\end{equation}
+This doesn't seem like much.
+Let's see the consequences of this small delay.
+The speed of light in this fiber is given by $c$ divided by the refractive index of this fiber, which is just $v_f=c / n_f=2 \times 10^8 \mathrm{~m} / \mathrm{s}$.
 This time delay between the fastest and slowest modes means that our pulse spreads over a distance as it travels through the fiber. We can quantify this dispersion and obtain the value $7.4$ meters per kilometer. Every kilometer that our signal travels, it becomes more and more spread by this distance, $7.4$ meters. This reduces the readability of the output signal. Because our wave packets are becoming more spread out, we are losing the sharpness of our signal and they become more difficult to decode. In order to be able to read our output signal, we may demand that the pulses that are coming out of our fiber are separated by twice the value of the spread.
-
-This means that in order for the dispersed signal that's coming out of the fiber, we require that the input pulses are also separated by at least $2\times 7.4 = 14.8$ meters even when connecting over a distance of only one kilometer. This inadvertently places a limit on how fast we can transmit information because the pulses have to be separated by a certain amount, so we cannot place them closer together. Dispersion has a direct consequence on the maximum frequency of the input signal, meaning that it also limits our bandwidth.
+This means that in order for the dispersed signal that's coming out of the fiber, we require that the input pulses are also separated by at least $2\times 7.4 = 14.8$ meters even when connecting over a distance of only one kilometer. This inadvertently places a limit on how fast we can transmit information because the pulses have to be separated by a certain amount, so we cannot place them closer together. Dispersion has a direct consequence on the maximum frequency of the input signal.
 
 
 
 \section{Attenuation}
 \label{sec:11-3_attenuation}
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson11/11-3_attenuation.pdf}
+    \caption[Attenuation losses]{Various types of attenuation losses.}
+    \label{fig:11-3_attenuation}
+\end{figure}
 In this section, we will consider the rest of the sources of losses that we listed in Sec.~\ref{sec:ld-intro}.
+They are all pictured in Fig.~\ref{fig:11-3_attenuation}.
 
 First, let's look at \emph{absorption}\index{absorption}.
+Absorption happens due to interaction of light with the material of the fiber. There are two types of absorption: \emph{intrinsic absorption} and \emph{extrinsic absorption}. Intrinsic absorption is responsible for attenuating the signal due to electronic and vibrational resonances of the molecules in the fiber. For silica molecules, electronic resonances occur in the ultraviolet region, and vibrational resonances in the infrared region. These resonances cause the light to transfer it energy to the molecules in the fiber resulting in a power loss in the signal. This is an intrinsic property of the fiber and we cannot really affect it, it's something that we just have to live with and accept. But luckily, it's not a very significant source of error, especially when we compare it to the other type, extrinsic absorption.
 
-Absorption happens due to interaction of light with the material of the fiber. There are two types of absorption: \emph{intrinsic absorption} and \emph{extrinsic absorption}. Even if we have a perfect fiber, the intrinsic absorption is responsible for attenuating the signal due to the interaction between the photons of the signal and the electrons in the material. The electrons absorb the photons from the signal and they become excited \rdv{what happens after that? How does this differ from the scatter below?  It's a little unclear.}, therefore the overall  power of the signal decreases. This is just an intrinsic property of the fiber and we cannot really affect it, it's something that we just have to live with and accept. But luckily, it's not a very significant source of error, especially when we compare it to the other type, extrinsic absorption.
+Extrinsic absorption is due to impurities in the form of bubbles that are present in the fiber and were introduced during the manufacturing process. On one hand, this is a much more significant source of absorption, but on the other hand we can control it by perfecting our manufacturing process. Generally during manufacture, the manufacturers are trying to keep the the amount of impurities that are present in the fiber below one percent.
 
-Extrinsic absorption is due to impurities that are present in the fiber, and these impurities are introduced during the manufacturing process. On one hand, this is a much more significant source of absorption, and therefore attenuation\index{attenuation} of the signal, but on the other hand we can control it by perfecting our manufacturing process. Generally during manufacture, the manufacturers are trying to keep the the amount of impurities that are present in the fiber below one percent. \rdv{flaws such as bubbles in the glass or non-smooth interface between the materials?}
-
-Another source of attenuation is \emph{scattering}. This is similar to absorption, but the light is not only absorbed, it is also re-radiated and re-emitted back into the fiber in random directions. Again this is due to the impurities in the fiber, and can be controlled by improving the manufacturing process and limiting the amount of impurities that are present in the fiber. There are many different types of scattering, such as linear scattering and non-linear scattering, but the details will not be discussed in the current module.
+Another source of attenuation is \emph{scattering}, which can be due to small fluctuations of the density in the fiber material which are introduced during manufacturing process.
+This results in a non-uniform refractive index in the material causing scattering of light.
+Other sources of scattering include molecules absorbing the light and re-emitting it in a random direction.
 
 The final two sources of attenuation are \emph{bending} and \emph{coupling}. Bending is when we actually physically bend the fiber. Remember, we said that the angle of incidence is crucial for total internal reflection to take place, and therefore for the signal to propagate down the fiber. If we bend the fiber, we can have a situation where at first, the light ray is traveling down the fiber totally internally reflected but then it hits the angle at the bend and suddenly at the interface it is reflected in such a way that it cannot satisfy the condition for total internal reflection anymore, and it just gets absorbed or it leaves the fiber.  Generally, the manufacturer specifies some minimum bending radius, typically around ten to twenty times the diameter of the fiber.
 
@@ -217,17 +233,22 @@ This is the basic principle of a classical repeater. Now we will see how the sou
 
 \section{Quantum challenges}
 
-In quantum communication, the signal is at a level of individual photons, which is very different from classical communication, where we are sending many, many photons. Photon loss in the fiber therefore becomes a major problem. Classically, if we are communicating and we lose a single photon, it is very insignificant. The whole signal propagates and we can still read it out at the output. However, when this happens in a quantum communication protocol and we lose a single photon, then the entire protocol fails. Go back to, for example E91 or BB84, where the loss of a single photon becomes a huge problem.
+In quantum communication, the signal is at the level of individual photons, which is very different from classical communication, where we are sending many, many photons. Photon loss in the fiber therefore becomes a major problem. Classically, if we are communicating and we lose a single photon, it is very insignificant. The whole signal propagates and we can still read it out at the output. However, when this happens in a quantum communication protocol and we lose a single photon, then the entire protocol fails. Go back to, for example E91 or BB84, where the loss of a single photon becomes a huge problem.
 
 So, how can we combat photon loss? We saw that it's possible classically. Let's think whether this is also possible in the quantum communication.
 
-Amplification of a signal worked in classical communication. Can we do that for quantum signals as well? Namely, can we create backup backup copies of the single photons such that if one gets lost, we can still use the backups in order to proceed with the protocol? We can, but only if we limit ourselves to orthogonal states. If the states that we are sending are, for example, just qubits zero and one, zero and one, and so on, fine, we can do that and we can create backup copies. But, in quantum communication all the magic happens with non-orthogonal states, and often these states are entangled with some other qubits somewhere else. Therefore, we have to be able to copy arbitrary states, and this is where we hit the roadblock that we have seen in previous chapters, which is the no cloning theorem.
+Amplification of a signal worked in classical communication. Can we do that for quantum signals as well? Namely, can we create backup copies of the single photons such that if one gets lost, we can still use the backups in order to proceed with the protocol? We can, but only if we limit ourselves to orthogonal states. If the states that we are sending are, for example, just qubits \ket{} and \ket{1} in some pattern, fine, we can do that and we can create backup copies. But, in quantum communication all the magic happens with non-orthogonal states, and often these states are entangled with some other qubits somewhere else. Therefore, we have to be able to copy arbitrary states, and this is where we hit the roadblock that we saw in Sec.~\ref{sec:8-3_no-cloning}: the no cloning theorem\index{no-cloning theorem}.
 
 Okay, so amplification will not work in quantum communication. How about just sending the photon and hoping for the best?
 
-Let's do a very quick calculation that will demonstrate that this isn't another very good strategy. The probability that we transmit the photon through a fiber over distance $L$, where the attenuation parameter in the fiber is $\alpha$, is given by the following expression: it's ten raised to the power of negative $\alpha$, times $L$ divided by ten. So now let's plug in some numbers to give us some intuition of what this probability is. So we will consider a long fiber of thousand kilometers, which we call long but in the context of global communication is not that long actually, and we will assume a best-case scenario where the fiber has ultra low attenuation of mere zero point one decibels per kilometer. So the probability of that we are actually successfully transmit a single photon is given by ten to the power of minus ten. So this looks like a very small number, and indeed it is, but to give you some intuition of really how small this number is, let's consider that we have a source that produces one photon every second. So every second we are sending a single photon down the fiber. How long do we need to wait in order for somebody that's at the end of this fiber a thousand kilometers away to actually successfully receive a single photon? Well, we have to wait on average 317 years. So you can see that even with ultra low fibers over moderate distances, sending a single photon down the fiber is not a very good idea.
+Let's do a very quick calculation that will demonstrate that this isn't a very good strategy. The probability that we transmit the photon through a fiber over distance $L$, where the attenuation parameter in the fiber is $\alpha$, is given by the expression
+\begin{equation}
+P_{\text {success }}=10^{-\alpha L / 10}.
+\end{equation}
 
-And this is only one source of error that we have to contend with in long distance quantum communication. Other sources of errors include unitary errors such as Pauli errors, where we can randomly flip the state of our photons, or z errors where we introduce some phase to the photons, and then there is a whole bunch of non-unitary errors, such as the coherence, dephasing, relaxation, most of these errors, we don't have to deal with in classical communication.
+Let's plug in some numbers to give us some intuition of what this probability is. Consider a long fiber of thousand kilometers (which in the context of global communication is not actually that long), and we will assume a best-case scenario where the fiber has ultra-low attenuation of a mere $0.1$ decibels per kilometer. The probability that we actually successfully transmit a single photon is ten to the power of minus ten. This looks like a very small number, and indeed it is, but to give you some intuition of really how small this number is, let's consider the case of a source that produces one photon every second. Every second we are sending a single photon down the fiber. How long do we need to wait in order for somebody that's at the end of this fiber a thousand kilometers away to actually successfully receive a single photon? Well, we have to wait on average 317 years. You can see that even with ultra-low loss fibers over moderate distances, sending a single photon down the fiber and hoping for the best is not a very good idea.
+
+Loss is only one source of error that we have to contend with in long distance quantum communication. Other sources include unitary errors such as Pauli errors, namely $X$ errors that randomly flip the state of our photons, or $Z$ errors where we introduce some phase to the photons. There is a whole bunch of non-unitary errors, such as coherence, dephasing, relaxation.  Most of these errors we don't have to deal with in classical communication.
 
 So the situation looks quite dire. Is there any hope for long-distance quantum computation? In the next chapter, we will see that quantum problems require quantum solutions.
 
@@ -238,9 +259,11 @@ So the situation looks quite dire. Is there any hope for long-distance quantum c
 
 \exer{Confirm the calculation of 317 years.}
 
-\exer{We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the spacing of amplifiers and the amount of gain an EDFA can generate.}
+\exer{We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the fiber loss and the spacing of amplifiers in real-world deployments and the amount of gain an EDFA can generate.}
 
-\exer{Write some code to simulate mode dispersion of a square wave as it passes down a multimode fiber of length $L$. Be sure to describe your setup and describe any approximations or assumptions you make.}
+\exer{Write some code to simulate mode dispersion of a square wave as it passes down a multimode fiber of length $L$. Be sure to describe your setup and describe any approximations or assumptions you make.  You will want to make as many of the parameters as possible settable by the user.}
+
+\exer{How many photons per second are in one milliwatt of laser power at a wavelength of 1550nm? \rdv{maybe a different chapter.}}
 
 \end{exercises}
 
