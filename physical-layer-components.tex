@@ -5,7 +5,15 @@ In Chapter~\ref{ch:repeaters}, we saw the basics of a quantum repeater and how i
 
 \section{Introduction}
 
-Fig.~\ref{fig:repeater-link} shows the basic architecture for a quantum repeater link. We have our network nodes, represented by the \rdv{XXX}, and they each have some qubits.  They fire photons (\rdv{orange ovals}) toward the middle node, which we know implements a Bell-state measurement. That way, we can establish entanglement over long distances. But, what are the individual physical components of a quantum repeater system, and more importantly how can we implement them? First, we need optical fibers to carry our photons. That's kind of obvious, and already we have covered optical fibers at some length in Chapter~\ref{sec:7_waveguides}\index{optical fiber}. The next thing that we need is the Bell-state analyzer in the middle. The analyzer implements our Bell-state measurement, which is crucial for implementing entanglement swapping.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson13/MIM-link.png}
+    \caption[MIM link hardware]{An MIM link. The nodes at each end are repeaters with memories, shown by the atom symbols.  The node in the middle is the Bell-state analyzer (BSA).  The orange ovals represent photons in flight, entangled with the memories.}
+    \label{fig:13-MIM-link}
+\end{figure}
+
+
+Fig.~\ref{fig:13-MIM-link} shows the basic architecture for a quantum repeater link. We have our network nodes, represented by the \rdv{blue boxes}, and they each have some qubits \rdv{represented by the atom symbols}.  They fire photons (\rdv{orange ovals}) toward the middle node, which we know implements a Bell-state measurement. That way, we can establish entanglement over long distances. But, what are the individual physical components of a quantum repeater system, and more importantly how can we implement them? First, we need optical fibers to carry our photons. That's kind of obvious, and already we have covered optical fibers at some length in Chapter~\ref{sec:7_waveguides}\index{optical fiber}. The next thing that we need is the Bell-state analyzer in the middle. The analyzer implements our Bell-state measurement, which is crucial for implementing entanglement swapping.
 
 While the photons are in flight and traveling toward our Bell-state analyzer (BSA)\index{Bell-state analyzer (BSA)}, the qubits stored in the nodes are stationary. They are not moving anywhere, so we must have some physical means of storing these qubits, which we do with the help of \emph{quantum memory}\index{quantum memory}. The difference between classical memories and quantum memories is quite substantial. Classical memories are usually stored as zeros and ones, only classical bits, whereas quantum memories have to be able to store not only one or zero, but also any superposition, and in fact any entangled state. That way, they can share entanglement over the entire quantum network. After talking about the two basic components of BSAs and memories, we will consider how all of these components work together to implement a quantum repeater. Most importantly, we will also consider the various factors that affect the success rate of our quantum repeater and entanglement swapping scheme. So, we will spend the first half of this chapter talking about Bell-state analyzers. We will revisit measurements and how they can actually be implemented, and what it means to measure in different bases, and how can we implement different basis measurements with Pauli $Z$ measurements and some unitaries. Then, we will move on to the quantum circuit for a Bell-state measurement, and from that we will talk about real-world implementation of Bell-state measurements with linear optics.  In the latter half of this chapter we will talk about memories. We will begin with consideration of what a good quantum memory should be like, then we'll move on to the candidate systems.  We say "candidate" because at the moment, there is no leading physical system that is considered to be the best quantum memory. All of the existing candidate systems have some advantages and some drawbacks, which we will consider in the latter half of this chapter.
 
@@ -32,7 +40,11 @@ Back in Ch.~\ref{sec:8-2_teleportation_protocol}, in the context of teleportatio
 |\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\beta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\gamma+\delta}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\gamma-\delta}{\sqrt{2}}\left|\Psi^{-}\right\rangle
 \end{equation}
 
-We have been treating measurements as a question that we ask about the state of our physical system, and the question in this case is, which of the four Bell states is our state in? Is it the state \ket{\Phi^+}? Is it the state \ket{\Phi^-}, \ket{\Psi^+}, or \ket{\Psi^-}? This is what the measurement reveals about our system, and usually we say that we get the answer with some probability. For example, depending on the initial state \ket{\psi}, we might get the answer that the state is \ket{\Phi^+}. In this case, that answer would occur with a probability which is the modulus squared of the original complex probability amplitude. This is a very abstract notion of what a measurement actually is, and it's not very useful when it comes to doing calculations. Shortly, we will see how to actually implement such a measurement in terms of a quantum circuit, which will tell us more about what these measurements are actually doing and how we can implement them in a laboratory.
+We have been treating measurements as a question that we ask about the state of our physical system, and the question in this case is, which of the four Bell states is our state in? Is it the state \ket{\Phi^+}? Is it the state \ket{\Phi^-}, \ket{\Psi^+}, or \ket{\Psi^-}? This is what the measurement reveals about our system, and usually we say that we get the answer with some probability. For example, depending on the initial state \ket{\psi}, we might get the answer that the state is \ket{\Phi^+}. In this case, that answer would occur with a probability which is the modulus squared of the original complex probability amplitude,
+\begin{equation}
+\operatorname{Prob}\{\ket{\Phi^+}\}=\left|\frac{\alpha+\beta}{\sqrt{2}}\right|^2.
+\end{equation}
+This is a very abstract notion of what a measurement actually is, and it's not very useful when it comes to doing calculations. Shortly, we will see how to actually implement such a measurement in terms of a quantum circuit, which will tell us more about what these measurements are actually doing and how we can implement them in a laboratory.
 
 Before we do that, let's step back a little bit and consider something simpler. Let's look at measurement of a single qubit, and let's be specific and say that we want to measure the single qubit in the Pauli $Z$ basis.
 
@@ -79,13 +91,35 @@ The actual scheme of how to do it really depends on our encoding. So let's just 
 
 In this encoding, we encode our qubit in a state \ket{0} as a single photon that's polarized in the vertical direction, which we write as \ket{V}, and our other computational basis state \ket{1}, as a single photon polarized in the horizontal direction, which we write \ket{1}.
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson13/PBS.png}
+    \caption[A polarizing beam splitter (PBS)]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation is normal to the \ket{H}-\ket{V} plane. \rdv{PBM should be PBS?}}
+    \label{fig:13-PBS}
+\end{figure}
+
+
 \rdv{Make Figs. X.a, X.b, c and d from p. 21-24}
 
-So the first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? Well, we have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \emph{polarizing beam splitter} (PBS)\index{polarizing beam splitter (PBS)}. If you have photons or light coming in with some polarization, a PBS splits the beam of light into two beams. One is transmitted through the polarizing beam splitter but comes out only with a vertical polarization, while the other one gets reflected by the PBS and is polarized in the horizontal direction. So we see that we are splitting our beam of light into two beams: one for our zero and one for our one.  \rdv{Fig. a}
+The first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? Well, we have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \emph{polarizing beam splitter} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}. If you have photons or light coming in with some polarization, a PBS splits the beam of light into two beams. One is transmitted through the polarizing beam splitter but comes out only with a vertical polarization, while the other one gets reflected by the PBS and is polarized in the horizontal direction. So we see that we are splitting our beam of light into two beams: one for our zero and one for our one.  \rdv{Fig. a}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson13/PBS-measure.png}
+    \caption[A polarizing beam splitter (PBS) measuring a qubit]{A PBS measuring an arbitrary photonic qubit in the \ket{H}-\ket{V} basis.}
+    \label{fig:13-PBS-measure}
+\end{figure}
 
 Assume that we have a single photon polarized in the vertical direction, and we place two detectors after the polarizing beam splitter to detect which path was taken by the single photon. If the photon is vertically polarized (\rdv{Fig. b}), it gets transmitted through the polarizing beam splitter. Therefore, it gets detected by the detector on the right with probability one. This represents our measurement for $+1$. It never happens that a vertically polarized photon gets reflected, therefore the bottom detector never gets triggered, so the probability of the outcome $-1$ is always 0. On the other hand, if our initial photon is horizontally polarized (\rdv{Fig. c}), it always gets reflected and travels down into the bottom detector, triggers it, and always gets detected. So the probability of the outcome $-1$ is 1, and the probability of the outcome $+1$ is always 0.
 
 Now, what happens if we actually put in a superposition of these two linear polarizations (\ket{Fig. d})? Our state is given by $\alpha\ket{V} + \beta \ket{H}$. The photon has a chance to get transmitted, and this probability is given by $|\alpha|^2$, and it also has a chance to get reflected and travel down into the other beam splitter corresponding to the measurement outcome  $-1$ (bottom), and the probability of getting a  $-1$, which means probability of triggering this detector is given by mod $\beta$ squared. So this implements our $Z$ measurement, but we have seen in the previous step that for a Bell-state measurement, we need two measurements in the $Z$ basis and a suitable unitary. So, let's see what happens when we actually take two polarizing beam splitters each with two detectors, and we have just a regular fifty-fifty beam splitter over here (see pointer), and we have two photons coming from the these paths (top-down and left-right). So to be able to analyze this, we actually have not developed the proper tools, for that we need a little bit more of quantum optics, but we can give you the result. So, depending on which of these detectors trigger, we will know which Bell-state has been measured. So, let's see what the different patterns are, and to not get confused we will label our detectors as detector D1, D2, D3 and D4.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson13/BSA-clicks.png}
+    \caption[A four-detector Bell-state analyzer (BSA)]{A BSA measuring a pair of qubits, one arriving at the initial beam splitter from above and one from the left.  Different click patterns may confirm projection into a Bell state, or be ambiguous.}
+    \label{fig:13-BSA-clicks}
+\end{figure}
 
 If we get a joint detection in detectors D1 and D4, this means that we have implemented a successful Bell measurement, and the outcome corresponds to the projection onto the state \ket{\Psi^-}. Also, if we get a joint detection in these two detectors- in D2 and D3, joint detection means that both of these detectors trigger, then we can also say that we have implemented a successful Bell measurement, and the result corresponds to the state \ket{\Psi^-}. A different pattern of detection that we can get is a joint detection at these two detectors (see pointer) in the lower branch of our Bell-state analyzer, so if both D1 and D2 trigger, then we can conclude that we have a state \ket{\Psi^+}, so this corresponds to another successful Bell measurement. Equally, if we get detectors triggering in these in the right branch of our Bell-state analyzer, so if both D3 and D4 trigger, then we can also conclude that we have a Bell-state \ket{\Psi^+}.
 

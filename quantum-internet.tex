@@ -22,7 +22,7 @@ Let's see, assume you want to start in the upper left-hand corner up there. Your
 
 Well, we don't actually know, because we are on the blue networks, we just tell the Internet, "get us there" and magically it happens!
 
-Okay, so let's see. So what happens next? We've got this path that we've sketched out here on this arbitrary sort of network here, but the reality is that you're connected to one network and your traffic is going to go from your current location to what's called a gateway to the outside world, and then from there it's going to hop across some other networks to get to where it wants to be, right? But, in order to make the whole system work, you don't know anything about the inside of those other networks. You only know about the blue network.
+Okay, so let's see. So what happens next? We have this path that we've sketched out here on this arbitrary sort of network here, but the reality is that you're connected to one network and your traffic is going to go from your current location to what's called a gateway to the outside world, and then from there it's going to hop across some other networks to get to where it wants to be, right? But, in order to make the whole system work, you don't know anything about the inside of those other networks. You only know about the blue network.
 
 So, the other networks here, they are all opaque to the users that are outside, and this provides you with scalability, privacy, and autonomy, as a network operator. So scalability, you know, otherwise how are we going to get to billions and billions of nodes on this? (True!) You can't- you can't have every single node on the network know everything about every other node on the entire network, it can't scale it that way. But it's also true that the people who own networks want to be able to evolve what's inside the network at their own rate, using potentially their own choices of technology and changing what's going on on the inside, and they don't want to share that information outside for business reasons, or for privacy reasons, you know for competitive advantage reasons or whatever, and this gives us a certain amount of autonomy, right? So in this network, you'll see there are, you know, your network, the blue one, and you have to know how to get across your network to that gateway, and then the gateway has to know which network to send things to next. But it doesn't have to know anything about the inside of those. All right, so let's see what's next.
 
@@ -83,7 +83,7 @@ That's a good question, but yes, the the quantum internet will not replace the c
 
 Right, so how are they going to talk to each other? How are they going to integrate together?
 
-Let's see, so on this diagram here, we've got what says quantum network, and an IP network. What's the quantum network do?
+Let's see, so on this diagram here, we have what says quantum network, and an IP network. What's the quantum network do?
 
 Well, we've seen that in a number of chapters here, the main purpose is to distribute entanglement between parties, whether it be bipartite entanglement, multipartite entanglement, so that it can be used as a resource for communication tasks such as teleportation and QKD, whether it's entanglement-based or single photon-based.
 
@@ -95,7 +95,7 @@ Right, so what's a key in this context? The key is-
 
 The key is a secret a bit of strings, classical bit of strings, that we can use to hide our message.
 
-All right, so it's a string of random bits that are guaranteed to be secret based on what we've done so far. So what we want to do, once we've got those is to use them-
+All right, so it's a string of random bits that are guaranteed to be secret based on what we've done so far. So what we want to do, once we have those is to use them-
 
 Ah, they're classical bits!
 
@@ -111,7 +111,7 @@ Yes! So in fact, that's what we're going to do next, is we're going to actually 
 
 Not really, no.
 
-Okay, so IPsec is one of the standard internet protocols for how you encrypt data that you're going to share across the network. One of the other famous protocols is a protocol that's called TLS, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely, and so you send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there. So, it's a standard protocol for doing that. Now, so once we've got the keys to the IPsec gateways,
+Okay, so IPsec is one of the standard internet protocols for how you encrypt data that you're going to share across the network. One of the other famous protocols is a protocol that's called TLS, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely, and so you send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there. So, it's a standard protocol for doing that. Now, so once we have the keys to the IPsec gateways,
 
 before QKD, the way that these IPsec gateways work together is they have to negotiate a a key exchange of some sort, so we talked in the encryption chapter about three phases of an encrypted conversation, right? There was authentication, key generation and then the bulk data encryption.
 
@@ -149,7 +149,7 @@ Okay, and so all of that will fit together into a distributed- an integrated qua
 
 Well, the other one is our clock synchronization, where we mentioned that having a global time standard where everybody agrees on the same time, is of crucial importance in many many areas of our modern life. And again, it's not that we want to do something special with quantum time, the time is classical, but the way on how we agree on the same global standard of time comes through using quantum resources such as entanglement, such as bipartite entanglement, and so on.
 
-Okay, and then once you've got that, then it gets used in-
+Okay, and then once you have that, then it gets used in-
 
 It goes back, it gets bumped back into the classical network, and it's very important for transportation, for GPS, so global positioning system, financial market where even fractions of a second are crucial, they can either gain you millions or you can lose millions, and so on and so forth. So, time is very important and keeping the same time as somebody on the other side of the world is very important as well.
 
@@ -161,7 +161,7 @@ Synchronized!
 
 Okay, so let's see in the next step how we can bring these things together.
 
-All right, so with standardization, right? The first thing you're going to do, of course, is you're going to actually build and test some sort of system. You've got a prototype that's up and running, right? And then what?
+All right, so with standardization, right? The first thing you're going to do, of course, is you're going to actually build and test some sort of system. you have a prototype that's up and running, right? And then what?
 
 Well then, once that is working, we would like everybody else to use it.
 
@@ -222,7 +222,7 @@ Oh, hardware is very important. That's closer to my heart as a physicist, but ha
 
 Yeah, so all of that, everything we're talking about here, is all super critical. You have to have all of these things in order to build a network, but fundamentally if the hardware doesn't work, we're just toast right off the bat, right?
 
-So, all right, software! You've got to have software too, right? And that some of that is software that's internal to the boxes you're building, and so nobody cares if you change that as long as they- what they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. (Right.) And that building hardware is hard, right? (Yep.) Building software, people think it's easy, but-
+So, all right, software! you have to have software too, right? And that some of that is software that's internal to the boxes you're building, and so nobody cares if you change that as long as they- what they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. (Right.) And that building hardware is hard, right? (Yep.) Building software, people think it's easy, but-
 
 It doesn't happen automatically.
 
