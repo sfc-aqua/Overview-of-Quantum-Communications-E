@@ -7,8 +7,8 @@ In Chapter~\ref{ch:repeaters}, we saw the basics of a quantum repeater and how i
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/MIM-link.png}
-    \caption[MIM link hardware]{An MIM link. The nodes at each end are repeaters with memories, shown by the atom symbols.  The node in the middle is the Bell-state analyzer (BSA).  The orange ovals represent photons in flight, entangled with the memories.}
+    \includegraphics[width=0.7\textwidth]{lesson13/13-1_repeater.pdf}
+    \caption[MIM link hardware]{An MIM link. The nodes at each end are repeaters with memories, shown by the atom symbols.  The node in the middle is the Bell-state analyzer (BSA).  The red circles represent photons in flight, entangled with the memories.}
     \label{fig:13-MIM-link}
 \end{figure}
 
@@ -48,7 +48,7 @@ This is a very abstract notion of what a measurement actually is, and it's not v
 
 Before we do that, let's step back a little bit and consider something simpler. Let's look at measurement of a single qubit, and let's be specific and say that we want to measure the single qubit in the Pauli $Z$ basis.
 
-\rdv{simple figs here with the measurement symbols for Z, X, and H+Z measurement.}
+\rdv{simple figs here with the measurement symbols for Z, X, and H+Z measurement. accompanying text needs cleanup.}
 
 In the quantum circuit notation, we would write it as this: we have some input state \ket{\psi}, and then we measure it- this is the symbol for measurement (see figure), and here, this little Z is just reminding us that we are measuring in the $Z$ basis.  So, what we get is that initially, if the state is some general superposition of \ket{0} and \ket{1} with probability amplitudes $\alpha$ and $\beta$, then the measurement can give us a $+1$ outcome with corresponding probability, which is given by the inner product between the initial state and our basis state \ket{0} modulus squared, which is just $\alpha$ modulus squared. Or, we can get the  $-1$ outcome which is given by the probability given by $\beta$ modulus squared, the probability amplitude of the basis state one.
 
@@ -57,6 +57,8 @@ Now, let's try to do a measurement in the $X$ basis.
 Again, in the quantum circuit notation, it would look like this: we have our initial state \ket{\psi}, and we're doing a measurement, and now it's in the $X$ basis which is over here (see figure) written by this little X.  (If you see this symbol in a circuit without the Z or X, generally this means to measure in Z basis.) Again, we are considering some general input state, but in order to be able to determine the probabilities of the different outcomes, we are going to rewrite this state in the $X$ basis. So we have seen that \ket{0} is equal superposition of the \ket{+} state and the \ket{-} state, and similarly one is an equal superposition as well, but this time we have a negative phase between \ket{+} and \ket{-} states. So, we can rewrite the initial state in this following form (see pointer, RHS eq), and from this form we can easily read out the probabilities of obtaining the  $+1$ outcome of the measurement, which is given by half $\alpha$ plus $\beta$, the whole thing modulus squared, and the probability for the  $-1$ outcome.
 
 But now, let's impose a restriction on ourselves. Let's say that we cannot perform measurement in the $X$ basis. Let's say we're only allowed to do measurements in the $Z$ basis, what do we do then? Well, we can consider the following quantum circuit: we have the initial state and then we do some unitary operation on that state. Here (see figure), we are choosing the Hadamard, and then we perform our measurement but this time in the $Z$ basis.
+
+\rdv{from here to the end of the section needs cleanup.}
 
 So, we start with the usual initial state, it's a superposition of \ket{0} and \ket{1}, but then after application of the Hadamard gate we get a new state, which we are denoting \ket{\psi'}, and this new state is given in this form (follow pointer). Just to remind you, Hadamard, when it's applied on \ket{0}, gives us a \ket{+} state, so an equal superposition of \ket{0} and \ket{1}, whereas Hadamard applied to one gives us the \ket{-} state, and then if we just expand the \ket{+} state and the \ket{-} state again in the computational basis, we arrive at this form for our state \ket{\Psi^+}. And now, because we are doing measurement in the $Z$ basis, again it's easy to read out the probabilities corresponding to outcomes $+1$ and $-1$.
 
@@ -74,7 +76,7 @@ Now, how to do a Bell measurement using only Pauli $Z$? Well, we have two qubits
 
 Well, we know one thing that the unitary when applied to a state \ket{\Psi^+} should give us a \ket{00}. When applied to state \ket{\Phi^-}, it should give us state \ket{10}, and so on and so forth. So this is our rule of transforming from our Bell-basis into our computational basis, and if we can do that, then we can just measure in the $Z$ basis. In the same way we saw how it worked for the Pauli $X$ basis, we had to find a unitary that transforms from the $X$ basis into the $Z$ basis which was given by Hadamard. Here, we are looking for a more general unitary because it's acting on two qubits.
 
-So, without further ado, this is the circuit that actually achieves our desired transformation (fig. on slide). It's given by a CNOT gate, which is given by this two qubit gate, followed by a Hadamard on the first qubit, and then two measurements in the $Z$ basis. And what happens, that if we get outcomes \ket{00}, which corresponds to  $+1$  $+1$, then we know that we have a Bell-state \ket{\Phi^+}, and similarly for all the other three possible measurement outcomes, and each individual measurement outcome represents uniquely a Bell-state measurement.
+So, without further ado, this is the circuit that actually achieves our desired transformation (fig. on slide). It's given by a CNOT gate, which is given by this two qubit gate, followed by a Hadamard on the first qubit, and then two measurements in the $Z$ basis. And what happens, that if we get outcomes \ket{00}, which corresponds to  $+1$  $+1$ \rdv{how should we format this?}, then we know that we have a Bell-state \ket{\Phi^+}, and similarly for all the other three possible measurement outcomes, and each individual measurement outcome represents uniquely a Bell-state measurement.
 
 So, this is true in general, that any measurement basis can be implemented by Pauli $Z$ measurements and a suitable unitary applied before we measure our qubits.
 
@@ -87,12 +89,12 @@ And this trick is very useful, particularly in quantum computation, and also in 
 
 In this section, we will talk about how to actually implement a Bell-state measurement with linear optics. The actual scheme really depends on our encoding. So let's just pick some encoding for our qubits, for example linearly polarized single photons. There are two reasons for this choice: one, it's intuitive and simple so it makes a good pedagogical example, and two, it's one of the most commonly used encodings in real experiments.
 
-In this encoding, we encode our qubit in a state \ket{0} as a single photon that's polarized in the vertical direction, which we write as \ket{V}. Our other computational basis state \ket{1}, as a single photon polarized in the horizontal direction, we write \ket{1}.
+In this encoding, we encode our qubit in a state \ket{0} as a single photon that's polarized in the vertical direction, which we write as \ket{V}. Our other computational basis state \ket{1}, as a single photon polarized in the horizontal direction, we write \ket{H}.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/PBS.png}
-    \caption[A polarizing beam splitter (PBS)]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation is normal to the \ket{H}-\ket{V} plane. \rdv{PBM should be PBS?}}
+    \includegraphics[width=0.6\textwidth]{lesson13/13-2_PBS.pdf}
+    \caption[A polarizing beam splitter (PBS)]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation, red arrows, is normal to the \ket{H}-\ket{V} plane.}
     \label{fig:13-PBS}
 \end{figure}
 
@@ -103,7 +105,7 @@ The first question that we should ask is, "how do we implement a Pauli $Z$ measu
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/PBS-measure.png}
+    \includegraphics[width=0.7\textwidth]{lesson13/13-2_PBS_measure.pdf}
     \caption[A polarizing beam splitter (PBS) measuring a qubit]{A PBS measuring an arbitrary photonic qubit in the \ket{H}-\ket{V} basis.}
     \label{fig:13-PBS-measure}
 \end{figure}
@@ -112,16 +114,16 @@ Assume that we have a single photon polarized in the vertical direction, and we 
 
 Now, what happens if we actually put in a superposition of these two linear polarizations, as in Fig.~\ref{fig:13-PBS-measure}? (\rdv{Fig. d})? Our input state is given by $\alpha\ket{V} + \beta \ket{H}$. The photon has a chance to get transmitted, with probability given by $|\alpha|^2$, and it also has a chance to get reflected and travel down into the other detector corresponding to the measurement outcome $-1$ (bottom), with probability of $|\beta|^2$. This implements our $Z$ measurement, but we have seen in the previous step that for a Bell-state measurement, we need two measurements in the $Z$ basis and a suitable unitary. Let's see what happens when we take two sub-units like the one in Fig.~\ref{fig:13-PBS-measure} and join them with a regular (not polarizing) fifty-fifty beam splitter, as in Fig.~\ref{fig:13-BSA-clicks}. Assume we have two photons, one coming from the top and one coming from the left, and they arrive at the beam splitter at the same time.
 %We actually have not developed the proper analysis tools to be able to analyze this in detail.  
-A complete analysis would require a little bit more quantum optics than we have studied so far, so instead of the full derivation, here we will give you the result. Depending on which of the four detectors trigger, we may learn which Bell-state has been measured. Let's see what the different patterns are.
+A complete analysis would require a little bit more quantum optics than we have studied so far, so instead of the full derivation, here we will give you the result. Depending on which of the four detectors click, we may learn which Bell-state has been measured. Let's see what the different patterns are.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/BSA-clicks.png}
+    \includegraphics[width=0.6\textwidth]{lesson13/13-3_BSA_clicks.pdf}
     \caption[A four-detector Bell-state analyzer (BSA)]{A BSA measuring a pair of qubits, one arriving at the initial beam splitter from above and one from the left.  Different click patterns on the four detectors may confirm projection into a Bell state, or be ambiguous.}
     \label{fig:13-BSA-clicks}
 \end{figure}
 
-If we get a joint detection in detectors D1 and D4, meaning that both of these detectors trigger, then we have implemented a successful Bell measurement, and the outcome corresponds to the projection onto the state \ket{\Psi^-}. Also, if we get a joint detection in D2 and D3, then we can also say that we have implemented a successful Bell measurement, and the result corresponds to the state \ket{\Psi^-}. A different pattern of detection that we can get is a joint detection at the two detectors in the lower branch of our Bell-state analyzer, so if both D1 and D2 trigger, then we can conclude that we have a state \ket{\Psi^+}, so this corresponds to another successful Bell measurement. Equally, if we get both detectors triggering in the right branch of our Bell-state analyzer, so if both D3 and D4 trigger, then we can also conclude that we have a Bell-state \ket{\Psi^+}.
+If we get a joint detection in detectors D1 and D4, meaning that both of these detectors click, then we have implemented a successful Bell measurement, and the outcome corresponds to the projection onto the state \ket{\Psi^-}. Also, if we get a joint detection in D2 and D3, then we can also say that we have implemented a successful Bell measurement, and the result corresponds to the state \ket{\Psi^-}. A different pattern of detection that we can get is a joint detection at the two detectors in the lower branch of our Bell-state analyzer, so if both D1 and D2 click, then we can conclude that we have a state \ket{\Psi^+}, so this corresponds to another successful Bell measurement. Equally, if we get both detectors clicking in the right branch of our Bell-state analyzer, so if both D3 and D4 click, then we can also conclude that we have a Bell-state \ket{\Psi^+}.
 
 It is also possible that both photons travel into a single detector. All four detectors are equally probable. However, because more than one Bell state can result in this happening, the answer we get is ambiguous. We cannot say that whether we have \ket{\Phi^+} or \ket{\Phi^-}.
 %So whenever we get only one of these detectors triggered, then we know that we have one of the state \ket{\Psi^+} or \ket{\Psi^-}, but we cannot tell which one. 
@@ -146,7 +148,7 @@ any other pattern & (N/A) & detection error & discard
 \rdv{added some discussion of loss}
 This means that a complete, unambiguous Bell-state measurement cannot always be successfully implemented with linear optics. In fact, even with 100\% probability of receiving both photons, the maximum probability of a successful Bell measurement is limited to only 50\%.  Of course, as we saw when discussing the loss of photons in fiber, the loss of one or both photons is highly probable, increasing the ambiguity of interpreting the result of one click.  These cases (along with the case where something goes wrong in the hardware) are summarized in Tab.~\ref{tab:bsa-clicks}. 
 %We have seen in a previous chapter that quantum repeaters have to contend with a lot of noise. To deal with that noise, we have to purify our states. We have also seen in previous chapters that we have to deal with lossy fibers, which was the original motivation to develop quantum repeaters. But even if we take away all of these sources of error, there is still a fundamental error in the fact that Bell-state measurement cannot be always successfully executed with linear optics. 
-On top of that, we have to take into account that the two photons coming into our Bell-state analyzer have to be synchronized. If they come in close enough together that two detectors click almost simultaneously, but not close enough together to be indistinguishable, we may misinterpret the result. The Bell-state measurement has failed and we did not establish entanglement between the network nodes, but may not realize it; this results in lowered fidelity for the link when we accumulate statistics.
+On top of that, we have to take into account that the two photons coming into our Bell-state analyzer have to be synchronized. If they come in close enough together that two detectors click almost simultaneously, but not close enough together to be indistinguishable, we may misinterpret the result. The Bell-state measurement has failed and we did not establish entanglement between the network nodes, but may not realize it; when we accumulate statistics about the link, this results in lowered fidelity.
 
 
 \section{Stationary and flying qubits}
@@ -208,7 +210,7 @@ Now, what are the processes that are degrading our memories? The two main proces
 \begin{equation}
 \begin{aligned}
 &T_1:|1\rangle \rightarrow|0\rangle \\
-&P(|1\rangle)=e^{-t / T_1}
+&\operatorname{Prob}(\ket{1})=e^{-t / T_1}
 \end{aligned}
 \end{equation}
 
@@ -241,10 +243,20 @@ We talked about the lifetimes of memories and why they are important, and we gav
 \end{figure}
 
 First, where is our qubit \ket{0} and \ket{1} in our quantum memory? Our quantum memory is a two level system for now, and it has a ground state \ket{g}, and some excited state of higher energy which we can label \ket{e}. These are natural candidates for representing \ket{0} and \ket{1}. For example, Fig.~\ref{fig:13-memory-first} shows a two level atom where $\ket{0}\equiv\ket{g}$ and $\ket{1}\equiv\ket{e}$. Now, how do we represent the flying qubit so that it works well with this memory qubit definition? One possibility is to use the presence or absence of a photon as a qubit, giving the definitions $\ket{0}\equiv\ket{\textrm{no photon},\ket{1}\equiv\ket{\textrm{photon}}}$.
-W can see that if the atom decays from the excited state into its ground state or if it makes a transition from \ket{1} to \ket{0}, it emits a photon.
+We can see that if the atom decays from the excited state into its ground state, that is, it makes a transition from \ket{1} to \ket{0}, it emits a photon.
 
-\rdv{}
-Now, how about coherences and superpositions? Well, we can prepare our memory in a superposition of the ground state and the excited state by applying an appropriately timed energy pulse, and our question is, "Well, what happens to the photon? Does it get emitted, or does it not get emitted? If it does get emitted, in what state will it be?" We see that the atom has an equal probability to be found in the ground state, so if it's in the ground state then it cannot emit any energy, so our photon will be in the \ket{0} state, there is no photon. Or it has a fifty percent probability to be in the excited state from where it can emit, and when it does emit then we will have a photon over here. So in this way, we can think about the photon of being in a super position of \ket{0} and \ket{1}, there is a photon and there is not a photon.
+%\rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
+\begin{equation}
+\begin{array}{ll}
+\text{memory qubit} & \text{flying qubit} \\
+
+|0\rangle \equiv|g\rangle \quad \text { ground state } & \quad|0\rangle \equiv \mid \text {no photon}\rangle \\
+|1\rangle \equiv|e\rangle \quad \text { excited state } & \quad|1\rangle \equiv \mid \text {photon}\rangle \\
+\end{array}
+\end{equation}
+
+Now, how about coherences and superpositions? Well, we can prepare our memory in a superposition of the ground state and the excited state by applying an appropriately timed energy pulse, and our question is, "Well, what happens to the photon? Does it get emitted, or does it not get emitted? If it does get emitted, in what state will it be?" We see that the atom has a 50\% probability to be found in the ground state, where it cannot emit any energy, so our photonic qubit will be in the no photon, or \ket{0}, state. It also has a 50\% probability of being in the excited state, from where it can emit a photon. So in this way, we can think about our photonic qubit as being in a superposition of \ket{0} and \ket{1}, or \ket{\textrm{no photon}} and \ket{\textrm{photon}}.
+This technique transfers the state \ket{+} from the atomic memory to the flying qubit and leaves the memory qubit in \ket{0}. 
 
 \begin{figure}[t]
     \centering
@@ -256,38 +268,33 @@ Now, how about coherences and superpositions? Well, we can prepare our memory in
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson13/memory-second-idea.png}
-    \caption[Our second idea for memory]{Our second idea for a memory qubit allows us to use a flying qubit robust against loss.}
+    \caption[Our second idea for memory]{Our second idea for a memory qubit is to use the post-decay spin of an atom. This allows us to use a polarized photon as a flying qubit robust against loss.}
     \label{fig:13-memory-second-idea}
 \end{figure}
 
-So we are transferring the state \ket{+}, from the atomic memory to the flying qubit. This is a very naive picture that demonstrates only some of the basic principles of how stationary and flying qubits interact together. In real systems, things are a lot more complicated. In particular, when we look at this encoding of just having two levels for our quantum memory (see slide), then this is usable but it's not a very good qubit, because due to the energy relaxation process, our excited state will eventually decay into a \ket{0}. So it will destroy whatever message- whatever state we have encoded into the quantum memory. Similarly, this encoding for the flying qubits of having a no photon and a photon representing our \ket{0} and \ket{1}, is not very good due to the attenuation of light in fibers. We described it in some detail that as we send photons down fibers, they're very likely to be lost and attenuated. So, if we are waiting for some message at the end of the fiber and we don't receive a photon, we cannot be sure. Was the original message really \ket{0}, so is it correct that we are finding no photon, or was the initial message one and the photon just got lost along the way? So we have to be a little bit more careful and think how to encode our information in a better, more robust way.
+This is a very naive picture that demonstrates only some of the basic principles of how stationary and flying qubits interact. In real systems, things are a lot more complicated. In particular, when we look at this encoding of just having two levels for our quantum memory, it is usable but it's not a very good qubit. Due to the energy relaxation process, our excited state will eventually decay into a \ket{0}, destroying whatever message- whatever state we have encoded into the quantum memory. Similarly, our choice encoding for the flying qubit is not very good due to the attenuation of light in fiber. We described it in some detail that as we send photons down a fiber, attenuation means they are very likely to be lost. So, if we are waiting for some message at the end of the fiber and we don't receive a photon, we cannot be sure if the original message was really \ket{\textrm{no photon}} (\ket{0}), or if the initial message was \ket{\textrm{photon}} (\ket{1}) and the photon just got lost along the way. So, we have to be a little bit more careful and think how to encode our information in a better, more robust way.
 
-What's our stationary memory qubit? What's our flying qubit?
+What's our next choice for stationary memory qubit and flying qubit?
 
-\rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
+Consider the following atomic structure: we have two degenerate~\footnote{Meaning "having the same energy"; no moral weakness implied.} ground states, and we will label them as ground state up (\ket{\uparrow}) and ground state down (\ket{\downarrow}), as shown in Fig.~\ref{fig:13-memory-second-idea}. These can represent the two spins\index{spin} of our atom.
+For our flying qubits, the matching state will be polarization, where \ket{0} will be represented by vertical polarization (\ket{V}), and \ket{1} will be represented by horizontal polarization (\ket{H}). 
+
+% \rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
 \begin{equation}
-\begin{array}{lll}
-\text{memory qubit} & & \text{flying qubit} \\
-
-|0\rangle \equiv|g\rangle \quad & \text { ground state } & \quad|0\rangle \equiv \mid \text {no photon}\rangle \\
-|1\rangle \equiv|e\rangle \quad & \text { excited state } & \quad|1\rangle \equiv \mid \text {photon}\rangle \\
+\begin{array}{ll}
+\text{memory qubit} & \text{flying qubit} \\
+|0\rangle \equiv|\uparrow\rangle \text { spin up } & |0\rangle \equiv|V\rangle \\
+|1\rangle \equiv|\downarrow\rangle \text { spin down } & |1\rangle \equiv|H\rangle
 \end{array}
 \end{equation}
 
-Consider the following atomic structure: we have two degenerate ground states, and we will label them as ground state up and ground state down.
-
-And these can represent the two spins of of our atom.
-
-For our flying qubits, we can consider polarization. So \ket{0} will be represented by vertical polarization (\ket{V}), and \ket{1} will be represented by horizontal polarization (\ket{H}). We can prepare our atom initially in the excited state, and then the atom can decay, either to the ground state with spin up, or to the ground state with spin down. The thing is, we can only see that there's a photon coming out, and we don't actually know into which ground state the atom decayed. So, we are effectively implementing the following transformation: we go from the excited state of the atom to a superposition of the atom being found in the spin up state \rdv{and down state?}. If that's true, then the photon that gets emitted just happens to have a vertical polarization. On the other hand, if it decays into the other ground state given by spin down, then the photon will have a horizontal polarization. So really, what we are doing is we are obtaining the following superposition of two qubits (top right eq.). We have an equal superposition of the atom being in the spin up state, and the emitted photon being in the vertically polarized, and the other term which is the atom being found in the spin down state, and the photon being horizontally polarized. So, in this way, we are entangling the flying photon with the stationary qubit of the memory.
-
-\rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
+We prepare our atom initially in the excited state, and then the atom can decay, either to the ground state with spin up, or to the ground state with spin down, each with 50\% probability.  If the atom decays into the spin up state, the emitted photon will be vertically polarized.  If the atom decays into the spin down state, the photon will be horizontally polarized.  The thing is, we can only see that a photon comes out, and we don't actually know into which ground state the atom decayed. So, we are effectively implementing the following transformation: we go from the excited state of the atom to a superposition of the atom being found in the spin up state and the spin down state. 
+%If that's true, then the photon that gets emitted just happens to have a vertical polarization. On the other hand, if it decays into the other ground state given by spin down, then the photon will have a horizontal polarization. So really, what we are doing is we are obtaining the following superposition of two qubits (top right eq.). 
+Moreover, since the emitted photon depends on the final state of the atom, we now have an equal superposition of the atom being in the spin up state and the emitted photon being vertically polarized, and the atom being found in the spin down state and the photon being horizontally polarized. We can write this transformation as
 \begin{equation}
-\begin{array}{lll}
-\text{memory qubit} & & \text{flying qubit} \\
-|0\rangle \equiv|\uparrow\rangle & \text { spin up } & |0\rangle \equiv|V\rangle \\
-|1\rangle \equiv|\downarrow\rangle & \text { spin down } & |1\rangle \equiv|H\rangle
-\end{array}
+\ket{e} \rightarrow \frac{\ket{\uparrow V}+\ket{\downarrow H}}{\sqrt{2}}
 \end{equation}
+where the arrows represent the post-decay state of the atom and the letters represent the polarization of the emitted photon.  (The left hand side of the equation has no photon, only the state of the atom.) In this way, we are entangling the flying photon with the stationary qubit of the memory.
 
 Fig.~\ref{fig:13-MIM-energy} brings this all back to a concrete representation of our Bell-state analyzer. We have drawn this before very abstractly, but now we have a much better idea how it actually works in practice. In the middle are the two single mode fibers and on the left the two quantum memories at our two repeater nodes, separated by some distance, represented by their energy level diagrams. Each memory is prepared initially in the excited state \ket{e}, which decays into one of its ground states, either spin up \ket{\uparrow} or spin down \ket{\downarrow}. We don't know which state it decays into, leaving us with a flying photon that is entangled with its respective memory. These flying photons travel through the single mode fibers, then hit the central beam splitter, where (if all goes well) they interfere and we perform a Bell-state measurement using the other two beam splitters and the four detectors. In this way, we can establish link-level entanglement between the atomic memories sitting at the ends of the link. This is exactly the scheme that we have described previously for a midpoint-interference-memory (MIM) link, which in terms of physics is the same as a direct memory-to-memory connection (MM).
 
@@ -328,7 +335,7 @@ For those of you interested in how submarine fiber optic cables are made, laid a
 
 Our discussion of mode dispersion closely followed Section 5.6 of Hecht’s textbook and we encourage you to read it for the extra details that can be found in the book.
 
-Qualitative review of classical amplifiers (with just the right amount technical detail) can be here:
+Qualitative review of classical amplifiers (with just the right amount of technical detail) can be here:
 
 Emmanuel Desurvire, The Golden Age of Optical Fiber Amplifiers, Physics Today 47, 20 (1994).
 
