@@ -237,7 +237,7 @@ We talked about the lifetimes of memories and why they are important, and we gav
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/memory-first-idea.png}
+    \includegraphics[width=0.7\textwidth]{lesson13/13-4_memory-first.pdf}
     \caption[First idea for memory]{Our first idea for a memory qubit is to use two energy levels of a system, such as ground and excited states of an atom.}
     \label{fig:13-memory-first}
 \end{figure}
@@ -258,16 +258,16 @@ We can see that if the atom decays from the excited state into its ground state,
 Now, how about coherences and superpositions? Well, we can prepare our memory in a superposition of the ground state and the excited state by applying an appropriately timed energy pulse, and our question is, "Well, what happens to the photon? Does it get emitted, or does it not get emitted? If it does get emitted, in what state will it be?" We see that the atom has a 50\% probability to be found in the ground state, where it cannot emit any energy, so our photonic qubit will be in the no photon, or \ket{0}, state. It also has a 50\% probability of being in the excited state, from where it can emit a photon. So in this way, we can think about our photonic qubit as being in a superposition of \ket{0} and \ket{1}, or \ket{\textrm{no photon}} and \ket{\textrm{photon}}.
 This technique transfers the state \ket{+} from the atomic memory to the flying qubit and leaves the memory qubit in \ket{0}. 
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/memory-first-idea-problem.png}
-    \caption[Problem with our first idea for memory]{Our first idea for a memory qubit appears to have a clean correspondence with the flying qubit, but then loss of photons becomes ambiguous.}
-    \label{fig:13-memory-first-problem}
-\end{figure}
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{lesson13/memory-first-idea-problem.png}
+%     \caption[Problem with our first idea for memory]{Our first idea for a memory qubit appears to have a clean correspondence with the flying qubit, but then loss of the photon can make the state ambiguous.}
+%     \label{fig:13-memory-first-problem}
+% \end{figure}
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/memory-second-idea.png}
+    \includegraphics[width=0.3\textwidth]{lesson13/13-4_memory-second.pdf}
     \caption[Our second idea for memory]{Our second idea for a memory qubit is to use the post-decay spin of an atom. This allows us to use a polarized photon as a flying qubit robust against loss.}
     \label{fig:13-memory-second-idea}
 \end{figure}
@@ -300,7 +300,7 @@ Fig.~\ref{fig:13-MIM-energy} brings this all back to a concrete representation o
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/MIM-with-energy-levels.png}
+    \includegraphics[width=0.7\textwidth]{lesson13/13-4_MIM_with_energy_levels.pdf}
     \caption[MIM with energy levels]{A different view of an MIM link. On the left are the energy level diagrams for the qubits, which decay into a superposition of two states while emitting photons entangled with the memories. On the right is a large view of the Bell state analyzer with three beam splitters and four photon detectors.}
     \label{fig:13-MIM-energy}
 \end{figure}

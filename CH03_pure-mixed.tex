@@ -80,7 +80,7 @@ Let's apply our example outer product to a general qubit state vector $|\psi\ran
     & = \alpha |0\rangle\underbrace{\langle0|0\rangle}_{=1} + \beta |0\rangle\underbrace{\langle0|1\rangle}_{=0} \nonumber\\
     & = \alpha|0\rangle. \nonumber
 \end{align}
-In the second line of Eq.~(\ref{eq:projector_00}), we used the fact that the inner product between of a normalized vector with itself is unity, and the orthogonality property of kets $|0\rangle$ and $|1\rangle$.
+In the second line of Eq.~(\ref{eq:projector_00}), we used the fact that the inner product of a normalized vector with itself is unity, and the orthogonality property of kets $|0\rangle$ and $|1\rangle$.
 We see that our example outer product induces an interesting transformation of the initial general single-qubit state vector $|\psi\rangle$.
 It changes the initial state vector into $|0\rangle$, up to a complex constant $\alpha$.
 We did not assume any particular values for the initial probability amplitudes $\alpha$ and $\beta$, meaning that any initial state vector, provided $\alpha\neq0$, is transformed into a vector proportional to $|0\rangle$.
@@ -122,7 +122,7 @@ The corresponding projectors are
     |+\rangle\langle+| & = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}, \\
     |-\rangle\langle-| & = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}.
 \end{align}
-We can also convince ourselves that these operators really do project onto the correct states by acting with them on a general qubit state,
+We can also convince ourselves that these operators really do project onto the correct states by applying them to a general qubit state,
 \begin{align}
     |+\rangle\langle+|\psi\rangle & = |+\rangle \frac{1}{\sqrt{2}} \left( \langle0| + \langle1| \right) \left( \alpha |0\rangle + \beta|1\rangle \right) = \frac{\alpha+\beta}{\sqrt{2}} |+\rangle, \\
     |-\rangle\langle-|\psi\rangle & = |-\rangle \frac{1}{\sqrt{2}} \left( \langle0| - \langle1| \right) \left( \alpha |0\rangle + \beta|1\rangle \right) = \frac{\alpha-\beta}{\sqrt{2}} |-\rangle.
@@ -132,7 +132,7 @@ Similarly, projectors corresponding to the $\pm1$ outcomes of a measurement in t
     |i\rangle\langle i| & = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix}, \\
     |-i\rangle\langle-i| & = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -i \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix}.
 \end{align}
-The action of these projectors can be verified by acting with them on an arbitrary qubit state,
+The action of these projectors can be verified by applying them to an arbitrary qubit state,
 \begin{align}
     |i\rangle\langle i|\psi\rangle & = \frac{\alpha-i\beta}{\sqrt{2}} |i\rangle, \\
     |-i\rangle\langle-i|\psi\rangle & = \frac{\alpha+i\beta}{\sqrt{2}} |-i\rangle.
@@ -207,7 +207,7 @@ The output state is a projector $|\psi_i\rangle\langle\psi_i|$ with probability 
     \label{eq:3-3_mixture}
 \end{equation}
 The state represented by the sum in Eq.~(\ref{eq:3-3_mixture}) is called a \textit{\textbf{mixed state}}\index{mixed state}.
-Important thing to remember is that the $p_i$'s are probabilities and therefore they must sum to unity, that is $\sum_{i=1}^n=1$.
+Important thing to remember is that the $p_i$'s are probabilities and therefore they must sum to unity, that is $\sum_{i=1}^n p_i=1$.
 
 \begin{figure}[t]
     \centering
@@ -240,10 +240,10 @@ We have in fact seen it already in Eq.~(\ref{eq:3-3_mixture}),
 \begin{equation}
     \rho = \sum_i p_i |\psi_i\rangle\langle\psi_i|.
 \end{equation}
-The vector state representation is known as a ket, while this more general representation using a sum of outer products is called a \textit{\textbf{density matrix}}.
-Note that the density matrix can describe both pure as well as mixed states.
-When all $p_i$'s vanish except for one, that is $\rho=|\psi\rangle\langle\psi|$, the state $\rho$ is pure.
-On the other hand, if more than one $p_i$'s are non-zero, the state $\rho$ is mixed.
+The representation for a state vector we have used so far is known as a ket, while this more general representation using a sum of outer products is called a \textit{\textbf{density matrix}}.
+Note that the density matrix can describe both pure as well as mixed states, whereas the state vector can only accurately describe pure states.
+When all $p_i$ values vanish except for one, that is $\rho=\ketbra{\psi}{\psi}$, the state $\rho$ is pure.
+On the other hand, if more than one $p_i$ is non-zero, the state $\rho$ is mixed.  (The \ket{\psi} is not restricted to a single computational basis state; it can be any superposition.  That is, \ket{\psi} is not restricted to a state like \ket{0} or \ket{1}; $\ket{\psi} = \ket{+}$ is valid.)
 
 We saw in the previous chapter that all vectors representing quantum states must be normalized.
 What does this normalization condition look like when we write the state as a density matrix?

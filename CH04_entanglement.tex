@@ -185,16 +185,25 @@ This is very interesting because this implies that \emph{we only have perfect kn
 
 We have said that the Bell states\index{Bell states} form a very important class of entangled states of two qubits. There are four of them, and we can write them as follows: 
 \begin{equation}
-\begin{aligned}
-|00\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right) & 
-\ket{01} = \frac{1}{\sqrt2}(\ket{\Psi^{+}} - \ket{\Psi^{-}}) \\
-|10\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Psi^{+}\right\rangle-\left|\Psi^{-}\right\rangle\right) & 
-\ket{11} = \frac{1}{\sqrt2}(\ket{\Phi^{+}} - \ket{\Phi^{-}})
-\end{aligned}
+    \begin{aligned}
+        |\Phi^+\rangle & = \frac{1}{\sqrt{2}} \left( |00\rangle + |11\rangle \right), & 
+        |\Phi^-\rangle = \frac{1}{\sqrt2} \left( |00\rangle - |11\rangle \right), \\
+        |\Psi^+\rangle & = \frac{1}{\sqrt{2}} \left( |01\rangle + |10\rangle \right), & 
+        |\Psi^-\rangle = \frac{1}{\sqrt2} \left(|01\rangle - |10\rangle \right).
+    \end{aligned}
 \end{equation}
 We have already encountered the equal superposition of $\ket{00}$ plus $\ket{11}$. Normally, we call that a $\ket{\Phi^+}$ (read "phi-plus") state. Its counterpart is the $\ket{\Phi^-}$ ("phi-minus") state, where the $\ket{00}$ and $\ket{11}$ have opposite phase, as shown by the minus sign. There are two more states, $\ket{\Psi^+}$ and $\ket{\Psi^-}$, with the latter having opposite phase between the two terms.  These states we will see again and again in the context of quantum communication, quantum computation, quantum key distribution, basically throughout this entire book and throughout your career.~\footnote{In some texts and papers, more commonly but not exclusively older ones, you will see these states written using the lower-case Greek letters $\phi$ (phi) and $\psi$ (psi).  In this book, we will use the capital Greek letters when referring to the Bell pairs and the lower-case letters when referring to specific variables.} 
 
 An interesting thing about the Bell states is that they form an orthogonal basis for two qubits, so we can begin by rewriting the individual vectors for the computational basis in terms of the Bell basis. Just by doing very simple juggling of the terms, you can see that $\ket{00}$ can be written as a superposition of $\ket{\Phi^+}$ and $\ket{\Phi^-}$, and similarly $\ket{01}$ is an equal superposition of $\ket{\Psi^+}$ and $\ket{\Psi^-}$.
+All four computational basis states of two qubits can be written in the Bell basis as follows,
+\begin{equation}
+\begin{aligned}
+|00\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right), & 
+\ket{01} = \frac{1}{\sqrt2}(\ket{\Psi^{+}} + \ket{\Psi^{-}}), \\
+|10\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Psi^{+}\right\rangle-\left|\Psi^{-}\right\rangle\right), & 
+\ket{11} = \frac{1}{\sqrt2}(\ket{\Phi^{+}} - \ket{\Phi^{-}}).
+\end{aligned}
+\end{equation}
 %, whereas one-zero is an equal superposition of $\ket{\psi^+}$ minus $\ket{\psi^-}$, and $\ket{11}$ is given by phi-plus minus phi-minus. 
 This means that we can take any pure state of two qubits given in the form with arbitrary probability amplitudes $\alpha$, $\beta$, $\gamma$, $\delta$,
 \begin{equation}
