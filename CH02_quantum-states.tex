@@ -24,7 +24,7 @@ Recall from Chapter 1 that all information can be represented by classical bits 
 \begin{equation}
 \ket{\psi} = \alpha \ket{0} + \beta\ket{1} 
 \end{equation}
- where $\ket{\cdot}$ is pronounced (\emph{ket}), $\psi$ (\emph{psi}) represents a general qubit state, $\alpha,\beta \in \mathbb{C}$.\label{def:ket}
+ where $\ket{\cdot}$ is pronounced \emph{ket}, $\psi$ (\emph{psi}) represents a general qubit state, $\alpha,\beta \in \mathbb{C}$.\label{def:ket}
 
 %%%% taking out these three figures
 \if0
@@ -91,25 +91,31 @@ Recall from Chapter 1 that all information can be represented by classical bits 
 %Hi, and welcome to lesson two on Quantum Mechanics for Quantum Communication. In this lesson, we will learn about quantum states. We will learn how to write them down, what they represent, and how they differ from classical states and particularly classical bits. 
 %Then we will move on to learning how to operate quantum states, how to process them, how to extract information from them using measurements, and finally we will conclude by looking at multiple quantum states and how to describe them. So let's begin. 
 
-First, let's discuss quantum bits, also known as \emph{qubits}. We have seen in the previous chapter that all the information can be represented by classical bits. In the classical world, you have zeros and you have ones, so a classical bit can only be in two states: it can either be in a zero, like here, or it can be fully in one, nothing in between. Whereas the quantum bit (as I said: a "qubit") can be anything in between. It can be a hundred percent zero, it can also be hundred percent one, but it can also be fifty percent zero and fifty percent one. Such a state is called a \emph{superposition}. It's not that we don't know what the state is, it really is neither 0 nor 1 but it's somewhere in between.
+First, let's discuss quantum bits, also known as \emph{qubits}. We have seen in the previous chapter that information can be represented by classical bits. In the classical world, a classical bit can only be in two states: it can be in a state we label \emph{zero}, or in a state we label \emph{one}, nothing in between. In contrast, a quantum bit can be anything in between. It can be 100\% zero or 100\% one, but it can also be 50\% zero and 50\% one or 1\% zero and 99\% one. Such a state is called a \emph{superposition} of zero and one. It's not that we don't know what the state is, it really is neither zero nor one but it's somewhere in between. (This notion of "in between" is not a completely accurate description, but it will do for now.  As we do the mathematics over the next several sections, your understanding will grow.)
 
-How do we write down a general quantum state of a qubit? Well the most common notation is called \emph{Dirac notation}\index{Dirac notation}, and it's extremely useful. It's written like this,
+The most common notation for writing down the state of a qubit (or more than one qubit) is called the \emph{Dirac notation}\index{Dirac notation}, and it's extremely useful. It's written like this,
 \begin{align}
 \ket{\psi} = \alpha\ket{0} + \beta\ket{1}
 \end{align}
-with this funny angle bracket, and this symbol $\psi$ (Greek letter "psi") is normally used to describe a general state of a quantum bit. So, this is pronounced the "ket" ($\ket{}$)\index{ket}, and we're going to be calling it "state psi" or "ket psi" interchangeably, and that is equal to a superposition of a zero and a one. $\ket{0}$ and $\ket{1}$ are called the "basis states", and they determine what our state is. This $\alpha$ and $\beta$ are "probability amplitudes" that tell us how much of the state is in zero and how much of the state is in one.  These probability amplitudes can be any complex number, provided that they satisfy this normalization condition:
+with this funny angle bracket \ket{}, pronounced \emph{ket}\index{ket}. The symbol $\psi$ (Greek letter "psi") in a ket, which we will call "state psi" or "ket psi" interchangeably, is often used to describe a general state of a qubit. $\ket{0}$ and $\ket{1}$ are called the \emph{basis states}\index{basis states}, and they determine what our state is. This $\alpha$ and $\beta$ are \emph{probability amplitudes}\index{probability amplitudes} that tell us how much of the state is in zero and how much of the state is in one.  These probability amplitudes can be any complex numbers, provided that they satisfy this normalization condition:
 \begin{align}
     |\alpha|^2 + |\beta|^2 = 1
 \end{align}
-(read "mod alpha squared plus mod beta squared is equal to one"). This is to ensure that whatever measurements we do in the future on this state we get correct probabilities out.
+(read "mod alpha squared plus mod beta squared is equal to one"). This is to ensure that whatever measurements we do in the future on this state produce results with the correct probabilities.
 
-Another very useful representation of quantum states is using the \emph{Bloch sphere}\index{Bloch sphere}, as shown in Figs.~\ref{fig:bloch} and \ref{fig:annotated-bloch}. This visual representation gives us a very intuitive way of thinking about quantum states. So a Bloch sphere is a three-dimensional sphere. We have here the x-axis, here the y-axis, and the vertical is the z-axis, and all the states are given as points on the surface of the sphere, parameterized by the angle $\theta$ and the angle $\phi$. So then the state $\ket{\psi}$ can be written in the following form,
+Another very useful representation of quantum states is using the \emph{Bloch sphere}\index{Bloch sphere}, as shown in Figs.~\ref{fig:bloch} and \ref{fig:annotated-bloch}. This visual representation gives us a very intuitive way of thinking about quantum states. All the states are given as points on the surface of the sphere, parameterized by the angle $\theta$ and the angle $\phi$. Then the state $\ket{\psi}$ can be written in the following form,
 \begin{equation}
 |\psi\rangle=\cos \frac{\theta}{2}|0\rangle+e^{i \phi} \sin \frac{\theta}{2}|1\rangle
 \end{equation}
-where the probability amplitude for basis state 0 is given by $\cos(\theta/2)$ and the probability amplitude for basis state 1 is given by the complex phase $e^{i \phi} \sin \frac{\theta}{2}$. 
+where the probability amplitude for basis state 0 is given by $\cos(\theta/2)$ and the probability amplitude for basis state 1 is given by $\sin(\theta/2)$, multiplied by $e^{i \phi}$, known as the complex phase of the state. This phase does not affect the probability of finding a one when we measure the qubit, but it is critically important as part of the state and in quantum algorithms.
 
-This is a general state, but let's look at some examples. So we have these states zero and one which we have already encountered, and they sit at the north and the south pole of the Bloch sphere. We also said that we can have an arbitrary superposition of zero and one. For example, we can have "plus state" which is given as equal superposition of zero and one, or we can have its friend on the other side of the block sphere the "minus state", which is an equal superposition but this time it's zero minus one, and equally we can also have two states on the y-axis, one is called the "plus i" the other one is "minus i", and they're given by this state here. You can see that again, it's an equal superposition of zero and one, but this time the phase between zero and one is given by a complex number $i$.
+This \ket{\psi} is a general state, but let's look at some examples. We have already encountered \ket{0} and \ket{1}, and they sit at the north and the south pole of the Bloch sphere, respectively. We also said that we can have an arbitrary superposition of zero and one. For example, we can have a state known as the \emph{plus state}, written \ket{+}, which is an equal superposition of zero and one. The plus state appears on the equator of the Bloch sphere, at the point where the sphere's positive $X$ axis intersects the surface. We can have its friend the \emph{minus state}, written \ket{-}, on the other side of the Bloch sphere. It also is an equal superposition, but this time it's on the negative side of the $X$ axis.  It can be read "zero minus one", and if you think about a rotation about the $Z$ along the equator, since $e^{i\pi} = -1$, it has the complex phase $\pi$.  We can also have two states on the $Y$ axis. One is called the "plus i" state, written \ket{i} or occasionally \ket{+i}, and the other is called "minus i", written \ket{-i}. You can see that again, both of these states are an equal superposition of zero and one, but this time the phase between zero and one is given by the complex number $i$ or the angle $\pi/2$ for \ket{i} and $-i$ or the angle $3\pi/2$ for \ket{-}.  Summarizing, these states are
+\begin{equation}
+\begin{aligned}
+& |\pm\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm|1\rangle) \\
+& |\pm i\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm i|1\rangle).
+\end{aligned}
+\end{equation}
 
 \section{Unitary Operations}
 
@@ -122,7 +128,7 @@ This is a general state, but let's look at some examples. So we have these state
     \label{fig:physical-system}
 \end{figure}
 
-Let's see how we can manipulate quantum states, and therefore manipulate quantum information as well. We're going to do this with \emph{unitary operations}. One thing that you have to realize is that \emph{all information is physical}. This is because the information is represented by physical systems. Therefore, to change the information and process it, we have to interact with the physical systems that carry the information. For example, in classical information, you have two very good examples in "HDDs (Hard disk drives)" where you read, write and manipulate information with very weak and precise magnetic fields, and for an example of a younger technology, we can look at the "solid-state drive" where you do the same thing, but you achieve it by manipulating very weak electric currents.
+Let's see how we can manipulate quantum states, and therefore manipulate quantum information as well. We're going to do this with \emph{unitary operations}. One thing that you have to realize is that \emph{all information is physical}. This is because the information is represented by physical systems. Therefore, to change the information and process it, we have to interact with the physical systems that carry the information. In classical information, a very good example is HDDs (hard disk drives), where you read, write and manipulate information with very weak and precise magnetic fields, and for an example of a younger technology, we can look at the "solid-state drive" where you do the same thing, but you achieve it by manipulating very weak electric currents.
 
 On the other hand in quantum information, you can look at physical systems such as \emph{ion traps}. For example, this ion trap from a company called IonQ, where individual atoms are represented by this blue dot. They're suspended on magnetic fields and they represent individual quantum bits, and you apply some pulses of lasers and you can manipulate the states of these qubits.  You can also look at \emph{superconducting qubits} from companies such as IBM or Google, where you can do the same thing. 
 
