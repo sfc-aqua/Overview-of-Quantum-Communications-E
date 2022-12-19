@@ -93,27 +93,38 @@ In this encoding, we encode our qubit in a state \ket{0} as a single photon that
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.6\textwidth]{lesson13/13-2_PBS.pdf}
+    \includegraphics[width=0.6\textwidth]{lesson13/13-3_PBS.pdf}
     \caption[A polarizing beam splitter (PBS)]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation, red arrows, is normal to the \ket{H}-\ket{V} plane.}
     \label{fig:13-PBS}
 \end{figure}
 
 
-\rdv{Make Figs. X.a, X.b, c and d from p. 21-24}
+% \rdv{Make Figs. X.a, X.b, c and d from p. 21-24}
 
-The first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? Well, we have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \emph{polarizing beam splitter} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}. If you have a beam of light coming in with some polarization, a PBS splits the beam of light into two beams. One is transmitted through the polarizing beam splitter but comes out only with a vertical polarization, while the other one gets reflected by the PBS and is polarized in the horizontal direction. (The relative strength of the two beams naturally depends on the polarization of the input light.) Thinking in terms of computational states, we now have two beams, one for our \ket{0} and one for our \ket{1}. \rdv{Is this okay?  Does this ket representation hold for classical beams?} \rdv{Fig. a}
+The first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? Well, we have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \emph{polarizing beam splitter} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}. If you have a beam of light coming in with some polarization, a PBS splits the beam of light into two beams. One is transmitted through the polarizing beam splitter but comes out only with a horizontal polarization, while the other one gets reflected by the PBS and is polarized in the vertical direction. (The relative strength of the two beams naturally depends on the polarization of the input light.)
+Thinking in terms of computational states, we now have two beams, one for our \ket{0} and one for our \ket{1}.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson13/13-2_PBS_measure.pdf}
-    \caption[A polarizing beam splitter (PBS) measuring a qubit]{A PBS measuring an arbitrary photonic qubit in the \ket{H}-\ket{V} basis.}
+    \includegraphics[width=0.7\textwidth]{lesson13/13-3_PBS_measure.pdf}
+    \caption[A polarizing beam splitter (PBS) measuring a qubit]{A PBS measuring an arbitrary photonic qubit in the \{$|H\rangle$, $|V\rangle$\} basis.}
     \label{fig:13-PBS-measure}
 \end{figure}
 
-Assume that we have a single photon polarized in the vertical direction, and we place two detectors after the polarizing beam splitter to detect which output path was taken by the single photon. If the photon is vertically polarized (\rdv{Fig. b}), it gets transmitted through the polarizing beam splitter. Therefore, it gets detected by the detector on the right with probability one. This represents our measurement outcome of $+1$. It never happens that a vertically polarized photon gets reflected, therefore the bottom detector never gets triggered, so the probability of the outcome $-1$ is always 0. On the other hand, if our initial photon is horizontally polarized (\rdv{Fig. c}), it always gets reflected and travels down into the bottom detector, triggers it, and always gets detected. So the probability of the outcome $-1$ is 1, and the probability of the outcome $+1$ is always 0.
+Assume that we have a single photon polarized in the vertical direction, and we place two detectors after the polarizing beam splitter to detect which output path was taken by the single photon. If the photon is horizontally polarized, it gets transmitted through the polarizing beam splitter.
+Therefore, it gets detected by the detector placed in the transmitted path with probability one.
+This represents our measurement outcome of $+1$.
+It never happens that a vertically polarized photon gets transmitted, therefore the detector placed in the reflected path never gets triggered.
+The probability of the outcome $-1$ is 0.
+On the other hand, if the initial photon is vertically polarized, it always gets reflected and travels down into the bottom detector, where it always gets detected.
+The probability of the outcome $-1$ is 1, and the probability of the outcome $+1$ is always 0.
 
-Now, what happens if we actually put in a superposition of these two linear polarizations, as in Fig.~\ref{fig:13-PBS-measure}? (\rdv{Fig. d})? Our input state is given by $\alpha\ket{V} + \beta \ket{H}$. The photon has a chance to get transmitted, with probability given by $|\alpha|^2$, and it also has a chance to get reflected and travel down into the other detector corresponding to the measurement outcome $-1$ (bottom), with probability of $|\beta|^2$. This implements our $Z$ measurement, but we have seen in the previous step that for a Bell-state measurement, we need two measurements in the $Z$ basis and a suitable unitary. Let's see what happens when we take two sub-units like the one in Fig.~\ref{fig:13-PBS-measure} and join them with a regular (not polarizing) fifty-fifty beam splitter, as in Fig.~\ref{fig:13-BSA-clicks}. Assume we have two photons, one coming from the top and one coming from the left, and they arrive at the beam splitter at the same time.
-%We actually have not developed the proper analysis tools to be able to analyze this in detail.  
+Now, what happens if we put in a superposition of these two linear polarizations, as in Fig.~\ref{fig:13-PBS-measure}?
+Our input state is given by $\alpha\ket{H} + \beta \ket{V}$.
+The photon has a chance to get transmitted, with probability given by $|\alpha|^2$, and it also has a chance to get reflected and travel down into the other detector corresponding to the measurement outcome $-1$ (bottom), with probability of $|\beta|^2$.
+This implements a $Z$ measurement.
+We have seen in the previous step that for a Bell-state measurement, we need two measurements in the $Z$ basis and a suitable unitary.
+Let's see what happens when we take two sub-units like the one in Fig.~\ref{fig:13-PBS-measure} and join them with a regular (not polarizing) fifty-fifty beam splitter, as in Fig.~\ref{fig:13-BSA-clicks}. Assume we have two photons, one coming from the top and one coming from the left, and they arrive at the beam splitter at the same time.
 A complete analysis would require a little bit more quantum optics than we have studied so far, so instead of the full derivation, here we will give you the result. Depending on which of the four detectors click, we may learn which Bell-state has been measured. Let's see what the different patterns are.
 
 \begin{figure}[t]

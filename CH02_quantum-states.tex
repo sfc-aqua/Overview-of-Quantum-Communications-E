@@ -4,7 +4,7 @@
 
 \chaptermark{Quantum States}
 
-\rdv{this chapter still needs an E2E cleanup.}
+\rdv{2.1 has been cleaned up. 2.2 and 2.3 are still bad. 2.4 and 2.5 need more cleanup, but aren't too bad. n.b.: in the 12/19 draft, some figures and equations have moved and been renumbered.}
 
 %\chapterauthor{Hein Mannaerts}
 
@@ -26,37 +26,10 @@ Recall from Chapter 1 that all information can be represented by classical bits 
 \end{equation}
  where $\ket{\cdot}$ is pronounced \emph{ket}, $\psi$ (\emph{psi}) represents a general qubit state, $\alpha,\beta \in \mathbb{C}$.\label{def:ket}
 
-%%%% taking out these three figures
-\if0
-% Insert qubit 100% 0
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson2/100％0.pdf}
-        \caption{100\% 0 qubit}
-    \label{fig:100-zero}
-\end{figure}
 
-% Insert qubit 100% 1 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson2/100_1.pdf}
-    
-        \caption{100\%1 qubit}
-    
-    \label{fig:100-one}
-\end{figure}
 
-% Insert superposition state pic.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson2/superposition_qubit.pdf}
-    
-        \caption{A qubit in superposition}
-    
-    \label{fig:superpos}
-\end{figure}
-\fi
-%%%%%% end of cut
+
+First, let's discuss quantum bits, also known as \emph{qubits}. We have seen in the previous chapter that information can be represented by classical bits. In the classical world, a classical bit can only be in two states: it can be in a state we label \emph{zero}, or in a state we label \emph{one}, nothing in between. In contrast, a quantum bit can be anything in between. It can be 100\% zero or 100\% one, but it can also be 50\% zero and 50\% one or 1\% zero and 99\% one. Such a state is called a \emph{superposition} of zero and one. It's not that we don't know what the state is, it really is neither zero nor one but it's somewhere in between. (This notion of "in between" is not a completely accurate description, but it will do for now.  As we do the mathematics over the next several sections, your understanding will grow.)
 
 % Dirac Notation w/ annotation
 \begin{figure}[H]
@@ -68,31 +41,6 @@ Recall from Chapter 1 that all information can be represented by classical bits 
     \label{fig:ket-notation}
 \end{figure}
 
-% Bloch Sphere
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{lesson2/bloch_sphere.pdf}
-    
-        \caption{Bloch sphere}
-    
-    \label{fig:bloch}
-\end{figure}
-
-% insert Bloch sphere w/ axes labelled and |+> |-> meanings
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{lesson2/bloch_sphere_annotated.pdf}
-    
-        \caption{Bloch sphere with X, Y, and Z axis basis states.}
-    
-    \label{fig:annotated-bloch}
-\end{figure}
-
-%Hi, and welcome to lesson two on Quantum Mechanics for Quantum Communication. In this lesson, we will learn about quantum states. We will learn how to write them down, what they represent, and how they differ from classical states and particularly classical bits. 
-%Then we will move on to learning how to operate quantum states, how to process them, how to extract information from them using measurements, and finally we will conclude by looking at multiple quantum states and how to describe them. So let's begin. 
-
-First, let's discuss quantum bits, also known as \emph{qubits}. We have seen in the previous chapter that information can be represented by classical bits. In the classical world, a classical bit can only be in two states: it can be in a state we label \emph{zero}, or in a state we label \emph{one}, nothing in between. In contrast, a quantum bit can be anything in between. It can be 100\% zero or 100\% one, but it can also be 50\% zero and 50\% one or 1\% zero and 99\% one. Such a state is called a \emph{superposition} of zero and one. It's not that we don't know what the state is, it really is neither zero nor one but it's somewhere in between. (This notion of "in between" is not a completely accurate description, but it will do for now.  As we do the mathematics over the next several sections, your understanding will grow.)
-
 The most common notation for writing down the state of a qubit (or more than one qubit) is called the \emph{Dirac notation}\index{Dirac notation}, and it's extremely useful. It's written like this,
 \begin{align}
 \ket{\psi} = \alpha\ket{0} + \beta\ket{1}
@@ -103,19 +51,40 @@ with this funny angle bracket \ket{}, pronounced \emph{ket}\index{ket}. The symb
 \end{align}
 (read "mod alpha squared plus mod beta squared is equal to one"). This is to ensure that whatever measurements we do in the future on this state produce results with the correct probabilities.
 
+
+% Bloch Sphere
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{lesson2/bloch_sphere.pdf}
+    
+        \caption{Bloch sphere}
+    
+    \label{fig:bloch}
+\end{figure}
+
 Another very useful representation of quantum states is using the \emph{Bloch sphere}\index{Bloch sphere}, as shown in Figs.~\ref{fig:bloch} and \ref{fig:annotated-bloch}. This visual representation gives us a very intuitive way of thinking about quantum states. All the states are given as points on the surface of the sphere, parameterized by the angle $\theta$ and the angle $\phi$. Then the state $\ket{\psi}$ can be written in the following form,
 \begin{equation}
 |\psi\rangle=\cos \frac{\theta}{2}|0\rangle+e^{i \phi} \sin \frac{\theta}{2}|1\rangle
 \end{equation}
 where the probability amplitude for basis state 0 is given by $\cos(\theta/2)$ and the probability amplitude for basis state 1 is given by $\sin(\theta/2)$, multiplied by $e^{i \phi}$, known as the complex phase of the state. This phase does not affect the probability of finding a one when we measure the qubit, but it is critically important as part of the state and in quantum algorithms.
 
-This \ket{\psi} is a general state, but let's look at some examples. We have already encountered \ket{0} and \ket{1}, and they sit at the north and the south pole of the Bloch sphere, respectively. We also said that we can have an arbitrary superposition of zero and one. For example, we can have a state known as the \emph{plus state}, written \ket{+}, which is an equal superposition of zero and one. The plus state appears on the equator of the Bloch sphere, at the point where the sphere's positive $X$ axis intersects the surface. We can have its friend the \emph{minus state}, written \ket{-}, on the other side of the Bloch sphere. It also is an equal superposition, but this time it's on the negative side of the $X$ axis.  It can be read "zero minus one", and if you think about a rotation about the $Z$ along the equator, since $e^{i\pi} = -1$, it has the complex phase $\pi$.  We can also have two states on the $Y$ axis. One is called the "plus i" state, written \ket{i} or occasionally \ket{+i}, and the other is called "minus i", written \ket{-i}. You can see that again, both of these states are an equal superposition of zero and one, but this time the phase between zero and one is given by the complex number $i$ or the angle $\pi/2$ for \ket{i} and $-i$ or the angle $3\pi/2$ for \ket{-}.  Summarizing, these states are
+This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~\ref{fig:annotated-bloch}. We have already encountered \ket{0} and \ket{1}, and they sit at the north and the south pole of the Bloch sphere, respectively. We also said that we can have an arbitrary superposition of zero and one. For example, we can have a state known as the \emph{plus state}, written \ket{+}, which is an equal superposition of zero and one. The plus state appears on the equator of the Bloch sphere, at the point where the sphere's positive $X$ axis intersects the surface. We can have its friend the \emph{minus state}, written \ket{-}, on the other side of the Bloch sphere. It also is an equal superposition, but this time it's on the negative side of the $X$ axis.  It can be read "zero minus one", and if you think about a rotation about the $Z$ along the equator, since $e^{i\pi} = -1$, it has the complex phase $\pi$.  We can also have two states on the $Y$ axis. One is called the "plus i" state, written \ket{i} or occasionally \ket{+i}, and the other is called "minus i", written \ket{-i}. You can see that again, both of these states are an equal superposition of zero and one, but this time the phase between zero and one is given by the complex number $i$ or the angle $\pi/2$ for \ket{i} and $-i$ or the angle $3\pi/2$ for \ket{-}.  Summarizing, these states are
 \begin{equation}
 \begin{aligned}
 & |\pm\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm|1\rangle) \\
 & |\pm i\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm i|1\rangle).
 \end{aligned}
 \end{equation}
+
+% insert Bloch sphere w/ axes labelled and |+> |-> meanings
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson2/bloch_sphere_annotated.pdf}
+    
+        \caption{Bloch sphere with X, Y, and Z axis basis states.}
+    
+    \label{fig:annotated-bloch}
+\end{figure}
 
 \section{Unitary Operations}
 
@@ -128,21 +97,51 @@ This \ket{\psi} is a general state, but let's look at some examples. We have alr
     \label{fig:physical-system}
 \end{figure}
 
-Let's see how we can manipulate quantum states, and therefore manipulate quantum information as well. We're going to do this with \emph{unitary operations}. One thing that you have to realize is that \emph{all information is physical}. This is because the information is represented by physical systems. Therefore, to change the information and process it, we have to interact with the physical systems that carry the information. In classical information, a very good example is HDDs (hard disk drives), where you read, write and manipulate information with very weak and precise magnetic fields, and for an example of a younger technology, we can look at the "solid-state drive" where you do the same thing, but you achieve it by manipulating very weak electric currents.
+Let's see how we can manipulate quantum states, and therefore manipulate quantum information as well. We're going to do this with \emph{unitary operations}. One thing that you have to realize is that \emph{information is physical} (an aphorism coined by Rolf Landauer of IBM). This is because the information is represented by physical systems. Therefore, to change the information and process it, we have to interact with the physical systems that carry the information. In classical information, of course the primary processing technology is transistors manufactured using a photolithography process.  Computational states are represented using electrical charge, and information processing is done by using charge to control whether a switch is on or off, allowing charge to move from place to place within a computer chip.  Another very good example is HDDs (hard disk drives), where you read, write and manipulate information with very weak and precise magnetic fields. For an example of a younger technology, we can look at the "solid-state drive" where you do the same thing, but you achieve it by manipulating very weak electric currents.
 
-On the other hand in quantum information, you can look at physical systems such as \emph{ion traps}. For example, this ion trap from a company called IonQ, where individual atoms are represented by this blue dot. They're suspended on magnetic fields and they represent individual quantum bits, and you apply some pulses of lasers and you can manipulate the states of these qubits.  You can also look at \emph{superconducting qubits} from companies such as IBM or Google, where you can do the same thing. 
+In quantum information, on the other hand, we have physical systems such as \emph{ion traps}. For example, in a photo of an ion trap from a company called IonQ, individual atoms are represented by blue dots. The atoms are suspended on magnetic fields and they represent individual quantum bits. To manipulate the states of these qubits, you apply some laser pulses.  One of the most prominent forms of qubits is \emph{superconducting qubits} from companies such as IBM or Google, where microwave pulses manipulate the state of a quantum of electrical current. (Details of such processing hardware are beyond the scope of this module, but will be found in other modules in this series.) Some of these are represented in Fig.~\ref{fig:physical-system}.
 
-But how do we actually describe these transformations? Before we do that, let's look at some examples. The most simple transformation that we can think of is actually to do nothing, and we call this the \emph{identity operation} and it's usually represented by a capital $I$. When it's acting on a ket, it takes $\ket{0}$ to  $\ket{0}$  ($\ket{0}\rightarrow\ket{0}$) and $\ket{1}$ to $\ket{1}$ ($\ket{1}\rightarrow\ket{1}$). Classically, we can also do something similar by just not touching our classical bit. 0 remains 0 and 1 remains 1.
+But how do we actually describe these transformations? Before giving a more complete mathematical description, let's look at some examples, as shown in Fig.~\ref{fig:unitary-table}. The most simple transformation that we can think of is actually to do nothing, and we call this the \emph{identity operation}. It's usually represented by a capital $I$. When it's acting on a ket, it takes $\ket{0}$ to  $\ket{0}$  (written $\ket{0}\rightarrow\ket{0}$) and $\ket{1}$ to $\ket{1}$ ($\ket{1}\rightarrow\ket{1}$). Classically, we can also do something similar by just not touching our classical bit. 0 remains 0 and 1 remains 1.
 
-Another very simple operation is the \emph{flip}. Usually we call it either "flip" or a "Pauli X operation", and we represent it by a capital $X$, and it does exactly what you would expect. It takes the input $\ket{0}$ into an output $\ket{1}$, and vice versa, $\ket{1}$ into a $\ket{0}$. Again, classically you have a corresponding representation as well. It's the NOT gate, where it takes input 0 into classical bit 1 and bit 1 into classical bit 0. Also, we can create superpositions. This is known as the \emph{Hadamard operation}\index{Hadamard}, denoted by capital H. It takes as input the $\ket{0}$ and it outputs an equal superposition of 0 or 1 (0+1), or it can take in the input as 1 and output 0-1, and now you see this is the first example of a quantum operation that doesn't really have a classical analog. As we said, we cannot have superpositions of classical bits.
+% Simple Unitary Operations 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lesson2/simple_unitary_ops.pdf}
+    
+        \caption{Simple unitary transforms. The bit flip has both a classical and a quantum form, but the Hadamard gate that creates a quantum superposition has no classical equivalent.}
+    
+    \label{fig:unitary-table}
+\end{figure}
 
-So what's the definition of a unitary operation? All of these examples that we consider, they are examples of unitary operations. Any unitary operation has the property of being reversible, that means we can undo it. We can reverse its effect, and this is done by what's known as an "adjoint" denoted as $U^\dagger$ ("U dagger") where "U" is the unitary.
-So let's see how that works. We start with a ket $\ket{\psi}$ and we apply a unitary that transforms it into a completely new ket $\ket{\psi'}$, and then if we apply the adjoint (the operation which undoes the effect of the original unitary), we end up back again at the state $\ket{\psi}$. So we can write $\ket{\psi}$ prime is equal to the unitary U applied to $\ket{\psi}$, or we can also write ket $\ket{\psi}$ is equal to the adjoint of the unitary applied to $\ket{\psi'}$. 
+Another very simple operation is the \emph{flip}. Usually we call it either "flip" or a "Pauli X operation". We represent it by a capital $X$, and it does exactly what you would expect. It takes the input $\ket{0}$ into an output $\ket{1}$, and vice versa, $\ket{1}$ into a $\ket{0}$. Again, you have a corresponding classical operation as well, the NOT gate, which takes input 0 into classical bit 1 and bit 1 into classical bit 0.
 
-Let's put these two together. We start with our input state $\ket{\psi}$. We apply the $U^\dagger$ (U dagger) which is the same as applying the adjoint to the state $\ket{\psi'}$. But then again, we know the expression for $\ket{\psi'}$ from over here. So we can just substitute it in and we get U dagger times U times the state $\ket{\psi}$, and that's it! You see that in order for these sides to be equal, we must conclude that U dagger times U is the identity operator, and that makes logical sense. We are undoing the operation U with the adjoint, so the total effect of these two is we are doing nothing. Similarly, we can do it for $\ket{\psi}$ prime which is equal to U applied to $\ket{\psi}$, and again we substitute for $\ket{\psi}$ this expression over here, and we get a similar expression as above: U times U dagger times the state $\ket{\psi'}$. So from that we can see that also what needs to be true is that U times U dagger is equal to the identity operator, and that's precisely the definition of unitary operations. There you go, that U times U dagger must be equal to U dagger times U, and that is equal to the identity. 
+The third operation in Fig.~\ref{fig:unitary-table} creates superpositions. It is known as the \emph{Hadamard operator}\index{Hadamard}, denoted by $H$. If the input is $\ket{0}$, it outputs an equal superposition of \ket{0} and \ket{1}, written $(\ket{0}+\ket{1})/\sqrt{2}$. If the input is \ket{1}, the output will be $(\ket{0}-\ket{1})/\sqrt{2}$. This is the first example of a quantum operation that doesn't really have a classical analog, because we cannot have superpositions of classical bits.
 
-%Let's move on. 
-How can we represent this in matrix representation? So far we have been talking about states as these kets, but in fact they can be represented as vectors and we know that in order to transform vectors we have to multiply them by matrices, therefore unitary operations can be represented by matrices. So let's look at some examples. First let's begin with states. Usually we denote $\ket{0}$ in vector notation as a column vector 1 and 0,
+So what's the definition of a unitary operation? All of these examples that we just discussed are examples of unitary operations. Any unitary operation has the property of being \emph{reversible}\index{reversible operation}, meaning we can undo its effect on our data and return to the original input state. This is done by what's known as an \emph{adjoint operator}\index{adjoint operator}, denoted as $U^\dagger$ (read "U dagger") where $U$ is the unitary.
+Let's see how that works. We start with a ket $\ket{\psi}$ and we apply a unitary that transforms it into a completely new ket $\ket{\psi'}$. Then, if we apply the adjoint (the operation which undoes the effect of the original unitary), we end up back again at the state $\ket{\psi}$. We can write $\ket{\psi'} = U\ket{\psi}$, or we can also write $\ket{\psi} = U^\dagger\ket{\psi'}$. 
+
+Let's put these two equalities together. Use the above equality for \ket{\psi}, then replace \ket{\psi'} with $U\ket{\psi}$ and get
+\begin{equation}
+|\psi\rangle=U^{\dagger}\left|\psi^{\prime}\right\rangle=U^{\dagger} U|\psi\rangle.
+\end{equation} 
+
+% We apply the $U^\dagger$, which is the same as applying the adjoint to the state $\ket{\psi'}$. But then again, we know the expression for $\ket{\psi'}$ from over here. So we can just substitute it in and we get $U^\dagger$ times U times the state $\ket{\psi}$, and that's it! You see that in order for these sides to be equal, we must conclude that $U^\dagger$ times U is the identity operator, and that makes logical sense. We are undoing the operation U with the adjoint, so the total effect of these two is we are doing nothing. Similarly, we can do it for $\ket{\psi'}$ which is equal to U applied to $\ket{\psi}$, and again we substitute for $\ket{\psi}$ this expression over here, and we get a similar expression as above: U times $U^\dagger$ times the state $\ket{\psi'}$. 
+
+We can also do similar operations starting from the other expression and get
+\begin{equation}
+\left|\psi^{\prime}\right\rangle=U|\psi\rangle=U U^{\dagger}\left|\psi^{\prime}\right\rangle.
+\end{equation}
+
+From these equations,  we can see that also what needs to be true is that $UU^\dagger$ must be equal to the identity operator, and also $U^\dagger U$ must be equal to the identity.
+% that's precisely the definition of unitary operations. There you go, that U times $U^\dagger$ must be equal to $U^\dagger$ times U, and that is equal to the identity. 
+In fact, this becomes precisely our definition of a unitary operation: if $U$ satisfies the equation
+\begin{equation}
+U U^{\dagger}=U^{\dagger} U=I
+\end{equation}
+then it is unitary.
+
+\rdv{pick up editing here}
+How can we represent this in matrix notation? So far we have been talking about states as kets, but in fact a ket is a shorthand for a vector, and we know that in order to transform vectors we multiply them by matrices. Therefore, it should be the case that unitary operations can be represented by matrices. Let's look at some examples. First let's begin with states. Usually we denote $\ket{0}$ in vector notation as a column vector with 1 and 0,
 \begin{equation}
 \ket{0}\equiv\left(\begin{array}{l}
 1 \\
@@ -167,7 +166,7 @@ So that then you can see that any general state $\ket{\psi}$ can be represented 
 \beta
 \end{array}\right)$$.
 
-Now let's look at examples of some matrices and unitary operations. The identity operator is represented by the matrix
+Now let's look at examples of some matrices and unitary operations. The identity operator $I$ is represented by the matrix
 \begin{equation}
 I=\left(\begin{array}{ll}
 1 & 0 \\
@@ -176,7 +175,7 @@ I=\left(\begin{array}{ll}
 \end{equation}
 It's just a diagonal matrix. It has ones on the main diagonal and zeros everywhere else.
 
-An important set of operations we will use many times is known as the set of \emph{Pauli operators}. We have encountered one Pauli operator already, the $X$ operator, which flips our ket from zero to one and from one to zero, but there are two other very important Pauli operators: the $Y$ and the $Z$, and they have these matrix representations, and also for completeness we also have the Hadamard operator~\footnote{The symbol $H$ can also represent an operator known as the \emph{Hamiltonian} of a system.  Hopefully it will be clear from context which one we mean, once we have introduced the Hamiltonian.} that creates a superposition, written $H$.  The matrices corresponding to these operators are
+An important set of operations we will use many times is known as the set of \emph{Pauli operators}\index{Pauli operator}. We have encountered one Pauli operator already, the $X$ operator, which flips our ket from zero to one and from one to zero, but there are two other very important Pauli operators: the $Y$ and the $Z$, and they have these matrix representations, and also for completeness we also have the Hadamard operator~\footnote{In many physics books and papers, the symbol $H$ can also represent an operator known as the \emph{Hamiltonian} of a system.  In this book, we will not need the concept of the Hamiltonian. In general, it will be clear from context which one is meant.} that creates a superposition, written $H$.  The matrices corresponding to these operators are
 
 \begin{equation}
 \begin{aligned}
@@ -203,7 +202,7 @@ H=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
 \end{equation}
 
 
-Let's see some examples just to give you a little bit of feeling for how this can actually work in practice. For the flip operation, you take the Pauli X, you apply it, or multiply it, by $\ket{0}$,
+Let's see some examples just to give you a little bit of feeling for how this can actually work in practice. For the flip operation, you take the Pauli $X$, you apply it, or multiply it, by $\ket{0}$,
 
 \begin{equation}
 \begin{aligned}
@@ -243,13 +242,16 @@ and you get as expected $\ket{0}$.
 
 To create a superposition, take the Hadamard operator, apply it to the state $\ket{0}$. When you go through the algebra, in the end what you get is an equal superposition of 0 and 1. Please notice that this factor in the Hadamard operator, $1/\sqrt{2}$, ensures that the superposition vector at the end is properly normalized. If we take this number in front of zero, and it's also in front of one, and we take the mod squared of both, and we add them, it has to be one. Half plus half is equal to one, therefore this vector is correctly normalized. You can follow the same process for the state 1, and again as we have seen in the previous step you get zero minus one: again an equal superposition.
 
-Now, we mentioned this "adjoint". So far it's been a rather abstract notion that can undo the effect of a unitary operation. How can we actually systematically compute this adjoint given a unitary matrix? It's actually very simple. There are two steps to it. You take the complex conjugate of the matrix. Just to remind you, the complex conjugate of a complex number "x plus iy star", which is the notation for complete conjugation, is equal to "x minus iy",
+So far, the adjoint operator has been a rather abstract notion that can undo the effect of a unitary operation. How can we actually systematically find the adjoint 
+ of an operator, given the operator's unitary matrix? It's actually two very simple steps.
+ 
+Step one: first take the complex conjugate of the matrix. (Just to remind you, the \emph{complex conjugate}\index{complex conjugate} of a complex number $(x+iy)^*$ (read "x plus i y star"), which is the notation for complete conjugation, is
 \begin{equation}
 (x+i y)^{*}=x-i y
 \end{equation}
- So wherever you see $i$, you just flip its sign and that's your complex conjugate.
- 
-So that's step number one: first take the complex conjugate of the matrix. Step two: take the transpose. The transpose of the matrix is given as follows: so for any matrix $U$ which has elements $U_{00}$, $U_{01}$, $U_{10}$ and $U_{11}$, transposing them will exchange the off-diagonal elements. So let's see how this unitary $U$ actually turns into an adjoint. First we apply the complex conjugation, so we take each element and we write a little star, denoting that this element is complex conjugated, and then we apply the transpose.
+Wherever you see $i$, flip the sign of that term to obtain the complex conjugate.)
+
+Step two: take the transpose. The transpose of the matrix is given as follows: for any matrix $U$ which has elements $U_{00}$, $U_{01}$, $U_{10}$ and $U_{11}$, transposing them will exchange the off-diagonal elements. Let's see how this unitary $U$ actually turns into an adjoint. First we apply the complex conjugation, so we take each element and we write a little star, denoting that this element is complex conjugated, and then we apply the transpose,
 \begin{equation}
 U=\left(\begin{array}{ll}
 U_{00} & U_{01} \\
@@ -262,7 +264,7 @@ U_{00}^{*} & U_{10}^{*} \\
 U_{01}^{*} & U_{11}^{*}
 \end{array}\right)=U^{\dagger}
 \end{equation}
-You see that I have flipped these off-diagonal elements, but I have not touched the diagonal elements, and that's your U-dagger, your adjoint operation. In particular, if you look at an example given by unitary Pauli Y matrix written as this, first we take the complex conjugate so zero is just zero but the signs in front of these off-diagonal elements change because they're pure imaginary, and then we flip them because we're applying the transpose and we get the same matrix Y. When this happens, when the adjoint of a unitary matrix is equal to the unitary matrix, we say that that matrix is self-adjoint and we will see many examples where this is, in fact, true.
+We have flipped the position of the off-diagonal elements, but have not moved the diagonal elements. If you look at an example given by unitary Pauli $Y$ matrix written as this, first we take the complex conjugate so zero is just zero but the signs in front of these off-diagonal elements change because they're pure imaginary, and then we flip them because we're applying the transpose and we get the same matrix $Y$. When this happens, when the adjoint of a unitary matrix is equal to the unitary matrix, we say that that matrix is \emph{self-adjoint} and we will see many examples where this is, in fact, true.
 
 \begin{equation}
 Y=\left(\begin{array}{cc}
@@ -277,7 +279,7 @@ i & 0
 \end{array}\right)=Y
 \end{equation}
 
-Another very important class of unitary operations are \emph{rotations} and this is where the Bloch sphere representation will be extremely handy. The rotation can be written in this strange looking form (strange for now), and what it means is that we are rotating around some arbitrary direction in the Bloch sphere by some arbitrary angle $\theta$, and we write this as this following exponent.
+Another very important class of unitary operations are \emph{rotations}, and this is where the Bloch sphere representation will be extremely handy. The rotation can be written in this strange looking form (strange for now), and what it means is that we are rotating around some arbitrary direction in the Bloch sphere by some arbitrary angle $\theta$, and we write this as this following exponent.
 
 \begin{equation}
 R_{\hat{n}}(\theta)=e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2}
@@ -294,6 +296,7 @@ R_{\hat{n}}(\theta)|\psi\rangle=\left|\psi^{\prime}\right\rangle
 Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates $n_x$, $n_y$ and $n_z$, and this vector given by $\hat{\sigma}$ ("sigma hat") is just a vector of our Pauli matrices $X$, $Y$ and $Z$. So we can write this as follows: this exponential decomposes into cosine theta over 2 times the identity matrix minus i times sine theta 2, and then this expression which is just the dot product between these two vectors, so we multiply $n_x$ by Pauli matrix $X$, plus $n_y$ times Pauli matrix $Y$, plus $n_z$ times Pauli matrix $Z$. It does look a little bit complicated, but in the Bloch sphere representation it becomes very clear what's going on. 
 
 
+
 % insert Bloch sphere rotation y-axis
 \begin{figure}[H]
     \centering
@@ -304,10 +307,11 @@ Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates
     \label{fig:y-rot}
 \end{figure}
 
-Let's consider an example, as shown in Fig.~\ref{fig:y-rot}: we want to rotate around the y-axis given by the horizontal axis in the figure, through an angle of $\pi/2$, and our initial state is given by $\ket{0}$.  Let's start at the point $\ket{0}$, at the north pole of the sphere, and we just rotate around the y-axis. We are going down along the surface by angle $\pi/2$, and you see that we reach the state $\ket{+}$, which is an equal superposition of 0 and 1.  Written out, we have
+Let's consider the example shown in Fig.~\ref{fig:y-rot}: we want to rotate around the y-axis through an angle of $\pi/2$, and our initial state is given by $\ket{0}$.  Let's start at the point $\ket{0}$, at the north pole of the sphere, and rotate around the y-axis. Going down along the surface by angle $\pi/2$, you see that we reach the state $\ket{+}$, which is an equal superposition of 0 and 1.  Written out, we have
 \begin{equation}
 R_{Y}(\pi / 2)\ket{0}=\ket{+}.
 \end{equation}
+(Be careful here; although this rotation took us from \ket{0} to \ket{+}, just like the Hadamard gate we have already seen, $H$ is not a $\pi/2$ $Y$ axis rotation.  Instead, $H$ is a $\pi$ rotation about the axis $(X+Z)/2$. See the exercises for more.)
 
 \begin{figure}[H]
     \centering
@@ -318,31 +322,10 @@ R_{Y}(\pi / 2)\ket{0}=\ket{+}.
     \label{fig:arb-rot}
 \end{figure}
 
-More generally, you don't have to rotate about any of these orthogonal axes, you can rotate about any axis that you want, as in Fig.~\ref{fig:arb-rot}. You are rotating in this plane parameterized by this angle $\theta$, so it takes some initial state $\ket{\psi}$ that's on the surface of the Bloch sphere, it follows the surface and it ends in some new state $\ket{\psi'}$. 
+More generally, it is not necessary to rotate about one of these orthogonal axes; you can rotate about any axis that you want, as in Fig.~\ref{fig:arb-rot}. You are rotating in the plane parameterized by the angle $\theta$, so it takes some initial state $\ket{\psi}$ that's on the surface of the Bloch sphere, it follows the surface and it ends in some new state $\ket{\psi'}$.  (Note that the plane a particular state is rotating in does not have to pass through the center of the Bloch sphere, but the axis of rotation is normal to the plane.) 
 
-So you can see that you can work in the matrix representation or you can work also in the Bloch sphere representation.
+So you can see that you can work in the matrix representation or you can work also in the Bloch sphere representation for single-qubit operations.
 
-% Simple Unitary Operations 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{lesson2/simple_unitary_ops.pdf}
-    
-        \caption{A simple unitary transform}
-    
-    \label{fig: 1}
-\end{figure}
-
-\begin{equation}
-|\psi\rangle=U^{\dagger}\left|\psi^{\prime}\right\rangle=U^{\dagger} U|\psi\rangle
-\end{equation} 
-
-\begin{equation}
-\left|\psi^{\prime}\right\rangle=U|\psi\rangle=U U^{\dagger}\left|\psi^{\prime}\right\rangle
-\end{equation}
-
-\begin{equation}
-U U^{\dagger}=U^{\dagger} U=I
-\end{equation}
 
 becomes
 \begin{equation}
@@ -925,6 +908,22 @@ $\left(\begin{array}{ll}
 \subexer{$\ket{+}$}
 \subexer{$\ket{-}$}
 \subexer{$\frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}$}
+
+\exer{We said above that the Hadamard gate is not just a y-axis rotation.  To explore this further, calculate the following. \\
+Use $\ket{\lambda_{+}} = \frac{\sqrt{2 + \sqrt{2}}}{2}\ket{0}+\frac{1}{\sqrt{2(2 + \sqrt{2})}}\ket{1}$ and $\ket{\lambda_{-}}=\frac{\sqrt{2 - \sqrt{2}}}{2}\ket{0} - \frac{1}{\sqrt{2(2 - \sqrt{2})}}\ket{1}$.
+\subexer{$H\ket{i}$}
+\subexer{$R_Y(\pi/2)\ket{i}$}
+\subexer{$R_Y(\pi)\ket{i}$}
+\subexer{$H(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
+\subexer{$R_Y(\pi/2)(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
+\subexer{$R_Y(\pi)(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
+\subexer{$H\ket{\lambda_+}$}
+\subexer{$H\ket{\lambda_-}$}
+\subexer{$R_Y(\pi/2)\ket{\lambda_+}$}
+\subexer{$R_Y(\pi/2)\ket{\lambda_-}$}
+\subexer{$R_Y(\pi)\ket{\lambda_+}$}
+\subexer{$R_Y(\pi)\ket{\lambda_-}$}
+}
 
 \end{exercises}
 
