@@ -210,7 +210,7 @@ Let's consider some inputs and their results,
 & \neq|+\rangle|+\rangle
 \end{aligned}
 \end{equation}
-First, let's try a very simple input $\ket{0}\ket{0}$ in the first equation above. If we apply CNOT, you can check for yourself that the output is also $\ket{0}\ket{0}$. In this case, we can say that we have cloned the qubit even though we haven't really done anything. The second case is more interesting. We start in the state $\ket{1}\ket{0}$. So now, we are trying to clone the state $\ket{1}$, and as we said if the state of the first qubit is one, we apply the Pauli $X$ to the second qubit.  In fact, our input state is in $\ket{1}$ and our second state is a $\ket{0}$, but after application of the Pauli $X$ it flips into $\ket{1}$. So we went from input $\ket{1}\ket{0}$ to output $\ket{1}\ket{1}$. Again, we have cloned our state.
+First, let's try a very simple input, $\ket{0}\ket{0}$, as in the first equation above. If we apply CNOT, you can check for yourself that the output is also $\ket{0}\ket{0}$. In this case, we can say that we have cloned the qubit even though we haven't really done anything. The second case is more interesting. We start in the state $\ket{1}\ket{0}$. Now we are trying to clone the state $\ket{1}$, and if the state of the first qubit is one, then we apply the Pauli $X$ to the second qubit.  In fact, our input state is in $\ket{1}$ and our second state is a $\ket{0}$, but after application of the Pauli $X$ it flips into $\ket{1}$. We went from input $\ket{1}\ket{0}$ to output $\ket{1}\ket{1}$. Again, we have cloned our state.
 
 How about if we consider a superposition of zero and one as our input? Our total input is $\ket{+}\ket{0}$. In this case, if you apply the unitary CNOT, you will see that you obtain an entangled state $\ket{0}\ket{0}+\ket{1}\ket{1}$, which is not the product state that we were aiming for. We were aiming for $\ket{+}\ket{+}$. So in this case cloning has failed, at least with this example of CNOT and this particular input.
 
@@ -291,13 +291,17 @@ Bob finally has the following state: he has the state $\ket{\psi}$ up to some un
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
 
+\exer{Return to the exercises on measurement in Ch.~\ref{sec:2_quantum_states}. Let's do the math on teleportation using the notation of Ex.~\ref{ex:dirac-notation-measurement}. \rdv{Label numbering seems busted.}
+\subexer{
+For measuring two qubits together, we need four measurement operators.
+Write out the measurement operators in the computational basis using the Dirac notation and for the full matrix notation.
+}
+\subexer{
+Find the Bell basis measurement operators for two qubits. Write them out in both the Dirac notation and the full matrix notation.
+}
+\rdv{More on the math of projections and traces using the full measurement equation and on measuring subsets of qubits in multi-qubit states.}
+}
 
 \end{exercises}
 

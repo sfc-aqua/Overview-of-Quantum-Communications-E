@@ -48,6 +48,7 @@ The most common notation for writing down the state of a qubit (or more than one
 with this funny angle bracket \ket{}, pronounced \emph{ket}\index{ket}. The symbol $\psi$ (Greek letter "psi") in a ket, which we will call "state psi" or "ket psi" interchangeably, is often used to describe a general state of a qubit. $\ket{0}$ and $\ket{1}$ are called the \emph{basis states}\index{basis states}, and they determine what our state is. This $\alpha$ and $\beta$ are \emph{probability amplitudes}\index{probability amplitudes} that tell us how much of the state is in zero and how much of the state is in one.  These probability amplitudes can be any complex numbers, provided that they satisfy this normalization condition:
 \begin{align}
     |\alpha|^2 + |\beta|^2 = 1
+    \label{eq:normalization-condition}
 \end{align}
 (read "mod alpha squared plus mod beta squared is equal to one"). This is to ensure that whatever measurements we do in the future on this state produce results with the correct probabilities.
 
@@ -113,7 +114,7 @@ But how do we actually describe these transformations? Before giving a more comp
     \label{fig:unitary-table}
 \end{figure}
 
-Another very simple operation is the \emph{flip}. Usually we call it either "flip" or a "Pauli X operation". We represent it by a capital $X$, and it does exactly what you would expect. It takes the input $\ket{0}$ into an output $\ket{1}$, and vice versa, $\ket{1}$ into a $\ket{0}$. Again, you have a corresponding classical operation as well, the NOT gate, which takes input 0 into classical bit 1 and bit 1 into classical bit 0.
+Another very simple operation is the \emph{flip}. Usually we call it either "flip" or a "Pauli X operation". We represent it by a capital $X$, and it does exactly what you would expect. It takes the input $\ket{0}$ into an output $\ket{1}$, and vice versa, $\ket{1}$ into a $\ket{0}$. Again, you have a corresponding classical operation as well, the NOT gate, which takes input 0 into classical bit 1 and input 1 into classical bit 0.
 
 The third operation in Fig.~\ref{fig:unitary-table} creates superpositions. It is known as the \emph{Hadamard operator}\index{Hadamard}, denoted by $H$. If the input is $\ket{0}$, it outputs an equal superposition of \ket{0} and \ket{1}, written $(\ket{0}+\ket{1})/\sqrt{2}$. If the input is \ket{1}, the output will be $(\ket{0}-\ket{1})/\sqrt{2}$. This is the first example of a quantum operation that doesn't really have a classical analog, because we cannot have superpositions of classical bits.
 
@@ -140,43 +141,56 @@ U U^{\dagger}=U^{\dagger} U=I
 \end{equation}
 then it is unitary.
 
-\rdv{pick up editing here}
-How can we represent this in matrix notation? So far we have been talking about states as kets, but in fact a ket is a shorthand for a vector, and we know that in order to transform vectors we multiply them by matrices. Therefore, it should be the case that unitary operations can be represented by matrices. Let's look at some examples. First let's begin with states. Usually we denote $\ket{0}$ in vector notation as a column vector with 1 and 0,
+How can we represent this in matrix notation? So far we have been talking about states as kets, but in fact a ket is shorthand for a vector, and we know that in order to transform vectors we multiply them by matrices. Therefore, it should be the case that unitary operations can be represented by matrices. Let's look at some examples. 
+
+First let's begin by seeing how kets for states become vectors. Usually we denote \ket{0} in vector notation as a column vector with 1 and 0,
 \begin{equation}
 \ket{0}\equiv\left(\begin{array}{l}
 1 \\
 0
 \end{array}\right).
 \end{equation}
-The $\ket{1}$, on the other hand, is a column vector of 0 and 1,
+The \ket{1}, on the other hand, is a column vector of 0 and 1,
 \begin{equation}
 \ket{1}\equiv\left(\begin{array}{l}
 0 \\
 1
 \end{array}\right).
 \end{equation}
-So that then you can see that any general state $\ket{\psi}$ can be represented as $\alpha$ times the vector $\left(\begin{array}{l}
+You can see that any general state $\ket{\psi}$ can be represented as $\alpha$ times the vector $\left(\begin{array}{l}
 1 \\
 0
 \end{array}\right)$ plus $\beta$ times $\left(\begin{array}{l}
 0 \\
 1
-\end{array}\right)$. In other words, it can just be represented as a complex column vector $$\left(\begin{array}{l}
+\end{array}\right)$, giving us the complex column vector $\left(\begin{array}{l}
 \alpha \\
 \beta
-\end{array}\right)$$.
+\end{array}\right)$. More formally, we have
+\begin{equation}
+\ket{\psi}=\alpha\left(\begin{array}{l}
+1 \\
+0
+\end{array}\right)+\beta\left(\begin{array}{l}
+0 \\
+1
+\end{array}\right)=\left(\begin{array}{l}
+\alpha \\
+\beta
+\end{array}\right).
+\end{equation}
 
-Now let's look at examples of some matrices and unitary operations. The identity operator $I$ is represented by the matrix
+
+Now let's look at examples of matrices representing unitary operations. The identity operator $I$ is represented by the matrix
 \begin{equation}
 I=\left(\begin{array}{ll}
 1 & 0 \\
 0 & 1
 \end{array}\right).
 \end{equation}
-It's just a diagonal matrix. It has ones on the main diagonal and zeros everywhere else.
+It's just a diagonal matrix with ones on the main diagonal and zeros everywhere else.
 
-An important set of operations we will use many times is known as the set of \emph{Pauli operators}\index{Pauli operator}. We have encountered one Pauli operator already, the $X$ operator, which flips our ket from zero to one and from one to zero, but there are two other very important Pauli operators: the $Y$ and the $Z$, and they have these matrix representations, and also for completeness we also have the Hadamard operator~\footnote{In many physics books and papers, the symbol $H$ can also represent an operator known as the \emph{Hamiltonian} of a system.  In this book, we will not need the concept of the Hamiltonian. In general, it will be clear from context which one is meant.} that creates a superposition, written $H$.  The matrices corresponding to these operators are
-
+An important set of operations we will use many times is known as the set of \emph{Pauli operators}\index{Pauli operator}. We have encountered one Pauli operator already, the $X$ operator, which flips our ket from zero to one and from one to zero, but there are two other very important Pauli operators: the $Y$ and the $Z$. These three have the matrix representations 
 \begin{equation}
 \begin{aligned}
 &X=\left(\begin{array}{ll}
@@ -194,16 +208,16 @@ i & 0
 \end{aligned}
 \end{equation}
 
+We also have the Hadamard operator~\footnote{In many physics books and papers, the symbol $H$ can also represent an operator known as the \emph{Hamiltonian} of a system.  In this book, we will not need the concept of the Hamiltonian. In general, it will be clear from context which one is meant.} that creates a superposition, written $H$.  The matrices corresponding to this operator is
 \begin{equation}
 H=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
 1 & 1 \\
 1 & -1
-\end{array}\right)
+\end{array}\right).
 \end{equation}
 
 
 Let's see some examples just to give you a little bit of feeling for how this can actually work in practice. For the flip operation, you take the Pauli $X$, you apply it, or multiply it, by $\ket{0}$,
-
 \begin{equation}
 \begin{aligned}
 X|0\rangle &=\left(\begin{array}{ll}
@@ -216,13 +230,13 @@ X|0\rangle &=\left(\begin{array}{ll}
 &=\left(\begin{array}{l}
 0 \\
 1
-\end{array}\right)=|1\rangle
+\end{array}\right)=|1\rangle.
 \end{aligned}
 \end{equation}
 
 %So we see that 0 times 1 is 0, plus 1 times 0 is 0. So we get a 0 here in this first element of this new column vector, but then we have 1 times 1 plus 0 times 0 which is 1, and you see that this is actually our ket 1, so it indeed did flip a 0 into 1 as we would expect.
 
-We can do the same thing for $\ket{1}$. Again, you multiply the matrix representation of the Pauli $X$ operator with the column vector representation of state $\ket{1}$,
+We can do the same thing for $\ket{1}$. Again, multiply the matrix representation of the Pauli $X$ operator with the column vector representation of state $\ket{1}$,
 \begin{equation}
 \begin{aligned}
 X|1\rangle &=\left(\begin{array}{ll}
@@ -238,14 +252,47 @@ X|1\rangle &=\left(\begin{array}{ll}
 \end{array}\right)=|0\rangle
 \end{aligned}
 \end{equation}
-and you get as expected $\ket{0}$. 
+and as expected we get $\ket{0}$. 
 
-To create a superposition, take the Hadamard operator, apply it to the state $\ket{0}$. When you go through the algebra, in the end what you get is an equal superposition of 0 and 1. Please notice that this factor in the Hadamard operator, $1/\sqrt{2}$, ensures that the superposition vector at the end is properly normalized. If we take this number in front of zero, and it's also in front of one, and we take the mod squared of both, and we add them, it has to be one. Half plus half is equal to one, therefore this vector is correctly normalized. You can follow the same process for the state 1, and again as we have seen in the previous step you get zero minus one: again an equal superposition.
+To create a superposition, take the Hadamard operator, apply it to the state $\ket{0}$. After going through the algebra, in the end we have an equal superposition of 0 and 1,
+\begin{equation}
+\begin{aligned}
+H|0\rangle &=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
+1 & 1 \\
+1 & -1
+\end{array}\right)\left(\begin{array}{l}
+1 \\
+0
+\end{array}\right) \\
+&=\frac{1}{\sqrt{2}}\left(\begin{array}{l}
+1 \\
+1
+\end{array}\right)=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)
+\end{aligned}
+\end{equation}
+
+Please notice that this factor in the Hadamard operator, $1/\sqrt{2}$, ensures that the superposition vector at the end is properly normalized, as we saw in Eq.~\ref{eq:normalization-condition}. $|1/\sqrt{2}|^2 + |1/\sqrt{2}|^2 = 1$, therefore this vector is correctly normalized. You can follow the same process for the state 1, and again as we have seen in the previous step you get zero minus one,
+\begin{equation}
+\begin{aligned}
+H|1\rangle &=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
+1 & 1 \\
+1 & -1
+\end{array}\right)\left(\begin{array}{l}
+0 \\
+1
+\end{array}\right) \\
+&=\frac{1}{\sqrt{2}}\left(\begin{array}{c}
+1 \\
+-1
+\end{array}\right)=\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle).
+\end{aligned}
+\end{equation}
+The modulus in Eq.~\ref{eq:normalization-condition} ensures that the negative coefficient still results in a non-negative probability and non-negative contribution to the normalization condition.
 
 So far, the adjoint operator has been a rather abstract notion that can undo the effect of a unitary operation. How can we actually systematically find the adjoint 
- of an operator, given the operator's unitary matrix? It's actually two very simple steps.
+of an operator, given the operator's unitary matrix? It's actually two very simple steps.
  
-Step one: first take the complex conjugate of the matrix. (Just to remind you, the \emph{complex conjugate}\index{complex conjugate} of a complex number $(x+iy)^*$ (read "x plus i y star"), which is the notation for complete conjugation, is
+Step one: take the complex conjugate of the matrix. (Just to remind you, the \emph{complex conjugate}\index{complex conjugate} of a complex number $(x+iy)^*$ (read "x plus i y star"), which is the notation for complete conjugation, is
 \begin{equation}
 (x+i y)^{*}=x-i y
 \end{equation}
@@ -279,21 +326,25 @@ i & 0
 \end{array}\right)=Y
 \end{equation}
 
-Another very important class of unitary operations are \emph{rotations}, and this is where the Bloch sphere representation will be extremely handy. The rotation can be written in this strange looking form (strange for now), and what it means is that we are rotating around some arbitrary direction in the Bloch sphere by some arbitrary angle $\theta$, and we write this as this following exponent.
+Another very important class of unitary operations are \emph{rotations}, and this is where the Bloch sphere representation will be extremely handy. The rotation can be written in this strange looking form (strange for now),
 
 \begin{equation}
 R_{\hat{n}}(\theta)=e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2}
 \end{equation}
-
+and what it means is that we are rotating around some arbitrary direction in the Bloch sphere by some arbitrary angle $\theta$, and we write this as this following exponent. Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates $n_x$, $n_y$ and $n_z$, and the vector given by $\hat{\sigma}$ ("sigma hat") is just a vector of our Pauli matrices $X$, $Y$ and $Z$.  The dot product expands out to be
 \begin{equation}
-e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2 }=\cos \frac{\theta}{2} I-i \sin \frac{\theta}{2}\left(n_{x} X+n_{y} Y+n_{z} Z\right)
+      \hat{n} \cdot \hat{\sigma} = n_{x} X+n_{y} Y+n_{z} Z
+\end{equation}
+and when put it in the equation we get
+\begin{equation}
+e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2 }=\cos \frac{\theta}{2} I-i \sin \frac{\theta}{2}\left(n_{x} X+n_{y} Y+n_{z} Z\right).
+\end{equation}
+It does look a little bit complicated, but in the Bloch sphere representation it becomes very clear what's going on: take the vector $\hat{n}$ and rotate the state vector around that by the angle $\theta$. When we need this rotation, we can simply write it
+\begin{equation}
+R_{\hat{n}}(\theta)|\psi\rangle=\left|\psi^{\prime}\right\rangle.
 \end{equation}
 
-\begin{equation}
-R_{\hat{n}}(\theta)|\psi\rangle=\left|\psi^{\prime}\right\rangle
-\end{equation}
-
-Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates $n_x$, $n_y$ and $n_z$, and this vector given by $\hat{\sigma}$ ("sigma hat") is just a vector of our Pauli matrices $X$, $Y$ and $Z$. So we can write this as follows: this exponential decomposes into cosine theta over 2 times the identity matrix minus i times sine theta 2, and then this expression which is just the dot product between these two vectors, so we multiply $n_x$ by Pauli matrix $X$, plus $n_y$ times Pauli matrix $Y$, plus $n_z$ times Pauli matrix $Z$. It does look a little bit complicated, but in the Bloch sphere representation it becomes very clear what's going on. 
+% So we can write this as follows: this exponential decomposes into cosine theta over 2 times the identity matrix minus i times sine theta 2, and then this expression which is just the dot product between these two vectors, so we multiply $n_x$ by Pauli matrix $X$, plus $n_y$ times Pauli matrix $Y$, plus $n_z$ times Pauli matrix $Z$. 
 
 
 
@@ -307,9 +358,9 @@ Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates
     \label{fig:y-rot}
 \end{figure}
 
-Let's consider the example shown in Fig.~\ref{fig:y-rot}: we want to rotate around the y-axis through an angle of $\pi/2$, and our initial state is given by $\ket{0}$.  Let's start at the point $\ket{0}$, at the north pole of the sphere, and rotate around the y-axis. Going down along the surface by angle $\pi/2$, you see that we reach the state $\ket{+}$, which is an equal superposition of 0 and 1.  Written out, we have
+Let's consider the example shown in Fig.~\ref{fig:y-rot}: we want to rotate around the y-axis through an angle of $\pi/2$, and our initial state is given by $\ket{0}$.  Let's start at the point $\ket{0}$, at the north pole of the sphere, and rotate around the y-axis. Going down along the surface by angle $\pi/2$, you see that we reach the state \ket{+}, which is an equal superposition of \ket{0} and \ket{1}.  For this $Y$ rotation, $\hat{n}$ simply becomes the unit vector along the positive y-axis, which we will just write $y$. Written out, we have
 \begin{equation}
-R_{Y}(\pi / 2)\ket{0}=\ket{+}.
+R_{y}(\pi / 2)\ket{0}=\ket{+}.
 \end{equation}
 (Be careful here; although this rotation took us from \ket{0} to \ket{+}, just like the Hadamard gate we have already seen, $H$ is not a $\pi/2$ $Y$ axis rotation.  Instead, $H$ is a $\pi$ rotation about the axis $(X+Z)/2$. See the exercises for more.)
 
@@ -322,63 +373,19 @@ R_{Y}(\pi / 2)\ket{0}=\ket{+}.
     \label{fig:arb-rot}
 \end{figure}
 
-More generally, it is not necessary to rotate about one of these orthogonal axes; you can rotate about any axis that you want, as in Fig.~\ref{fig:arb-rot}. You are rotating in the plane parameterized by the angle $\theta$, so it takes some initial state $\ket{\psi}$ that's on the surface of the Bloch sphere, it follows the surface and it ends in some new state $\ket{\psi'}$.  (Note that the plane a particular state is rotating in does not have to pass through the center of the Bloch sphere, but the axis of rotation is normal to the plane.) 
+More generally, it is not necessary to rotate about one of these orthogonal axes; you can rotate about any axis that you want, as in Fig.~\ref{fig:arb-rot}. You are rotating in the plane defined by your chosen axis and parameterized by the angle $\theta$. Take some initial state $\ket{\psi}$ that's on the surface of the Bloch sphere, follow the surface and end at some new state $\ket{\psi'}$.  (Note that the plane a particular state is rotating in does not have to pass through the center of the Bloch sphere, but the axis of rotation is normal to the plane.) 
 
 So you can see that you can work in the matrix representation or you can work also in the Bloch sphere representation for single-qubit operations.
 
-
-becomes
-\begin{equation}
-|\psi\rangle=\alpha\left(\begin{array}{l}
-1 \\
-0
-\end{array}\right)+\beta\left(\begin{array}{l}
-0 \\
-1
-\end{array}\right)=\left(\begin{array}{l}
-\alpha \\
-\beta
-\end{array}\right).
-\end{equation}
-
-\begin{equation}
-\begin{aligned}
-H|0\rangle &=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
-1 & 1 \\
-1 & -1
-\end{array}\right)\left(\begin{array}{l}
-1 \\
-0
-\end{array}\right) \\
-&=\frac{1}{\sqrt{2}}\left(\begin{array}{l}
-1 \\
-1
-\end{array}\right)=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)
-\end{aligned}
-\end{equation}
-
-\begin{equation}
-\begin{aligned}
-H|1\rangle &=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
-1 & 1 \\
-1 & -1
-\end{array}\right)\left(\begin{array}{l}
-0 \\
-1
-\end{array}\right) \\
-&=\frac{1}{\sqrt{2}}\left(\begin{array}{c}
-1 \\
--1
-\end{array}\right)=\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)
-\end{aligned}
-\end{equation}
 
 % $U_{00}$, $U_{01}$, $U_{10}$, $U_{11}$ 
 
 \section{Measurement}
 \label{sec:measurement}
 
-Now, let's consider measurements and how they can extract information from quantum qubits. So how does it work? Basically a measurement asks the question: is my state in the state $\ket{0}$ or is it in the state $\ket{1}$? You can think of a measurement as a big box and you feed it your prepared state, as shown in Fig.~\ref{fig:z-measure}. Here, we consider a general state given by $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and the measurement operation tells you which state it is in. Usually there are only two possible values that can come out of a measurement device, which we will assign the values $+1$ and $-1$.
+\rdv{pick up editing here}
+
+Now, let's consider measurements and how they can extract information from quantum qubits~\footnote{The type of measurements we consider in this book are \emph{projective measurements, as discussed more in the next chapter}. There are other types of measurement that you will learn about in advanced quantum classes.}. Basically a measurement asks the question: is my qubit in the state $\ket{0}$ or is it in the state $\ket{1}$? You can think of a measurement as a big box and you feed it your prepared state, as shown in Fig.~\ref{fig:z-measure}. Here, we consider a general state given by $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and the measurement operation tells you which state it is in. Usually there are only two possible values that can come out of a measurement device, which we will assign the values $+1$ and $-1$.
 
 \begin{figure}[H]
     \centering
@@ -389,13 +396,15 @@ Now, let's consider measurements and how they can extract information from quant
     \label{fig:z-measure}
 \end{figure}
 
-The probabilities of these measurement outcomes, corresponding to state zero and state one, are given by their probability amplitudes. The probability of getting a $+1$ outcome is given by $|\alpha|^2$ and the probability of a $-1$ outcome is given by $|\beta|^2$. Immediately after the measurement, the state \emph{collapses} either onto a zero or onto a one, so if you get a plus one outcome you can be sure that immediately after the measurement the state is in the state zero, or if you get a minus one then the state of the system has changed from the initial $\ket{\psi}$ and is one,
+The probabilities of these measurement outcomes, corresponding to state \ket{0} and state \ket{1}, are given by their probability amplitudes. The probability of getting a $+1$ outcome is given by $|\alpha|^2$ and the probability of a $-1$ outcome is given by $|\beta|^2$. Immediately after the measurement, the state \emph{collapses} either onto \ket{0} or onto \ket{1}, so if you get a $+1$ outcome you can be sure that immediately after the measurement the state is in the state \ket{0}, or if you get a $-1$ then the state of the system has changed from the initial $\ket{\psi}$ and is \ket{1},
 \begin{align}
 \operatorname{Prob}\{+1\}=|\alpha|^2 \rightarrow \textrm{state is } |0\rangle \\
 \operatorname{Prob}\{-1\}=|\beta|^2 \rightarrow \textrm{state is } |1\rangle.
 \end{align}
 
-We refer to this particular measurement as a measurement in the \emph{computational basis} or in the Pauli $Z$ basis. This already hints at the fact that this is not the only measurement we can do. We can, in fact ask the following question: is the state in the $\ket{+}$ state or in the $\ket{-}$ state? We can answer this question by rewriting our original state
+\rdv{Michal, please check} (Mathematically speaking, the $\pm 1$ outcomes of the measurement are the \emph{eigenvalues} corresponding to the \emph{eigenvectors} of the Pauli $Z$ operator.  One way to remember which value corresponds to which vector is that $+1$ corresponds to \ket{0}, and $(-1)^0 = +1$, while $-1$ corresponds to \ket{1}, and $(-1)^1 = -1$.)
+
+We refer to this particular measurement as a measurement in the \emph{computational basis} or in the Pauli $Z$ basis. This already hints at the fact that this is not the only measurement we can do. We can also ask the following question: is the state in the $\ket{+}$ state or in the $\ket{-}$ state? We can answer this question by rewriting our original state
 \begin{equation}
 |\psi\rangle=\alpha|0\rangle+\beta|1\rangle
 \end{equation}
@@ -403,18 +412,23 @@ using the algebraic identities
 \begin{equation}
 |0\rangle=\frac{1}{\sqrt{2}}(|+\rangle+|-\rangle) \quad|1\rangle=\frac{1}{\sqrt{2}}(|+\rangle-|-\rangle).
 \end{equation}
-Notice that $\ket{0}$ is given by an equal superposition of the $\ket{+}$ state with the $\ket{-}$ state and the state $\ket{1}$ is \emph{also} an equal superposition of $\ket{+}$ and $\ket{-}$, but this time with a minus phase in front of the $\ket{-}$ state. We can rewrite our original state $\ket{\psi}$ in terms of these plus and minus states, but this time the probability amplitudes for the state plus is $\alpha+\beta$ renormalized by the square root of two, and the probability amplitude for the minus state is $\alpha-\beta$,
+Notice that $\ket{0}$ is given by an equal superposition of the $\ket{+}$ state with the $\ket{-}$ state and the state $\ket{1}$ is \emph{also} an equal superposition of $\ket{+}$ and $\ket{-}$, but this time with a minus phase in front of the $\ket{-}$ state. We can rewrite our original state $\ket{\psi}$ in terms of these \ket{+} and \ket{-} states, but this time the probability amplitudes are
+%for the state plus is $\alpha+\beta$ renormalized by the square root of two, and the probability amplitude for the minus state is $\alpha-\beta$,
 \begin{equation}
-|\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}|+\rangle+\frac{\alpha-\beta}{\sqrt{2}}|-\rangle.
+\ket{\psi}=\frac{\alpha+\beta}{\sqrt{2}}\ket{+}+\frac{\alpha-\beta}{\sqrt{2}}\ket{-}.
 \end{equation}
 Again, we can feed our qubit into the measurement device and it will give us an answer $\ket{+}$ or $\ket{-}$ with the following probabilities,
 \begin{align}
+\label{eq:plus-measurement}
 \operatorname{Prob}\{+1\}=\frac{|\alpha+\beta|^2}{2} \rightarrow \textrm{state is } |+\rangle \\
+\label{eq:minus-measurement}
 \operatorname{Prob}\{-1\}=\frac{|\alpha-\beta|^2}{2} \rightarrow \textrm{state is } |-\rangle.
 \end{align}
 You can see that the probabilities still depend on $\alpha$ and $\beta$, but they're not just $|\alpha|^2$ and $|\beta|^2$.
 %they're in fact alpha plus beta the whole thing mod squared and alpha minus beta the whole thing squared and both of them are divided by two. 
-And again because we were asking a different question (whether the state state is in $\ket{+}$ or $\ket{-}$), then the state changes from $\ket{\psi}$ and goes to $\ket{+}$ or $\ket{-}$ after the measurement depending on the measurement outcome. This measurement is known as measurement in the Pauli $X$ basis.  In fact, you can measure in any basis that you can think of.  
+Because we were asking a different question (whether the state state is in $\ket{+}$ or $\ket{-}$), the state changes from $\ket{\psi}$ and goes to $\ket{+}$ or $\ket{-}$ after the measurement, depending on the measurement outcome. This measurement is known as measurement in the Pauli $X$ basis.
+
+In fact, you can measure in any basis that you can think of.  This is explored more in the exercises.
 
 I've been using this word \emph{basis}, but what is a "basis"? Maybe you remember from your linear algebra class that the basis is a set of vectors that allows you to write down any vector that you can think of. In particular, if we have some general vector $\ket{\psi}$, we can write it in the Pauli Z basis given by $\ket{0}$ and \ket{1}, and already we have talked about the vector representations for $\ket{0}$ and one. And then the state in Dirac notation is written as follows, or you can write it in a new basis. Let's say you want to write it in terms of the states $\ket{i}$ and $\ket{-i}$. This is known as the Pauli $Y$ basis, and their vector representations are given as
 \begin{align}
@@ -478,7 +492,7 @@ To illustrate this with some simple examples, we're going to measure in the Paul
 \end{aligned}
 \end{equation}
 
-How about measuring in our Pauli Y basis? Well again, probability of $+1$ is given by the modulus of alpha minus i beta the whole thing squared over two, and the probability of the minus one outcome is given by modulus of alpha plus i beta squared divided by two,
+How about measuring in our Pauli $Y$ basis? Again, the probability of $+1$ is given by
 \begin{equation}
 \begin{aligned}
 \operatorname{Prob}\{+1\} &=|\langle i \mid \psi\rangle|^2 \\
@@ -614,7 +628,7 @@ Often in physics you will see that the variance is referred to as \emph{fluctuat
     \centering
     \includegraphics[width=0.5\textwidth]{lesson2/many_copies_machine.pdf}
     
-        \caption{Multiple measurements}
+        \caption{Repeated measurements}
     
     \label{fig:many-copies}
 \end{figure}
@@ -925,5 +939,19 @@ Use $\ket{\lambda_{+}} = \frac{\sqrt{2 + \sqrt{2}}}{2}\ket{0}+\frac{1}{\sqrt{2(2
 \subexer{$R_Y(\pi)\ket{\lambda_-}$}
 }
 
+\exer{
+\label{ex:dirac-notation-measurement}
+Let's explore single-qubit measurement in more depth. This will come in handy when we explore entanglement swapping in Sec.~\ref{sec:12-3_reaching_for_distance}. Another way of expressing measurement is to use $\operatorname{Prob}(i) = \bra{\psi}M_i\ket{\psi}$, where $\{M_i\}$ corresponds to the set of outcomes of our measurement operation. Each $M_i$ is written as an operator, $M_i = \ketbra{\psi_i}{\psi_i}$, and assuming there are two outcomes to the operation, $\pm 1$, then we have $M_{+1} = \ketbra{0}{0}$ and $M_{-1} = \ketbra{1}{1}$. Sometimes, we will write $M_{+1}^Z$ or $\Pi_{+1}^Z$ for measurement in the $Z$ basis, or even just $Z$.
+\subexer{
+Show that $\bra{\psi}M_i\ket{\psi}$ gives $|\alpha|^2$ and $|\beta|^2$ for \ket{0} and \ket{1}.
+}
+\subexer{
+Find the set of operators $\{M_i\}$ when measuring in the $X$ basis. Show that they produce the same probabilities as Eq.~\ref{eq:plus-measurement} and \ref{eq:minus-measurement}.
+}
+\subexer{One way to find the post-measurement state of a state is
+$$\ket{\psi'} = \frac{M_i\ket{\psi}}{\sqrt{\bra{\psi} M_i\ket{\psi}}}$$ when the outcome is $i$. Show that this gives exactly \ket{0} or \ket{1} when measuring in the computational basis, when $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, for any value of $\alpha$ and $\beta$.
+}
+% \subexer{Show that $\bra{\psi} M_i\ket{\psi} = \bra{\psi}M_i^\dagger M_i \ket{\psi}$ for the measurement operations we have discussed so far. Identify any mathematical constraints on this equality holding. (Hint: this exercise is easy when you regroup bras and kets in the Dirac notation.)}
+}
 \end{exercises}
 

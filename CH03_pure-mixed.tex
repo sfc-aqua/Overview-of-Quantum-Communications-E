@@ -18,15 +18,14 @@ Let's consider three examples demonstrating why this is the case.
 The first example is that of \textit{\textbf{state preparation}} as shown in Fig.~\ref{fig:3-1_noise}.
 You may go to your friend who works in a quantum laboratory and ask him or her to prepare
 a state $\ket{\psi}$.
-What happens in a real lab is that the prepared
-state is not the desired state $\ket{\psi}$.
+In a real lab, the prepared state is not the desired state $\ket{\psi}$.
 If you are lucky it might be some other pure state $|\psi'\rangle$ which is close to the desired state $|\psi\rangle$.
 You would still obtain a pure state, albeit not exactly the one you asked for, but at least you would have full knowledge of this state $|\psi'\rangle$.
-Much more likely scenario is that your friend in the lab can only produce a distribution of pure states.
+A much more likely scenario is that your friend in the lab can only produce a distribution of pure states.
 This means that we obtain some pure state $|\psi_1\rangle$ with probability $p_1$, or some pure state $|\psi_2\rangle$ with probability $p_2$, and so on and so forth.
 
 The second example is that of \textit{\textbf{processing of information}}.
-In this case we wish to perform a quantum computation represented by some unitary operator $U$.
+In this case, we wish to perform a quantum computation represented by some unitary operator $U$.
 Even if the input to the computation is an ideal pure state $|\psi\rangle$, the output will not be the desired $U|\psi\rangle$.
 The output might contain coherent errors, meaning that the applied operation was some other unitary $U'$, giving us the output $U'|\psi\rangle$.
 The output might be affected by incoherent errors, such as probabilistic Pauli errors, or relaxation errors.
@@ -42,8 +41,7 @@ The last example deals with the central scenario of these lecture notes, namely 
 Consider the case where you prepare a state $|\psi\rangle$, which you would like to send to a friend through a long optical fiber.
 Even though we do not process the prepared state in any way, optical fibers themselves are sources of noise.
 The state received by your friend will be affected by coherent and incoherent errors.
-On top of these, the state may even get lost and never arrive.
-This is due to various processes such as absorption or scattering in the fiber.
+On top of these, the state may even get lost and never arrive due to various processes such as absorption or scattering in the fiber.
 Photon loss is a huge headache in quantum communication and we will discuss it in more detail in later chapters.
 
 
@@ -65,7 +63,7 @@ Let's multiply the ket $|b\rangle$ from the right by the bra $\langle a|$,
     | b\rangle \langle a | = \begin{pmatrix} b_0 \\ b_1 \end{pmatrix} \begin{pmatrix} a_0^* & a_1^* \end{pmatrix} = \begin{pmatrix} a_0^*b_0 & a_1^*b_0 \\ a_0^*b_1 & a_1^*b_1 \end{pmatrix}.
 \end{equation}
 By changing the order of multiplication, we obtained a complex matrix.
-The above product of a ket with a bra is called an \textit{\textbf{outer product}} \index{outer product} and it is used in describing measurements as well as noisy quantum states as we will discuss shortly.
+The above product of a ket with a bra is called an \textit{\textbf{outer product}} \index{outer product} and it is used in describing measurements as well as noisy quantum states, as we will discuss shortly.
 
 Let's consider an example of a particular outer product, namely $|0\rangle\langle0|$.
 We have said that the outer product can be represented by a complex matrix.
@@ -85,7 +83,7 @@ We see that our example outer product induces an interesting transformation of t
 It changes the initial state vector into $|0\rangle$, up to a complex constant $\alpha$.
 We did not assume any particular values for the initial probability amplitudes $\alpha$ and $\beta$, meaning that any initial state vector, provided $\alpha\neq0$, is transformed into a vector proportional to $|0\rangle$.
 We say that the outer product \textit{\textbf{projects}} onto the state $|0\rangle$, and that the outer product is an example of a \textit{\textbf{projector}}.
-The only time $|0\rangle\langle0|$ does not project onto $|0\rangle$ is when the initial state is orthogonal to $|0\rangle$, that is when the initial state is $|1\rangle$.
+The only time $|0\rangle\langle0|$ does not project onto $|0\rangle$ is when the initial state is orthogonal to $|0\rangle$, that is, when the initial state is $|1\rangle$.
 
 Let's have a quick look at the action of a different outer product, namely $|1\rangle\langle1|$.
 In matrix form, we have
@@ -104,7 +102,7 @@ just as we expected.
 Recall from Sec.~\ref{sec:measurement} that measurement in the Z basis of a general qubit $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$ has two possible outcomes.
 Outcome +1 is obtained with probability $|\alpha|^2$ and the post-measurement state is $|0\rangle$.
 We just saw that this post-measurement state is obtained after application of the projector $|0\rangle\langle0|$.
-Similarly for the -1 outcome of the measurement, obtained with probability $|\beta|^2$.
+The -1 outcome of the measurement, obtained with probability $|\beta|^2$, is similar.
 The post-measurement state is $|1\rangle$ resulting from the application of the projector $|1\rangle\langle1|$.
 The outer products $|0\rangle\langle0|$ and $|1\rangle\langle1|$ capture the effect of \textit{\textbf{projective measurements}}.
 The different probabilities of the measurement outcomes can also be readily calculated.
@@ -140,7 +138,7 @@ The action of these projectors can be verified by applying them to an arbitrary 
 
 Before moving on, it is worth explaining some notation regarding projectors.
 Sometimes, rather than writing projectors as outer products, we denote them by a single letter.
-Usual choice is the capital Greek letter ``pi'',
+Usual choice is $\Pi$, the capital Greek letter ``pi'',
 \begin{equation}
     \Pi_{\pm}^B \equiv |b_{\pm}\rangle\langle b_{\pm}|,
 \end{equation}
@@ -173,9 +171,9 @@ For example, the states in Eq.~(\ref{eq:3-2_vectors}) can be written as projecto
 \end{equation}
 The state vector $|\psi\rangle$ and the projector $|\psi\rangle\langle\psi|$ represent the same state of a physical system.
 You might wonder why would we want to represent states as matrices when vectors have worked for us just fine.
-The reason is that so far we have only discussed idealized states without any errors.
-If we want to consider noisy systems, we must resort to describing the states using matrices as vectors are not enough.
-We will see why that is in the next section.
+So far we have only discussed idealized states without any errors.
+If we want to consider noisy systems, we must resort to describing the states using matrices, as vectors are not enough.
+We will see why this is so in the next section.
 
 
 
@@ -200,14 +198,14 @@ How can we describe such an incoherent output mathematically?
 The output is not a single state that we know can be represented by a vector, rather it is a probabilistic distribution of such states.
 Therefore we cannot represent it as a superposition.
 Superposition of various state vectors is still a state that represents perfect knowledge of the quantum system, which we do not have.
-The correct way of describing the incoherent output in Fig.~\ref{fig:3-3_noisy_communication} is by using the outer product that we learnt about in the previous section.
+The correct way of describing the incoherent output in Fig.~\ref{fig:3-3_noisy_communication} is by using the outer product that we learned about in the previous section.
 The output state is a projector $|\psi_i\rangle\langle\psi_i|$ with probability $p_i$, and the whole output state can be described as a sum of all such projectors,
 \begin{equation}
     p_1 |\psi_1\rangle\langle\psi_1| + p_2 |\psi_2\rangle\langle\psi_2| + \ldots + p_n |\psi_n\rangle\langle\psi_n|.
     \label{eq:3-3_mixture}
 \end{equation}
 The state represented by the sum in Eq.~(\ref{eq:3-3_mixture}) is called a \textit{\textbf{mixed state}}\index{mixed state}.
-Important thing to remember is that the $p_i$'s are probabilities and therefore they must sum to unity, that is $\sum_{i=1}^n p_i=1$.
+It is important to remember is that the $p_i$'s are probabilities and therefore they must sum to unity, that is $\sum_{i=1}^n p_i=1$.
 
 \begin{figure}[t]
     \centering
@@ -215,33 +213,33 @@ Important thing to remember is that the $p_i$'s are probabilities and therefore 
     \caption[Bit-flip channel]{Bit-flip channel. Pauli $X$ is applied to the input with probability $p$. The input is unaffected with probability $1-p$.}
     \label{fig:3-3_bit_flip_channel}
 \end{figure}
-In order to illustrate this, let's consider a simple case of a \textit{\textbf{bit-flip channel}} depicted in Fig.~\ref{fig:3-3_bit_flip_channel}.
+In order to illustrate this, let's consider the simple case of a \textit{\textbf{bit-flip channel}}, depicted in Fig.~\ref{fig:3-3_bit_flip_channel}.
 The input is a known quantum state $|\psi\rangle$.
-The bit-flip channel is fairly simple, the input is either affected by a Pauli $X$ transformation with probability $p$, or it is transmitted without errors with probability $1-p$.
-We will denote the output by the Greek letter $\rho$,
+The bit-flip channel is fairly simple. The input is either affected by a Pauli $X$ transformation with probability $p$, or it is transmitted without errors with probability $1-p$.
+We will denote the output by the Greek letter $\rho$ (rho),
 \begin{equation}
     \rho = (1-p) |\psi\rangle\langle\psi| + p X|\psi\rangle\langle\psi|X.
     \label{eq:3-3_bit_flip}
 \end{equation}
-Let's explore how this channel works by considering few simple example inputs.
+Let's explore how this channel works by considering a few simple example inputs.
 When the input is $|\psi\rangle = |0\rangle$, the output is
 \begin{equation}
     \rho = (1-p)|0\rangle\langle0| + p|1\rangle\langle1| = \begin{pmatrix} 1-p & 0 \\ 0 & p \end{pmatrix}.
 \end{equation}
 On the other hand, if the input is $|\psi\rangle=|1\rangle$, we get
 \begin{equation}
-    \rho = (1-p)|1\rangle\langle1| + p|0\rangle\langle0|,
+    \rho = (1-p)|1\rangle\langle1| + p|0\rangle\langle0|
 \end{equation}
 as the output.
 
 We know that the general state of a pure state of a qubit is $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$.
-Whats is the general form of a mixed state?
-We have in fact seen it already in Eq.~(\ref{eq:3-3_mixture}),
+What is the general form of a mixed state?
+We have seen it already in Eq.~(\ref{eq:3-3_mixture}),
 \begin{equation}
     \rho = \sum_i p_i |\psi_i\rangle\langle\psi_i|.
 \end{equation}
 The representation for a state vector we have used so far is known as a ket, while this more general representation using a sum of outer products is called a \textit{\textbf{density matrix}}.
-Note that the density matrix can describe both pure as well as mixed states, whereas the state vector can only accurately describe pure states.
+Note that the density matrix can describe both pure and mixed states, whereas the state vector can only accurately describe pure states.
 When all $p_i$ values vanish except for one, that is $\rho=\ketbra{\psi}{\psi}$, the state $\rho$ is pure.
 On the other hand, if more than one $p_i$ is non-zero, the state $\rho$ is mixed.  (The \ket{\psi} is not restricted to a single computational basis state; it can be any superposition.  That is, \ket{\psi} is not restricted to a state like \ket{0} or \ket{1}; $\ket{\psi} = \ket{+}$ is valid.)
 
@@ -272,15 +270,15 @@ We see that $\text{Tr}\{\rho\} = |\alpha|^2 + |\beta|^2 = 1$ if the state is nor
 \end{figure}
 
 Just like pure states can be visualized using a Bloch sphere, so can be mixed states as well.
-The difference is that pure states are represented by the points on the surface of the sphere.
-Mixed states on the other hand are represented by all the points \textit{\textbf{inside the Bloch sphere}}, as shown in Fig.~\ref{fig:3-3_bloch}.
+Pure states are represented by the points on the surface of the sphere.
+Mixed states, on the other hand, are represented by all the points \textit{\textbf{inside the Bloch sphere}}, as shown in Fig.~\ref{fig:3-3_bloch}.
 The closer we get to the centre of the sphere, the more mixed the quantum state becomes.
 The center of the sphere is where the \textit{\textbf{maximally mixed state}},
 \begin{equation}
     \rho = \frac{1}{2} |0\rangle\langle0| + \frac{1}{2} |1\rangle\langle1|,
 \end{equation}
 is located.
-This point represents zero-knowledge about the quantum state.
+This point represents zero knowledge about the quantum state.
 If we measure this state in the Pauli $Z$ basis, both outcomes are equally likely.
 We can think about this state as being ``half-way between'' the pure states $|0\rangle$ and $|1\rangle$.
 However, there is nothing sacred about the Pauli $Z$ basis.
@@ -314,10 +312,9 @@ In particular,
     \text{mixture} \; \rho & : \text{Prob}\{+1\} = \text{Prob}\{-1\} = \frac{1}{2}.
 \end{align}
 This means that we cannot tell these two states from each other by performing just a Pauli $Z$ measurement.
-This also seems to suggest that we do not have perfect knowledge about the superposition.
-We will see in the next paragraph, that this is not quite true.
+This also seems to suggest that we do not have perfect knowledge about the superposition. This is not quite true.
 
-Let's take our two states and this time measure them in the Pauli $X$ basis.
+Let's do this again, but this time measure our two states in the Pauli $X$ basis.
 We can rewrite the two states in Eq.~(\ref{eq:3-4_superposition})-(\ref{eq:3-4_mixture}) in the Pauli $X$ basis,
 \begin{align}
     |\psi\rangle & = |+\rangle, \\
@@ -332,17 +329,16 @@ We see that measuring the superposition $|\psi\rangle$ in the Pauli $X$ basis al
 On the other hand, when measuring the mixture, both outcomes are equally likely.
 We can see that the equal superposition and equal mixture can be distinguished from each other when measured in the Pauli $X$ basis.
 Now the meaning of what it means to have perfect knowledge of the states becomes more clear.
-It means that the outcome of a measurement is deterministic, it always gives the same outcome.
+\rdv{This isn't quite right, since many measurements can give either outcome on pure states.} It means that the outcome of a measurement is deterministic: it always gives the same outcome.
 
-The above procedure allows us to tell pure states from mixed states.
-But it is rather complicated.
-We have to check the measurement statistics for various bases, which can be quite laborous.
+The above procedure allows us to tell pure states from mixed states, but it is rather complicated.
+We have to check the measurement statistics for various bases, which can be quite laborious.
 Fortunately, there is a very simple way of checking if a state $\rho$ is pure or mixed using the \textit{\textbf{purity}} $\gamma$.
 Purity is defined as the trace of the square of the density matrix,
 \begin{equation}
     \gamma = \text{Tr} \{ \rho^2 \}.
 \end{equation}
-When the quantum state is pure, we have $\gamma=1$.
+When the quantum state is pure, we have $\gamma=1$ (gamma).
 On the other hand, when the state is mixed, purity is strictly less than 1.
 
 \begin{table}[t]
@@ -369,7 +365,7 @@ Table~\ref{tab:3-4_pure_vs_mixed} provides a summary of the important points.
 \section{Fidelity}
 \label{sec:3-5_fidelity}
 
-We have seen that it's impossible to prepare the desired pure states as outputs.
+We have seen that it's impossible to prepare the desired pure states.
 Sometimes the prepared state is pure but not quite the target state we were aiming for.
 Other times it can be affected by incoherent noise resulting in a mixed state.
 It is crucial that we have a way of quantifying the difference between the real and the target states.
@@ -389,7 +385,7 @@ However, we will only consider scenarios where the target state is pure and ther
 Let's consider the case where the real state is equal to the target state, $\rho=|\psi\rangle\langle\psi|$.
 The fidelity is then
 \begin{equation}
-    F(\rho,|\psi\rangle) = \langle\psi|\rho|\psi\rangle = |\langle \psi|\psi \rangle|^2 = 1.
+    F(\rho,|\psi\rangle) = \bra{\psi}\rho\ket{\psi} = |\braket{\psi}{\psi}\braket{\psi}{\psi}| = |\langle \psi|\psi \rangle|^2 = 1.
 \end{equation}
 On the other hand, when the real state $|\phi\rangle$ is pure but orthogonal to the target state,
 \begin{equation}
@@ -402,8 +398,7 @@ In fact, these cases are the two extreme ones, and for any mixed state,
 \end{equation}
 
 Let's continue with another example.
-Consider the case where we would like to prepare the state $|0\rangle$.
-But something goes very wrong with our quantum hardware and the real state that we obtain after the preparation procedure is the maximally mixed state $\rho = (|0\rangle\langle0| + |1\rangle\langle1|)/2$.
+Consider the case where we would like to prepare the state $|0\rangle$, but something goes very wrong with our quantum hardware and the real state that we obtain after the preparation procedure is the maximally mixed state $\rho = (|0\rangle\langle0| + |1\rangle\langle1|)/2$.
 The fidelity can be computed as follows,
 \begin{align}
     F(\rho,|0\rangle) & = \langle 0 | \rho | 0 \rangle \nonumber\\
@@ -433,7 +428,7 @@ We have
     F(\rho,|\psi\rangle) = \langle0| \rho | 0\rangle = (1-p) \langle0|0\rangle^2 + p \langle1|1\rangle^2 = 1 - p.
 \end{equation}
 The fidelity does depend on the probability of error, as we anticipated.
-When $p=0$ and there is no noise affecting the input state, so the fidelity of the output state is 1.
+When $p=0$ and there is no noise affecting the input state, the fidelity of the output state is 1.
 On the other hand, if the bit-flip channel is maximally noisy, $p=1/2$, the output state is the maximally mixed state.
 This is also evidenced by the fidelity dropping to $F(\rho,|0\rangle)=1/2$.
 
@@ -443,18 +438,16 @@ Many protocols in quantum communication as well as quantum computation do not wo
 Often this condition is expressed in the form of a \textit{\textbf{threshold fidelity}} $F_{crit}$.
 If the fidelity of the real state is above this critical value, $F > F_{crit}$, then the protocol can be successfully executed.
 On the other hand, if $F < F_{crit}$, the protocol cannot be used.
-An example of such a protocol include entanglement purification, where the fidelity of noisy entangled pairs can be boosted provided the initial pairs are not too noisy.
+An example of such a protocol is entanglement purification, where the fidelity of noisy entangled pairs can be boosted provided the initial pairs are not too noisy.
 Another example is fault-tolerant quantum computation, where scalable universal quantum computation can be achieved even with noisy components, provided the noise is below a certain threshold.
 
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
+\exer{
+In Tab.~\ref{tab:3-2_projectors}, we saw the projectors for the Pauli bases, presaged in Ex.~\ref{ex:dirac-notation-measurement}.
+\rdv{Exercises on measurement.}
+}
 \exer{We have seen that, considered in the Z basis, the density matrix for a completely mixed state of a single qubit has $1/2$ in each of the two entries on the diagonal,
 \begin{equation*}
 \rho=\left(\begin{array}{cc}

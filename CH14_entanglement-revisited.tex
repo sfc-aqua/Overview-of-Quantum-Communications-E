@@ -1,10 +1,10 @@
 \chapter{Entanglement Revisited}
 
-In this chapter, we will return to entanglement and discuss it in more detail and in the context of quantum repeater networks.
+In this chapter, we will return to entanglement and discuss it in the context of quantum repeater networks.
 We begin with revisiting bipartite entanglement in section~\ref{sec:14-1_bipartite}.
-We focus on how to determine the quality of the entanglement shared between distant of nodes of a network and why it is important.
+We focus on how to determine the quality of the entanglement shared between distant nodes of a network and why it matters.
 In section~\ref{sec:14-2_multipartite}, we will introduce multipartite entanglement shared between more than two nodes of a quantum network.
-We will introduce what it is and how it differs from bipartite entanglement before moving on to examples of multipartite entangled states.
+We will discuss how it differs from bipartite entanglement before moving on to examples of multipartite entangled states.
 In the remained of this chapter, we will shift our focus to applications of quantum repeater networks.
 In section \ref{sec:14-3_clock_sync}, we discuss clock synchronization, and distributed blind quantum computation in section ~\ref{sec:14-4_distributed_bqc}.
 
@@ -13,39 +13,263 @@ In section \ref{sec:14-3_clock_sync}, we discuss clock synchronization, and dist
 \section{Bipartite entanglement}
 \label{sec:14-1_bipartite}
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson14/14-1_bipartite_network.pdf}
+    \caption[Bipartite and multipartite entanglement]{Bipartite and multipartite entanglement distribution in quantum networks.}
+    \label{fig:14-1_bipartite_multipartite}
+\end{figure}
+
 One of the main jobs of a quantum network is to distribute entanglement.
-So let's start by considering a concrete example, where we have the following networks where these circles represent quantum nodes and these dashed lines represent physical links between certain nodes of the network. And let's say that these green nodes are trying to engage in a quantum communication, so they would like to establish an entangled pair between themselves, so we're going to label them N1 and N2. And we saw in previous chapters that how this works in a quantum network is that first, we have to establish link-level entanglement- so entanglement between neighboring networks that are connected directly by via physical link, and then we can use entanglement swapping and the intermediate nodes in order to end up with an entangled connection between N1 and N2. And we also talked about that the network has to consider things like routing and multiplexing in order to satisfy the need for quantum communication between multiple users of the quantum network. So- but one question which we have not addressed in detail is how do we evaluate the quality of the established entanglement? After all, we saw that the quality directly impacts some of the protocols.
+Let's start by considering a concrete example.
+Figure~\ref{fig:14-1_bipartite_multipartite} shows a quantum network.
+The circles represent quantum nodes while the dashed lines represent physical links connecting neighboring quantum nodes.
+Let's consider the scenario where Nodes $N_1$ and $N_2$ wish to establish shared entanglement in order to engage in quantum communication.
+We saw in the previous chapter that in order to satisfy this request, the quantum network first creates link-level entanglement between neighboring nodes along the path connecting the nodes $N_1$ and $N_2$.
+Entanglement swapping is then used to create a direct end-to-end bipartite entanglement between these nodes.
+This example is rather constrained in the sense that it only shows two of the nodes trying to engage in quantum communication.
+Well-designed quantum network should be able to accommodate multiple simultaneous requests for end-to-end entangled connections between multiple pairs of nodes as shown in Fig.~\ref{fig:14-1_bipartite_multipartite}. 
 
-So, we saw that in entanglement-based QKD, the quality of the entanglement that's shared between Alice and Bob directly impacts the key that they're trying to establish. Namely, if the entanglement is not perfect, if they don't share a pure maximally entangled state, then the key that they are going to end up with after at the end of the protocol will also be only partially correlated. More crucially, the quality of the entanglement also tells us something about the security of the entire protocol. If they are not sharing a maximally entangled state, there is some chance that their qubit is correlated with some qubit that Alice has in her possession, which means that clever Alice can find some information about the secret key that Alice and Bob are trying to establish. So in this scenario, we see that better quality of entangled states lead to stronger security during the establishment of a secret key. So what are the different methods of evaluating the quality of the distributed entanglement when we talk about bipartite entanglement? We saw that fidelity is one function that we can use to talk about the quality of a state at the output, either of a quantum communication task or a quantum computation task. Here, we have some reference state which is a pure state that describes our ideal state that we are aiming to get- that's our desired state. But due to noise, usually what we have is is some mixed state, and if the noise doesn't have much effect, if it's very weak noise, this state will be close in some sense to the ideal state- our reference states "psi".
+The quality of the distributed entanglement, whether bipartite or multipartite, matters greatly.
+We saw that in entanglement-based QKD, the quality of the entanglement that is shared between Alice and Bob directly impacts the key that they are trying to establish.
+If the entangled state shared by Alice and Bob is not perfect then the key that they are going to end up with after at the end of the protocol will also be only partially correlated.
+This has two important consequences.
+Firstly, it affects how well Alice and Bob can communicate.
 
-And we can evaluate how close we are using the fidelity, which I remind you is computed in the following way- we have the fidelity "f" between the actual state "rho" and our ideal state psi, given simply as this inner product.
+More crucially, the quality of the entangled state affects the \textit{\textbf{security of the key}} that they can establish.
+The entangled state may be imperfect due to natural noise introduced by the physical channels during the distribution process.
+But it could also be a result of an eavesdropper Eve, trying to listen in on the secret communication between Alice and Bob as shown in Fig.~\ref{fig:14-1_QKD}.
+If Alice and Bob want to maintain security of the information that they are wishing to communicate, they must assume that any imperfections in the entangled state have been introduced by Eve.
+So the quality of the entangled state places an upper bound on the security of the key that can be established between Alice and Bob in the sense that \textit{\textbf{better quality of the entangled state implies stronger security}}.
 
-In the context of quantum networks, generally we are trying to establish bipartite entanglement between end-to-end nodes, so we are mainly interested in the following expression, and that's the fidelity of the state that two nodes are sharing, and the ideal state that they wish to share, which is a maximally entangled state, in this case we will consider the phi plus state.
+We discussed in Section~\ref{sec:3-5_fidelity} that one way of quantifying the quality of an entangled state is the fidelity.
+Given a ideal state \ket{\psi}, that the quantum network is trying to distribute, the fidelity of the actual mixed state $\rho$ shared between Alice and Bob is given by the expectation value of $\rho$ with respect to \ket{\psi},
+\begin{equation}
+    F \left( \rho, \ket{\psi} \right) = \bra{\psi}\rho\ket{\psi}.
+\end{equation}
+It is usually the case in quantum networks that the ideal state is one of the Bell pairs.
+If the ideal state is \ket{\Phi^+}, then the fidelity if $F (\rho, \ket{\Phi^+}) = \bra{\Phi^+}\rho\ket{\Phi^+}$.
+For noiseless quantum channels and operations, perfect quantum memories and in the absence of an eavesdropper, the distributed state will be the ideal state, $\rho = \ket{\Phi^+}\bra{\Phi^+}$.
+The resulting fidelity is
+\begin{equation}
+    F \left( \rho, \ket{\Phi^+} \right) = \langle\Phi^+\ket{\Phi^+} \langle\Phi^+\ket{\Phi^+} = 1.
+\end{equation}
+On the other hand, the distributed state may some error, for example a Pauli $Z$ error on Bob's qubit.
+This transforms the entangled state into an orthogonal Bell pair, $I \otimes Z \ket{\Phi^+} = \ket{\Phi^-}$, resulting in fidelity
+\begin{equation}
+    F \left( \rho, \ket{\Phi^+} \right) = \langle\Phi^+\ket{\Phi^-} \langle\Phi^-\ket{\Phi^+} = 0.
+    \label{eq:14-1_fidelity_0}
+\end{equation}
+Typically, the distributed state will be mixed, and the fidelity will take values $ 0 \leq F(\rho, \ket{\Phi^+}) \leq 1$.
 
-And let's compute some examples. So let's say that we have the ideal case, meaning there is no noise, there's no eavesdroppers, and the actual state that the two parties are sharing is really the pure state phi plus, here written as a density matrix. Well, we can just simply substitute that into our expression for the fidelity and we see that what we get is the square of the inner product between phi plus and phi plus, which of course we have seen many times is one because the state is normalized. So, good- we get fidelity of one, meaning we have the ideal state. Now, what if we end up with an orthogonal state? So maybe something has gone wrong, due to some noise Pauli Z matrix was applied to our ideal state, and the two parties end up with the following state. It's still a pure state but it's not the desired status. In this case, it's phi minus. If we substitute that into our expression for the fidelity, we will see that fidelity drops to zero and that's because our state that the two parties are sharing is orthogonal with the desired state phi plus. But here's the problem- we care that the two states- that the two parties Alice and Bob, are entangled, and here they are clearly entangled. They manage to share entanglement. It's not their desired entanglement, it's not the desired Bell state phi plus, but it's still an entangled state nonetheless. But if we just simply evaluate the fidelity, we get a zero. Meaning that our state is no good and that's not quite what we're looking for. So we see that fidelity in this scenario is not a very good measure. So, what can we do?
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.4\textwidth]{lesson14/14-1_QKD.pdf}
+    \caption[Eavesdropper Eve]{Eavesdropped Eve tampering with the distributed entangled state between Alice and Bob in order to gain information about the shared secret key.}
+    \label{fig:14-1_QKD}
+\end{figure}
 
-Well, we saw previously in the entanglement-based QKD protocol that we can test quantum correlations by violating the CHSH inequality. To remind you, we have considered the CHSH inequality, and the state psi plus which we used in the E91 protocol. And there, Alice measured in two different bases given by these vertical and horizontal lines in the exact plane of the block sphere, so A1 corresponds to measurement of the Pauli Z observable, A2 corresponds to the measurement of the Pauli X observable, and Bob measures in this rotated basis, B1 and B2, given by this following expression. So B1 is given by Z minus X, whereas B2 is given by Z plus X.
+Note that the lowest possible value of the fidelity does not imply that the distributed state is useless.
+Far from it.
+As we saw in Eq.~(\ref{eq:14-1_fidelity_0}), the fidelity vanishes when the distributed state is orthogonal to the ideal state \ket{\Phi^+}.
+This means that the distributed state is also maximally entangled and can be used for quantum communication after an appropriate transformation.
+For the case discussed in Eq.~(\ref{eq:14-1_fidelity_0}), the distributed state can be transformed into the ideal one by either Alice or Bob applying a local Pauli $Z$ operation,
+\begin{align}
+    \text{Alice applies } Z: \quad & Z \otimes I \ket{\Phi^-} = Z \otimes Z \ket{\Phi^+} = \ket{\Phi^+}, \\
+    \text{Bob applies } Z: \quad & I \otimes Z \ket{\Phi^-} = I \otimes Z^2 \ket{\Phi^+} = \ket{\Phi^+}.
+\end{align}
+We used that fact that applying the Pauli $Z$ operation twice cancels its effect, $Z^2 = I$.
 
-And Alice and Bob, they have to repeat this process many times, perform these measurements, build up statistics, so that they can compute their expectation values for the following measurement settings, where Alice measures in A1 and bob measures in B1, Alice measures in A1 but Bob measures in B2, and so on. And together, we can form this following expression known as the CHSH expression. And if this is larger than two, then we can conclude that the state that Alice and Bob are sharing is really, in fact, entangled. So, okay, that seems to work. Let's try and use the CHSH inequality for our state phi plus that we are trying to verify.
+We saw that both extremes of the fidelity, $F(\rho,\ket{\psi}) = 1$ and $F(\rho,\ket{\psi}) = 0$, suggest that the distributed state is useful for quantum communication.
+Does this mean that distributed states with intermediate values of fidelity are useful too?
+Certainly not.
+Let's consider a fully decohered state of two qubits given by the maximally mixed state,
+\begin{equation}
+    \rho = \frac{1}{4} \left( \ket{00}\bra{00} + \ket{01}\bra{01} + \ket{10}\bra{10} + \ket{11}\bra{11} \right).
+\end{equation}
+The fidelity of this state with respect to the ideal Bell pair \ket{\Phi^+} is
+\begin{align}
+    F \left( \rho, \ket{\Phi^+} \right) & = \frac{1}{4} \bra{\Phi^+} \left( \ket{00}\bra{00} + \ket{01}\bra{01} + \ket{10}\bra{10} + \ket{11}\bra{11} \right) \ket{\Phi^+} \nonumber\\
+    & = \frac{1}{4} \left( \frac{1}{2} + \frac{1}{2} \right) = \frac{1}{4}.
+\end{align}
+We that it is $F=0.25$ that signifies the distributed state is ``completely useless''.
 
-Well, we can again consider the same measurements and we construct the same CHSH expression. If you go through the calculation for the expectation values, you can quickly find out that the expectation value for A1B1 is equal to A1B2, and also A2B2, and it's given by one over square root of two. And the expectation value for A2B1 is negative one over square root of two. So we can substitute all these values back into our expression for the CHSH expression. So here we have one over square root of two plus one over square root of two, and we have here we have minus one over square root of two because we are substituting this expression, and then minus one over square root of two. So we get that S is equal to zero, and we said that in order to certify that the state is truly entangled, it has to be larger than two. But phi plus is clearly entangled. So what went wrong? Well, the answer is actually very simple, and it's the fact that this inequality has been constructed specifically for the state psi plus, but now we are trying to use it on the state phi plus. So in order to use CHSH inequality as a test for entanglement, we need to fix our current expression for S. Luckily, in this case it's very simple. All we have to do is just swap these signs- this negative sign with plus sign over here. And with this new expression, we can actually find out that truly, S is equal to two root two, which is the maximum violation of CHSH inequality, which always has to be true if they are sharing maximally entangled state. So we saw here that CHSH inequality can detect bipartite entanglement, and to remind you, if we go through the CHSH test and we obtain the value S larger than two, then we have an entangled state "rho". If S is equal to two root two, then we can say that the state that Alice and Bob are sharing is maximally entangled. And if the value of S is less or equal to two, then the test is inconclusive. Now, notice that I have not said that the test does means that the state is separable, and that's because there are some entangled states which do not violate this inequality. However, if we find violation, then we can automatically conclude that the state is entangled. And also, we have to be mindful of what CHSH expression we are using, make sure that it's the correct one, make sure that you're using the right combination of those four expectation values with the correct plus or minus signs, depending on which state you are trying to test- "is it phi plus, phi minus, psi plus or psi minus?".
+Fidelity is not the only useful metric when it comes to quantifying the quality of the distributed state.
+The other method relies on the CHSH inequality which we saw plays a crucial role in the E-91 QKD protocol in Chapter~\ref{sec:10_E91}.
+Named after its inventors Clauser, Horne, Shimony, and Holt, the CHSH inequality is a test of the quantumness of the correlations shared between Alice and Bob.
+We saw that to test that Alice and Bob share the \ket{\Psi^+} Bell pair, they have to repeatedly measure in the following bases,
+\begin{align}
+    \text{Alice's measurement bases:}& & A_1 & = Z, & A_2 & = X \\
+    \text{Bob's measurement bases:}& & B_1 & = \frac{Z - X}{\sqrt{2}}, & B_2 & = \frac{Z + X}{\sqrt{2}}.
+\end{align}
+Using the outcomes of the measurements, they can then compute the CHSH correlation,
+\begin{equation}
+    \mathcal{S} = \langle A_1 \otimes B_1\rangle + \langle A_1 \otimes B_2\rangle + \langle A_2 \otimes B_1\rangle - \langle A_2 \otimes B_2\rangle.
+    \label{eq:14-1_CHSH_Psi_plus}
+\end{equation}
+For the ideal state, the expectation values can be computed according to $\langle A_i B_j \rangle = \bra{\Psi^+} A_i \otimes B_j \ket{\Psi^+}$, leading to the CHSH correlation of
+\begin{equation}
+    \left| \mathcal{S} \right| = 2\sqrt{2}.
+\end{equation}
+For the distributed state given by a mixed state $\rho$, the expectation values can be calculated via the more general expression $\langle A_i \otimes B_j \rangle = \text{Tr} \{ A_i \otimes B_j \rho \}$.
+The distributed state is entangled provided that
+\begin{equation}
+    \left| \mathcal{S} \right| > 2.
+\end{equation}
+The CHSH inequality acts as a witness of entanglement, with $|\mathcal{S}| = 2$ being the critical threshold.
+When Alice and Bob measure $|\mathcal{S}| > 2$, they know they share an entangled state.
+On the other hand, when $|\mathcal{S}| < 2$, they cannot conclude anything. The distributed state could be entangled but it could be separable as well.
+CHSH inequality violation is also directly linked to the security of the key that Alice and Bob can establish.
+\textit{\textbf{Stronger violation of the CHSH inequality leads to more secure secret key.}}
+
+What if the ideal state that Alice and Bob are trying to share some other Bell pair, let's say \ket{\Phi^+}.
+Computing the CHSH violation in Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) but computing the expectation values with respect to the new ideal state \ket{\Phi^+}, we get
+\begin{align}
+    \langle A_1 \otimes B_1 \rangle & = \frac{1}{\sqrt{2}} & \langle A_1 \otimes B_2 \rangle & = \frac{1}{\sqrt{2}} \\
+    \langle A_2 \otimes B_1 \rangle & = - \frac{1}{\sqrt{2}} & \langle A_2 \otimes B_2 \rangle & = \frac{1}{\sqrt{2}}.
+\end{align}
+This leads to a vanishing CHSH correlation, $\mathcal{S} = 0$.
+This is because the expression for the correlation in Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) is not designed to witness entanglement when the ideal state is \ket{\Phi^+}.
+We have encountered a similar situation when we computed the fidelity between two orthogonal Bell pairs.
+Can we use a similar expression to Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) that witnesses entanglement when the ideal state is \ket{\Phi^+}.
+All we need to do is exchange the plus and minus signs in front of the last two terms,
+\begin{equation}
+    \mathcal{S} = \langle A_1 \otimes B_1\rangle + \langle A_1 \otimes B_2\rangle - \langle A_2 \otimes B_1\rangle + \langle A_2 \otimes B_2\rangle.
+    \label{eq:14-1_CHSH_Phi_plus}
+\end{equation}
+Eq.~(\ref{eq:14-1_CHSH_Phi_plus}) yields $|\mathcal{S}| = 2\sqrt{2}$ when the expectation values are computed with respect to \ket{\Phi^+}.
+
+We have seen that both the fidelity as well as the CHSH inequality offer suitable tools to quantify the quality of the distributed bipartite state.
+We have to remember to take care when computing both quantities.
+In order to obtain meaningful results, we need to use the correct ideal state in the case of fidelity, and the appropriate form of the correlation in the case of the CHSH inequality.
+
 
 
 
 \section{Multipartite entanglement}
 \label{sec:14-2_multipartite}
 
-Step Two: Multipartite Entanglement
+We have seen how quantum networks can establish bipartite entanglement between two of its nodes.
+We may wish to distribute entanglement shared between more than two nodes as shown in Fig.~\ref{fig:14-1_bipartite_multipartite}.
+Sometimes three clients may wish to engage in a quantum communication protocol that might require all of them to share a tripartite entangled state.
+Any entangled state of more than two subsystems is called a \textit{\textbf{entangled multipartite state}}\index{multipartite entanglement}.
+It is the job a quantum network to distribute multipartite entangled states between any disjoint subsets of nodes that ask for them.
 
-In the previous step, we have seen how we can establish a bipartite entanglement- that means entanglement only between two nodes and between two qubits. But of course, we can consider also other types of entanglement, namely entangling between more than two nodes. For example, in a network we may wish to entangle three nodes like this, then we refer to this case as "tripartite entanglement", or it could be entanglement share between four nodes so a four-partite entanglement, and we can go up and up until we have entanglement between "n" number of nodes, or we have multipartite entanglement. So let's consider just three qubits as starters. How many basis states are there? We saw that for the case of two qubits, there are four basis states- zero zero, zero one, one zero, one one. Well, you can guess that for the case of three qubits, there are eight basis states and they're given by all these possibilities- we have the three qubits being zero zero zero, zero zero one, and so on and so forth all the way to one one one. And any general pure state can be written as a general superposition of all of these eight basis states. For example, we can write any general three-qubit state as follows here as a superposition of all of these with some arbitrary probability amplitudes given by c1, c2, all the way up to c8. Now depending on the particularities of the superposition that we take, we may end up in a separable state or an entangled state. So let's consider some examples of entangled states. Let's look at all of our possible eight basis states and take a very simple superposition of just the term zero zero zero and one one one. And to keep things simple we will consider this superposition to be an equal superposition, so we have an equal chance to be found in zero zero zero and one one one. Now this state is known as GHZ state, and plays a very important role in quantum communication as we will see shortly.
+We begin by considering entangled states of three qubits.
+We saw that there are 4 possible computational basis, \ket{00}, \ket{01}, \ket{10}, and \ket{11}.
+How many computational basis states are there in this case?
+Now there are 8 such states,
+\begin{align}
+    \ket{000}, \; \ket{001}, \; \ket{010}, \; \ket{011}, \; \ket{100}, \; \ket{101}, \; \ket{110}, \; \ket{111}.
+\end{align}
+Any general three-qubit state can be expanded as a superposition of these computational basis states,
+\begin{align}
+    \ket{\psi} & = c_0\ket{000} + c_1\ket{001} + c_2\ket{010} + c_3\ket{011} \nonumber\\
+    & + c_4\ket{100} + c_5\ket{101} + c_6\ket{110} + c_7\ket{111}.
+\end{align}
+often this superposition is written in a compact form as
+\begin{equation}
+    \ket{\psi} = \sum_{i=0}^7 c_i \ket{i},
+\end{equation}
+where the notation means that the ``$i$'' in \ket{i} is the binary number corresponding to in index in the coefficients $c_i$.
+Depending on the values of the coefficients, we obtain different states, some of which will be entangled.
 
-Let's consider a measurement on one of the qubits of the three-qubit GHZ state, and let's say that we measure it in the Z basis, and for concreteness let's just measure qubit one. So here's our three-qubit GHZ state. It's an equal superposition of (zero zero zero) (one one one) with probability of a half, we can get the plus one outcome. That means we project the state of qubit one onto a zero, and if that happens we can see that we end up with the state of the three qubits collapsing onto the following state. All of them can be found in zero zero zero. So we can see that the qubits are correlated. The other possibility is that we measure the outcome minus one. This happens with equal probability of a half and then you can see from this expression that the state of all three qubits collapses onto one one one. So again they are correlated, and we saw similar behavior when we were talking about establishing a secret key in entanglement-based QKD. What we were looking for was a scenario where performing measurements in the same basis can establish a secret key between two parties. Here you can see that you can do that- do the same thing between three parties, which is why GHZ states are used in quantum communication. In fact, you can see that by doing that just like in the case for the entanglement-based QKD, measurements consume the entanglement that was shared between the three parties. So by measuring just one qubit in the state means the total entanglement is destroyed. And in fact, it doesn't matter which qubit we measure in the Z basis. We would have ended up with the same case with the same probabilities if we had measured in the qubit two or qubit three.
+Let's look at a few examples of important entangled multipartite states.
+The first state is one of the simplest but also one of the most important.
+It is an equal superposition of \ket{000} and \ket{111}, and is known as the \textit{\textbf{GHZ state}}\index{GHZ state}, named after Greenberger, Horne, and Zeilinger,
+\begin{equation}
+    \ket{GHZ} = \frac{1}{\sqrt{2}} \left( \ket{000} + \ket{111} \right).
+\end{equation}
+Let's see what are some of the properties of the GHZ state.
+A good start is to measure one of the qubits and see what the state of the remaining qubits is.
+Consider measuring the first qubit in the Pauli $Z$ basis.
+The projectors corresponding to the +1 and -1 outcomes are
+\begin{align}
+    \Pi^Z_+ & = \ket{0}\bra{0} \otimes I \otimes I, \\
+    \Pi^Z_- & = \ket{1}\bra{1} \otimes I \otimes I,
+\end{align}
+respectively.
+The probability of the measurement outcome being +1 is
+\begin{align}
+    \text{Prob} \{+1\} & = \text{Tr} \{ \Pi^Z_+ \ket{GHZ}\bra{GHZ} \} \nonumber\\
+    & = \bra{GHZ} \left( \ket{0}\bra{0} \otimes I \otimes I \right) \ket{GHZ} \nonumber\\
+    & = \frac{1}{2} \left( \bra{000} + \bra{111} \right) \left( \ket{0}\bra{0} \otimes I \otimes I \right) \left( \ket{000} + \ket{111} \right) \nonumber\\
+     & = \frac{1}{2} \bra{000} \left( \ket{0}\bra{0} \otimes I \otimes I \right) \ket{000} \nonumber\\
+     & = \frac{1}{2}.
+\end{align}
+Similarly, the probability of the measurement outcome being -1 is
+\begin{equation}
+    \text{Prob}\{-1\} = \text{Tr}\{\Pi^Z_-\ket{GHZ}\bra{GHZ}\} = \frac{1}{2}.
+\end{equation}
+If the measurement outcome is +1, the post-measurement state is
+\begin{align}
+    \frac{1}{\sqrt{\text{Prob}\{+1\}}} \Pi^Z_+ \ket{GHZ} & = \sqrt{2} \left( \ket{0}\bra{0} \otimes I \otimes I \right) \frac{1}{\sqrt{2}} \left( \ket{000} + \ket{111} \right) \nonumber\\
+    & = \left( \ket{0}\bra{0} \otimes I \otimes I \right) \ket{000} \nonumber\\
+    & = \ket{000}.
+\end{align}
+We see that the post-measurement state is correlated, all qubits are in the same state, but it is no longer entangled.
+Measurement of a single qubit in the Pauli $Z$ basis is enough to destroy the entanglement shared between all three qubits.
+This is also the case if the measurement outcome is -1,
+\begin{equation}
+    \frac{1}{\sqrt{\text{Prob}\{-1\}}} \Pi^Z_- \ket{GHZ} = \ket{111}.
+\end{equation}
 
-Now let's move on to a different example known as a "W state". Again, here are our eight possible basis states, and this time we'll choose a different superposition. We will consider these three states, and we will take an equal superposition of these states. Now the normalization factor is one over square root of three, because we have three states- three basis states in the superposition rather than two that we had in the previous example of the GHZ state, and as I said, this is known as the W state. So how do measurements affect the W state? Again, let's measure in the Z basis and perform this measurement on qubit one. What can happen is that with probability two-thirds we get the outcome of plus one, because we have these two contributions from these two terms in the superposition, therefore the probability is equal to two-thirds. When that happens, our first qubit is projected onto the state zero, but our remaining two qubits, qubits two and three, remain in an entangled state, and this time they share the maximally entangled bell pair denoted by phi plus. And the other outcome is the minus outcome of the Z measurement on qubit one which can happen with probability one third, and if that happens then we just end up in a separable state (one zero zero). So we see that unlike in the case of a GHZ state, here we don't necessarily always destroy the entanglement that was initially present in the system. And in this sense, we can say that W state and GHZ state are not equivalent. Now, we have been talking about the various correlations that three parties can share. We said that GHZ state, if we measure in the Z basis one of the qubits, all of the entanglement is destroyed. Whereas if we take the W state and we measure, we don't necessarily destroy all of the entanglement. So somehow, this tells you that the correlations that are shared in these two states are not quite the same. But there must be some constraints on how correlated the various parties of the state can be, how correlated one and two are with three, and so on.
+The next example of an entangled state of three qubits is called the \textit{\textbf{W state}}\index{W state}.
+In the computational basis, it is a superposition of three terms,
+\begin{equation}
+    \ket{W} = \frac{1}{\sqrt{3}} \left( \ket{001} + \ket{010} + \ket{100} \right).
+\end{equation}
+We can again measure the first qubit in the computational basis again.
+this time, the probabilities of the two possible outcomes are
+\begin{align}
+    \text{Prob}\{+1\} & = \text{Tr} \{ \Pi^Z_+ \ket{W}\bra{W} \} = \frac{2}{3}, \\
+    \text{Prob}\{-1\} & = \text{Tr} \{ \Pi^Z_- \ket{W}\bra{W} \} = \frac{1}{3}.
+\end{align}
+This time the probabilities of the two outcomes are different from each other, unlike in the case of the GHZ state.
+What is more interesting though are the post-measurement states corresponding to the outcomes of the measurement,
+\begin{align}
+    \text{outcome +1:} & \quad \ket{0}\ket{\Psi^+}, \label{eq:14-2_W_post_meas_0} \\
+    \text{outcome +1:} & \quad \ket{1}\ket{00},
+\end{align}
+We see that when the outcome of the measurement is +1, the state of the remaining two qubits is a maximally entangled Bell pair.
+This is in stark contrast to the GHZ state, where a single measurement destroys all entanglement regardless of the outcome.
+This points at a fundamental difference between the GHZ state and the W state in terms of their entanglement properties.
 
-So here we have our three qubits- qubits one, two, and three, and they are in some correlated state, maybe in some entangled state. How strongly can various qubits be correlated? Well, there is a constraint known as monogamy of entanglement, which we have seen in a previous chapter on the E91 protocol- the entanglement with QKD protocol, and we see that there is a trade-off. If two pairs of the qubits are strongly correlated, then their correlation with the third party is limited. In particular, if qubits one and two are in a maximally entangled state, then we know that the total state must be of this form. We have the maximally entangled state of qubits one and two, tensor product with some arbitrary single qubit state. So we say that qubit three is completely uncorrelated with the remainder of the state of winning qubits one and two. Similarly, if we have maximal entanglement between one and three, then qubit two must be completely uncorrelated with the pair one and three.
+This difference goes even deeper.
+We can consider what happens to the entanglement if one of the qubits is lost.
+Losing a single qubit of a GHZ state will completely destroy the entanglement.
+On the other hand, a loss of a single qubit from a W state leaves the remaining two qubits entangled, albeit not maximally.
+The W state is more robust to qubit loss than the GHZ state.
 
-This principle of monogamy is one of the most fundamental properties of quantum mechanics. It's unlike anything that exists in classical physics, and is one of the cornerstones and building blocks which we use in quantum technologies, and particularly in quantum communication. So, we have seen examples of three qubit states. Can we extend the GHZ state and W state to many qubits, let's say "n" qubits? And of course, we can do that quite easily. The GHZ state for n parties or n qubits has the following form. Again, here we pick only two terms- one corresponding to n zero zero zero zero... and the other one we have n one so- one one one one one one one... and we take the equal superposition of them. Notice that the normalization factor here has not changed, even though we have n qubits. That's because we only have two terms in the superposition. On the other hand, the W state for n parties, we have the following superposition of n terms. Therefore, the normalization factor must change to one over square root of n, and what it is, is really we have n minus one zeros and then one one... and we place this one at all the possible places, and we take the superposition of all the possible cases where we have n minus one zeros and a single one. So we have n qubits and n terms.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson14/14-2_monogamy.pdf}
+    \caption[Monogamy of entanglement.]{Monogamy of entanglement restricts how three qubits can be correlated.}
+    \label{fig:14-2_monogamy}
+\end{figure}
+
+Before moving onto $n$-partite entangled states, we will pause and think how the entanglement is shared between the three qubits.
+There is a fundamental tradeoff to how strongly each pair of the qubits can be correlated, known as \textit{\textbf{monogamy of entanglement}}\index{monogamy of entnaglement}.
+It states that the strength of entanglement between a pair of qubits places an upper bound on the amount of entanglement that the third qubit can share with either of the first two qubits.
+Left panel of Figure~\ref{fig:14-2_monogamy} shows a general entnagled state of three qubits, where all three qubits are entangled with each other.
+Examples corresponding to this situation are the GHZ and W states.
+If a pair of qubits is in a maximally entangled state, for example \ket{\Phi+}, then monogamy of entanglement tell us that the third qubit must in a separable state with the first pair.
+Total state of the three qubits can be written as
+\begin{equation}
+    \ket{\Phi^+}\ket{\psi},
+\end{equation}
+where \ket{\psi} is a pure state of the third qubit.
+This is portrayed by the middle panel in Fig.~\ref{fig:14-2_monogamy}.
+Similarly, if qubits 2 and 3 are maximally entangled like in the right panel of Fig.~\ref{fig:14-2_monogamy}, then the first qubit must be completely disentangled with either of them.
+An example of this situation is given by hte post-measurement state of Eq.~(\ref{eq:14-2_W_post_meas_0}), where we measured the first qubit of a W state in Pauli $Z$ basis and obtained the +1 outcome.
+
+Monogamy of entanglement is one of the most fundamental properties of quantum mechanics. It is unlike anything that exists in classical physics, and is one of the cornerstones and building blocks which we use in quantum technologies, and particularly in quantum communication.
+Monogamy of entanglement is instrumental in guaranteeing security in the E91 QKD protocol.
+The stronger Alice's and Bob's qubits are entangled the less information an eavesdroper can learn about the secret key.
+If the shared pair of qubits between and Alice and Bob is maximally entangled, the eavesdropper can learn nothing.
+
+
+So, we have seen examples of three qubit states. Can we extend the GHZ state and W state to many qubits, let's say "n" qubits? And of course, we can do that quite easily. The GHZ state for n parties or n qubits has the following form. Again, here we pick only two terms- one corresponding to n zero zero zero zero... and the other one we have n one so- one one one one one one one... and we take the equal superposition of them. Notice that the normalization factor here has not changed, even though we have n qubits. That's because we only have two terms in the superposition. On the other hand, the W state for n parties, we have the following superposition of n terms. Therefore, the normalization factor must change to one over square root of n, and what it is, is really we have n minus one zeros and then one one... and we place this one at all the possible places, and we take the superposition of all the possible cases where we have n minus one zeros and a single one. So we have n qubits and n terms.
 
 But this is not the only example of a useful entangled state of many qubits. There are many other examples, but two are extremely important both in quantum computation and quantum communication. Let's say that we have a network of qubits and we prepare every qubit in the state plus. So this is an equal superposition of one and zero. And then we apply an entangling gate known as a "control-Z gate". In the matrix form, it looks something like this. So it's very similar to a CNOT gate- a control-NOT gate, but this time instead of applying the Pauli X in a controlled way, we are applying the Pauli Z in the controlled way. So if the control qubit is in the state zero, we don't do anything. If it's in the state one, we apply the Pauli Z matrix. And this gate is entangling- and entangles all of the qubits together into a multipartite entangled state. And this is the preparation procedure for a state called a "graph state", normally denoted by "ket G". Now if the state has a regular lattice structure, we can still refer to it as a graph state, but commonly it is referred to as a cluster state and denoted by "ket C". And by regular structure I mean the following topology like this.
 
@@ -86,12 +310,29 @@ And in this way, Bob can perform whatever she is instructing him to do and then 
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
+\exer{Let's look at measuring the W state in more detail.
+Consider the projectors $\Pi_{\pm 1}^Z$ in Tab.~\ref{tab:3-2_projectors}.  To extend the measurement operators to measuring a subset of qubits, we need to tensor the projection operators with the identity matrix. 
+\subexer{First, consider measuring a single qubit in the W state.
+Calculate the probabilities of finding the $+1$ and $-1$ results using
+$$\text{Pr} \{\pm 1\} = \langle W | \Pi_{\pm 1}^Z \otimes I \otimes I | W \rangle$$.}
+\subexer{Calculate the probabilities of finding the $+1$ and $-1$ results when measuring in the X basis.
+}
+\subexer{Calculate the probabilities of finding the $+1$ and $-1$ results when measuring in the Y basis.
+}
+}
+
+\exer{Now consider measuring two of the three qubits in the W state. You will need for projectors instead of just two.
+
+\subexer{Calculate the probabilities of finding the $(+1,+1)$, $(+1,-1)$, $(-1,+1)$ and $(-1,-1)$ results when measuring in the Z basis.
+}
+
+\subexer{Calculate the probabilities of finding the $(+1,+1)$, $(+1,-1)$, $(-1,+1)$ and $(-1,-1)$ results when measuring in the X basis.
+}
+
+\subexer{Calculate the probabilities of finding the $(+1,+1)$, $(+1,-1)$, $(-1,+1)$ and $(-1,-1)$ results when measuring in the Y basis.
+}
+
+}
 
 
 \end{exercises}
