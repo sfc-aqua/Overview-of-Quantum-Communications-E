@@ -171,7 +171,7 @@ often this superposition is written in a compact form as
 \begin{equation}
     \ket{\psi} = \sum_{i=0}^7 c_i \ket{i},
 \end{equation}
-where the notation means that the ``$i$'' in \ket{i} is the binary number corresponding to in index in the coefficients $c_i$.
+where the notation means that the ``$i$'' in \ket{i} is the binary number corresponding to the index in the coefficients $c_i$.
 Depending on the values of the coefficients, we obtain different states, some of which will be entangled.
 
 Let's look at a few examples of important entangled multipartite states.
@@ -268,12 +268,65 @@ Monogamy of entanglement is instrumental in guaranteeing security in the E91 QKD
 The stronger Alice's and Bob's qubits are entangled the less information an eavesdroper can learn about the secret key.
 If the shared pair of qubits between and Alice and Bob is maximally entangled, the eavesdropper can learn nothing.
 
+We can extend our discussion of GHZ and W states to $N$ qubits.
+The $N$-qubit GHZ state has the following form,
+\begin{equation}
+    \ket{GHZ} = \frac{1}{\sqrt{2}} ( \underbrace{\ket{00\ldots0}}_{N\text{ zeroes}} + \underbrace{\ket{11\ldots1}}_{N \text{ ones}} ).
+\end{equation}
+Notice that the normalization factor has not changed, even though this is now a GHZ state of $N$ qubits.
+The W state can be extended to arbitrary number of qubits as well,
+\begin{equation}
+    \ket{W} = \frac{1}{\sqrt{N}} ( \underbrace{\ket{00\ldots01} + \ket{00\ldots10} + \ldots \ket{10\ldots00}}_{N \text{ terms}} )
+\end{equation}
+Since the $N$-qubit W state is an equal superposition of $N$ terms, he normalization factor is $1 / \sqrt{N}$.
 
-So, we have seen examples of three qubit states. Can we extend the GHZ state and W state to many qubits, let's say "n" qubits? And of course, we can do that quite easily. The GHZ state for n parties or n qubits has the following form. Again, here we pick only two terms- one corresponding to n zero zero zero zero... and the other one we have n one so- one one one one one one one... and we take the equal superposition of them. Notice that the normalization factor here has not changed, even though we have n qubits. That's because we only have two terms in the superposition. On the other hand, the W state for n parties, we have the following superposition of n terms. Therefore, the normalization factor must change to one over square root of n, and what it is, is really we have n minus one zeros and then one one... and we place this one at all the possible places, and we take the superposition of all the possible cases where we have n minus one zeros and a single one. So we have n qubits and n terms.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{lesson14/14-2_graph_state.pdf}
+    \caption[Graph state.]{Graph state of four qubits and its underlying graph.}
+    \label{fig:14-2_graph_state}
+\end{figure}
 
-But this is not the only example of a useful entangled state of many qubits. There are many other examples, but two are extremely important both in quantum computation and quantum communication. Let's say that we have a network of qubits and we prepare every qubit in the state plus. So this is an equal superposition of one and zero. And then we apply an entangling gate known as a "control-Z gate". In the matrix form, it looks something like this. So it's very similar to a CNOT gate- a control-NOT gate, but this time instead of applying the Pauli X in a controlled way, we are applying the Pauli Z in the controlled way. So if the control qubit is in the state zero, we don't do anything. If it's in the state one, we apply the Pauli Z matrix. And this gate is entangling- and entangles all of the qubits together into a multipartite entangled state. And this is the preparation procedure for a state called a "graph state", normally denoted by "ket G". Now if the state has a regular lattice structure, we can still refer to it as a graph state, but commonly it is referred to as a cluster state and denoted by "ket C". And by regular structure I mean the following topology like this.
+GHZ and W states are not the only important examples of multipartite entangled states.
+A prominent example of $N$-partite example is the \textbf{\textit{graph state}}\index{graph state}.
+This state can be represented visually as a set of vertices $V$ which are connected by a set of vertices $E$.
+Such an object is known as a \textit{\textbf{graph}}\index{graph}\footnote{Not to be confused with a graph of a function.}
+Figure~\ref{fig:14-2_graph_state} shows an example of a graph with vertex set $V=\{V_1, V_2, V_3, V_4\}$, connected by edges from the edge set $E=\{ E_{12}, E_{23}. E_{13}, E_{34} \}$.
+The corresponding graph state is obtained by placing a qubit at each vertex of the graph, initialized in $\ket{+} = (\ket{0} + \ket{1}) / \sqrt{2}$, and applying the \textbf{\textit{control-phase gate}}\index{control-phase gate} $CZ_{ij}$ between qubits whose vertices are connected by and edge $E_{ij}$.
+The control-pahse gate $CZ$ is a two-qubit gate defined as
+\begin{equation}
+    CZ_{ij} = \ket{0}\bra{0}_i \otimes I_j + \ket{1}\bra{1}_i \otimes Z_j = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}.
+\end{equation}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson14/14-2_cluster_state.pdf}
+    \caption[Cluster state.]{Cluster states in different spatial dimensions.}
+    \label{fig:14-2_cluster_state}
+\end{figure}
+The control-phase gate does nothing to the target qubit $j$ if the control qubit $i$ is in the \ket{0} state.
+If the control $i$ is in the \ket{1}, the control-phase gate applies Pauli $Z$ to the target qubit $j$.
+Applying this rule we can find the state vector for the graph state \ket{G} in Fig.~\ref{fig:14-2_graph_state},
+\begin{align}
+    \ket{G} & = CZ_{12} CZ_{23} CZ_{13} CZ_{34} |++++\rangle_{1234} \nonumber\\
+    & = \frac{1}{4} ( |0000\rangle + |0001\rangle + |0010\rangle - |0011\rangle \nonumber\\
+    & \; \; \; \; + |0100\rangle + |0101\rangle - |0110\rangle + |0111\rangle \\
+    & \; \; \; \; + |1000\rangle + |1001\rangle - |1010\rangle + |1011\rangle \\
+    & \; \; \; \; - |1100\rangle - |1101\rangle - |1110\rangle + |1111\rangle \\
+    & = \frac{1}{2} ( |0+0+\rangle + |0-1-\rangle + |1-0+\rangle - |1+1-\rangle ).
+\end{align}
+If the underlying graph has a regular structure the resulting graph state is usually called a \textbf{\textit{cluster state}}\index{cluster states}.
 
-Now graph states and cluster states are very important in quantum computation. They form the resource states for a particular computational model known as "measurement based quantum computation", but they are also very useful in content communication where multiple parties are trying to communicate, and they are crucial in quantum error correction as well which you will see in a different module.
+Graph states and cluster states play an important role in quantum computation and quantum communication.
+Cluster states are a resource state for a particular computational model known as ``measurement-based quantum computation''.
+Graph states are useful in quantum error-correction as well as in many protocols in quantum communication.
+
+
+
 
 
 \section{Clock synchronization}
