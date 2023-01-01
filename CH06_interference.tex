@@ -27,7 +27,7 @@ E = E_0 sin(\omega t - \alpha)
 \begin{equation}
 E=E_0 \sin [\omega t-(k x+\phi)].
 \end{equation}
-We denote the wave with $E$, and it's some constant $E_0$ ("E naught") times the sine of the following argument, where $E_0$ designates the \emph{amplitude} of oscillations, which means how how much the wave is displaced from its rest state. The symbol $\omega$ (small omega) is the \emph{angular frequency}, which determines how quickly the wave is propagating in time. Time is denoted by $t$. $k$ is the \emph{wave number}. It's related to how fast the wave is propagating as well, and in three dimensions it also gives you the direction of propagation. However here, we're only considering propagation in one dimension, therefore it's just a scalar (a number). Finally, $\phi$ (small phi) is called the initial phase.
+We denote the wave with $E$, and it's some constant $E_0$ ("E naught") times the sine of the following argument, where $E_0$ designates the \emph{amplitude} of oscillations, which means how much the wave is displaced from its rest state. The symbol $\omega$ (small omega) is the \emph{angular frequency}, which determines how quickly the wave is propagating in time. Time is denoted by $t$. $k$ is the \emph{wave number}. It's related to how fast the wave is propagating as well, and in three dimensions, it also gives you the direction of propagation. However, we are only considering propagation in one dimension, therefore it's just a scalar (a number). Finally, $\phi$ (small phi) is called the initial phase.
 
 $\omega$, the angular frequency, is related to the period of oscillations as follows,
 \begin{equation}
@@ -68,7 +68,7 @@ E &=E_{01}\left(\sin \omega t \cos \alpha_{1}+\cos \omega t \sin \alpha_{1}\righ
 \end{aligned}
 \end{equation}
 %, so let's see how we can do that. We just add the two waves together, and we begin by expanding these sines. The first wave can be written as this (see pointer)- we have the initial amplitude of the first wave, E zero one, and then we have sine omega t times cos alpha one, plus cos omega t times sine alpha one, and similarly for the second wave. 
-We add them together then group the time dependent terms. 
+We add them together, then group the time dependent terms. 
 %So we see that these two terms (blue box), they both vary in time as sine omega t, whereas these two terms (red box) vary as cos omega t. So let's group them together and 
 We get the following expression: 
 %we have some spatial variation here, times sine omega t, and another spatial variation here, times cos omega t. And what we can do now is 
@@ -109,7 +109,7 @@ We can find our overall value for $\alpha$ using the expression
 
 We started with two waves with the same frequency, which means that the resultant disturbance also travels at the same frequency, which makes sense, but this new wave has different amplitude and also different phase. Before we look at an example, let's look at the amplitude of the superposition. The amplitude squared is equal to the sum of the squares of the component amplitudes, which makes sense. But then, there is the extra term on the end of Eq.~\ref{eq:superposition-simplified}, and this extra term is very important. It's called the \emph{interference term}. You can see that it actually oscillates as a result of the difference $\delta = \alpha_2 - \alpha_1$. This difference is called the "phase difference". The entire expression for $E_0^2$ is maximized when $\delta$ is either zero or multiples of $2\pi$, which we call \emph{constructive interference} because it's adding to the new resultant amplitude. On the other hand, if the phase difference is an odd integer multiple of $\pi$, e.g. $\pm\pi$ or $\pm 3\pi$, then what we get is \emph{destructive interference}.
 
-So let's look at the example in Fig.~\ref{fig:decaying-superposition}: we have two waves, we set their amplitudes to be equal to one for convenience, their $\omega = 0.1$ values are the same, and the only thing that is different between them is their wave numbers $k$,
+Let's look at the example in Fig.~\ref{fig:decaying-superposition}. For convenience, we set the amplitudes of the two waves $E_1 = E_2 = 1$ and $\omega = 0.1$. The only thing that is different between them is their wave numbers $k$,
 \begin{equation}
 \begin{aligned}
 &E_{1}=\sin (0.1 t-x) \\
@@ -117,7 +117,7 @@ So let's look at the example in Fig.~\ref{fig:decaying-superposition}: we have t
 &E=E_{1}+E_{2}.
 \end{aligned}
 \end{equation}
-For the first wave $k=1$, for the second wave $k=0.8$. We add the two together and we get the following: with the blue and orange waves, we see the waves traveling independently, whereas the green wave is the superposition of these two waves, and you can see the interference at play. At the beginning, where $x$ is small, the waves travel in such a way that the crest of one wave seems to be on top of the crest of the other wave. Therefore, we get constructive interference. The waves are reinforcing each other, adding together producing something larger. Whereas, as the wave propagates into the region of larger $x$, they are propagating at different speed. They go out of phase, so the crest of one wave is meeting the trough of the other wave, so they are destructively interfering. They're cancelling each other out, and you can see that in the green wave, where the amplitude becomes very, very low, nearly zero. And that's how interference works.
+For the first wave $k=1$, for the second wave $k=0.8$. We add the two together and we get the following: with the blue and orange waves, we see the waves traveling independently, whereas the green wave is the superposition of these two waves, and you can see the interference at play. At the beginning, where $x$ is small, the waves travel in such a way that the crest of one wave seems to be on top of the crest of the other wave. Therefore, we get constructive interference. The waves are reinforcing each other, adding together producing something larger. Whereas, as the wave propagates into the region of larger $x$, they are propagating at different speed. They go out of phase, so the crest of one wave is meeting the trough of the other wave, so they are destructively interfering. They're cancelling each other out, and we can see that in the green wave, where the amplitude becomes very low, nearly zero. And that's how interference works.
 
 \if0
 \begin{equation}
@@ -191,8 +191,8 @@ We have defined a new quantity called the \textit{\textbf{phase velocity}} $v_p$
 We can check that the expression for phase velocity in Eq.~(\ref{eq:6-2_phase_velocity}) makes sense in the following way.
 Consider two points on the wave with same phase as shown in Fig.~\ref{fig:6-2_phase_velocity}.
 These points are separated by a distance of exactly one wavelength $\lambda$.
-The time needed for the left black point to traverse this distance is one period $T$.
-Therefore the speed at which the wave moves is given by the ratio $\lambda / T$.
+The time needed for the left black point to traverse this distance is one period $T$;
+therefore, the speed at which the wave moves is given by the ratio $\lambda / T$.
 The wavelength of the wave can be expressed in terms of the wave number, $\lambda = 2\pi / k$.
 Similarly, the period can be written in terms of the frequency, $T = 2\pi / \omega$.
 The speed of propagation can then be written as
@@ -208,7 +208,7 @@ which is the phase velocity of Eq.~(\ref{eq:6-2_phase_velocity}).
 % And then, as you can see, I marked one black point here (follow pointer), this is a point of constant phase and it's propagating through space like that.
 
 How is the speed of the wave affected when the wave itself is a superposition of multiple single-frequency waves?
-Let's take two waves, and this time we allow their angular frequencies to be different, but for simplicity assume the two waves to have same amplitude $E_0$,
+Let's take two waves. This time, we allow their angular frequencies to be different, but for simplicity assume the two waves to have same amplitude $E_0$,
 \begin{align}
     E_1 & = E_0 \sin \left(\omega_1 t-k_1 x\right) \\
     E_2 & = E_0 \sin \left(\omega_2 t-k_2 x\right).
@@ -232,7 +232,7 @@ Let's compute an expression for the superposition,
 We see that the superposition can be split into two terms.
 The first captures the fast oscillations of the superposition at frequency $\omega_1+\omega_2$.
 These fast oscillations are pictured in blue in Fig.~\ref{fig:6-2_superposition}.
-Similarly to the case of a single-frequency wave we can ask the question at what speed a point of constant phase travels to obtain the \textit{\textbf{phase velocity}} for the superposition.
+Similar to the case of a single-frequency wave, we can ask the question at what speed a point of constant phase travels to obtain the \textit{\textbf{phase velocity}} for the superposition.
 This information is contained in the fast-oscillation term of Eq.~(\ref{eq:6-2_phase_velocity}),
 \begin{equation}
     v_p = \frac{\omega_1 + \omega_2}{k_1 + k_2}.
@@ -244,8 +244,8 @@ This term also gives rise to \textit{\textbf{group velocity}},
     v_g = \frac{\omega_1 - \omega_2}{k_1 - k_2}.
 \end{equation}
 It is the group velocity that tells us how fast the entire group travels.
-The phase and group velocities of a superposition are in general different.
-We can have scenarios where one is larger than the other but also when they are equal,
+The phase and group velocities of a superposition are, in general, different.
+We can have scenarios where one is larger than the other but also where they are equal,
 \begin{equation}
     v_p > v_g, \quad v_p = v_g, \quad v_p < v_g.
 \end{equation}
@@ -335,7 +335,7 @@ It is these pulses that can be used to carry information at the group velocity o
    
 \end{figure}
 
-I'm sure you have already seen the the scenario of a double slit experiment with laser light in another of your physics classes, but let's review it again.
+I'm sure you have already seen the scenario of a double slit experiment with laser light in another of your physics classes, but let's review it again.
 
 In this experiment we have a source of coherent light, canonically a laser. In Fig.~\ref{fig:two-slit}, the laser light is incident on a screen, where there are only two small slits where the light can go through, and then it propagates towards another screen where we detect a pattern. The pattern that we see looks something like this: we have fringes of bright light (pink in the figure), and then fringes where there is no light (blank, or white, in the figure). Why is that?  The pink lines represent the peaks of the electromagnetic waves. They are straight before coming to the screen, perpendicular to the direction of travel. After passing through the slits, they radiate out in a circular pattern.  Following the light blue lines, you can see that where the peaks from the two slits meet, the lines cross.  Those blue lines are where we get constructive interference, giving us the strong pink illumination on the screen. Halfway in between those blue lines, you can see that the wave from one slit is at its peak when the other is at its trough.  This will give us destructive interference.
 
@@ -350,7 +350,7 @@ For example, consider the point right in the middle of the screen, as shown in F
     \label{fig:two-slit-constructive}    
 \end{figure}
 
-On the other hand, consider the paths shown in Fig.~\ref{fig:two-slit-destructive}. Along these paths, peaks meet the troughs, where the path differences are odd integer multiples of $\pi$. So for this first dark (blank white) region on the screen, we have the the phase difference being $\pi$, for the second dark region on the screen we have the phase difference being $3\pi$, and so on.
+On the other hand, consider the paths shown in Fig.~\ref{fig:two-slit-destructive}. Along these paths, peaks meet the troughs, where the path differences are odd integer multiples of $\pi$. So for this first dark (blank white) region on the screen, we have the phase difference being $\pi$; for the second dark region on the screen, we have the phase difference being $3\pi$, and so on.
 
 % destructive inteference
 \begin{figure}[H]
@@ -360,7 +360,7 @@ On the other hand, consider the paths shown in Fig.~\ref{fig:two-slit-destructiv
     \label{fig:two-slit-destructive}    
 \end{figure}
 
-Now, let's consider the scenario where we attenuate the laser light to such low levels that it's only firing single photons at a time, and furthermore, the level of attenuation is so high that we can be pretty sure that there's only one photon at a time between this screen where we place the double slits, and the screen where we are recording the pattern. So, what happens? Well, we know that the photons must go through one of these slits. So, let's try covering one of them. What do we expect? If we cover the bottom one, then definitely the photons have to go through the top slit in order to hit the screen, so we expect most of the photons hitting the screen will appear in the region that's the closest to the top slit, as in Fig.~\ref{fig:two-slit-lower-blocked}. On the other hand, if we block the top slit, as in Fig.~\ref{fig:two-slit-upper-blocked}, and the photons are allowed to pass through this bottom slit, then we expect most of the photons to be recorded on the lower portion of the screen. What happens if we open both of the slits, as in Fig.~\ref{fig:two-slit-single-photon-wrong}? Well. they can go through the top, and they can go through the bottom, so we expect something like this: we expect that the two previous distributions are just added together. Is this really what we see? Well, let's find out. 
+Now, let's consider the scenario where we attenuate the laser light to such low levels that it's only firing single photons at a time, and furthermore, the level of attenuation is so high that we can be pretty sure that there's only one photon at a time between this screen where we place the double slits, and the screen where we are recording the pattern. So, what happens? Well, we know that the photons must go through one of these slits. So, let's try covering one of them. What do we expect? If we cover the bottom one, then definitely the photons have to go through the top slit in order to hit the screen, so we expect most of the photons hitting the screen will appear in the region that's the closest to the top slit, as in Fig.~\ref{fig:two-slit-lower-blocked}. On the other hand, if we block the top slit, as in Fig.~\ref{fig:two-slit-upper-blocked}, and the photons are allowed to pass through this bottom slit, then we expect most of the photons to be recorded on the lower portion of the screen. What happens if we open both of the slits, as in Fig.~\ref{fig:two-slit-single-photon-wrong}? They can go through the top, and they can go through the bottom, so we expect something like this: we expect that the two previous distributions are just added together. Is this really what we see? Well, let's find out. 
 
 % attenuated laser
 \begin{figure}[H]
@@ -401,7 +401,7 @@ Now, let's consider the scenario where we attenuate the laser light to such low 
     
 \end{figure}
 
-In fact, what we see is the following: we start firing photons at the screen. Originally, there's not much pattern that we can discern, as on the left side of Fig.~\ref{fig:two-slit-single-photon-pattern}, but as the time progresses, as more and more photons hit the screen, we can clearly see these fringes being formed, as on the right side of the figure. These fringes are the same fringes as we could see before with strong laser light as shown here. Let's pause and appreciate really what's going on. We saw these fringes on the right with a strong laser light, and it wasn't very surprising, however here, somehow each individual photon knows that they still need to follow the same pattern, still they are drawn towards these bright fringes on the screen, and they avoid these dark fringes in between them. This is because of interference of different possible paths. Even though we only have a single photon between the laser and the screen, still it obeys the same rules of interference as if we had a strong laser pulse.
+In fact, we see the following: we start firing photons at the screen. Originally, there's not much pattern that we can discern, as on the left side of Fig.~\ref{fig:two-slit-single-photon-pattern}, but as time progresses, more and more photons hit the screen and we can clearly see these fringes being formed, as on the right side of the figure. These fringes are the same fringes we could see before with strong laser light. Let's pause and appreciate really what's going on. We saw these fringes on the right with a strong laser light, and it wasn't very surprising. Here, somehow each individual photon knows that they still need to follow the same pattern. Still they are drawn toward the bright fringes on the screen, and they avoid the dark fringes in between. This is because of interference of different possible paths. Even though we only have a single photon between the laser and the screen, still it obeys the same rules of interference as if we had a strong laser pulse.
 
 
 % block neither reality
@@ -437,7 +437,7 @@ Consider that we have a Hadamard gate, and we apply it on the state of a qubit. 
 \end{aligned}
 \end{equation}
 
-If we start in the state $\ket{0}$ and apply the Hadamard gate to it, what we get we have seen that we create an equal superposition of state $\ket{0}$ and $\ket{1}$,
+If we start in the state $\ket{0}$ and apply the Hadamard gate to it, we have seen that we create an equal superposition of state $\ket{0}$ and $\ket{1}$,
 \begin{equation}
 \begin{aligned}
 |0\rangle & \longrightarrow H|0\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)
@@ -450,7 +450,7 @@ H\left[\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\right] &=\frac{1}{2}(|0\rangle+|1
 &=|0\rangle
 \end{aligned}
 \end{equation}
-This can be seen by breaking the equation into its separate terms. From the first term, applying the Hadamard to the state $\ket{0}$ creates another superposition $\ket{0}+\ket{1}$. Applying Hadamard gate to the second term, the state $\ket{1}$ creates a superposition $\ket{0}-\ket{1}$. So after applications of two Hadamard gates, this is our state: the two $\ket{0}$ terms have the same sign and add up, or constructively interfere. The two $\ket{1}$ terms have opposite sign and cancel, or destructively interfere.
+This can be seen by breaking the equation into its separate terms. From the first term, applying the Hadamard to the state $\ket{0}$ creates another superposition $\ket{0}+\ket{1}$. Applying Hadamard gate to the second term, the state $\ket{1}$ creates a superposition $\ket{0}-\ket{1}$. So after applications of two Hadamard gates, this is our state: the two $\ket{0}$ terms have the same sign and add up, or constructively interfere. The two $\ket{1}$ terms have opposite signs and cancel, or destructively interfere.
 %You can see that these terms (0+1, 0-1), they both have a positive probability amplitude, plus a half, plus a half. Whereas the other two terms have opposite amplitudes, they've got plus a half, and negative a half. So the effect of that is that the probability amplitudes for ones cancel, whereas the probability amplitudes for the zeros, they constructively interfere, and we end up in a state zero which was our initial state, and this works also for state one if we use that as an initial state, but this time the cancellation of probability amplitudes happens for the zero terms, because they have plus one half minus one half, and the one terms, they constructively interfere because both of them have plus a half, plus a half probability amplitudes. So 
 This may not surprise you too much. After all, applying Hadamard twice actually applies the identity, because the Hadamard gate is its own inverse.
 
@@ -493,7 +493,7 @@ B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c
 \end{array}\right)=-|0\rangle=|0\rangle
 \end{aligned}
 \end{equation}
-We apply the Hadamard gate to the vector (zero one), and after simple multiplication we get the superposition $\ket{0}-\ket{1}$. Then, we apply BS2, and what we get is in fact another translation. The probability amplitudes corresponding to state $\ket{0}$, they constructively interfere, whereas the probability amplitudes contributing towards state $\ket{1}$, they destructively interfere, and therefore the probability amplitude for state $\ket{1}$ becomes zero. The minus term that appears on the front is not important, it has no consequence because it's just a global phase, so we can just ignore it.
+We apply the Hadamard gate to the vector (zero one), and after simple multiplication we get the superposition $\ket{0}-\ket{1}$. Then, we apply BS2, and what we get is in fact another translation. The probability amplitudes corresponding to state $\ket{0}$, they constructively interfere, whereas the probability amplitudes contributing towards state $\ket{1}$, they destructively interfere. Therefore the probability amplitude for state $\ket{1}$ becomes zero. The minus term that appears on the front is not important, it has no consequence because it's just a global phase, so we can just ignore it.
  
 Now, let's consider an optical instrument called a \emph{Mach-Zehnder Interferometer}\index{Mach-Zehnder interferometer}\index{interferometer}, as shown in Fig.~\ref{fig:mach-zehnder}.
 % Mach-Zehnder set-up
@@ -505,7 +505,7 @@ Now, let's consider an optical instrument called a \emph{Mach-Zehnder Interferom
     \label{fig:mach-zehnder}
     
 \end{figure}
-It consists of two beam splitters which are BS1 and BS2, two mirrors, and two detectors.  The game that we like to play with this Mach-Zehnder Interferometer is this: we feed in some light into the first beam splitter, and then we ask the questions, "When will D0 click?  When will detector D1 click? What's the intensity measured detector D0? What's the intensity measured at detected D1?" and so on. In this particular case, we assume that we only have light coming in from the bottom, and the mirrors and beam splitters are set in such a way that the path lengths are the same. The light can be reflected from the first beam splitter, bounce off the mirror, and enter the second beam splitter, or it can be transmitted through the first beam splitter, bounce off the top mirror, hit the second beam splitter interfere with the beam coming from the bottom branch, and either it will be detected at D0 and D1. If the path lengths are the same, then for this scenario, it will always be detected in the top detector D0.
+It consists of two beam splitters which are BS1 and BS2, two mirrors, and two detectors.  The game that we like to play with this Mach-Zehnder Interferometer is this: we feed in some light into the first beam splitter, and then we ask the questions, "When will D0 click?  When will detector D1 click? What's the intensity measured at detector D0? What's the intensity measured at detected D1?" and so on. In this particular case, we assume that we only have light coming in from the bottom, and the mirrors and beam splitters are set in such a way that the path lengths are the same. The light can be reflected from the first beam splitter, bounce off the mirror, and enter the second beam splitter, or it can be transmitted through the first beam splitter, bounce off the top mirror, hit the second beam splitter interfere with the beam coming from the bottom branch, and it will be detected either at D0 and D1. If the path lengths are the same, then for this scenario, it will always be detected in the top detector D0.
 
 That's what happens with strong, classical light. Now, let's consider what happens when only a single photon enters our Mach-Zehnder Interferometer, as in Fig.~\ref{fig:mach-zehnder-single-photon}. Again, the single photon can be reflected at the first one or transmitted. It bounces off the mirrors, which don't really do anything except alter the path of the photon.  The two paths then recombine at the second beam splitter, and we ask the question: is the photon detected at D0 or is it detected at D1?
 % Single photon Mach-Zehnder case
@@ -517,7 +517,7 @@ That's what happens with strong, classical light. Now, let's consider what happe
     \label{fig:mach-zehnder-single-photon}    
 \end{figure}
 
-Also, the Mach-Zehnder Interferometer implements our qubit. How? Where is the qubit? Well, if the photon is found in the top half of the interferometer, we say that it's in the state $\ket{0}$, as in Fig.~\ref{fig:m-z-upper}. On the other hand if it's found in the bottom half, we say that it's in the state one, Fig.~\ref{fig:m-z-lower}. 
+In addition, the Mach-Zehnder Interferometer implements our qubit. How? Where is the qubit? Well, if the photon is found in the top half of the interferometer, we say that it's in the state $\ket{0}$, as in Fig.~\ref{fig:m-z-upper}. On the other hand if it's found in the bottom half, we say that it's in the state one, Fig.~\ref{fig:m-z-lower}. 
 %So here the different paths encode different computational states of the qubit.
 
 % 0 ket top

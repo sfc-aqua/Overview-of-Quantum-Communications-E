@@ -54,7 +54,7 @@ The resulting fidelity is
 \begin{equation}
     F \left( \rho, \ket{\Phi^+} \right) = \langle\Phi^+\ket{\Phi^+} \langle\Phi^+\ket{\Phi^+} = 1.
 \end{equation}
-On the other hand, the distributed state may some error, for example a Pauli $Z$ error on Bob's qubit.
+On the other hand, the distributed state may have some error, for example a Pauli $Z$ error on Bob's qubit.
 This transforms the entangled state into an orthogonal Bell pair, $I \otimes Z \ket{\Phi^+} = \ket{\Phi^-}$, resulting in fidelity
 \begin{equation}
     F \left( \rho, \ket{\Phi^+} \right) = \langle\Phi^+\ket{\Phi^-} \langle\Phi^-\ket{\Phi^+} = 0.
@@ -332,20 +332,67 @@ Graph states are useful in quantum error-correction as well as in many protocols
 \section{Clock synchronization}
 \label{sec:14-3_clock_sync}
 
-So we have seen in this module, the applications of how we can use entanglement. We saw the example of teleportation, and we saw the example of entanglement-based QKD. Here in the remaining two steps of this chapter, we will consider a few other examples of applying entanglement. And here in step three, we will look at clock synchronization. So before we say how we can synchronize clocks, let's ask the question- why we want to synchronize clocks. Well, establishing universal time standard is fundamentally important in many areas of modern life. The telecommunications networks require synchronized clocks, global positioning system (GPS), financial markets, transportation networks, these are all just a few examples of crucial importance to modern way of living. For example, if we look at the GPS, how it works, how it calculates the very accurate position of where we are, is it computes the distances to four satellites and then from that it can locate with very high degree of accuracy where we are placed on Earth. And in order to calculate this distance- is this R1, R2, R3, and R4, accurate timing is very important because even tiny errors in timing can result in huge positional errors. So how can we synchronize clocks? Well, there are really two classical methods and one quantum method which we will mention. The first one is due to Einstein. Imagine that we have two clocks- one is in possession of Alice and the other one is in possession of Bob, and they are trying to synchronize- Alice is trying to synchronize her clock with Bob's clock. So what she can do, is she can fire a pulse of light towards Bob. So the light is traveling to Bob and it reaches Bob. As soon as it reaches his clock, it bounces back and as it's doing that it sets Bob's clock ticking. Alice is measuring the time that it takes for the photon- for the light pulse to travel from her to Bob and bounce back. From that, she knows she can estimate the distance to Bob, she calculate the distance to Bob, and also she will know what's the round-trip time, and also what's the time in order for the photon to reach from Bob to Alice. Therefore, she knows how she can set her clock, and this will synchronize the two clocks together. However, in this scheme, Alice needs to know where Bob is located in order to correctly synchronize their clocks. A different scheme is for Alice to have some other smaller clock which she synchronizes locally with her clock, and then the small clock is very slowly, in fact adiabatically slowly, transferred to Bob where he receives the clock and then he can locally synchronize his clock with this received clock. And this scheme has to be done adiabatically slowly because of theory of relativity. Now the third scheme is realizing that qubits can act as tiny clocks. How does that work? Well qubits, they evolve in time. For example, if we prepare a qubit in an equal superposition of zero and one, we can make it change its state in time such that it goes around this x-y plane in the Bloch sphere with angular frequency "capital omega". So, it starts, we can initialize it in the state plus, and after some time capital T which is the period of precession, it completes one full circle. So it goes around an angle of two pi radians. So the period of precession is given by two pi divided by the angular frequency of precession. So, really in this sense, it's the same as a grandfather clock. If we can track how many times it goes around the x-y plane, we can track time knowing the angular frequency of precession. So the question now is- how can we synchronize two qubits? Let's say Alice has qubit one that is processing at a frequency capital omega, and Bob also has one that's also processing at the same frequency but this time there is some offset so it's lagging behind Alice's qubit clock. So this "delta" is quantifying the lag between- in terms of the angle between the point that's on the Bloch sphere in the x-y plane for Bob and for Alice, and what we are trying to do is we are trying to eliminate this offset delta in order for their clocks to be synchronized and show exactly the same time. So where is the main problem? Well, the problem is that Alice has her local time frame and Bob has his own local time frame, and somehow they need to communicate, like, say "my time frame is this, what is your time frame?", and they have to exchange messages in order to agree on a global time frame.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson14/14-3_clock_sync.pdf}
+    \caption[Clock synchronization.]{Clock synchronization using photons or transport of matter.}
+    \label{fig:14-3_clock_sync}
+\end{figure}
 
-In fact, what they can do is they can do that by sharing entangled pairs of qubits. They can use these qubits to establish a global time frame.
+So far, we have discussed two applications of quantum networks; quantum teleportation in Chapter ~\ref{sec:8_teleportation} and quantum key distribution in Chapters~\ref{sec:9_bb84} and \ref{sec:10_E91}.
+Before concluding this chapter, we will briefly discuss two other applications.
+In this Section, we look at \textbf{\textit{clock synchronization}}\index{clock synchronization}.
 
-So in that sense, entanglement is used as a global resource, and we have seen the similar scenario also in the entanglement-based QKD. There, we use entanglement and classical communication to correlate to- in order to establish a correlated secret key between Alice and Bob. That was the E91 protocol. In clock synchronization of qubits, we are using the global correlations that are present in a maximally entangled state in order to establish a global time frame and correlate these two qubit clocks together, therefore synchronizing them.
+Establishing universal time standard is fundamentally important in many areas of modern life.
+Telecommunication network requires accurate synchronization in order to deliver reliable operation of its multitude of components.
+Synchronization plays an important role in the Global Positioning System (GPS), ensuring accurate position tracking.
+Further examples of why clock synchronization is important include financial markets and transportation networks.
 
-And quantum networks are instrumental in distributing bipartite entanglement, therefore allowing the various nodes in the network to synchronize their clocks and establish a global time frame.
+There are two main traditional methods of clock synchronization.
+\textbf{\textit{Einstein's clock synchronization}}\index{Einstein's clock synchronization} relies on sending light signals between distant clocks.
+Figure~\ref{fig:14-3_clock_sync} shows clocks 1 and 2 that we wish to synchronize.
+Clock 1 fires a light pulse towards clock 2.
+Once this pulse reaches clock 2, it is reflected back via a mirror and clock 2 is set ticking.
+By measuring the time of emission as well as time of arrival of the light pulse, clock 1 can estimate when clock 2 started ticking.
+This way clock 1 can adjust its time in order to match that of clock 2.
+Another method is know as \textbf{\textit{Eddington's clock synchronization}}\index{Eddington clock synchronization}.
+Using this approach, we first locally synchronize clock 1 with another small clock.
+We then transport this smaller clock very slowly to the location of clock 2, which subsequently locally synchronizes itself to it.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson14/14-3_bloch.pdf}
+    \caption[Qubit clocks.]{Two qubits acting as clocks.}
+    \label{fig:14-3_bloch}
+\end{figure}
+
+Qubits can also act as small clocks.
+Imagine preparing its state in $|+\rangle = (|0\rangle + |1\rangle) / \sqrt{2}$.
+By applying a suitable operation we can make the state of the qubit precess in the $x$-$y$ plane of the Bloch sphere at a constant angular velocti $\Omega$ as shown in the left panel of Fig.~\ref{fig:14-3_bloch}.
+The state of the qubit at time $t$ will then be given by
+\begin{equation}
+    |\psi(t)\rangle = \frac{|0\rangle + e^{i\Omega t} |1\rangle}{\sqrt{2}}.
+\end{equation}
+The dynamics of this qubit has a period of $T = 2\pi / \Omega$, meaning that the state of the qubit will repeat itself after every period, $|\psi(t+T)\rangle = |\psi(t)\rangle$.
+
+We can now consider a second qubit, also precessing at the angular frequency $\Omega$, but initialized at a slightly different state, given by the offset $\delta$, as shown in the right panel of Fig.~\ref{fig:14-3_bloch}.
+Eliminating this phase lag is very similar to the traditional problem of clock synchronization.
+Schemes of Einstein and Eddington can be applied in this scenario as well.
+However, they both with a downside that they require a direct transmission of light or matter.
+Depending on the scenario, this may be impractical or outright impossible.
+Thankfully, we can employ distributed entanglement between the two parties in order to synchronize their qubit clocks.
+The precise steps of the protocol that achieves this are beyond the scope of this book but more details can be found in the Further Reading section.
+Clock synchronization is another example where entanglement is used as a global resource.
+The correlations of a Bell pair can be used to establish a single time frame shared between two distant locations.
+Clock synchronization is not just another application of quantum networks but often is a hidden assumption behind many of the applications of quantum technologies, some of which we have discussed already.
+
+
+
 
 
 
 \section{Distributed and blind quantum computation}
 \label{sec:14-4_distributed_bqc}
-
-Step Four: Distributed and Blind Quantum Computation
 
 This will be our final example of the application of entanglement and quantum network in this chapter.
 
@@ -365,7 +412,7 @@ And in this way, Bob can perform whatever she is instructing him to do and then 
 \begin{exercises}
 \exer{Let's look at measuring the W state in more detail.
 Consider the projectors $\Pi_{\pm 1}^Z$ in Tab.~\ref{tab:3-2_projectors}.  To extend the measurement operators to measuring a subset of qubits, we need to tensor the projection operators with the identity matrix. 
-\subexer{First, consider measuring a single qubit in the W state.
+\subexer{First, consider measuring a single qubit of the W state in the Z basis.
 Calculate the probabilities of finding the $+1$ and $-1$ results using
 $$\text{Pr} \{\pm 1\} = \langle W | \Pi_{\pm 1}^Z \otimes I \otimes I | W \rangle$$.}
 \subexer{Calculate the probabilities of finding the $+1$ and $-1$ results when measuring in the X basis.
