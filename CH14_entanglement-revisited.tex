@@ -394,17 +394,42 @@ Clock synchronization is not just another application of quantum networks but of
 \section{Distributed and blind quantum computation}
 \label{sec:14-4_distributed_bqc}
 
-This will be our final example of the application of entanglement and quantum network in this chapter.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.4\textwidth]{lesson14/14-4_distributed_qc.pdf}
+    \caption[Distributed quantum computation.]{Distributed quantum computation is another application of quantum networks.}
+    \label{fig:14-4_distributed_qc}
+\end{figure}
 
-So let's talk about distributed quantum computation first. There is no reason for Alice to perform all of her quantum computation locally. Let's say that her resources are limited. Maybe she doesn't have the large number of qubits, or the qubits that she has are not of sufficient quality. But that doesn't mean that she cannot perform her quantum computation. What she can do is she can contact her friends, Bob, Charlie, Dave and Eve, who are also in possession of some limited computational resources. They also have some small quantum computers. And together, they can coordinate their resources and perform a larger quantum computation compared to if Alice did it only locally.
+Imagine the scenario where a single quantum computer is not capable of executing the computation that we have in mind.
+Either the quantum processing unit does not enough qubits, or they decohere too quickly, or the gates are of insufficiently fidelity.
+The situation may seem dire but we need not despair.
+We can get around this problem by using \textbf{\textit{distributed quantum computation}}\index{distributed quantum computation}.
+Figure~\ref{fig:14-4_distributed_qc} shows five quantum computing nodes connected together via a quantum network.
+Each QC node has limited quantum resources in the sense that we mentioned above.
+Distributed quantum computation takes the original large problem which cannot be solved by a single QC node, and breaks it into smaller pieces which can be tackled by the QC nodes.
+The individual QC nodes share their quantum resources in order to boost the performance or the efficiency of a single QC node.
 
-So here, Alice, Bob, Charlie, Dave and Eve, they all share some number- small number of qubits, and they can entangle in some them in some way, and also they can exchange quantum information by using the quantum network, or they can also exchange some entangled qubits, they can connect those local cluster states together in some larger cluster states and then perform computation on that. And there are many questions of interest, such as what is the most efficient way of networking the quantum processors together, how many messages do they need to exchange in order to coordinate their computational efforts, and also issues like trust- how can Alice trust. Maybe she doesn't trust all of the parties involved in the quantum computation. What does she need to do? How can quantum network help her in this situation?
+Primary means of exchanging quantum information between the QC nodes is teleportation using pre-shared Bell pairs.
+Another way of achieving distributed quantum computation is to entangle the QC nodes to form a larger distributed multipartite entangled state, which can serve as a substrate for measurement-based quantum computation.
+In such a case the nodes then need to coordinate their measurements accordingly.
+Whatever the means of achieving distributed quantum computation might be, quantum networks play an essential role in connecting the individually weak QC nodes using distributed entangled states.
+The main questions of interest in distributed quantum computation are how much entanglement is needed in order to exchange quantum messages between the nodes, and how to efficiently coordinate the computation between the QC nodes.
+Important question that needs to be addressed is whether the QC nodes can trust each other, and how much is one node willing to reveal to others about the local computation that it can execute.
 
-Also, here we are assuming that she has some quantum resources. What if her quantum resources are extremely limited? So what do we mean by "extremely limited"? Let's say that she cannot do anything. She doesn't have a quantum computer but she would still like to delegate her quantum computation, and for simplicity let's just assume that Bob has a full-fledged, very powerful, large quantum computer where he can perform any quantum computation that he wishes or that Alice would ask him to do. So in this scenario, what she can just do is she can send him a classical message composed of many bits, describing to Bob exactly what computation she wishes him to perform. So, she needs to describe the input of the computation, the computation itself, and then Bob will just take this information and carry out the computation, and then tell Alice the output- the result of the computation. But in the process, what happens is he learns everything there is to know about the computation. He learns the input, he learns the computation itself, and he learns the output. Now, what if Alice doesn't want Bob to learn some of this information, or any of this information? Maybe she's trying to gain a competitive edge by performing some simulation of a molecule or a new material, and she doesn't want Bob to find it out because it's a trade secret. Can she still do something in this case? Well, she can if she's allowed to have some quantum resources. And particularly, we assume that Alice has the ability to generate single qubit states. So, what she can do is she generates these states and then she can randomly rotate them. Then she takes these keywords and she sends those to Bob, so she's using a quantum channel to communicate with Bob. But these qubits are not entangled, they're really just a bunch of single qubit states randomly rotated.
+The issue of trust brings us to our next application of quantum networks.
+Early quantum computers will be sparse due to immense resources needed to run and maintain them.
+Users with very limited quantum resources will have to delegate their computation to these quantum servers.
+One way is to encode the instructions about the computation into classical bits and send them to the quantum server which then executes the computation.
+By doing this, the server will learn the input, the computation itself, as well as the output.
+What if the client does not wish to disclose any of this information?
+Remarkably, the client can hide all this information by resorting to \textbf{\textit{blind quantum computation}}\index{blind quantum computation} (BQC).
+The client only needs very limited quantum resources to engage in BQC.
+One of the initial proposals showed that the ability to generate single-qubits is enough for the client to hide the input, the computation, and the output from the server.
+The server can only find out an upper limit on the size of the quantum computation that it is being asked to execute.
+Different variants of BQC work on the basis that the client can only do single-qubit measurements and it is the server which sends the qubits of a large entangled state one-by-one.
+In either case, quantum networks will be needed in order to communicate the information contained in those qubits between the client and the server.
 
-And then she sends him classical instructions about the computation. So she directs Bob- "take qubit one, perform this operation, take qubit two, perform that operation, take these two qubits and entangle them using this gate", and so on.
-
-And in this way, Bob can perform whatever she is instructing him to do and then just return the final outcome. He communicates either in quantum way or classically to Alice about the result of the computation, and in this way Bob does not know the random rotations because those are still kept secret by Alice. So this prevents him from learning anything about the input, anything about the computation itself, and also anything about the output. He's basically doing this computation blind. He's performing some operations according to Alice's instructions, but because he doesn't know the initial states of the keywords, he doesn't really know what these operations mean. He cannot interpret them, therefore whatever he gets, he just performs the operations blindly, he gets some output, but he cannot interpret this output, he just returns it to Alice. The only thing that he can learn is the upper limit to Alice's computation. For example, if she sends him four qubits then he knows that she, Alice, could not have performed any computation that requires more than four qubits.
 
 
 

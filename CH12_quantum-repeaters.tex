@@ -7,7 +7,7 @@
 
 In the previous chapter, we saw that there is one big problem when trying to communicate over long distances, and that's photon loss in fibers.
 The farther we are trying to communicate, the more likely we are to lose the photon.
-There is also another problem, and that's the number of devices that are connected to the network. Currently (2022) there are 8 billion people, and an estimated 31 billion Internet of Things devices.
+There is also another problem: the number of devices that are connected to the network. Currently (2022) there are 8 billion people, and an estimated 31 billion Internet of Things devices.
 Despite this staggering number, all of these devices can communicate with each other.
 How is this achieved?
 One way is to establish a direct connection between each device that is present in the network, as shown in the left panel of Fig.~\ref{fig:12-1_all_to_all}.
@@ -18,7 +18,7 @@ For $N$ devices, $N (N - 1) / 2$ links are needed in order to have all-to-all co
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.85\textwidth]{lesson12/12-1_all_to_all.pdf}
-    \caption[All-to-all coupling]{Left panel shows how many links are required to have all-to-all coupling. Right panel shows a more realistic network topology and the path along which a qubit needs to be teleported from sender to a receiver.}
+    \caption[All-to-all coupling]{The left panel shows how many links are required to have all-to-all coupling. The right panel shows a more realistic network topology and the path along which a qubit needs to be teleported from sender to a receiver.}
     \label{fig:12-1_all_to_all}
 \end{figure}
 
@@ -35,7 +35,7 @@ We can go back to the right panel of Fig.~\ref{fig:12-1_all_to_all}, and this ti
 The state of the sender's qubit can be teleported hop-by-hop along the red path until it reaches the recipient.
 A problem with this approach is that the operations required by the teleportation protocol as well as the memories used to store Bell pairs are not perfect.
 This decreases the fidelity of the teleported qubit.
-Repeating the teleportation in this hop-by-hop approach deteriorates the fidelity further, resulting in a completely garbled quantum state being teleported to the recipient.
+Repeating the teleportation in this hop-by-hop approach degrades the fidelity further, resulting in a completely garbled quantum state being teleported to the recipient.
 One way around this problem is to use the link-level Bell pairs to create a direct entangled connection between the sender and the recipient so that the quantum state can be teleported in one hop.
 The quantum nodes tasked with achieving this splicing of link-level entanglement are called \textit{\textbf{quantum repeaters}}, and they are indispensable in the design of long-distance quantum networks.
 
@@ -50,7 +50,7 @@ Finally, we will look at management of networks, routing, multiplexing and resou
 \label{sec:12-2_making_link_level_rantanglement}
 
 In this section, we consider the task of creating link-level entanglement between two neighboring repeaters of a quantum network.
-One way of entangling two quantum memories and creating link-level entanglement is pictured in Fig.~\ref{fig:12-2_MIM}, and is known as \textit{\textbf{memory-interfere-memory}} (MIM) link architecture.
+One method for entangling two quantum memories and creating link-level entanglement, known as the \textit{\textbf{memory-interfere-memory}} (MIM) link architecture, is pictured in Fig.~\ref{fig:12-2_MIM}.
 Another name for this is meet-in-the-middle.  We tend to avoid using this term to reduce the chance of confusion with man-in-the-middle, which is a type of security attack.
 Each repeater node is equipped with a quantum memory, and is coupled to an optical fiber.
 The fibers lead to a \textit{\textbf{Bell state analyzer}} (BSA), an optical device which is capable of measuring incoming photons in the Bell basis.
@@ -74,7 +74,7 @@ Once the measurement is successful, the entanglement between the memory-photon p
 
 A crucial point about this scheme, and other link-level architectures, is that the photons arriving at the BSA to be measured in the Bell basis must be \textit{\textbf{indistinguishable}}.
 This can be achieved by arranging that the photons arrive simultaneously. 
-Even relatively small delays in their arrival times reduce the indistinguishability of the photons resulting in a vanishing success probability of the Bell state measurement.
+Even relatively small delays in their arrival times reduce the indistinguishability of the photons, resulting in a diminishing success probability of the Bell state measurement.
 
 \begin{figure}[t]
     \centering
@@ -84,8 +84,8 @@ Even relatively small delays in their arrival times reduce the indistinguishabil
 \end{figure}
 
 Figure~\ref{fig:12-2_MM_MSM} shows two more link-level architectures.
-The first one is \textit{\textbf{memory-memory}} (MM), where the BSA device is included in one the repeater nodes.
-Entanglement is established in a similar way as for the MIM architecture, but this time the photon generated by the quantum memory on the left travels the whole length of the fiber to the right node.
+The first one is \textit{\textbf{memory-memory}} (MM), where the BSA device is included in one of the repeater nodes.
+Entanglement is established in a fashion similar to the MIM architecture, but this time the photon generated by the quantum memory on the left travels the whole length of the fiber to the right node.
 There, it interferes with a photon emitted by the right quantum memory.
 This architecture sometimes is called the sender-receiver architecture.
 The bottom panel of Fig.~\ref{fig:12-2_MM_MSM} shows the \textit{\textbf{memory-source-architecture}} (MSM) architecture.
@@ -98,7 +98,7 @@ These photons are sent to the quantum repeaters where they interfere with photon
 
 In the previous section, we saw how to establish link-level entanglement.
 We will now extend it to establishing long-distance entanglement spanning multiple hops.
-Consider three network nodes represented by Repeater 0, Repeater 1, and Repeater 2. Repeaters 0 and 2 each have one qubit, while Repeater 1 has two.
+Consider three network nodes represented by Repeater 0, Repeater 1, and Repeater 2, as in Fig.~\ref{fig:12-3_entanglement_swapping}. Repeaters 0 and 2 each have one qubit, while Repeater 1 has two.
 We assume that link-level entanglement has been established between Repeater 0 and one of the qubits at Repeater 1, and the other qubit at Repeater 1 and Repeater 2.
 The goal is to establish entanglement between Repeater 0 and Repeater 2.
 
@@ -116,7 +116,7 @@ This procedure is known as \textit{\textbf{entanglement swapping}}\index{entangl
 Note that this entanglement is between two repeaters which are not directly connected.
 
 Let's now get a little technical and show more rigorously that Repeater 0 and Repeater 2 are entangled.
-We label the qubit at Repeater 0 by $A$ and the qubit that is entangled with it at Repeater 1 is labelled by $A^{\prime}$.
+We label the qubit at Repeater 0 $A$, and the qubit with which it is entangled at Repeater 1 $A^{\prime}$.
 The other qubit at Repeater 1 is denoted by $B^{\prime}$, and its entangled partner at Repeater 2 by $B$.
 The state of the $AA^{\prime}$ qubits is one of the Bell pairs, let's say $|\Phi^+\rangle$.
 The same goes for the pair of qubits $BB^{\prime}$.
@@ -173,13 +173,13 @@ Therefore, they must be informed of the measurement outcomes via \textit{\textbf
 Only after receiving the classical message from Repeater 1 will they share a pure Bell pair.
 Repeater 1 does not need to send the outcome of the measurement to both Repeaters 0 and 2.
 It is enough to send it just to one of them, but both of the Repeaters need to be notified that the procedure has been carried out successfully.
-This introduces a time delay that limits how fast we can progress in terms of establishing entanglement.
+This introduces a time delay that limits how fast the process of establishing entanglement can progress.
 
 Maybe you have noticed that the procedure that we have been describing in this section is very similar to the procedure described in Section~\ref{sec:12-2_making_link_level_rantanglement}, where we are establishing link-layer entanglement.
 In fact, mathematically it's very similar.
 In link-level entanglement, we're dealing with swapping the entanglement between photon and memory, by measuring the photons at the Bell state analyzer and establishing a memory-to-memory entanglement.
-Whereas in end-to-end entanglement, we are only entanglement swapping between between pairs of memories.
-This is physically quite a big difference because using linear optics, the maximum success probability of performing entanglement swapping on photons is limited to $50\%$, but entanglement swapping between memories can be done deterministically, provided that we have good experimental techniques and we can limit the effects of noise.
+Whereas in end-to-end entanglement, we are only swapping entanglement between between pairs of memories.
+This is physically quite a big difference: using linear optics, the maximum success probability of performing entanglement swapping on photons is limited to $50\%$, but entanglement swapping between memories can be done deterministically -- provided that we have good experimental techniques and we can limit the effects of noise.
 
 An alternative way of understanding entanglement swapping is via teleportation.
 We are in possession of an arbitrary state, in this case qubit $A^{\prime}$ at Repeater 1, which we wish to teleport to Repeater 2.
@@ -197,7 +197,7 @@ In the density matrix form, we write it as the outer product,
     \rho_{AB} = \left|\Phi^{+}\right\rangle\left\langle\Phi^{+}\right|.
 \end{align}
 In reality, there will always be some noise that is spoiling our operations, and we will not have the pure state $\ket{\Phi^+}$.
-What we will have is a mixture of the desired state and some unwanted noisy term $|\text{noise}\rangle$.
+We will have a mixture of the desired state and some unwanted noisy term $|\text{noise}\rangle$.
 With probability given by the fidelity $F$, we will have the desired state $\ket{\Phi^+}$, and with probability $1-F$, we will have some noisy state $|\text{noise}\rangle$.
 The mixed state can be written as
 \begin{align}
@@ -233,27 +233,26 @@ This channel leaves the state unaffected with probability $F$, or applies the Pa
 \end{align}
 We have applied the bit-flip channel to qubit $A$, but it does not matter whether we apply it to qubit $A$ or $B$.
 We can easily check that applying the Pauli $X$ operator on qubit $B$ yields the same expression for the state $\rho_{AB}$.
-\michal{Exercise idea: Apply the bit-flip channel to both qubits. The channel is parameterized by probability of error $p$. How is fidelity $F$ related to error probability $p$?}
 
 Keep in mind that this is just one possible source of error out of many.
-We could have many other unitary errors, or you could also have non-unitary errors, but here we just want to keep it simple.
-If you are interested in all of the sources of other errors, we recommend you look at some literature on quantum error correction.
-We said that we would like to detect the errors and correct the errors. One way of doing that is using "quantum error correction", but usually this comes with a large overhead.
+We could have many other unitary errors, or we could also have non-unitary errors, but here we just want to keep it simple.
+(If you are interested in all of the sources of other errors, we recommend you look at some literature on quantum error correction.)
+We said that we would like to detect the errors and correct the errors. One such method is to use \emph{quantum error correction}\index{quantum error correction (QEC)}, but usually this comes with a large overhead.
 Here, we will look at a simpler and less ambitious procedure of simply detecting errors, known as \textit{\textbf{purification}}\index{purification}.
 
 The main idea behind purification is the following.
-It is a test for the state $\rho_{AB}$ which checks whether the state is affected by an error.
+Purification is a test for the state $\rho_{AB}$ that checks whether the state is affected by an error.
 The test is not perfect and sometimes succeeds even when the state has undergone an error.
 If the probability of this ``false positive'' is low enough, then the overall fidelity of the state increases.
 It is this sense that we say that the state has been purified.
 
 There are two important things that we need to keep in mind when designing the purification procedure.
-The first one is that measurements can be used to reveal information about the state.
-But they are also very intrusive and destroy the entanglement that we are trying to preserve.
-The second thing is that the two qubits of the entangled state are spatially separated and held in separated repeaters.
-This distance can be of the order of tens of kilometers.
+First, measurements can be used to reveal information about the state,
+but they are also very intrusive and destroy the entanglement that we are trying to preserve.
+Second, the two qubits of the entangled state are spatially separated and held in separated repeaters.
+This distance can be of the order of tens of kilometers for a link, or much longer over a network.
 
-Getting around the first issue of destructive measurement can be achieved by using another Bell pair to test whether the original pair has undergone the unwanted Pauli $X$ flip.
+We can get around the first issue of destructive measurement by using another Bell pair to test whether the original pair has undergone the unwanted Pauli $X$ flip.
 This is done by entangling the second pair with the original one, and then measuring the second pair to learn some useful information without destroying the original Bell pair.
 The second issue of the qubits being at distant locations can be overcome by simple classical communication.
 
@@ -311,7 +310,7 @@ Now we are in a position where we can consider both initially distributed pairs 
 \end{equation}
 We have already covered the situation where both Bell pairs are unaffected by noise, which occurs with probability of $F^2$, and where the first pair is bit-flipped, occurring with probability of $(1-F)F$.
 The remaining two possibilities of only the second pair being bit-flipped and both pairs being bit-flipped can be calculated in exactly same way.
-We summarize all 4 possibilities in the Table.
+We summarize all 4 possibilities in Tab.~\ref{tab:12-4_purification_X_error}.
 \begin{table}[t]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -325,11 +324,12 @@ We summarize all 4 possibilities in the Table.
     \caption[X error purification]{Purification for a Pauli $X$ error.}
     \label{tab:12-4_purification_X_error}
 \end{table}
+
 We can make an interesting observation.
 When both initial pairs are affected by Pauli $X$ errors, the purification procedure still tells Alice and Bob to keep the first pair, because the measurement outcomes on the second pair are correlated.
 This occurs with probability $(1-F)^2$ and is the ``false positive'' that we mentioned earlier in this section.
 
-The total success probability of t  his purification procedure is
+The total success probability of this purification procedure is
 \begin{equation}
     \text{Pr} \{\text{success}\} = F^2 + (1 - F)^2.
 \end{equation}
@@ -360,7 +360,7 @@ Then we extended this with entanglement swapping to end-to-end entanglement betw
 In this section, we consider what it takes to actually create a network.
 There are a few missing parts, the two main being routing, and multiplexing and resource management.
 
-At the beginning of this chapter, we saw in Fig.~\ref{fig:12-1_all_to_all} that the job of a quantum network is to establish end-to-end entanglement between distant nodes, which is then consumed by applications such as quantum key distribution of teleportation.
+At the beginning of this chapter, we saw in Fig.~\ref{fig:12-1_all_to_all} that the job of a quantum network is to establish end-to-end entanglement between distant nodes, which is then consumed by applications such as quantum key distribution or applications that use teleportation.
 The network needs to somehow pick a suitable path along which to execute entanglement swapping that leads to this end-to-end connection.
 But not only that.
 The figure shows only one request being considered.
@@ -369,38 +369,37 @@ The network should be able to satisfy multiple simultaneous connection requests 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson12/12-5_routing_multiplexing.pdf}
-    \caption[Routing and multiplexing]{Picking the best path along which to entanglement swap is the job of routing. The quantum network also needs to decide how to allocate its precious resources in order to satisfy multiple simultaneous connection requests.}
+    \caption[Routing and multiplexing]{Picking the best path along which to entanglement swap is the job of routing. The quantum network also needs to decide how to allocate its scarce resources in order to satisfy multiple simultaneous connection requests.}
     \label{fig:12-5_routing_multiplexing}
 \end{figure}
 
 How the network picks an appropriate path where it performs entanglement swapping is determined by the \textit{\textbf{routing algorithm}}\index{routing algorithm} using information about the topology and condition of the network.
-Left panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows a simple case of a quantum network with five nodes.
+The left panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows a simple case of a quantum network with five nodes.
 Let's say that nodes A and E would like to establish an entangled connection.
-There are three possible paths that the network can choose to perform entanglement swapping along.
+There are three possible paths that the network can choose.
 It can swap entanglement at node B (option 1), or at node D (option 2), or at nodes C and D (option 3).
-Each option requires the establishment of different patterns if link-level entanglement.
+Each option requires the establishment of different patterns of link-level entanglement.
 Option 1 requires link-level entanglement between A-B and B-E before the entanglement swapping can be executed.
-Similarly, option 3 requires link-level entanglement between A-D, D-C, and C-E.
+Similarly, option 3 requires link-level entanglement on the A-D, D-C, and C-E links.
 
-What we need in order to evaluate which path is best is to look at the costs that it takes to establish the corresponding link-level entanglement, and then how to combine these costs in order to establish the cost for the entire path.
+In order to evaluate which path is best, we need to look at the cost for establishing the corresponding link-level entanglement, and then how to combine these costs in order to establish the cost for the entire path.
 One possible way of evaluating the link-level entanglement is \textit{\textbf{seconds per Bell pair at a threshold fidelity}}.
 We discussed how establishing a link-level entanglement involves photon emission from quantum memories, and subsequent measurement of these photons in the Bell basis.
 These processes are all probabilistic, and so is loss of the photons in fiber.
-Depending on the properties of the fiber as well as the quantum hardware at each node, the average time required to successfully establish link-level Bell pair.
-In order to make this cost of establishing link-level fair, we demand that the link-level Bell pair are of certain threshold fidelity.
-The exact value of this threshold is dictated by the needs of the application that the Bell pairs are requested for.
+Depending on the properties of the fiber as well as the quantum hardware at each node, the average time required to successfully establish link-level Bell pair will vary.
 
 How do we combine these costs for each individual links in order to know the full cost of establishing end-to-end entanglement over a path?
 One possibility is to use \textit{\textbf{Dijkstra's shortest path first algorithm}}\index{Dijkstra's shortest path first}.
-We can sum the link-level costs for individual paths in order to estimate their total costs. 
+We can sum the link-level costs for an individual path in order to estimate the total cost.  In order to make the cost of establishing link-level entanglement fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
+The exact value of this threshold is dictated by the needs of the application that the Bell pairs are requested for.
 
 The next issue that networks have to deal with is \textit{\textbf{multiplexing}}.
 The network will have to satisfy multiple simultaneous connection requests for end-to-end entanglement.
 A good multiplexing scheme helps the network decide how to allocate its resources to satisfy these requests in a timely, reliable and fair way.
-Right panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows four simultaneous requests between nodes A-K, B-J, C-H, and D-G.
-All of these requests need to use link-level entanglement between E-F, creating contention on this link.
-Another such link is F-I.
-The network must know how to handle such requests where a single link needs to shared between multiple requests.
+The right panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows four simultaneous requests between nodes A-K, B-J, C-H, and D-G.
+All of these requests need to use link-level entanglement between E-F, creating \emph{contention}\index{contention} on this link.
+Another link with contention is F-I.
+The network must know how to handle such requests, where a single link needs to be shared between multiple users or connections.
 
 In this chapter, we have seen the four requirements for building a quantum network.
 We started with the basic building block of establishing link-level entanglement between neighboring nodes of a network and how to handle photon losses.
@@ -410,8 +409,11 @@ Finally, we briefly discussed routing and multiplexing in quantum networks.
 \newpage
 \begin{exercises}
 \exer{Return to the exercises on measurement in Ch.~\ref{sec:2_quantum_states} and teleportation in Ch.~\ref{sec:8_teleportation}. Let's do the math on entanglement swapping using the notation of Ex.~\ref{ex:dirac-notation-measurement}. \rdv{Label numbering for exercises seems busted.}
+
+\exer{How many connections are needed for a fully connected network covering all of the IoT devices in the global classical Internet?}
 }
 
+\michal{Exercise idea: Apply the bit-flip channel to both qubits in a Bell pair. The channel is parameterized by probability of error $p$. How is fidelity $F$ related to error probability $p$?}
 
 \end{exercises}
 
