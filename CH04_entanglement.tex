@@ -381,12 +381,27 @@ There are many details around SPDC that we have not introduced here, but this ba
 
 Let's go back and revisit our CHSH game from the first section of this chapter. We have seen that entanglement can actually help players A and B win the game more often. If they share an entangled state, they can perform measurements on it and this will help them in winning the game with higher probability. But in this process of measurement, as shown in Fig.~\ref{fig:chsh-broken}, A and B destroy the entanglement shared between the two grey qubits.  Maybe they managed to win the game, at least this particular round, but if they want to win again, they have to find a way of re-establishing this entanglement or creating a new entangled pair which they can share and then use in the new round of the game. 
 
-\rdv{This paragraph is clearly talking about a different figure.}
-Similarly, entanglement is crucial in quantum networks. Let's have a very small and simple quantum network. These blue dots- they represent our network nodes, so they can represent qubits or ensembles of qubits, and these black lines- they represent entanglement shared between the nodes. And let's say that we have one center node and one receiver node. Here is the sender- that would like to send some quantum message to the receiver on the other end of the network. So one way of doing that is via teleportation. We're going to go into details of teleportation later, but for now what you just have to remember is that teleportation uses measurements and entanglement to propagate the information from one physical place into a different one. So, here sender node has this state represented by a red circle, and it is trying to communicate this state all the way to the receiver node. So what the sender node can do is perform a measurement. This will consume the entangled link to the sender's neighbor, but at the same time propagate the information to this node. Then what happens next is this new node performs the same type of measurement, which again will consume the entanglement between itself and this neighbor here, and again following neighbor performs a measurement, and finally the quantum information reaches the receiver node. So, good, the sender has succeeded in getting the message to the receiver, but look at the state of the network now. It's very different from what it was before. All of these entangled links have been destroyed through the application of measurements. In order for the network to be fully functional again, we must have some process for re-establishing these destroyed links.
+Entanglement is also crucial in quantum networks.
+Figure~\ref{fig:4-5_resource_network} shows a simple quantum network, where the blue circles represent the network nodes.
+They could be individual qubits or even small quantum computers, for now the distinction is not important.
+The lines joining the network nodes represent shared entanglement.
+There is a sender node in possession of a qubit, represented by the red circle, that it is trying to communicate to the receiver node.
+Usual way of sending quantum information is to use the teleportation protocol, which we will discuss in detail in Chapter~\ref{sec:8_teleportation}.
+For now, all we need to know is that the protocol consumes a single Bell pair to transfer the quantum information from one node to its neighboring one.
+By executing the teleportation protocol first at the sender's node, and then at nodes $N_1$ and $N_2$, the quantum information will be delivered to the receiver node.
+We can see that delivering the quantum information has consumed all the entangled pairs along the path connecting the sender with the receiver.
+In order for the quantum network to be fully functional again, we must re-establish the destroyed entangled links.
 
-In this way, we can think of entanglement as the fuel that drives many quantum technologies. Entanglement offers improved, and sometimes completely new, functionality that is not seen in either classical networks or classical computation.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{lesson4/4-5_resource_network.pdf}
+    \caption[Consumption of entanglement in a quantum network.]{Entanglement is consumed as quantum information is propagated from the sender to the receiver.}
+    \label{fig:4-5_resource_network}
+\end{figure}
 
-One of the most important facts to remember is that entanglement is a \emph{resource}, and is consumed just like fuel in your car or battery charge in your camera. We must have a way of re-establishing it so that we can take advantage of entanglement that is present in our quantum systems, and the speed and efficiency with which we can do this is one of the main limiting factors in quantum technology such as quantum networks.
+We can think of entanglement as the fuel that drives many quantum technologies. Entanglement offers improved, and sometimes completely new, functionality that is not seen in either classical networks or classical computation.
+One of the key takeaways is that entanglement is a \textbf{\textit{resource}}, and is consumed just like fuel in your car or battery charge in your phone.
+It is the job of quantum networks to distribute entanglement in order to satisfy the demand for this precious resource.
 
 
 \newpage
