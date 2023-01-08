@@ -215,22 +215,19 @@ Bob measures $B$ is given by the expression
 
 Amazingly, for some quantum states, we 
 can actually violate the CHSH inequality.
-By violating, we mean that we 
-can obtain a value that's larger than two.
-This means that we can use 
+By "violating", we mean that we 
+can obtain a value that's larger than two, allowing us to use
 this expression to detect entanglement.
 
-In particular, in an experiment when we measure 
-and compute these various expectation values,
-and then we sum them up in this manner and we 
+In particular, in an experiment where we measure 
+and compute these four expectation values and then we sum them up in this manner, if we 
 obtain a CHSH expression which is less than two,
-then we can say maybe the states are classically 
+then we can say \emph{maybe} the states are classically 
 correlated. But, if we measure a CHSH expression
 which is larger than two, then we can, in fact, 
-say that definitely these states are entangled.
-
+say that \emph{definitely} these states are entangled.
 In quantum mechanics, the CHSH expression 
-can go all the way up to a value of $2\sqrt{2}$. This happens for maximally 
+can go all the way up to a value of $2\sqrt{2}$, which happens for maximally 
 entangled states.
 
 \begin{figure}[H]
@@ -274,23 +271,22 @@ giving us a strong CHSH inequality violation.  (This value of 2.60 is a little l
          $\bar{A}\bar{B}$ & 0.36 & 0.42 & 0.15 & 0.07 & 0.54 \\
 \hline
 \end{tabular}
-    \caption{Calculation of the CHSH $\mathcal{S}$ value. $P_{00}$ is the probability of getting the $+1$ eigenstate for both measurements when measuring in the basis in the left column, etc.  $\langle MN \rangle$ is the expectation value calculated using $\langle MN \rangle = \bra{\psi}M\otimes N\ket{B} = P_{00} + P_{11} - P_{01} - P_{10}$ where $M$ is either $A$ or $\bar{A}$ and $N$ is $B$ or $\bar{B}$, the bases in the left column.}
+    \caption{Calculation of the CHSH $\mathcal{S}$ value. $P_{00}$ is the probability of getting the $+1$ eigenstate for both measurements when measuring in the basis in the left column, etc.  $\langle MN \rangle$ is the expectation value calculated using $\langle MN \rangle = \bra{\psi}M\otimes N\ket{B} = P_{00} + P_{11} - P_{01} - P_{10}$ where $M$ is either $A$ or $\bar{A}$ and $N$ is $B$ or $\bar{B}$,  giving the bases in the left column.}
     \label{tab:chsh-calculation}
 \end{table}
 
 
-This gives us a way of verifying entangled 
+This calculation gives us a way of verifying entangled 
 states, and particularly verifying maximally
-entangled states, which is very important for 
+entangled states, a very important condition for 
 our entanglement-based QKD protocol. If we can
 demonstrate that we violate the CHSH inequality 
-maximally, in other words the CHSH expression is
-$2\sqrt{2}$, then we can certify that, in fact, 
-the state that Alice and Bob share is a maximally
-entangled state. That then allows us to say 
-that they are not correlated with Eve due
-to monogamy of entanglement, and therefore we can 
-guarantee the security of their secret random key.
+maximally, with a value of 
+$S = 2\sqrt{2}$, then we can certify that
+the state Alice and Bob share is a maximally
+entangled state. If the states we are making are maximally entangled, then the principle of monogamy of entanglement\index{monogamy of entanglement} tells us  
+that they are \emph{not} correlated with Eve, and therefore we can 
+guarantee the security of Alice and Bob's secret, random key.
 
 \section{Protocol}
 
@@ -309,22 +305,22 @@ Then, Alice and Bob randomly choose a measurement basis in which they measure th
 
 Why do we have three different measurements for Alice and three different measurements for Bob rather than two, like we had in the previous protocol, BB84?
 
-Some of these measurements are overlapping, which is needed for generating the secret random key. Remember, we said that if both Alice and Bob measure the entangled state in the same basis, they can use that information via our classical outcomes to generate and establish a classical, correlated random key. Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for this. On the other hand, we need some rotated bases in order to compute the CHSH expression and see if it violates the classical CHSH inequality in order to establish that Alice and Bob are really sharing an entangled state. For this, we use the basis choices $(A_1,B_3), (A_1,B_2), (A_2,B_2), (A_2,B_3)$.
+Some of these measurements are overlapping, which is needed for generating the secret random key. Remember, we said that if both Alice and Bob measure the entangled state in the same basis, they can use the classical outcomes to generate and establish a classical, correlated random key. Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for this key. On the other hand, we need some rotated bases in order to compute the CHSH expression and see if it violates the classical CHSH inequality and establish that Alice and Bob are really sharing an entangled state. For this calculation, we use the basis choices $(A_1,B_3), (A_1,B_2), (A_2,B_2), (A_2,B_3)$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson10/10-3-bases_key.pdf}
-        \caption{E91 example of a series of basis choices for measurements.}
+        \caption{E91 example of a series of basis choices for measurements.  The $A_1$ and $A_3$ bases for Alice and $B_1$ and $B_3$ bases for Bob can be used to generate key bits when Alice and Bob select the same basis, as shown with the green check marks.}
     \label{fig:e91-example}
 \end{figure}
 
 In order to establish the key, Alice measures either in $A_1$ or $A_3$, and Bob measures in $B_1$ or $B_3$. They randomly measure their multiple copies of entangled states, and then they exchange information about the basis of their measurements. 
 %So, for example, Alice has the following choices- A1, A3, A1, A2, A3, A3, A1, A3, and so on. And Bob has some other random string of measurement choices, B1, B2, B3, B1, and so on. 
-They exchange the information about these bases and they look at the places where their measurement basis choice coincide, as shown in Fig.~\ref{fig:e91-example}.  Each partner then keeps the measurement outcome as a bit in their shared secret.
+They exchange the information about these bases and look at the places where their measurement basis choices coincide, as shown in Fig.~\ref{fig:e91-example}.  Each partner then keeps the measurement outcome as a bit in their shared secret.
 %So in this case, it's over here. Here, Alice measures A1 and Bob measures B1, meaning both of them measured in the $Z$ basis. If they do that, as we saw, they get anti-correlated outcomes, which they can use to generate a correlated classical key. Over here, again, they measure in the $Z$ basis, and here they measure both in the rotated A3 B3 basis.
 
-Those two cases where Alice and Bob chose the same measurement basis take care of generating the key. In some other cases, they will not measure in bases that coincide, but that's all right. They don't discard these results, but instead  use them to compute the CHSH expression and check for a violation of the classical bound on the CHSH inequality. In particular, they look for scenarios where they chose $(A_1,B_2), (A_1,B_3), (A_2,B_2),$ or $(A_2,B_3)$ as shown in Fig.~\ref{fig:10-3_e91_example_CHSH}.
-Using these measurements outcomes, Alice and Bob then calculate the CHSH correlation function $\mathcal{S}$,
+Those two cases where Alice and Bob chose the same measurement basis take care of generating the key. In some other cases, they will not measure in bases that coincide. They don't discard these results, but instead  use them to compute the CHSH expression and check for a violation of the classical bound on the CHSH inequality. In particular, they look for scenarios where they chose $(A_1,B_2), (A_1,B_3), (A_2,B_2),$ or $(A_2,B_3)$ as shown in Fig.~\ref{fig:10-3_e91_example_CHSH}.
+Using these measurement outcomes, Alice and Bob then calculate the CHSH correlation function $\mathcal{S}$,
 \begin{equation}
     \mathcal{S} = |\langle A_1B_2\rangle + \langle A_1B_3\rangle + \langle A_2B_2\rangle - \langle A_2B_3\rangle|.
 \end{equation}
@@ -340,23 +336,25 @@ This way, they don't need to discard information as was done in BB84. They get t
 
 So far, we have considered the case where everything was ideal, with no noise. But what happens in real life, where noise is always present? How does noise affect our QKD protocols? In real life, the CHSH value will not equal exactly $2\sqrt{2}$, as we saw in Tab.~\ref{tab:chsh-calculation}.  Moreover, Alice and Bob will not be able to generate a perfectly correlated key, meaning that either noise or the tinkering of Eve will introduce some inconsistencies into the key. Even if Eve is not trying to actively eavesdrop and disrupt the protocol, still, due to inherent noise in the system, these keys will not be perfectly correlated.
 
-Alice and Bob have to decide on the acceptable security risk even if the keys are not perfectly correlated. They have to agree, "Okay, if the correlation is not a hundred percent, but it's very close to hundred percent, we can still use this to do something useful, and use it for a secret communication." If they agree to this in principle, then they have to engage in two more protocols. One is called  \emph{information reconciliation}, which takes the initial secret key that's not perfectly correlated and produces a more correlated key.  It increases the correlation between the secret keys obtained hy Alice and Bob.  As cryptosystems generally are designed so that a single bit's difference in the keys changes half of the bits in the encrypted message, they require that exactly the same key be used at both ends.  Alice and Bob also can perform something known as \emph{privacy amplification}, where they take their generated secret key and produce a shorter key which is more secure. They are basically trying to eliminate any possible correlation with Eve.
+Alice and Bob have to decide on the acceptable security risk even if the keys are not perfectly correlated. They have to agree, "Okay, if the correlation is not obne hundred percent, but it's very close, we can still use this to do something useful. We can use it to secure a digital conversation." If they agree to this in principle, then they have to engage in two more protocols. One is called  \emph{information reconciliation}, which takes the initial secret key that's not perfectly correlated and produces a more correlated key.  It increases the correlation between the secret keys obtained by Alice and Bob.  As cryptosystems generally are designed so that a single bit's difference in the keys changes half of the bits in the encrypted message~\footnote{A characteristic sometimes called the \emph{avalanche effect} or \emph{strict avalanche criterion} by cryptographers.}, they require that exactly the same key be used at both ends.  Alice and Bob also can perform something known as \emph{privacy amplification}, where they take their generated secret key and produce a shorter, more secure key. They are basically trying to eliminate any possible correlation with Eve.
 
 So, which protocol is better, BB84 or E91? One is based on the indistinguishability of single photons prepared in non-orthogonal bases, and the other uses entanglement. In particular, we care about the security of both of these protocols. Let's compare from the point of view of when the secret key is generated.
 
 In the case of the BB84 protocol, candidate bits for the key are generated when Alice generates her random string right at the beginning of the protocol. Remember, she generates two random $n$-bit strings. One string encodes the information about the basis of preparation, and the other encodes the bits themselves. So if Alice chooses the $Z$ basis, the state she prepares is a \ket{0} or a \ket{1}, whereas if she chooses the $X$ basis, she prepares a \ket{+} or a \ket{-}. So the secret key (or an extended form of it before photons are lost and their corresponding bits are discarded) exists right from the beginning, before any communication between Bob and Alice takes place.
 
-That means that a clever Eve can actually find a way to obtain some information about this secret bit string. In particular, you can consider a very paranoid scenario where the random number generator that Alice is using to generate a random bit string was actually produced by Eve and is in some way correlated with Eve, therefore whatever random bit string that the device produces, that information gets passed on to Eve. We saw at the beginning of this chapter that that poses a huge security risk for BB84 protocol.
+In BB84, a clever Eve can actually find a way to obtain some information about this secret bit string. In particular, we can consider a very paranoid scenario where the random number generator (RNG) that Alice is using to generate a random bit string was actually built by Eve, therefore information about the random bit string that the device produces gets passed on to Eve. We saw at the beginning of this chapter that this weakness poses a huge security risk for BB84 protocol.
 
-In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured, not when Eve produces those entangled pairs, not when they arrive at Alice and Bob, but only after Alice and Bob measure them in their random bases. In that sense, we can say that the key is unconditionally secure, and we see that entanglement is very essential for security.
+\rdv{I weakened this; if Eve controls the RNG used for basis selection and can measure, she can also defeat E91.}
+In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured, not when Eve produces those entangled pairs, nor when they arrive at Alice and Bob, but only after Alice and Bob measure them in their random bases. Even if Eve controls the generation and distribution of entangled pairs, she cannot defeat E91. \emph{However}, if Eve controls or can predict the output of the RNGs that Alice and Bob use for basis selection, she can defeat E91. Coupled with the ability to measure the entangled states in the quantum channel, before Alice and Bob receive them, she can measure only the key pairs and recover the key in parallel with Alice and Bob, undetected. This process is harder for Eve, so perhaps we can say that E91 is more secure than BB84.
+% In that sense, we can say that the key is unconditionally secure, and we see that entanglement is very essential for security.
 
-Let's conclude this chapter by talking about some entanglement-based QKD experiments. We saw in BB84 that there were network testbeds for single photon QKD networks, however the development of entanglement-based QKD is not as advanced but it exists at the level of establishing a secret key over a single link. One such experiment was performed over free space, meaning that the entangled photons traveled through through air.  This experiment was done over a distance of 144 kilometers between La Palma and Tenerife, two islands in the Canary Islands. Photon pairs were produced by the spontaneous parametric down-conversion (SPDC)\index{spontaneous parametric down-conversion (SPDC)} process which we saw in Sec.~\ref{sec:4-4_spdc}. The qubit was encoded in the polarization of the photons. The obtained CHSH value, $\mathcal{S} =2.508$, was quite a substantial amount above the classical value of 2, giving a strong CHSH violation.
+Let's conclude this chapter by talking about some entanglement-based QKD experiments. We saw in the discussion of BB84 that there were network testbeds for single photon QKD networks. The development of entanglement-based QKD is not as advanced, but it exists at the level of establishing a secret key over a single link. One such experiment was performed over free space, meaning that the entangled photons traveled through through air.  This experiment was done over a distance of 144 kilometers between La Palma and Tenerife, two islands in the Canary Islands. Photon pairs were produced by the spontaneous parametric down-conversion (SPDC)\index{spontaneous parametric down-conversion (SPDC)} process which we saw in Sec.~\ref{sec:4-4_spdc}. The qubit was encoded in the polarization of the photons. The obtained CHSH value, $\mathcal{S} =2.508$, was quite a substantial amount above the classical value of 2, giving a strong CHSH violation.
 
-A different, more recent experiment was done over a distance of hundreds of kilometers, but it was done in a lab and over optical fiber. The fiber was very long and it was wound around a spool in the lab.  Two distances were tested. The  first distance was 311 kilometers over standard fiber, and the other distance was 404 kilometers over an ultra-low loss fiber.  In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol, so if we wish to use this scheme in real life, we would actually have to add these functions, which would further lower the bit rate.
+A different, more recent experiment was done over a distance of hundreds of kilometers, but in a lab over optical fiber wound around a spool.  Two distances were tested. The  first distance was 311 kilometers over standard fiber, and the second distance was 404 kilometers over an ultra-low loss fiber.  In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol. If we wish to use this scheme in real life, we would actually have to add these functions, further lowering the bit rate.
 
-Another fantastic experiment was performed with satellites, where the satellite actually distributed entangled pairs between two ground stations, and the ground stations were 1,120 kilometers apart. Remember, we said that the light travels in a straight line, whereas using a satellite we can overcome the complication of curved earth's surface to establish a quantum key over much longer distances. So the total distance was over one thousand kilometers, and the measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation. The obtained bit rate was 0.12 bits per second. Now, one could ask the question, what if we actually used a single fiber to connect these two ground stations? Well, the paper that reported these results estimated that the fiber would have been around eleven orders of magnitude less efficient than using the satellites, which is quite incredible.  At the beginning of this chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{sec:11_long-distance} and beyond.
+Another fantastic experiment was performed with satellites, where the satellite actually distributed entangled pairs between two ground stations 1,120 kilometers apart. Remember, we said that the light travels in a straight line, so by using a satellite we can overcome the complication of curved earth's surface (and reduce the atmospheric disturbance as well) to establish a quantum key over much longer distances. The total distance was over one thousand kilometers, and the measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation. The obtained bit rate was 0.12 bits per second. Now, one could ask the question, what if we actually used a single fiber to connect these two ground stations? Well, the paper that reported these results estimated that the fiber would have been around eleven orders of magnitude less efficient than using the satellites, which is quite incredible.  At the beginning of this chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{sec:11_long-distance} and beyond.
 
-This concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems.
+Thus concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems.
 
 \newpage
 \begin{exercises}
