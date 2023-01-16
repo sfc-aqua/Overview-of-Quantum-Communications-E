@@ -5,7 +5,7 @@ We begin with revisiting bipartite entanglement in section~\ref{sec:14-1_biparti
 We focus on how to determine the quality of the entanglement shared between distant nodes of a network and why it matters.
 In section~\ref{sec:14-2_multipartite}, we will introduce multipartite entanglement shared between more than two nodes of a quantum network.
 We will discuss how it differs from bipartite entanglement before moving on to examples of multipartite entangled states.
-In the remained of this chapter, we will shift our focus to applications of quantum repeater networks.
+In the remainder of the chapter, we will shift our focus to applications of quantum repeater networks.
 In section \ref{sec:14-3_clock_sync}, we discuss clock synchronization, and distributed blind quantum computation in section ~\ref{sec:14-4_distributed_bqc}.
 
 
@@ -24,17 +24,17 @@ One of the main jobs of a quantum network is to distribute entanglement.
 Let's start by considering a concrete example.
 Figure~\ref{fig:14-1_bipartite_multipartite} shows a quantum network.
 The circles represent quantum nodes while the dashed lines represent physical links connecting neighboring quantum nodes.
-Let's consider the scenario where Nodes $N_1$ and $N_2$ wish to establish shared entanglement in order to engage in quantum communication.
+Nodes $N_1$ and $N_2$ wish to establish shared entanglement in order to engage in quantum communication.
 We saw in the previous chapter that in order to satisfy this request, the quantum network first creates link-level entanglement between neighboring nodes along the path connecting the nodes $N_1$ and $N_2$.
-Entanglement swapping is then used to create a direct end-to-end bipartite entanglement between these nodes.
+Entanglement swapping is then used to create direct end-to-end bipartite entanglement between these nodes.
 This example is rather constrained in the sense that it only shows two of the nodes trying to engage in quantum communication.
-Well-designed quantum network should be able to accommodate multiple simultaneous requests for end-to-end entangled connections between multiple pairs of nodes as shown in Fig.~\ref{fig:14-1_bipartite_multipartite}. 
+A well-designed quantum network should be able to accommodate multiple simultaneous requests for end-to-end entangled connections between multiple pairs of nodes, as shown in Fig.~\ref{fig:14-1_bipartite_multipartite}. 
 
 The quality of the distributed entanglement, whether bipartite or multipartite, matters greatly.
 We saw that in entanglement-based QKD, the quality of the entanglement that is shared between Alice and Bob directly impacts the key that they are trying to establish.
 If the entangled state shared by Alice and Bob is not perfect then the key that they are going to end up with after at the end of the protocol will also be only partially correlated.
 This has two important consequences.
-Firstly, it affects how well Alice and Bob can communicate.
+First, it affects how well Alice and Bob can communicate.
 
 More crucially, the quality of the entangled state affects the \textit{\textbf{security of the key}} that they can establish.
 The entangled state may be imperfect due to natural noise introduced by the physical channels during the distribution process.
@@ -65,12 +65,11 @@ Typically, the distributed state will be mixed, and the fidelity will take value
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.4\textwidth]{lesson14/14-1_QKD.pdf}
-    \caption[Eavesdropper Eve]{Eavesdropped Eve tampering with the distributed entangled state between Alice and Bob in order to gain information about the shared secret key.}
+    \caption[Eavesdropper Eve]{Eavesdropper Eve tampering with the distributed entangled state between Alice and Bob in order to gain information about the shared secret key.}
     \label{fig:14-1_QKD}
 \end{figure}
 
-Note that the lowest possible value of the fidelity does not imply that the distributed state is useless.
-Far from it.
+Note that the lowest possible value of the fidelity does not imply that the distributed state is useless -- far from it.
 As we saw in Eq.~(\ref{eq:14-1_fidelity_0}), the fidelity vanishes when the distributed state is orthogonal to the ideal state \ket{\Phi^+}.
 This means that the distributed state is also maximally entangled and can be used for quantum communication after an appropriate transformation.
 For the case discussed in Eq.~(\ref{eq:14-1_fidelity_0}), the distributed state can be transformed into the ideal one by either Alice or Bob applying a local Pauli $Z$ operation,
@@ -92,7 +91,7 @@ The fidelity of this state with respect to the ideal Bell pair \ket{\Phi^+} is
     F \left( \rho, \ket{\Phi^+} \right) & = \frac{1}{4} \bra{\Phi^+} \left( \ket{00}\bra{00} + \ket{01}\bra{01} + \ket{10}\bra{10} + \ket{11}\bra{11} \right) \ket{\Phi^+} \nonumber\\
     & = \frac{1}{4} \left( \frac{1}{2} + \frac{1}{2} \right) = \frac{1}{4}.
 \end{align}
-We that it is $F=0.25$ that signifies the distributed state is ``completely useless''.
+We see that it is $F=0.25$ that signifies the distributed state is ``completely useless''.
 
 Fidelity is not the only useful metric when it comes to quantifying the quality of the distributed state.
 The other method relies on the CHSH inequality which we saw plays a crucial role in the E-91 QKD protocol in Chapter~\ref{sec:10_E91}.
@@ -229,7 +228,7 @@ This time the probabilities of the two outcomes are different from each other, u
 What is more interesting though are the post-measurement states corresponding to the outcomes of the measurement,
 \begin{align}
     \text{outcome +1:} & \quad \ket{0}\ket{\Psi^+}, \label{eq:14-2_W_post_meas_0} \\
-    \text{outcome +1:} & \quad \ket{1}\ket{00},
+    \text{outcome -1:} & \quad \ket{1}\ket{00},
 \end{align}
 We see that when the outcome of the measurement is +1, the state of the remaining two qubits is a maximally entangled Bell pair.
 This is in stark contrast to the GHZ state, where a single measurement destroys all entanglement regardless of the outcome.
@@ -265,7 +264,7 @@ An example of this situation is given by hte post-measurement state of Eq.~(\ref
 
 Monogamy of entanglement is one of the most fundamental properties of quantum mechanics. It is unlike anything that exists in classical physics, and is one of the cornerstones and building blocks which we use in quantum technologies, and particularly in quantum communication.
 Monogamy of entanglement is instrumental in guaranteeing security in the E91 QKD protocol.
-The stronger Alice's and Bob's qubits are entangled the less information an eavesdroper can learn about the secret key.
+The stronger Alice's and Bob's qubits are entangled the less information an eavesdropper can learn about the secret key.
 If the shared pair of qubits between and Alice and Bob is maximally entangled, the eavesdropper can learn nothing.
 
 We can extend our discussion of GHZ and W states to $N$ qubits.
@@ -289,7 +288,7 @@ Since the $N$-qubit W state is an equal superposition of $N$ terms, he normaliza
 
 GHZ and W states are not the only important examples of multipartite entangled states.
 A prominent example of $N$-partite example is the \textbf{\textit{graph state}}\index{graph state}.
-This state can be represented visually as a set of vertices $V$ which are connected by a set of vertices $E$.
+This state can be represented visually as a set of vertices $V$ which are connected by a set of edges $E$.
 Such an object is known as a \textit{\textbf{graph}}\index{graph}\footnote{Not to be confused with a graph of a function.}
 Figure~\ref{fig:14-2_graph_state} shows an example of a graph with vertex set $V=\{V_1, V_2, V_3, V_4\}$, connected by edges from the edge set $E=\{ E_{12}, E_{23}. E_{13}, E_{34} \}$.
 The corresponding graph state is obtained by placing a qubit at each vertex of the graph, initialized in $\ket{+} = (\ket{0} + \ket{1}) / \sqrt{2}$, and applying the \textbf{\textit{control-phase gate}}\index{control-phase gate} $CZ_{ij}$ between qubits whose vertices are connected by and edge $E_{ij}$.

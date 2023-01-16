@@ -394,12 +394,14 @@ Since these lecture notes focus on quantum communication, we will briefly discus
     \label{fig:1-5_security}
 \end{figure}
 
+Computer security experts sometimes refer to the "CIA triad"\index{CIA triad} of \emph{confidentiality}\index{confidentiality}, \emph{integrity}\index{integrity}, and \emph{availability}\index{availability}. \emph{Encryption}\index{encryption} refers to a set of mathematical techniques for protecting digital information, making it difficult to read or to modify undetected, often used to achieve one of the CIA goals. In this book, we will loosely refer to "security" to mean this use of encryption.
+
 Let's consider a sender wishing to send a message to a receiver as pictured in Fig.~\ref{fig:1-5_security}.
 The message might be something mundane such as ``Buy some milk, please'' or might be something sensitive such as ``My credit card number is ...''.
 Either way, messages sent over public channels are encrypted to preserve the privacy of the conversation between the sender and the receiver.
 Let's consider a third party, an eavesdropper, who is trying to listen in on the conversation by intercepting the message.
-Current classical encryption techniques offer \textit{\textbf{computational security}}, meaning that cracking them is not impossible, merely very difficult and would require enormous classical resources to do so.
-Quantum algorithms exist that break this encryption.
+Current classical encryption techniques offer \textit{\textbf{computational security}}, meaning that cracking them is not impossible, merely very difficult and would require enormous classical resources.
+Quantum algorithms exist that have the potential to break this encryption.
 An eavesdropper with access to a quantum computer could in principle intercept the encrypted message, use their quantum computer to break the code and listen in on the conversation with impunity.
 
 To overcome this problem, the communicating parties need to resort to using \textit{\textbf{quantum key distribution}} (QKD).
