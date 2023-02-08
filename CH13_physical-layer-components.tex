@@ -13,7 +13,10 @@ In Chapter~\ref{ch:repeaters}, we saw the basics of a quantum repeater and how i
 \end{figure}
 
 
-Fig.~\ref{fig:13-MIM-link} shows the basic architecture for a quantum repeater link. We have our network nodes, represented by the \rdv{blue boxes}, each of which has some qubits \rdv{represented by the atom symbols}.  The nodes fire photons (\rdv{orange ovals}) toward the middle node, which we know implements a Bell-state measurement. That way, we can establish entanglement over long distances. What are the individual physical components of a quantum repeater system, and more importantly how can we implement them? First, we need optical fibers to carry our photons. That's kind of obvious, and already we have covered optical fibers at some length in Chapters~\ref{sec:7_waveguides}\index{optical fiber} and \ref{sec:11_long-distance}. Next, we need the Bell-state analyzer in the middle. The analyzer implements our Bell-state measurement, which is crucial for implementing entanglement swapping.
+Fig.~\ref{fig:13-MIM-link} shows the basic architecture for a quantum repeater link.
+We have our two network nodes, represented by the boxes, each of which contains one or more qubits represented by the atom symbols.
+The qubits emit photons toward the middle node, which implements a Bell-state measurement.
+That way, we can establish entanglement over long distances. What are the individual physical components of a quantum repeater system, and more importantly how can we implement them? First, we need optical fibers to carry our photons. That's kind of obvious, and already we have covered optical fibers at some length in Chapters~\ref{sec:7_waveguides}\index{optical fiber} and \ref{sec:11_long-distance}. Next, we need the Bell-state analyzer in the middle. The analyzer implements our Bell-state measurement, which is crucial for implementing entanglement swapping.
 
 While the photons are in flight and traveling toward our Bell-state analyzer (BSA)\index{Bell-state analyzer (BSA)}, the qubits stored in the nodes are stationary. They are not moving anywhere, so we must have some physical means of storing these qubits, which we do with the help of \emph{quantum memory}\index{quantum memory}. The difference between classical memories and quantum memories is quite substantial. Classical memories store zeros and ones (classical bits), whereas quantum memories have to be able to store not only one or zero, but also any superposition, and in fact any entangled state. 
 %That way, they can share entanglement over the entire quantum network. 
@@ -23,36 +26,45 @@ After talking about the two basic components of BSAs and memories, we will consi
 
 \section{Bell State Measurements I}
 
-\rdv{this par needs work, but I haven't decided what to do with it. Do we really need to repeat the Bell states here?}
-Let's remind ourselves of some of the characteristics of Bell states.
-%The Bell states are four entangled states, and they can be written in this form in the computational basis. \ket{\Phi^+} is a superposition of  \ket{00}, and  \ket{11}. So is \ket{\Phi^-}, but with a negative phase between the two, and this (follow pointer) is the expression for \ket{\Psi^+}, and \ket{\Psi^-}.
-The Bell states are orthonormal. If we take the inner product of a Bell state with itself, then we get one, which means that it is normalized. But if we take the inner product of one of the Bell states with a different Bell state, then we get zero. For example, the inner product between \ket{\Phi^-} and \ket{\Phi^+} is zero, and so on,
-\begin{equation}
-\begin{aligned}
-&\left\langle\Phi^{+} \mid \Phi^{+}\right\rangle=1 \\
-&\left\langle\Phi^{-} \mid \Phi^{+}\right\rangle=0.
-\end{aligned}
-\end{equation}
+% \rdv{this par needs work, but I haven't decided what to do with it. Do we really need to repeat the Bell states here?}
+% Let's remind ourselves of some of the characteristics of Bell states.
+% The Bell states are orthonormal. If we take the inner product of a Bell state with itself, then we get one, which means that it is normalized. But if we take the inner product of one of the Bell states with a different Bell state, then we get zero. For example, the inner product between \ket{\Phi^-} and \ket{\Phi^+} is zero, and so on,
+% \begin{equation}
+% \begin{aligned}
+% &\left\langle\Phi^{+} \mid \Phi^{+}\right\rangle=1 \\
+% &\left\langle\Phi^{-} \mid \Phi^{+}\right\rangle=0.
+% \end{aligned}
+% \end{equation}
 
-Since the Bell states are orthonormal and completely cover the possible space of two qubits, we can take any pure state of two qubits, and write it out in terms of Bell states, which we call writing it in the Bell basis\index{Bell basis}. For example, let's consider a general pure two-qubit state in the computational basis with probability amplitudes given by $\alpha$, $\beta$, $\gamma$, and $\delta$,
-\begin{equation}
-|\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle.
-\end{equation}
+% Since the Bell states are orthonormal and completely cover the possible space of two qubits, we can take any pure state of two qubits, and write it out in terms of Bell states, which we call writing it in the Bell basis\index{Bell basis}. For example, let's consider a general pure two-qubit state in the computational basis with probability amplitudes given by $\alpha$, $\beta$, $\gamma$, and $\delta$,
+% \begin{equation}
+% |\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle.
+% \end{equation}
 
-Back in Ch.~\ref{sec:8-2_teleportation_protocol}, in the context of teleportation, we saw how to rewrite the computational basis states \ket{00}, \ket{01}, \ket{10} and \ket{11} in the Bell basis. Now we have a general two-qubit state, which is of course a superposition of the four Bell states, where naturally the probability amplitudes have changed. For example, the probability amplitude for state \ket{\Phi^+} is $(\alpha+\beta)/\sqrt{2}$, and so on for the other Bell states,
-\begin{equation}
-|\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\beta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\gamma+\delta}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\gamma-\delta}{\sqrt{2}}\left|\Psi^{-}\right\rangle
-\end{equation}
+% Back in Ch.~\ref{sec:8-2_teleportation_protocol}, in the context of teleportation, we saw how to rewrite the computational basis states \ket{00}, \ket{01}, \ket{10} and \ket{11} in the Bell basis. Now we have a general two-qubit state, which is of course a superposition of the four Bell states, where naturally the probability amplitudes have changed. For example, the probability amplitude for state \ket{\Phi^+} is $(\alpha+\beta)/\sqrt{2}$, and so on for the other Bell states,
+% \begin{equation}
+% |\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\beta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\gamma+\delta}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\gamma-\delta}{\sqrt{2}}\left|\Psi^{-}\right\rangle
+% \end{equation}
 
-We have been treating measurement as a question that we ask about the state of our physical system, namely, which of the four Bell states is our state in? Is it the state \ket{\Phi^+}? Is it the state \ket{\Phi^-}, \ket{\Psi^+}, or \ket{\Psi^-}? This is what the measurement reveals about our system, and usually we say that we get the answer with some probability. For example, depending on the initial state \ket{\psi}, we might get the answer that the state is \ket{\Phi^+}. In this case, that answer would occur with a probability which is the modulus squared of the original complex probability amplitude,
-\begin{equation}
-\operatorname{Prob}\{\ket{\Phi^+}\}=\left|\frac{\alpha+\beta}{\sqrt{2}}\right|^2.
-\end{equation}
-This is a very abstract notion of what a measurement actually is, and it's not \rdv{?} very useful when it comes to doing calculations. Shortly, we will see how to actually implement such a measurement in terms of a quantum circuit, which will tell us more about what these measurements are actually doing and how we can implement them in a laboratory.
+% We have been treating measurement as a question that we ask about the state of our physical system, namely, which of the four Bell states is our state in? Is it the state \ket{\Phi^+}? Is it the state \ket{\Phi^-}, \ket{\Psi^+}, or \ket{\Psi^-}? This is what the measurement reveals about our system, and usually we say that we get the answer with some probability. For example, depending on the initial state \ket{\psi}, we might get the answer that the state is \ket{\Phi^+}. In this case, that answer would occur with a probability which is the modulus squared of the original complex probability amplitude,
+% \begin{equation}
+% \operatorname{Prob}\{\ket{\Phi^+}\}=\left|\frac{\alpha+\beta}{\sqrt{2}}\right|^2.
+% \end{equation}
+% This is a very abstract notion of what a measurement actually is, and it's not \rdv{?} very useful when it comes to doing calculations. Shortly, we will see how to actually implement such a measurement in terms of a quantum circuit, which will tell us more about what these measurements are actually doing and how we can implement them in a laboratory.
 
-Before we do that, let's step back a little bit and consider something simpler. Let's look at measurement of a single qubit, and let's be specific and say that we want to measure the single qubit in the Pauli $Z$ basis.
+In this Section, we focus on the Bell state analyzer from Fig.~\ref{fig:13-MIM-link}, particularly how one can perform measurements in the Bell basis.
+We have seen how to describe this measurement mathematically in Chapter~\ref{sec:4_entanglement}.
+However, this tells us little about a real-world implementation.
+The first step is to break down the Bell state measurement into more elementary operations in order to understand how we can implement it using a real physical system.
 
-\rdv{simple figs here with the measurement symbols for Z, X, and H+Z measurement. accompanying text needs cleanup.}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{lesson13/13-2_measurementPauli.pdf}
+    \caption{Caption}
+    \label{fig:13-2_measurementZ}
+\end{figure}
+
+Let's step back a little and consider something simpler first, like measuring a single qubit in the Pauli $Z$ basis.
 
 In the quantum circuit notation, we would write it as this: we have some input state \ket{\psi}, and then we measure it- this is the symbol for measurement (see figure), and here, this little Z is just reminding us that we are measuring in the $Z$ basis.  So, what we get is that initially, if the state is some general superposition of \ket{0} and \ket{1} with probability amplitudes $\alpha$ and $\beta$, then the measurement can give us a $+1$ outcome with corresponding probability, which is given by the inner product between the initial state and our basis state \ket{0} modulus squared, which is just $\alpha$ modulus squared. Or, we can get the  $-1$ outcome which is given by the probability given by $\beta$ modulus squared, the probability amplitude of the basis state one.
 
@@ -91,9 +103,10 @@ This trick is very useful in both quantum computation and quantum communication,
 \section{Bell State Measurements II}
 \label{sec:13-3_Bell_state_measurement_2}
 
-In this section, we will talk about how to actually implement a Bell-state measurement with linear optics. The actual scheme really depends on our encoding. So let's just pick some encoding for our qubits, for example linearly polarized single photons. There are two reasons for this choice: first, it's intuitive and simple so it makes a good pedagogical example, and second, it's one of the most commonly used encodings in real experiments.
+In this section, we will talk about how to implement a Bell-state measurement with linear optics. The implementation scheme depends on the encoding. Let's encode the state of a qubit using the photon polarization. There are two reasons for this choice: first, it's intuitive and simple so it makes a good pedagogical example, and second, it's one of the most commonly used encodings in real experiments.
 
-In this encoding, we encode our qubit in a state \ket{0} as a single photon that's polarized in the vertical direction, which we write as \ket{V}. Our other computational basis state \ket{1}, as a single photon polarized in the horizontal direction, we write \ket{H}.
+In this encoding, qubit in a state \ket{0} is represented as a single photon that is polarized in the horizontal direction, which we write as \ket{H}.
+Our other computational basis state \ket{1} is represented as a single photon polarized in the vertical direction, and we write \ket{V}.
 
 \begin{figure}[t]
     \centering
@@ -102,11 +115,7 @@ In this encoding, we encode our qubit in a state \ket{0} as a single photon that
     \label{fig:13-PBS}
 \end{figure}
 
-
-% \rdv{Make Figs. X.a, X.b, c and d from p. 21-24}
-
-\rdv{reworked; Michal, please check}
-The first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? We have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \emph{polarizing beam splitter} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}. If we have a beam of light coming in with some polarization, a PBS splits the beam of light into two beams. One beam is transmitted through the polarizing beam splitter but comes out only with a horizontal polarization, while the other beam gets reflected by the PBS and is polarized in the vertical direction. The relative strength of the two beams naturally depends on the polarization of the input light; the PBS is not creating or changing polarization, but rather sorting the input light into the two categories.
+The first question that we should ask is, "how do we implement a Pauli $Z$ measurement with this encoding"? We have to measure and distinguish the two different polarizations, horizontal and vertical. That can be done with a little piece of crystal called a \textit{\textbf{polarizing beam splitter}} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}. If we have a beam of light coming in with some polarization, a PBS splits the beam of light into two beams. One beam is transmitted through the polarizing beam splitter but comes out only with a horizontal polarization, while the other beam gets reflected by the PBS and is polarized in the vertical direction. The relative strength of the two beams naturally depends on the polarization of the input light; the PBS is not creating or changing polarization, but rather sorting the input light into the two categories.
 Thinking in terms of computational states, we now have two beams, one for our \ket{0} and one for our \ket{1}.
 
 \begin{figure}[t]
@@ -160,7 +169,6 @@ any other pattern & (N/A) & detection error & discard
 \label{tab:bsa-clicks}
 \end{table}
 
-\rdv{added some discussion of loss}
 A complete, unambiguous Bell-state measurement cannot always be successfully implemented with linear optics. In fact, even with 100\% probability of receiving both photons, the maximum probability of a successful Bell measurement is limited to only 50\%.  Of course, as we saw when discussing the loss of photons in fiber, the loss of one or both photons is highly probable, increasing the ambiguity of interpreting the result of one click.  These cases (along with the case where something goes wrong in the hardware) are summarized in Tab.~\ref{tab:bsa-clicks}. 
 %We have seen in a previous chapter that quantum repeaters have to contend with a lot of noise. To deal with that noise, we have to purify our states. We have also seen in previous chapters that we have to deal with lossy fibers, which was the original motivation to develop quantum repeaters. But even if we take away all of these sources of error, there is still a fundamental error in the fact that Bell-state measurement cannot be always successfully executed with linear optics. 
 Moreover, we have to take into account that the two photons coming into our Bell-state analyzer have to be synchronized. If they come in so close together that two detectors click \emph{almost} simultaneously, but not close enough that the photons are truly indistinguishable, we may misinterpret the result. The Bell-state measurement has failed and we did not establish entanglement between the network nodes, but may not realize it; when we accumulate statistics about the link, this results in lowered fidelity.
@@ -362,23 +370,25 @@ Unfortunately, this article is behind a paywall so you will have to use your uni
 
 {\bf Chapter 12}
 
-Quantum repeaters are the "bread and butter" of quantum networks. One place to learn more is Prof. Van Meter's book,
-
-Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014.
-
-Those interested in the paper that introduced the idea of a quantum repeater (and are not scared off by maths) might have a look here:
+Quantum repeaters are the "bread and butter" of quantum networks. The names Wolfgang D\"ur and Hans Briegel cannot be mentioned often enough in the history of repeaters. Those interested in the paper that introduced the idea of a quantum repeater (and are not scared off by maths) might have a look here:
 
 Hans J. Briegel, Wolfgang Dür, Juan I. Cirac, Peter Zoller, Quantum repeaters: The role of imperfect local operations in quantum communication, \emph{Physical Review Letters} 81, 5932, 1998.
 
 The paper is behind a paywall and needs to be accessed through your university’s library online services. An earlier version of the paper can be accessed openly here.
 
+One place to learn more is Prof. Van Meter's book,
+
+Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014.
+
+
+
 {\bf Chapter 13}
 
-Great popular article about the physical layer components of quantum networks can be found here:
+A great popular article about the physical layer components of quantum networks can be found here:
 Dan Hurley, The quantum internet will blow your mind. Here’s what it will look like, \emph{Discover Magazine}, 2020.
 
 Another fantastic review of physical layer components can be found here:
 
 Nicolas Sangouard, Christoph Simon, Hugues de Riedmatten, Nicolas Gisin, Quantum repeaters based on atomic ensembles and linear optics, \emph{Review of Modern Physics} 83, 33, 2011.
 
-Again, the published version is behind a paywall but the pre-publication version can be accessed for free here. Be warned though, this paper starts with an excellent introduction but the technical details ramps up quickly after that and relies on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.
+Again, the published version is behind a paywall but the pre-publication version can be accessed for free here. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.
