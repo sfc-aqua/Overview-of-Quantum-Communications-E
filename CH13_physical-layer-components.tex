@@ -57,46 +57,82 @@ We have seen how to describe this measurement mathematically in Chapter~\ref{sec
 However, this tells us little about a real-world implementation.
 The first step is to break down the Bell state measurement into more elementary operations in order to understand how we can implement it using a real physical system.
 
+Let's step back a little and consider something simpler first, like measuring a single qubit in the Pauli $Z$ basis, depicted in the left panel of Fig.~\ref{fig:13-2_measurementPauli}.
+The meter icon represents a measurement in the Pauli Z basis which outputs a single classical bit $c$.
+The value of this classical bit can be either +1 or -1, which is normally written as $c\in\{+1,-1\}$.
+For an arbitrary initial state $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$, the probability that the measurement outcome is $c=+1$ is given by $\text{Pr}(+1)=|\langle0|\psi\rangle|^2=|\alpha|^2$.
+On the other hand, probability that the measurement outcome is $c=-1$ is given by $\text{Pr}(-1)=|\langle1|\psi\rangle|^2=|\beta|^2$.
+
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.6\textwidth]{lesson13/13-2_measurementPauli.pdf}
-    \caption{Caption}
-    \label{fig:13-2_measurementZ}
+    \caption[Changing the basis of measurements.]{Changing the basis of measurement can be achieved by applying a suitable unitary and then measuring in the Pauli $Z$ basis.}
+    \label{fig:13-2_measurementPauli}
 \end{figure}
 
-Let's step back a little and consider something simpler first, like measuring a single qubit in the Pauli $Z$ basis.
+We can also measure the qubit in the Pauli $X$ basis as shown in the top part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
+The measurement icon includes an X to remind us that we are measuring in the Pauli $X$ basis.
+Probability that we obtain $c=+1$ is $\text{Pr}(+1)=|\langle+|\psi\rangle|^2=|\alpha+\beta|^2/2$, and the probability of the outcome $c=-1$ is $\text{Pr}(-1)=|\langle-|\psi\rangle|^2=|\alpha-\beta|^2/2$.
 
-In the quantum circuit notation, we would write it as this: we have some input state \ket{\psi}, and then we measure it- this is the symbol for measurement (see figure), and here, this little Z is just reminding us that we are measuring in the $Z$ basis.  So, what we get is that initially, if the state is some general superposition of \ket{0} and \ket{1} with probability amplitudes $\alpha$ and $\beta$, then the measurement can give us a $+1$ outcome with corresponding probability, which is given by the inner product between the initial state and our basis state \ket{0} modulus squared, which is just $\alpha$ modulus squared. Or, we can get the  $-1$ outcome which is given by the probability given by $\beta$ modulus squared, the probability amplitude of the basis state one.
+But what if we cannot perform of the Pauli $X$ measurement directly?
+Sometimes, in an experiment, it is straightforward to implement a Pauli $Z$ measurement, but much less clear how to perform a measurement in a different basis.
+We can still measure in the desired basis by rotating the state with an appropriate unitary and then performing a measurement in the Pauli $Z$ basis.
+In hte case of a Pauli $X$ measurement, the appropriate unitary is a Hadamard gate $H$ as shown in the lower part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
+The state immediately before the measurement in the Pauli $Z$ basis is
+\begin{align}
+    |\psi'\rangle & = H|\psi\rangle = \alpha |+\rangle + \beta |-\rangle \nonumber\\
+    & = \frac{\alpha + \beta}{\sqrt{2}} |0\rangle + \frac{\alpha - \beta}{\sqrt{2}} |1\rangle.
+\end{align}
+We can immediately see that the probabilities of obtaining measurement outcomes +1 or -1 are the same as measuring in the Pauli $X$ basis directly.
 
-Now, let's try to do a measurement in the $X$ basis.
+How do we know that the unitary that is needed is the Hadamard $H$?
+The trick lies in realizing that the probability of obtaining the $c=+1$ outcome via a direct Pauli $X$ measurement must by the same as first rotating the state with some unitary operation $U$ and then measuring in Pauli $Z$ basis.
+Written more formally, we require that
+\begin{equation}
+    |\langle+|\psi\rangle|^2 = |\langle0|U|\psi\rangle|^2.
+    \label{eq:13-2_prob_condition}
+\end{equation}
+Eq.~(\ref{eq:13-2_prob_condition}) is satisfied when $\langle+|=\langle0|U$, or $|+\rangle=U^{\dagger}|0\rangle$ if you prefer to think in terms of kets rather then bras.
+The same unitary $U$ must also satisfy
+\begin{equation}
+    |\langle-|\psi\rangle|^2 = |\langle1|U|\psi\rangle|^2,
+\end{equation}
+that is the probabilities of obtaining the outcome $c=-1$ via direct measurement in Pauli $X$ basis and via rotating the state before measuring in the Pauli $Z$ basis must be the same.
+The unitary operation $U$ that achieves this transformation is the Hadamard $H$ as we have seen in Sec.~\ref{sec:2-2_unitary_operations}.
 
-Again, in the quantum circuit notation, it would look like this: we have our initial state \ket{\psi}, and we're doing a measurement, and now it's in the $X$ basis which is over here (see figure) written by this little X.  (When this symbol appears in a circuit without the Z or X, generally it means to measure in the Z basis.) Again, we are considering some general input state, but in order to be able to determine the probabilities of the different outcomes, we are going to rewrite this state in the $X$ basis. We have seen that \ket{0} is an equal superposition of the \ket{+} state and the \ket{-} state, and similarly \ket{1} is an equal superposition, but with a negative phase between \ket{+} and \ket{-} states. We can rewrite the initial state in this following form (see pointer, RHS eq) \rdv{}, and from this form we can easily read out the probabilities of obtaining the  $+1$ outcome of the measurement, which is given by half $\alpha$ plus $\beta$, the whole thing modulus squared, and the probability for the  $-1$ outcome.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{lesson13/13-2_measurementBell.pdf}
+    \caption[Bell state measurement via Pauli Z measurements]{Performing the Bell state measurement can be achieved by the right unitary $U$ followed by two measurements in the Pauli $Z$ basis.}
+    \label{fig:13-2_measurementBell}
+\end{figure}
 
-Now, let's impose a restriction on ourselves. Let's say that we are only allowed to do measurements in the $Z$ basis; we cannot perform measurement in the $X$ basis.  What do we do then? Well, we can consider the following quantum circuit: we have the initial state and then we do some unitary operation on that state. Here (see figure), we are choosing the Hadamard, and then we perform our measurement but this time in the $Z$ basis.
-
-\rdv{from here to the end of the section needs cleanup.}
-
-We start with the usual initial state, a superposition of \ket{0} and \ket{1}, but after application of the Hadamard gate we get a new state, which we are denoting \ket{\psi'}, given in this form (follow pointer). A Hadamard applied to \ket{0} gives us a \ket{+} state, whereas a Hadamard applied to \ket{1} gives us the \ket{-} state. If we just expand the \ket{+} state and the \ket{-} state again in the computational basis, we arrive at this form \rdv{?} for our state \ket{\Psi^+} \rdv{? is that right? Should it be \ket{\psi'}?}. Now, because we are measuring in the $Z$ basis, it's easy to read out the probabilities corresponding to outcomes $+1$ and $-1$.
-
-Even though here we have a different quantum circuit, we are obtaining the outcomes $+1$ and $-1$ with the same probabilities as we had done on the previous slide \rdv{}. This shows is that there are two ways of implementing a Pauli $X$ measurement. We can do it directly, writing it like this, or if we want we can just measure in the $Z$ basis, but then we have to apply some unitary transformation on our pure state \ket{\psi}.
-
-So, why is that? Well, the clue is in the probabilities. If we look at the probability of the $+1$ outcome in this scheme (see pointer), where we are measuring the $X$ basis directly, then it's given by the inner product of \ket{\psi} and the \ket{+} state modulus squared. If we do it in our other scheme where we are using the Hadamard followed by a z-measurement, then it's given by the corresponding expression here (see pointer), now it's the inner product between the state \ket{\psi'}, so this is our initial state after we apply Hadamard to it, and the inner product is with a \ket{0} state.
-
-And then, what we get is \ket{\psi} times Hadamard times \ket{0}. If we are comparing these two probabilities (follow pointer), we see that this \ket{\psi} state has an inner product with \ket{+}, and \ket{+} is just written as Hadamard applied to a \ket{0} state. So that's what we are doing here (top right red box circuit).
-
-So what we are really doing is we are asking: what unitary takes me from a \ket{+} state to a \ket{0} state, or from a \ket{0} state to a \ket{+} state? And we already know this unitary, it's the Hadamard. Similarly for the  $-1$ outcome, we look at the different probabilities and what we get is, again, we go from a \ket{-} state to a \ket{1} state via the Hadamard transformation.
-
-So the Hadamard transforms our desired basis of measurement, which in this case is a Pauli $X$ into a Pauli $Z$ basis.
-
-How can we perform a Bell measurement using only Pauli $Z$? We have two qubits, so we're going to need two Pauli measurements, and we are going to need to apply some two-qubit unitary before we actually measure the state. So the question now is, how do we find this unitary?
-
-We know that the unitary, when applied to a state \ket{\Psi^+}, should give us a \ket{00}. When applied to state \ket{\Phi^-}, it should give us state \ket{10}, and so on and so forth. This is our rule of transforming from our Bell-basis into our computational basis, and if we can do that, then we can just measure in the $Z$ basis. In the same way we saw how it worked for the Pauli $X$ basis, we had to find a unitary that transforms from the $X$ basis into the $Z$ basis which was given by Hadamard. Here, we are looking for a more general unitary because it's acting on two qubits.
-
-So, without further ado, this is the circuit that actually achieves our desired transformation (fig. on slide). It's given by a CNOT gate, which is given by this two qubit gate, followed by a Hadamard on the first qubit, and then two measurements in the $Z$ basis. If we get outcome \ket{00}, which corresponds to  $+1$  $+1$ \rdv{how should we format this?}, then we know that we have a Bell state \ket{\Phi^+}. Similarly for all the other three possible measurement outcomes, and each individual measurement outcome represents uniquely a Bell-state measurement.
-
-This is true in general. Any measurement basis can be implemented by Pauli $Z$ measurements and a suitable unitary applied before we measure our qubits.
-
-This trick is very useful in both quantum computation and quantum communication, and in the next section we will actually see how to do this in real life using linear optics.
+Transforming the measurement basis by applying a suitable unitary operation on the state does not stop with single qubits but works for multi-qubit measurements as well.
+Let's finally turn our attention to the Bell state measurement.
+What is the two-qubit unitary that we must apply such that subsequent measurements of both qubits in the Pauli $Z$ basis have the same effect as a Bell state measurement?
+We can apply the same technique that we used in the case of single-qubit Pauli $X$ measurement and look for a unitary $U$ which satisfies
+\begin{equation}
+    |\langle\Phi^+|\psi\rangle|^2 = |\langle00|U|\psi\rangle|^2,
+\end{equation}
+where $|\psi\rangle$ is now an arbitrary two-qubit state, as depicted in the left panel of Fig.~\ref{fig:13-2_measurementBell}.
+The outcomes of the measurements on the first and second qubit are denoted by $c_1$ and $c_2$, respectively.
+We see that our desired unitary $U$ must satisfy $\langle\Phi^+| = \langle00|U$, which can be expressed in the ket notation by taking the adjoint of both sides,
+\begin{equation}
+    |\Phi^+\rangle = U^{\dagger} |00\rangle.
+\end{equation}
+This means we need to find the unitary $U^{\dagger}$ which transforms the input $|00\rangle$ into the Bell pair $|\Phi^+\rangle = (|00\rangle + |11\rangle) / \sqrt{2}$.
+This unitary operation is pictured in hte middle panel of Fig.~\ref{fig:13-2_measurementBell},
+\begin{equation}
+    U^{\dagger} = CNOT_{12} \cdot (H \otimes I)
+    \label{eq:13-2_Uadjoint}
+\end{equation}
+Starting from the initial state where both qubits are initialized in the $|0\rangle$, we need to apply the Hadamard operation $H$ to the first qubit, followed by a controlled-NOT gate with the first qubit being the control and the second qubit the target.
+All that remains to be done is to take the adjoint of Eq.~(\ref{eq:13-2_Uadjoint}),
+\begin{equation}
+    U = (H \otimes I) \cdot CNOT_{12}.
+\end{equation}
+This is the unitary operation that we need to apply to state in order to be able to perform a Bell state measurement using measurements in the Pauli $Z$ basis as shown in the right panel of Fig.~\ref{fig:13-2_measurementBell}.
+This trick is very useful in both quantum computation and quantum communication.
 
 
 
@@ -372,13 +408,12 @@ Unfortunately, this article is behind a paywall so you will have to use your uni
 
 Quantum repeaters are the "bread and butter" of quantum networks. The names Wolfgang D\"ur and Hans Briegel cannot be mentioned often enough in the history of repeaters. Those interested in the paper that introduced the idea of a quantum repeater (and are not scared off by maths) might have a look here:
 
-Hans J. Briegel, Wolfgang Dür, Juan I. Cirac, Peter Zoller, Quantum repeaters: The role of imperfect local operations in quantum communication, \emph{Physical Review Letters} 81, 5932, 1998.
+Hans J. Briegel, Wolfgang Dür, Juan I. Cirac, Peter Zoller, Quantum repeaters: The role of imperfect local operations in quantum communication, \emph{Physical Review Letters} 81, 5932, 1998~\cite{briegel98:_quant_repeater}.
 
 The paper is behind a paywall and needs to be accessed through your university’s library online services. An earlier version of the paper can be accessed openly here.
 
-One place to learn more is Prof. Van Meter's book,
-
-Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014.
+One place to learn more is Prof. Van Meter's previous book,\\
+Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014~\cite{van-meter14:_quantum_networking}.
 
 
 
@@ -389,6 +424,6 @@ Dan Hurley, The quantum internet will blow your mind. Here’s what it will look
 
 Another fantastic review of physical layer components can be found here:
 
-Nicolas Sangouard, Christoph Simon, Hugues de Riedmatten, Nicolas Gisin, Quantum repeaters based on atomic ensembles and linear optics, \emph{Review of Modern Physics} 83, 33, 2011.
+Nicolas Sangouard, Christoph Simon, Hugues de Riedmatten, Nicolas Gisin, Quantum repeaters based on atomic ensembles and linear optics, \emph{Review of Modern Physics} 83, 33, 2011~\cite{sangouard2011quantum}.
 
 Again, the published version is behind a paywall but the pre-publication version can be accessed for free here. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.

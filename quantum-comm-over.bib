@@ -1,5 +1,58 @@
 % Let's keep this alphabetic. Also, no need to over-cite; this is a textbook for beginning students, not a comprehensive monograph.
 
+@string{acm-cs = "{ACM} Computing Surveys"}
+@string{acm-toplas = "{ACM} Transactions on Programming Languages and Systems"}
+@string{cacm = "Communications of the ACM"}                  
+@string{ieee-cm = "{IEEE} Communications Magazine"}
+@string{internet-rfc = "Internet Request For Comments"};
+@string{conf = "Conference"}
+@string{proc = "Proceedings"}
+% these are defined some places, not others
+@string{ieee-proc = proc # "{IEEE}"}
+@string{ton = "{IEEE/ACM} Transactions on Networking"};
+@string{ieee-tc = "{IEEE} Transactions on Computers"};
+@string{rmp = "Review of Modern Physics"}
+@string{prl = "Physical Review Letters"}
+@string{pra = "Physical Review A"}
+@string{prb = "Physical Review B"}
+@string{apl = "Applied Physics Letters"}
+@string{qic = "Quantum Information and Computation"}
+@string{qip = "Quantum Information Processing"}
+@string{njp = "New Journal of Physics"}
+@string{jmp = "Journal of Mathematical Physics"}
+@string{ieee-nano = "IEEE Trans. on Nanotechnology"}
+@string{jsac = "IEEE Journal on Selected Areas in Communications"}
+@string{jetc = "{ACM} Journal of Emerging Technologies in Computing Systems"}
+@string{cp = "Contemporary Physics"}
+@string{pla = "Physics Letters A"}
+@string{jpb = "Journal of Physics B"}
+
+@article{bennett:teleportation,
+  author = 	 {C. H. Bennett and G. Brassard and C. Cr\'{e}peau and
+                  R. Josza and A. Peres and W. Wootters},
+  title = 	 {Teleporting an unknown quantum state via dual
+                  classical and {EPR} channels},
+  journal =	 prl,
+  volume = 	 70,
+  pages =	 {1895--1899},
+  year =	 1993,
+  URL = {http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.70.1895},
+  comment = {Major paper, of course. Eq. 7 even defines the Bell states for qudits, though it doesn't use that term.}
+}
+
+@InProceedings{bennett:bb84,
+  author = 	 {C. H. Bennett and G. Brassard},
+  title = 	 {Quantum cryptography: Public key distribution and
+                  coin tossing},
+  booktitle =	 {Proc. IEEE International Conference on Computers,
+                  Systems, and Signal Processing},
+  pages =	 {175--179},
+  year =	 1984,
+  month =	 dec,
+  publisher =	 {IEEE},
+  URL = 	 {http://www.research.ibm.com/people/b/bennetc/bennettc198469790513.pdf}
+}
+
 @book{bishop2002art,
   title={Computer Security: Art and Science},
   author={Bishop, Matthew A},
@@ -8,6 +61,46 @@
   publisher={Addison-Wesley Professional},
   isbn = {0-321-71233-1}
 }
+
+@Article{briegel98:_quant_repeater,
+  author = 	 {H.-J. Briegel and W. D\"ur and J.I. Cirac and P. Zoller},
+  title = 	 {Quantum Repeaters: the Role of Imperfect Local
+                  Operations in Quantum Communication},
+  journal = 	 prl,
+  year = 	 1998,
+  volume =	 81,
+  pages =	 {5932--5935}
+}
+
+@article{chen2021integrated,
+  title={An integrated space-to-ground quantum communication network over 4,600 kilometres},
+  author={Chen, Yu-Ao and Zhang, Qiang and Chen, Teng-Yun and Cai, Wen-Qi and Liao, Sheng-Kai and Zhang, Jun and Chen, Kai and Yin, Juan and Ren, Ji-Gang and Chen, Zhu and others},
+  journal={Nature},
+  volume={589},
+  number={7841},
+  pages={214--219},
+  year={2021},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{ekert1991qcb,
+  title={Quantum cryptography based on {Bell's} theorem},
+  author={Ekert, A.K.},
+  journal={Physical Review Letters},
+  volume={67},
+  number={6},
+  pages={661--663},
+  year={1991},
+  publisher={APS},
+  comment={First QKD using entanglement proposal, I believe.  E91 original.}
+}
+
+@Book{gilder08:_age_of_entanglement,
+  author = 	 {Louisa Gilder},
+  title = 	 {The Age of Entanglement: When Quantum Physics Was Reborn},
+  publisher = 	 {Vintage},
+  year = 	 2008
+  }
 
 @book{gleick2012information,
   title={The information: A history, a theory, a flood},
@@ -39,11 +132,30 @@
   publisher={MIT Press}
 }
 
+@article{sangouard2011quantum,
+  title={Quantum repeaters based on atomic ensembles and linear optics},
+  author={Sangouard, N. and Simon, C. and De Riedmatten, H. and Gisin, N.},
+  journal={Reviews of Modern Physics},
+  volume={83},
+  number={1},
+  pages={33},
+  year={2011},
+  publisher={APS}
+}
+
 @Book{sutor19:dancing,
   author = 	 {Robert S. Sutor},
   title = 	 {Dancing with Qubits},
   publisher = 	 {Packt Publishing},
   year = 	 2019
+}
+
+@Book{van-meter14:_quantum_networking,
+  author = 	 {Rodney Van{ }Meter},
+  title = 	 {Quantum Networking},
+  publisher = 	 {Wiley-ISTE},
+  year = 	 2014,
+  month = apr
 }
 
 @book{wilde2013quantum,

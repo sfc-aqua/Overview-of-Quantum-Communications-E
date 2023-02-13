@@ -4,7 +4,7 @@
 
 \chaptermark{Quantum States}
 
-\rdv{2.1 has been cleaned up. 2.2 and 2.3 are still bad. 2.4 and 2.5 need more cleanup, but aren't too bad. n.b.: in the 12/19 draft, some figures and equations have moved and been renumbered.}
+\rdv{Cleaned up, except for the duplicate introduction of ket.  It's still tempting to rewrite whole chunks of this chapter.}
 
 
 In this chapter, we will learn about quantum states: how to write them down, what they represent, and how they differ from classical states and bits.
@@ -31,7 +31,7 @@ First, let's discuss quantum bits, also known as \emph{qubits}. We have seen in 
 \begin{figure}[H]
     \centering
 %    \includegraphics[width=0.8\textwidth]{lesson2/dirac_notation.pdf}
-    \includegraphics[width=0.8\textwidth]{lesson2/R2L2fig1.pdf}
+    \includegraphics[width=1\textwidth]{lesson2/R2L2fig1.pdf}
     
         \caption{Dirac ket notation.}
     
@@ -85,6 +85,7 @@ This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~
 \end{figure}
 
 \section{Unitary Operations}
+\label{sec:2-2_unitary_operations}
 
 
 % Classical (SSD) VS Quantum (Ion Trap)
@@ -97,9 +98,9 @@ This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~
 
 Let's see how we can manipulate quantum states, and therefore manipulate quantum information as well. We're going to do this with \emph{unitary operations}. One thing that you have to realize is that \emph{information is physical} (an aphorism coined by Rolf Landauer of IBM). This is because the information is represented by physical systems. Therefore, to change the information and process it, we have to interact with the physical systems that carry the information. In classical information, of course the primary processing technology is transistors manufactured using a photolithography process.  Computational states are represented using electrical charge, and information processing is done by using charge to control whether a switch is on or off, allowing charge to move from place to place within a computer chip.  Another very good example is HDDs (hard disk drives), where you read, write and manipulate information with very weak and precise magnetic fields. For an example of a younger technology, we can look at the "solid-state drive" where you do the same thing, but you achieve it by manipulating very weak electric currents.
 
-In quantum information, on the other hand, we have physical systems such as \emph{ion traps}. For example, in a photo of an ion trap from a company called IonQ, individual atoms are represented by blue dots. The atoms are suspended on magnetic fields and they represent individual quantum bits. To manipulate the states of these qubits, you apply some laser pulses.  One of the most prominent forms of qubits is \emph{superconducting qubits} from companies such as IBM or Google, where microwave pulses manipulate the state of a quantum of electrical current. (Details of such processing hardware are beyond the scope of this module, but will be found in other modules in this series.) Some of these are represented in Fig.~\ref{fig:physical-system}.
+In quantum information, on the other hand, we have physical systems such as \emph{ion traps}, from companies such as IonQ and Quantinuum. The atoms are suspended on magnetic fields and they represent individual quantum bits. To manipulate the states of these qubits, you apply some laser pulses.  One of the most prominent forms of qubits is \emph{superconducting qubits} from companies such as IBM and Google, where microwave pulses manipulate the state of a quantum of electrical current. (Details of such processing hardware are beyond the scope of this module, but will be found in other modules in this series.) Some of these are represented in Fig.~\ref{fig:physical-system}.
 
-But how do we actually describe these transformations? Before giving a more complete mathematical description, let's look at some examples, as shown in Fig.~\ref{fig:unitary-table}. The most simple transformation that we can think of is actually to do nothing, and we call this the \emph{identity operation}. It's usually represented by a capital $I$. When it's acting on a ket, it takes $\ket{0}$ to  $\ket{0}$  (written $\ket{0}\rightarrow\ket{0}$) and $\ket{1}$ to $\ket{1}$ ($\ket{1}\rightarrow\ket{1}$). Classically, we can also do something similar by just not touching our classical bit. 0 remains 0 and 1 remains 1.
+But how do we actually describe these transformations? Before giving a more complete mathematical description, let's look at some examples, as shown in Fig.~\ref{fig:unitary-table}. The simplest transformation that we can think of is actually to do nothing. We call this the \emph{identity operation}, and it's usually represented by a capital $I$. When it's acting on a ket, it takes $\ket{0}$ to $\ket{0}$  (written $\ket{0}\rightarrow\ket{0}$) and $\ket{1}$ to $\ket{1}$ ($\ket{1}\rightarrow\ket{1}$). Classically, we can also do something similar by just not touching our classical bit. 0 remains 0 and 1 remains 1.
 
 % Simple Unitary Operations 
 \begin{figure}[H]
@@ -308,7 +309,7 @@ U_{00}^{*} & U_{10}^{*} \\
 U_{01}^{*} & U_{11}^{*}
 \end{array}\right)=U^{\dagger}
 \end{equation}
-We have flipped the position of the off-diagonal elements, but have not moved the diagonal elements. If you look at an example given by unitary Pauli $Y$ matrix written as this, first we take the complex conjugate so zero is just zero but the signs in front of these off-diagonal elements change because they're pure imaginary, and then we flip them because we're applying the transpose and we get the same matrix $Y$. When this happens, when the adjoint of a unitary matrix is equal to the unitary matrix, we say that that matrix is \emph{self-adjoint} and we will see many examples where this is, in fact, true.
+We have flipped the position of the off-diagonal elements, but have not moved the diagonal elements. If you look at an example given by the unitary Pauli $Y$ matrix, 
 
 \begin{equation}
 Y=\left(\begin{array}{cc}
@@ -320,15 +321,15 @@ i & 0
 \end{array}\right) \longrightarrow\left(\begin{array}{cc}
 0 & -i \\
 i & 0
-\end{array}\right)=Y
+\end{array}\right)=Y.
 \end{equation}
+First we take the complex conjugate; the zero elements on the diagonal of the matrix remain zero but the signs of the off-diagonal elements change because they're pure imaginary. Second, we apply the transpose by flipping the off-diagonal elements, and we get back the same matrix $Y$ that we started with. When this happens, when the adjoint of a unitary matrix is equal to the unitary matrix, we say that that matrix is \emph{self-adjoint}.
 
 Another very important class of unitary operations are \emph{rotations}, and this is where the Bloch sphere representation will be extremely handy. The rotation can be written in this strange looking form (strange for now),
-
 \begin{equation}
-R_{\hat{n}}(\theta)=e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2}
+R_{\hat{n}}(\theta)=e^{-i \theta \hat{n} \cdot \hat{\sigma} / 2}.
 \end{equation}
-and what it means is that we are rotating around some arbitrary direction in the Bloch sphere by some arbitrary angle $\theta$, and we write this as this following exponent. Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates $n_x$, $n_y$ and $n_z$, and the vector given by $\hat{\sigma}$ ("sigma hat") is just a vector of our Pauli matrices $X$, $Y$ and $Z$.  The dot product expands out to be
+This notation means that we are rotating around some arbitrary axis by some arbitrary angle $\theta$. We write both the axis we will rotate around and the angle in the exponent. Here, $\hat{n}$ (read "n hat") is just a unit length vector given by coordinates $n_x$, $n_y$ and $n_z$, and the vector given by $\hat{\sigma}$ ("sigma hat") is just a vector of our Pauli matrices $X$, $Y$ and $Z$.  The dot product expands out to be
 \begin{equation}
       \hat{n} \cdot \hat{\sigma} = n_{x} X+n_{y} Y+n_{z} Z
 \end{equation}
@@ -380,9 +381,7 @@ So you can see that you can work in the matrix representation or you can work al
 \section{Measurement}
 \label{sec:measurement}
 
-\rdv{pick up editing here}
-
-Now, let's consider measurements and how they can extract information from quantum qubits~\footnote{The type of measurements we consider in this book are \emph{projective measurements, as discussed more in the next chapter}. There are other types of measurement that you will learn about in advanced quantum classes.}. Basically a measurement asks the question: is my qubit in the state $\ket{0}$ or is it in the state $\ket{1}$? You can think of a measurement as a big box and you feed it your prepared state, as shown in Fig.~\ref{fig:z-measure}. Here, we consider a general state given by $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and the measurement operation tells you which state it is in. Usually there are only two possible values that can come out of a measurement device, which we will assign the values $+1$ and $-1$.
+Now, let's consider measurements and how they can extract information from quantum qubits~\footnote{The type of measurements we consider in this book are \emph{projective measurements}, as discussed more in the next chapter. There are other types of measurement that you will learn about in advanced quantum classes.}. Basically a measurement asks the question: is my qubit in the state $\ket{0}$ or is it in the state $\ket{1}$? You can think of a measurement as a big box and you feed it your prepared state, as shown in Fig.~\ref{fig:z-measure}. Here, we consider a general state given by $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and the measurement operation tells you which state it is in. Usually there are only two possible values that can come out of a measurement device, which we will assign the values $+1$ and $-1$.
 
 \begin{figure}[H]
     \centering
@@ -399,7 +398,7 @@ The probabilities of these measurement outcomes, corresponding to state \ket{0} 
 \operatorname{Prob}\{-1\}=|\beta|^2 \rightarrow \textrm{state is } |1\rangle.
 \end{align}
 
-\rdv{Michal, please check} (Mathematically speaking, the $\pm 1$ outcomes of the measurement are the \emph{eigenvalues} corresponding to the \emph{eigenvectors} of the Pauli $Z$ operator.  One way to remember which value corresponds to which vector is that $+1$ corresponds to \ket{0}, and $(-1)^0 = +1$, while $-1$ corresponds to \ket{1}, and $(-1)^1 = -1$.)
+(Mathematically speaking, the $\pm 1$ outcomes of the measurement are the \emph{eigenvalues} corresponding to the \emph{eigenvectors} of the Pauli $Z$ operator.  One way to remember which value corresponds to which vector is that $+1$ corresponds to \ket{0}, and $(-1)^0 = +1$, while $-1$ corresponds to \ket{1}, and $(-1)^1 = -1$.)
 
 We refer to this particular measurement as a measurement in the \emph{computational basis} or in the Pauli $Z$ basis. This already hints at the fact that this is not the only measurement we can do. We can also ask the following question: is the state in the $\ket{+}$ state or in the $\ket{-}$ state? We can answer this question by rewriting our original state
 \begin{equation}
@@ -427,7 +426,7 @@ Because we were asking a different question (whether the state state is in $\ket
 
 In fact, you can measure in any basis that you can think of.  This is explored more in the exercises.
 
-We have been using this word \emph{basis}, but what is a "basis"? Maybe you remember from your linear algebra class that the basis is a set of vectors that allows you to write down any vector that you can think of. In particular, if we have some general vector $\ket{\psi}$, we can write it in the Pauli Z basis given by $\ket{0}$ and \ket{1}, and already we have talked about the vector representations for $\ket{0}$ and one. And then the state in Dirac notation is written as follows, or you can write it in a new basis. Let's say you want to write it in terms of the states $\ket{i}$ and $\ket{-i}$. This is known as the Pauli $Y$ basis, and their vector representations are given as
+We have been using this word \emph{basis}, but what is a "basis"? Maybe you remember from your linear algebra class that a basis is a set of vectors that allows you to write down any vector that you can think of. In particular, if we have some general vector $\ket{\psi}$, we can write it in the Pauli Z basis given by $\ket{0}$ and \ket{1}, and already we have talked about the vector representations for $\ket{0}$ and one. And then the state in Dirac notation is written as follows, or you can write it in a new basis. Let's say you want to write it in terms of the states $\ket{i}$ and $\ket{-i}$. This is known as the Pauli $Y$ basis, and their vector representations are given as
 \begin{align}
     |i\rangle=\frac{1}{\sqrt{2}}\left(\begin{array}{l}1 \\ i\end{array}\right) \quad|-i\rangle=\frac{1}{\sqrt{2}}\left(\begin{array}{c}1 \\ -i\end{array}\right).
 \end{align}
@@ -438,7 +437,7 @@ Then the state can be rewritten as
 \end{equation}
 These two vectors look very different but they represent the same state: the state has not changed, it's just that our description of the state is a little bit different because we have chosen a different basis in which to describe it.
 
-Another very important concept is the \emph{inner product}\index{inner product}. The inner product is basically a dot product between two vectors, just as you probably learned in your basic linear algebra class, but to talk about it in our notation, first we have to define a \emph{bra}\index{bra}. Given a state $\ket{\psi}$, we can write down its bra, which is just its adjoint. So the bra of state $\ket{\psi}$ is given as the dagger of the original column vector,
+Another very important concept is the \emph{inner product}\index{inner product}. The inner product is basically a dot product between two vectors, just as you probably learned in your basic linear algebra class. To write down the inner product in the notation we use in this book, first we have to define a \emph{bra}\index{bra}. Given a state $\ket{\psi}$, the corresponding bra is its adjoint. The bra of state $\ket{\psi}$ is given as the dagger of the original column vector,
 \begin{equation}
 \langle\psi|=(|\psi\rangle)^{\dagger}=\left(\begin{array}{l}
 \alpha \\
@@ -447,9 +446,7 @@ Another very important concept is the \emph{inner product}\index{inner product}.
 \alpha^{*} & \beta^{*}
 \end{array}\right).
 \end{equation}
-You apply the same trick as we applied for defining the adjoint of unitaries: you take the complex conjugate of $\alpha$ and $\beta$ and then you transpose the column vector, which turns it into a row vector. Now you can find the inner product between two arbitrary states, $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$ and $\ket{\phi} = \gamma\ket{0} + \delta\ket{1}$. Then we write it as 
-%this: so we have bra times the ket in vector representation it's given by this. We have the row vector of
-%(gamma star, delta star) multiplying the column vector (alpha, beta) and you get this following expression out:
+We applied the same trick we used for defining the adjoint of unitary operations: take the complex conjugate of $\alpha$ and $\beta$ and then transpose the column vector, which turns it into a row vector. Now we can find the inner product between two arbitrary states, $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$ and $\ket{\phi} = \gamma\ket{0} + \delta\ket{1}$. We write it as 
 \begin{equation}
 \langle\phi \mid \psi\rangle=\left(\begin{array}{ll}
 \gamma^{*} & \delta^{*}
@@ -460,18 +457,20 @@ You apply the same trick as we applied for defining the adjoint of unitaries: yo
 \end{equation}
 This should be no surprise if you remember your dot products from your linear linear algebra class.
 
-Also notice that if you take the inner product of the state with itself, you in fact get this expression:
+Also notice that if we take the inner product of the state with itself, we get this expression:
 \begin{equation}
 \langle\psi \mid \psi\rangle=|\alpha|^{2}+|\beta|^{2}=1
 \end{equation}
-Mod alpha squared plus mod beta squared will be equal to one, if the state is properly normalized. For two different states, you can also come across the scenario where the inner product between two states is zero,
+Mod alpha squared plus mod beta squared will be equal to one, if the state is properly normalized.
+
+For two different states, we can also come across the scenario where the inner product between two states is zero,
 \begin{equation}
 \langle\phi \mid \psi\rangle=0.
 \end{equation}
 In that case, we say that the two states are \emph{orthogonal}.
 %, just like in your classical linear algebra class between normal vectors.
 
-How do we obtain these probabilities for the measurement outcomes? We have stated them as a fact before, but now you will see how to actually get them. We have our general state $\ket{\psi}$, and we say that we want to measure in some arbitrary basis $\ket{b_0}$ and $\ket{b_1}$. We are asking the question: is my state in the state $b_0$ or is my state in the state $b_1$? This is where the inner product comes in. We take the inner product between $\ket{b_0}$ and $\ket{\psi}$, we take the modulus and we square it, and that gives us the probability of a $+1$ outcome, and correspondingly the probability of the $-1$ outcome is given by the inner product between $\ket{b_1}$ and $\ket{\psi}$ modulus squared,
+How do we obtain these probabilities for the measurement outcomes? We have stated them as a fact before, but now let's see how to actually get them. Given our general state $\ket{\psi}$, let's say that we want to measure in some arbitrary basis $\ket{b_0}$ and $\ket{b_1}$. We are asking the question: is my state in the state $b_0$ or is my state in the state $b_1$? This is where the inner product comes in. We take the inner product between $\ket{b_0}$ and $\ket{\psi}$, we take the modulus and we square it, and that gives us the probability of a $+1$ outcome. Correspondingly, the probability of the $-1$ outcome is given by the inner product between $\ket{b_1}$ and $\ket{\psi}$ modulus squared,
 \begin{equation}
 \begin{aligned}
 \operatorname{Prob}\{+1\}&=\left|\left\langle b_{0}\mid \psi\right\rangle\right|^{2} \\
@@ -479,7 +478,7 @@ How do we obtain these probabilities for the measurement outcomes? We have state
 \end{aligned}
 \end{equation}
 
-To illustrate this with some simple examples, we're going to measure in the Pauli Z basis, and again, the probability of outcome one is given by mod alpha squared and probability of minus one is given by mod beta squared,
+To illustrate this with some simple examples, measure in the Pauli Z basis, and again, the probabilities of the two outcomes are given by
 \begin{equation}
 \begin{aligned}
 \operatorname{Prob}\{+1\} &=|\langle 0 \mid \psi\rangle|^2 \\
@@ -499,9 +498,10 @@ How about measuring in our Pauli $Y$ basis? Again, the probability of $+1$ is gi
 \end{aligned}
 \end{equation}
 
-To summarize the measurement process, you start with some initial state written in some basis,
-%here I have written it in the computational or in the Pauli Z basis, 
-and then you say, okay I want to perform a measurement in a given basis described by these basis states $\ket{b_0}$ and $\ket{b_1}$. If my outcome is $+1$, which happens with the probability given by the inner product between the basis state with the original state modulus squared, then my post measurement state is given by $\ket{b_0}$. Or, if I get the $-1$ outcome, which happens with probability given by the inner product of $\ket{b_1}$ with the initial state $\ket{\psi}$ modulus squared, then my post measurement state is given by $\ket{b_1}$. But there is something very important to keep in mind: the measurement outcome is only $+1$ or $-1$. It does not give you any information about these probability amplitudes $\alpha$ and $\beta$. In the next section, we will see more about those probability amplitudes.
+To summarize the measurement process, start with some initial state written in some basis,
+and then say, okay I want to perform a measurement in a given basis described by these basis states $\ket{b_0}$ and $\ket{b_1}$. If my outcome is $+1$, which happens with the probability given by the inner product between the basis state with the original state modulus squared, then my post measurement state is given by $\ket{b_0}$. Or, if I get the $-1$ outcome, which happens with probability given by the inner product of $\ket{b_1}$ with the initial state $\ket{\psi}$ modulus squared, then my post measurement state is given by $\ket{b_1}$.
+
+But there is something very important to keep in mind: the measurement outcome is only $+1$ or $-1$. It does not give you any information about these probability amplitudes $\alpha$ and $\beta$. In the next section, we will see more about those probability amplitudes.
 
 
 % と表示できます。1の状態だったらマイナスの状態には位相をつけるでしょう。
@@ -549,7 +549,7 @@ and then you say, okay I want to perform a measurement in a given basis describe
 
 \section{Probabilities, expectation, variance}
 
-We have seen how measurements can be applied to quantum states, but now let's see how we can actually extract information about the probabilities and the expectation values and variances of these measurements. Up to this point, we have only measured one single qubit as an individual event, as in Figs.~\ref{fig:z-measure} and \ref{fig:x-meas}.  This is known as \emph{single shot measurement}. Now let's consider the scenario where we have many copies of the same state and we keep measuring them again and again and again, as shown in Fig.~\ref{fig:many-copies}. We have our measurement device and we keep feeding it the same state: many copies of state $\ket{\psi}$. What comes out is a bit string of $+1$ and $-1$ results.
+We have seen how measurements can be applied to quantum states, but now let's see how we can actually extract information about the probabilities and the expectation values and variances of these measurements. Up to this point, we have only measured one single qubit as an individual event, as in Figs.~\ref{fig:z-measure} and \ref{fig:x-meas}.  This is known as \emph{single shot measurement}. Now let's consider the scenario where we have many copies of the same state \ket{\psi} and we keep measuring them again and again and again by feeding them to our measurement device, as shown in Fig.~\ref{fig:many-copies}. What comes out is a bit string of $+1$ and $-1$ results.
 
 We can count the number of $+1$ outcomes, which we will denote by $N(+1)$, and we can count the number of $-1$ outcomes, which we will denote by $N(-1)$. Intuitively, the ratio between the number of $+1$ outcomes to the total number of measurements will be approximately equal to the probability of obtaining the plus one outcome, which is $|\alpha|^2$, and similarly for the fraction of the number of $-1$ outcomes, which will be very close to $|\beta|^2$,
 
@@ -597,13 +597,13 @@ Let's check it: take the Pauli Z operator and sandwich it between our state give
 \label{eq:z-expectation}
 \end{equation}
 
-Again, because the number of the measurements are random we expect some degree of variance in our measurement outcomes, and again we use the same definition as from classical probability theory that the variance of some random variable is given by the expectation value of the square of that variable, minus the square of the expectation value of that variable,
+Because the outputs of the measurements are random we expect some degree of variance in our measurement outcomes, and again we use the same definition as from classical probability theory that the variance of some random variable is given by the expectation value of the square of that variable, minus the square of the expectation value of that variable,
 \begin{equation}
 \begin{aligned}
 \operatorname{Var}[Z] &=\mathbb{E}\left[Z^{2}\right]-\mathbb{E}[Z]^{2}.    
 \end{aligned}
 \end{equation}
-We have already computed the expectation value of Z, we don't need to do that anymore, we just square the expression from Eq.~\ref{eq:z-expectation}. Now we have to compute the expectation value of $Z^2$. That's the probability of getting a $+1$ outcome times $(+1)^2$ which is just $+1$.  The probability of the $-1$ outcome times $(-1)^2$, which is $1$, so actually what we get is
+We have already computed the expectation value of $Z$ in Eq.~\ref{eq:z-expectation}. Now we have to compute the expectation value of $Z^2$. That's the probability of getting a $+1$ outcome times $(+1)^2$ which is just $+1$.  The probability of the $-1$ outcome times $(-1)^2$, which is $1$, so actually what we get is
 \begin{equation}
 \begin{aligned}
 \mathbb{E}\left[Z^{2}\right] &=\operatorname{Prob}\{+1\} \cdot(+1)^{2}+\operatorname{Prob}\{-1\} \cdot(-1)^{2} \\
@@ -611,7 +611,7 @@ We have already computed the expectation value of Z, we don't need to do that an
 \end{aligned}
 \end{equation}
 
-Often in physics you will see that the variance is referred to as \emph{fluctuations}, and that's denoted by $(\Delta Z)^2$ and that's really just the variance of Z. In the Dirac notation, we again have this expression,
+Often in physics you will see that the variance is referred to as \emph{fluctuations}, denoted by $(\Delta Z)^2$, and that's really just the variance of Z. In the Dirac notation, we again have this expression,
 \begin{equation}
 \begin{aligned}
 (\Delta Z)^{2} & \equiv \operatorname{Var}[Z] \\
@@ -634,15 +634,15 @@ Often in physics you will see that the variance is referred to as \emph{fluctuat
 \section{Multiple Qubits}
 \label{sec:multi-qubit}
 
-Now, let's consider how to write down the state of multiple qubits. So how do we write down the state of two bits? Let's start with a very simple question like that. Well, if we have two classical bits, they can be in four different states. They can be in $00$, $01$, $10$, or $11$. So what's the case for quantum bits? We need to switch to the Dirac notation. We can have the $\ket{00}$, $\ket{01}$, $\ket{10}$, and $\ket{11}$. Any general state of two qubits can be written as a superposition of these four states weighted by some probability amplitudes. We need four of them because we have four different states: $\alpha$, $\beta$, $\gamma$ and $\delta$, 
+Now, let's consider how to write down the state of multiple qubits. Let's start with the very simple task of writing down the state of two qubits. If we have two classical bits, they can be in four different states: $00$, $01$, $10$, or $11$. So what's the case for quantum bits? We need to switch to the Dirac notation, and we still have four possible states: $\ket{00}$, $\ket{01}$, $\ket{10}$, and $\ket{11}$. Any general state of two qubits can be written as a superposition of these four states weighted by some probability amplitudes. We need four of them because we have four different states: $\alpha$, $\beta$, $\gamma$ and $\delta$, 
 \begin{equation}
 |\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle
 \end{equation}
-and again the state must be normalized such that when we measure, it gives the correct probabilities. But this time the normalization condition is as follows: it's mod of all the probability amplitude squared, when you sum it up it has to be equal to one again,
+and again the state must be normalized such that when we measure, it gives the correct probabilities. But this time the normalization condition is as follows: it's mod of all the probability amplitude squared, when you sum it up it has to be equal to one,
 \begin{equation}
 |\alpha|^2+|\beta|^2+|\gamma|^2+|\delta|^2 = 1.
 \end{equation}
-And again in vector notation, we can write these kets as follows: $\ket{00}$ now is a column vector of four elements: (one, zero, zero, zero), and similarly for $\ket{01}$, $\ket{10}$, and $\ket{11}$,
+In vector notation, we can write these kets as follows: $\ket{00}$ IS now a column vector with four elements: (1, 0, 0, 0), and similarly for $\ket{01}$, $\ket{10}$, and $\ket{11}$,
 \begin{equation}
 |00\rangle=\left(\begin{array}{l}
 1 \\
@@ -696,9 +696,9 @@ So you see that this is a nice orthogonal basis with which we can express any ge
 \end{array}\right).
 \end{equation}
 
-The very important mathematical concept behind being able to write the basis states like that is that of a \emph{tensor product}\index{tensor product}~\footnote{There are actually multiple types of tensor products; by one definition, a tensor is like an $n$-dimensional matrix instead of the customary two-dimensional one.  In this book, we will use tensors in a fashion that expands the vector or matrix size, instead of making it into a multidimensional object.}.
+The very important mathematical concept behind being able to write the basis states in this fashion is the \emph{tensor product}\index{tensor product}~\footnote{There are actually multiple types of tensor products; by one definition, a tensor is like an $n$-dimensional matrix instead of the customary two-dimensional one.  In this book, we will use tensors in a fashion that expands the vector or matrix size, instead of making it into a multidimensional object.}.
 
-So how do we actually get these two new qubit basis states? We took some state of the first qubit, let's call it "a" because it can be anything, and we took a tensor product with another qubit state "b". Mathematically, you have a column vector for the first qubit given by these probability amplitudes $a_1$ and $a_2$ tensor product the column vector for the second qubit $b_1$ $b_2$, and this operation of the tensor product is defined as follows:
+So how do we actually get these two new qubit basis states? We took some state of the first qubit, let's call it "a" because it can be anything, and we took a tensor product with another qubit state "b". Mathematically, we have a column vector for the first qubit given by these probability amplitudes $a_1$ and $a_2$ tensor product the column vector for the second qubit $b_1$ $b_2$, and this operation of the tensor product is defined as follows:
 
 \begin{equation}
 |a\rangle \otimes|b\rangle=\left(\begin{array}{l}
@@ -737,7 +737,7 @@ b_2
 \end{array}\right)$
 \fi
 
-To calculate the product, take the first probability amplitude $a_1$ times the whole column vector for $\ket{b}$. That will give you the first two elements in your new four dimensional vector.  $a_1$ times $b_1$ goes into the first entry in the resulting vector, $a_1$ times $b_2$ goes in the second entry, and then for the bottom two elements you take $a_2$ and again you multiply the whole column vector of $\ket{b}$, so you have $a_2$ times $b_1$ and $a_2$ times $b_2$.
+To calculate the product, take the first probability amplitude $a_1$ times the whole column vector for $\ket{b}$. That will give us the first two elements in our new four dimensional vector.  $a_1$ times $b_1$ goes into the first entry in the resulting vector, $a_1$ times $b_2$ goes in the second entry, and then for the bottom two elements we take $a_2$ and again multiply the whole column vector of $\ket{b}$, giving us $a_2$ times $b_1$ and $a_2$ times $b_2$.
 
 In ket notation, we have $\ket{a} \otimes \ket{b}$, which can be represented in vector form. For example, if we have two qubits and the first qubit is in state $\ket{0}$ and the second qubit is in state one, we write it as column vectors and take the tensor product like this,
 %(1 0) tensor product (0 1), and you can see that one times zero is zero, one times one is one, zero times zero is zero, and finally zero times one is zero,
@@ -773,13 +773,13 @@ Similarly, we can take the tensor product of more complicated states: we have te
 \end{array}\right).
 \end{equation}
 
-The tensor product is very general; if you have two vectors with $m$ and $n$ entries, their tensor product will be a vector with $mn$ entries in it. When dealing with qubits, our vectors will generally have a length that is a power of two; each qubit you add to the system doubles the number of entries in the vector when we take the tensor product.
+The tensor product is very general; given two vectors with $m$ and $n$ entries, their tensor product will be a vector with $mn$ entries in it. When dealing with qubits, our vectors will generally have a length that is a power of two; each qubit added to the system doubles the number of entries in the vector when we take the tensor product.
 
-Also, for our purposes, the length of each individual vector is normalized, and the tensor product retains this property.
+Also, for our purposes, the norm (length) of each individual vector is normalized, and the tensor product retains this property.
 
 Finally, be careful: just as with ordinary matrix products, the order of vectors (kets) written in a tensor product matters. This will be explored in detail in the exercises.
 
-How do we actually apply tensor products to matrices so that we can describe operations on multiple qubits? It's a very similar logic: we have two matrices "A" and "B", we take the tensor product between them. We take the first element $A_{11}$ of the first matrix and we multiply the entire second matrix by that value. This will give us the upper left region of the new four by four matrix. 
+How do we actually apply tensor products to matrices so that we can describe operations on multiple qubits? It's a very similar logic: with two matrices $A$ and $B$, we take the tensor product between them by taking the first element $A_{11}$ of the first matrix and multiplying the entire second matrix by that value. This will give us the upper left region of the new four by four matrix. 
 
 \begin{equation}
 \begin{aligned}
@@ -829,7 +829,7 @@ A_{21} B_{21} & A_{21} B_{22} & A_{22} B_{21} & A_{22} B_{22}
 %%%%%%%%%% end no need
 
 
-In the upper left, we have $A_{11}$ times the matrix representation of $B$. In the upper right square, we have the element $A_{12}$ times the whole matrix $B$. In the lower left, we have  $A_{21}$ times matrix $B$, and finally in the lower right $A_{22}$ times matrix $B$. If you multiply out the whole equation, you can see that you have to calculate many individual matrix elements, or you can see that it's way simpler to write an equation in Dirac notation.
+In the upper left, we have $A_{11}$ times the matrix representation of $B$. In the upper right square, we have the element $A_{12}$ times the whole matrix $B$. In the lower left, we have  $A_{21}$ times matrix $B$, and finally in the lower right $A_{22}$ times matrix $B$. If we multiply out the whole equation, we can see that we have to calculate many individual matrix elements. You can see that it is much simpler to write an equation in Dirac notation.
 
 As an example, consider an operation on two qubits, applying an $X$ to our first (left) qubit, while leaving the second (right) qubit alone. This would be written as
 \begin{equation}

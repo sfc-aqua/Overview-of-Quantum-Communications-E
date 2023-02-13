@@ -84,7 +84,6 @@ So far, A and B have used a classical strategy, but what if they implement a qua
 \ket{\psi}_{AB} = \frac{1}{\sqrt2}(\ket{00} + \ket{11}).
 \end{equation}
 A and B choose to do the following: if A receives $x=0$, then it measures its qubit in the Z basis. If it receives $x=1$, it will measure in the X basis. If the outcome of the measurement (whether Z or X) is $+1$, it sets $a=0$ and replies with this bit. On the other hand, if the measurement outcome is $-1$, then A will reply with $a=1$. B follows a similar strategy, but instead of measuring in the Z or X basis, it measures in a \emph{rotated basis}, choosing $Z+X$ or $Z-X$ if it receives $y=0$ or $y=1$, respectively. Again, it replies with $b=0$ if the measurement outcome is $+1$, and $b=1$ if the measurement outcome is $-1$. If A and B follow this strategy, they can achieve a win rate of 85 percent. That's a 10 percent increase over the best classical strategy.
-\rdv{More of the math of this could be a good exercise.}
 %We will see later that this state is actually a very special state that we will encounter again and again.
 
 \section{Entangled states}
@@ -323,11 +322,15 @@ Just to stress how strange this is that we have a full knowledge of the global s
 
 % Step Four: SPDC.
 
-In this section, we will learn how to actually generate entangled states physically. Specifically, we will look at the process of \emph{spontaneous parametric down-conversion}\index{spontaneous parametric down-conversion (SPDC)}, or SPDC for short. There are many physical processes that can generate entangled pairs of photons, but this one is  common in laboratories and will serve as our example. \rdv{Soon suggests explaining each word separately.} \rdv{“spontaneous” means that the process is not stimulated.
-In a spontaneous process, no other input is needed, only the incoming photon of high energy that gets converted into two photons of lower energies.
-In a stimulated process you need the input photon and some other photon as well. A good example would be lasing. “parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. “parametric” in the context of SPDC means there is a relationship between the input and output electric fields.}
+In this section, we will learn how to actually generate entangled states physically. Specifically, we will look at the process of \emph{spontaneous parametric down-conversion}\index{spontaneous parametric down-conversion (SPDC)}, or SPDC for short. There are many physical processes that can generate entangled pairs of photons, but this one is  common in laboratories and will serve as our example. 
 
-We will demonstrate SPDC with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light, represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, we are using a beta barium borate, or BBO, crystal, which is a popular choice in experiments. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two levels. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after a short time the atom de-excites and ejects two photons with energy $E_s$ for the signal photon and energy $E_i$ for the idler photon.   \rdv{Why two instead of one?}  Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. This is the basic process of spontaneous parametric down-conversion.
+"Spontaneous” means that the process is not stimulated.
+In a spontaneous process, no other input is needed, only the incoming photon of high energy that gets converted into two photons of lower energies.
+(In contrast, a \emph{stimulated} process requires both the input photon and some other photon as well; a good example would be lasing.) “Parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. “Parametric” in the context of SPDC means there is a relationship between the input and output electric fields.
+
+We will illustrate SPDC with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light, represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, we are using a beta barium borate, or BBO, crystal, which is a popular choice in experiments. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two levels. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after a short time the atom de-excites.
+
+The vast majority of the time, this de-excitation is coupled with the emission of a single, high-energy photon. With some very low probability, however, the atom ejects two photons with energy $E_s$ for the signal photon and energy $E_i$ for the idler photon. Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. This is the basic process of spontaneous parametric down-conversion.
 
 Now let's see how polarization of light interacts with this process. Consider linearly polarized light. If we again take our green pump laser, we can make it oscillate only in one plane. For example, if we make it oscillate in the horizontal plane, this can encode our $\ket{0}$ state of a qubit, as in Fig.~\ref{fig:hvd-light}. We can also make the light oscillate only in the vertical plane, in that case we will say that this encodes a $\ket{1}$. We already know from previous sections and chapters that we can talk about superpositions of these states. When we go to the polarization picture, we can get diagonally polarized light which we call \ket{D}, and this will encode our equal superposition of $\ket{0}$ and $\ket{1}$, or as we call it a $\ket{+}$ state. That's the next ingredient that we're going to need in producing entangled pairs of photons.
 
@@ -337,25 +340,31 @@ How does polarized light actually interact with this nonlinear BBO crystal? That
 \ket{H} &\rightarrow \ket{VV}.
 \end{aligned}
 \end{equation}
-It takes a horizontally polarized state and it outputs two vertically polarized states.
+It takes a horizontally polarized state and outputs two vertically polarized states.
 
-On the other hand, we can also rotate the optical axis of the BBO crystal, as in Fig.~\ref{fig:vertical-opt-axis} and in this case if we have a vertically polarized light incident on the BBO crystal, then the two photons will both be horizontally polarized.  In this case we are implementing the physical transformation
+Naturally, if we rotate the optical axis of the BBO crystal ninety degrees and use vertically polarized light, as in Fig.~\ref{fig:vertical-opt-axis}, then the two photons output will both be horizontally polarized.  In this case we are implementing the physical transformation
 \begin{equation}
 \begin{aligned}
 \ket{V} &\rightarrow \ket{HH}.
 \end{aligned}
 \end{equation}
 
-\rdv{what happens if the light and the optical axis are orthogonal? Nothing?}
+On the other hand, if the optical axis of the crystal and the polarization are orthogonal, the light passes through unchanged.
 
-% What we can do is we can, in fact- and just so that it's clear the polarization of the photon pairs is always opposite to the one to the polarization of the pump- so next, what we can do is
-We have one last step that we actually need to produce entangled photon pairs.  We take two of these BBO crystals and put them next to each other, and arrange them such that their optical axes will be orthogonal to each other.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{lesson4/4-4_SPDC_crystal.png}
+    \caption[BBO crystal arrangement]{Arrangement of the two BBO crystals that leads to an entangled photon pair when diagonally polarized light is input.}
+    \label{fig:4-4_SPDC_crystals}
+\end{figure}
 
-In such a geometry, when we set the pump laser to be diagonally polarized, we get the following transformation: diagonally polarized light will become a superposition of the horizontally polarized photons and vertically polarized photons,
+We have one last step to produce entangled photon pairs.  We take two of these BBO crystals and put them next to each other, and arrange them such that their optical axes are orthogonal to each other, as seen in Fig.~\ref{fig:4-4_SPDC_crystals}.
+
+In such a geometry, when we set the pump laser to be diagonally polarized, since $\ket{D} = (\ket{H}+\ket{V})/\sqrt{2}$, the \ket{H} component will be transformed by the first crystal and the \ket{V} component will be transformed by the second crystal, giving us the  transformation
 \begin{equation}
     \ket{D} \rightarrow \frac{\ket{HH}+\ket{VV}}{\sqrt{2}}.
 \end{equation}
-You can see that we are changing a $\ket{+}$ state into a Bell pair $(\ket{00}+\ket{11})/\sqrt{2}$, and this is in fact how we get entangled states using SPDC.  In order for this to work, the BBO crystals have to be very, very thin. This will ensure that we are not quite sure whether the photons were produced in the first crystal or in the second crystal. We call this the \emph{indistinguishability criterion}, and if this is satisfied then we can talk about genuinely entangled photons. If, however, we can actually tell where the two photons originate, then we will only get horizontally polarized photons or we will get vertically polarized photons, and there will be no entanglement shared between these two photons. 
+Diagonally polarized light becomes a superposition of the horizontally polarized photons and vertically polarized photons. You can see that we are changing a $\ket{+}$ state into a Bell pair $(\ket{00}+\ket{11})/\sqrt{2}$, and this is how we get entangled states using SPDC.  In order for this to work, the BBO crystals have to be very, very thin. This will ensure that we are not quite sure whether the photons were produced in the first crystal or in the second crystal. We call this the \emph{indistinguishability criterion}, and if this is satisfied then we can talk about genuinely entangled photons. If, however, we can actually tell where the two photons originate, then we will only get horizontally polarized photons or we will get vertically polarized photons, and there will be no entanglement shared between these two photons. 
 
 Another important property of SPDC is that it's an extremely rare process.  We obtain only about one photon pair per $10^6$ pump photons, and even that level is achieved only in state-of-the-art experiments. In a more common laboratory setup, it takes several orders of magnitude more pump photons to successfully create each entangled pair.  The photons that are not down-converted simply pass through the crystal unaffected and are discarded.
 
@@ -408,13 +417,15 @@ It is the job of quantum networks to distribute entanglement in order to satisfy
 \begin{exercises}
 \exer{Prove that the four Bell states are orthogonal to each other.}
 
-\exer{\rdv{Find the probabilities of the different measurement outcomes for several states.}}
+\exer{\rdv{Find the probabilities of the different measurement outcomes for several one- and two-qubit states.}}
+
+\exer{\rdv{More of the math of the CHSH game to be added as exercise.}
+}
 
 \exer{On p.~\pageref{page:plus-is-pure}, we stated without proof that measuring the state of a single qubit in $\ket{+}$ provides different outcome statistics than measuring one qubit that is part of a Bell pair.  Prove this by calculating the outcome probabilities for measuring both the single qubit and the half of the Bell pair, when using the X, Y, and Z measurement bases.  (Hint: this problem will be easier if you have done the problems in Ch. 3.)}
 
-\exer{\rdv{Do some rough calculations of number of entangled photon pairs output for a certain wattage of laser, wavelength, and conversion efficiency.}}
+\exer{\rdv{Do some rough calculations of number of entangled photon pairs output from SPDC for a certain wattage of laser, wavelength, and conversion efficiency.}}
 
-\exer{\rdv{Two-qubit measurement exercises.}}
 \end{exercises}
 
 
