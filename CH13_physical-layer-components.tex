@@ -61,7 +61,7 @@ Let's step back a little and consider something simpler first, like measuring a 
 The meter icon represents a measurement in the Pauli Z basis which outputs a single classical bit $c$.
 The value of this classical bit can be either +1 or -1, which is normally written as $c\in\{+1,-1\}$.
 For an arbitrary initial state $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$, the probability that the measurement outcome is $c=+1$ is given by $\text{Pr}(+1)=|\langle0|\psi\rangle|^2=|\alpha|^2$.
-On the other hand, probability that the measurement outcome is $c=-1$ is given by $\text{Pr}(-1)=|\langle1|\psi\rangle|^2=|\beta|^2$.
+On the other hand, the probability that the measurement outcome is $c=-1$ is given by $\text{Pr}(-1)=|\langle1|\psi\rangle|^2=|\beta|^2$.
 
 \begin{figure}[t]
     \centering
@@ -70,20 +70,20 @@ On the other hand, probability that the measurement outcome is $c=-1$ is given b
     \label{fig:13-2_measurementPauli}
 \end{figure}
 
-We can also measure the qubit in the Pauli $X$ basis as shown in the top part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
+We can also measure the qubit in the Pauli $X$ basis, as shown in the top part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
 The measurement icon includes an X to remind us that we are measuring in the Pauli $X$ basis.
-Probability that we obtain $c=+1$ is $\text{Pr}(+1)=|\langle+|\psi\rangle|^2=|\alpha+\beta|^2/2$, and the probability of the outcome $c=-1$ is $\text{Pr}(-1)=|\langle-|\psi\rangle|^2=|\alpha-\beta|^2/2$.
+The probability that we obtain $c=+1$ is $\text{Pr}(+1)=|\langle+|\psi\rangle|^2=|\alpha+\beta|^2/2$, and the probability of the outcome $c=-1$ is $\text{Pr}(-1)=|\langle-|\psi\rangle|^2=|\alpha-\beta|^2/2$.
 
-But what if we cannot perform of the Pauli $X$ measurement directly?
+But what if we cannot perform the Pauli $X$ measurement directly?
 Sometimes, in an experiment, it is straightforward to implement a Pauli $Z$ measurement, but much less clear how to perform a measurement in a different basis.
 We can still measure in the desired basis by rotating the state with an appropriate unitary and then performing a measurement in the Pauli $Z$ basis.
-In hte case of a Pauli $X$ measurement, the appropriate unitary is a Hadamard gate $H$ as shown in the lower part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
+In the case of a Pauli $X$ measurement, the appropriate unitary is a Hadamard gate $H$, as shown in the lower part of the right panel in Fig.~\ref{fig:13-2_measurementPauli}.
 The state immediately before the measurement in the Pauli $Z$ basis is
 \begin{align}
     |\psi'\rangle & = H|\psi\rangle = \alpha |+\rangle + \beta |-\rangle \nonumber\\
     & = \frac{\alpha + \beta}{\sqrt{2}} |0\rangle + \frac{\alpha - \beta}{\sqrt{2}} |1\rangle.
 \end{align}
-We can immediately see that the probabilities of obtaining measurement outcomes +1 or -1 are the same as measuring in the Pauli $X$ basis directly.
+We can immediately see that the probabilities of obtaining measurement outcomes $+1$ or $-1$ are the same as measuring in the Pauli $X$ basis directly.
 
 How do we know that the unitary that is needed is the Hadamard $H$?
 The trick lies in realizing that the probability of obtaining the $c=+1$ outcome via a direct Pauli $X$ measurement must by the same as first rotating the state with some unitary operation $U$ and then measuring in Pauli $Z$ basis.
@@ -95,10 +95,10 @@ Written more formally, we require that
 Eq.~(\ref{eq:13-2_prob_condition}) is satisfied when $\langle+|=\langle0|U$, or $|+\rangle=U^{\dagger}|0\rangle$ if you prefer to think in terms of kets rather then bras.
 The same unitary $U$ must also satisfy
 \begin{equation}
-    |\langle-|\psi\rangle|^2 = |\langle1|U|\psi\rangle|^2,
+    |\langle-|\psi\rangle|^2 = |\langle1|U|\psi\rangle|^2;
 \end{equation}
-that is the probabilities of obtaining the outcome $c=-1$ via direct measurement in Pauli $X$ basis and via rotating the state before measuring in the Pauli $Z$ basis must be the same.
-The unitary operation $U$ that achieves this transformation is the Hadamard $H$ as we have seen in Sec.~\ref{sec:2-2_unitary_operations}.
+that is, the probabilities of obtaining the outcome $c=-1$ via direct measurement in Pauli $X$ basis and via rotating the state before measuring in the Pauli $Z$ basis must be the same.
+The unitary operation $U$ that achieves this transformation is the Hadamard $H$, as we saw in Sec.~\ref{sec:2-2_unitary_operations}.
 
 \begin{figure}
     \centering
@@ -121,7 +121,7 @@ We see that our desired unitary $U$ must satisfy $\langle\Phi^+| = \langle00|U$,
     |\Phi^+\rangle = U^{\dagger} |00\rangle.
 \end{equation}
 This means we need to find the unitary $U^{\dagger}$ which transforms the input $|00\rangle$ into the Bell pair $|\Phi^+\rangle = (|00\rangle + |11\rangle) / \sqrt{2}$.
-This unitary operation is pictured in hte middle panel of Fig.~\ref{fig:13-2_measurementBell},
+This unitary operation is pictured in the middle panel of Fig.~\ref{fig:13-2_measurementBell},
 \begin{equation}
     U^{\dagger} = CNOT_{12} \cdot (H \otimes I)
     \label{eq:13-2_Uadjoint}
@@ -131,7 +131,7 @@ All that remains to be done is to take the adjoint of Eq.~(\ref{eq:13-2_Uadjoint
 \begin{equation}
     U = (H \otimes I) \cdot CNOT_{12}.
 \end{equation}
-This is the unitary operation that we need to apply to state in order to be able to perform a Bell state measurement using measurements in the Pauli $Z$ basis as shown in the right panel of Fig.~\ref{fig:13-2_measurementBell}.
+This is the unitary operation that we need to apply to state in order to be able to perform a Bell state measurement using measurements in the Pauli $Z$ basis, as shown in the right panel of Fig.~\ref{fig:13-2_measurementBell}.
 This trick is very useful in both quantum computation and quantum communication.
 
 
@@ -141,7 +141,7 @@ This trick is very useful in both quantum computation and quantum communication.
 
 In this section, we will talk about how to implement a Bell-state measurement with linear optics. The implementation scheme depends on the encoding. Let's encode the state of a qubit using the photon polarization. There are two reasons for this choice: first, it's intuitive and simple so it makes a good pedagogical example, and second, it's one of the most commonly used encodings in real experiments.
 
-In this encoding, qubit in a state \ket{0} is represented as a single photon that is polarized in the horizontal direction, which we write as \ket{H}.
+In this encoding, a qubit in the state \ket{0} is represented as a single photon that is polarized in the horizontal direction, which we write as \ket{H}.
 Our other computational basis state \ket{1} is represented as a single photon polarized in the vertical direction, and we write \ket{V}.
 
 \begin{figure}[t]
