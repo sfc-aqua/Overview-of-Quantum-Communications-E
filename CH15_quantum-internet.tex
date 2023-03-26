@@ -1,6 +1,6 @@
 \chapter{Quantum Internet}
 
-In this chapter, we conclude the book with a discussion of extending from the technologies we have developed throughout the book to a full \emph{Quantum Internet}, a global network of quantum networks. We also give some thoughts about developing \emph{standards} for quantum communications, and how understanding quantum communication can lead to a variety of careers in quantum. This chapter is presented as a dialog between the two main authors, edited for clarity.
+In this chapter, we conclude the book with a discussion of extending from the technologies we have developed throughout the book to a full \emph{Quantum Internet}, a global network of quantum networks. We also give some thoughts about developing \emph{standards} for quantum communications, and how understanding quantum communication can lead to a variety of careers in quantum. This chapter is presented as a dialog between the two main authors. It is adapted and updated from the video transcripts and edited for clarity, and hence is not a direct transcript.
 
 \section{Networks of networks}
 
@@ -80,7 +80,7 @@ The other networks are all opaque to the users that are outside. If you are the 
 
 \mmm Right. Very interesting...
 
-\rrr One other topic that we haven't talked about yet is a big trend in classical information system structures, including both the Internet and how computing systems work and whatnot: virtualization. In the process of virtualization, a computer or even a network might not correspond exactly to a single physical system. You might have a virtual server -- a collection of software and data -- that you think is running on a particular piece of hardware.  However, it might not actually be running \emph{here}, it might be running \emph{over there} instead, somewhere else. There are a lot of mechanisms built into the classical Internet to make that virtualization possible, so that services can appear in multiple places and copies of of those services can be in different places. All of this allows the services to migrate around based on current conditions or management plans. This virtualization brings a lot of benefits. We're still a long ways away from wanting something like that kind of service virtualization for the quantum Internet, but maybe eventually we'll get there. But a related concept is recursion!
+\rrr One other topic that we haven't talked about yet is a big trend in classical information system structures, including both the Internet and how computing systems work and whatnot: virtualization. In the process of virtualization, a computer or even a network might not correspond exactly to a single physical system. You might have a virtual server -- a collection of software and data -- that you think is running on a particular piece of hardware.  However, it might not actually be running \emph{here}, it might be running \emph{over there} instead, somewhere else. There are a lot of mechanisms built into the classical Internet, computer hardware and software to make that virtualization possible, so that services can appear in multiple places and copies of of those services can be in different places. All of this allows the services to migrate around based on current conditions or management plans. This virtualization brings a lot of benefits. We're still a long ways away from wanting something like that kind of service virtualization for the quantum Internet, but maybe eventually we'll get there. But a related concept is recursion!
 
 
 \begin{figure}[t]
@@ -101,7 +101,7 @@ The other networks are all opaque to the users that are outside. If you are the 
 
 So we said that the Internet is a network of networks, where every network can be thought of as a single node of some other different layer of a network. Is that what recursion is in the context of networks?
 
-\rrr In Fig.~\ref{fig:15-1-NofN} we had the blue network, and four or five pink networks, and the green network. Each one of those inside has a structure, but we can also talk about the graph that connects that set of networks. You can think about that as the recursion in the system. BGP, which we mentioned earlier, is essentially two layers or two tiers: the internal and the external protocol. The internal is for how do you get around inside of your own network, and you actually have the choice to use a different protocol or a different algorithm for routing inside your network, as long as you can meet your contractual obligations with others to exchange information with them and to carry traffic back and forth across your network in some reasonable way. But then, there's the external BGP, and that's the graph of the relationship between those \emph{autonomous systems}\index{autonomous system}, the Internet-level total architecture between the whole thing. So that's two levels, but the reality is that in most modern local area networks, there's actually another sort of routing system that's built into local area networks as well, so we've already got three layers. Conceptually, this process could actually be repeated indefinitely and we can build, what's called a recursive network.
+\rrr In Fig.~\ref{fig:15-1-NofN} we had the blue network, and four or five pink networks, and the green network. Each one of those inside has a structure, but we can also talk about the graph that connects that set of networks. You can think about that as the recursion in the system. BGP, which we mentioned earlier, is essentially two layers or two tiers: the internal and the external protocol. The internal is for how do you get around inside of your own network, and you actually have the choice to use a different protocol or a different algorithm for routing inside your network, as long as you can meet your contractual obligations with others to exchange information with them and to carry traffic back and forth across your network in some reasonable way. But then, there's the external BGP, and that's the graph of the relationships between those \emph{autonomous systems}\index{autonomous system}, the Internet-level total architecture between the whole thing. So that's two levels, but the reality is that in most modern local area networks, there's actually another sort of routing system that's built into local area networks as well, so we've already got three layers. Conceptually, this process could actually be repeated indefinitely and we can build what's called a recursive network.
 
 \mmm Kind of like this right? 
 
@@ -202,7 +202,7 @@ So, you're the expert on a couple of these other things that we might want to do
 
 \mmm Well, the other one is our clock synchronization, where we mentioned that having a global time standard where everybody agrees on the same time is of crucial importance in many, many areas of our modern life. Again, it's not that we want to do something special with quantum time --- the time is classical --- but the way we agree on the same global standard of time comes through using quantum resources such as bipartite entanglement, and so on.
 
-\rrr Okay, and then once you have that, then it gets used in...?
+\rrr Okay, once you have that, what's it used for?
 
 \mmm It gets bumped back into the classical network, and it's very important for transportation, for the global positioning system (GPS). In financial markets even tiny fractions of a second are crucial, they can either gain you millions or lose you millions, and so on and so forth. So, time is very important and keeping the same time as somebody on the other side of the world is very important as well.
 
@@ -218,7 +218,7 @@ So, you're the expert on a couple of these other things that we might want to do
 
 \mmm Well then, once that is working, we would like everybody else to use it.
 
-\rrr Yeah, and in communications, one of the things that means is that it's really nice if my communications device will talk to your communications device!
+\rrr Yeah, and in communications, one of the things that means is that it's really nice if my communications device will talk to your communications device.
 
 \mmm Yes! Even though I was the one who made my device, and you were the one who created your device, maybe using completely different means. So how do we standardize these things?
 

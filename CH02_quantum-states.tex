@@ -7,8 +7,10 @@
 \rdv{Cleaned up, except for the duplicate introduction of ket.  It's still tempting to rewrite whole chunks of this chapter.}
 
 
-In this chapter, we will learn about quantum states: how to write them down, what they represent, and how they differ from classical states and bits.
-Then, we will learn how to operate on and extract information from quantum states using unitary operations and measurements. Lastly, we'll discuss multiple quantum states and how to describe them.  Most of this chapter will be familiar to those who have taken an introductory quantum computing course.
+In this chapter, we will learn about quantum states: how to write them down, what they represent, and how they differ from classical states.
+Then, we will learn how to operate on and extract information from quantum states using unitary operations and measurements.
+Lastly, we will discuss multiple quantum states and how to describe them. 
+Most of this chapter will be familiar to those who have taken an introductory quantum computing course.
 
 \section{Qubits}
 
@@ -53,9 +55,9 @@ with this funny angle bracket \ket{}, pronounced \emph{ket}\index{ket}. The symb
 % Bloch Sphere
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{lesson2/bloch_sphere.pdf}
+    \includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere.pdf}
     
-        \caption{Bloch sphere}
+        \caption{Bloch sphere visualization of a pure state $|\psi\rangle$.}
     
     \label{fig:bloch}
 \end{figure}
@@ -68,16 +70,13 @@ where the probability amplitude for basis state 0 is given by $\cos(\theta/2)$ a
 
 This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~\ref{fig:annotated-bloch}. We have already encountered \ket{0} and \ket{1}, and they sit at the north and the south pole of the Bloch sphere, respectively. We also said that we can have an arbitrary superposition of zero and one. For example, we can have a state known as the \emph{plus state}, written \ket{+}, which is an equal superposition of zero and one. The plus state appears on the equator of the Bloch sphere, at the point where the sphere's positive $X$ axis intersects the surface. We can have its friend the \emph{minus state}, written \ket{-}, on the other side of the Bloch sphere. It also is an equal superposition, but this time it's on the negative side of the $X$ axis.  It can be read "zero minus one", and if you think about a rotation about the $Z$ along the equator, since $e^{i\pi} = -1$, it has the complex phase $\pi$.  We can also have two states on the $Y$ axis. One is called the "plus i" state, written \ket{i} or occasionally \ket{+i}, and the other is called "minus i", written \ket{-i}. You can see that again, both of these states are an equal superposition of zero and one, but this time the phase between zero and one is given by the complex number $i$ or the angle $\pi/2$ for \ket{i} and $-i$ or the angle $3\pi/2$ for \ket{-}.  Summarizing, these states are
 \begin{equation}
-\begin{aligned}
-& |\pm\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm|1\rangle) \\
-& |\pm i\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm i|1\rangle).
-\end{aligned}
+    |\pm\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm|1\rangle), \qquad|\pm i\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm i|1\rangle).
 \end{equation}
 
 % insert Bloch sphere w/ axes labelled and |+> |-> meanings
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson2/bloch_sphere_annotated.pdf}
+    \includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere_annotated.pdf}
     
         \caption{Bloch sphere with X, Y, and Z axis basis states.}
     
@@ -349,9 +348,9 @@ R_{\hat{n}}(\theta)|\psi\rangle=\left|\psi^{\prime}\right\rangle.
 % insert Bloch sphere rotation y-axis
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson2/bloch_y_axis.pdf}
+    \includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere_y_axis.pdf}
     
-        \caption{Rotation about the Y axis}
+        \caption{Rotation about the Y axis.}
     
     \label{fig:y-rot}
 \end{figure}
@@ -364,7 +363,7 @@ R_{y}(\pi / 2)\ket{0}=\ket{+}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{lesson2/bloch_general_axis.pdf}
+    \includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere_general_axis.pdf}
     
         \caption{Rotation about an arbitrary axis}
     
