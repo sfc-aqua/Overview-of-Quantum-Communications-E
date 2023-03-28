@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+jobs:
+  my_job:
+    name: deploy to staging
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.7.0
