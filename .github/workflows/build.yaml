@@ -26,7 +26,7 @@ jobs:
         echo ${{ env.REPO }}
         echo ${{ env.RUN_URL }}
     - name: Install TeXlive
-      run: sudo apt-get install texlive texlive-publishers texlive-science texlive-fonts-extra latexmk
+      run: sudo apt-get install texlive texlive-publishers texlive-science texlive-fonts-extra texlive-font-utils latexmk
     - name: LaTeX Compile
       run: |
          pdflatex main.tex
