@@ -28,8 +28,9 @@ jobs:
     - name: Install TeXlive
       run: sudo apt-get install texlive texlive-publishers texlive-science latexmk
     - name: LaTeX Compile
-      run: pdflatex main.tex
-      run: pdflatex main.tex
+      run: |
+         pdflatex main.tex
+         pdflatex main.tex
     # https://stackoverflow.com/questions/59810838/how-to-get-the-short-sha-for-the-github-workflow    
     - name: Add SHORT_SHA env property with commit short sha
       run: |
