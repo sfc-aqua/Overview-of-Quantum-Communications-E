@@ -39,7 +39,7 @@ We will begin with a game, and the rules of the game are the following: Players 
 
 The game, as shown in Fig.~\ref{fig:chsh-game}, begins with R generating two classical bits $x$ and $y$, fully at random, and sending the $x$ bit to player A and the $y$ bit to player B. Then the players A and B reply with their own classical bits $a$ and $b$. They win one round of the game if the product $xy$ is equal to the binary sum $a + b$. But there is one very important constraint: once the game begins, players A and B are not allowed to communicate. You see, if they could communicate, A could just tell B: hey, the bit $x$ I received is equal to zero or is equal to one, and they could very easily win every round.
 
-But this doesn't mean that they are not cooperating. Before the game begins, they can actually decide on their strategy, or what bits and in what fashion they will output. Let's have a look how this actually works in practice, as shown in Fig.~\ref{fig:chsh-game-rounds}. Let's say, for example, that $x =0$, $y = 1$. That means that the product zero times one is just zero. A replies with its bit, which is zero, and B replies with a one, and the binary sum $a + b = 0 + 1 = 1$. We see that the product zero and sum one are not equal, therefore the players A and B lose this particular round.
+But this doesn't mean that they are not cooperating. Before the game begins, they can actually decide on their strategy, or what bits they will output and in what fashion. Let's have a look how this actually works in practice, as shown in Fig.~\ref{fig:chsh-game-rounds}. Let's say, for example, that $x =0$, $y = 1$. That means that the product zero times one is just zero. A replies with its bit, which is zero, and B replies with a one, and the binary sum $a + b = 0 + 1 = 1$. We see that the product zero and sum one are not equal, therefore the players A and B lose this particular round.
 % Round 1/2/3 pic
 \begin{figure}[H]
     \centering
@@ -60,7 +60,7 @@ In the next round, maybe $x$ and $y$ are still zero and one, but this time $a = 
 
 The table shown in Fig.~\ref{fig:chsh-table} lists all four possible bit pairs that the referee can distribute to A and B, (0, 0), (0, 1), (1, 0), and (1, 1). The third column lists the $x\cdot y$ products that A and B are attempting to match. As an example, this figure assumes that A and B chose $a_x = b_y = 0$, and shows that their value $a_x \oplus b_y$. We are calling them $a_x$ and $b_y$ to emphasize that the output bits $a$ and $b$ can be chosen depending on the bits $x$ and $y$ that the players received from the referee. You can try and substitute any values for $a_x$ and $b_y$, and in fact you will see that they cannot satisfy the winning condition all the time. It's just inevitable that in some cases they will lose.
 
-In the first three cases, the product of $x$ and $y$ is zero. It's only in the last case when it's one. In fact, A and B can just say, "o matter what $x$ and no matter what $y$ we received, we will always reply with the output zero." That is one viable strategy. So $a$ is always zero, $b$ is always zero, and in that case they win the game three out of four times. You can be a little bit more mathematical and can prove that even in fact if they follow any other strategy, they cannot go higher than this 75 percent win rate. 
+In the first three cases, the product of $x$ and $y$ is zero. It's only in the last case when it's one. In fact, A and B can just say, "no matter what $x$ and no matter what $y$ we received, we will always reply with the output zero." That is one viable strategy. So $a$ is always zero, $b$ is always zero, and in that case they win the game three out of four times. You can be a little bit more mathematical and can prove that even in fact if they follow any other strategy, they cannot go higher than this 75 percent win rate. 
 
 
 % insert quantum diagram
@@ -142,10 +142,10 @@ a_0 b_1 = a_1 b_0 = 0.
 
 Let's look at the second requirement first. We can see that either $a_0$ must be zero, or $b_1$ must be zero, but if we set either of those to zero and then go back to requirement one, then we see that $a_0 b_0$ or $a_1 b_1$ will also be zero and we will not be able to satisfy requirement one.
 %So a-zero cannot be zero. So, we go to b-one equal to zero, and again we see by going back to requirement one that even b-one cannot be equal to zero. 
-So did we make a mistake somewhere? In fact, no. It's just a contradiction, and it's just the property of this particular state that we are trying to find local states for. In fact, \emph{not all global states can be written as a tensor product of local states}, and this is the definition of an entangled state.
+So did we make a mistake somewhere? In fact, no. It's just a contradiction, and it actually \emph{is} the property of this particular state for which we are trying to find local states. In fact, \emph{not all global states can be written as a tensor product of local states}, and this is the {\bf definition} of an entangled state.
 
-So we have two major classes of states: first, we have \emph{product states}\index{product state}. % \marginpar{product state}. 
-\emph{A product state is one that can be written as a tensor product of local states.} Given some local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state just by forming the tensor product, and this implies that perfect knowledge of local states implies perfect knowledge of global states.
+This leads us to the realization that we have two major classes of states: first, we have \emph{product states}\index{product state}. % \marginpar{product state}. 
+\emph{A product state is one that can be written as a tensor product of local states.} Given some local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state just by forming the tensor product, and this suggests that perfect knowledge of local states implies perfect knowledge of global states.
 
 Second, we have the other class of quantum states which are \emph{entangled states}\index{entangled state}. \emph{An entangled state is a state whose global state cannot be written as the tensor product of local states.} In the previous example, we have demonstrated that for an equal superposition of $\ket{00}$ and $\ket{11}$, this is in fact the case. There are no local kets $\ket{\psi}_A$ and $\ket{\psi}_B$ such that when we take them and form a tensor product, we get the global state back. Mathematically, we can write this as
 \begin{equation}
@@ -221,7 +221,7 @@ and we can rewrite it in terms of the Bell states.  Of course the probability am
 |\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\beta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\gamma+\delta}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\gamma-\delta}{\sqrt{2}}\left|\Psi^{-}\right\rangle.
 \end{equation}
 
-So this means that now we can even measure in the Bell basis, and we know what probabilities of the various outcomes we get. But remember in the previous chapters we were asking questions: Is the state in zero? Is the state in one? Is the state in plus? Is the state in minus?  This time, we are dealing with two qubits, so there are four possible outcomes. Now the question is: Is the state in $\ket{\Phi^+}$? Is it in $\ket{\Phi^-}$? Is it in $\ket{\Psi^+}$? Or is it in $\ket{\Psi^-}$? These are all the different possible outcomes of the measurement, with probabilities
+Now that the we understand how to rewrite a state in the Bell basis, we can even measure in the Bell basis, with the probabilities of the various outcomes coming directly from the equation above. But remember in the previous chapters, we asked several questions: Is the state in \ket{0}? Is the state in \ket{1}? Is the state in \ket{+}? Is the state in \ket{-}?  This time, we are dealing with two qubits, so there are four possible outcomes. Now the question is: Is the state in $\ket{\Phi^+}$? Is it in $\ket{\Phi^-}$? Is it in $\ket{\Psi^+}$? Or is it in $\ket{\Psi^-}$? These are all the different possible outcomes of the measurement, with probabilities
 \begin{equation}
 \begin{aligned}
 &\operatorname{Prob}\left\{\left|\Phi^{+}\right\rangle\right\}=\frac{|\alpha+\beta|^{2}}{2} \quad \operatorname{Prob}\left\{\left|\Phi^{-}\right\rangle\right\}=\frac{|\alpha-\beta|^{2}}{2} \\
@@ -306,7 +306,7 @@ Just to stress how strange this is that we have a full knowledge of the global s
     \centering
     \includegraphics[width=0.5\textwidth]{lesson4/horizontal_optical_axis.pdf}
     
-        \caption{Horizontally polarized light matching the optical axis of the crystal can be down-converted to vertically polarized pairs of photons.}
+        \caption[Horizontal to vertical SPDC]{Horizontally polarized light matching the optical axis of the crystal can be down-converted to vertically polarized pairs of photons.}
     
     \label{fig:horizontal-opt-axis}
 \end{figure}
@@ -315,7 +315,7 @@ Just to stress how strange this is that we have a full knowledge of the global s
    \centering
     \includegraphics[width=0.5\textwidth]{lesson4/vertical_optical_axis.pdf}
     
-        \caption{Vertically polarized light matching the optical axis of the crystal can be down-converted to horizontally polarized pairs of photons.}
+        \caption[Vertical to horizontal SPDC]{Vertically polarized light matching the optical axis of the crystal can be down-converted to horizontally polarized pairs of photons.}
     
     \label{fig:vertical-opt-axis}
 \end{figure}
@@ -328,11 +328,11 @@ In this section, we will learn how to actually generate entangled states physica
 In a spontaneous process, no other input is needed, only the incoming photon of high energy that gets converted into two photons of lower energies.
 (In contrast, a \emph{stimulated} process requires both the input photon and some other photon as well; a good example would be lasing.) “Parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. “Parametric” in the context of SPDC means there is a relationship between the input and output electric fields.
 
-We will illustrate SPDC with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light, represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, we are using a beta barium borate, or BBO, crystal, which is a popular choice in experiments. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two levels. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after a short time the atom de-excites.
+We will illustrate SPDC with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light, represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, we are using a beta barium borate, or BBO, crystal, which is a popular choice in experiments. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two energy levels of the material. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after a short time the atom de-excites.
 
 The vast majority of the time, this de-excitation is coupled with the emission of a single, high-energy photon. With some very low probability, however, the atom ejects two photons with energy $E_s$ for the signal photon and energy $E_i$ for the idler photon. Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. This is the basic process of spontaneous parametric down-conversion.
 
-Now let's see how polarization of light interacts with this process. Consider linearly polarized light. If we again take our green pump laser, we can make it oscillate only in one plane. For example, if we make it oscillate in the horizontal plane, this can encode our $\ket{0}$ state of a qubit, as in Fig.~\ref{fig:hvd-light}. We can also make the light oscillate only in the vertical plane, in that case we will say that this encodes a $\ket{1}$. We already know from previous sections and chapters that we can talk about superpositions of these states. When we go to the polarization picture, we can get diagonally polarized light which we call \ket{D}, and this will encode our equal superposition of $\ket{0}$ and $\ket{1}$, or as we call it a $\ket{+}$ state. That's the next ingredient that we're going to need in producing entangled pairs of photons.
+Now let's see how polarization of light interacts with this process. Consider linearly polarized light. If we again take our green pump laser, we can make it oscillate only in one plane. For example, if we make it oscillate in the horizontal plane, this can encode our $\ket{0}$ state of a qubit, as in Fig.~\ref{fig:hvd-light}. We can also make the light oscillate only in the vertical plane, in which case we will say that this encodes a $\ket{1}$. We already know from previous sections and chapters that we can talk about superpositions of these states. When we go to the polarization picture, we can get diagonally polarized light which we call \ket{D}, and this will encode our equal superposition of $\ket{0}$ and $\ket{1}$, or as we call it a $\ket{+}$ state. That's the next ingredient that we're going to need in producing entangled pairs of photons.
 
 How does polarized light actually interact with this nonlinear BBO crystal? That depends on the optical axis of the crystal. For now, we don't have to worry too much about what an optical axis is and how it's defined. Just remember that there is some kind of special direction in which the BBO crystal can be aligned and that's very important relative to the incoming light and its polarization. If the optical axis aligns horizontally, and the incoming light is horizontally polarized, then the photons that are coming out from the crystal (the signal and the idler) will both be vertically polarized. So this setup, as shown in Fig.~\ref{fig:horizontal-opt-axis} -- horizontally polarized pump light and optical axis in the direction represented by the purple arrow -- implements the physical transformation
 \begin{equation}
@@ -381,7 +381,7 @@ There are many details around SPDC that we have not introduced here, but this ba
    \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
     
-        \caption{In the CHSH game, each time the players play, they collapse (break) one entangled state.}
+        \caption[CHSH game collapses entanglement.]{In the CHSH game, each time the players play, they collapse (break) one entangled state.}
     
     \label{fig:chsh-broken}
 \end{figure}
@@ -392,13 +392,13 @@ Let's go back and revisit our CHSH game from the first section of this chapter. 
 
 Entanglement is also crucial in quantum networks.
 Figure~\ref{fig:4-5_resource_network} shows a simple quantum network, where the blue circles represent the network nodes.
-They could be individual qubits or even small quantum computers, for now the distinction is not important.
+They could be individual qubits or even small quantum computers; for now, the distinction is not important.
 The lines joining the network nodes represent shared entanglement.
 There is a sender node in possession of a qubit, represented by the red circle, that it is trying to communicate to the receiver node.
-Usual way of sending quantum information is to use the teleportation protocol, which we will discuss in detail in Chapter~\ref{sec:8_teleportation}.
-For now, all we need to know is that the protocol consumes a single Bell pair to transfer the quantum information from one node to its neighboring one.
+The usual way to send quantum information is to use the teleportation protocol, which we will discuss in detail in Chapter~\ref{sec:8_teleportation}.
+For now, all we need to know is that the protocol consumes a single Bell pair to transfer the quantum information from one node to its neighbor.
 By executing the teleportation protocol first at the sender's node, and then at nodes $N_1$ and $N_2$, the quantum information will be delivered to the receiver node.
-We can see that delivering the quantum information has consumed all the entangled pairs along the path connecting the sender with the receiver.
+We can see that delivering the quantum information has consumed all of the entangled pairs along the path connecting the sender with the receiver.
 In order for the quantum network to be fully functional again, we must re-establish the destroyed entangled links.
 
 \begin{figure}[t]

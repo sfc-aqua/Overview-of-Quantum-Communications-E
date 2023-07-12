@@ -9,6 +9,8 @@
 
 \documentclass[6x9]{newmath}
 \usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot-circleofsphere}
+\usetikzlibrary{decorations.markings}
 %\usepackage{braket}
 \usepackage{amssymb}
 \usepackage{hyperref}
@@ -18,6 +20,19 @@ modifier={by-sa},
 version={4.0},
 ]{doclicense}
 \usepackage{gensymb}
+\usepackage{makecell}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+% \usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning} 
+
+\let\oldding\ding
+\renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}
+\newcommand{\xmark}{\ding[2.2]{56}}
+\definecolor{darkred}{RGB}{200,0,0}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
