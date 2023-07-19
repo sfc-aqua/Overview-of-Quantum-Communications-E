@@ -591,6 +591,25 @@ Initial state is $|\psi\rangle=|+\rangle$, the state is measured in the $X$ basi
 }
 
 \exer{
+\emph{Measurement in rotated basis.} We have described projector operators in terms of outer products. Projectors can also be represented in the following way,
+\begin{equation}
+    \Pi^B_{\pm} = \frac{1}{2} (I \pm B),
+    \label{eq:projector_new_form}
+\end{equation}
+where $B$ is the measurement basis.
+Eq.~(\ref{eq:projector_new_form}) allows us to easily write down projectors onto rotated basis.
+\subexer{
+Verify Eq.~(\ref{eq:projector_new_form}) is true for the three Pauli operators.
+}
+\subexer{
+Write down the projectors corresponding to $\pm 1$ outcomes of a measurement in $B = (Z+X)/\sqrt{2}$ basis.
+}
+\subexer{
+Write down the projectors corresponding to $\pm 1$ outcomes of a measurement in $B = r_x X + r_y Y + r_z Z$ basis, where $(r_x,r_y,r_z)$ is a unit vector.
+}
+}
+
+\exer{
 \emph{Mixed states}. We have a quantum machine that prepares a particular quantum state. By using our machine many times, we have determined that 60\% of the time, the machine prepares the state $|0\rangle$, 20\% of the time, it prepares the state $|1\rangle$, and 20\% of the time, it prepares the state $|+\rangle$.
 \subexer{
 Write down the state the machine prepares using Dirac notation.
@@ -618,10 +637,41 @@ Prove that a completely mixed state of $\ket{+}$ and $\ket{-}$ is equal to the f
 
 \exer{
 \emph{Bit-flip channel}. We have introduced the bit-flip channel,
-\begin{equation}
+\begin{equation*}
     \rho = (1-p)|\psi\rangle\langle\psi| + p X|\psi\rangle\langle\psi|X,
-\end{equation}
+\end{equation*}
 where an initial pure state $|\psi\rangle$ is transformed into a final mixed state by a probabilistic application of the Pauli $X$ operator.
+\subexer{
+Check that the final state $\rho$ is properly normalized.
+}
+\subexer{
+Show that the purity of the output state $\rho$ is given by
+\begin{equation}
+    \gamma = (1-p)^2 + p^2 + 2p(1-p) \langle X\rangle^2.
+\end{equation}
+(\emph{Hint:} you might find the following property of the trace useful,
+\begin{equation*}
+    \text{Tr}\{|\psi\rangle\langle\psi|U\} = \text{Tr}\{U|\psi\rangle\langle\psi|\} = \langle\psi|U|\psi\rangle.)
+\end{equation*}
+}
+\subexer{
+If the input state is $|\psi\rangle=|0\rangle$, what is the purity of the output state $\rho$?
+}\subexer{
+If the input state is $|\psi\rangle=|+\rangle$, what is the purity of the output state $\rho$? Does this answer make sense?
+}
+}
+
+\exer{
+\emph{Phase-flip channel}. Another important noise model is one where the Pauli $Z$ operator is applied to the input state $|\psi\rangle$ with probability $p$.
+\subexer{
+Write down the output state in terms of the input state.
+}
+\subexer{
+What input state remains unaffected by the phase-flip channel?
+}
+\subexer{
+Compute the purity of the output state $\rho$ for a general input state $|\psi\rangle$.
+}
 }
 
 \end{exercises}

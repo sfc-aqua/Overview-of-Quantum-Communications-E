@@ -2,7 +2,11 @@
 \label{sec:4_entanglement}
 %\begin{abstract}
 
-In this chapter, we will finally learn about \emph{entanglement}: a special, very unique feature of quantum mechanics. We will begin by demonstrating how strange entanglement can be and how counter-intuitive it can be. Then we will move on to the definition of what entangled states are, and then we will talk about a particular class of entangled states called "Bell states", which play a very important role in quantum communication and quantum computation. Finally, we will finish by framing entanglement as a resource for computational and communication tasks.
+In this chapter, we will finally learn about \textbf{\emph{entanglement}}: a special and unique feature of quantum mechanics.
+We will begin by demonstrating how strange and counter-intuitive entanglement can be.
+Then, we will move on to the definition of entangled states.
+Following that, we will discuss a particular class of entangled states called ``Bell states'', which play an important role in quantum communication.
+Finally, we will finish by framing entanglement as a resource for computational and communication tasks.
 
 %\end{abstract}
 
@@ -10,186 +14,242 @@ In this chapter, we will finally learn about \emph{entanglement}: a special, ver
 \label{sec:chsh-game}
 \index{CHSH game}
 
-\if0
-% table of possibilities
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/CHSH_table.pdf}
-    \label{fig: 1}
-    
-        \caption{CHSH game}
-    
-\end{figure}
-\fi
-
-% Lesson Four: Entanglement.
-
-
-% Step One: CHSH Game.
-
-We will begin with a game, and the rules of the game are the following: Players "A" and "B" are trying to cooperate to win a game that's being refereed by another person, whom we will call "R".
+We begin with a game that will demonstrate just how wonderful and strange entangled states are.
+The game is related to a proposal of four scientists named Clauser, Horn, Shimony, and Holt, though it is normally referred to as the \textbf{\emph{CHSH game}}\index{CHSH game}.
+It consists of two players, labelled $A$ and $B$, and a referee denoted by $R$, as shown in Fig.~\ref{fig:chsh-game}.
+The rules of the game are the following:
+\begin{itemize}
+    \item Referee $R$ generates two random bits, $x,y\in\{0,1\}$. Bit $x$ is sent to player $A$, and bit $y$ is sent to player $B$.
+    \item Upon receiving the referee's bits, players $A$ and $B$ reply with their own bits. Player $A$ sends back a bit $a$, and player $B$ sends back bit $b$.
+    \item Referee $R$ checks whether the players' bits satisfy the winning condition,
+    \begin{equation}
+        x\cdot y = a \oplus b,
+    \end{equation}
+    where $\oplus$ represents binary addition. This concludes a single round of the game.
+    \item The game continues to see what percentage of the rounds the players can win.
+    \item IMPORTANT: The players are not allowed to communicate once the game has started.
+\end{itemize}
 
 % game diagram
-\begin{figure}[H]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/CHSH_diagram.pdf}
-        \caption[CHSH game view]{CHSH game view. The players A and B attempt to collaborate to beat the referee R.}
+    % \includegraphics[width=0.5\textwidth]{lesson4/CHSH_diagram.pdf}
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
+
+    \node[state,fill=red!50]    (R)                     {R};
+    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
+    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
+
+    \path
+    (R) edge[bend right,above,red!60,thick]	node[yshift=1pt]{$x$}	(A)
+    (R) edge[bend left,above,red!60,thick]	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
+    (A) edge[bend right,left,newgreen,thick]	node[yshift=1pt]{$a$}	(R)
+    (B) edge[bend left,right,newgreen,thick]	node[yshift=2pt]{$b$}	(R);
+
+    \end{tikzpicture}
+    
+    \caption[CHSH game.]{CHSH game view. The players A and B attempt to collaborate to beat the referee R.}
     \label{fig:chsh-game}
 \end{figure}
 
-The game, as shown in Fig.~\ref{fig:chsh-game}, begins with R generating two classical bits $x$ and $y$, fully at random, and sending the $x$ bit to player A and the $y$ bit to player B. Then the players A and B reply with their own classical bits $a$ and $b$. They win one round of the game if the product $xy$ is equal to the binary sum $a + b$. But there is one very important constraint: once the game begins, players A and B are not allowed to communicate. You see, if they could communicate, A could just tell B: hey, the bit $x$ I received is equal to zero or is equal to one, and they could very easily win every round.
+The players cannot communicate in order to make the game interesting, otherwise they would win every single round.
+This does not mean that the players are not allowed to communicate at all.
+Before the game starts, they can agree on a common strategy in order to maximize their winning chances.
 
-But this doesn't mean that they are not cooperating. Before the game begins, they can actually decide on their strategy, or what bits they will output and in what fashion. Let's have a look how this actually works in practice, as shown in Fig.~\ref{fig:chsh-game-rounds}. Let's say, for example, that $x =0$, $y = 1$. That means that the product zero times one is just zero. A replies with its bit, which is zero, and B replies with a one, and the binary sum $a + b = 0 + 1 = 1$. We see that the product zero and sum one are not equal, therefore the players A and B lose this particular round.
-% Round 1/2/3 pic
-\begin{figure}[H]
+Before discussing what an optimal strategy would look like, let's have a look at a few rounds of the CHSH game to become more comfortable with the rules.
+\begin{table}[h]
+    \setcellgapes{5pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
     \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/CHSH_rounds.pdf}
-        \caption{Three rounds of the CHSH game.}
-    \label{fig:chsh-game-rounds}
-\end{figure}
+    \begin{tabular}{cccccccc}
+        \hline
+        & $x$ & $y$ & $a$ & $b$ & $x\cdot y$ & $a\oplus b$ \\
+        \hline
+        \textbf{Round 1} & 0 & 1 & 0 & 1 & 0 & 1 & \textcolor{darkred}{Loss} \\
+        \textbf{Round 2} & 0 & 1 & 1 & 1 & 0 & 0 & \textcolor{newgreen}{Win} \\
+        \textbf{Round 3} & 1 & 1 & 1 & 0 & 1 & 1 & \textcolor{newgreen}{Win} \\
+        \hline
+    \end{tabular}
+    \caption[CHSH game example.]{Three example rounds of the CHSH game.}
+    \label{tab:4-1_chsh_rounds}
+\end{table}
+Table~\ref{tab:4-1_chsh_rounds} shows three example rounds of the game.
+In Round 1, the referee $R$ generates the input bits with values $x=0$ and $y=1$, which are sent to the players.
+The players generate their answers according to a pre-agreed strategy, and reply with $a=0$ and $b=1$.
+The product of the input bits is $x\cdot y=0$, while the binary sum of the output bits is $a\oplus b=1$.
+The referee determines that winning condition is not satisfied, and the players lose this round.
+In Round 2, the product of input qubits is $x\cdot y=0$, and so is the binary sum of the outputs, $a\oplus b=0$. The players win this round.
+Similarly for Round 3 where $x\cdot y=a\oplus b=1$.
 
-In the next round, maybe $x$ and $y$ are still zero and one, but this time $a = b = 1$. Now the binary sum $a + b = 1 + 1 = 0$. So we see that they satisfy the winning condition: $xy$ is equal to $a + b$, therefore they win. In round three, maybe the $x$ and $y$ actually change. They're both one, and A and B reply with one and zero, respectively. In this case we can see again that they win because the product of $x$ and $y$ is equal to the binary sum of $a$ and $b$. They keep going on and on like this, repeating the game. But the main question is: what strategy should A and B follow in order to maximize the win rate? Of course they could just randomly generate their bits and be satisfied that sometimes they win and sometimes they lose, but our players are actually competitive and they try to win every single round, so let's see if that's actually possible.
-
-% insert annotated table of possibilities
-\begin{figure}[H]
+So what is the optimal strategy that players $A$ and $B$ should follow in order to maximize their chances of winning?
+We will now address this important question.
+Let's begin by looking at the possible input bit pairs that the referee $R$ can generate.
+There are four possible pairs, as shown in Tab.~\ref{tab:4-2_chsh_strategy}, and they are $(0,0)$, $(0,1)$, $(1,0)$, and $(1,1)$.
+\begin{table}[h]
+    \setcellgapes{5pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
     \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/CHSH_annotated_table.pdf}
-        \caption[CHSH game and outcomes]{CHSH game and outcomes for the four possible $x, y$ values, when A and B both have chosen zero for their secret bits.}
-    \label{fig:chsh-table}
-\end{figure}
+    \begin{tabular}{cccccc}
+        \hline
+        $x$ & $y$ & $x\cdot y$ & $a=b$ & $a\oplus b$ & \\
+        \hline
+        0 & 0 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
+        0 & 1 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
+        1 & 0 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
+        1 & 1 & 1 & 0 & 0 & \textcolor{darkred}{Loss} \\
+        \hline
+    \end{tabular}
+    \caption[CHSH game classical strategy.]{An example strategy for the CHSH game. Players $A$ and $B$ always reply with 0, regardless of the values of the input bits sent by the referee $R$.}
+    \label{tab:4-2_chsh_strategy}
+\end{table}
+In the first three cases, the product of the input bits is $x\cdot y=0$. Only in the last case, when $x=y=1$, is the product equal to 1.
+Realizing this, the players can agree on a strategy where they always output $a=b=0$, regardless of the value of the input bits sent by the referee.
+This strategy results in the output bit binary sum $a\oplus b=0$, meaning the players win the CHSH game in three out of the four possible cases.
+Since the input bits are generated uniformly at random, the probability of of a particular input pair $(x,y)$ is 1/4.
+Therefore, the players have a 75\% chance of winning every round.
+Not bad for such a simple strategy.
 
-The table shown in Fig.~\ref{fig:chsh-table} lists all four possible bit pairs that the referee can distribute to A and B, (0, 0), (0, 1), (1, 0), and (1, 1). The third column lists the $x\cdot y$ products that A and B are attempting to match. As an example, this figure assumes that A and B chose $a_x = b_y = 0$, and shows that their value $a_x \oplus b_y$. We are calling them $a_x$ and $b_y$ to emphasize that the output bits $a$ and $b$ can be chosen depending on the bits $x$ and $y$ that the players received from the referee. You can try and substitute any values for $a_x$ and $b_y$, and in fact you will see that they cannot satisfy the winning condition all the time. It's just inevitable that in some cases they will lose.
-
-In the first three cases, the product of $x$ and $y$ is zero. It's only in the last case when it's one. In fact, A and B can just say, "no matter what $x$ and no matter what $y$ we received, we will always reply with the output zero." That is one viable strategy. So $a$ is always zero, $b$ is always zero, and in that case they win the game three out of four times. You can be a little bit more mathematical and can prove that even in fact if they follow any other strategy, they cannot go higher than this 75 percent win rate. 
-
+But can the players do better than that?
+The answer is no, if the players are restricted to using only classical strategies.
+However they can do better if they use pre-shared \textbf{\emph{entangled states}}\index{entangled state}.
+A particular quantum strategy is depicted in Fig.~(\ref{fig:chsh-game}).
+Players $A$ and $B$ now share an entangled state,
+\begin{equation}
+    |\Phi^+\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle),
+    \label{eq:4_1-phiPlus}
+\end{equation}
+where the first qubit corresponds to qubit $A$, while the second qubit to corresponds to qubit $B$.
+\footnote{We will discuss what it means for a quantum state to be entangled in the following section.
+For now, we will just accept that Eq.~(\ref{eq:4_1-phiPlus}) is entangled.
+In fact, it is good to get used to this state because we will keep encountering it again and again.}
+The capital Greek letter $\Phi$ is pronounced ``Phi''.
+If the referee's input bit is $x=0$, player $A$ measures qubit $A$ in the $Z$ basis.
+If $x=1$, player $A$ measures in the $X$ basis.
+For +1 measurement outcome, player $A$ replies with $a=0$.
+If the measurement outcome is -1, player $A$ replies with $a=1$.
+Similar procedure applies to player $B$.
+Only difference is that player $B$ measures in a \textbf{\emph{rotated basis}}\index{rotated basis}.
+If the input bit is $y=0$, player $B$ measures in the $(Z+X)/\sqrt{2}$ basis.
+For $y=1$, player $B$ measures in the $(Z-X)/\sqrt{2}$ basis.
 
 % insert quantum diagram
-\begin{figure}[H]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/CHSH_quantum_diagram.pdf}
-        \caption{Quantum version}
-    \label{fig:chsh-quantum}
+    % \includegraphics[width=0.5\textwidth]{lesson4/CHSH_quantum_diagram.pdf}
+    \begin{tikzpicture}[auto, semithick, node distance=3cm]
+    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
+
+    \node[state,fill=red!50]    (R)                     {R};
+    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
+    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
+
+    \path
+    (R) edge[bend right,above,red!60,thick,->,>=stealth']	node[yshift=1pt]{$x$}	(A)
+    (R) edge[bend left,above,red!60,thick,->,>=stealth']	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
+    (A) edge[bend right,left,newgreen,thick,->,>=stealth']	node[yshift=1pt]{$a$}	(R)
+    (B) edge[bend left,right,newgreen,thick,->,>=stealth']	node[yshift=2pt]{$b$}	(R);
+
+    \coordinate (qubitA) at ($(A)+(0,-1)$);
+    \coordinate (qubitB) at ($(B)+(0,-1)$);
+
+    \draw[decorate,decoration={coil,aspect=0},thick] (qubitA)  -- (qubitB);
+    \filldraw[black!30,draw=black,thick] (qubitA) circle (5pt);
+    \filldraw[black!30,draw=black,thick] (qubitB) circle (5pt);
+
+    \node[] at (-3, -3.15) {qubit A};
+    \node[] at (3, -3.15) {qubit B};
+    \node[] at (0, -3.5) {$|\Phi^+\rangle$};
+
+    \end{tikzpicture}
+    
+    \caption[Optimal quantum CHSH game strategy.]{Optimal quantum strategy for the CHSH game requires the players to pre-share an entangled state of two qubits.}
+    \label{fig:chsh-game}
 \end{figure}
 
-% Quantum まとめ guide
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/CHSH_quantum_guide.pdf}
-        \caption{Summary of quantum version}
-    \label{fig:chsh-quantum-summary}
-\end{figure}
+The above quantum strategy is a lot more complicated that the optimal classical one.
+Actions of the players now depend on the inputs received from the referee.
+They also need to pre-share one entangled for every round they play.
+All of this extra work is well worth it however.
+By following this quantum strategy, the players have probability of winning a round of 85\%.
+This is an increase of 10\% compared to the optimal classical strategy.
+We do not yet have the necessary tools to analyze the quantum strategy quantitatively in order to derive the winning probability.
+We are about to remedy that in the remainder of this chapter.
 
-So far, A and B have used a classical strategy, but what if they implement a quantum strategy, as in Figs.~\ref{fig:chsh-quantum} and \ref{fig:chsh-quantum-summary}? First of all, what \emph{is} a quantum strategy? Well, one strategy is that A and B can share a quantum state, and for concreteness we can assume that the state that they share is 
-\begin{equation}
-\ket{\psi}_{AB} = \frac{1}{\sqrt2}(\ket{00} + \ket{11}).
-\end{equation}
-A and B choose to do the following: if A receives $x=0$, then it measures its qubit in the Z basis. If it receives $x=1$, it will measure in the X basis. If the outcome of the measurement (whether Z or X) is $+1$, it sets $a=0$ and replies with this bit. On the other hand, if the measurement outcome is $-1$, then A will reply with $a=1$. B follows a similar strategy, but instead of measuring in the Z or X basis, it measures in a \emph{rotated basis}, choosing $Z+X$ or $Z-X$ if it receives $y=0$ or $y=1$, respectively. Again, it replies with $b=0$ if the measurement outcome is $+1$, and $b=1$ if the measurement outcome is $-1$. If A and B follow this strategy, they can achieve a win rate of 85 percent. That's a 10 percent increase over the best classical strategy.
-%We will see later that this state is actually a very special state that we will encounter again and again.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Entangled states}
+\label{sec:4_2-entagnled_states}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Having seen how entangled states can be useful in the CHSH game, it is time to dicuss them in more detail.
+To keep things simple, we will consider a system of two qubits.
+We will use the term \textbf{\emph{local state}}\index{local state} to refer to the state of either of two qubits alone, and the term \textbf{\emph{global state}}\index{global state} to refer to the two qubits together.~\footnote{These terms can easily be extended to discuss more than one qubit in each location.}
 
-
-\if0
-\begin{equation}
-a_{0} b_{1}=a_{1} b_{0}=0 \quad \longrightarrow a_{0}=0 \quad \text { or } \quad b_{1}=0
-\end{equation}
-\begin{equation}
-\begin{aligned}
-\ket{\Phi^{+}}&=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle) &\left|\Phi^{-}\right\rangle=\frac{1}{\sqrt{2}}(|00\rangle-|11\rangle) \\
-\ket{\Psi^{+}}&=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle) &\left|\Psi^{-}\right\rangle=\frac{1}{\sqrt{2}}(|01\rangle-|10\rangle)
-\end{aligned}
-\end{equation}
-\fi
-
-% Step Two: Entangled States.
-
-Now let's look at \emph{entangled states}.  For this discussion, we will consider a system with two qubits, which we assume are held in two different locations.  We will use the term \emph{local state}\index{local state} to refer to the state of either of two qubits alone, and the term \emph{global state}\index{global state} to refer to the two qubits together -- all of the qubits in our simple system.~\footnote{These terms can easily be extended to discuss more than one qubit in each location.}
-
-We saw in Sec.~\ref{sec:multi-qubit} that in order to describe states of many qubits, we have to use the tensor product. For the case of the two qubits A and B, we have the local state $\ket{\psi}_A$ of the qubit A, and a local state $\ket{\psi}_B$ of qubit B. For concreteness, let's say that they are $\ket{0}$ and $\ket{0}$. In order to write the global state of both qubits, we form the tensor product and we call this state $\ket{\psi}_{AB}$, which in this case is simply $\ket{00}$. We can also consider a different state where A is still in $\ket{0}$ but B is now in the $\ket{+}$ superposition of zero and one. Again, the global state is very simple: form the tensor product of $\ket{0}$ and $\ket{+}$, and when you expand the $\ket{+}$, you can write it in the computational basis, and it's an equal superposition of $\ket{00}$ and $\ket{01}$,
+We saw in Sec.~\ref{sec:multi-qubit} that in order to describe states of many qubits, we have to use the tensor product. For the case of the two qubits $A$ and $B$, we have the local state $\ket{\psi}_A$ of the qubit $A$, and a local state $\ket{\psi}_B$ of qubit $B$.
+For concreteness, let's say that they are $\ket{0}$ and $\ket{0}$.
+In order to write the global state of both qubits, we form the tensor product and we call this state $\ket{\psi}_{AB}$, which in this case is simply $\ket{00}$.
+We can also consider a different state where $A$ is still in $\ket{0}$ but $B$ is now in the $\ket{+}$, a superposition of zero and one.
+Again, the global state is straightforward: form the tensor product of $\ket{0}$ and $\ket{+}$,
 \begin{equation}
 \ket{\psi}_{AB} = \ket{0}\ket{+} = \ket{0}\left(\frac{\ket{0} + \ket{1}}{\sqrt{2}}\right) = \frac{\ket{00} + \ket{01}}{\sqrt2}.
 \end{equation}
-So this is going from local states to global states, but we can also ask the reverse question: given the global state, how do you write the local states of the qubits? In particular, we can consider the following global state which we have encountered in the CHSH game in the previous section,
+
+The above two examples both started with local states, which were then used to formulate the global state.
+We can also ask the reverse question: given the global state, how do we write the local states of the qubits?
+We can consider the global state of two qubits that we have encountered in the CHSH game in the previous section,
 \begin{equation}
-\ket{\psi}_{AB} = \frac{1}{\sqrt2}(\ket{00} + \ket{11})
+    \ket{\Phi^+}_{AB} = \frac{1}{\sqrt2}(\ket{00} + \ket{11})
+    \label{eq:entangled_state}
 \end{equation}
-which is an equal superposition of $\ket{00}$ and $\ket{11}$.
+Identifying the local states is not that straightforward in this case.
+By looking at Eq.~(\ref{eq:entangled_state}), we can see that the local state of either qubit is not quite $|0\rangle$, and it is also not quite $|1\rangle$.
 
-So what are the local states of qubit A and qubit B? Let's write it out. We can write a general state of qubit A as a superposition of zero and one, with probability amplitudes $a_0$ and $a_1$, and the same for qubit B where the probability amplitude for state zero is $b_0$, and for state one is $b_1$. 
-% Just to remind ourselves, 
-Let's form a tensor product of $\ket{\psi}_A$ with $\ket{\psi}_B$. We get the following: 
+At this point, it is better to get a bit more rigorous.
+Let's write the local states as general pure states,
 \begin{equation}
-\begin{aligned}
-|\psi\rangle_{A} \otimes|\psi\rangle_{B} &= \left(a_{0}|0\rangle+a_{1}|1\rangle\right) \otimes\left(b_{0}|0\rangle+b_{1}|1\rangle\right) \\
- &= a_0 b_0\ket{00} + a_0 b_1\ket{01} + a_1 b_0\ket{10} + a_1 b_1\ket{11}.
-\end{aligned}
+    |\psi\rangle_A = a_0|0\rangle + a_1|1\rangle, \quad |\psi\rangle_B = b_0|0\rangle + b_1|1\rangle.
 \end{equation}
-We get four terms, one probability amplitude for each computational basis term. Let's lay our the mathematical requirements for this equation to match our desired state.
-%, we have a-zero b-zero for state $\ket{00}$, a-zero b-one for the state zero-one, a-one b-zero for one-zero, and a-one b-one for $\ket{11}$. 
-
-Remember, the global state that we are looking for is the following: $\ket{00}+\ket{11}$ (normalized appropriately, of course). 
-When we compare this general tensor product of A and B with our desired global state and try to determine the values of $a_i$ and $b_i$ we need, we see that
+Taking the tensor product of $\ket{\psi}_A$ with $\ket{\psi}_B$, we arrive at the following two-qubit state, 
+\begin{align}
+    |\psi\rangle_{A} \otimes|\psi\rangle_{B} & = \left(a_{0}|0\rangle+a_{1}|1\rangle\right) \otimes\left(b_{0}|0\rangle+b_{1}|1\rangle\right) \nonumber\\
+    & = a_0 b_0\ket{00} + a_0 b_1\ket{01} + a_1 b_0\ket{10} + a_1 b_1\ket{11}.
+    \label{eq:two_qubit_separable}
+\end{align}
+Our goal is to find suitable probability amplitudes $a_i$ and $b_j$ such that $|\psi\rangle_{A} \otimes|\psi\rangle_{B} = |\Phi^+\rangle_{AB}$.
+By comparing Eq.~(\ref{eq:entangled_state}) with Eq.~(\ref{eq:two_qubit_separable}), we see that the probablity amplitudes must satisfy two conditions,
 \begin{equation}
-a_{0} b_{0}=a_{1} b_{1}=\frac{1}{\sqrt{2}}.
+    a_0 b_0 = a_1 b_1 = \frac{1}{\sqrt{2}}, \quad \text{ and }\quad a_0 b_1 = a_1 b_0 = 0.
 \end{equation}
-Okay, so that's requirement number one for our solution.
+Let's look at the second condition first.
+Either $a_0$ or $b_1$ is zero.
+But setting either of them to 0, then we see that $a_0 b_0$ or $a_1 b_1$ will also be 0, meaning the first condition cannot be satisfied.
+This is a remarkable discovery.
+It says that \emph{not all global states can be written as a tensor product of local states}.
 
-Requirement number two is that in the global state, we don't have any contributions to the superposition from the $\ket{01}$ and $\ket{10}$ terms,
-\begin{equation}
-a_0 b_1 = a_1 b_0 = 0.    
-\end{equation}
+This leads us to the realization that there are two major classes of states.
+There are \textbf{\emph{product states}}\index{product state}.
+A product state is one that \textbf{\emph{can}} be written as a tensor product of local states.
+Given two local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state by forming the tensor product.
+Since we can write down the state vectors for both the global state and the local states, we say that we perfect knowledge of the local states.
 
-Let's look at the second requirement first. We can see that either $a_0$ must be zero, or $b_1$ must be zero, but if we set either of those to zero and then go back to requirement one, then we see that $a_0 b_0$ or $a_1 b_1$ will also be zero and we will not be able to satisfy requirement one.
-%So a-zero cannot be zero. So, we go to b-one equal to zero, and again we see by going back to requirement one that even b-one cannot be equal to zero. 
-So did we make a mistake somewhere? In fact, no. It's just a contradiction, and it actually \emph{is} the property of this particular state for which we are trying to find local states. In fact, \emph{not all global states can be written as a tensor product of local states}, and this is the {\bf definition} of an entangled state.
+The other class of quantum states are \textbf{\emph{entangled states}}\index{entangled state}.
+An entangled state is a state whose global state \textbf{\emph{cannot}} be written as the tensor product of local states.
+In the previous example, we have demonstrated this for an equal superposition of $\ket{00}$ and $\ket{11}$, this is in fact the case.
+This is very interesting because it implies that we have perfect knowledge of the global state, but we have imperfect knowledge of local states.
 
-This leads us to the realization that we have two major classes of states: first, we have \emph{product states}\index{product state}. % \marginpar{product state}. 
-\emph{A product state is one that can be written as a tensor product of local states.} Given some local states $\ket{\psi}_A$ and $\ket{\psi}_B$, we can easily find the global state just by forming the tensor product, and this suggests that perfect knowledge of local states implies perfect knowledge of global states.
 
-Second, we have the other class of quantum states which are \emph{entangled states}\index{entangled state}. \emph{An entangled state is a state whose global state cannot be written as the tensor product of local states.} In the previous example, we have demonstrated that for an equal superposition of $\ket{00}$ and $\ket{11}$, this is in fact the case. There are no local kets $\ket{\psi}_A$ and $\ket{\psi}_B$ such that when we take them and form a tensor product, we get the global state back. Mathematically, we can write this as
-\begin{equation}
-|\psi\rangle_{A B} \neq|\psi\rangle_{A} \otimes|\psi\rangle_{B}.
-\end{equation}
-This is very interesting because it implies that \emph{we have perfect knowledge of the global state, but we have somehow imperfect knowledge of local states}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bell states}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\if0
-% add all bases having same outcome probabilities
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/Qubit_A.pdf}
-    \label{fig: 1}
-    
-        \caption{A measurement result}
-    
-\end{figure}
+\section{Bell states}
+\label{sec:4_3-bell_states}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% B Qubit measurement results
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/Qubit_B.pdf}
-    \label{fig: 1}
-    
-        \caption{B measurement result}
-    
-\end{figure}
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{lesson4/4.3_Recap.pdf}
-        \caption[Complete global but no local information]{When entangled states are considered, it is possible to have complete information about the global state but have no information about the local state.}
-    \label{fig:incomplete-information}
-\end{figure}
-
-%Step Three: Bell States.
-
-We have said that the Bell states\index{Bell states} form a very important class of entangled states of two qubits. There are four of them, and we can write them as follows: 
+After defining what entangled states are, it is time to take a look at a very useful class of entangled states, called the \textbf{\emph{Bell states}}\index{Bell states}.
+There are a total of four Bell states, 
 \begin{equation}
     \begin{aligned}
         |\Phi^+\rangle & = \frac{1}{\sqrt{2}} \left( |00\rangle + |11\rangle \right), & 
@@ -198,42 +258,79 @@ We have said that the Bell states\index{Bell states} form a very important class
         |\Psi^-\rangle = \frac{1}{\sqrt2} \left(|01\rangle - |10\rangle \right).
     \end{aligned}
 \end{equation}
-We have already encountered the equal superposition of $\ket{00}$ plus $\ket{11}$. Normally, we call that a $\ket{\Phi^+}$ (read "phi-plus") state. Its counterpart is the $\ket{\Phi^-}$ ("phi-minus") state, where the $\ket{00}$ and $\ket{11}$ have opposite phase, as shown by the minus sign. There are two more states, $\ket{\Psi^+}$ and $\ket{\Psi^-}$, which are superpositions of \ket{01} and \ket{10}, with \ket{\Psi^-} having opposite phase between the two terms.  These states we will see again and again in the context of quantum communication, quantum computation, quantum key distribution -- basically throughout this entire book and throughout your career in quantum information.~\footnote{In some texts and papers, more commonly but not exclusively older ones, you will see these states written using the lower-case Greek letters $\phi$ (phi) and $\psi$ (psi).  In this book, we will use the capital Greek letters when referring to the Bell pairs and the lower-case letters when referring to specific variables.} 
+We have already encountered the equal superposition of $|\Phi^+\rangle$.
+Its counterpart is the $\ket{\Phi^-}$ (``phi minus'') state, where the $\ket{00}$ and $\ket{11}$ have opposite phase, as shown represented by the minus sign.
+There are two more states, $\ket{\Psi^+}$ (``psi plus'') and $\ket{\Psi^-}$ (``psi minus''), which are superpositions of \ket{01} and \ket{10}, with \ket{\Psi^-} having opposite phase between the two terms. 
+We will encounter these states countless number of times in the context of quantum communication.~\footnote{In some texts and papers, more commonly but not exclusively older ones, you will see these states written using the lower-case Greek letters $\phi$ (phi) and $\psi$ (psi).  In this book, we will use the capital Greek letters when referring to the Bell pairs and the lower-case letters when referring to specific variables.} 
 
-An interesting thing about the Bell states is that they form an orthogonal basis for two qubits, so we can begin by rewriting the individual vectors for the computational basis in terms of the Bell basis. Just by doing very simple juggling of the terms, you can see that $\ket{00}$ can be written as a superposition of $\ket{\Phi^+}$ and $\ket{\Phi^-}$, and similarly $\ket{01}$ is an equal superposition of $\ket{\Psi^+}$ and $\ket{\Psi^-}$.
-All four computational basis states of two qubits can be written in the Bell basis as follows,
+The Bell states form an orthogonal basis for the space of two qubits.
+This means that any state vector of two qubits can be written in terms of the four Bell states.
+We begin with rewriting the computational basis states of two qubits $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$ in terms of the Bell states.
+It is not too difficult to verify that the following equalities are indeed true,
 \begin{equation}
-\begin{aligned}
-|00\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right), & 
-\ket{01} = \frac{1}{\sqrt2}(\ket{\Psi^{+}} + \ket{\Psi^{-}}), \\
-|10\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Psi^{+}\right\rangle-\left|\Psi^{-}\right\rangle\right), & 
-\ket{11} = \frac{1}{\sqrt2}(\ket{\Phi^{+}} - \ket{\Phi^{-}}).
-\end{aligned}
+    \begin{aligned}
+    |00\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right), & 
+    \ket{01} = \frac{1}{\sqrt2}(\ket{\Psi^{+}} + \ket{\Psi^{-}}), \\
+    |10\rangle &=\frac{1}{\sqrt{2}}\left(\left|\Psi^{+}\right\rangle-\left|\Psi^{-}\right\rangle\right), & 
+    \ket{11} = \frac{1}{\sqrt2}(\ket{\Phi^{+}} - \ket{\Phi^{-}}).
+    \label{eq:comp_to_bell_basis}
+    \end{aligned}
 \end{equation}
-%, whereas one-zero is an equal superposition of $\ket{\psi^+}$ minus $\ket{\psi^-}$, and $\ket{11}$ is given by phi-plus minus phi-minus. 
-This means that we can take any pure state of two qubits given in the form with arbitrary probability amplitudes $\alpha$, $\beta$, $\gamma$, $\delta$,
+An arbitrary two-qubit pure state can be written in the computational basis as follows,
 \begin{equation}
-|\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle
+    |\psi\rangle=\alpha|00\rangle+\beta|01\rangle+\gamma|10\rangle+\delta|11\rangle,
 \end{equation}
-and we can rewrite it in terms of the Bell states.  Of course the probability amplitudes have to transform accordingly,
-%rewriting as in \textbf{Eq. 4.7} and \textbf{4.8},
+where the probability amplitude satisfy the usual normalization condition, $|\alpha|^2+|\beta|^2+|\gamma|^2+|\delta|^2=1$.
+Using Eq.~(\ref{eq:comp_to_bell_basis}), this pure state can be readily written in the Bell basis,
 \begin{equation}
-|\psi\rangle=\frac{\alpha+\beta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\beta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\gamma+\delta}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\gamma-\delta}{\sqrt{2}}\left|\Psi^{-}\right\rangle.
+    |\psi\rangle=\frac{\alpha+\delta}{\sqrt{2}}\left|\Phi^{+}\right\rangle+\frac{\alpha-\delta}{\sqrt{2}}\left|\Phi^{-}\right\rangle+\frac{\beta+\gamma}{\sqrt{2}}\left|\Psi^{+}\right\rangle+\frac{\beta-\gamma}{\sqrt{2}}\left|\Psi^{-}\right\rangle.
+    \label{eq:psi_bell_basis}
 \end{equation}
+Note that since we have changed the basis the probability amplitudes have transformed accordingly.
 
-Now that the we understand how to rewrite a state in the Bell basis, we can even measure in the Bell basis, with the probabilities of the various outcomes coming directly from the equation above. But remember in the previous chapters, we asked several questions: Is the state in \ket{0}? Is the state in \ket{1}? Is the state in \ket{+}? Is the state in \ket{-}?  This time, we are dealing with two qubits, so there are four possible outcomes. Now the question is: Is the state in $\ket{\Phi^+}$? Is it in $\ket{\Phi^-}$? Is it in $\ket{\Psi^+}$? Or is it in $\ket{\Psi^-}$? These are all the different possible outcomes of the measurement, with probabilities
+We have so far been dealing with single-qubit measurements.
+Such measurements only had two possible outcomes.
+Measuring in the Pauli $Z$ basis would project the initial state onto either $\ket{0}$ or $\ket{1}$.
+If the basis of measurement is the Pauli $X$, then the post-measurement state will be either $\ket{+}$ or $\ket{-}$.
+However, there is no reason to stop at single-qubit measurements.
+We can extend our previous discussion to two-qubit measurements.
+Not only that, we can consider two-qubit measurement in an entangled basis.
+An example of this is \textbf{\emph{measurement in the Bell basis}}\index{Bell-basis measurement}.
+Measuring a general two-qubit state $\ket{\psi}$ in the Bell basis has now four possible outcomes.
+The post-measurement state can be any of the four Bell states $\{\ket{\Phi^+}, \ket{\Phi^-}, \ket{\Psi^+}, \ket{\Psi^-}\}$.
+Using Eq.~(\ref{eq:psi_bell_basis}), we can easily determine the probabilities of these outcomes,
 \begin{equation}
-\begin{aligned}
-&\operatorname{Prob}\left\{\left|\Phi^{+}\right\rangle\right\}=\frac{|\alpha+\beta|^{2}}{2} \quad \operatorname{Prob}\left\{\left|\Phi^{-}\right\rangle\right\}=\frac{|\alpha-\beta|^{2}}{2} \\
-&\operatorname{Prob}\left\{\left|\Psi^{+}\right\rangle\right\}=\frac{|\gamma+\delta|^{2}}{2} \quad \operatorname{Prob}\left\{\left|\Psi^{-}\right\rangle\right\}=\frac{|\gamma-\delta|^{2}}{2}
-\end{aligned}
+    \begin{aligned}
+    &\operatorname{Prob}\left\{|\Phi^{+}\rangle\right\}=\frac{|\alpha+\delta|^{2}}{2} \quad \operatorname{Prob}\left\{|\Phi^{-}\rangle\right\}=\frac{|\alpha-\delta|^{2}}{2} \\
+    &\operatorname{Prob}\left\{|\Psi^{+}\rangle\right\}=\frac{|\beta+\gamma|^{2}}{2} \quad \operatorname{Prob}\left\{|\Psi^{-}\rangle\right\}=\frac{|\beta-\gamma|^{2}}{2}
+    \end{aligned}
 \end{equation}
-Because we already rewrote the state $\ket{\psi}$ in the Bell basis, it's very easy to read out the probabilities of measurement outcomes.
 This will be again very important because measurements in the Bell basis are crucial in many protocols in quantum communication, especially teleportation and entanglement swapping, which we will look at quite closely later in this book.
 
-Let's ask a different question: If we are sharing a \ket{\Phi^+} Bell pair, if we measure in the Bell basis, we will find the state \ket{\Phi^+} with 100\% probability. But what happens if we measure just one qubit of the pair? Remember that we encountered this scenario in the CHSH game, where the players were sharing a Bell state, and they performed local measurements on the qubits that were in their possession. 
-%So let's take as a concrete example the state $\ket{\Phi^+}$, as we saw in the CHSH game. 
-If we measure only qubit A in the Z basis and leave qubit B untouched, we can compute the probabilities of the $+1$ outcome and the $-1$ outcome and find that they are an equal one-half. \rdv{Go through this derivation.}  We can go through the same thing for measuring qubit B, and again we see the same behavior.
+We mentioned in Sec.~\ref{sec:4_2-entagnled_states} that entangled states have the curious property that the global state is known perfectly, while it is not possible to express the state of the local qubits using pure states.
+This suggests that we only have imperfect knowledge of the local states.
+We will make this notion more concrete.
+
+Consider the two-qubit state to be the $|\Phi^+\rangle$ Bell state.
+Measuring this state in the Bell basis will yield the $|\Phi^+\rangle$ outcome with unit probability.
+This is consistent with our interpretation of having full knowledge of the global state.
+Let's see what happens if we perform a single-qubit measurement on the state $|\Phi^+\rangle$.
+For example, we measure qubit $A$ in the Pauli $Z$ basis.
+Since this is a single-qubit measurement, we can only two possible outcomes.
+The projectors associated with these two outcomes are
+\begin{equation}
+    \Pi^A_{Z,+} = |0\rangle_A\langle0| \otimes I_B, \quad \text{ and } \Pi^A_{Z,-} = |1\rangle_A\langle1| \otimes I_B.
+    \label{eq:local_projectors}
+\end{equation}
+Note the slight but necessary change of notation in Eq.~(\ref{eq:local_projectors}).
+The superscript $A$ labels which local qubit is being measured, while the subscript now labels both the basis and the measurement outcome.
+The probability of obtaining the +1 outcome is given by
+\begin{align}
+    \operatorname{Pr}\{+1\} & = \operatorname{Tr}\left\{\Pi^A_{Z,+} |\Phi^+\rangle_{AB}\langle\Phi^+|\right\} \\
+    & = \langle\Phi^+|_{AB} \left( |0\rangle_A\langle0| \otimes I_B \right) |\Phi^+\rangle_{AB} \nonumber\\
+    & = \frac{1}{2} \left( \langle00|_{AB} + \langle11|_{AB} \right) \left( |0\rangle_A\langle0| \otimes I_B \right) \left( |00\rangle_{AB} + |11\rangle_{AB} \right) \nonumber\\
+    & = \frac{1}{2} \left( \langle0|0\rangle_A\langle0|0\rangle_A \right)
+\end{align}
 
 \label{page:plus-is-pure}
 At this point, you may be a little puzzled; didn't we see this same fifty-fifty behavior with a single qubit in the $\ket{+}$ state?  What is different with entanglement?  When measuring in the Z basis, it is true that we always see the fifty-fifty statistics.  However, if we measure a $\ket{+}$ in the X basis, we will \emph{always} find that the state is in the $+1$ state.  We can also choose to apply a Hadamard gate to the $\ket{+}$ state and return it to a known $\ket{0}$ state.  Thus, although the qubit is in superposition, we have complete information about that superposition.  In contrast, when we hold only one qubit of an entangled pair and attempt to measure it, our results will differ.
@@ -251,9 +348,10 @@ If we change the measurement basis to a Pauli Y basis, again we find that the pr
 Just to stress how strange this is that we have a full knowledge of the global state yet we have zero knowledge of the local states, let's look at this again: qubit A is a maximally mixed state. We have no knowledge about its state. The same is true for qubit B considered in isolation. Yet, somehow, when we look at the state globally, we have perfect knowledge of the entire state. This distinction is addressed more in the chapter exercises.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SPDC}
 \label{sec:4-4_spdc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % pic
 \begin{figure}[H]

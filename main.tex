@@ -9,8 +9,9 @@
 
 \documentclass[6x9]{newmath}
 \usepackage[utf8]{inputenc}
+\usepackage{tikz}
 \usepackage{tikz-3dplot-circleofsphere}
-\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,automata,calc}
 %\usepackage{braket}
 \usepackage{amssymb}
 \usepackage{hyperref}
@@ -26,13 +27,14 @@ version={4.0},
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{graphicx}
-% \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning} 
+% \usetikzlibrary{arrows.meta,positioning}
+% \usetikzlibrary{automata,arrows,calc}
 
 \let\oldding\ding
 \renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}
 \newcommand{\xmark}{\ding[2.2]{56}}
 \definecolor{darkred}{RGB}{200,0,0}
+\definecolor{newgreen}{RGB}{33,172,47}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
