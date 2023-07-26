@@ -11,7 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usepackage{tikz-3dplot-circleofsphere}
-\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,automata,calc}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,automata,calc,patterns}
 %\usepackage{braket}
 \usepackage{amssymb}
 \usepackage{hyperref}
@@ -27,14 +27,16 @@ version={4.0},
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{graphicx}
-% \usetikzlibrary{arrows.meta,positioning}
-% \usetikzlibrary{automata,arrows,calc}
 
 \let\oldding\ding
 \renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}
 \newcommand{\xmark}{\ding[2.2]{56}}
 \definecolor{darkred}{RGB}{200,0,0}
+\colorlet{lightred}{red!80!black}
 \definecolor{newgreen}{RGB}{33,172,47}
+\definecolor{newblue}{RGB}{43,174,222}
+\colorlet{darkgreen}{green!50!black}
+\colorlet{lightgreen}{green!80!black}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -115,7 +115,7 @@ Not bad for such a simple strategy.
 But can the players do better than that?
 The answer is no, if the players are restricted to using only classical strategies.
 However they can do better if they use pre-shared \textbf{\emph{entangled states}}\index{entangled state}.
-A particular quantum strategy is depicted in Fig.~(\ref{fig:chsh-game}).
+A particular quantum strategy is depicted in Fig.~(\ref{fig:chsh-game_entanglement}).
 Players $A$ and $B$ now share an entangled state,
 \begin{equation}
     |\Phi^+\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle),
@@ -166,7 +166,7 @@ For $y=1$, player $B$ measures in the $(Z-X)/\sqrt{2}$ basis.
     \end{tikzpicture}
     
     \caption[Optimal quantum CHSH game strategy.]{Optimal quantum strategy for the CHSH game requires the players to pre-share an entangled state of two qubits.}
-    \label{fig:chsh-game}
+    \label{fig:chsh-game_entanglement}
 \end{figure}
 
 The above quantum strategy is a lot more complicated that the optimal classical one.
@@ -324,145 +324,364 @@ The projectors associated with these two outcomes are
 \end{equation}
 Note the slight but necessary change of notation in Eq.~(\ref{eq:local_projectors}).
 The superscript $A$ labels which local qubit is being measured, while the subscript now labels both the basis and the measurement outcome.
-The probability of obtaining the +1 outcome is given by
+The probability of obtaining the +1 outcome is
 \begin{align}
     \operatorname{Pr}\{+1\} & = \operatorname{Tr}\left\{\Pi^A_{Z,+} |\Phi^+\rangle_{AB}\langle\Phi^+|\right\} \\
     & = \langle\Phi^+|_{AB} \left( |0\rangle_A\langle0| \otimes I_B \right) |\Phi^+\rangle_{AB} \nonumber\\
     & = \frac{1}{2} \left( \langle00|_{AB} + \langle11|_{AB} \right) \left( |0\rangle_A\langle0| \otimes I_B \right) \left( |00\rangle_{AB} + |11\rangle_{AB} \right) \nonumber\\
-    & = \frac{1}{2} \left( \langle0|0\rangle_A\langle0|0\rangle_A \right)
+    & = \frac{1}{2} \left( \langle0|0\rangle_A^2 \langle0|0\rangle_B + \langle0|0\rangle_A \langle0|1\rangle_A \langle0|1\rangle_B \right. \nonumber\\
+    & + \left. \langle1|0\rangle_A \langle0|0\rangle_A \langle1|0\rangle_B + \langle1|0\rangle_A \langle0|1\rangle_A \langle1|1\rangle_B \right) \nonumber\\
+    & = \frac{1}{2}. \nonumber
 \end{align}
+Similar calculation can be repeated for the case of the -1 measurement outcome,
+\begin{equation}
+    \operatorname{Pr}\{-1\} = \operatorname{Tr}\left\{\Pi^A_{Z,-} |\Phi^+\rangle_{AB}\langle\Phi^+|\right\} = \frac{1}{2}.
+\end{equation}
 
 \label{page:plus-is-pure}
-At this point, you may be a little puzzled; didn't we see this same fifty-fifty behavior with a single qubit in the $\ket{+}$ state?  What is different with entanglement?  When measuring in the Z basis, it is true that we always see the fifty-fifty statistics.  However, if we measure a $\ket{+}$ in the X basis, we will \emph{always} find that the state is in the $+1$ state.  We can also choose to apply a Hadamard gate to the $\ket{+}$ state and return it to a known $\ket{0}$ state.  Thus, although the qubit is in superposition, we have complete information about that superposition.  In contrast, when we hold only one qubit of an entangled pair and attempt to measure it, our results will differ.
+At this point, you may be a little puzzled; didn't we see this same fifty-fifty behavior with a single qubit in the $\ket{+}$ state?  What is different with entanglement?  When measuring in the Z basis, it is true that we always see the fifty-fifty statistics.  However, if we measure a $\ket{+}$ in the X basis, we will always find that the state is in the $+1$ state.  We can also choose to apply a Hadamard gate to the $\ket{+}$ state and return it to a known $\ket{0}$ state.  Thus, although the qubit is in superposition, we have complete information about that superposition.  In contrast, when we hold only one qubit of an entangled pair and attempt to measure it, our results will differ.
 
 %\rdv{This par fails to completely close the deal in demonstrating that we don't have any local information, since the outcomes are 50/50 both when we are talking about a single plus state and a Bell state.  Needs a counterpoint where we have full information?  Show that the single plus state always has a specific outcome when measuring in the X basis.} Added above.
 
-If we change the measurement basis to a Pauli Y basis, again we find that the probability of the $+1$ outcome is the same as the probability of the $-1$ outcome. It is the same for the X basis, and in fact in any basis that you measure qubit A, you will get the same result: both outcomes are fifty-fifty. In fact, the local measurement results are uniformly random in any basis. Remember the state of the global system is pure. We know exactly what it is, yet no matter in what basis we measure the states locally we are getting 50 percent one outcome and 50 percent the other outcome. We can say that we have no knowledge of the local states of qubit A and qubit B. This goes back to our previous discussion about the difference between entangled states and product states.  Since this state is entangled, the correct description of the local qubits must be given in terms of density matrices, and we can write that the state of qubit A is a maximally mixed state. With probability half it's in the zero state, and with probability half it's in the one state. The same holds for qubit B. Again we write it as a maximally mixed state,
+If we change the measurement basis to a Pauli $Y$ basis, again we find that the probability of the $+1$ outcome is the same as the probability of the $-1$ outcome. It is the same for the $X$ basis, and in fact in any basis that you measure qubit $A$, you will get the same result: both outcomes are fifty-fifty. In fact, the local measurement results are uniformly random in any basis.
+Remember that the global state of the system is pure.
+We know exactly what it is, yet no matter in what basis we measure the states locally we are getting 50 percent one outcome and 50 percent the other outcome.
+We can say that we have no knowledge of the local states of qubit $A$ and qubit $B$.
+This goes back to our previous discussion about the difference between entangled states and product states. 
+Since this state is entangled, the correct description of the local qubits must be given in terms of density matrices, and we can write that the state of qubit $A$ is a maximally mixed state.
+The same holds for qubit $B$.
+The local states of the two qubits are therefore
 \begin{equation}
-\begin{aligned}
-&\rho_A=\frac{1}{2}(|0\rangle\langle 0|+| 1\rangle\langle 1|) \\
-&\rho_B=\frac{1}{2}(|0\rangle\langle 0|+| 1\rangle\langle 1|).
-\end{aligned}
+    \rho_A=\frac{1}{2}(|0\rangle\langle 0|+| 1\rangle\langle 1|), \quad
+    \rho_B=\frac{1}{2}(|0\rangle\langle 0|+| 1\rangle\langle 1|).
 \end{equation}
 
-Just to stress how strange this is that we have a full knowledge of the global state yet we have zero knowledge of the local states, let's look at this again: qubit A is a maximally mixed state. We have no knowledge about its state. The same is true for qubit B considered in isolation. Yet, somehow, when we look at the state globally, we have perfect knowledge of the entire state. This distinction is addressed more in the chapter exercises.
+Just to stress how strange this is that we have a full knowledge of the global state yet we have zero knowledge of the local states, let's look at this again: qubit $A$ is a maximally mixed state. We have no knowledge about its state. The same is true for qubit $B$ considered in isolation. Yet, somehow, when we look at the state globally, we have perfect knowledge of the entire state. This distinction is addressed more in the chapter exercises.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SPDC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spontaneous parametric down-conversion}
 \label{sec:4-4_spdc}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% pic
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/pump.pdf}
-    
-        \caption[Symmetric parametric down conversion (SPDC)]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy entangled photons, with some very low probability. The two output photons are called \emph{signal} and \emph{idler}.}
-    \label{fig:spdc}
-    
-\end{figure}
+In this section, we will learn about one possible way of producing the entangled states that we have been discussing so far.
+The physical systems that will encode the qubits are photons, and the process generates entangled photon pairs is called \textbf{\emph{spontaneous parametric down-conversion}}\index{spontaneous parametric down-conversion}, or SPDC for short. There are many physical processes that can generate entangled pairs of photons, but this one is common in laboratories and will serve as our example.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/4-8_spdc.pdf}
-    
-        \caption[pump photon and the energy levels of the atom]{A representation of the pump photon of energy $E_p$ and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state.
-        The atom absorbs the energy provided by the pump photon and transitions to the excited state. The atom decays spontaneously after some time, releasing energy in the form of two photons with energies $E_s$ and $E_i$. Due to conservation of energy, we have $E_p = E_s + E_i$.}
-    
-    \label{fig:spdc-energy-levels}
-\end{figure}
-
-% \begin{figure}[H]
-%   \centering
-%   \begin{minipage}[b]{0.3\textwidth}
-%     \includegraphics[width=\textwidth]{lesson4/state1.pdf}
-%     \caption{A representation of the pump photon and the energy levels of the atom.}
-%   \end{minipage}
-%   \hfill
-%   \begin{minipage}[b]{0.3\textwidth}
-%     \includegraphics[width=\textwidth]{lesson4/state2.pdf}
-%     \caption{After absorption of the photon, the electron moves to the excited state.}
-%   \end{minipage}
-%   \hfill
-%   \begin{minipage}[b]{0.3\textwidth}
-%     \includegraphics[width=\textwidth]{lesson4/state3.pdf}
-%     \caption{A representation of the emission of two photons when the electron decays from the excited state back to the ground state.}
-%   \end{minipage}
-% \end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/linear_polarization.pdf}
-    
-        \caption[Horizontally, vertically and diagonally polarized light]{If horizontally and vertically polarized light are used to encode $\ket{0}$ and $\ket{1}$, then diagonally polarized light encodes $\ket{+}$.}
-    
-    \label{fig:hvd-light}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/horizontal_optical_axis.pdf}
-    
-        \caption[Horizontal to vertical SPDC]{Horizontally polarized light matching the optical axis of the crystal can be down-converted to vertically polarized pairs of photons.}
-    
-    \label{fig:horizontal-opt-axis}
-\end{figure}
-
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.5\textwidth]{lesson4/vertical_optical_axis.pdf}
-    
-        \caption[Vertical to horizontal SPDC]{Vertically polarized light matching the optical axis of the crystal can be down-converted to horizontally polarized pairs of photons.}
-    
-    \label{fig:vertical-opt-axis}
-\end{figure}
-
-% Step Four: SPDC.
-
-In this section, we will learn how to actually generate entangled states physically. Specifically, we will look at the process of \emph{spontaneous parametric down-conversion}\index{spontaneous parametric down-conversion (SPDC)}, or SPDC for short. There are many physical processes that can generate entangled pairs of photons, but this one is  common in laboratories and will serve as our example. 
-
-"Spontaneous” means that the process is not stimulated.
-In a spontaneous process, no other input is needed, only the incoming photon of high energy that gets converted into two photons of lower energies.
-(In contrast, a \emph{stimulated} process requires both the input photon and some other photon as well; a good example would be lasing.) “Parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. “Parametric” in the context of SPDC means there is a relationship between the input and output electric fields.
-
-We will illustrate SPDC with the little graphic in Fig.~\ref{fig:spdc}. Imagine that you have some laser light, represented by the green arrow, which we call the \emph{pump}, incident normally on a non-linear crystal represented by the rectangle. In this particular case, we are using a beta barium borate, or BBO, crystal, which is a popular choice in experiments. This pump laser gets transformed and split into two beams. One beam is called the "signal" and the other one is called the "idler". If we actually zoom into the crystal to see what happens to individual atoms, we get the following picture: the pump light is tuned to be resonant with some transition frequency of the atoms inside the BBO crystal, so to a good approximation it affects only two energy levels of the material. The lower level we will call the "ground state" and the upper level we will call the "excited state". The atom in the BBO crystal starts in the ground state, but then it gets blasted by this pump laser.  The atom becomes excited and absorbs the energy from the incoming pump laser, and after a short time the atom de-excites.
-
-The vast majority of the time, this de-excitation is coupled with the emission of a single, high-energy photon. With some very low probability, however, the atom ejects two photons with energy $E_s$ for the signal photon and energy $E_i$ for the idler photon. Because energy is conserved in this transition, we must have that the energy of the pump photon must be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$. This is the basic process of spontaneous parametric down-conversion.
-
-Now let's see how polarization of light interacts with this process. Consider linearly polarized light. If we again take our green pump laser, we can make it oscillate only in one plane. For example, if we make it oscillate in the horizontal plane, this can encode our $\ket{0}$ state of a qubit, as in Fig.~\ref{fig:hvd-light}. We can also make the light oscillate only in the vertical plane, in which case we will say that this encodes a $\ket{1}$. We already know from previous sections and chapters that we can talk about superpositions of these states. When we go to the polarization picture, we can get diagonally polarized light which we call \ket{D}, and this will encode our equal superposition of $\ket{0}$ and $\ket{1}$, or as we call it a $\ket{+}$ state. That's the next ingredient that we're going to need in producing entangled pairs of photons.
-
-How does polarized light actually interact with this nonlinear BBO crystal? That depends on the optical axis of the crystal. For now, we don't have to worry too much about what an optical axis is and how it's defined. Just remember that there is some kind of special direction in which the BBO crystal can be aligned and that's very important relative to the incoming light and its polarization. If the optical axis aligns horizontally, and the incoming light is horizontally polarized, then the photons that are coming out from the crystal (the signal and the idler) will both be vertically polarized. So this setup, as shown in Fig.~\ref{fig:horizontal-opt-axis} -- horizontally polarized pump light and optical axis in the direction represented by the purple arrow -- implements the physical transformation
-\begin{equation}
-\begin{aligned}
-\ket{H} &\rightarrow \ket{VV}.
-\end{aligned}
-\end{equation}
-It takes a horizontally polarized state and outputs two vertically polarized states.
-
-Naturally, if we rotate the optical axis of the BBO crystal ninety degrees and use vertically polarized light, as in Fig.~\ref{fig:vertical-opt-axis}, then the two photons output will both be horizontally polarized.  In this case we are implementing the physical transformation
-\begin{equation}
-\begin{aligned}
-\ket{V} &\rightarrow \ket{HH}.
-\end{aligned}
-\end{equation}
-
-On the other hand, if the optical axis of the crystal and the polarization are orthogonal, the light passes through unchanged.
+The basic idea behind SPDC is illustrated in Fig.~\ref{fig:spdc}.
+A high-energy \textbf{\emph{pump photon}}\index{pump photon}, pictured in green, is incident on a nonlinear crystal.
+Popular choice of a material for the crystal is \textbf{\emph{beta barium borate}}\index{BBO}, or BBO for short.
+The pump photon interacts with atoms inside the nonlinear crystal and gets transformed into two lower-energy photons.
+Often these photons are referred to as the \textbf{\emph{signal}}\index{signal photon} and the \textbf{\emph{idler}}\index{idler photon}.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.6\textwidth]{lesson4/4-4_SPDC_crystal.png}
-    \caption[BBO crystal arrangement]{Arrangement of the two BBO crystals that leads to an entangled photon pair when diagonally polarized light is input.}
-    \label{fig:4-4_SPDC_crystals}
+    % \includegraphics[width=0.5\textwidth]{lesson4/pump.pdf}
+    \begin{tikzpicture}[scale=2, every node/.style={scale=1.3},wave/.style={semithick,color=#1,smooth}]
+        % \draw[semithick,darkred!70,decorate,decoration={coil,aspect=0,segment length=2mm}] (0.5,0.8)  -- (0.5,0.2);
+        
+        \begin{scope}
+            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x-0.6, {0.2*e^(-\x*\x/0.005)+0.5});
+            \draw[thick, -latex, line cap=round] (-1.1,0.5) -- (-0.1, 0.5);
+            \node[black] at (-0.6,0.8) {\scriptsize pump};
+        \end{scope}
+
+        \begin{scope}[rotate around={30:(0.0,0.5)}]
+            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x+0.6, {0.2*e^(-\x*\x/0.005)+0.5});
+            \draw[thick, -latex] (0.0,0.5) -- (1.1,0.5);
+        \end{scope}
+
+        \begin{scope}[rotate around={-30:(0.0,0.5)}]
+            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x+0.6, {0.2*e^(-\x*\x/0.005)+0.5});
+            \draw[thick, -latex] (0.0,0.5) -- (1.1,0.5);
+        \end{scope}
+        
+        \draw[thick, fill=gray!20] (-0.1,0) rectangle (0.1,1);
+
+        % \node[text width=1.5cm] at (0.1,-0.4) {\scriptsize beta barium borate (BBO)};
+        \node[] at (0,-0.2) {\scriptsize BBO};
+        \node[] at (1.2,1.05) {\scriptsize signal};
+        \node[] at (1.2,-0.05) {\scriptsize idler};
+    \end{tikzpicture}
+    \caption[Spontaneous parametric down conversion (SPDC)]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy photons, with some very low probability.}
+    \label{fig:spdc}
 \end{figure}
 
-We have one last step to produce entangled photon pairs.  We take two of these BBO crystals and put them next to each other, and arrange them such that their optical axes are orthogonal to each other, as seen in Fig.~\ref{fig:4-4_SPDC_crystals}.
+``Spontaneous'' means that the process is not stimulated.
+In a spontaneous process, no other input is needed, only the incoming photon of high energy that gets converted into two photons of lower energies.
+(In contrast, a \emph{stimulated} process requires both the input photon and some other photon as well; a good example would be lasing.) “Parametric” means the whole process does not depend only on the intensity of the electric field but also on the phase of the field. In the context of the SPDC, it means there is a relationship between the input and output electric fields.
 
-In such a geometry, when we set the pump laser to be diagonally polarized, since $\ket{D} = (\ket{H}+\ket{V})/\sqrt{2}$, the \ket{H} component will be transformed by the first crystal and the \ket{V} component will be transformed by the second crystal, giving us the  transformation
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lesson4/4-8_spdc.pdf}
+    \caption[pump photon and the energy levels of the atom]{A representation of the pump photon of energy $E_p$ and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state.
+    The atom absorbs the energy provided by the pump photon and transitions to the excited state. The atom decays spontaneously after some time, releasing energy in the form of two photons with energies $E_s$ and $E_i$. Due to conservation of energy, we have $E_p = E_s + E_i$.}
+    \label{fig:spdc-energy-levels}
+\end{figure}
+
+We can zoom into the nonlinear crystal to see what happens at the level of individual atoms interacting with single photons of the pump, as shown in Fig.~\ref{fig:spdc-energy-levels}.
+We can tune the energy of the pump photons to be resonant with a particular transition frequency of the atoms inside the BBO crystal.
+Therefore, to a good approximation the pump laser will only affects those two energy levels.
+The lower level is called the \textbf{\emph{ground state}}\index{ground state} and the upper level is call the \textbf{\emph{excited state}}\index{excited state}.
+The atom in the BBO crystal initially starts in the ground state.
+The pump photon carries the right amount of energy to excite the atom.
+After a short time the atom de-excites and transitions back into the ground state.
+
+The vast majority of the time, this de-excitation is coupled with the emission of a single, high-energy photon.
+With some very low probability, however, the atom emits two photons with energy $E_s$ for the signal photon and energy $E_i$ for the idler photon.
+Because energy is conserved in this transition, we must have that the energy of the pump photon be equal to the sum of the energies of the outgoing photons, $E_p = E_s + E_i$.
+This is the basic process of spontaneous parametric down-conversion.
+
+Now that we have covered the basic idea of the SPDC process it is time to discuss how we can use photons encode qubits.
+Qubits have two distinguishable states.
+They are represented by the abstract orthogonal kets, for example $\{|0\rangle,|1\rangle\}$ or $\{|+\rangle,|-\rangle\}$.
+A general state of the qubit is then written as an arbitrary superposition of these two orthogonal states.
+Therefore, we require the photons to be able to possess two distinguishable \textbf{\emph{degrees of freedom}}\index{degree of freedom} which can also form superposition.
+A natural choice for the photons is their \textbf{\emph{polarization}}\index{polarization}.
+
+\begin{figure}[t]
+    \centering
+    \begin{tikzpicture}
+        \draw[semithick,dashed,black!50] (0,0) circle (1.5cm);
+        \draw[thick,latex-latex,newgreen] (-1.5,0) -- (1.5,0);
+        \draw[thick,latex-latex,darkred] (0,-1.5) -- (0,1.5);
+        \draw[thick,latex-latex,blue!50] (-1.06,-1.06) -- (1.06,1.06);
+
+        \draw[-latex] (0:0.75) arc (0:45:0.75);
+        \node[] at (1.0, 0.35) {\small $45\degree$};
+
+        \node[newgreen] at (2.5,0.2) {horizontal};
+        \node[newgreen] at (2.5,-0.2) {polarization};
+
+        \node[darkred] at (0, 2.2) {vertical};
+        \node[darkred] at (0, 1.8) {polarization};
+
+        \node[blue!50] at (1.9, 1.4) {diagonal};
+        \node[blue!50] at (2.15, 1.05) {polarization};
+    \end{tikzpicture}
+    \caption[Linear polarization of light]{Linear polarization of light. Horizontally polarized light can be superposed with vertically polarized one to form diagonal polarization.}
+    \label{fig:polarization}
+\end{figure}
+
+Natural light is composed of many electromagnetic waves, each oscillating in a different direction.
+It is this direction of oscillations that we call polarization\footnote{We will not cover polarization in depth as this would require delving into electromagnetism. We will address electromagnetic theory and Maxwell's equations in great detail in our next book}.
+If the electromagnetic waves are oscillating in the horizontal plane we say the light is \textbf{\emph{horizontally polarized}}\index{horizontally polarized}, as shown in Fig.~\ref{fig:polarization}.
+And if the oscillations are in the vertical direction, you guessed it, the light is \textbf{\emph{vertically polarized}}\index{vertically polarized}.
+These two polarizations are just two possible ones out of infinitely many.
+Another example that we will prove very useful in this Section is \textbf{\emph{diagonal polarization}}\index{diagonal polarization}.
+It can be viewed as a superposition of horizontally and vertically polarized light.
+
+Distinguishing different orthogonal polarization states of light can be done easily with the help of \textbf{\emph{polarizers}}\index{polarizer}.
+Polarizer is an optical element that lets through light of only certain polarization and blocks all other light.
+Sunglasses are a good example of polarizing filters that are used to reduce the intensity of sunlight in order to protect our eyes.
+Figure~\ref{fig:polarizer} shows what happens when light of different polarization is incident onto a polarizer.
+Horizontal polarizer lets through only horizontally polarized light, while a vertical polarizer lets through only vertically polarized light.
+\begin{figure}[t]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{lesson4/linear_polarization.pdf}
+    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.8, >=stealth, axis/.style={thick,->}, wave/.style={thick,color=#1,smooth}, polaroid/.style={fill=black!30!white, opacity=0.7}]
+
+    \begin{scope}
+    \coordinate (O) at (0,0,0);
+
+    \draw[thick] (-3.25,0,0) -- (O);
+
+    % Electric fields
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
+        plot (\x,0,{sin(2*\x r)});
+
+    % Polarizer
+    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{polarizer};
+    \draw[thick,latex-latex] (0,-1.75,-1) -- (0,-0.75,-1);
+
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+    \end{scope}
+
+    \begin{scope}[xshift=7cm]
+    % Axis
+    \coordinate (O) at (0,0,0);
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+
+    \draw[thick] (-3.25,0,0) -- (O);
+
+    % Electric fields
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
+        plot (\x,0,{sin(2*\x r)});
+
+    % Polarizer
+    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{polarizer};
+    \draw[thick, <->] (0, -1.5,-1) -- (0, -1.5, 0);
+
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,0,{sin(2*\x r)});
+
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \end{scope}
+    \end{tikzpicture}
+    
+    \caption[Polarizing filter.]{Horizontal polarizer only lets through light of horizontal polarization as shown in the left image. Similarly, only vertically polarized light can pass through a vertical polarizer.}
+    \label{fig:polarizer}
+\end{figure}
+
+All of this discussion carries through to the level of individual photons as well.
+Photons can be polarized too.
+However, individual photons are quantum states and therefore we have to describe then with kets.
+We label a horizontally polarized photon by the ket $|H\rangle$, and a vertically polarized photon with the ket $|V\rangle$.
+Now the idea of a photon encoding a qubit becomes more clear.
+We can use the horizontal polarization state $|H\rangle$ to correspond to the $|0\rangle$ state of our qubit, and the vertical polarization state $|V\rangle$ to correspond to the $|1\rangle$ state.
+General pure state of the qubit $\alpha|0\rangle+\beta|1\rangle$ can be then encoded into the photon by a general superposition of the photon's polarization,
 \begin{equation}
-    \ket{D} \rightarrow \frac{\ket{HH}+\ket{VV}}{\sqrt{2}}.
+    |\psi\rangle = \alpha|H\rangle + \beta|V\rangle.
 \end{equation}
-Diagonally polarized light becomes a superposition of the horizontally polarized photons and vertically polarized photons. You can see that we are changing a $\ket{+}$ state into a Bell pair $(\ket{00}+\ket{11})/\sqrt{2}$, and this is how we get entangled states using SPDC.  In order for this to work, the BBO crystals have to be very, very thin. This will ensure that we are not quite sure whether the photons were produced in the first crystal or in the second crystal. We call this the \emph{indistinguishability criterion}, and if this is satisfied then we can talk about genuinely entangled photons. If, however, we can actually tell where the two photons originate, then we will only get horizontally polarized photons or we will get vertically polarized photons, and there will be no entanglement shared between these two photons. 
+For example, the equal superposition $|+\rangle$ is encoded using the diagonal polarization, that is $|D\rangle=(|H\rangle+|V\rangle)/\sqrt{2}$.
+Table~\ref{tab:4-4_polarization_encoding} summarizes how the polarization degree of freedom of individual photons is used to encode a qubit.
+\begin{table}[h]
+    \setcellgapes{5pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{cccc}
+        \hline
+         & \textbf{Basis states} & \textbf{Equal superposition} & \textbf{General state} \\
+        \hline
+        Qubits & $\{|0\rangle,|1\rangle\}$ & $|+\rangle$ & $\alpha|0\rangle+\beta|1\rangle$ \\
+        Polarized photons & $\{|H\rangle,|V\rangle\}$ & $|D\rangle$ & $\alpha|H\rangle+\beta|V\rangle$ \\
+        \hline
+    \end{tabular}
+    \caption[Polarization encoding.]{Mapping between qubit states and their corresponding polarization-encoded photonic states.}
+    \label{tab:4-4_polarization_encoding}
+\end{table}
+
+Now we are in a position to discuss how the polarization of the pump photons affects the polarization of the signal and idler photons in the SPDC.
+When a pump photon of a particular polarization is incident onto a BBO crystal, it has a chance to be down-converted to a pair of photons with equal polarizations which are orthogonal to that of the pump photon\footnote{This is known as Type-I down-conversion. It is possible for the signal and idler photons to have opposite polarization to each other. This is known as Type-II down-conversion.}.
+Left side of Fig.~\ref{fig:poalrization_BBO} shows a horizontally polarized pump photon being down-converted into two vertically polarized photons,
+\begin{equation}
+    |H\rangle_p \rightarrow |V\rangle_s|V\rangle_i.
+\end{equation}
+The figure also displays the \textbf{\emph{optic axis}}\index{optic axis} indicating the orientation of the BBO crystal\footnote{We do not go into much detail about the significance of the optic axis. Briefly, if light propagates parallel to the optic axis it suffers no bending or refraction. We will cover this topic in great detail in our next book.}.
+Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{fig:poalrization_BBO}, we can down-convert a vertically polarized pump photon into a pair of horizontally polarized photons,
+\begin{equation}
+    |V\rangle_p \rightarrow |H\rangle_s|H\rangle_i.
+\end{equation}
+
+\begin{figure}[t]
+    \centering
+    % \includegraphics[width=0.5\textwidth]{lesson4/horizontal_optical_axis.pdf}
+    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.9, >=stealth, wave/.style={thick,color=#1,smooth}]
+
+    \def\h{1}
+    \def\w{1.2}
+    \def\d{0.1}
+
+    % 1st BBO
+    \begin{scope}
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
+    \node[newgreen] at (-2,0.89,0) {\footnotesize $|H\rangle_p$};
+    \draw[line cap=round] (-3,0,0) -- (O);
+
+    % BBO
+    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
+    \draw[] (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,-\w,-\h) -- (-\d,-\w,-\h) -- cycle;
+    \draw[pattern=north east lines] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (\d,-\w,\h) -- (\d,-\w,-\h) -- cycle;
+    \draw[pattern=north east lines] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
+    \draw[] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
+    \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
+    \draw[-latex] (0,-\w,0) -- (0,{-1.5*\w},0);
+
+    % signal photon
+    \begin{scope}[rotate around z=20]
+        \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \end{scope}
+    \node[lightred] at (1.3,1.4,0) {\footnotesize $|V\rangle_s$};
+
+    % idler photon
+    \begin{scope}[rotate around z=-20]
+        \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \end{scope}
+    \node[lightred] at (1.6,-0.1,0) {\footnotesize $|V\rangle_i$};
+
+    \node[] at (0.6,\w,\h/2) {\footnotesize BBO};
+    \node[] at (-0.6,-\w-0.5,0) {\footnotesize optic};
+    \node[] at (-0.6,-\w-0.5,-0.3) {\footnotesize axis};
+    \end{scope}
+
+    % 2nd BBO
+    \begin{scope}[xshift=5.5cm]
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,0,{0.5*e^(-\x*\x/0.02)});
+    \node[lightred] at (-2.2,0.8,0) {\footnotesize $|V\rangle_p$};
+    \draw[line cap=round] (-3,0,0) -- (O);
+
+    % BBO
+    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
+    \draw[pattern=north east lines] (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,-\w,-\h) -- (-\d,-\w,-\h) -- cycle;
+    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (\d,-\w,\h) -- (\d,-\w,-\h) -- cycle;
+    \draw[] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
+    \draw[pattern=north east lines] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
+    \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
+    \draw[-latex] (0,0,\h) -- (0,0,{1.5*\h});
+
+    % signal photon
+    \begin{scope}[rotate around z=20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \end{scope}
+    \node[newgreen] at (1.3,1.4,0) {\footnotesize $|H\rangle_s$};
+
+    % idler photon
+    \begin{scope}[rotate around z=-20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \end{scope}
+    \node[newgreen] at (2,0,0) {\footnotesize $|H\rangle_i$};
+
+    \node[] at (0.6,\w,\h/2) {\footnotesize BBO};
+    \node[] at (0.2,0.2,1.8*\h) {\footnotesize optic axis};
+    \end{scope}
+    \end{tikzpicture}
+    \caption[Photon pair production via SPDC]{Horizontally polarized pump photons can be down-converted to a pair of vertically polarized photons by the BBO crystal as shown on the left side. Rotating the crystal by 90\degree makes it possible to convert a vertically polarized pump photon into a pair of horizontally polarized photons.}
+    \label{fig:poalrization_BBO}
+\end{figure}
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{lesson4/4-4_SPDC_crystal.png}
+%     \caption[BBO crystal arrangement]{Arrangement of the two BBO crystals that leads to an entangled photon pair when diagonally polarized light is input.}
+%     \label{fig:4-4_SPDC_crystals}
+% \end{figure}
+
+So far, we have discussed production of pairs of photons which are not entangled.
+With a simple change of this setup, we can use SPDC to produce entangled pairs of photons as well.
+The first step is to use two identical BBO crystals back-to-back, where the second crystal is rotated by 90\degree.
+The second step is to choose an appropriate polarization for the pump photon.
+If we use $|H\rangle_p$, then down-conversion always occurs in only one of the BBO crystals.
+If we use $|V\rangle_p$, then down-conversion always occurs in the other crystal.
+The trick is to use a diagonally polarized pump photon, $|D\rangle_p$.
+With probability of $1/2$, the pump photon will be down-converted in the first crystal, and with equal probability it will be down-converted in the second crystal.
+The final step is to ensure that it is not possible to determine whether the down-conversion occurred in the first or in the second BBO crystal.
+This can be achieved by using thin enough BBO crystals, resulting in very nearly overlapping propagation paths for the down-converted photons coming from either crystal.
+Only when this \textbf{\emph{indistinguishability condition}}\index{indistinguishability condition} is satisfied, do we obtain an entangled pair of photons,
+\begin{equation}
+    |D\rangle_p \rightarrow \frac{|H\rangle_s|H\rangle_i + |V\rangle_s|V\rangle_i}{\sqrt{2}}.
+\end{equation}
 
 Another important property of SPDC is that it's an extremely rare process.  We obtain only about one photon pair per $10^6$ pump photons, and even that level is achieved only in state-of-the-art experiments. In a more common laboratory setup, it takes several orders of magnitude more pump photons to successfully create each entangled pair.  The photons that are not down-converted simply pass through the crystal unaffected and are discarded.
 
@@ -475,7 +694,7 @@ There are many details around SPDC that we have not introduced here, but this ba
 \section{Entanglement as a resource}
 
 % insert broken connection 
-\begin{figure}[H]
+\begin{figure}[t]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
     
