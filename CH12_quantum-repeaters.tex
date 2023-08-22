@@ -389,7 +389,7 @@ These processes are all probabilistic, and so is loss of the photons in fiber.
 Depending on the properties of the fiber as well as the quantum hardware at each node, the average time required to successfully establish link-level Bell pair will vary.
 
 How do we combine these costs for each individual links in order to know the full cost of establishing end-to-end entanglement over a path?
-One possibility is to use \textit{\textbf{Dijkstra's shortest path first algorithm}}\index{Dijkstra's shortest path first}.
+One possibility is to use \textit{\textbf{Dijkstra's shortest path first algorithm}}\index{Dijkstra's shortest path first}\label{dijkstra}.
 We can sum the link-level costs for an individual path in order to estimate the total cost.  In order to make the cost of establishing link-level entanglement fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
 The exact value of this threshold is dictated by the needs of the application that the Bell pairs are requested for.
 

@@ -1,330 +1,454 @@
 \chapter{Interference}
-% Lesson Six: Interference
+\label{sec:6_interference}
 
-In this chapter, we will talk about one of the most fundamental phenomena concerning waves: interference. We will start by considering interference with normal single frequency waves when they superpose. Then we will move to interference of single photons, and we will conclude with interference of qubits.
+In this chapter, we will discuss the fundamental phenomenon of interference.
+Most of you have very likely encountered interference of waves in either water, light or even sound.
+We begin this chapter with a mathematical description of what happens when two waves of different frequencies interfere together.
+After that, we will move to interference at the quantum level, using single photons.
+Finally, we will conclude this chapter by learning that interference can occur at the level of individual qubits as well.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Constructive and destructive interference}
+\label{sec:6-1_constructive_and_destructive_interference}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% Step One: Constructive and Destructive Interference
-
-Let's consider that we have a single frequency wave propagating in time. How do we write down a mathematical expression that describes the propagation of such a wave? Well, we do it as follows:
-
-\if0
-\begin{equation}
-\begin{array}{ll}
-E_{1}=E_{01} \sin \left(\omega t+\alpha_{1}\right), & \alpha_{1}=-\left(k x+\phi_{1}\right) \\
-E_{2}=E_{02} \sin \left(\omega t+\alpha_{2}\right), & \alpha_{2}=-\left(k x+\phi_{2}\right)
-\end{array}
-\end{equation}
-
+Good starting point is to settle on the notation that will be used in this chapter.
+Let's consider a wave oscillating at a single frequency, and which is propagating in time along a single dimension denoted by coordinate $x$,
 
 \begin{equation}
-E = E_0 sin(\omega t - \alpha)
+    \Psi(x,t) = A \sin [\omega t-(k x+\phi_0)].
+    \label{eq:simple_wave}
 \end{equation}
-\fi
 
+We denote the wave with $\Psi(x,t)$.
+The \textbf{\emph{amplitude}}\index{amplitude}, denoted by $A$, is the maximum value that $\Psi(x,t)$ takes.
+It signifies how how much the wave is displaced from its rest state.
+The symbol $\omega$ (small Greek letter ``omega'') is the \textbf{\emph{angular frequency}}\index{angular frequency}, which determines how quickly the wave oscillates.
+Time is denoted by $t$.
+The symbol $k$ is known as the \textbf{\emph{wave number}}\index{wave number}.
+It is related to how fast the wave is propagating as well, and in three dimensions, it also gives you the direction of propagation.
+Finally, $\phi_0$ (small Greek letter ``phi'') is called the initial phase of oscillations.
+The angular frequency $\omega$, and the wave number $k$, are related to the period of oscillations $T$ and the wavelength $\lambda$, respectively,
 \begin{equation}
-E=E_0 \sin [\omega t-(k x+\phi)].
-\end{equation}
-We denote the wave with $E$, and it's some constant $E_0$ ("E naught") times the sine of the following argument, where $E_0$ designates the \emph{amplitude} of oscillations, which means how much the wave is displaced from its rest state. The symbol $\omega$ (small omega) is the \emph{angular frequency}, which determines how quickly the wave is propagating in time. Time is denoted by $t$. $k$ is the \emph{wave number}. It's related to how fast the wave is propagating as well, and in three dimensions, it also gives you the direction of propagation. However, we are only considering propagation in one dimension, therefore it's just a scalar (a number). Finally, $\phi$ (small phi) is called the initial phase.
-
-$\omega$, the angular frequency, is related to the period of oscillations as follows,
-\begin{equation}
-\omega=\frac{2 \pi}{T} \quad k=\frac{2 \pi}{\lambda}
-\end{equation}
-where $k$, the wave number, is related to $\lambda$ (lower case lambda), the wavelength of the oscillations, as shown. Let's have a look at some examples.
-
-Let's freeze the wave at time $t=0$, and for convenience we also set $\phi = 0$, and only vary $k$. The blue wave in Fig.~\ref{fig:two-waves} is for $k=1$, whereas the orange one is for $k=0.5$, and the distance between the two dots at the top of the blue wave and bottom of the orange wave represents the wavelength of the wave. As we said, the wave number $k$ is related to the wavelength. The larger the wave number, the shorter the wavelength, so we see for $k=1$, the wavelength is shorter than for $k=0.5$.
-
-Now, let's consider what happens when we fix the wave number but we vary the initial phase, as in Fig.~\ref{fig:phase-diff-waves}. The only thing that happens is that we shift the wave along the X-axis. We are just translating the wave a little bit by this angle, by this initial phase $\phi$. In this case, we have shifted the two waves by an initial phase of $\pi/2$, but this doesn't really affect how fast the wave is propagating, nor does it affect its wavelength.
-
-So finally, let's add time dependence into the picture, as in Figs.~\ref{fig:two-waves} and \ref{fig:propagating-waves}. We set $k=1$, and we also set the initial phase $\phi=0$, and now the waves are actually propagating in time. For the first wave represented by the blue, we have $\omega=0.1$, whereas for the second wave we have $\omega=0.2$. Remember, we said that $\omega$ determines how fast the wave is propagating in time, and we can clearly see that the orange wave is faster than the blue wave.
-
-Now, let's consider two waves that are actually interacting together and creating a new, third wave. How do we describe this new disturbance? So let's say that we have two waves, $E_1$ and $E_2$, each with different amplitude, same frequency, and we grouped the spatial variation into these factors $\alpha$: $\alpha_1$ and $\alpha_2$.
-
-\begin{equation}
-\begin{array}{ll}
-E_1=E_{01} \sin \left(\omega t+\alpha_1\right), & \alpha_1=-\left(k x+\phi_1\right) \\
-E_2=E_{02} \sin \left(\omega t+\alpha_2\right), & \alpha_2=-\left(k x+\phi_2\right)
-\end{array}
-\label{eq:superposition}
+    \omega=\frac{2 \pi}{T}, \qquad k=\frac{2 \pi}{\lambda},
+    \label{eq:freq-period_k-wavelength}
 \end{equation}
 
-This new wave that $E_1$ and $E_2$ produce is actually relatively simple, you just add them together
-\begin{equation}
-E=E_1+E_2.
-\end{equation}
-This is known as the \emph{principle of superposition}, and the idea is that we are looking for a description of the new resultant wave of the form
-%, where now we have to find out what is this new amplitude $E_0$ in terms of the composite waves, and also we want to find out this new factor of $\alpha$.
-\begin{equation}
-E=E_0 \sin (\omega t-\alpha),
-\end{equation}
-so we need to determine the values for $E_0$ and $\alpha$. Using the trigonometric identity $\sin (a + b)=\sin a \cos b +\cos a \sin b$, we can rewrite Eq.~\ref{eq:superposition} as
-\begin{equation}
-\begin{aligned}
-E &=E_{01}\left(\sin \omega t \cos \alpha_{1}+\cos \omega t \sin \alpha_{1}\right) \\
-&+E_{02}\left(\sin \omega t \cos \alpha_{2}+\cos \omega t \sin \alpha_{2}\right)
-\end{aligned}
-\end{equation}
-%, so let's see how we can do that. We just add the two waves together, and we begin by expanding these sines. The first wave can be written as this (see pointer)- we have the initial amplitude of the first wave, E zero one, and then we have sine omega t times cos alpha one, plus cos omega t times sine alpha one, and similarly for the second wave. 
-We add them together, then group the time dependent terms. 
-%So we see that these two terms (blue box), they both vary in time as sine omega t, whereas these two terms (red box) vary as cos omega t. So let's group them together and 
-We get the following expression: 
-%we have some spatial variation here, times sine omega t, and another spatial variation here, times cos omega t. And what we can do now is 
+Now is a good time to have a look at some simple examples of the simple wave described by Eq.~(\ref{eq:simple_wave}).
+Let's freeze the wave at time $t=0$, and for convenience we also set $\phi_0 = 0$, and only vary the wave number $k$.
+The blue wave in Fig.~\ref{fig:two-waves} represents the case when $k=1$, whereas the orange one represents the case when $k=0.5$.
+The wavelength is the shortest distance between two points of the where it begins to repeat itself.
+We can see that decreasing the wave number $k$ by a half doubles the wavelength.
+In other words, increasing the wave number ``compresses the oscillations'', while decreasing the wave number ``stretches'' them.
 
-\begin{equation}
-\begin{aligned}
-E &=\left(E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}\right) \sin \omega t \\
-&+\left(E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}\right) \cos \omega t
-\end{aligned}
-\end{equation}
-We can define
-%E naught cos alpha as the whole first expression to the left of $\sin\omega t$, and E naught sine alpha as the second expression.
-
-\begin{equation}
-\begin{aligned}
-&E_{0} \cos \alpha=E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2} \\
-&E_{0} \sin \alpha=E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}
-\end{aligned}
-\end{equation}
-
-And now with a little bit of algebra, we arrive at the following expression:
-
-\begin{equation}
-\begin{aligned}
-E_{0}^{2} &=E_{01}^{2}+E_{02}^{2}+2 E_{01} E_{02} \cos \left(\alpha_{2}-\alpha_{1}\right)
-\end{aligned}
-\label{eq:superposition-simplified}
-\end{equation}
-We can find our overall value for $\alpha$ using the expression
-\begin{equation}
-\begin{aligned}
-\tan \alpha &=\frac{E_{01} \sin \alpha_{1}+E_{02} \sin \alpha_{2}}{E_{01} \cos \alpha_{1}+E_{02} \cos \alpha_{2}}.
-\end{aligned}
-\label{eq:superposition-alpha}
-\end{equation}
-
-% so if we square this first expression (follow pointer) and add it to the square of the second expression, cos squared alpha plus sine squared alpha is equal to one (that's a very important trigonometric identity), so on this side (blue box LHS) we get E naught squared, and then we just have the squares which we have expanded over here (RHS) and simplified with some trigonometric identities. Also, if we take this orange expression, the second expression over here, and we divide by this blue expression over here, we can get an expression for tangent of alpha given as this following ratio. And this is our new wave.
-
-We started with two waves with the same frequency, which means that the resultant disturbance also travels at the same frequency, which makes sense, but this new wave has different amplitude and also different phase. Before we look at an example, let's look at the amplitude of the superposition. The amplitude squared is equal to the sum of the squares of the component amplitudes, which makes sense. But then, there is the extra term on the end of Eq.~\ref{eq:superposition-simplified}, and this extra term is very important. It's called the \emph{interference term}. You can see that it actually oscillates as a result of the difference $\delta = \alpha_2 - \alpha_1$. This difference is called the "phase difference". The entire expression for $E_0^2$ is maximized when $\delta$ is either zero or multiples of $2\pi$, which we call \emph{constructive interference} because it's adding to the new resultant amplitude. On the other hand, if the phase difference is an odd integer multiple of $\pi$, e.g. $\pm\pi$ or $\pm 3\pi$, then what we get is \emph{destructive interference}.
-
-Let's look at the example in Fig.~\ref{fig:decaying-superposition}. For convenience, we set the amplitudes of the two waves $E_1 = E_2 = 1$ and $\omega = 0.1$. The only thing that is different between them is their wave numbers $k$,
-\begin{equation}
-\begin{aligned}
-&E_{1}=\sin (0.1 t-x) \\
-&E_{2}=\sin (0.1 t-0.8 x) \\
-&E=E_{1}+E_{2}.
-\end{aligned}
-\end{equation}
-For the first wave $k=1$, for the second wave $k=0.8$. We add the two together and we get the following: with the blue and orange waves, we see the waves traveling independently, whereas the green wave is the superposition of these two waves, and you can see the interference at play. At the beginning, where $x$ is small, the waves travel in such a way that the crest of one wave seems to be on top of the crest of the other wave. Therefore, we get constructive interference. The waves are reinforcing each other, adding together producing something larger. Whereas, as the wave propagates into the region of larger $x$, they are propagating at different speed. They go out of phase, so the crest of one wave is meeting the trough of the other wave, so they are destructively interfering. They're cancelling each other out, and we can see that in the green wave, where the amplitude becomes very low, nearly zero. And that's how interference works.
-
-\if0
-\begin{equation}
-E=E_{0} \sin [\omega t-(k x+\phi)]
-\end{equation}
-% k=1, k=0
-$\phi = 0$ and $\phi = \frac{\pi}{2}$
-\fi
-
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/k.pdf}
-        \caption{Two independent waves with $k=1, k=0.5$}    
+\begin{figure}[t]
+    \centering
+    \resizebox {0.6\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-1,1},
+                    yticklabels={$-A$,$A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.3},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,0)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(-x))};
+        \addlegendentry{$k=1$}
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(-0.5*x))};
+        \addlegendentry{$k=0.5$}
+        \node[circle,fill,inner sep=1.5pt,blue!80] at (axis cs:3*pi/2,1) {};
+        \node[circle,fill,inner sep=1.5pt,blue!80] at (axis cs:7*pi/2,1) {};
+        \draw[dashed, blue!80, thick] (axis cs:3*pi/2,1) -- node[above] {$\lambda=2\pi/1.0$} (axis cs:7*pi/2,1);
+        \node[circle,fill,inner sep=1.5pt,orange!80] at (axis cs:pi,-1) {};
+        \node[circle,fill,inner sep=1.5pt,orange!80] at (axis cs:5*pi,-1) {};
+        \draw[dashed, orange!80, thick] (axis cs:pi,-1) -- node[below] {$\lambda=2\pi/0.5$} (axis cs:5*pi,-1);
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \caption[Same frequency, different wave numbers.]{Two independent waves with $k=1$ (blue), and $k=0.5$ (orange). The time is frozen at $t=0$, and we set the initial phase to be $\phi_0=0$ for convenience.}    
     \label{fig:two-waves}
 \end{figure}
 
-% phi = 0, phi = pi/2
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/phi.pdf}
-        \caption[Same wavelength, different initial phase.]{Two waves with the same wavelength but different initial phase, $\phi = 0, \phi = \pi / 2$.}
+Let's consider what happens when we fix the wave number but we vary the initial phase, as shown in Fig.~\ref{fig:phase-diff-waves}.
+In this case, we have shifted the second wave by an initial phase of $\phi_0=\pi/2$.
+Varying the initial phase has the effect of shifting the wave along the $x$ coordinate.
+The wavelength of the wave remains unaffected.
+
+\begin{figure}[t]
+    \centering
+    \resizebox {0.6\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-1,1},
+                    yticklabels={$-A$,$A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.3},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,0)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(-x))};
+        \addlegendentry{$\phi_0=0$}
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(-x+pi/2))};
+        \addlegendentry{$\phi_0=\pi/2$}
+        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:3*pi/2,1) {};
+        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:2*pi,1) {};
+        \draw[dashed, black!80, thick] (axis cs:3*pi/2,1) -- node[above] {$\pi/2$} (axis cs:2*pi,1);
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \caption[Same wavelength, different initial phase.]{Two waves with the same wavelength and frequency but different initial phases, $\phi_0 = 0$ (blue), $\phi_0=\pi/2$ (orange).}
     \label{fig:phase-diff-waves}
 \end{figure}
 
-% gif two waves [insert pic]
-\begin{figure}[H]
+Finally, let's add time dependence into the picture, as shown in Fig.~\ref{fig:propagating-waves}, where we have set the wave number $k=1$, and the initial phase $\phi=0$.
+The angular frequency of the blue wave is set to $\omega=0.1$.
+Figure~\ref{fig:propagating-waves} plots the wave at three different times $t_1$, $t_2$, $t_3$, where $t_1<t_2<t_3$.
+The angular frequency of the orange wave is set to $\omega=0.2$.
+We observe that the wave is propagating faster as it covers longer distance in the same amount of time.
+
+\begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/w.pdf}
-        \caption[Same wavelength, different initial phase, after a time interval.]{The same two waves as in the previous figure, after some time.  The orange wave propagates faster than the blue wave.}
+    % \includegraphics[width=0.8\textwidth]{lesson6/w.pdf}
+    \resizebox {0.6\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[name=plotA,
+                    xtick=\empty,
+                    ytick={-1,1},
+                    yticklabels={$-A$,$A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.3},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(0.1*15-x))};
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.2] {sin(deg(0.1*0-x))};
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.6] {sin(deg(0.1*7.5-x))};
+        \addlegendentry{$\omega=0.1$}
+        \node[blue!80,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
+        \node[blue!80,opacity=0.6] at (axis cs:3*pi/2+0.1*7.5,1.15) {$t_2$};
+        \node[blue!80] at (axis cs:3*pi/2+0.1*15,1.15) {$t_3$};
+        \end{axis}
+    
+        \begin{axis}[name=plotB,
+                    at=(plotA.outer south west),
+                    anchor=outer north west,
+                    xtick=\empty,
+                    ytick={-1,1},
+                    yticklabels={$-A$,$A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.3},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(0.2*15-x))};
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.2] {sin(deg(0.2*0-x))};
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.6] {sin(deg(0.2*7.5-x))};
+        \addlegendentry{$\omega=0.2$}
+        \node[orange!80,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
+        \node[orange!80,opacity=0.6] at (axis cs:3*pi/2+0.2*7.5,1.15) {$t_2$};
+        \node[orange!80] at (axis cs:3*pi/2+0.2*15,1.15) {$t_3$};
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \caption[Propagation of waves in time.]{Propagation of waves in time. We observe that the wave with angular frequency $\omega=0.1$ (blue) propagates more slowly compared to the wave with angular frequency $\omega=0.2$ (orange).}
     \label{fig:propagating-waves}    
 \end{figure}
 
-% superposition two waves
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/wave_superposition.pdf}    
-        \caption[Decay of waves in superposition.]{Waves in superposition. Notice the decay of the green wave as the two component waves move from in phase to out of phase.}
-    \label{fig:decaying-superposition}    
+Having gained some intuition how the various parameters in Eq.~(\ref{eq:simple_wave}) affect the behavior of the wave, it is time to discuss what happens when two waves meet.
+Let's consider a special case of two waves, $\Psi_1(x,t)$ and $\Psi_2(x,t)$, each with a different amplitude and initial phase, but both having the same frequency,
+\begin{align}
+    \Psi_1(x,t) & = A_1 \sin \left(\omega t+\alpha_1\right), \quad\text{where } \alpha_1=-\left(k x+\phi_1\right), \\
+    \Psi_2(x,t) & = A_2 \sin \left(\omega t+\alpha_2\right), \quad\text{where } \alpha_2=-\left(k x+\phi_2\right).
+    \label{eq:superposition}
+\end{align}
+These two waves produce a new wave given by their sum,
+\begin{equation}
+    \Psi(x,t) = \Psi_1(x,t) + \Psi_2(x,t).
+    \label{eq:wave_superposition}
+\end{equation}
+This is known as the \textbf{\emph{principle of superposition}}\index{principle of superposition},
+and it should look familiar.
+We have in fact encountered this principle in Chapter~\ref{sec:2_quantum_states}, where we talked about superposition of two quantum state vectors.
+
+The superposition in Eq.~(\ref{eq:wave_superposition}) will have the same form as its constituent waves,
+\begin{equation}
+    \Psi(x,t) = A \sin (\omega t-\alpha).
+    \label{eq:resulting_wave}
+\end{equation}
+The question that we would like to answer is to determine how the amplitudes and initial phases of $\Psi_1(x,t)$ and $\Psi_2(x,t)$ affect the amplitude and the phase of the superpostion.
+Using the trigonometric identity $\sin (a + b)=\sin a \cos b +\cos a \sin b$, we can rewrite Eq.~\ref{eq:wave_superposition} as
+\begin{align}
+    \Psi(x,t) & = A_1 \left( \sin\omega t \cos\alpha_1 + \cos\omega t \sin \alpha_1 \right) \nonumber\\
+    & + A_2 \left( \sin\omega t \cos\alpha_2 + \cos\omega t \sin\alpha_2 \right).
+\end{align}
+We can group the time dependent terms together to obtain the following, 
+\begin{equation}
+    \Psi(x,t) = ( \underbrace{A_1 \cos\alpha_1 + A_2 \cos\alpha_2}_{\equiv A\cos\alpha} ) \sin \omega t + ( \underbrace{A_1 \sin\alpha_1 + A_2 \sin\alpha_2}_{\equiv A\sin\alpha} ) \cos \omega t.
+    \label{eq:resulting_wave_2}
+\end{equation}
+We observe that the resulting wave $\Psi(x,t)$ does indeed oscillate with angular frequency $\omega$ as we anticipated in Eq.~(\ref{eq:resulting_wave}).
+The coefficients in front of the time-dependent terms are functions of the original two waves as they depend on $A_1$, $A_2$, and $\alpha_1$, $\alpha_2$.
+
+It would be nice to obtain a cleaner expression for the amplitude of the resulting wave $A$, and its phase $\alpha$.
+We can do that by using the trigonometric identity $\cos^2\theta + \sin^2\theta=1$,
+\begin{equation}
+    A^2 = A^2 (\cos^2\alpha + \sin^2\alpha) = A^2\cos^2\alpha + A^2 \sin^2\alpha.
+\end{equation}
+We can now substitute the definition for $A\cos\alpha$ and $A\sin\alpha$ from Eq.~(\ref{eq:resulting_wave_2}), which after some rearranging yields the following expression for the square of the amplitude $A$,
+\begin{equation}
+    A^2 = A_1^2 + A_2^2 + 2 A_1 A_2 \cos(\alpha_2-\alpha_1).
+    \label{eq:superposition-amplitude}
+\end{equation}
+The phase $\alpha$ can be obtained in the following way,
+\begin{equation}
+    \tan \alpha = \frac{A\sin\alpha}{A\cos\alpha} = \frac{A_1\sin\alpha_1 + A_2\sin\alpha_2}{A_1\cos\alpha_1 + A_2\cos\alpha_2}.
+    \label{eq:superposition-alpha}
+\end{equation}
+
+We started with two initial waves that only differed in their amplitudes and initial phases.
+Using the principle of superposition, we determined the mathematical description of the resulting wave $\Psi(x,t)$.
+From Eq.~(\ref{eq:superposition-amplitude}), we can see that the amplitude of $\Psi(x,t)$ is determined by the amplitudes and phases of $\Psi_1(x,t)$ and $\Psi_2(x,t)$.
+The last term in Eq.~(\ref{eq:superposition-amplitude}) is known as the \textbf{\emph{interference term}}\index{interference term}.
+It oscillates as a function of the phase difference $\delta\equiv\alpha_2 - \alpha_1$, resulting in either positive or negative contribution to the amplitude of $\Psi(x,t)$.
+When the phase difference is such that $\cos\delta>1$, the interference term contribute by increasing the amplitude $A$, which is known as \textbf{\emph{constructive interference}}\index{constructive interference}.
+On the other hand, when $\cos\delta<1$, the interference term contributes negatively, situation known as \textbf{\emph{destructive interference}}\index{destructive interference}.
+
+Let's look at the example, where the amplitudes of the initial two waves are equal, $A_1=A_2$, but their wave numbers are different.
+This difference results in a phase difference, allowing us to observe both constructive and destructive interference.
+The two waves have the following form,
+\begin{equation}
+    \Psi_1(x,t) = \sin (\omega t - k_1x), \qquad \Psi_2(x,t) = \sin (\omega t - k_2 x).
+\end{equation}
+The interference of these two waves is plotted in Fig.~\ref{fig:interference_example}, where we set $k_1=1.0$ (blue) and $k_2=0.8$ (orange).
+The resulting wave $\Psi(x,t)$ is shown in green.
+We observe that when the phase difference $\delta$ is small, which occurs in the region where $x$ is small, the two waves interfere constructively.
+The amplitude of the resulting wave almost reaches all the way to $2A$.
+In the region where $x$ is large however, the phase difference also increases.
+We also say that the waves are ``out of phase''.
+In this region, the interference is destructive.
+\begin{figure}[t]
+    \centering
+    \resizebox {0.6\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-2,-1,1,2},
+                    yticklabels={$-2A$,$-A$,$A$,$2A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.8},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.5] {sin(deg(-x))};
+        \addlegendentry{$k_1=1.0$}
+        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.5] {sin(deg(-0.8*x))};
+        \addlegendentry{$k_2=0.8$}
+        \addplot[domain=-1:18,samples=100,smooth,newgreen,very thick] {sin(deg(-x))+sin(deg(-0.8*x))};
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \caption[Superposition of two waves.]{Interference of two waves with different wave numbers.}
+    \label{fig:interference_example}    
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Phase and group velocities}
 \label{sec:6-2_phase_group_velocity}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section, we will investigate the speed at which a wave propagates.
-We will begin by considering how the speed of propagation for waves of single frequency before moving onto more complicated waves resulting from interference of multiple waves.
+We will begin with case of waves with single frequency before moving onto more complicated scenario resulting from interference of multiple waves.
 
-First, let's consider a single wave of a single frequency propagating through space and ask the question: at what speed does this wave travel?
+\emph{Phase velocity.}
+First, let's consider a single wave of a single frequency $\omega$ propagating through space.
 We saw in the previous section that we can write down such a wave as
 \begin{equation}
-    E = E_{0} \sin (\omega t-k x-\phi),
+    \Psi(x,t) = A \sin(\omega t - kx - \phi_0),
 \end{equation}
-where the phase at a particular point in time $t$ and space $x$ is $\theta(x,t)=\omega t-k x-\phi$.
-Since the wave is described by a single frequency, the speed of propagation of the wave is given by the speed of point of constant phase.
+where the phase at a particular point in time $t$ and space $x$ is $\theta(x,t)=\omega t-k x-\phi_0$.
+The speed of propagation can be determined by inspecting any point on the wave.
+This point is characterized by constant phase $\theta(x,t)$.
 How fast does this point of constant phase propagate?
-To answer this question we just need to differentiate the expression for phase with respect to time and set it equal to zero,
+We need to differentiate the expression for phase with respect to time and set it equal to zero (since the phase does not change in time),
 \begin{equation}
-    \frac{d\theta(x,t)}{d t} = \omega - k\underbrace{\frac{dx}{dt}}_{= v_p} = 0, \longrightarrow v_p = \frac{\omega}{k}.
+    \frac{d\theta(x,t)}{d t} = \omega - k\frac{dx}{dt} = 0.
+\end{equation}
+The rate of change of the position, $dx/dt$, is exactly the speed of propagation of the point of constant phase.
+This quantity is called the \textbf{\emph{phase velocity}}\index{phase velocity},
+\begin{equation}
+    v_p \equiv \frac{dx}{dt}, \longrightarrow v_p = \frac{\omega}{k}.
     \label{eq:6-2_phase_velocity}
 \end{equation}
-We have defined a new quantity called the \textit{\textbf{phase velocity}} $v_p$.
+We see that in the simple case of a single-frequency wave, the phase velocity is given as the ratio of the angular velocity $\omega$ and the wave number $k$.
 
 \begin{figure}[t]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/6-2_phase_velocity.pdf}    
-        \caption[Phase velocity]{The black points represent points of same phase and are separated by the wavelength $\lambda$.}
-        \label{fig:6-2_phase_velocity}
+    \centering
+    \resizebox {0.6\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-2,-1,1,2},
+                    yticklabels={$-2A$,$-A$,$A$,$2A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.3},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(x))};
+        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:5*pi/2,1) {};
+        \node[black!80] at (axis cs:5*pi/2,1.15) {$P_1$};
+        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:9*pi/2,1) {};
+        \node[black!80] at (axis cs:9*pi/2,1.15) {$P_2$};
+        \draw[dashed, black!80, thick] (axis cs:5*pi/2,1) -- node[above] {$\lambda$} (axis cs:9*pi/2,1);
+        \end{axis}
+    \end{tikzpicture}
+    }   
+    \caption[Phase velocity.]{The black points represent points of same phase and are separated by the wavelength $\lambda$.}
+    \label{fig:6-2_phase_velocity}
 \end{figure}
 
-We can check that the expression for phase velocity in Eq.~(\ref{eq:6-2_phase_velocity}) makes sense in the following way.
-Consider two points on the wave with same phase as shown in Fig.~\ref{fig:6-2_phase_velocity}.
-These points are separated by a distance of exactly one wavelength $\lambda$.
-The time needed for the left black point to traverse this distance is one period $T$;
-therefore, the speed at which the wave moves is given by the ratio $\lambda / T$.
-The wavelength of the wave can be expressed in terms of the wave number, $\lambda = 2\pi / k$.
-Similarly, the period can be written in terms of the frequency, $T = 2\pi / \omega$.
-The speed of propagation can then be written as
+We can check that the expression for phase velocity in Eq.~(\ref{eq:6-2_phase_velocity}) makes sense.
+Consider one of the peaks on the wave in Fig.~\ref{fig:6-2_phase_velocity}, say point $P_1$.
+This point will move to point $P_2$, covering the distance of one wavelength $\lambda$.
+This represents one full oscillation of the wave, therefore the time taken to cover this distance is one period $T$.
+The wave propagates at constant speed $v$, given by the ratio $\lambda/T$.
+Using Eq.~(\ref{eq:freq-period_k-wavelength}), we can express this ratio in terms of the angular frequency and the wave number,
 \begin{equation}
-    \frac{\frac{2\pi}{k}}{\frac{2\pi}{\omega}} = \frac{\omega}{k} = v_p,
+    v = \frac{\frac{2\pi}{k}}{\frac{2\pi}{\omega}} = \frac{\omega}{k} = v_p,
 \end{equation}
-which is the phase velocity of Eq.~(\ref{eq:6-2_phase_velocity}).
+which agrees with the phase velocity of Eq.~(\ref{eq:6-2_phase_velocity}).
 
-% Let's look at an example. We have a wave propagating at angular frequency $0.1$ and the wave number is $1$,
-% \begin{equation}
-% E=\sin (0.1 t-x).
-% \end{equation}
-% And then, as you can see, I marked one black point here (follow pointer), this is a point of constant phase and it's propagating through space like that.
-
+\emph{Group velocity.}
 How is the speed of the wave affected when the wave itself is a superposition of multiple single-frequency waves?
-Let's take two waves. This time, we allow their angular frequencies to be different, but for simplicity assume the two waves to have same amplitude $E_0$,
-\begin{align}
-    E_1 & = E_0 \sin \left(\omega_1 t-k_1 x\right) \\
-    E_2 & = E_0 \sin \left(\omega_2 t-k_2 x\right).
-\end{align}
-The phase velocities of these waves are given according to Eq.~(\ref{eq:6-2_phase_velocity}),
+Let's take things slow at first by considering only two interfering waves.,
 \begin{equation}
-    v_{p1} = \frac{\omega_1}{k_1}, \qquad v_{p2} = \frac{\omega_2}{k_2}.
+    \Psi_1(x,t) = A \sin (\omega_1 t - k_1 x), \qquad \Psi_2(x,t) = A \sin (\omega_2 t - k_2 x).
 \end{equation}
+We have assumed that the two waves have same amplitude, and we set the initial phase to $\phi_0=0$ for convenience.
 \begin{figure}[t]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_velocity.pdf}    
-        \caption[Group velocity]{Superposition of two sinusoidal waves. The fast oscillations are modulated by a slowly-varying envelope.}
-        \label{fig:6-2_superposition}
+    \centering
+    \resizebox {0.9\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-2,2},
+                    yticklabels={$-2A$,$2A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=2},
+                    enlarge y limits={abs=0.6},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=12cm,
+                    height=6cm]
+        \addplot[domain=-1:100,samples=500,smooth,blue!80,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))};
+        \addplot[domain=-1:100,samples=500,smooth,orange!80,thick,dashed] {2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \addplot[domain=-1:100,samples=500,smooth,orange!80,thick,dashed] {-2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \end{axis}
+    \end{tikzpicture}
+    }   
+    \caption[Group velocity.]{Superposition of two sinusoidal waves. The fast oscillations (blue solid line) are modulated by a slowly-varying envelope (orange dashed line).}
+    \label{fig:6-2_superposition}
 \end{figure}
-Let's compute an expression for the superposition,
+Interference of these two waves results in the following superposition, 
 \begin{align} 
-    E & = E_{1} + E_{2} \nonumber\\
-     & = E_{0}\left[\sin \left(\omega_{1} t-k_{1} x\right)+\sin \left(\omega_{2} t-k_{2} x\right)\right] \nonumber\\
-    & = 2 E_{0} \underbrace{\sin \left( \frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x \right)}_{\text{fast oscillations}} \underbrace{ \cos \left( \frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x \right)}_{\text{slow oscillations}}.
+    \Psi(x,t) & = \Psi_1(x,t) + \Psi_2(x,t) \nonumber\\
+     & = A\left[\sin \left(\omega_{1} t-k_{1} x\right)+\sin \left(\omega_{2} t-k_{2} x\right)\right] \nonumber\\
+    & = 2 A \underbrace{\sin \left( \frac{\omega_{1}+\omega_{2}}{2} t-\frac{k_{1}+k_{2}}{2} x \right)}_{\text{fast oscillations}} \underbrace{ \cos \left( \frac{\omega_{1}-\omega_{2}}{2} t-\frac{k_{1}-k_{2}}{2} x \right)}_{\text{slow oscillations}}.
+    \label{eq:fast_slow_oscillations}
 \end{align}
 We see that the superposition can be split into two terms.
-The first captures the fast oscillations of the superposition at frequency $\omega_1+\omega_2$.
+The first term captures the fast oscillations of the superposition at frequency $(\omega_1+\omega_2)/2$.
 These fast oscillations are pictured in blue in Fig.~\ref{fig:6-2_superposition}.
 Similar to the case of a single-frequency wave, we can ask the question at what speed a point of constant phase travels to obtain the \textit{\textbf{phase velocity}} for the superposition.
-This information is contained in the fast-oscillation term of Eq.~(\ref{eq:6-2_phase_velocity}),
+This information is contained in the fast-oscillation term of Eq.~(\ref{eq:fast_slow_oscillations}),
 \begin{equation}
     v_p = \frac{\omega_1 + \omega_2}{k_1 + k_2}.
 \end{equation}
 These fast oscillations are modulated by a slowly-varying envelope as seen in by the oranged dashed line in Fig.~\ref{fig:6-2_superposition}.
-This is captured by the second term in Eq.~(\ref{eq:6-2_phase_velocity}) and the frequency of these slow oscillations is $\omega_1-\omega_2$.
+This is captured by the second term in Eq.~(\ref{eq:fast_slow_oscillations}).
+The frequency of these slow oscillations is $(\omega_1-\omega_2)/2$.
 This term also gives rise to \textit{\textbf{group velocity}},
 \begin{equation}
     v_g = \frac{\omega_1 - \omega_2}{k_1 - k_2}.
 \end{equation}
-It is the group velocity that tells us how fast the entire group travels.
+The group veocity tells us how fast the entire envelope is propagating, rather than just a single point of constant phase.
 The phase and group velocities of a superposition are, in general, different.
-We can have scenarios where one is larger than the other but also where they are equal,
+There are scenarios where one is larger than the other but also where they are equal,
 \begin{equation}
     v_p > v_g, \quad v_p = v_g, \quad v_p < v_g.
 \end{equation}
-Real wave packets and signals are rarely single-frequency waves but rather results of a superposition of a number of single-frequency components.
+Real wave packets and signals are never single-frequency waves but rather results of a superposition of a number of single-frequency components.
 When we talk about the speed of such a wave, we usually refer to the group velocity.
 It is also the group velocity that tells us how quickly a signal carries information.
 
-% Let's illustrate it with an example. We consider two waves $E_1$ and $E_2$,
-% \begin{equation}
-% \begin{aligned}
-% &E_{1}=\sin (0.1 t-2.0 x) \\
-% &E_{2}=\sin (0.2 t-2.1 x).
-% \end{aligned}
-% \end{equation}
-% They have different angular frequencies. $E_1$ has angular frequency $\omega_1 = 0.1$, whereas $E_2$ has angular frequency $\omega_2 = 0.2$. They have different wave numbers, as well. $E_1$ has $k_1 = 2.0$, and $E_2$ has $k_2=2.1$. So, let's plot this initially at time equals to zero, and as we said, we expect the shape of the superposition to to be composed of two waves. One is this fast oscillating blue line, and on top of that we have this slowly varying \emph{envelope}\index{envelope}. Again, this blue fast oscillating term is given by the sine term from previous slides, and this orange dashed line gives us the envelope which is proportional to the cosine. 
-% Now let's get things moving, and in time again it propagates through space.
-
-% So now, let's actually compute what the phase and group velocities are for our example. We just substitute into our expressions,
-% \rdv{Are these expressions backwards?}
-% \begin{equation}
-% \begin{gathered}
-% v_{p}=\frac{\omega_{1}+\omega_{2}}{k_{1}+k_{2}}=\frac{0.3}{4.1} \approx 0.07 \\
-% %v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 & 
-% v_{g}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}=1 
-% \begin{array}{l}
-% \end{array} \\
-% v_{g}>v_{p} \quad v_{g} \approx 14 v_{p}
-% \end{gathered}
-% \end{equation}
-%so omega one plus omega two, we just add them together, so 0.1 plus 0.2 is 0.3. k1 plus k2, again we add them together, 2.0 plus 2.1 is 4.1. And this (v-p) is approximately 0.07 (zero point zero seven). For the group velocity, we do the same thing and we obtain that the group velocity is equal to one. 
-% We can see that the group velocity in this case is larger than the phase velocity, and in fact it's about fourteen times larger.
-
-% Let's go back to our propagating wave, so you can see what actually happens to the points on our wave. The black dot oscillating up and down represents our phase velocity. This black point is moving through space with the phase velocity, so you can see that it's moving up and down quite a lot, but actually it's not propagating through space very much, because it's in this example equal to 0.07, whereas this red square that occasionally you can see at the top, that goes zooming- it's sitting on the envelope over there and it goes to zooming through space. That point represents the group velocity. Well you can't actually see that it's fourteen times faster but mathematically that's true. And as we said in this case that we picked the phase velocity is smaller than the group velocity. But this is not always the case.
-
-% Let's look at this following example: we kept the same angular frequencies for the two waves, but we changed the wave numbers. Now E1 has k equal to zero point one and E2 has k equal to zero point two. Let's see what that looks like. As you can see, now the group velocity and the phase velocity are the same. The black point and the red square move at the same velocity.
-
-% \begin{equation}
-% \begin{aligned}
-% &E_{1}=\sin (0.1 t-0.1 x) \\
-% &E_{2}=\sin (0.2 t-0.2 x)
-% \end{aligned}
-% \end{equation}
-
-% So far, we have looked at cases when both velocities are in the same direction. Now, let's look at a very peculiar case.
-
-% Again, we keep the angular frequencies fixed, but this time we change k1 to two point zero and k2 to one point five, and let's see what happens. You see that again, the black dot representing our phase velocity is moving in the positive x direction as was the case before, but on the other hand this red square is moving backwards, because the group velocity in this case is actually negative. So you can see that you can have a lot of fun with the group and phase velocities. there are many different scenarios depending on omega one and omega two and k1 and k2.
-
-
-% \begin{equation}
-% \begin{aligned}
-% &E_{1}=\sin (0.1 t-2.0 x) \\
-% &E_{2}=\sin (0.2 t-1.5 x)
-% \end{aligned}
-% \end{equation}
-
-% So far, we have been looking at superposition of only two waves. What happens if we consider superposition of more than two waves?
-
 \begin{figure}[t]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_many.pdf}    
-        \caption[Pulse]{Superposition of multiple sinusoidal waves, as given in Eq.~(\ref{eq:6-2_pulse}).}
-        \label{fig:6-2_pulse}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_many.pdf} 
+    \resizebox {0.9\textwidth} {!} {
+    \begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-11,11},
+                    yticklabels={$-11A$,$11A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=2},
+                    enlarge y limits={abs=4},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,0)$},
+                    width=12cm,
+                    height=6cm]
+        \addplot[domain=-1:100,samples=500,smooth,blue!80,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))+sin(deg(-2.2*x))+sin(deg(-2.3*x))+sin(deg(-2.4*x))+sin(deg(-2.5*x))+sin(deg(-2.6*x))+sin(deg(-2.7*x))+sin(deg(-2.8*x))+sin(deg(-2.9*x))+sin(deg(-3.0*x))};
+        \end{axis}
+    \end{tikzpicture}
+    }   
+    \caption[Superposition of more than two waves.]{Superposition of more than two sinusoidal waves resulting in a pulse.}
+    \label{fig:6-2_pulse}
 \end{figure}
-We can consider the case where we interfere more than two single-frequency waves.
+To complete our discussion, let's look at the case when we have more than two single-frequency components interfering together.
 Let's say we have a superposition of the following form,
 \begin{equation}
-    E = E_0 [\sin(-2.0x) + \sin(-2.1x) + \ldots + \sin(-3.0x)].
+    \Psi(x,t) = A [\sin(-2.0x) + \sin(-2.1x) + \ldots + \sin(-3.0x)].
     \label{eq:6-2_pulse}
 \end{equation}
 We have assumed that we are looking at the superposition frozen in time at $t=0$, hence the simple form.
 The resultant superposition is pictured in Fig.~\ref{fig:6-2_pulse}.
 Unlike before, we can observe long regions where destructive interference results in almost no disturbance.
-Then the constructive interference kicks in and we observe a short \textit{\textbf{pulse}}.
+Then the constructive interference kicks in and we observe a short \textbf{\emph{pulse}}\index{pulse}.
 It is these pulses that can be used to carry information at the group velocity of the superposition.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interference with single photons}
 \label{sec:6-4_interference_single_photons}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % double_slit standard
 \begin{figure}[H]

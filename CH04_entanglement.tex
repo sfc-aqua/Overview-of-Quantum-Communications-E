@@ -369,7 +369,7 @@ The physical systems that will encode the qubits are photons, and the process ge
 
 The basic idea behind SPDC is illustrated in Fig.~\ref{fig:spdc}.
 A high-energy \textbf{\emph{pump photon}}\index{pump photon}, pictured in green, is incident on a nonlinear crystal.
-Popular choice of a material for the crystal is \textbf{\emph{beta barium borate}}\index{BBO}, or BBO for short.
+A popular choice of material for the crystal is \textbf{\emph{beta barium borate}}\index{BBO}, or BBO for short.
 The pump photon interacts with atoms inside the nonlinear crystal and gets transformed into two lower-energy photons.
 Often these photons are referred to as the \textbf{\emph{signal}}\index{signal photon} and the \textbf{\emph{idler}}\index{idler photon}.
 
@@ -591,7 +591,7 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
     % Pump photon
     \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
     \node[newgreen] at (-2,0.89,0) {\footnotesize $|H\rangle_p$};
-    \draw[line cap=round] (-3,0,0) -- (O);
+    \draw[newgreen,thick,line cap=round] (-3,0,0) -- (O);
 
     % BBO
     \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
@@ -600,19 +600,19 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
     \draw[pattern=north east lines] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
     \draw[] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
     \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
-    \draw[-latex] (0,-\w,0) -- (0,{-1.5*\w},0);
+    \draw[-latex,thick,line cap=round] (0,-\w,0) -- (0,{-1.5*\w},0);
 
     % signal photon
     \begin{scope}[rotate around z=20]
         \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (2.3,0,0);
     \end{scope}
     \node[lightred] at (1.3,1.4,0) {\footnotesize $|V\rangle_s$};
 
     % idler photon
     \begin{scope}[rotate around z=-20]
         \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (2.3,0,0);
     \end{scope}
     \node[lightred] at (1.6,-0.1,0) {\footnotesize $|V\rangle_i$};
 
@@ -628,7 +628,7 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
     % Pump photon
     \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,0,{0.5*e^(-\x*\x/0.02)});
     \node[lightred] at (-2.2,0.8,0) {\footnotesize $|V\rangle_p$};
-    \draw[line cap=round] (-3,0,0) -- (O);
+    \draw[lightred,thick,line cap=round] (-3,0,0) -- (O);
 
     % BBO
     \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
@@ -637,19 +637,19 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
     \draw[] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
     \draw[pattern=north east lines] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
     \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
-    \draw[-latex] (0,0,\h) -- (0,0,{1.5*\h});
+    \draw[-latex,thick,line cap=round] (0,0,\h) -- (0,0,{1.5*\h});
 
     % signal photon
     \begin{scope}[rotate around z=20]
         \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \draw[-latex,newgreen,thick,line cap=round] (O) -- (2.3,0,0);
     \end{scope}
     \node[newgreen] at (1.3,1.4,0) {\footnotesize $|H\rangle_s$};
 
     % idler photon
     \begin{scope}[rotate around z=-20]
         \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,line cap=round] (O) -- (2.3,0,0);
+    \draw[-latex,newgreen,thick,line cap=round] (O) -- (2.3,0,0);
     \end{scope}
     \node[newgreen] at (2,0,0) {\footnotesize $|H\rangle_i$};
 
@@ -657,16 +657,121 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
     \node[] at (0.2,0.2,1.8*\h) {\footnotesize optic axis};
     \end{scope}
     \end{tikzpicture}
-    \caption[Photon pair production via SPDC]{Horizontally polarized pump photons can be down-converted to a pair of vertically polarized photons by the BBO crystal as shown on the left side. Rotating the crystal by 90\degree makes it possible to convert a vertically polarized pump photon into a pair of horizontally polarized photons.}
+    \caption[Photon pair via SPDC.]{Horizontally polarized pump photons can be down-converted to a pair of vertically polarized photons by the BBO crystal as shown on the left side. Rotating the crystal by 90\degree makes it possible to convert a vertically polarized pump photon into a pair of horizontally polarized photons.}
     \label{fig:poalrization_BBO}
 \end{figure}
 
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{lesson4/4-4_SPDC_crystal.png}
-%     \caption[BBO crystal arrangement]{Arrangement of the two BBO crystals that leads to an entangled photon pair when diagonally polarized light is input.}
-%     \label{fig:4-4_SPDC_crystals}
-% \end{figure}
+\begin{figure}[t]
+    \centering
+    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.9, wave/.style={thick,color=#1,smooth}]
+
+    % 1st Case with thick BBO
+    \begin{scope}
+    \def\h{1}
+    \def\w{1.2}
+    \def\d{0.3}
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
+    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
+    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (2*\d,0,0);
+
+    % BBO 1
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
+    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
+    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
+
+    % BBO 2
+    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
+    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
+    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
+
+    % signal photon from BBO 1
+    \begin{scope}[rotate around z=20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
+    \end{scope}
+    \node[newgreen] at (2.5,1.5,0.2) {\footnotesize $|H\rangle_s$};
+
+    % idler photon from BBO 1
+    \begin{scope}[rotate around z=-20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,-{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
+    \end{scope}
+    \node[newgreen] at (2.5,-1.5,0) {\footnotesize $|H\rangle_i$};
+
+    % signal photon from BBO 2
+    \begin{scope}[rotate around z=-20,transform canvas={xshift=12,yshift=-7}]
+    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
+    \end{scope}
+    \node[lightred] at (1.6,1.38,0.05) {\footnotesize $|V\rangle_s$};
+
+    % idelr photon from BBO 2
+    \begin{scope}[rotate around z=20,transform canvas={xshift=12,yshift=-7}]
+    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
+    \end{scope}
+    \node[lightred] at (2.2,-0.1,0) {\footnotesize $|V\rangle_i$};
+
+    \node[] at (0,0,2.3) {\footnotesize Product photon pair};
+
+    \end{scope}
+
+    % 2nd Case with thin BBO
+    \begin{scope}[xshift=6cm]
+    \def\h{1}
+    \def\w{1.2}
+    \def\d{0.1}
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
+    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
+    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (0,0,0);
+
+    % BBO 1
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
+    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
+    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
+
+    % BBO 2
+    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
+    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
+    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
+
+    % signal photon
+    \begin{scope}[rotate around z=20]
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,thick] (O) -- (2.7,0,0);
+    \end{scope}
+
+    % idler photon
+    \begin{scope}[rotate around z=-20]
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,-{0.5*e^(-\x*\x/0.02)},0);
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,thick] (O) -- (2.7,0,0);
+    \end{scope}
+    \node[] at (0,0,2.3) {\footnotesize Entangled photon pair};
+    \end{scope}
+\end{tikzpicture}
+    \caption[Entangled photon pairs via SPDC.]{If the crystals are too thick (left image) then the propagation paths for horizontal and vertical photons are distinguishable, resulting in a product state. The two BBO crystals must be sufficiently thin in order to erase the information about where the signal-idler pair were produced (right iamge). The gray color of the photon pair represents the fact that we cannot assign definite ket states to the individual photons since they are entangled.}
+    \label{fig:entanglement_BBO}
+\end{figure}
 
 So far, we have discussed production of pairs of photons which are not entangled.
 With a simple change of this setup, we can use SPDC to produce entangled pairs of photons as well.
@@ -675,42 +780,76 @@ The second step is to choose an appropriate polarization for the pump photon.
 If we use $|H\rangle_p$, then down-conversion always occurs in only one of the BBO crystals.
 If we use $|V\rangle_p$, then down-conversion always occurs in the other crystal.
 The trick is to use a diagonally polarized pump photon, $|D\rangle_p$.
-With probability of $1/2$, the pump photon will be down-converted in the first crystal, and with equal probability it will be down-converted in the second crystal.
+With probability of $1/2$, such a pump photon will be down-converted in the first crystal, and with equal probability it will be down-converted in the second crystal.
 The final step is to ensure that it is not possible to determine whether the down-conversion occurred in the first or in the second BBO crystal.
-This can be achieved by using thin enough BBO crystals, resulting in very nearly overlapping propagation paths for the down-converted photons coming from either crystal.
+This can be achieved by using thin enough BBO crystals, resulting in very nearly overlapping propagation paths for the down-converted photons coming from either crystal, as shown in Fig.~\ref{fig:entanglement_BBO}.
 Only when this \textbf{\emph{indistinguishability condition}}\index{indistinguishability condition} is satisfied, do we obtain an entangled pair of photons,
 \begin{equation}
     |D\rangle_p \rightarrow \frac{|H\rangle_s|H\rangle_i + |V\rangle_s|V\rangle_i}{\sqrt{2}}.
 \end{equation}
 
-Another important property of SPDC is that it's an extremely rare process.  We obtain only about one photon pair per $10^6$ pump photons, and even that level is achieved only in state-of-the-art experiments. In a more common laboratory setup, it takes several orders of magnitude more pump photons to successfully create each entangled pair.  The photons that are not down-converted simply pass through the crystal unaffected and are discarded.
+SPDC is an extremely rare process.
+On average, we can expect to obtain one photon pair per $10^6$ pump photons.
+Even this low rate can be achieved only in state-of-the-art experiments.
+With a more common laboratory setup, it takes several orders of magnitude more pump photons to successfully create an entangled pair.
+The photons that are not down-converted simply pass through the crystal unaffected and are discarded.
 
-There are many details around SPDC that we have not introduced here, but this basic understanding is adequate for our purposes in this book.
-
-% Usually this number- this ten-to-the-six pump photons is much higher or orders of magnitudes higher in commercially available lasers.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Entanglement as a resource}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % insert broken connection 
 \begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
+    %\includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
+    \begin{tikzpicture}[auto, semithick, node distance=3cm]
+    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
+
+    \node[state,fill=red!50]    (R)                     {R};
+    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
+    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
+
+    \path
+    (R) edge[bend right,above,red!60,thick,->,>=stealth']	node[yshift=1pt]{$x$}	(A)
+    (R) edge[bend left,above,red!60,thick,->,>=stealth']	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
+    (A) edge[bend right,left,newgreen,thick,->,>=stealth']	node[yshift=1pt]{$a$}	(R)
+    (B) edge[bend left,right,newgreen,thick,->,>=stealth']	node[yshift=2pt]{$b$}	(R);
+
+    \coordinate (qubitA) at ($(A)+(0,-1)$);
+    \coordinate (qubitB) at ($(B)+(0,-1)$);
+
+    \draw[decorate,decoration={coil,aspect=0},thick] (qubitA)  -- (qubitB);
+    \filldraw[black!30,draw=black,thick] (qubitA) circle (5pt);
+    \filldraw[black!30,draw=black,thick] (qubitB) circle (5pt);
+
+    \node[] at (-3.6, -3.15) {measure qubit A};
+    \node[] at (3.6, -3.15) {measure qubit B};
+    \node[darkred] at (0, -3.15) {\xmark};
+
+    \end{tikzpicture}
     
-        \caption[CHSH game collapses entanglement.]{In the CHSH game, each time the players play, they collapse (break) one entangled state.}
-    
+    \caption[CHSH game consumes entanglement.]{In the CHSH game, players consume one Bell pair every time they play with the optimal strategy of winning.}
     \label{fig:chsh-broken}
 \end{figure}
 
 % Step Five: Entanglement as a Resource.
 
-Let's go back and revisit our CHSH game from the first section of this chapter. We have seen that entanglement can actually help players A and B win the game more often. If they share an entangled state, they can perform measurements on it and this will help them in winning the game with higher probability. But in this process of measurement, as shown in Fig.~\ref{fig:chsh-broken}, A and B destroy the entanglement shared between the two grey qubits.  Maybe they managed to win the game, at least this particular round, but if they want to win again, they have to find a way of re-establishing this entanglement or creating a new entangled pair which they can share and then use in the new round of the game. 
+Let's go back and revisit the CHSH game from the first section of this chapter.
+We have seen that entanglement can help players $A$ and $B$ win the game more often.
+The optimal strategy is to share a Bell pair, which is then locally measured by the players.
+As shown in Fig.~\ref{fig:chsh-broken}, players $A$ and $B$ destroy the entanglement in the process.
+If they want to play another round of the CHSH game, and still have the optimal 85\% probability of winning, they have to find a way of sharing a Bell pair again.
+We can see that usingthis strategy, one Bell pair is consumed in every round of the game.
+Therefore, if the players want to play $n$ rounds with optimal strategy of winning, they must have access to at least $n$ shared Bell pairs.
 
-Entanglement is also crucial in quantum networks.
-Figure~\ref{fig:4-5_resource_network} shows a simple quantum network, where the blue circles represent the network nodes.
+Abstract scenarios, such as the CHSH game, are not the only place where entanglement is useful.
+Quantum networks is one such important example where entanglement plays a vital role.
+Figure~\ref{fig:4-5_resource_network} shows a simple quantum network, where the blue circles represent quantum nodes of the network.
 They could be individual qubits or even small quantum computers; for now, the distinction is not important.
-The lines joining the network nodes represent shared entanglement.
+The lines joining the quantum nodes represent shared entangled pairs.
 There is a sender node in possession of a qubit, represented by the red circle, that it is trying to communicate to the receiver node.
 The usual way to send quantum information is to use the teleportation protocol, which we will discuss in detail in Chapter~\ref{sec:8_teleportation}.
 For now, all we need to know is that the protocol consumes a single Bell pair to transfer the quantum information from one node to its neighbor.
@@ -726,22 +865,91 @@ In order for the quantum network to be fully functional again, we must re-establ
 \end{figure}
 
 We can think of entanglement as the fuel that drives many quantum technologies. Entanglement offers improved, and sometimes completely new, functionality that is not seen in either classical networks or classical computation.
-One of the key takeaways is that entanglement is a \textbf{\textit{resource}}, and is consumed just like fuel in your car or battery charge in your phone.
+One of the key takeaways is that entanglement is a \textbf{\emph{resource}}, and is consumed just like fuel in your car or battery charge in your phone.
 It is the job of quantum networks to distribute entanglement in order to satisfy the demand for this precious resource.
 
 
 \newpage
 \begin{exercises}
-\exer{Prove that the four Bell states are orthogonal to each other.}
-
-\exer{\rdv{Find the probabilities of the different measurement outcomes for several one- and two-qubit states.}}
-
-\exer{\rdv{More of the math of the CHSH game to be added as exercise.}
+\exer{\emph{Classical strategies for the CHSH game.} We have seen the optimal classical strategy. For each strategy described below, determine the probability of winning a round of the CHSH game.
+\subexer{Player $A$ and player $B$ reply with bits that are completely random, regardless of the bits received from the referee $R$.}
+\subexer{Reply bits from player $A$ and player $B$ are the same as the bits received from referee $R$. This means $a=x$ for player $A$, and $b=y$ for player $B$.
+}
 }
 
-\exer{On p.~\pageref{page:plus-is-pure}, we stated without proof that measuring the state of a single qubit in $\ket{+}$ provides different outcome statistics than measuring one qubit that is part of a Bell pair.  Prove this by calculating the outcome probabilities for measuring both the single qubit and the half of the Bell pair, when using the X, Y, and Z measurement bases.  (Hint: this problem will be easier if you have done the problems in Ch. 3.)}
+\exer{\emph{Local measurements on two qubits.}
+Eq.~(\ref{eq:local_projectors}) describes local measurement in Pauli $Z$ basis performed by player $A$.
+If player $B$ also measures in the Pauli $Z$ basis, the full projector is written as the tensor product of the two local projectors,
+\begin{equation}
+    \Pi^A_{Z,\pm} \otimes \Pi^B_{Z,\pm}.
+\end{equation}
+\subexer{
+Consider a shared entangled state between the players $A$ and $B$ to be $|\Phi^+\rangle$.
+If players $A$ and $B$ both measure in the Pauli $Z$ basis, what are the possible outcomes of their measurements, and their corresponding probabilities?
+}
+\subexer{
+Measurements in other bases can be described in a straightforward fashion. If player $A$ measures in the $O_A$ basis and player $B$ measures in the $O_B$ basis, the two-qubit projector has the following form,
+\begin{equation}
+    \Pi^A_{O_A,\pm} \otimes \Pi^B_{O_B,\pm}.
+\end{equation}
+Consider the case where the players still share $|\Phi^+\rangle$. $A$ measures in the Pauli $Z$ basis, but this time player $B$ measures in the Pauli $X$ basis.
+What are the possible measurements outcomes and their corresponding probabilities?
+}
+}
 
-\exer{\rdv{Do some rough calculations of number of entangled photon pairs output from SPDC for a certain wattage of laser, wavelength, and conversion efficiency.}}
+\exer{\emph{Quantum strategy for the CHSH game.} Consider a particular instance of the CHSH game, where the referee generates the bits $x=0$ and $y=0$.
+\subexer{
+What values of $a$ and $b$ will result in a win for the players?
+}
+\subexer{
+Assuming the players use the optimal quantum strategy, show that the probability of winning this round is $\frac{1+\sqrt{2}}{2\sqrt{2}}\approx0.85$.
+}
+}
+
+\exer{
+\emph{Bell basis.} We have seen that the four Bell pairs form a convenient basis when we consider two qubits.
+\subexer{
+Prove that the four Bell states are orthogonal to each other.
+}
+\subexer{
+Express an arbitrary pure two-qubit state,
+\begin{equation}
+    |\psi\rangle = \alpha |00\rangle + \beta|01\rangle + \gamma|10\rangle + \delta|11\rangle,
+\end{equation}
+in the Bell basis.
+}
+\subexer{
+The two-qubit maximally mixed state is the tensor product of two local maximally mixed states, $I/2 \otimes I/2$.
+Write down this state in the Bell basis.
+}
+}
+
+\exer{\emph{Singe-qubit vs two-qubit measurement statistics.}
+On p.~\pageref{page:plus-is-pure}, we stated without proof that measuring the state of a single qubit provides different outcome statistics than measuring one qubit that is part of a Bell pair.
+Let's prove this now.
+\subexer{
+Consider single qubit in $|+\rangle$. Compute outcome probabilities when this state is measured in the Pauli $X$, $Y$, and $Z$ bases.
+}
+\subexer{
+Now consider a shared two-qubit Bell pair, say $|\Psi^+\rangle$.
+Again, compute the outcome probabilities when the first qubit is measured in the Pauli $X$, $Y$, and $Z$ bases.
+}
+}
+
+\exer{\emph{Rate of production of down-converted photons.}
+Consider a high power UV diode laser at wavelength 405 nm. The pump laser power is 15 mW.
+Consider that only 1 photon pair is produced on average per $10^{8}$ pump photons.
+\subexer{
+How many pump photons are incident on the BBO crystal per second? \\
+(\emph{Hint:} Energy of a photon is given by $E_{\text{photon}}=hc/\lambda$, where $h$ is Planck's constant, $c$ is speed of light in free space, $\lambda$ is the wavelength of light.)
+}
+\subexer{
+What is the rate at which down-converted photon pairs are produced?
+}
+\subexer{
+What is the wavelength of the down-converted photons if both have the same energy?
+}
+}
 
 \end{exercises}
 
@@ -755,13 +963,13 @@ It is the job of quantum networks to distribute entanglement in order to satisfy
 The online version of this course includes a quiz for this block of chapters. Discussion of the quiz questions will be provided there.
 
 \section*{Further reading for chapters 1-4}
-  \addcontentsline{toc}{section}{Further reading for chapters 1-4}
+\addcontentsline{toc}{section}{Further reading for chapters 1-4}
 
-{\bf Chapter 1}\\
+\textbf{Chapter 1}\\
 
 The first chapter serves as a gentle introduction to the area of quantum communication. Its goal is to provide a qualitative overview and discuss ideas behind communication and its evolution rather than focusing on any quantitative discussion.
 
-An excellent popular science book on this topic is James Gleick, \emph{The Information: A History, The Theory, A Flood}~\cite{gleick2012information}. It covers the evolution of communication and spends a sizeable portion of its length on discussing the switch from analog to digital. However, it does not cover quantum communication.
+An excellent popular science book on this topic is James Gleick, \emph{The Information: A History, The Theory, A Flood}~\cite{gleick2012information}. It covers the evolution of communication and spends a sizeable portion on discussing the switch from analog to digital. It does not cover quantum communication.
 
 There are also a number of great science YouTube channels with excellent, concise introductions on the topic of quantum communication and computation:
 \begin{enumerate}
@@ -770,13 +978,13 @@ There are also a number of great science YouTube channels with excellent, concis
     \item PBS Space Time
 \end{enumerate}
 
-Understanding the role that encryption plays in achieving the overall goals of computer security is valuable. We recommend Matt Bishop's authoritative textbook, \emph{Computer Security: Art and Science}~\cite{bishop2002art}.
+Understanding the role that encryption plays in achieving the overall goals of computer security is valuable. We recommend Matt Bishop's authoritative textbook, \emph{Computer Security: Art and Science}~\cite{bishop2002art}. \\
 
-{\bf Chapter 2}\\
+\textbf{Chapter 2}\\
 
-The second chapter is a lot more technical and introduces fundamental concepts such as qubits and measurements, which we will encounter throughout the entire curriculum. Being comfortable with these concepts and knowing how to describe them mathematically is crucial.
+The second chapter is more technical and introduces fundamental concepts such as qubits and measurements, which we will encounter throughout the entire curriculum. Being comfortable with these concepts and knowing how to describe them mathematically is crucial.
 
-An article by Perry \emph{et al.} called "Quantum Computing as a High School Module" is a great extension to the content of this and following chapters. It introduces basic mathematical descriptions and contains many short exercises designed to check your understanding.
+An article called ``Quantum Computing as a High School Module''~\cite{perry2019quantum} is a great extension to the content of this and following chapters. It introduces basic mathematical descriptions and contains many short exercises designed to check your understanding.
 
 A more advanced introduction to the mathematical concepts in this chapter can be found in the classic textbook by Michael A. Nielsen and Isaac L. Chuang, \emph{Quantum Computation and Quantum Information}~\cite{nielsen-chuang:qci}. Almost all serious quantum researchers have a copy of this book, but its learning curve is steep and we recommend attacking it after a more introductory book or course (which you presumably are gaining through this learning module and other courses). This book, known as "Mike and Ike", covers key ideas in computer science theory, the basic quantum information ideas and algorithms, and the principles of quantum hardware. Its descriptions of hardware and error correction are now rather out of date, and the description of algorithms is limited to a few important cases, but the principles are foundational and the explanation clear.
 
@@ -784,19 +992,19 @@ An alternative to Mike and Ike is John Preskill's lecture notes, which are avail
 
 A new textbook that covers the basics of quantum information and their role in quantum computation and communication is Robert Sutor's \emph{Dancing with Qubits}~\cite{sutor19:dancing}. This textbook spends great effort in explaining the basics and goes over the fundamental calculations in great detail. The first half of the book covers the basic mathematics you will need, including complex numbers, probability and linear algebra (vectors and matrices). We strongly recommend this book for all beginning students, especially those who are worried about the math required. We recommend it to our own beginning undergraduates.
 
-An alternative to Sutor that focuses primarily on basic algorithms is Eleanor Rieffel and Wolfgang Polak's \emph{Quantum Computing: a Gentle Introduction}~\cite{rieffel2011quantum}.
+An alternative to Sutor that focuses primarily on basic algorithms is Eleanor Rieffel and Wolfgang Polak's \emph{Quantum Computing: a Gentle Introduction}~\cite{rieffel2011quantum}.\\
 
-{\bf Chapter 3}\\
+\textbf{Chapter 3}\\
 
 The third chapter continues with our exposition of the basic mathematical formalism underpinning quantum communication as well as quantum computation. The primary focus is description of noisy quantum states using density matrices.
 
 Chapter 2 of “Mike \& Ike” and Perry’s article mentioned above are great for this chapter as well. Another fantastic book on quantum information (though primarily targeted at graduate students so parts of it might be too technical to follow) is Mark Wilde's \emph{Quantum Information Theory}~\cite{wilde2013quantum}.
 
-Chapter 3 of Wilde’s textbook deals with noisy states. Discussion on fidelity of quantum states can be found in Chapter 9 of “Mike \& Ike” and in Chapter 9 of Wilde’s textbook.
+Chapter 3 of Wilde’s textbook deals with noisy states. Discussion on fidelity of quantum states can be found in Chapter 9 of “Mike \& Ike” and in Chapter 9 of Wilde’s textbook.\\
 
-{\bf Chapter 4}\\
+\textbf{Chapter 4}\\
 
-This chapter is the conclusion of the introductory Block and deals with the scenario when we have multiple qubits which naturally leads to entanglement. Perry’s article, “Mike \& Ike” as well as Wilde’s textbook remain great introductions and ordered in this way represent the ramping up difficulty of mathematical rigour. 
+This chapter is the conclusion of the introductory chapters and deals with the scenario when we have multiple qubits which naturally leads to entanglement. Perry’s article, “Mike \& Ike” as well as Wilde’s textbook remain great introductions and ordered in this way represent the ramping up difficulty of mathematical rigour. 
 
 The CHSH game is discussed in Chapter 3 of Wilde’s textbook~\cite{wilde2013quantum}. Another excellent exposition of this game is by Umesh Vazirani as part of his lecture series on YouTube.
 
