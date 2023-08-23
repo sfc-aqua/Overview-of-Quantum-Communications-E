@@ -133,19 +133,15 @@ So we said that the Internet is a network of networks, where every network can b
 
 \mmm Well, over the course of this module we have seen that the main purpose of a quantum network is to distribute entanglement between parties, whether it be bipartite entanglement or multipartite entanglement, so that it can be used as a resource for communication tasks such as teleportation and QKD (which might be entanglement-based or single photon-based).
 
-\rrr And QKD is, in fact, the example that's written in the figure, so what are the QKD devices doing across across the quantum network? Remind us, what's the service they provide?
+\rrr QKD is, in fact, the example that's written in the figure, so what are the QKD devices doing across across the quantum network? Remind us, what's the service they provide?
 
-\mmm Well, they're trying to establish a secret, correlated key between one communicating party and their partner without any eavesdropper knowing what the key is.
-
-\rrr Right, so what's a key in this context? The key is...
-
-\mmm The key is a secret classical string of bits that we can use to hide our message.
+\mmm Well, they're trying to establish a secret, correlated key between two communicating parties without any eavesdropper knowing what the key is. The key is a secret classical string of bits that we can use to hide our message.
 
 \rrr All right, so it's a string of random bits that are guaranteed to be secret, based on what we've done so far. So what we want to do, once we have them is...
 
 \mmm ...to use them with the classical Internet.
 
-\rrr Yes! So in fact, that's what we're going to do next. The first task is for the quantum network to make those keys, turning quantum states into classical bits, and then the quantum network is going to share those bits with a couple of boxes called IPsec gateways, one at each end, that are connected to an IP network. Have you heard of IPsec\index{IPsec}?
+\rrr Yes! So in fact, that's what we're going to do next. The first task is for the quantum network to make those keys, turning quantum states into classical bits, and then the quantum network is going to share those bits with a couple of boxes called IPsec gateways (one at each end), that are connected to an IP network. Have you heard of IPsec\index{IPsec}?
 
 \begin{figure}[t]
     \centering
@@ -156,24 +152,23 @@ So we said that the Internet is a network of networks, where every network can b
 
 \mmm Not really, no.
 
-\rrr IPsec is one of the standard Internet protocols for encrypting data that you're going to share across the network. One of the other famous protocols is called Transport Layer Security, or TLS\index{Transport Layer Security (TLS)}, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely. You send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there. So, it's a standard protocol for doing that.
+\rrr IPsec is one of the standard Internet protocols for encrypting data that you're going to share across the network. One of the other famous protocols is called Transport Layer Security, or TLS\index{Transport Layer Security (TLS)}, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely. You send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there.
 
 Before the use of QKD, these IPsec gateways worked together to negotiate a key exchange of some sort.
 
-\mmm Back in Sec.~\ref{sec:crypto-phases}, we talked about three phases of an encrypted conversation, right? The three phases are authentication, key generation and then the bulk data encryption.
+\mmm Back in Sec.~\ref{sec:crypto-phases}, we talked about three phases of an encrypted conversation. The three phases are authentication, key generation and then the bulk data encryption.
 
 % \mmm Right.
 
-\rrr Right. The authentication is often done using \emph{public key cryptography}\index{public key cryptography}. Prior to QKD, and still in most cases today, the key generation was primarily done using a mechanism called \emph{Diffie-Hellman key exchange}\index{Diffie-Hellman key exchange}, which we're going to replace with QKD, as in Fig.~\ref{fig:15-4-ipsec-with-qkd}. Data (random bits) that come out of the QKD network --- or the quantum Internet and the QKD devices attached to it --- will be used to create the keys that are used by the IPsec gateways for encrypting large amounts of data which get sent using an encryption mechanism. Most commonly these days, we use an encryption mechanism called AES, the Advanced Encryption Standard\index{Advanced Encryption Standard (AES)}. So, you get this encrypted connection, and it's important to note here that the QKD connection itself actually requires that you also have an authenticated classical channel between the nodes in order to prevent someone standing in the middle of the network and pretending to be Alice in one direction and pretending to be Bob in the other direction, and that's what's called a \emph{man-in-the-middle attack}\index{man-in-the-middle}, and we want to try to avoid having that happen.
+\rrr Right. The authentication is often done using \emph{public key cryptography}\index{public key cryptography}. Prior to QKD, and still in most cases today, the key generation was primarily done using a mechanism called \emph{Diffie-Hellman key exchange}\index{Diffie-Hellman key exchange}, which we're going to replace with QKD, as in Fig.~\ref{fig:15-4-ipsec-with-qkd}. Data (random bits) that come out of the QKD network --- or the quantum Internet and the QKD devices attached to it --- will be used to create the keys that are used by the IPsec gateways for encrypting large amounts of data which get sent using an encryption mechanism. Most commonly these days, we use an encryption mechanism called AES, the Advanced Encryption Standard\index{Advanced Encryption Standard (AES)}. Note  that the QKD connection itself actually requires that you also have an authenticated classical channel between the nodes in order to prevent someone standing in the middle of the network and pretending to be Alice in one direction and pretending to be Bob in the other direction, an attack that's called a \emph{man-in-the-middle attack}\index{man-in-the-middle}.
 
-\mmm I see, so let me get this straight. The role of the quantum network really is just one step in a number of steps during a secret communication. So we start classically, we authenticate classically, but then when we require the generation of the key, that's where the quantum part comes in. That's where the quantum magic happens, either through non-fully distinguishable states such as we saw in the BB84 protocol, or entanglement-based quantum key distribution using the E91 protocol. And whatever the result of that is, it should be a secret, correlated key that's not known to any malicious party.  The secret then gets passed back into the classical network, and we proceed classically again.
+\mmm I see, so let me get this straight. The role of the quantum network really is just one step in a number of steps during a secret communication. So we start classically, we authenticate classically, but then when we require the generation of the key, that's where the quantum part comes in. That's where the quantum magic happens, either through non-fully distinguishable states such as we saw in the BB84 protocol (Ch.~\ref{sec:9_bb84}), or entanglement-based quantum key distribution using the E91 protocol (Ch.~\ref{sec:10_E91}). And whatever the result of that is, it should be a secret, correlated key that's not known to any malicious party.  The secret then gets passed back into the classical network, and we proceed classically again.
 
 \rrr Exactly!
-% (good!)
 
 And so all of this put together makes for an integrated quantum-and-classical system.
 
-So, you're the expert on a couple of these other things that we might want to do, right?
+Let's set aside encryption and look at other applications of quantum networking. You're the expert on a couple of these other things that we might want to do with entanglement.
 
 \begin{figure}[t]
     \centering
@@ -183,51 +178,53 @@ So, you're the expert on a couple of these other things that we might want to do
 \end{figure}
 
 
-\mmm Oh yeah, we've talked about distributed quantum computation where Alice, Bob, Eve, Dave and Charlie, they share some quantum resources, but individually they cannot perform the computation because they don't have enough quantum power. So they have to figure out how to share this quantum power with each other, and to create something that allows them to tackle much larger quantum problems, as in Fig.~\ref{fig:15-5-apps}. Again, they have to share some quantum resources using the quantum network, but then they have to coordinate with classical messages using the classical network. They basically use the classical control provided by the classical network to coordinate the actions they perform on the quantum part of their systems, their quantum processors and memories.
+\mmm We've talked about distributed quantum computation where Alice, Bob, Eve, Dave and Charlie share some quantum resources, but individually they cannot perform some desired computation because they don't have enough quantum power. They have to figure out how to share their individual quantum power with each other, and to create something that allows them to tackle much larger quantum problems. Fig.~\ref{fig:15-5-apps} illustrates how such a system might be organized. They have to share some quantum resources using the quantum network, but then they have to coordinate with classical messages using the classical network. They basically use the classical control provided by the classical network to coordinate the actions they perform on the quantum part of their systems -- their quantum processors and memories.
 
-\rrr So in that case, this network of quantum computers that's going to do this distributed computation, is that distributed computation- is that a complete application? Is that, like, quantum Photoshop or a quantum Oracle database or something? Or...?
+\rrr This network of quantum computers that's going to do this distributed computation, is that a complete application? Is that, like, quantum Photoshop or a quantum Oracle database or something? Or...?
 
-\mmm Well, I would say, "never say never", but for now the problems that we envision tackling with quantum stuff are things that are genuinely quantum, where classical computers can help but are too slow, for example diagonalizing large matrices, finding new properties of new drugs, new materials, and so on. I don't think that there will be an application of a quantum Photoshop. I don't even know how that would work in reality.
+\mmm Well, I would say, "never say never", but for now the problems that we envision tackling with quantum systems are things that are genuinely quantum, where classical computers can help but are too slow. For example, diagonalizing large matrices, finding new properties of new drugs, new materials, and so on. I don't think that there will be an application of a quantum Photoshop. I don't even know how that would work in reality.
 
-\rrr I don't either! So the chemistry one's a really good example, because as I understand it, there will be some classical pre-processing and then we'll do a quantum step and then after you get back your quantum answers, then there's going to be some more classical computing to do, is that right?
+\rrr I don't either! The chemistry one's a really good example, because as I understand it, there will be some classical pre-processing and then we'll do a quantum step and then after you get back your quantum answers, then there's going to be some more classical computing to do, is that right?
 
-\mmm That's true. One approach is known as VQE or the Variational Quantum Eigensolver, where really, again the quantum part in the entire computation is just one tiny step in a series of steps, but it's a very important one that's particularly slow using only classical computation and classical devices.
+\mmm That's true. One tool that is used in quantum algorithms for quantum chemistry is known as VQE, or the Variational Quantum Eigensolver, where the quantum part is just one tiny step in a larger framework. It's a very important step that handles a portion of the problem that is particularly slow when you try to solve it using only classical computation and classical devices.
 
-\rrr Okay, and so all of that will fit together into an integrated quantum and classical system, the information system that other people will then use.
+\rrr Then all of that will fit together into an integrated quantum and classical system --- the information system that other people will then use.
 
-\mmm That's right.
+\mmm That's right. Since this is an example of a single computation, it might be done by multiple quantum computers inside a single data center, instead of across a wide-area network.
 
-\rrr Okay, what's the other one?
+\rrr Okay, tell me about the other application of distributed entanglement that you have in mind.
 
-\mmm Well, the other one is our clock synchronization, where we mentioned that having a global time standard where everybody agrees on the same time is of crucial importance in many, many areas of our modern life. Again, it's not that we want to do something special with quantum time --- the time is classical --- but the way we agree on the same global standard of time comes through using quantum resources such as bipartite entanglement, and so on.
+\mmm Well, the other one is clock synchronization, which we discussed in Sec.~\ref{sec:14-3_clock_sync}.  We mentioned that having a global time standard where everybody agrees on the same time is of crucial importance in many, many areas of our modern life. Again, it's not that we want to do something special with quantum time --- the time is classical --- but the way we agree on the same global standard of time comes through using quantum resources such as bipartite entanglement.
 
 \rrr Okay, once you have that, what's it used for?
 
-\mmm It gets bumped back into the classical network, and it's very important for transportation, for the global positioning system (GPS). In financial markets even tiny fractions of a second are crucial, they can either gain you millions or lose you millions, and so on and so forth. So, time is very important and keeping the same time as somebody on the other side of the world is very important as well.
+\mmm The timing signal gets bumped back into the classical network, where important applications might include transportation, such as the global positioning system (GPS). In financial markets even tiny fractions of a second are crucial, they can either gain you millions or lose you millions. So, time is very important and keeping the same time as somebody on the other side of the world is very important as well.
 
-\rrr Right, so all of this will fit together. There is going to be a quantum network and there's going to be some IP network --- the existing classical Internet or what have you --- and these two things are going to have to come together in order to build these complete integrated hybrid quantum-classical distributed systems.
+\rrr Right, so all of this will fit together. There is going to be a quantum network and there's going to be some IP network --- the existing classical Internet or what have you --- and these two things have to come together in order to build complete, integrated, hybrid quantum-classical distributed systems.
 
 \mmm And they are all synchronized!
 
+When we were talking about a distributed computation like chemistry, we said that it may be done within a data center. This application is useful in wide-area networks as well.
+
 \rrr That's an important point too.
 
-\mmm Okay, so let's see how we can bring these things together.
+\mmm Okay, let's shift direction a little bit and see how we can bring these things together.
 
-\rrr All right, let's discuss standardization. The first thing you're going to do, of course, is to actually build and test some sort of system. Let's say you have a prototype that's up and running. Then what?
+\rrr All right, let's discuss standardization. If you are a developer, the first thing you're going to do, of course, is to actually build and test some sort of system. Let's say you have a prototype that's up and running. Then what?
 
 \mmm Well then, once that is working, we would like everybody else to use it.
 
-\rrr Yeah, and in communications, one of the things that means is that it's really nice if my communications device will talk to your communications device.
+\rrr Yeah, and in communications, that means is that it's  nice if my communications device will talk to your communications device.
 
 \mmm Yes! Even though I was the one who made my device, and you were the one who created your device, maybe using completely different means. So how do we standardize these things?
 
-\rrr Well, there are a lot of meetings and email lists and work that goes to make all of this happen, but in particular, for a concrete example, we might think about the physical layer and the network protocol layer. Those two layers might actually be standardized by different organizations. At the physical layer, for example dealing with electrical signals for the Ethernet or something,  a standards organization will define voltage levels and how long a single cable can be~\footnote{e.g., the standard wired electrical Ethernet today is called \emph{Cat 5e}. See \url{https://en.wikipedia.org/wiki/Category_5_cable}.}. One of the things we talked about back in Sec.~\ref{sec:11-2_mode_dispersion} was distortion of signals due to mode dispersion\index{mode dispersion}. We were talking about that in terms of optical fibers, right? But that same kind of phenomenon happens with any kind of signal, and so one of the things you have to worry about is how much dispersion is allowed so that you can still guarantee that the end nodes will be able to reconstruct the original message. Engineers come together in a meeting and work out the calculations, usually making some trade-offs between reliability, speed and cost, and decide as a group what is best.  Then they write that down in a document called a \emph{specification}. All of that is done for classical signals. What are the equivalents of that for photons?
+\rrr A standard is a document written and agreed to by a group of people, usually from different organizations~\footnote{The word "standard" usually means that it has some official standing, and makers are \emph{required} to follow it, but not all shared specifications have that kind of force; they may just be a temporary, experimental agreement. Here we won't worry about this distinction.}. The information exchange is done in face-to-face meetings, online meetings and extended exchanges on email lists.
 
-\mmm Well, we said that in quantum communication, we're interested in exchanging information via single photons, so we have to think about how to get two different devices to talk, particularly at the border of two networks. They will have to exchange photons. How can we ensure that whatever photons I provide to the other network will be accepted, and vice versa? So I imagine things that will be important will be the wavelength of the photons, the shape of the wave packet of the photons, and basically ensuring that if we are trying to establish an entangled link between two networks, we saw that that happens with the BSA, right? We stressed that the two photons that are coming in, in order for them to interfere, they must be indistinguishable. So somehow, we must have a standard procedure that makes sure that whatever photons you are sending me are the same photons as I'm sending to you, and then they can hit each other, interfere at the BSA, and create entanglement between us, and between the two networks that we are part of.
+For a concrete example, we might think about the physical layer and the network protocol layer. Those two layers might actually be standardized by different organizations. At the physical layer, for example dealing with electrical signals for the Ethernet, a standards organization will define voltage levels and how long a single cable can be~\footnote{e.g., the standard wired electrical Ethernet today is called \emph{Cat 5e}. See \url{https://en.wikipedia.org/wiki/Category_5_cable}.}. One of the things we talked about back in Sec.~\ref{sec:11-2_mode_dispersion} was distortion of signals due to mode dispersion\index{mode dispersion}. We were talking about that in terms of optical fibers, but various types of damage happen with any kind of signal, and so one of the things you have to worry about is how much degradation of the signal is allowed so that you can still guarantee that the end nodes will be able to reconstruct the original message. Engineers come together in a meeting and work out the calculations, usually making some trade-offs between reliability, speed and cost, and decide as a group what is best.  Then they write that down in a document called a \emph{specification}. All of that is done for classical signals. What are the equivalents of that for photons?
 
-\rrr Sounds good to me!
+\mmm Well, we said that in quantum communication, we're interested in exchanging information via single photons, so we have to think about how to get two different devices to talk, particularly at the border between two networks, which will have to exchange photons. How can we ensure that whatever photons I send to the other network will be accepted, and vice versa? I imagine that important factors will include the wavelength of the photons, the shape of the wave packet of the photons, and the time of arrival. When we talked about the BSA in Sec.~\ref{sec:13-3_Bell_state_measurement_2}, we stressed that in order for interference to work properly, the two photons that are coming in must be indistinguishable. Somehow, we must have a standard procedure that makes sure that whatever photons you are sending me are the same as the photons as I'm sending to you. Then when they hit each other and interfere at the BSA, entanglement is created between us, and between the two networks that we are part of.
 
-The kinds of organizations that do standards, like the IETF, the IEEE, ANSI, ITU and organizations like that, will be involved in all of this at some point, too.  In fact, for QKD, some standards are already being developed.  See the ITU-T Y.3800-3999 series~\footnote{\url{https://www.itu.int/ITU-T/recommendations/rec.aspx?id=13990&lang=en}.}
+\rrr The organizations that do standards, like the IETF, the IEEE, ANSI, ITU, will be involved at some point, too.  In fact, for QKD, some standards are already being developed; see the ITU-T Y.3800-3999 series~\footnote{\url{https://www.itu.int/ITU-T/recommendations/rec.aspx?id=13990&lang=en}.}
 
 The Internet Research Task Force (IRTF), a sister organization to the Internet Engineering Task Force (IETF), focuses on bringing the Internet community together to develop a shared understanding of problems and solutions that may eventually lead to standards. IRTF work sometimes leads to documents known as \emph{Requests for Comments}, or RFCs, and the Quantum Internet Research Group published its first quantum repeater network-releated RFC in 2023~\footnote{\url{https://www.rfc-editor.org/info/rfc9340}}.
 
@@ -235,15 +232,15 @@ The Internet Research Task Force (IRTF), a sister organization to the Internet E
 \section{Putting it all together}
 
 
-\mmm Rod, let's put all of these things that we learned in this module into some context.
+\mmm Rod, let's put all of these things that we learned in this module (or book) into some context.
 
 % \rrr All right! But before we do that, let's say, this is the last video of this entire module, it's not the last step, there are a couple of other things after this, but we should thank everybody who's helped us put all of this together! So we should thank, you know, Husni, and we should thank the editors, and we should thank all of the students who have done all of the work on all of this, without you guys, it wouldn't have happened, okay?
 
 % \mmm Thank you very, very much!
 
-\rrr Let's see, to go all the way back to the core idea here, there are four things that a repeater has to do and then once you have repeaters, you can build a network up, right? So the first thing...
+\rrr Let's go all the way back to the core idea. There are four things that a repeater has to do, and then once we have  successfully built repeaters, then we can build a network. So the first thing...
 
-\mmm Well, establish entanglement between two neighboring nodes, so link-level entanglement.
+\mmm Well, first we have to establish entanglement between two neighboring nodes, so link-level entanglement is item one.
 
 \rrr That involves handling loss of photons!
 
@@ -251,69 +248,61 @@ The Internet Research Task Force (IRTF), a sister organization to the Internet E
 
 \rrr Second thing?
 
-\mmm We extend this from neighboring nodes to nodes which are separated by larger distances across multiple hops, so we establish end-to-end entanglement.
+\mmm We extend entanglement from neighboring nodes to nodes which are separated by larger distances across multiple hops, so we establish end-to-end entanglement.
 
 \rrr The primary mechanism we used for doing that was entanglement swapping\index{entanglement swapping}. 
 
 \mmm That's right.
 
-Third, we have to think about how to handle state and operation errors. We saw a few examples which we used in our calculations of unitary errors, but there are also other types of errors, and the main protocol that we used was purification.
+Third, we have to think about how to handle state and operation errors. We saw a few examples in our calculations of unitary errors, but there are also other types of errors. The main protocol that we used was purification, which works against both unitary and non-unitary errors.
 
 \rrr All right, and then the last thing?
 
-\mmm The fourth thing, we have to think more in terms of networking and how to handle things like routing; multiplexing when there is contention for resources; and how to manage all of these things including security.
+\mmm Fourth, we have to think more in terms of networking and how to handle things like routing; multiplexing when there is contention for resources; and how to manage all of these things, including security.
 
-\rrr We talked about routing protocols in the multi-level system that is the Internet earlier in this chapter, but also a lot of that back in Chapter~\ref{ch:repeaters} when discussing individual networks or single-level systems.
+\rrr We talked about routing protocols in the multi-level system that is the classical Internet earlier in this chapter, but also back in Chapter~\ref{ch:repeaters} when discussing individual quantum networks or single-level systems.
 
-All right! So all of those are technical requirements for how you go about building boxes and an internet but people who are taking this module ---
+All right! So all of those are technical requirements for how you go about building boxes and an internet but people who are taking this module (or studying this book) ---
 
 \mmm They're people! 
 
-\rrr Right? People are the ones who design and build and operate these networks. So, this is the first module in what will be a pretty extensive, in-depth sequence on quantum communications and quantum computation. You can choose your specialty within that area, but here, we're focusing on the quantum communications. There will be a whole lot of jobs that are that are possible, a whole lot of career paths for you to go forward, as you complete this entire set of modules and complete a focused degree, a minor, or just a class or two for your own interest. So...
+\rrr Right! \emph{People} are the ones who design and build and operate these networks. This is the first module in what will be an extensive, in-depth sequence on quantum communications and quantum computation.  Our focus is quantum communications, but other groups that are part of this educational effort in Japan are making modules on the other topics, and the set is broad enough that you can choose your specialty. More broadly, as you select from this entire set of modules and complete a focused degree, a minor, or just a class or two for your own interest, many different kinds of jobs are possible leading into various career paths.
 
 \mmm So what are these specializations?
 
 \rrr Well, I'm an architect, so I list architecture first. Architecture involves defining the subsystems within a larger system and defining the relationships, so you define block A and block B and the relationship between the two --- the contractual agreement between them, what messages they exchange, what behavior is expected of the different subsystems. All of that allows you to make forward progress by dividing a large problem into a set of smaller problems, and then each of those can be worked on independently to a certain extent.
 
-Protocols! The protocols define the messages that get exchanged on the wire and the behavior: what you do when you get a message, but also what you do when you \emph{don't} get a message. These and other sets of rules you have to follow, including the sort of promises you make as a condition of participating in a particular network communication, for example, all form a protocol. Someone has to design that.
+Someone has to design the protocols! The protocols define the messages that get exchanged on the wire and the behavior: what you do when you get a message, but also what you do when you \emph{don't} get a message. These and other sets of rules you have to follow, including the sort of promises you make as a condition of participating in a particular network communication, for example, all form a protocol.  As we just discussed, the work in protocol design and standardization involves working with many people.
 
-As we saw just recently, we talked about standardization, right?
+\mmm Hardware is very important. That's closer to my heart as a physicist, but hardware are the physical things that basically allow all of these more abstract things such as architecture and protocols to work. So we need to design the hardware, we need to analyze it, we have to ensure that our quantum boxes or network nodes, including the quantum memories, are distributing entanglement properly. If something goes wrong, what do we do, and how do we test things, and how do we build them?
 
-Hardware!
+\rrr Everything we're talking about here is all super critical. You have to have all of these things in order to build a network, but fundamentally if the hardware doesn't work, we're just toast right off the bat.
 
-\mmm Oh, hardware is very important. That's closer to my heart as a physicist, but hardware are the physical things that basically allow all of these more abstract things such as architecture and protocols to work. So we need to design the hardware, we need to analyze it, we have to ensure that really our boxes, our quantum boxes, our memories that are sitting at quantum nodes, they are distributing entanglement. If something goes wrong, what do we do, and how do we test things, and how do we build them?
-
-\rrr Yeah, so all of that, everything we're talking about here, is all super critical. You have to have all of these things in order to build a network, but fundamentally if the hardware doesn't work, we're just toast right off the bat, right?
-
-So, all right, software! You have to have software too, right? Some of that is software that's internal to the boxes you're building, and so nobody cares if you change that implementation. What they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. (Right.) And that building hardware is hard, right? (Yep.) Building software, people think it's easy, but ---
+You have to have software, too. Some of that is software that's internal to the boxes you're building, and so nobody cares if you change that implementation. What they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. And that building hardware is hard, right? Building software, people think it's easy, but ---
 
 \mmm It doesn't happen automatically.
 
-\rrr Yeah, and it's also the case that software can be iterated more quickly than hardware. You can make small changes to things in software and redeploy software fairly quickly. But! Where software meets protocols, once the protocols are defined, it starts to get to be a lot harder to change. Although protocol software may iterate quickly, because getting that right also takes a lot of work, interoperability is critical and that requires stable interfaces and protocols. You have to have the right balance between hardware and software, both when designing the system and when hiring and assigning people. Although it often seems like it's easier to get software up and running quickly and easily, building a complete and robust system that does everything that's expected and nothing it's not expected to do, that's all hard work, too.
+\rrr It's also the case that software can be iterated more quickly than hardware. You can make small changes to things in software and redeploy software fairly quickly. But! Where software meets protocols, once the protocols are defined, it starts to get to be a lot harder to change. Although protocol software may iterate quickly, because getting that right also takes a lot of work, interoperability is critical and that requires stable interfaces and protocols. You have to have the right balance between hardware and software, both when designing the system and when hiring and assigning people. Although it often seems like it's easier to get software up and running quickly and easily, building a complete and robust system that does everything that's expected and nothing it's not expected to do, that's all hard work, too.
 
 \mmm Right.
 
-\rrr We also have to have operations and management of the networks! So, once all these boxes are built, you know we talked about the routing protocols, and talked about all these other things, somebody's job is going to be to order boxes from the companies that provide this stuff and bring them into your building and unbox them and set them up and turn them on and run them and make sure that they connect to the local systems and that everything works and that keep track of what's working, what's not. All of that falls under the category of operations and maintenance. That's an important career path in the classical Internet as well.
+\rrr We also have to have operations and management of the networks! So, once all these boxes are built, somebody's job is going to be to order boxes from the companies that provide this stuff and bring them into your building and unbox them and set them up and turn them on and run them and make sure that they connect to the local systems and that everything works and then keep track of what's working, what's not. All of that falls under the category of operations and maintenance. That's an important career path in the classical Internet as well.
 
-\mmm The next one is education and community, exactly what we're doing now! We are educating people ---
+\mmm The next one is education and community, exactly what we're doing now through this online course and book! We are educating people ---
 
-\rrr and we're participating in the community! Yes, so we're both researchers and educators, but this applies not only at the university level where we are right now, but also includes high school and post-secondary education, so it can involve educating the public as well as educating people within a formal school context. All of that is really important, so some of you could wind up as high school teachers and that's a perfectly fine career path for going forward, because I'm certain that there are going to be quantum classes in high schools in the future.
+\rrr ...and we're participating in the community! You and I are both researchers and educators, but this applies not only at the university level where we are right now, but also includes high school and post-secondary education. It can involve educating the public as well as educating people within a formal school context. All of that is vital, so some people studying this module could wind up as high school teachers. That's a perfectly fine career path for going forward, because I'm certain that there are going to be quantum classes in high schools in the future.
 
-Another aspect of community is ethics. There is a lot of discussion these days about the ethics of artificial intelligence, or AI. There is just beginning to be a conversation about the ethics of of quantum as well. In addition to the moral issues, we must consider how all this quantum technology is going to fit into society and our legal system as well, because in particular, quantum networks and quantum computers both have a significant impact on cryptography, which is considered to be a sensitive issue.
+Another aspect of community is \emph{ethics}. There is a lot of discussion these days about the ethics of artificial intelligence, or AI. There is just beginning to be a conversation about the ethics of of quantum as well. In addition to the moral issues, we must consider how all this quantum technology is going to fit into society and our legal system, because in particular, quantum networks and quantum computers both have a significant impact on cryptography, which is considered to be a sensitive issue.
 
-\mmm It seems like a very disruptive technology. 
-
-\rrr Potentially!
-
-\mmm Anything quantum, whether it's communication or computation...
+\mmm It seems like a very disruptive technology.  Anything quantum, whether it's communication or computation...
 
 \rrr Businesses and governments both care about this and how it's going to affect their their own operations as well as their own societies.
 
-And then, theory! That would be you, wouldn't it?
+Finally, we come to theory! That would be you, wouldn't it?
 
-\mmm That would be me, yes! Theory is always needed, particularly when it comes to quantum computation and quantum technologies. The things that are made quite important are information theory: the formal mathematical theory of how to process information, how to distribute information, how to communicate information. These are all included under the theory, which can be either quantum or classical, but quantum is the more fun one -- and often the more surprising one.
+\mmm That would be me, yes! Theory is always needed, particularly when it comes to quantum computation and quantum technologies. One quite important field is information theory: the formal mathematical theory of how to process information, how to distribute information, how to communicate information. These are all included under the umbrella of information theory, which can be either quantum or classical, but quantum is the more fun one -- and often the more surprising one.
 
-And the design of new algorithms, of course is the domain of theory! We always want to know how to do things better or how to do things which we haven't thought of, and quantum is the perfect playground for that. There is a truly a large opportunity for creativity to let it run free, and and see what amazing new algorithms and applications we can come up with.
+The design of new algorithms, of course, is the domain of theory! We always want to know how to do things better or how to do things which we haven't thought of, and quantum is the perfect playground for that. There is truly a large opportunity for creativity: let it run free, and and see what amazing new algorithms and applications we can come up with.
 
 \rrr It's a fantastic and exciting time to be in quantum, whether quantum networking or quantum communication. I've been doing this since 2003. Prior to that I was doing primarily classical systems, and you know, every year quantum gets to be more and more exciting, and more and more real.
 
