@@ -43,12 +43,12 @@ If Alice and Bob want to maintain security of the information that they are wish
 So the quality of the entangled state places an upper bound on the security of the key that can be established between Alice and Bob in the sense that \textit{\textbf{better quality of the entangled state implies stronger security}}.
 
 We discussed in Section~\ref{sec:3-5_fidelity} that one way of quantifying the quality of an entangled state is the fidelity.
-Given a ideal state \ket{\psi}, that the quantum network is trying to distribute, the fidelity of the actual mixed state $\rho$ shared between Alice and Bob is given by the expectation value of $\rho$ with respect to \ket{\psi},
+Given a ideal state \ket{\psi} that the quantum network is trying to distribute, the fidelity of the actual mixed state $\rho$ shared between Alice and Bob is given by the expectation value of $\rho$ with respect to \ket{\psi},
 \begin{equation}
     F \left( \rho, \ket{\psi} \right) = \bra{\psi}\rho\ket{\psi}.
 \end{equation}
 It is usually the case in quantum networks that the ideal state is one of the Bell pairs.
-If the ideal state is \ket{\Phi^+}, then the fidelity if $F (\rho, \ket{\Phi^+}) = \bra{\Phi^+}\rho\ket{\Phi^+}$.
+If the ideal state is \ket{\Phi^+}, then the fidelity of $F (\rho, \ket{\Phi^+}) = \bra{\Phi^+}\rho\ket{\Phi^+}$.
 For noiseless quantum channels and operations, perfect quantum memories and in the absence of an eavesdropper, the distributed state will be the ideal state, $\rho = \ket{\Phi^+}\bra{\Phi^+}$.
 The resulting fidelity is
 \begin{equation}
@@ -77,7 +77,7 @@ For the case discussed in Eq.~(\ref{eq:14-1_fidelity_0}), the distributed state 
     \text{Alice applies } Z: \quad & Z \otimes I \ket{\Phi^-} = Z \otimes Z \ket{\Phi^+} = \ket{\Phi^+}, \\
     \text{Bob applies } Z: \quad & I \otimes Z \ket{\Phi^-} = I \otimes Z^2 \ket{\Phi^+} = \ket{\Phi^+}.
 \end{align}
-We used that fact that applying the Pauli $Z$ operation twice cancels its effect, $Z^2 = I$.
+We used the fact that applying the Pauli $Z$ operation twice cancels its effect, $Z^2 = I$.
 
 We saw that both extremes of the fidelity, $F(\rho,\ket{\psi}) = 1$ and $F(\rho,\ket{\psi}) = 0$, suggest that the distributed state is useful for quantum communication.
 Does this mean that distributed states with intermediate values of fidelity are useful too?
@@ -130,7 +130,7 @@ Computing the CHSH violation in Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) but computing 
 This leads to a vanishing CHSH correlation, $\mathcal{S} = 0$.
 This is because the expression for the correlation in Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) is not designed to witness entanglement when the ideal state is \ket{\Phi^+}.
 We have encountered a similar situation when we computed the fidelity between two orthogonal Bell pairs.
-Can we use a similar expression to Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) that witnesses entanglement when the ideal state is \ket{\Phi^+}.
+We can use a similar expression to Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) that witnesses entanglement when the ideal state is \ket{\Phi^+}.
 All we need to do is exchange the plus and minus signs in front of the last two terms,
 \begin{equation}
     \mathcal{S} = \langle A_1 \otimes B_1\rangle + \langle A_1 \otimes B_2\rangle - \langle A_2 \otimes B_1\rangle + \langle A_2 \otimes B_2\rangle.
@@ -155,7 +155,7 @@ Any entangled state of more than two subsystems is called a \textit{\textbf{enta
 It is the job a quantum network to distribute multipartite entangled states between any disjoint subsets of nodes that ask for them.
 
 We begin by considering entangled states of three qubits.
-We saw that there are 4 possible computational basis, \ket{00}, \ket{01}, \ket{10}, and \ket{11}.
+We saw that there are 4 possible computational basis states, \ket{00}, \ket{01}, \ket{10}, and \ket{11}.
 How many computational basis states are there in this case?
 Now there are 8 such states,
 \begin{align}
@@ -179,7 +179,7 @@ It is an equal superposition of \ket{000} and \ket{111}, and is known as the \te
 \begin{equation}
     \ket{GHZ} = \frac{1}{\sqrt{2}} \left( \ket{000} + \ket{111} \right).
 \end{equation}
-Let's see what are some of the properties of the GHZ state.
+Let's see some of the properties of the GHZ state.
 A good start is to measure one of the qubits and see what the state of the remaining qubits is.
 Consider measuring the first qubit in the Pauli $Z$ basis.
 The projectors corresponding to the +1 and -1 outcomes are
@@ -218,14 +218,14 @@ In the computational basis, it is a superposition of three terms,
 \begin{equation}
     \ket{W} = \frac{1}{\sqrt{3}} \left( \ket{001} + \ket{010} + \ket{100} \right).
 \end{equation}
-We can again measure the first qubit in the computational basis again.
+Again we can measure the first qubit in the computational basis.
 this time, the probabilities of the two possible outcomes are
 \begin{align}
     \text{Prob}\{+1\} & = \text{Tr} \{ \Pi^Z_+ \ket{W}\bra{W} \} = \frac{2}{3}, \\
     \text{Prob}\{-1\} & = \text{Tr} \{ \Pi^Z_- \ket{W}\bra{W} \} = \frac{1}{3}.
 \end{align}
 This time the probabilities of the two outcomes are different from each other, unlike in the case of the GHZ state.
-What is more interesting though are the post-measurement states corresponding to the outcomes of the measurement,
+What is more interesting, though, are the post-measurement states corresponding to the outcomes of the measurement,
 \begin{align}
     \text{outcome +1:} & \quad \ket{0}\ket{\Psi^+}, \label{eq:14-2_W_post_meas_0} \\
     \text{outcome -1:} & \quad \ket{1}\ket{00},
@@ -250,21 +250,21 @@ The W state is more robust to qubit loss than the GHZ state.
 Before moving onto $n$-partite entangled states, we will pause and think how the entanglement is shared between the three qubits.
 There is a fundamental tradeoff to how strongly each pair of the qubits can be correlated, known as \textit{\textbf{monogamy of entanglement}}\index{monogamy of entnaglement}.
 It states that the strength of entanglement between a pair of qubits places an upper bound on the amount of entanglement that the third qubit can share with either of the first two qubits.
-Left panel of Figure~\ref{fig:14-2_monogamy} shows a general entnagled state of three qubits, where all three qubits are entangled with each other.
+The left panel of Figure~\ref{fig:14-2_monogamy} shows a general entangled state of three qubits, where all three qubits are entangled with each other.
 Examples corresponding to this situation are the GHZ and W states.
-If a pair of qubits is in a maximally entangled state, for example \ket{\Phi+}, then monogamy of entanglement tell us that the third qubit must in a separable state with the first pair.
-Total state of the three qubits can be written as
+If a pair of qubits is in a maximally entangled state, for example \ket{\Phi+}, then monogamy of entanglement tell us that the third qubit must be in a separable state with the first pair.
+The total state of the three qubits can be written as
 \begin{equation}
     \ket{\Phi^+}\ket{\psi},
 \end{equation}
 where \ket{\psi} is a pure state of the third qubit.
 This is portrayed by the middle panel in Fig.~\ref{fig:14-2_monogamy}.
 Similarly, if qubits 2 and 3 are maximally entangled like in the right panel of Fig.~\ref{fig:14-2_monogamy}, then the first qubit must be completely disentangled with either of them.
-An example of this situation is given by hte post-measurement state of Eq.~(\ref{eq:14-2_W_post_meas_0}), where we measured the first qubit of a W state in Pauli $Z$ basis and obtained the +1 outcome.
+An example of this situation is given by the post-measurement state of Eq.~(\ref{eq:14-2_W_post_meas_0}), where we measured the first qubit of a W state in Pauli $Z$ basis and obtained the +1 outcome.
 
 Monogamy of entanglement is one of the most fundamental properties of quantum mechanics. It is unlike anything that exists in classical physics, and is one of the cornerstones and building blocks which we use in quantum technologies, and particularly in quantum communication.
 Monogamy of entanglement is instrumental in guaranteeing security in the E91 QKD protocol.
-The stronger Alice's and Bob's qubits are entangled the less information an eavesdropper can learn about the secret key.
+The more strongly Alice's and Bob's qubits are entangled, the less information an eavesdropper can learn about the secret key.
 If the shared pair of qubits between and Alice and Bob is maximally entangled, the eavesdropper can learn nothing.
 
 We can extend our discussion of GHZ and W states to $N$ qubits.
@@ -287,12 +287,12 @@ Since the $N$-qubit W state is an equal superposition of $N$ terms, he normaliza
 \end{figure}
 
 GHZ and W states are not the only important examples of multipartite entangled states.
-A prominent example of $N$-partite example is the \textbf{\textit{graph state}}\index{graph state}.
+A prominent example of $N$-partite entanglement is the \textbf{\textit{graph state}}\index{graph state}.
 This state can be represented visually as a set of vertices $V$ which are connected by a set of edges $E$.
-Such an object is known as a \textit{\textbf{graph}}\index{graph}\footnote{Not to be confused with a graph of a function.}
+Such an object is known as a \textit{\textbf{graph}}\index{graph}\footnote{Not to be confused with a graph of a function.}.
 Figure~\ref{fig:14-2_graph_state} shows an example of a graph with vertex set $V=\{V_1, V_2, V_3, V_4\}$, connected by edges from the edge set $E=\{ E_{12}, E_{23}. E_{13}, E_{34} \}$.
 The corresponding graph state is obtained by placing a qubit at each vertex of the graph, initialized in $\ket{+} = (\ket{0} + \ket{1}) / \sqrt{2}$, and applying the \textbf{\textit{control-phase gate}}\index{control-phase gate} $CZ_{ij}$ between qubits whose vertices are connected by and edge $E_{ij}$.
-The control-pahse gate $CZ$ is a two-qubit gate defined as
+The control-phase gate $CZ$ is a two-qubit gate defined as
 \begin{equation}
     CZ_{ij} = \ket{0}\bra{0}_i \otimes I_j + \ket{1}\bra{1}_i \otimes Z_j = \begin{pmatrix}
         1 & 0 & 0 & 0 \\
@@ -308,7 +308,7 @@ The control-pahse gate $CZ$ is a two-qubit gate defined as
     \label{fig:14-2_cluster_state}
 \end{figure}
 The control-phase gate does nothing to the target qubit $j$ if the control qubit $i$ is in the \ket{0} state.
-If the control $i$ is in the \ket{1}, the control-phase gate applies Pauli $Z$ to the target qubit $j$.
+If the control $i$ is in the \ket{1} state, the control-phase gate applies Pauli $Z$ to the target qubit $j$.
 Applying this rule we can find the state vector for the graph state \ket{G} in Fig.~\ref{fig:14-2_graph_state},
 \begin{align}
     \ket{G} & = CZ_{12} CZ_{23} CZ_{13} CZ_{34} |++++\rangle_{1234} \nonumber\\
@@ -318,7 +318,7 @@ Applying this rule we can find the state vector for the graph state \ket{G} in F
     & \; \; \; \; - |1100\rangle - |1101\rangle - |1110\rangle + |1111\rangle \\
     & = \frac{1}{2} ( |0+0+\rangle + |0-1-\rangle + |1-0+\rangle - |1+1-\rangle ).
 \end{align}
-If the underlying graph has a regular structure the resulting graph state is usually called a \textbf{\textit{cluster state}}\index{cluster states}.
+If the underlying graph has a regular structure, as in Fig.~\ref{fig:14-2_cluster_state} the resulting graph state is usually called a \textbf{\textit{cluster state}}\index{cluster states}.
 
 Graph states and cluster states play an important role in quantum computation and quantum communication.
 Cluster states are a resource state for a particular computational model known as ``measurement-based quantum computation''.
@@ -342,8 +342,8 @@ So far, we have discussed two applications of quantum networks; quantum teleport
 Before concluding this chapter, we will briefly discuss two other applications.
 In this Section, we look at \textbf{\textit{clock synchronization}}\index{clock synchronization}.
 
-Establishing universal time standard is fundamentally important in many areas of modern life.
-Telecommunication network requires accurate synchronization in order to deliver reliable operation of its multitude of components.
+Establishing a universal time standard is fundamentally important in many areas of modern life.
+A telecommunication network requires accurate synchronization in order to deliver reliable operation of its multitude of components.
 Synchronization plays an important role in the Global Positioning System (GPS), ensuring accurate position tracking.
 Further examples of why clock synchronization is important include financial markets and transportation networks.
 
@@ -366,8 +366,8 @@ We then transport this smaller clock very slowly to the location of clock 2, whi
 \end{figure}
 
 Qubits can also act as small clocks.
-Imagine preparing its state in $|+\rangle = (|0\rangle + |1\rangle) / \sqrt{2}$.
-By applying a suitable operation we can make the state of the qubit precess in the $x$-$y$ plane of the Bloch sphere at a constant angular velocti $\Omega$ as shown in the left panel of Fig.~\ref{fig:14-3_bloch}.
+Imagine preparing the state of a qubit in $|+\rangle = (|0\rangle + |1\rangle) / \sqrt{2}$.
+By applying a suitable operation we can make the state of the qubit precess in the $x$-$y$ plane of the Bloch sphere at a constant angular velocity $\Omega$ as shown in the left panel of Fig.~\ref{fig:14-3_bloch}.
 The state of the qubit at time $t$ will then be given by
 \begin{equation}
     |\psi(t)\rangle = \frac{|0\rangle + e^{i\Omega t} |1\rangle}{\sqrt{2}}.
@@ -376,11 +376,12 @@ The dynamics of this qubit has a period of $T = 2\pi / \Omega$, meaning that the
 
 We can now consider a second qubit, also precessing at the angular frequency $\Omega$, but initialized at a slightly different state, given by the offset $\delta$, as shown in the right panel of Fig.~\ref{fig:14-3_bloch}.
 Eliminating this phase lag is very similar to the traditional problem of clock synchronization.
-Schemes of Einstein and Eddington can be applied in this scenario as well.
-However, they both with a downside that they require a direct transmission of light or matter.
+The schemes of Einstein and Eddington can be applied in this scenario as well.
+However, they both have the downside that they require direct transmission of light or matter.
 Depending on the scenario, this may be impractical or outright impossible.
 Thankfully, we can employ distributed entanglement between the two parties in order to synchronize their qubit clocks.
 The precise steps of the protocol that achieves this are beyond the scope of this book but more details can be found in the Further Reading section.
+
 Clock synchronization is another example where entanglement is used as a global resource.
 The correlations of a Bell pair can be used to establish a single time frame shared between two distant locations.
 Clock synchronization is not just another application of quantum networks but often is a hidden assumption behind many of the applications of quantum technologies, some of which we have discussed already.
@@ -409,12 +410,12 @@ Each QC node has limited quantum resources in the sense that we mentioned above.
 Distributed quantum computation takes the original large problem which cannot be solved by a single QC node, and breaks it into smaller pieces which can be tackled by the QC nodes.
 The individual QC nodes share their quantum resources in order to boost the performance or the efficiency of a single QC node.
 
-Primary means of exchanging quantum information between the QC nodes is teleportation using pre-shared Bell pairs.
+The primary means of exchanging quantum information between the QC nodes is teleportation using pre-shared Bell pairs.
 Another way of achieving distributed quantum computation is to entangle the QC nodes to form a larger distributed multipartite entangled state, which can serve as a substrate for measurement-based quantum computation.
 In such a case the nodes then need to coordinate their measurements accordingly.
 Whatever the means of achieving distributed quantum computation might be, quantum networks play an essential role in connecting the individually weak QC nodes using distributed entangled states.
 The main questions of interest in distributed quantum computation are how much entanglement is needed in order to exchange quantum messages between the nodes, and how to efficiently coordinate the computation between the QC nodes.
-Important question that needs to be addressed is whether the QC nodes can trust each other, and how much is one node willing to reveal to others about the local computation that it can execute.
+An important question that needs to be addressed is whether the QC nodes can trust each other, and how much one node is willing to reveal to others about the local computation that it can execute.
 
 The issue of trust brings us to our next application of quantum networks.
 Early quantum computers will be sparse due to immense resources needed to run and maintain them.
