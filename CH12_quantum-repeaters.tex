@@ -73,7 +73,7 @@ This is assuming ideal couplers (to collect photons emitted by the memories), fi
 Once the measurement is successful, the entanglement between the memory-photon pairs is transferred to be between the memories and the link-level entanglement is established.
 
 A crucial point about this scheme, and other link-level architectures, is that the photons arriving at the BSA to be measured in the Bell basis must be \textit{\textbf{indistinguishable}}.
-This can be achieved by arranging that the photons arrive simultaneously. 
+This can be achieved by arranging for the photons to arrive simultaneously. 
 Even relatively small delays in their arrival times reduce the indistinguishability of the photons, resulting in a diminishing success probability of the Bell state measurement.
 
 \begin{figure}[t]
@@ -259,10 +259,10 @@ The second issue of the qubits being at distant locations can be overcome by sim
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson12/12-4_purification.pdf}
-    \caption[Entanglement purification for Pauli X errors]{Entanglement purification for detecting Pauli $X$ errors.}
-    \label{fig:12-4_purificaiton}
+    \caption[Entanglement purification for Pauli X errors]{Entanglement purification for detecting Pauli $X$ errors. In this diagram, each line represents a Bell pair, rather than a single qubit, shared between Alice ande Bob.}
+    \label{fig:12-4_purification}
 \end{figure}
-Let's now introduce the detailed protocol for entanglement purification for the Pauli $X$ error, pictured in Fig.~\ref{fig:12-4_purificaiton}.
+Let's now introduce the detailed protocol for entanglement purification for the Pauli $X$ error, pictured in Fig.~\ref{fig:12-4_purification}.
 The horizontal wires represent Bell pairs shared between Alice and Bob.
 Ideally, these states are $\ket{\Phi^+}_1$ and  $\ket{\Phi^+}_2$, but due to noise they will be mixed states $\rho_1$ and $\rho_2$.
 Alice applies a CNOT gate on the qubits in her possession.
@@ -335,7 +335,7 @@ The total success probability of this purification procedure is
 \end{equation}
 The state that Alice and Bob share after a successful purification is
 \begin{equation}
-    \rho = F' |\Phi^+\rangle\langle\Phi^+| + (1 - F') |\Psi^+\rangle\langle\Psi^+|,
+    \rho' = F' |\Phi^+\rangle\langle\Phi^+| + (1 - F') |\Psi^+\rangle\langle\Psi^+|,
 \end{equation}
 where the new fidelity $F'$ is related to the initial one via
 \begin{align}
@@ -362,8 +362,7 @@ There are a few missing parts, the two main being routing, and multiplexing and 
 
 At the beginning of this chapter, we saw in Fig.~\ref{fig:12-1_all_to_all} that the job of a quantum network is to establish end-to-end entanglement between distant nodes, which is then consumed by applications such as quantum key distribution or applications that use teleportation.
 The network needs to somehow pick a suitable path along which to execute entanglement swapping that leads to this end-to-end connection.
-But not only that.
-The figure shows only one request being considered.
+The second issue is that the figure shows only one request being considered, but of course a network is used by more than one application at a time.
 The network should be able to satisfy multiple simultaneous connection requests between distinct end nodes.
 
 \begin{figure}[t]
@@ -383,22 +382,22 @@ Option 1 requires link-level entanglement between A-B and B-E before the entangl
 Similarly, option 3 requires link-level entanglement on the A-D, D-C, and C-E links.
 
 In order to evaluate which path is best, we need to look at the cost for establishing the corresponding link-level entanglement, and then how to combine these costs in order to establish the cost for the entire path.
-One possible way of evaluating the link-level entanglement is \textit{\textbf{seconds per Bell pair at a threshold fidelity}}.
+One possible way to evaluate the link-level entanglement is \textit{\textbf{seconds per Bell pair at a threshold fidelity}}.
 We discussed how establishing a link-level entanglement involves photon emission from quantum memories, and subsequent measurement of these photons in the Bell basis.
 These processes are all probabilistic, and so is loss of the photons in fiber.
 Depending on the properties of the fiber as well as the quantum hardware at each node, the average time required to successfully establish link-level Bell pair will vary.
 
 How do we combine these costs for each individual links in order to know the full cost of establishing end-to-end entanglement over a path?
 One possibility is to use \textit{\textbf{Dijkstra's shortest path first algorithm}}\index{Dijkstra's shortest path first}\label{dijkstra}.
-We can sum the link-level costs for an individual path in order to estimate the total cost.  In order to make the cost of establishing link-level entanglement fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
-The exact value of this threshold is dictated by the needs of the application that the Bell pairs are requested for.
+We can sum the link-level costs for an individual path in order to estimate the total cost.  As we have just seen, sometimes we need to purify Bell pairs, which reduces our effective throughput by at least a factor of two. In order to balance the trade off between the rate of making raw Bell pairs and fidelity and make the comparison between two links fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
+The exact value of this threshold is dictated by the needs of the application that is requesting the Bell pairs.
 
 The next issue that networks have to deal with is \textit{\textbf{multiplexing}}.
 The network will have to satisfy multiple simultaneous connection requests for end-to-end entanglement.
-A good multiplexing scheme helps the network decide how to allocate its resources to satisfy these requests in a timely, reliable and fair way.
-The right panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows four simultaneous requests between nodes A-K, B-J, C-H, and D-G.
+A good multiplexing scheme helps the network decide how to allocate its resources to satisfy these requests in a timely, reliable and fair manner.
+The right panel of Fig.~\ref{fig:12-5_routing_multiplexing} shows four simultaneous requests for entanglement between nodes A-K, B-J, C-H, and D-G.
 All of these requests need to use link-level entanglement between E-F, creating \emph{contention}\index{contention} on this link.
-Another link with contention is F-I.
+Another link with contention is F-I, although only two connections need to use that link.
 The network must know how to handle such requests, where a single link needs to be shared between multiple users or connections.
 
 In this chapter, we have seen the four requirements for building a quantum network.
