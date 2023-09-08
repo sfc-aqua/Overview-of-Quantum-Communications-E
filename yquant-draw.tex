@@ -1,0 +1,1035 @@
+\newcount\yquant@draw@@currentcontroltype%
+
+\protected\def\yquant@draw@init#1#2{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      % for connected subcircuit wires, check if this actually changes the type [happens for formerly discarded output wires] and flush the wire if necessary
+      \edef\yquant@draw@init@type{\yquant@register@get@type{#1}}%
+      \unless\if\yquant@draw@init@type#2\relax%
+         \yquant@circuit@flushwire{#1}%
+         \ifx\yquant@draw@init@type\yquant@register@type@none%
+            % in case the wire was discarded before, forget about the lastx position, it should always start with the others
+            \yquant@register@get@lastwire{#1}\wirelast%
+            \yquant@register@set@lastwire{#1}{%
+               {\yquant@draw@subcircuit@wirestart}{\yquant@draw@subcircuit@wirestart}{}%
+               {\unexpanded\expandafter\expandafter\expandafter{%
+                   \expandafter\@fourthoffour\wirelast%
+                }}%
+            }%
+         \fi%
+         \yquant@register@set@type{#1}{#2}%
+      \fi%
+   \else%
+      % for new wires, reset the type, and if this a subcircuit, put the appropriate x position in place. It might have changed from its initial value during preparation stage
+      \yquant@register@set@type{#1}{#2}%
+      \ifdefined\yquant@draw@subcircuit@wirestart%
+         \yquant@register@set@x{#1}{\yquant@draw@subcircuit@wirestart}%
+         \yquant@register@set@lastwire{#1}{%
+            {\yquant@draw@subcircuit@wirestart}{\yquant@draw@subcircuit@wirestart}{}{}%
+         }%
+      \fi%
+   \fi%
+}
+
+\def\yquant@draw@subcircuit@leftpos{0pt}% outermost circuit: 0pt
+\protected\long\def\yquant@draw@group#1#2#3#4#5#6{%
+   \begingroup%
+      \yquant@register@get@maxxlist\yquant@draw@@x{#6}%
+      \ifx F#2%
+         \yquant@draw@@currentcontroltype=0 %
+      \else%
+         \yquant@draw@@currentcontroltype=#2 %
+      \fi%
+      \let\yquant@circuit@extendcontrolline@cmd=\empty%
+      \let\yquant@circuit@extendcontrolline@prev=\relax%
+      \let\yquant@circuit@extendcontrolline@clip=\empty%
+      \let\yquant@circuit@extendmultiline@total=\empty%
+      \def\yquant@draw@@width{#1}%
+      \def\yquant@draw@@style{#4}%
+      \def\yquant@draw@@content{#5}%
+      \def\yquant@draw@@idx@content{0}%
+      \def\yquant@draw@@idx@pcontrol{0}%
+      \def\yquant@draw@@idx@ncontrol{0}%
+      % If the quotes library is loaded, activate it. (else, this is by default \relax)
+      \tikz@enable@node@quotes%
+      \yquant@config@operator@position@rightalignfalse%
+      \yquant@config@operator@position@advancetrue%
+      \pgfkeys{/yquant/internal/before styles}%
+      \yquant@set{#3}%
+      % if the operator is right-aligned, we will not advance, as we must assume that the x position is already chosen appropriately
+      \ifyquant@config@operator@position@rightalign%
+         % for rightalign, we instead overwrite the lastx configurations, so that the outgoing wire starts after the operator.
+         \forlistloop\yquant@draw@group@rightadvance{#6}%
+      \else%
+         \ifyquant@env@seamless{%
+            \unless\ifdim\yquant@draw@@x=\yquant@draw@subcircuit@leftpos%
+               \dimdef\yquant@draw@@x{%
+                  \yquant@draw@@x\yquant@orientation@plus\yquant@config@operator@sep%
+               }%
+            \fi%
+         }{%
+            \dimdef\yquant@draw@@x{%
+               \yquant@draw@@x\yquant@orientation@plus\yquant@config@operator@sep%
+            }%
+         }%
+         \ifyquant@config@operator@position@advance%
+            \dimdef\newx{\yquant@draw@@x\yquant@orientation@plus#1}%
+            \forlistloop\yquant@draw@group@advance{#6}%
+         \fi%
+         \dimdef\yquant@draw@@x{\yquant@draw@@x\yquant@orientation@plus.5\dimexpr#1\relax}%
+      \fi%
+}
+
+\protected\def\yquant@draw@group@advance#1{%
+   \yquant@register@set@x{#1}\newx%
+}
+
+\protected\def\yquant@draw@group@rightadvance#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      % for connected subcircuit wires, make sure to flush the wire until the beginning.
+      \yquant@circuit@flushwire{#1}%
+   \fi%
+}
+
+\protected\def\yquant@draw@endgroup#1#2#3{%
+      \unless\ifx F#1%
+         \yquant@draw@cline%
+      \fi%
+      \ifcase#3\relax%
+      \or%
+         \yquant@draw@alias@ctrl{#2}n%
+      \or%
+         \yquant@draw@alias@ctrl{#2}p%
+      \or%
+         \yquant@draw@alias@ctrl{#2}p%
+         \yquant@draw@alias@ctrl{#2}n%
+      \or%
+         \yquant@draw@alias{#2}%
+      \or%
+         \yquant@draw@alias{#2}%
+         \yquant@draw@alias@ctrl{#2}n%
+      \or%
+         \yquant@draw@alias{#2}%
+         \yquant@draw@alias@ctrl{#2}p%
+      \or%
+         \yquant@draw@alias{#2}%
+         \yquant@draw@alias@ctrl{#2}p%
+         \yquant@draw@alias@ctrl{#2}n%
+      \fi%
+      \yquant@circuit@extendmultiline@total%
+   \endgroup%
+}
+
+\protected\def\yquant@draw@injectiongroup#1#2\yquant@draw@endinjectiongroup#3#4#5{%
+   \csdef{yquant@draw@@injection@#1}{%
+      \yquant@draw@begininjection#2\yquant@draw@stopinjection{#3}{#4}{#5}%
+   }%
+}
+
+\protected\long\def\yquant@draw@begininjection#1#2#3#4#5#6{%
+   % this is called within another draw group, so lots of things are already set up
+   \begingroup%
+      \def\yquant@draw@@style{#4}%
+      \def\yquant@draw@@content{#5}%
+      \let\yquant@draw@@idx@content=\yquant@draw@@idx@pcontrol%
+      \yquant@set{#3}% this will accumulate with outer styles from the enclosing draw group, but there is nothing we can do about it
+}
+
+\protected\def\yquant@draw@stopinjection#1#2#3{%
+   \ifcase#3\relax%
+   \or%
+      \yquant@draw@alias@ctrl{#2}n%
+   \or%
+      \yquant@draw@alias@ctrl{#2}p%
+   \or%
+      \yquant@draw@alias@ctrl{#2}p%
+      \yquant@draw@alias@ctrl{#2}n%
+   \or%
+      \yquant@draw@alias{#2}%
+   \or%
+      \yquant@draw@alias{#2}%
+      \yquant@draw@alias@ctrl{#2}n%
+   \or%
+      \yquant@draw@alias{#2}%
+      \yquant@draw@alias@ctrl{#2}p%
+   \or%
+      \yquant@draw@alias{#2}%
+      \yquant@draw@alias@ctrl{#2}p%
+      \yquant@draw@alias@ctrl{#2}n%
+   \fi%
+   \edef\process{%
+         \endgroup%
+         \ifyquant@config@draw@quality%
+            \def\noexpand\yquant@circuit@extendcontrolline@clip{%
+               \unexpanded\expandafter{\yquant@circuit@extendcontrolline@clip}%
+            }%
+         \fi%
+         \def\noexpand\yquant@circuit@extendcontrolline@prev{%
+            \unexpanded\expandafter{\yquant@circuit@extendcontrolline@prev}%
+         }%
+         \def\noexpand\yquant@circuit@extendcontrolline@cmd{%
+            \unexpanded\expandafter{\yquant@circuit@extendcontrolline@cmd}%
+         }%
+         \def\noexpand\yquant@circuit@extendmultiline@total{%
+            \unexpanded\expandafter{\yquant@circuit@extendmultiline@total}%
+         }%
+         \def\noexpand\yquant@draw@@idx@pcontrol{\yquant@draw@@idx@content}%
+      }%
+   \process%
+}
+
+\protected\def\yquant@draw@inject#1{%
+   \csname yquant@draw@@injection@#1\endcsname%
+   \csgundef{yquant@draw@@injection@#1}%
+}
+
+\protected\def\yquant@draw@inject@outer#1{%
+   % we thought we wanted to inject #1, however, this was not valid; so now insert it directly.
+   \expandafter\expandafter\expandafter\yquant@draw@inject@outer@helper%
+      \csname yquant@draw@@injection@#1\endcsname%
+   \csgundef{yquant@draw@@injection@#1}%
+}
+
+\def\yquant@draw@inject@outer@helper\yquant@draw@begininjection#1\yquant@draw@stopinjection{%
+   \yquant@draw@group%
+      #1%
+   \yquant@draw@endgroup%
+}
+
+\protected\def\yquant@draw@single#1#2{%
+   \let\idx=\yquant@draw@@idx@content%
+   \yquant@config@operator@multifalse%
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@draw@@x, \yquant@register@get@y{#1})%
+         node[/yquant/every operator, \yquant@draw@@style, /yquant/this operator,%
+              name prefix=, name suffix=, name=yquantbox]%
+         {\unexpanded\expandafter{\yquant@draw@@content}};%
+      \ifyquant@config@draw@quality%
+         \pgfshapeclippath{yquantbox}%
+                          {/yquant/every operator, \yquant@draw@@style,%
+                           /yquant/this operator}%
+      \fi%
+   }%
+   \cmd%
+   \yquant@circuit@extendwire{#1}{center}%
+   \expandafter\yquant@circuit@extendcontrolline\expandafter%
+      {\the\yquant@draw@@currentcontroltype}\yquant@draw@@x%
+   % check for empty name parameter
+   \ifstrempty{#2}\relax{%
+      \pgfnodealias{\tikz@pp@name{#2}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\def\yquant@draw@multi#1#2#3#4#5{%
+   \yquant@config@operator@multitrue%
+   \let\idx=\yquant@draw@@idx@content%
+   \edef\yquant@draw@multi@@name{#5}%
+   \def\yquant@draw@@idx@multipart{0}%
+   \let\yquant@circuit@extendmultiline@cmd=\empty%
+   \let\yquant@circuit@extendmultiline@prev=\relax%
+   \let\yquant@circuit@extendmultiline@clip=\empty%
+   \let\yquant@register@multi@contiguous=\yquant@draw@multi@contiguous%
+   #4%
+   \ifnum\yquant@draw@@idx@multipart>1 %
+      % make sure also the first split part is available via the "-s0" suffix
+      \unless\ifx\yquant@draw@multi@@name\empty%
+         \pgfnodealias{\tikz@pp@name{\yquant@draw@multi@@name-s0}}%
+                      {\tikz@pp@name{\yquant@draw@multi@@name}}%
+      \fi%
+      \yquant@draw@mline@prep%
+   \fi%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\def\yquant@draw@multi@contiguous#1#2#3{%
+   % We need to somehow extract the y radius
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@draw@@x, \the\dimexpr.5\dimexpr%
+                         \yquant@register@get@y{#1}+\yquant@register@get@y{#2}\relax%
+                      \relax)%
+         node[/yquant/every operator, \yquant@draw@@style, /yquant/this operator,%
+              /yquant/internal/multi main=\ifnum#3=1 true\else false\fi\unless\ifnum#1=#2 ,%
+              space radius/.expanded=\the\dimexpr.5\dimexpr\yquant@register@get@ydist{#1}{#2}\relax\relax+%
+                     .5*\noexpand\pgfkeysvalueof{/tikz/\yquant@orientation@y\space radius}\fi,%
+              name prefix=, name suffix=, name=yquantbox]%
+            {\unexpanded\expandafter{\yquant@draw@@content}};%
+      \ifyquant@config@draw@quality%
+         \pgfshapeclippath{yquantbox}%
+                          {/yquant/every operator, \yquant@draw@@style,%
+                           /yquant/this operator}%
+      \fi%
+   }%
+   \cmd%
+   \yquant@for \i := #1 to #2 {%
+      \yquant@circuit@extendwire\i{center}%
+   }%
+   \yquant@circuit@extendmultiline\yquant@draw@@x%
+   \expandafter\yquant@circuit@extendcontrolline\expandafter%
+      {\the\yquant@draw@@currentcontroltype}\yquant@draw@@x%
+   \unless\ifx\yquant@draw@multi@@name\empty%
+      \ifnum\yquant@draw@@idx@multipart=0 %
+         \pgfnodealias{\tikz@pp@name{\yquant@draw@multi@@name}}{yquantbox}%
+      \else%
+         \pgfnodealias{\tikz@pp@name{\yquant@draw@multi@@name-s\yquant@draw@@idx@multipart}}{yquantbox}%
+      \fi%
+   \fi%
+   \numdef\yquant@draw@@idx@multipart{\yquant@draw@@idx@multipart+1}%
+}
+
+\protected\def\yquant@draw@multiinit#1#2#3#4#5{%
+   \let\idx=\yquant@draw@@idx@content%
+   \@tempdima=\yquant@orientation@minus.5\dimexpr\yquant@config@register@sep\relax%
+   \dimdef\yquant@draw@multiinit@@min{\yquant@register@get@y{#1}-\@tempdima}%
+   \dimdef\yquant@draw@multiinit@@max{\yquant@register@get@y{#2}+\@tempdima}%
+   \dimdef\yquant@draw@multiinit@@total{%
+      \yquant@draw@multiinit@@max-\yquant@draw@multiinit@@min%
+   }%
+   \def\pgfdecorationsegmentaspect{0}%
+   \let\yquant@register@multi@contiguous=\yquant@draw@multiinit@contiguous%
+   \let\pgfdecorationsegmentfromto=\empty%
+   #4%
+   \edef\pgfdecorationsegmentfromto{\expandafter\@gobble\pgfdecorationsegmentfromto}%
+   \yquant@config@operator@multitrue%
+   % We need to somehow extract the y radius
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@draw@@x, \the\dimexpr.5\dimexpr%
+                         \yquant@draw@multiinit@@min+\yquant@draw@multiinit@@max\relax%
+                      \relax)%
+         node[/yquant/every operator, \yquant@draw@@style,
+              \ifnum\yquant@compat<2 /yquant/every multi label,\fi%
+              /yquant/this operator,%
+              space radius=\yquant@abs{\the\dimexpr.5\dimexpr\yquant@draw@multiinit@@total\relax\relax},%
+              name prefix=, name suffix=, name=yquantbox]%
+            {\unexpanded\expandafter{\yquant@draw@@content}};%
+      \ifyquant@config@draw@quality%
+         \pgfshapeclippath{yquantbox}%
+                          {/yquant/every operator, \yquant@draw@@style,%
+                           \ifnum\yquant@compat<2 /yquant/every multi label,\fi%
+                           /yquant/this operator}%
+      \fi%
+   }%
+   \cmd%
+   \yquant@for \i := #1 to #2 {%
+      \yquant@circuit@extendwire\i{center}%
+   }%
+   % no control line (init doesn't allow for those, so just save the no-op), no multi line
+   % check for empty name parameter
+   \ifstrempty{#5}\relax{%
+      \pgfnodealias{\tikz@pp@name{#5}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\def\yquant@draw@multiinit@contiguous#1#2#3{%
+   \edef\yquant@draw@multiinit@@from{%
+      \pgfmath@tonumber{\dimexpr%
+         \dimexpr\yquant@register@get@y{#1}-\@tempdima-\yquant@draw@multiinit@@min\relax*65536/%
+         \dimexpr\yquant@draw@multiinit@@total\relax%
+      \relax}%
+   }%
+   \edef\yquant@draw@multiinit@@to{%
+      \pgfmath@tonumber{\dimexpr%
+         \dimexpr\yquant@register@get@y{#2}+\@tempdima-\yquant@draw@multiinit@@min\relax*65536/%
+         \dimexpr\yquant@draw@multiinit@@total\relax%
+      \relax}%
+   }%
+   \eappto\pgfdecorationsegmentfromto{,%
+      \yquant@draw@multiinit@@from-\yquant@draw@multiinit@@to%
+   }%
+   % We need to decide where to put the brace arch.
+   \ifdim\yquant@draw@multiinit@@from pt<.5pt %
+      \ifdim\yquant@draw@multiinit@@to pt>.5 pt%
+         % This segment covers the true 1/2 position, take it
+         \def\pgfdecorationsegmentaspect{.5}%
+      \else%
+         % We are not there yet, so the end of this segment is the closest we can get to the mid so far
+         \edef\pgfdecorationsegmentaspect{\yquant@draw@multiinit@@to}%
+      \fi%
+   \else%
+      % We are already beyond the mid...
+      \ifdim\pgfdecorationsegmentaspect pt<.5pt %
+         % ...but we did not find an ideal position yet
+         \ifdim\dimexpr\yquant@draw@multiinit@@from pt-.5pt\relax<%
+            \dimexpr.5pt-\pgfdecorationsegmentaspect pt\relax%
+            % this one is closer to the mid than anything found before
+            \edef\pgfdecorationsegmentaspect{\yquant@draw@multiinit@from}%
+         \fi%
+      \fi%
+   \fi%
+}
+
+\protected\long\def\yquant@draw@output@single#1#2{%
+   \let\idx=\yquant@draw@@idx@content%
+   \yquant@config@operator@multifalse%
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@circuit@endwires@x, \yquant@register@get@y{#1})%
+         node[\ifnum\yquant@compat>1 /yquant/every operator,\fi%
+              /yquant/every output,%
+              /yquant/every \yquant@register@type@tostring{\yquant@register@get@type{#1}} output,%
+              \yquant@draw@@style, /yquant/this operator,%
+              name prefix=, name suffix=, name=yquantbox]%
+         {\unexpanded\expandafter{\yquant@draw@@content}};%
+      \ifyquant@config@draw@quality%
+         \ifdefined\yquant@parent%
+            \pgfshapeclippath{yquantbox}%
+                             {\ifnum\yquant@compat>1 /yquant/every operator,\fi%
+                              /yquant/every output,%
+                              /yquant/every \yquant@register@type@tostring{\yquant@register@get@type{#1}} output,%
+                              \yquant@draw@@style,%
+                              /yquant/this operator}%
+         \fi%
+      \fi%
+   }%
+   \cmd%
+   % only extend for subcircuits
+   \ifdefined\yquant@parent%
+      \yquant@circuit@extendwire{#1}{center}%
+   \fi%
+   % check for empty name parameter
+   \ifstrempty{#2}\relax{%
+      \pgfnodealias{\tikz@pp@name{#2}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\long\def\yquant@draw@output@multi#1#2#3#4#5{%
+   \let\idx=\yquant@draw@@idx@content%
+   \@tempdima=\yquant@orientation@minus.5\dimexpr\yquant@config@register@sep\relax%
+   \dimdef\yquant@draw@multiinit@@min{\yquant@register@get@y{#1}-\@tempdima}%
+   \dimdef\yquant@draw@multiinit@@max{\yquant@register@get@y{#2}+\@tempdima}%
+   \dimdef\yquant@draw@multiinit@@total{%
+      \yquant@draw@multiinit@@max-\yquant@draw@multiinit@@min%
+   }%
+   \def\pgfdecorationsegmentaspect{0}%
+   \let\yquant@register@multi@contiguous=\yquant@draw@multiinit@contiguous%
+   \let\pgfdecorationsegmentfromto=\empty%
+   #4%
+   \edef\pgfdecorationsegmentfromto{\expandafter\@gobble\pgfdecorationsegmentfromto}%
+   \yquant@config@operator@multitrue%
+   % We need to somehow extract the y radius
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@circuit@endwires@x, \the\dimexpr.5\dimexpr%
+                         \yquant@draw@multiinit@@min+\yquant@draw@multiinit@@max\relax%
+                      \relax)%
+         node[\ifnum\yquant@compat>1 /yquant/every operator,\fi /yquant/every output,%
+              \yquant@draw@@style,%
+              \ifnum\yquant@compat<2 /yquant/every multi output,\fi%
+              /yquant/this operator,%
+              space radius=\yquant@abs{\the\dimexpr.5\dimexpr\yquant@draw@multiinit@@total\relax\relax},%
+              name prefix=, name suffix=, name=yquantbox]%
+            {\unexpanded\expandafter{\yquant@draw@@content}};%
+      \ifyquant@config@draw@quality%
+         \ifdefined\yquant@parent%
+            \pgfshapeclippath{yquantbox}%
+                             {\ifnum\yquant@compat>1 /yquant/every operator,\fi /yquant/every output,%
+                              \yquant@draw@@style,
+                              \ifnum\yquant@compat<2 /yquant/every multi output,\fi%
+                              /yquant/this operator}%
+         \fi%
+      \fi%
+   }%
+   \cmd%
+   % only extend for subcircuits
+   \ifdefined\yquant@parent%
+      \yquant@for \i := #1 to #2 {%
+         \yquant@circuit@extendwire\i{center}%
+      }%
+   \fi%
+   % check for empty name parameter
+   \ifstrempty{#5}\relax{%
+      \pgfnodealias{\tikz@pp@name{#5}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\def\yquant@draw@subcircuit@nodecallback#1{%
+   \ifstrequal{#1}{yquantbox}\relax{%
+      \listcsxadd{\yquant@prefix draw@subcircuit@nodelist}{#1}%
+   }%
+}
+
+% #1: id of subcircuit
+% #2: name
+% #3: 1 if aliasing of the name should be done (remove -0), 0 else
+% #4: {width of subcircuit (excluding outer box)}{including outer box}{left margin}
+% #5: affected wires
+\protected\long\def\yquant@draw@subcircuit@prepare#1#2#3#4#5{%
+   \let\idx=\yquant@draw@@idx@content%
+   % In order to wrap the inner circuit in a proper box operator and clip outer paths appropriately (which was not possible yet, as we didn't know the exact vertical positions), we first place it within a box.
+   % First, we anticipate the macro that is used by our subcircuit to store the node
+   % names.
+   \edef\yquant@draw@subcircuit@nodelist{yquant@env#1@draw@subcircuit@nodelist}%
+   \global\cslet\yquant@draw@subcircuit@nodelist\empty%
+   % \pgfinterruptboundingbox, but just for y
+   \begingroup%
+      \edef\pgf@interrupt@savemaxy{\the\yquant@pgf@picmaxy}%
+      \edef\pgf@interrupt@saveminy{\the\yquant@pgf@picminy}%
+      \yquant@pgf@picmaxy=-16000pt %
+      \yquant@pgf@picminy=16000pt %
+      \pgf@size@hookedfalse%
+      \let\pgf@path@size@hook=\pgfutil@empty%
+      % now we must take care of extending all the wires appropriately until the beginning of the box. #4 contains width of this box, #5 contains registers affected by this box. Note that for subcircuits, x extension by the group is disabled.
+      \dimdef\newx{%
+         \yquant@draw@@x\yquant@orientation@minus%
+         .5\dimexpr\@secondofthree#4\relax%
+      }%
+      \dimen0=\newx%
+      \let\yquant@draw@subcircuit@leftpos=\newx% seamless subcircuits: do not add another separation if we are there
+      \let\pgfshapeclippathhorzresult=\empty%
+      \forlistloop\yquant@draw@move@loop{#5}%
+      % but the new positions are not at the beginning of the box, but inside (with possible margin)
+      \dimdef\newx{%
+         \yquant@draw@@x\yquant@orientation@minus%
+         .5\dimexpr\@firstofthree#4\relax\yquant@orientation@minus%
+         \@thirdofthree#4%
+      }%
+      \forlistloop\yquant@draw@group@advance{#5}%
+      \setbox\yquant@prepare@subcircuit@box=\hbox{{%
+         \let\yquant@draw@subcircuit@wirestart=\newx%
+         \let\yquant@parent=\yquant@prefix%
+         \def\yquant@prefix{yquant@env#1@}%
+         \pgfkeysgetvalue{/tikz/name prefix}\yquant@draw@subcircuit@prevprefix%
+         % name mangling
+         \ifcase\yquant@config@operator@subcircuit@mangling\relax%
+            % prefix or discard: if we have an outer name, use it as the prefix; if not, discard all names
+            \ifstrempty{#2}{%
+               % we make sure there are no conflicts by prefixing any named nodes in any case.
+               \pgfkeys{/tikz/name prefix/.expanded={sub\yquant@prefix-}}%
+               \let\pgf@nodecallback=\yquant@draw@subcircuit@nodecallback%
+            }{%
+               \pgfkeys{/tikz/name prefix/.expanded={\yquant@draw@subcircuit@prevprefix#2-}}%
+               \ifnum#3=1 %
+                  \let\pgf@nodecallback=\yquant@draw@subcircuit@nodecallback%
+               \fi%
+            }%
+         \or%
+            % prefix or transparent: if we have an outer name, use it as a prefix; if not, directly use the outer namespace
+            \ifstrempty{#2}\relax{%
+               \pgfkeys{/tikz/name prefix/.expanded={\yquant@draw@subcircuit@prevprefix#2-}}%
+               \ifnum#3=1 %
+                  \let\pgf@nodecallback=\yquant@draw@subcircuit@nodecallback%
+               \fi%
+            }%
+         \or%
+            % transparent: all names go directly in the outer namespace
+         \or%
+            % discard: no name will be visible in the outer namespace whatsoever
+            \pgfkeys{/tikz/name prefix/.expanded={sub\yquant@prefix-}}%
+            \let\pgf@nodecallback=\yquant@draw@subcircuit@nodecallback%
+         \else%
+            \PackageError{yquant.sty}{Assertion failure}{Unknown value for name mangling.}%
+         \fi%
+         \pgfkeys{/yquant/operators/this subcircuit box/.style={}}%
+         \edef\yquant@draw@subcircuit@style{%
+            /yquant/every operator, \yquant@draw@@style,%
+            /yquant/this operator, /yquant/internal/multi main=true,%
+         }%
+         \expandafter\tikzset\expandafter{\yquant@draw@subcircuit@style}%
+         % #18: The styles may have set this subcircuit box again, but we disallow this. The "this" style is only supposed to effect the actual box and nothing else, so it should not permeat in the inner of the circuit. This is what every subcircuit box is for!
+         \pgfkeys{/yquant/operators/this subcircuit box/.style={}}%
+         \begingroup%
+            \csname\yquant@prefix draw\endcsname%
+         \endgroup%
+         % BEGIN_FOLD bounding box
+         % Completely empty wires did not yet affect the bounding box
+         % Problem: we compare a user-mode TikZ position (register y position) with a system-level pgf position (picture boundary box). If shifts or scalings are in effect, we must first transform the point appropriately. Note that negative scalings may upset our assumption of which is the minimum and which is the maximum! If additionally rotations are in effect, we must even consider those transformations for the leftmost and the rightmost point, which makes all of this far more complicated than it should be. For this reason, we have a shortcut in action in case no nontranslation transformations are present.
+         \ifpgf@pt@identity%
+            \dimen0=\dimexpr\yquant@register@get@y1+\yquant@pgf@pt@y\relax%
+            \ifdim\dimen0>\yquant@pgf@picmaxy %
+               \global\yquant@pgf@picmaxy=\dimen0 %
+            \fi%
+            \dimen0=\dimexpr\yquant@register@get@y{\csname\yquant@prefix registers\endcsname}+\yquant@pgf@pt@y\relax%
+            \ifdim\dimen0<\yquant@pgf@picminy %
+               \global\yquant@pgf@picminy=\dimen0 %
+            \fi%
+         \else%
+            % first wire, left end
+            \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x-.5\dimexpr\@firstofthree#4\relax}{\yquant@register@get@y1\relax}}%
+            \ifdim\yquant@pgf@y>\yquant@pgf@picmaxy %
+               \global\yquant@pgf@picmaxy=\yquant@pgf@y %
+            \fi%
+            \ifdim\yquant@pgf@y<\yquant@pgf@picminy % negative scaling
+               \global\yquant@pgf@picminy=\yquant@pgf@y %
+            \fi%
+            % first wire, right end
+            \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x+.5\dimenxpr\@firstofthree#4\relax}{\yquant@register@get@y1\relax}}%
+            \ifdim\yquant@pgf@y>\yquant@pgf@picmaxy %
+               \global\yquant@pgf@picmaxy=\yquant@pgf@y %
+            \fi%
+            \ifdim\yquant@pgf@y<\yquant@pgf@picminy % negative scaling
+               \global\yquant@pgf@picminy=\yquant@pgf@y %
+            \fi%
+            % last wire, left end
+            \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x-.5\dimexpr\@firstofthree#4\relax}{\yquant@register@get@y{\csname\yquant@prefix registers\endcsname}\relax}}%
+            \ifdim\yquant@pgf@y>\yquant@pgf@picmaxy %
+               \global\yquant@pgf@picmaxy=\yquant@pgf@y %
+            \fi%
+            \ifdim\yquant@pgf@y<\yquant@pgf@picminy % negative scaling
+               \global\yquant@pgf@picminy=\yquant@pgf@y %
+            \fi%
+            % last wire, right end
+            \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x+.5\dimenxpr\@firstofthree#4\relax}{\yquant@register@get@y{\csname\yquant@prefix registers\endcsname}\relax}}%
+            \ifdim\yquant@pgf@y>\yquant@pgf@picmaxy %
+               \global\yquant@pgf@picmaxy=\yquant@pgf@y %
+            \fi%
+            \ifdim\yquant@pgf@y<\yquant@pgf@picminy % negative scaling
+               \global\yquant@pgf@picminy=\yquant@pgf@y %
+            \fi%
+         \fi%
+         % END_FOLD
+         \ifnum\yquant@config@operator@subcircuit@mangling<2 %
+            % only bother with aliasing if the prefix is present at all
+            \ifnum#3=1 %
+               \ifstrempty{#2}\relax{%
+                  % we must apply the aliasing to all the included nodes. We do this in this group, which still has the callback available, so that the aliased nodes will also be added to the list and can propagate (note that the number of node names is then exponential in the number of nested subcircuits)
+                  \pgfkeysgetvalue{/tikz/name prefix}\yquant@draw@subcircuit@alias@prefix%
+                  \expandafter\protected\expandafter\edef\expandafter%
+                     \yquant@draw@subcircuit@alias@do\expandafter##\expandafter1\yquant@draw@subcircuit@alias@prefix##2\relax##3\relax{%
+                     \noexpand\ifstrempty{##1}{%
+                        \noexpand\pgfnodealias{\yquant@draw@subcircuit@prevprefix\yquant@draw@subcircuit@alias@removezero#2-##2}{\yquant@draw@subcircuit@alias@prefix##2}%
+                        \noexpand\@gobble% there is an additional \relax
+                     }\relax%
+                  }%
+                  \expandafter\forlistcsloop\expandafter%
+                     {\expandafter\yquant@draw@subcircuit@alias\expandafter{%
+                        \yquant@draw@subcircuit@alias@prefix}%
+                     }\yquant@draw@subcircuit@nodelist%
+               }%
+            \fi%
+         \fi%
+      }}%
+      \ifpgf@pt@identity%
+         \dimen0=\dimexpr.5\yquant@pgf@picminy+.5\yquant@pgf@picmaxy-\yquant@pgf@pt@y\relax%
+         \dimen2=\dimexpr\yquant@pgf@picmaxy-\yquant@pgf@picminy\relax%
+      \else%
+         \begingroup%
+            \pgftransforminvert%
+            \pgfpointtransformed{\pgfqpoint{\pgf@picminx}{\pgf@picminy}}%
+            \@tempdima=\yquant@pgf@y%
+            \pgfpointtransform{\pgfqpoint{\pgf@picmaxx}{\pgf@picmaxy}}%
+            \edef\cmd{\@tempdima=\the\@tempdima\space\@tempdimb=\the\yquant@pgf@y\space}%
+            \expandafter%
+         \endgroup%
+         \cmd%
+         \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x}%
+                                               {.5\dimexpr\@tempdima+\@tempdimb\relax}}%
+         \dimen0=\yquant@pgf@y%
+         \pgfpointtransformed{\yquant@pgfqpoint{\yquant@draw@@x}%
+                                               {\dimexpr\@tempdimb-\@tempdima\relax}}%
+         \dimen2=\yquant@pgf@y%
+      \fi%
+      \edef\cmd{%
+         \noexpand\path \yquant@coords(\yquant@draw@@x, \the\dimen0)%
+            node[/yquant/every operator, \yquant@draw@@style,%
+                 /yquant/operators/every subcircuit box, /yquant/this operator,%
+                 /yquant/operators/this subcircuit box,%
+                 /yquant/internal/multi main=true,%
+                 name prefix=, name suffix=, name=yquantbox]%
+            {\ifyquanthorz{\vbox to \the\dimen2 {\hbox to \@firstofthree#4 {}}}%
+                          {\hbox to \the\dimen2 {\vbox to \@firstofthree#4 {}}}};%
+      }%
+      \ifyquant@config@draw@quality%
+         \cmd%
+      \else%
+         % we draw the box on the behindwires layer. In this way, the box can even be filled without overshadowing the wires. However, this implies that the frame of the box will also be drawn behind the wires. If the color of the frame is different from the color of the wires, this may not be desired. In this case, there's no alternative to the quality layout.
+         \begingroup%
+            \let\pgfonlayer@assert@is@active=\relax%
+            \pgfonlayer{behindwires}%
+               \cmd%
+            \endpgfonlayer%
+         \endgroup%
+      \fi%
+      \unhbox\yquant@prepare@subcircuit@box%
+   % \endpgfinterruptboundingbox + increase
+      \ifdim\pgf@interrupt@savemaxy>\yquant@pgf@picmaxy%
+         \global\yquant@pgf@picmaxy=\pgf@interrupt@savemaxy%
+      \fi%
+      \ifdim\pgf@interrupt@saveminy<\yquant@pgf@picminy%
+         \global\yquant@pgf@picminy=\pgf@interrupt@saveminy%
+      \fi%
+   \endgroup%
+   % Now that the subcircuit is finished, we need advance all the wires
+   \dimdef\newx{\yquant@draw@@x\yquant@orientation@plus.5\dimexpr\yquant@draw@@width\relax}%
+   \forlistloop\yquant@draw@group@advance{#5}%
+   % name mangling
+   \ifcase\yquant@config@operator@subcircuit@mangling\relax%
+      % prefix or discard
+      \ifstrempty{#2}{%
+         % However, if the outer node was not named, no access to the inner nodes is desired, so we delete all nodes again.
+         \def\do##1{%
+            \csgundef{pgf@sh@ns@##1}%
+            \csgundef{pgf@sh@np@##1}%
+            \csgundef{pgf@sh@nt@##1}%
+            \csgundef{pgf@sh@pi@##1}%
+            \csgundef{pgf@sh@ma@##1}%
+         }%
+         \dolistcsloop{\yquant@draw@subcircuit@nodelist}%
+         \csgundef\yquant@draw@subcircuit@nodelist%
+      }{%
+         \ifcsname\yquant@prefix draw@subcircuit@nodelist\endcsname%
+            \csxappto{\yquant@prefix draw@subcircuit@nodelist}%
+                     {\csname\yquant@draw@subcircuit@nodelist\endcsname}%
+         \fi%
+      }%
+   \or%
+      % prefix or transparent: in any case, make everything available for mangling in the outer circuit
+      \ifcsname\yquant@prefix draw@subcircuit@nodelist\endcsname%
+         \csxappto{\yquant@prefix draw@subcircuit@nodelist}%
+                  {\csname\yquant@draw@subcircuit@nodelist\endcsname}%
+      \fi%
+   \or%
+      % transparent: same
+      \ifcsname\yquant@prefix draw@subcircuit@nodelist\endcsname%
+         \csxappto{\yquant@prefix draw@subcircuit@nodelist}%
+                  {\csname\yquant@draw@subcircuit@nodelist\endcsname}%
+      \fi%
+   \or%
+      % discard: remove them all
+      \def\do##1{%
+         \csgundef{pgf@sh@ns@##1}%
+         \csgundef{pgf@sh@np@##1}%
+         \csgundef{pgf@sh@nt@##1}%
+         \csgundef{pgf@sh@pi@##1}%
+         \csgundef{pgf@sh@ma@##1}%
+      }%
+      \dolistcsloop{\yquant@draw@subcircuit@nodelist}%
+      \csgundef\yquant@draw@subcircuit@nodelist%
+   \else%
+      \PackageError{yquant.sty}{Assertion failure}{Unknown value for name mangling (2).}%
+   \fi%
+}
+
+\def\yquant@draw@subcircuit@alias@removezero#1-0{#1}
+
+\def\yquant@draw@subcircuit@alias#1#2{%
+   \yquant@draw@subcircuit@alias@do#2\relax#10-\relax\relax%
+}
+
+\protected\long\def\yquant@draw@subcircuit@single#1#2#3#4#5{%
+   \yquant@config@operator@multifalse%
+   \yquant@draw@subcircuit@prepare{#2}{#3}{#4}{#5}{#1}%
+   \ifyquant@config@draw@quality%
+      \edef\cmd{%
+         \pgfshapeclippath{yquantbox}{%
+             /yquant/every operator, \yquant@draw@@style,%
+             /yquant/operators/every subcircuit box, /yquant/this operator,%
+             /yquant/operators/this subcircuit box,%
+         }%
+      }%
+      \cmd%
+      % see comment in draw@subcircuit@multi
+      \yquant@softpath@extractmaxxat\pgfshapeclippathhorzresult{\yquant@register@get@y{#1}}%
+      \let\pgfshapeclippathhorzresult=\empty%
+      \yquant@circuit@extendwire{#1}*%
+   \else%
+      \ifyquanthorz{%
+         \pgfpointanchor{yquantbox}{east}%
+         \dimen0=\pgf@x%
+      }{%
+         \pgfpointanchor{yquantbox}{south}%
+         \dimen0=\pgf@y%
+      }%
+      \yquant@circuit@extendwire{#1}*%
+   \fi%
+   \expandafter\yquant@circuit@extendcontrolline\expandafter%
+      {\the\yquant@draw@@currentcontroltype}\yquant@draw@@x%
+   % check for empty name parameter
+   \ifstrempty{#3}\relax{%
+      \pgfnodealias{\tikz@pp@name{#3}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\long\def\yquant@draw@subcircuit@multi#1#2#3#4#5#6#7#8{%
+   \yquant@config@operator@multitrue%
+   % there is no contiguous slicing for subcircuits, as they may have all kinds of wire operations that can extend beyond the individual slices, let alone ancillas
+   \yquant@draw@subcircuit@prepare{#5}{#6}{#7}{#8}{#4}%
+   \ifyquant@config@draw@quality%
+      \edef\cmd{%
+         \pgfshapeclippath{yquantbox}{%
+             /yquant/every operator, \yquant@draw@@style,%
+             /yquant/operators/every subcircuit box, /yquant/this operator,%
+             /yquant/operators/this subcircuit box,%
+             /yquant/internal/multi main=true,%
+         }%
+      }%
+      \cmd%
+      % install the clippings - but only on wires that are visually between the first and list while not being part of the circuit.
+      \let\nonaffectedpgfshapeclippathhorzresult=\pgfshapeclippathhorzresult%
+      \yquant@for \i := #1 to #2 {%
+         \xifinlist{\i}{#4}{%
+            % Usually, we always begin with a wire from the center of the operator shape and clip the inner parts away. This can't be done here, as the wire needs to be drawn _inside_ of the outer box operator here. Instead of clipping against the clip path, we extract its maximum x position at the position of the wire (which is an overkill for simple shapes, but allows to specify even more complicated ones) and place the wire at this position without clipping.
+            % Note: this works very well for lines joining at perpendicular angles; but if the shape of the box is more fancy, while the position will be calculated correctly, the wire has a rectangular (or rounded, depending on the line cap) shape that is drawn on top of the operator. While \yquant@softpath@extractmaxxat could without much effort determine exactly the segment of the path that corresponds to the rightmost line, we would then have to convert this single line into a closed path that fills the linewidth and clip against it to get proper joiners. Since most likely, no-one will ever need this, we don't do it. But file a feature request if desired.
+            \yquant@softpath@extractmaxxat\nonaffectedpgfshapeclippathhorzresult%
+                                          {\yquant@register@get@y\i}%
+            \let\pgfshapeclippathhorzresult=\empty%
+            \yquant@circuit@extendwire\i*%
+         }{%
+            \let\pgfshapeclippathhorzresult=\nonaffectedpgfshapeclippathhorzresult%
+            \yquant@circuit@extendwire\i{center}%
+         }%
+      }%
+   \else%
+      % we don't fill subcircuits, so the nonaffected wires will be drawn through (we deliberatly fill the subcircuit on the behindwires layer, so that the wires within a subcircuit will be visible despite the filling; but we cannot differentiate between "good" internal and "bad" nonaffected wires). If such a constellation arises, better use the quality layout
+      \ifyquanthorz{%
+         \pgfpointanchor{yquantbox}{east}%
+         \dimen0=\pgf@x%
+      }{%
+         \pgfpointanchor{yquantbox}{south}%
+         \dimen0=\pgf@y%
+      }%
+      \yquant@for \i := #1 to #2 {%
+         \xifinlist{\i}{#4}{%
+            \yquant@circuit@extendwire\i*%
+         }{%
+            \yquant@circuit@extendwire\i{center}%
+         }%
+      }%
+   \fi%
+   \expandafter\yquant@circuit@extendcontrolline\expandafter%
+      {\the\yquant@draw@@currentcontroltype}\yquant@draw@@x%
+   \ifstrempty{#6}\relax{%
+      \pgfnodealias{\tikz@pp@name{#6}}{yquantbox}%
+   }%
+   \numdef\yquant@draw@@idx@content{\yquant@draw@@idx@content+1}%
+}
+
+\protected\def\yquant@draw@control#1#2#3{%
+   \edef\cmd{%
+      \noexpand\path \yquant@coords(\yquant@draw@@x, \yquant@register@get@y{#2})%
+         node[/yquant/every control, /yquant/every #1 control, /yquant/this control,%
+              name prefix=, name suffix=, name=yquantbox]%
+         {};%
+      \ifyquant@config@draw@quality%
+         \pgfshapeclippath{yquantbox}%
+                          {/yquant/every control, /yquant/every #1 control,%
+                           /yquant/this control}%
+      \fi%
+   }%
+   \cmd%
+   \yquant@circuit@extendwire{#2}{center}%
+   \yquant@draw@@currentcontroltype=\yquant@register@get@type{#2}\relax%
+   \expandafter\yquant@circuit@extendcontrolline\expandafter%
+      {\yquant@draw@@currentcontroltype}\yquant@draw@@x%
+   % check for empty name parameter
+   \ifstrempty{#3}\relax{%
+      \pgfnodealias{\tikz@pp@name{#3}}{yquantbox}%
+   }%
+}
+
+\protected\def\yquant@draw@pcontrol#1#2{%
+   \let\idx=\yquant@draw@@idx@pcontrol%
+   \yquant@draw@control{positive}{#1}{#2}%
+   \numdef\yquant@draw@@idx@pcontrol{\yquant@draw@@idx@pcontrol+1}%
+}
+
+\protected\def\yquant@draw@ncontrol#1#2{%
+   \let\idx=\yquant@draw@@idx@ncontrol%
+   \yquant@draw@control{negative}{#1}{#2}%
+   \numdef\yquant@draw@@idx@ncontrol{\yquant@draw@@idx@ncontrol+1}%
+}
+
+\protected\long\def\yquant@draw@onwires#1{%
+   \begingroup%
+      \let\pgfonlayer@assert@is@active=\relax%
+      \pgfonlayer{wires}%
+         #1%
+      \endpgfonlayer%
+   \endgroup%
+}
+
+\protected\def\yquant@draw@cline{%
+   \ifyquant@config@draw@quality%
+      \pgfscope%
+         % install the clipping
+         \pgfsyssoftpath@setcurrentpath\yquant@circuit@extendcontrolline@clip%
+         % and invert it. It is sufficient to cover the current bounding box, as the wire will be drawn between existing operators.
+         \ifyquantdebug%
+            \pgfsetfillcolor{teal}%
+            \pgfsetfillopacity{.3}%
+            \pgfusepathqfill%
+         \else%
+            \begingroup%
+               \pgf@relevantforpicturesizefalse%
+               \pgftransformreset%
+               \pgfpathrectangle%
+                  {\yquant@pgfqpoint{-.5\maxdimen}{-.5\maxdimen}}%
+                  {\yquant@pgfqpoint{\maxdimen}{\maxdimen}}%
+               \pgfseteorule% even-odd to properly invert the clipping
+               \pgfusepathqclip%
+            \endgroup%
+         \fi%
+         \edef\cmd{%
+            \noexpand\path[/yquant/every control line]%
+               \yquant@circuit@extendcontrolline@cmd;%
+         }%
+         \cmd%
+      \endpgfscope%
+   \else%
+      \yquant@draw@onwires{%
+         \edef\cmd{%
+            \noexpand\path[/yquant/every control line]%
+               \yquant@circuit@extendcontrolline@cmd;%
+         }%
+         \cmd%
+      }%
+   \fi%
+}
+
+\protected\def\yquant@draw@mline@prep{%
+   \eappto\yquant@circuit@extendmultiline@total{%
+      \yquant@draw@mline%
+         {\unexpanded\expandafter{\yquant@circuit@extendmultiline@clip}}%
+         {\yquant@circuit@extendmultiline@cmd}%
+   }%
+}
+
+\protected\def\yquant@draw@mline#1#2{%
+   \ifyquant@config@draw@quality%
+      \pgfscope%
+         % install the clipping
+         \def\pgfsyssoftpath@thepath{#1}%
+         \pgfsyssoftpath@setcurrentpath\pgfsyssoftpath@thepath%
+         % and invert it. It is sufficient to cover the current bounding box, as the wire will be drawn between existing operators.
+         \ifyquantdebug%
+            \pgfsetfillcolor{teal}%
+            \pgfsetfillopacity{.3}%
+            \pgfusepathqfill%
+         \else%
+            \begingroup%
+               \pgf@relevantforpicturesizefalse%
+               \pgftransformreset%
+               \pgfpathrectangle%
+                  {\yquant@pgfqpoint{-.5\maxdimen}{-.5\maxdimen}}%
+                  {\yquant@pgfqpoint{\maxdimen}{\maxdimen}}%
+               \pgfseteorule% even-odd to properly invert the clipping
+               \pgfusepathqclip%
+            \endgroup%
+         \fi%
+         \path[/yquant/every multi line] #2;%
+      \endpgfscope%
+   \else%
+      \yquant@draw@onwires{%
+         \path[/yquant/every multi line] #2;%
+      }%
+   \fi%
+}
+
+\protected\def\yquant@draw@alias#1{%
+   \pgfnodealias{\tikz@pp@name{#1}}{\tikz@pp@name{#1-0}}%
+}
+
+\protected\def\yquant@draw@alias@ctrl#1#2{%
+   \pgfnodealias{\tikz@pp@name{#1-#2}}{\tikz@pp@name{#1-#20}}%
+}
+
+\protected\def\yquant@draw@wire#1#2{%
+   \begingroup%
+      \yquant@register@get@typeywire{#1}\wiretype\wireypos\wirelast%
+      \unless\ifnum\wiretype=\yquant@register@type@none%
+         \edef\wirexprevpos{\expandafter\@firstoffour\wirelast}%
+         \ifx0#2%
+            \edef\wirexpos{\expandafter\@secondoffour\wirelast}%
+         \else%
+            \let\wirexpos=\yquant@circuit@endwires@x%
+         \fi%
+         \ifdim\yquant@orientation@plus\wirexpos>\yquant@orientation@plus\wirexprevpos %
+            \edef\wirestyle{\noexpand\tikzset{%
+               /yquant/this wire/.style={%
+                  /yquant/every wire,%
+                  /yquant/every \yquant@register@type@tostring\wiretype\space wire,%
+                     \yquant@register@get@style{#1}%
+               }, /yquant/this wire%
+            }}%
+            \wirestyle%
+            \ifyquant@config@draw@quality%
+               % load all clippings
+               \edef\wireclipping{%
+                  \unexpanded\expandafter\expandafter\expandafter{%
+                     \expandafter\@thirdandfourthoffour\wirelast%
+                  }%
+               }%
+               \pgfscope%
+                  \unless\ifx\wireclipping\empty% may happen if the style is altered to be invisible, though the type is not none
+                     % install the clipping
+                     \pgfsyssoftpath@setcurrentpath\wireclipping%
+                     % invert the clipping
+                     \ifyquantdebug%
+                        \pgfsetfillcolor{orange}%
+                        \pgfsetfillopacity{.3}%
+                        \pgfusepathqfill%
+                     \else%
+                        \begingroup%
+                           \pgf@relevantforpicturesizefalse%
+                           \pgftransformreset%
+                           % everything serves as clipping inversion, which smells like a rectangle from (-\maxdimen, -\maxdimen) to (\maxdimen, \maxdimen). However, this is translated into a base point plus a direction vector, and since neither is allowed to exceed \maxdimen, we must just hope that the circuit is never drawn outside of .5\maxdimen - which is a fair assumption.
+                           \pgfpathrectangle%
+                              {\yquant@pgfqpoint{-.5\maxdimen}{-.5\maxdimen}}%
+                              {\yquant@pgfqpoint{\maxdimen}{\maxdimen}}%
+                        \endgroup%
+                        \pgfseteorule% even-odd to properly invert the clipping
+                        \pgfusepathqclip%
+                     \fi%
+                  \fi%
+                  % the clip inversion is left to the drawing commands (clip two \pgflinewidth more to avoid renderer artifacts)
+                  \csname yquant@draw@wire@\wiretype\endcsname{#1}%
+               \endpgfscope%
+            \else%
+               \yquant@draw@onwires{%
+                  \csname yquant@draw@wire@\wiretype\endcsname{#1}%
+               }%
+            \fi%
+         \fi%
+      \fi%
+   \endgroup%
+}
+
+% quantum wire
+\protected\csdef{yquant@draw@wire@\yquant@register@type@q}#1{%
+   \edef\cmd{%
+      \noexpand\path [/yquant/this wire]%
+         \yquant@coords(\wirexprevpos,\wireypos) -- \yquant@coords(\wirexpos,\wireypos);%
+   }%
+   \cmd%
+}
+
+% classical wire
+\protected\csdef{yquant@draw@wire@\yquant@register@type@c}#1{%
+   \edef\cmd{%
+      \noexpand\path [/yquant/this wire]%
+         \yquant@coords(\wirexprevpos,\wireypos+2\pgflinewidth) --
+         \yquant@coords(\wirexpos,\wireypos+2\pgflinewidth)%
+         \yquant@coords(\wirexprevpos,\wireypos-2\pgflinewidth) --
+         \yquant@coords(\wirexpos,\wireypos-2\pgflinewidth);%
+   }%
+   \cmd%
+}
+
+% quantum-bundle
+\protected\csdef{yquant@draw@wire@\yquant@register@type@qs}#1{%
+   \edef\cmd{%
+      \noexpand\path [/yquant/this wire]%
+         \yquant@coords(\wirexprevpos,\wireypos+2\pgflinewidth) --
+         \yquant@coords(\wirexpos,\wireypos+2\pgflinewidth)%
+         \yquant@coords(\wirexprevpos,\wireypos) --
+         \yquant@coords(\wirexpos,\wireypos)%
+         \yquant@coords(\wirexprevpos,\wireypos-2\pgflinewidth) --
+         \yquant@coords(\wirexpos,\wireypos-2\pgflinewidth);%
+   }%
+   \cmd%
+}
+
+\protected\def\yquant@draw@hspace#1#2{%
+   \begingroup%
+      \yquant@register@get@maxxlist\newx{#1}%
+      \dimdef\newx{\newx\yquant@orientation@plus#2}%
+      \dimen0=\newx%
+      \let\pgfshapeclippathhorzresult=\empty%
+      \forlistloop\yquant@draw@move@loop{#1}%
+   \endgroup%
+}
+
+\protected\def\yquant@draw@move@loop#1{%
+   \yquant@register@set@x{#1}\newx%
+   \yquant@circuit@extendwire{#1}*%
+}

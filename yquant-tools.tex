@@ -1,0 +1,726 @@
+% from TeXbook, appendix D
+\protected\def\yquant@futurenonspacelet#1{%
+   \def\yquant@futurenonspacelet@cs{#1}%
+   \afterassignment\yquant@futurenonspacelet@i\let\yquant@futurenonspacelet@next= %
+}
+
+\def\yquant@futurenonspacelet@i{%
+   \expandafter\futurelet\yquant@futurenonspacelet@cs\yquant@futurenonspacelet@ii%
+}
+
+\def\yquant@futurenonspacelet@ii{%
+   \expandafter\ifx\yquant@futurenonspacelet@cs\@sptoken%
+      \expandafter\yquant@futurenonspacelet@iii%
+   \else%
+      \expandafter\yquant@futurenonspacelet@next%
+   \fi%
+}
+
+\def\yquant@futurenonspacelet@iii{%
+   \afterassignment\yquant@futurenonspacelet@i%
+   \let\@eattoken= %
+}
+
+% a bit faster than nested \@firstoftwo/\@secondoftwo
+% note \@thirdofthree is defined in the latex kernel already.
+\long\def\@firstofthree#1#2#3{#1}%
+\long\def\@secondofthree#1#2#3{#2}%
+\long\def\@firstoffour#1#2#3#4{#1}%
+\long\def\@secondoffour#1#2#3#4{#2}%
+\long\def\@thirdoffour#1#2#3#4{#3}%
+\long\def\@fourthoffour#1#2#3#4{#4}%
+\long\def\@thirdandfourthoffour#1#2#3#4{#3#4}%
+\long\def\@secondandthirdoffive#1#2#3#4#5{{#2}{#3}}
+\long\def\@firstoffive#1#2#3#4#5{#1} % unused
+\long\def\@secondoffive#1#2#3#4#5{#2}
+\long\def\@thirdoffive#1#2#3#4#5{#3}
+\long\def\@fourthoffive#1#2#3#4#5{#4} % unused
+\long\def\@fifthoffive#1#2#3#4#5{#5}
+
+\protected\def\yquant@protectedempty{}
+
+% Loop #1 from min(#2, #3) to max(#2, #3), executing #4
+\protected\def\yquant@for #1:=#2to#3#{%
+   \yquant@for@aux#1{#2}{#3}%
+}
+
+% Loop #1 from max(#2, #3) down to min(#2, #3), executing #4
+\protected\def\yquant@fordown #1:=#2downto#3#{%
+   \yquant@fordown@aux#1{#2}{#3}%
+}
+
+\long\def\yquant@for@aux#1#2#3#4{%
+   \ifnum#2<#3\relax%
+      \numdef#1{#2}%
+      % to allow for things like \yquant@for \i := \i to ..., expand the boundaries
+      \expandafter\yquant@for@loop\expandafter#1\expandafter{\the\numexpr#3+1\relax}{#4}%
+   \else%
+      \numdef#1{#3}%
+      \expandafter\yquant@for@loop\expandafter#1\expandafter{\the\numexpr#2+1\relax}{#4}%
+   \fi%
+}
+
+\long\def\yquant@fordown@aux#1#2#3#4{%
+   \ifnum#2>#3\relax%
+      \numdef#1{#2}%
+      % to allow for things like \yquant@for \i := \i to ..., expand the boundaries
+      \expandafter\yquant@fordown@loop\expandafter#1\expandafter{\the\numexpr#3-1\relax}{#4}%
+   \else%
+      \numdef#1{#3}%
+      \expandafter\yquant@fordown@loop\expandafter#1\expandafter{\the\numexpr#2-1\relax}{#4}%
+   \fi%
+}
+
+\long\def\yquant@for@loop#1#2#3{%
+   \loop%
+      \ifnum#1<#2\relax%
+         #3%
+         \numdef#1{#1+1}%
+   \repeat%
+}
+
+\long\def\yquant@fordown@loop#1#2#3{%
+   \loop%
+      \ifnum#1>#2\relax%
+         #3%
+         \numdef#1{#1-1}%
+   \repeat%
+}
+
+\def\yquant@for@break{%
+   \fi%
+   \iffalse%
+}
+
+% Def #1 to be the minimum of #2, ... until \relax
+\protected\def\yquant@min#1{%
+   \def#1{2147483647}%
+   \def\yquant@min@var{#1}%
+   \yquant@min@loop%
+}
+
+\def\yquant@min@loop#1{%
+   \unless\ifx#1\relax\relax%
+      \ifnum#1<\yquant@min@var\relax%
+         \expandafter\edef\yquant@min@var{#1}%
+      \fi%
+      \expandafter\yquant@min@loop%
+   \fi%
+}
+
+% Def #1 to be the maximum of #2, ... until \relax
+\protected\def\yquant@max#1{%
+   \def#1{-2147483647}%
+   \def\yquant@max@var{#1}%
+   \yquant@max@loop%
+}
+
+\def\yquant@max@loop#1{%
+   \unless\ifx#1\relax\relax%
+      \ifnum#1>\yquant@max@var\relax%
+         \expandafter\edef\yquant@max@var{#1}%
+      \fi%
+      \expandafter\yquant@max@loop%
+   \fi%
+}
+
+% Cleanup global tokens after environment
+\protected\def\yquant@cleanup@csadd#1{%
+   \csxappto{\yquant@prefix cleanup}{\expandafter\noexpand\csname#1\endcsname}%
+}
+
+\def\yquant@cleanup#1#2{%
+   \global\undef#1%
+   \unless\ifx|#2%
+      \expandafter\yquant@cleanup\expandafter#2%
+   \fi%
+}
+
+% Executes #3 if #1 (single token!) is equal (\ifx) to the first token of #2, and #4 else.
+\def\ifyquant@firsttoken#1#2{%
+   % First check whether #2 is present at all...
+   \ifstrempty{#2}{%
+      \expandafter\@secondoftwo%
+   }{%
+      \ifyquant@firsttoken@aux#1#2\yquant@sep%
+   }%
+}
+
+\def\ifyquant@firsttoken@aux#1#2#3\yquant@sep{%
+   \ifx#1#2%
+      \expandafter\expandafter\expandafter\@firstoftwo%
+   \else%
+      \expandafter\expandafter\expandafter\@secondoftwo%
+   \fi%
+}
+
+% Executes #3 if #1 begins with #2, and #4 else - non-expandable
+\protected\def\ifyquant@beginswith#1#2{%
+   \def\ifyquant@beginswith@##1#2##2\yquant@end{%
+      \ifstrempty{##1}%
+   }%
+   \ifyquant@beginswith@#1#2\yquant@end%
+}
+
+% absolute value of a dimension
+\def\yquant@abs#1{%
+   \ifdim#1<0pt %
+      \the\dimexpr-\dimexpr#1\relax\relax%
+   \else%
+      #1%
+   \fi%
+}
+
+% Sortlist related macros.
+\newcount\yquant@sort@count
+
+\protected\def\yquant@sort@clear{%
+   % Probably cleanup used macros?
+   \yquant@sort@count=0 %
+}
+
+\protected\def\yquant@sort@eadd#1{%
+   \csedef{yquant@sort@item\the\yquant@sort@count}{#1}%
+   \advance \yquant@sort@count by 1 %
+}
+
+% Perform quicksort on the stored sortlist.
+% #1: compare macro that expands to ##3 if its second argument is strictly larger than its first or to ##4 else
+\protected\def\yquant@sort#1{%
+   \let\yquant@sort@cmp=#1%
+   \expandafter\yquant@sort@aux\expandafter0\expandafter{\the\numexpr\yquant@sort@count-1\relax}%
+}
+
+% Returns the first item in the unordered sortlist when compared according to #1 and stores it in #2.
+\protected\def\yquant@sort@findfirst#1#2{%
+   \ifnum\yquant@sort@count<1 %
+      \let#2=\empty%
+   \else%
+      \letcs#2{yquant@sort@item0}%
+      \count0=1 %
+      \loop%
+         \ifnum\count0<\yquant@sort@count\relax%
+            \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter#1%
+               \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter{%
+               \expandafter\expandafter\expandafter#2%
+               \expandafter\expandafter\expandafter}%
+               \expandafter\expandafter\expandafter{%
+                  \csname yquant@sort@item\the\count0\endcsname%
+               }%
+               \relax{%
+               \letcs#2{yquant@sort@item\the\count0}%
+            }%
+            \advance\count0 by 1 %
+      \repeat%
+   \fi%
+}
+
+\def\yquant@sort@ascending#1#2{%
+   \ifnum#2>#1 %
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+}
+
+\protected\def\yquant@sort@aux#1#2{%
+   \ifnum#1<#2\relax%
+      \yquant@sort@divide{#1}{#2}%
+      \edef\cmd{%
+         \noexpand\yquant@sort@aux{#1}{\the\numexpr\count0-1\relax}%
+         \noexpand\yquant@sort@aux{\the\numexpr\count0+1\relax}{#2}%
+      }%
+      \cmd%
+   \fi%
+}
+
+\def\iftrue@hidden{\iftrue}%
+\def\iffalse@hidden{\iffalse}%
+\protected\def\yquant@sort@divide#1#2{%
+   \count0=#1\relax% i
+   \count2=#2\relax% j
+   \advance\count2 by -1 %
+   \letcs\yquant@sort@pivot{yquant@sort@item#2}%
+   \loop%
+      % search an item from the left that is larger or equal to the pivot
+      {% protect the outer loop from finding \repeat
+         \loop%
+            \ifnum\count0<#2\relax%
+               \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\yquant@sort@cmp%
+                  \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter{%
+                  \expandafter\expandafter\expandafter\yquant@sort@pivot%
+                  \expandafter\expandafter\expandafter}%
+                  \expandafter\expandafter\expandafter{%
+                     \csname yquant@sort@item\the\count0\endcsname%
+                  }{%
+                     \expandafter\iffalse@hidden%
+                  }{%
+                     \advance\count0 by 1 %
+                     \expandafter\iftrue@hidden%
+                  }%
+            \else%
+               \expandafter\iffalse@hidden%
+            \fi%
+         \repeat%
+         \expandafter%
+      }%
+      \expandafter\count\expandafter0\expandafter=\the\count0\relax%
+      % search an item from the right that is small than the pivot
+      {% protect the outer loop from finding \repeat
+         \loop%
+            \ifnum\count2>#1\relax%
+               \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\yquant@sort@cmp%
+                  \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter{%
+                  \expandafter\expandafter\expandafter\yquant@sort@pivot%
+                  \expandafter\expandafter\expandafter}%
+                  \expandafter\expandafter\expandafter{%
+                     \csname yquant@sort@item\the\count2\endcsname%
+                  }{%
+                     \advance\count2 by -1 %
+                     \expandafter\iftrue@hidden%
+                  }{%
+                     \expandafter\iffalse@hidden%
+                  }%
+            \else%
+               \expandafter\iffalse@hidden%
+            \fi%
+         \repeat%
+         \expandafter%
+      }%
+      \expandafter\count\expandafter2\expandafter=\the\count2\relax%
+      \ifnum\count0<\count2 %
+         % swap item i <> item j
+         \letcs\tmp{yquant@sort@item\the\count0}%
+         \csletcs{yquant@sort@item\the\count0}{yquant@sort@item\the\count2}%
+         \cslet{yquant@sort@item\the\count2}\tmp%
+      \fi%
+      \ifnum\count0<\count2 %
+   \repeat%
+   \letcs\tmp{yquant@sort@item\the\count0}%
+   \csletcs{yquant@sort@item\the\count0}{yquant@sort@item#2}%
+   \cslet{yquant@sort@item#2}\tmp%
+}
+
+% Add an internal etoolbox list to the sorted items
+\def\yquant@sort@addlist#1{%
+   \forlistloop\yquant@sort@addlist@aux#1%
+}
+
+\protected\def\yquant@sort@addlist@aux#1{%
+   \csdef{yquant@sort@item\the\yquant@sort@count}{#1}%
+   \advance\yquant@sort@count by 1 %
+}
+
+% Sorts an internal etoolbox list #1 using macro #2
+\protected\def\yquant@sort@list#1#2{%
+   \begingroup%
+      \yquant@sort@count=0 %
+      \yquant@sort@addlist#1%
+      \yquant@sort#2%
+      \let#1=\empty%
+      \count0=0 %
+      \loop%
+         \ifnum\count0<\yquant@sort@count%
+            \expandafter\expandafter\expandafter\listadd%
+            \expandafter\expandafter\expandafter#1%
+            \expandafter\expandafter\expandafter{%
+               \csname yquant@sort@item\the\count0\endcsname%
+            }%
+            \advance\count0 by 1 %
+      \repeat%
+      \expandafter%
+   \endgroup%
+   \expandafter\def\expandafter#1\expandafter{#1}%
+}
+
+\protected\def\yquant@sort@dolistloop{%
+   \count0=0 %
+   \loop%
+      \ifnum\count0<\yquant@sort@count%
+         \expandafter\expandafter\expandafter\do%
+         \expandafter\expandafter\expandafter{%
+            \csname yquant@sort@item\the\count0\endcsname%
+         }%
+         \advance\count0 by 1 %
+   \repeat%
+}
+
+\begingroup
+\catcode`\|=3
+\catcode`\&=3
+\gdef\yquant@list@delim{|}
+
+\protected\gdef\yquant@list@dequeue#1#2{%
+   \expandafter\ifblank\expandafter{#1}{%
+      \let#2=\empty%
+   }{%
+      \expandafter\yquant@list@dequeue@i#1\etb@lst@q@end{#1}{#2}\def%
+   }%
+}%
+
+\protected\gdef\yquant@list@dequeue@i#1|#2\etb@lst@q@end#3#4#5{%
+   \def#4{#1}%
+   #5#3{#2}%
+}
+
+\protected\gdef\yquant@list@gdequeue#1#2{%
+   \expandafter\ifblank\expandafter{#1}{%
+      \let#2=\empty%
+   }{%
+      \expandafter\yquant@list@dequeue@i#1\etb@lst@q@end{#1}{#2}\gdef%
+   }%
+}
+
+\protected\gdef\yquant@list@eupdateorinsert#1#2#3{%
+   % the list items are of the form <number>:<value>. If an item is present where <number> = #2, then set its <value> to #3, if #3 is greater. If no item is present, add it.
+   \begingroup%
+      \def\etb@tempa##1|#2:##2|##3&{%
+         \endgroup%
+         \ifstrempty{##3}{%
+            \eappto#1{#2:#3|}%
+         }{%
+            \ifdim##2<#3 %
+               \yquant@list@ereplace#1{#2:##2}{#2:#3}%
+            \fi%
+         }%
+      }%
+   \expandafter\etb@tempa\expandafter|#1|#2:#3|&%
+}
+
+\protected\gdef\yquant@list@ereplace#1#2#3{%
+   \begingroup%
+      \def\etb@tempa##1|#2|##2&{%
+         \endgroup%
+         \ifstrempty{##1}{%
+            \edef#1{%
+               \unexpanded{##1}|#3|\unexpanded{##2}%
+            }%
+         }{%
+            \edef#1{%
+               \unexpanded\expandafter{\@gobble##1}|#3|\unexpanded{##2}%
+            }%
+         }%
+      }%
+   \expandafter\etb@tempa\expandafter|#1&
+}
+
+% expands to the contents of a list ranging from #1 to #2 (ascending)
+\gdef\yquant@list@range#1#2{%
+   \ifnum#1>#2 %
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi{}{%
+      #1|%
+      \expandafter\yquant@list@range\expandafter{\the\numexpr#1+1\relax}{#2}%
+   }%
+}
+\endgroup
+
+% performs #3 if #1 is a subset of #2; else, performs #4
+\protected\def\ifyquant@registersubset#1#2{%
+   \begingroup%
+      \let\yquant@register@multi=\@fourthoffour
+      \def\yquant@register@multi@contiguous##1##2##3{\yquant@list@range{##1}{##2}}%
+      \edef\listA{#1}%
+      \edef\listB{#2}%
+      \let\ifsuccess=\iftrue%
+      \forlistloop\yquant@registersubset@loop\listA%
+      \expandafter%
+   \endgroup%
+   \ifsuccess%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+}
+
+\protected\def\yquant@registersubset@loop#1{%
+   \ifinlist{#1}\listB\relax{%
+      \let\ifsuccess=\iffalse%
+      \listbreak%
+   }%
+}
+
+\def\ifyquant@OR#1#2{%
+   #1%
+      \expandafter\@firstoftwo%
+   \else%
+      #2%
+         \expandafter\expandafter\expandafter\@firstoftwo%
+      \else%
+         \expandafter\expandafter\expandafter\@secondoftwo%
+      \fi%
+   \fi%
+}
+
+% #1 is a pgf soft path. We extract the maximum x position at the y position specified in #2 and assign it to \dimen0, which is translated to the user coordinate system.
+% If the circuit is currently vertical, we extract the minimum y position at the x position specified in #2.
+\protected\def\yquant@softpath@extractmaxxat#1#2{%
+   \begingroup%
+      \dimen0=\yquant@orientation@minus16000pt %
+      \dimen2=#2 %
+      \pgftransforminvert%
+      \let\pgfsyssoftpath@movetotoken=\yquant@softpath@extractmaxxat@moveto%
+      \let\pgfsyssoftpath@linetotoken=\yquant@softpath@extractmaxxat@lineto%
+      \let\pgfsyssoftpath@curvetosupportatoken=\yquant@softpath@extractmaxxat@curveto%
+      \let\pgfsyssoftpath@rectcornertoken=\yquant@softpath@extractmaxxat@rectto%
+      \let\pgfsyssoftpath@closepath=\@gobbletwo%
+      % the specialroundtoken (undocumented) is \@gobbletwo by default.
+      #1%
+      \expandafter%
+   \endgroup%
+   \expandafter\dimen\expandafter0\expandafter=\the\dimen0  %
+}
+
+\protected\def\yquant@softpath@extractmaxxat@update#1{%
+   \ifdim\yquant@orientation@plus\dimen0<\yquant@orientation@plus#1 %
+      \dimen0=#1 %
+   \fi%
+}
+
+\protected\def\yquant@softpath@extractmaxxat@moveto#1#2{%
+   \pgfpointtransformed{\pgfqpoint{#1}{#2}}%
+   \dimen4=\yquant@pgf@x %
+   \dimen6=\yquant@pgf@y %
+}
+
+\protected\def\yquant@softpath@extractmaxxat@lineto#1#2{%
+   \pgfpointtransformed{\pgfqpoint{#1}{#2}}%
+   \ifyquant@OR{\ifdim\yquant@orientation@plus\dimen4>\yquant@orientation@plus\dimen0 }%
+               {\ifdim\yquant@orientation@plus\yquant@pgf@x>\yquant@orientation@plus\dimen0 }{%
+      \ifdim\dimen6=\dimen2 %
+         \yquant@softpath@extractmaxxat@update{\dimen4}%
+      \else%
+         \ifdim\dimen6<\dimen2 %
+            \unless\ifdim\yquant@pgf@y<\dimen2 %
+               \expandafter\yquant@softpath@extractmaxxat@update\expandafter{\the\dimexpr%
+                  \dimen4+% x0
+                  \dimexpr\yquant@pgf@x-\dimen4\relax*% (x1-x0)
+                  \dimexpr\dimen2-\dimen6\relax/\dimexpr\yquant@pgf@y-\dimen6\relax% (y-y0)/(y1-y0)
+               \relax}%
+            \fi%
+         \else%
+            \unless\ifdim\yquant@pgf@y>\dimen2 %
+               \expandafter\yquant@softpath@extractmaxxat@update\expandafter{\the\dimexpr%
+                  \dimen4+% x0
+                  \dimexpr\yquant@pgf@x-\dimen4\relax*% (x1-x0)
+                  \dimexpr\dimen2-\dimen6\relax/\dimexpr\yquant@pgf@y-\dimen6\relax% (y-y0)/(y1-y0)
+               \relax}%
+            \fi%
+         \fi%
+      \fi%
+   }\relax%
+   \dimen4=\yquant@pgf@x%
+   \dimen6=\yquant@pgf@y%
+}
+
+\protected\def\yquant@softpath@extractmaxxat@curveto@checkx{%
+   % \dimen11 holds our only candidate for t. Is it within the curve?
+   \unless\ifdim\dimen11<0pt %
+      \unless\ifdim\dimen11>1pt %
+         % it is. \dimen4: x0, \pgf@xa: xa, \pgf@xb: xb, \pgf@xc: x1
+         \begingroup%
+            \dimen12=\dimexpr1pt-\dimen11\relax% 1 - t
+            \dimen13=\dimexpr\dimen11*\dimen11/65536\relax% t^2
+            \dimen14=\dimexpr\dimen12*\dimen12/65536\relax% (1 - t)^2
+            \dimen255=\dimexpr\dimen13*\dimen11/65536*\pgf@xc/65536+% t^3 x1
+                              3\dimen13*\dimen12/65536*\pgf@xb/65536+% t^2(1 - t) xb
+                              \dimen14*\dimen12/65536*\dimen4/65536+% (1 - t)^3 x0
+                              3\dimen11*\dimen14/65536*\pgf@xa/65536% 3t(1 - t)^2 xa
+                      \relax%
+            \expandafter%
+         \endgroup%
+         \expandafter\yquant@softpath@extractmaxxat@update\expandafter{\the\dimen255}%
+      \fi%
+   \fi%
+}
+
+\protected\def\yquant@softpath@extractmaxxat@curveto#1#2\pgfsyssoftpath@curvetosupportbtoken#3#4\pgfsyssoftpath@curvetotoken#5#6{%
+   % There's really no good way to do this apart from solving the Bézier curve (a third-order polynomial). Let's do it. (Yes, this is inefficient, but if someone substitutes the rectangular box of a subcircuit by a more fancy design, this is not our fault).
+   % Parametrized by t, the x coordinates of the curve are
+   % x0 + 3 (xa - x0) t + 3 (x0 - 2xa + xb) t^2 + (3xa - 3xb + x1 - x0) t^3
+   % where x0 = \dimen4 (the moveto point), xa = #1, xb = #3, x1 = #5.
+   % Likewise for y:
+   %       y0 = \dimen6 (the moveto point), ya = #2, yb = #4, y1 = #6.
+   \pgfpointtransformed{\pgfqpoint{#1}{#2}}%
+   \pgf@xa=\yquant@pgf@x%
+   \pgf@ya=\yquant@pgf@y%
+   \pgfpointtransformed{\pgfqpoint{#3}{#4}}%
+   \pgf@xb=\yquant@pgf@x%
+   \pgf@yb=\yquant@pgf@y%
+   \pgfpointtransformed{\pgfqpoint{#5}{#6}}%
+   \pgf@xc=\yquant@pgf@x%
+   \pgf@yc=\yquant@pgf@y%
+   % We first solve the third-order polynomial for t using the y value, then plug it back into the x value.
+   % TODO: this is accurate to approx. 3 digits. Can this be improved by reformulating Cardanos formula to involve less divisions?
+   \begingroup%
+      % We need so many dimensions that we break with TeX's convention for their use.
+      % for the multiplications with and divisions by dimensions, we exploit that eTeX fuses muldiv to 64 bits. Further note that each dimension has a scaling factor of 65536 for sp<->pt conversion. This is why don't factor out divisions (which would be more efficient, but not give the benefit of 64bit accuracy).
+      % a = 3(ya - yb) + (y1 - y0)
+      \dimen1=\dimexpr3\pgf@ya-3\pgf@yb+\pgf@yc-\dimen6\relax%
+      \ifdim\dimen1<1pt %
+         \ifdim\dimen1>-1pt %
+            \dimen1=0pt % this is almost a quadratic curve
+         \fi%
+      \fi%
+      \ifdim\dimen1=0pt %
+         % this is only a quadratic curve!
+         % b = 3(y0 - 2ya + yb)
+         \dimen3=3\dimexpr\dimen6-2\pgf@ya+\pgf@yb\relax%
+         % c: 3(ya - y0)
+         \dimen5=3\dimexpr\pgf@ya-\dimen6\relax%
+         % d: y0 - <desired y>
+         \dimen7=\dimexpr\dimen6-\dimen2\relax%
+         \ifdim\dimen3<1pt %
+            \expandafter\@firstofone%
+         \else%
+            \expandafter\@secondoftwo%
+         \fi{%
+            \ifdim\dimen3>-1pt %
+               % this is almost a linear curve!
+               \dimen11=\dimexpr-\dimen7*65536/\dimen5\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+               \expandafter\@gobble%
+            \else%
+               \expandafter\@firstofone%
+            \fi%
+         }{%
+            % check the discriminant of the equation
+            \dimen8=\dimexpr\dimen3*\dimen3/65536-4\dimen3*\dimen7/65536\relax%
+            \unless\ifdim\dimen8<0pt%
+               % there are two potential candidates, (-c +- sqrt(c^2 - 4b d))/2b
+               \pgfmathsqrt@{\the\dimen8\@gobbletwo}%
+               \dimen11=\dimexpr\dimexpr-\dimen5+\pgfmathresult pt\relax*65536/%
+                                \dimexpr2\dimen3\relax\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+               \dimen11=\dimexpr\dimexpr-\dimen5-\pgfmathresult pt\relax*65536/%
+                                \dimexpr2\dimen3\relax\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+            \fi%
+         }%
+      \else%
+         % We will simplify by directly dividing all coefficients by a
+         % b = 3(y0 - 2ya + yb)
+         \dimen3=\dimexpr3\dimexpr\dimen6-2\pgf@ya+\pgf@yb\relax*65536/\dimen1\relax%
+         % c: 3(ya - y0)
+         \dimen5=\dimexpr3\dimexpr\pgf@ya-\dimen6\relax*65536/\dimen1\relax%
+         % d: y0 - <desired y>
+         \dimen7=\dimexpr\dimexpr\dimen6-\dimen2\relax*65536/\dimen1\relax%
+         % Note that now our a value (\dimen1) is no longer needed, it is one.
+         % check the discriminant of the equation
+         % Q = (3c - b^2)/9
+         \dimen8=\dimexpr\dimexpr3\dimen5-\dimen3*\dimen3/65536\relax/9\relax%
+         % R = (9bc - 27d - 2b^3)/54 = bc/6 - d/2 - b^3/27
+         \dimen9=\dimexpr\dimen3*\dimen5/393216-% 6*65536
+                          .5\dimen7-%
+                          \dimen3*\dimen3/65536*\dimen3/1769472% 27*65536
+                  \relax%
+         % D = Q^3 + R^2
+         \dimen10=\dimexpr\dimen8*\dimen8/65536*\dimen8/65536+\dimen9*\dimen9/65536\relax%
+         \ifdim\dimen10>0pt %
+            % only one real root: y_1 = S + T - b/3a
+            % S = cbrt(R + sqrt(Q^3 + R^2))
+            % T = cbrt(R - sqrt(Q^3 + R^2))
+            \pgfmathsqrt@{\the\dimen10\@gobbletwo}%
+            \dimen12=\dimexpr\dimen9+\pgfmathresult pt\relax%
+            \dimen13=\dimexpr\dimen9-\pgfmathresult pt\relax%
+            \ifdim\dimen12>0pt %
+               \pgfmathpow@{\the\dimen12\@gobbletwo}{.3333333333}%
+               \dimen11=\pgfmathresult pt %
+            \else%
+               \pgfmathpow@{\the\dimexpr-\dimen12\relax\@gobbletwo}{.3333333333}%
+               \dimen11=-\pgfmathresult pt %
+            \fi%
+            \ifdim\dimen13>0pt %
+               \pgfmathpow@{\the\dimen13\@gobbletwo}{.3333333333}%
+               \dimen11=\dimexpr\dimen11+\pgfmathresult pt-.33333333333\dimen3\relax%
+            \else%
+               \pgfmathpow@{\the\dimexpr-\dimen13\relax\@gobbletwo}{.3333333333}%
+               \dimen11=\dimexpr\dimen11-\pgfmathresult pt-.33333333333\dimen3\relax%
+            \fi%
+            \yquant@softpath@extractmaxxat@curveto@checkx%
+         \else%
+            \ifdim\dimen10=0pt %
+               % easiest case, three real roots, two of which are equal:
+               % y_1 = 2cbrt(R) - b/3a
+               % y_2, x_3 = -cbrt(R) - b/3a
+               \ifdim\dimen9>0pt %
+                  \pgfmathpow@{\the\dimen9\@gobbletwo}{.3333333333}%
+                  \dimen15=\pgfmathresult pt %
+               \else%
+                  \pgfmathpow@{\the\dimexpr-\dimen9\relax\@gobbletwo}{.3333333333}%
+                  \dimen15=-\pgfmathresult pt %
+               \fi%
+               \dimen11=\dimexpr2\dimen15-.33333333333\dimen3\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+               % check the next candidate
+               \dimen11=\dimexpr-\dimen15-.33333333333\dimen3\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+            \else%
+               % nastiest case, three distinct real roots which we can find only by taking a complex-valued cube root.
+               % p + i q = cbrt(R + i sqrt(|D|))
+               \pgfmathsqrt@{\the\dimexpr-\dimen10\relax\@gobbletwo}%
+               \dimen10=\pgfmathresult pt %
+               % Let us first find the absolute value
+               \dimen12=\dimexpr\dimen9*\dimen9/65536+\dimen10*\dimen10/65536\relax%
+               \pgfmathpow@{\the\dimen12\@gobbletwo}{.1666666667}%
+               \dimen12=\pgfmathresult pt%
+               % then we need 1/3 the argument of R + i sqrt(|D|).
+               \pgfmathatantwo@{\the\dimen10\@gobbletwo}{\the\dimen9\@gobbletwo}%
+               \dimen13=.3333333333\dimexpr\pgfmathresult pt\relax%
+               % and then the real and imaginary parts as cosine and sine.
+               \pgfmathcos@{\the\dimen13\@gobbletwo}%
+               \dimen14=\dimexpr\pgfmathresult\dimen12\relax%
+               \pgfmathsin@{\the\dimen13\@gobbletwo}%
+               \dimen15=\dimexpr\pgfmathresult\dimen12\relax%
+               % Now the candidates are
+               % y_1 = 2p - b/3a
+               % y_2 = -p - sqrt(3)q - b/3a
+               % y_3 = -p + sqrt(3)q - b/3a
+               \dimen11=\dimexpr2\dimen14-.33333333333\dimen3\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+               \dimen11=\dimexpr-\dimen14-1.732050808\dimen15-.33333333333\dimen3\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+               \dimen11=\dimexpr-\dimen14+1.732050808\dimen15-.33333333333\dimen3\relax%
+               \yquant@softpath@extractmaxxat@curveto@checkx%
+            \fi%
+         \fi%
+      \fi%
+      % Now after all these calculations, \dimen0 was updated within the group. Make available outside.
+      \expandafter%
+   \endgroup%
+   \expandafter\dimen\expandafter0\expandafter=\the\dimen0  %
+   \dimen4=\pgf@xc %
+   \dimen6=\pgf@yc %
+}
+
+\protected\def\yquant@softpath@extractmaxxat@rectto#1#2\pgfsyssoftpath@rectsizetoken#3#4{%
+   % #1: lower left x, #2: lower left y, #3: width, #4: height
+   \pgfpointtransformed{\pgfqpoint{#1}{#2}}%
+   \pgf@xa=\yquant@pgf@x%
+   \pgf@ya=\yquant@pgf@y%
+   \pgfpointtransformed{\pgfqpoint{\dimexpr#1+#3\relax}{\dimexpr#2+#4\relax}}%
+   % (\pgf@xa, \pgf@ya) one corner, (\pgf@x, \pgf@y) other corner
+   \ifdim\yquant@pgf@y>\pgf@ya %
+      \unless\ifdim\pgf@ya>\dimen2 %
+         \unless\ifdim\yquant@pgf@y<\dimen2 %
+            \ifdim\yquant@orientation@plus\yquant@pgf@x>\yquant@orientation@plus\pgf@xa %
+               \yquant@softpath@extractmaxxat@update\yquant@pgf@x%
+            \else%
+               \yquant@softpath@extractmaxxat@update\pgf@xa%
+            \fi%
+         \fi%
+      \fi%
+   \else%
+      \unless\ifdim\pgf@ya<\dimen2 %
+         \unless\ifdim\yquant@pgf@y>\dimen2 %
+            \ifdim\yquant@orientation@plus\yquant@pgf@x>\yquant@orientation@plus\pgf@xa %
+               \yquant@softpath@extractmaxxat@update\yquant@pgf@x%
+            \else%
+               \yquant@softpath@extractmaxxat@update\pgf@xa%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+}

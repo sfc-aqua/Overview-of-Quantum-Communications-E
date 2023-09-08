@@ -11,17 +11,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz,pgfplots}
 \usepackage{tikz-3dplot-circleofsphere}
-\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,arrows.meta,positioning,automata,calc,patterns}
+\usepackage[compat=0.6]{yquant}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,arrows.meta,positioning,automata,calc,patterns,fadings}
 % \usepackage{braket}
 \usepackage{amssymb}
-% \usepackage{physics}
-% \usepackage{etools}
 \usepackage{hyperref}
-\usepackage[
-type={CC},
-modifier={by-sa},
-version={4.0},
-]{doclicense}
+\usepackage[type={CC},modifier={by-sa},version={4.0},]{doclicense}
 \usepackage{gensymb}
 \usepackage{makecell}
 \usepackage{pifont}
@@ -29,6 +24,10 @@ version={4.0},
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{graphicx}
+% \usepackage{physics}
+\usepackage{etoolbox} %ifthen
+\tikzset{>=latex}
+
 
 \let\oldding\ding
 \renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}
@@ -39,6 +38,25 @@ version={4.0},
 \definecolor{newblue}{RGB}{43,174,222}
 \colorlet{darkgreen}{green!50!black}
 \colorlet{lightgreen}{green!80!black}
+
+% definitions for interference images
+\colorlet{wall}{blue!30!black}
+\colorlet{myblue}{blue!70!black}
+\colorlet{myorange}{orange!90!black!80}
+\colorlet{myred}{red!70!black}
+\colorlet{mydarkred}{red!50!black}
+\colorlet{mylightgreen}{green!60!black!70}
+\colorlet{mygreen}{green!60!black}
+\colorlet{myredgrey}{red!50!black!80}
+\colorlet{myshadow}{blue!30!black!90}
+\tikzstyle{wave}=[myblue,thick]
+
+\newcommand\lineend[2]{
+  \def\w{0.1} \def\c{30}
+  \draw[mygreen] (#1)++(#2:\w) to[out=#2-180-\c,in=#2+\c] (#1)
+                               to[out=#2+\c-180,in=#2-\c]++ (#2-180:\w);
+}
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.1) --++ (#2-180:0.2)}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,7 +175,8 @@ version={4.0},
 %ISBN etc.
 \end{copyrightpage}
 
-\dedication{I'd like to thank the Academy...} 
+\dedication{For my sisters, who make the world a better place\\
+---rdv} 
 
 \begin{epigraphpage}
 \epigraph{Begin at the beginning,'' the King said, gravely, ``Then

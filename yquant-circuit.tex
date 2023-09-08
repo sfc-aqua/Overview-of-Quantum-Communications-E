@@ -1,0 +1,366 @@
+% BEGIN_FOLD Drawing wires
+% extends the wire of register #1. Assumes a node called yquantbox is set up, and the \pgfshapeclippathhorzresult was set up appropriately for this node.
+\protected\def\yquant@circuit@extendwire#1#2{%
+   \begingroup%
+      \ifx*#2%
+         \edef\wirexpos{\the\dimen0}%
+      \else%
+         \pgfpointanchor{yquantbox}{#2}%
+         \edef\wirexpos{\the\yquant@pgf@x}%
+      \fi%
+      \ifdim\yquant@orientation@plus\wirexpos>0pt % may be negative for init gates
+         \yquant@register@get@typeywire{#1}\wiretype\wireypos\wirelast%
+         \edef\wirexprevpos{\expandafter\@firstoffour\wirelast}%
+         \ifnum\wiretype=\yquant@register@type@none%
+            % the clippings of the previous operator will for sure not be needed, but the type might be turned into an active one, so we need the last clipping.
+            \yquant@register@set@lastwire{#1}{%
+               {\wirexprevpos}{\wirexpos}{}%
+               {\ifyquant@config@draw@quality%
+                   \unexpanded\expandafter{\pgfshapeclippathhorzresult}%
+                \fi}%
+            }%
+         \else%
+            % append the previous `last' clipping to the old list and insert the new one
+            \yquant@register@set@lastwire{#1}{%
+               {\wirexprevpos}{\wirexpos}%
+               {\unexpanded\expandafter\expandafter\expandafter{%
+                   \expandafter\@thirdandfourthoffour\wirelast%
+                }%
+               }%
+               {\ifyquant@config@draw@quality%
+                  \unexpanded\expandafter{\pgfshapeclippathhorzresult}%
+                \fi}%
+            }%
+         \fi%
+      \fi%
+   \endgroup%
+}
+
+% finishes the wires of all registers
+\protected\def\yquant@circuit@endwires{%
+   \expandafter\expandafter\expandafter\yquant@register@get@maxxrange%
+      \expandafter\expandafter\expandafter\yquant@circuit@endwires@x%
+      \expandafter\expandafter\expandafter1%
+      \expandafter\expandafter\expandafter{\csname\yquant@prefix registers\endcsname}%
+   % to have a symmetric situation, we extend again one separation at the end, unless this is supposed to be seamless and we don't have outputs (for seamless circuits with outputs, extend - since this extension will be between last register and output)
+   \ifyquant@env@seamless{%
+      \expandafter\unless\expandafter\ifx\csname\yquant@prefix outputs\endcsname\relax%
+         \dimdef\yquant@circuit@endwires@x{%
+            \yquant@circuit@endwires@x\yquant@orientation@plus\yquant@config@operator@sep%
+         }%
+      \fi%
+   }{%
+      \dimdef\yquant@circuit@endwires@x{%
+         \yquant@circuit@endwires@x\yquant@orientation@plus\yquant@config@operator@sep%
+      }%
+   }%
+   \let\yquant@circuit@endwires@finalize=\relax%
+   \yquant@for \yquant@circuit@endwires@i := 1 to \csname\yquant@prefix registers\endcsname {%
+      % we only extend the wire if it does not come from the outer circuit - this one would be responsible for the extension.
+      \ifcsname\yquant@prefix registermap@\yquant@circuit@endwires@i\endcsname%
+         \xifinlistcs\yquant@circuit@endwires@i{\yquant@prefix inonly}{%
+            % however, the wire is to be discarded after this circuit
+            \ifyquanthorz{%
+               \edef\storedleft{\the\pgf@picminx}%
+               \yquant@draw@wire\yquant@circuit@endwires@i1%
+               \global\pgf@picminx=\storedleft%
+            }{%
+               \edef\storedtop{\the\pgf@picmaxy}%
+               \yquant@draw@wire\yquant@circuit@endwires@i1%
+               \global\pgf@picmaxy=\storedtop%
+            }%
+            \eappto\yquant@circuit@endwires@finalize{%
+               \yquant@register@set@type%
+                  \yquant@circuit@endwires@i\noexpand\yquant@register@type@none%
+            }%
+         }\relax%
+      \else%
+         \yquant@draw@wire\yquant@circuit@endwires@i1%
+      \fi%
+   }%
+}
+
+% outputs the wire according to its previous instructions and prepares for a change in the wire style
+\protected\def\yquant@circuit@flushwire#1{%
+   \yquant@draw@wire{#1}0%
+   \begingroup%
+      \yquant@register@get@lastwire{#1}\wirelast%
+      \yquant@register@set@lastwire{#1}{%
+         {\expandafter\@secondoffour\wirelast}{\expandafter\@secondoffour\wirelast}{}%
+         {\unexpanded\expandafter\expandafter\expandafter{%
+             \expandafter\@fourthoffour\wirelast%
+          }}%
+      }%
+   \endgroup%
+}
+% END_FOLD
+
+% BEGIN_FOLD Drawing control lines
+% populates a drawing macro with the current control line with style #1 at position #2. Assumes a node called yquantbox is set up, and the \pgfshapeclippathvertresult was set up appropriately for this node. At the first call, \yquant@circuit@extendcontrolline@cmd must be \let to \empty and \yquant@circuit@extendcontrolline@prev to \relax.
+\protected\def\yquant@circuit@extendcontrolline#1#2{%
+   \ifyquant@config@draw@quality%
+      \eappto\yquant@circuit@extendcontrolline@clip{%
+         \unexpanded\expandafter{\pgfshapeclippathvertresult}%
+      }%
+   \fi%
+   \begingroup%
+      \tikzset{/yquant/every control line}%
+      \expandafter%
+   \endgroup%
+   \expandafter\@tempdima\the\pgflinewidth%
+   \ifcase#1%
+      % no control (or to a discarded target, which we don't do)
+   \or%
+      % qubit
+      \pgfpointanchor{yquantbox}{center}%
+      \unless\ifx\yquant@circuit@extendcontrolline@prev\relax%
+         \eappto\yquant@circuit@extendcontrolline@cmd{%
+            \expandafter\@secondofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(#2,\the\yquant@pgf@y)%
+         }%
+      \fi%
+      \yquant@circuit@extendcontrolline@store{#2}%
+   \or%
+      % cbit
+      \pgfpointanchor{yquantbox}{center}%
+      \unless\ifx\yquant@circuit@extendcontrolline@prev\relax%
+         \eappto\yquant@circuit@extendcontrolline@cmd{%
+            \expandafter\@firstofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(\the\dimexpr#2-2\@tempdima\relax,\the\yquant@pgf@y)%
+            \expandafter\@thirdofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(\the\dimexpr#2+2\@tempdima\relax,\the\yquant@pgf@y)%
+         }%
+      \fi%
+      \yquant@circuit@extendcontrolline@store{#2}%
+   \or%
+      % quantum-bundle (very unusual, but perhaps for transversal operations?)
+      \pgfpointanchor{yquantbox}{center}%
+      \unless\ifx\yquant@circuit@extendcontrolline@prev\relax%
+         \eappto\yquant@circuit@extendcontrolline@cmd{%
+            \expandafter\@firstofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(\the\dimexpr#2-2\@tempdima\relax,\the\yquant@pgf@y)%
+            \expandafter\@secondofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(\the\dimexpr#2\relax,\the\yquant@pgf@y)%
+            \expandafter\@thirdofthree\yquant@circuit@extendcontrolline@prev%
+            -- \yquant@coords(\the\dimexpr#2+2\@tempdima\relax,\the\yquant@pgf@y)%
+         }%
+      \fi%
+      \yquant@circuit@extendcontrolline@store{#2}%
+   \else%
+      \PackageError{yquant.sty}{Invalid control line type `#1'}%
+                   {yquant encountered an internal error.}%
+   \fi%
+}
+
+\protected\def\yquant@circuit@extendcontrolline@store#1{%
+   \edef\yquant@circuit@extendcontrolline@prev{%
+      {\yquant@coords(\the\dimexpr#1-2\@tempdima\relax,\the\yquant@pgf@y)}%
+      {\yquant@coords(\the\dimexpr#1\relax,\the\yquant@pgf@y)}%
+      {\yquant@coords(\the\dimexpr#1+2\@tempdima\relax,\the\yquant@pgf@y)}%
+   }%
+}
+
+% populates a drawing macro with the multi operation connector at position #2. Assumes a node called yquantbox is set up, and the \pgfshapeclippathvertresult was set up appropriately for this node. At the first call, \yquant@circuit@extendmultiline@cmd must be \let to \empty and \yquant@circuit@extendmultiline@prev to \relax.
+\protected\def\yquant@circuit@extendmultiline#1{%
+   \begingroup%
+      \tikzset{/yquant/every multi line}%
+      \expandafter%
+   \endgroup%
+   \ifyquant@config@draw@quality%
+      \eappto\yquant@circuit@extendmultiline@clip{%
+         \unexpanded\expandafter{\pgfshapeclippathvertresult}%
+      }%
+   \fi%
+   \expandafter\@tempdima\the\pgflinewidth%
+   \pgfpointanchor{yquantbox}{center}%
+   \unless\ifx\yquant@circuit@extendmultiline@prev\relax%
+      \eappto\yquant@circuit@extendmultiline@cmd{%
+         \yquant@circuit@extendmultiline@prev -- \yquant@coords(#1,\the\yquant@pgf@y)%
+      }%
+   \fi%
+   \edef\yquant@circuit@extendmultiline@prev{%
+      \yquant@coords(\the\dimexpr#1\relax,\the\yquant@pgf@y)%
+   }%
+}
+% END_FOLD
+
+\newif\ifyquant@circuit@operator@hasControls%
+% sets up the relevant variables associated with an operator
+% #1: positive controls
+% #2: negative controls
+% #3: targets
+\protected\def\yquant@circuit@operator#1#2#3{%
+   % convert all names to indices
+   % targets
+   \yquant@register@get@ids{#3}%
+   \let\yquant@circuit@operator@targets=\yquant@register@get@ids@list%
+   \let\yquant@circuit@operator@mintarget=\yquant@register@get@ids@min%
+   \let\yquant@circuit@operator@maxtarget=\yquant@register@get@ids@max%
+   \let\yquant@circuit@operator@numtarget=\yquant@register@get@ids@count%
+   % make sure to reset this for subcircuits
+   \yquant@circuit@operator@hasControlsfalse%
+   % For the targets, multi-qubit registers might have been allowed, but certainly not for
+   % the controls!
+   \yquant@register@get@allowmultifalse%
+   % positive controls
+   \yquant@register@get@ids{#1}%
+   \let\yquant@circuit@operator@pctrls=\yquant@register@get@ids@list%
+   \let\yquant@circuit@operator@minpctrl=\yquant@register@get@ids@min%
+   \let\yquant@circuit@operator@maxpctrl=\yquant@register@get@ids@max%
+   \let\yquant@circuit@operator@numpctrl=\yquant@register@get@ids@count%
+   \ifnum\yquant@register@get@ids@count>0 %
+      \yquant@circuit@operator@hasControlstrue%
+   \fi%
+   % negative controls
+   \yquant@register@get@ids{#2}%
+   \let\yquant@circuit@operator@nctrls=\yquant@register@get@ids@list%
+   \let\yquant@circuit@operator@minnctrl=\yquant@register@get@ids@min%
+   \let\yquant@circuit@operator@maxnctrl=\yquant@register@get@ids@max%
+   \let\yquant@circuit@operator@numnctrl=\yquant@register@get@ids@count%
+   \ifnum\yquant@register@get@ids@count>0 %
+      \yquant@circuit@operator@hasControlstrue%
+   \fi%
+   % determine the qubits spanned
+   \yquant@min\yquant@circuit@operator@minctrl%
+      \yquant@circuit@operator@mintarget%
+      \yquant@circuit@operator@minpctrl%
+      \yquant@circuit@operator@minnctrl%
+      \relax%
+   \yquant@max\yquant@circuit@operator@maxctrl%
+      \yquant@circuit@operator@maxtarget%
+      \yquant@circuit@operator@maxpctrl%
+      \yquant@circuit@operator@maxnctrl%
+      \relax%
+}
+
+% restores the data captured for an uncontrolled operator and starts preparation
+% #1: \yquant@attrs@remaining
+% #2: \yquant@lang@attr@name
+% #3: \yquant@circuit@operator@targets
+% #4: \yquant@circuit@operator@mintarget
+% #5: \yquant@circuit@operator@maxtarget
+% #6: \yquant@circuit@operator@numtarget
+\protected\def\yquant@circuit@restore#1#2#3#4#5#6{%
+   \def\yquant@attrs@remaining{#1}%
+   \def\yquant@lang@attr@name{#2}%
+   \def\yquant@circuit@operator@targets{#3}%
+   \def\yquant@circuit@operator@mintarget{#4}%
+   \def\yquant@circuit@operator@maxtarget{#5}%
+   \def\yquant@circuit@operator@numtarget{#6}%
+   \yquant@circuit@operator@hasControlsfalse%
+   \let\yquant@circuit@operator@pctrls=\empty%
+   \def\yquant@circuit@operator@minpctrl{2147483647}%
+   \def\yquant@circuit@operator@maxpctrl{0}%
+   \let\yquant@circuit@operator@numpctrl=\yquant@circuit@operator@maxpctrl%
+   \let\yquant@circuit@operator@nctrls=\empty%
+   \let\yquant@circuit@operator@minnctrl=\yquant@circuit@operator@minpctrl%
+   \let\yquant@circuit@operator@maxnctrl=\yquant@circuit@operator@maxpctrl%
+   \let\yquant@circuit@operator@numnctrl=\yquant@circuit@operator@numpctrl%
+   \let\yquant@circuit@operator@minctrl=\yquant@circuit@operator@mintarget%
+   \let\yquant@circuit@operator@maxctrl=\yquant@circuit@operator@maxtarget%
+}
+
+% creates a subcircuit. Parameter registers must be filled in \yquant@circuit@subcircuit@params.
+% #1: style
+\protected\def\yquant@circuit@subcircuit#1{%
+   \numdef\yquant@circuit@subcircuit@id{\yquant@env+1}%
+   \listcsxadd{\yquant@prefix subcircuits}{\yquant@circuit@subcircuit@id}%
+   \begingroup%
+      \tikzset{/yquant/every operator, #1,%
+               /yquant/this operator, /yquant/operators/this subcircuit box/.style={}}%
+      % execute the subcircuit
+      \expandafter%
+      \yquant@env@begin@noarg%
+         \yquant@lang@attr@value% this contains the subcircuit's content
+         \expandafter\unless\expandafter\ifx\csname\yquant@prefix parameters\endcsname\empty%
+            \PackageError{yquant.sty}{Invalid subcircuit parameters count}%
+                         {Too many parameters given.}%
+         \fi%
+      \yquant@env@end%
+   \endgroup%
+}
+
+% BEGIN_FOLD Helpers for operator callbacks
+% turn a wire into a different type
+\def\yquant@circuit@settype#1{%
+   \unless\if\yquant@register@get@type{#1}\yquant@circuit@settype@to %
+      \yquant@circuit@flushwire{#1}%
+      \yquant@register@set@type{#1}{\yquant@circuit@settype@to}%
+   \fi%
+}
+
+\protected\def\yquant@circuit@settype@prepare#1{%
+   \yquant@register@set@type{#1}{\yquant@circuit@settype@to}%
+}
+
+\protected\long\def\yquant@circuit@setstyle#1#2{%
+   \yquant@circuit@flushwire{#1}%
+   \yquant@register@set@style{#1}{#2}%
+}
+
+\protected\long\def\yquant@circuit@addstyle#1#2{%
+   \yquant@circuit@flushwire{#1}%
+   \yquant@register@set@style{#1}{\yquant@register@get@style{#1},#2}%
+}
+
+% performs an alignment of all registers specified in the argument; that is, the next operation on any of the listed registers will be after the maximum position of all of them
+% #1: arbitrary register list
+\protected\def\yquant@circuit@align#1{%
+   \csxappto{\yquant@prefix draw}{%
+      \yquant@draw@hspace{#1}{0pt}%
+   }%
+}
+
+% introduces a horizontal skip (= invisible operator of given width) among the registers; that is, those registers are first aligned, then skipped by the given amount.
+% #1: arbitrary register list
+% #2: skip width
+\protected\def\yquant@circuit@hspace#1#2{%
+   \csxappto{\yquant@prefix draw}{%
+      \yquant@draw@hspace{#1}{#2}%
+   }%
+}
+
+% applies an action to wires a list of registers and causes them to be redrawn
+% #1: action for prepare
+% #2: action for draw
+% #3: arbitrary register list
+% #4: parameter(s)
+\protected\def\yquant@circuit@actonwires#1#2#3#4{%
+   \begingroup%
+      \let\tmp=\empty%
+      \def\do##1{%
+         % We do not extend the wire: a register that is discarded somewhere does not make
+         % sense, only right after some application (which is supposed to already have
+         % extended the wire appropriately).
+         \eappto\tmp{#2{##1}#4}%
+         #1{##1}#4%
+      }%
+      \dolistloop{#3}%
+      \csxappto{\yquant@prefix draw}{\tmp}%
+   \endgroup%
+}
+
+% sets the output of wires
+% #1: arbitrary register list
+\protected\def\yquant@circuit@output{%
+   \let\idx=\yquant@protectedempty%
+   \ifnum\yquant@compat>1 %
+      \let\Ifnum=\yquant@protectedempty%
+      \let\Ifcase=\yquant@protectedempty%
+      \let\Or=\yquant@protectedempty%
+      \let\Else=\yquant@protectedempty%
+      \let\Fi=\yquant@protectedempty%
+      \let\Unless=\yquant@protectedempty%
+      \let\The=\yquant@protectedempty%
+   \fi%
+   \protected@csxappto{\yquant@prefix outputs}%
+            {\yquant@circuit@restore%
+               {\yquant@attrs@remaining}%
+               {\yquant@lang@attr@name}%
+               {\unexpanded\expandafter{\yquant@circuit@operator@targets}}%
+               {\yquant@circuit@operator@mintarget}{\yquant@circuit@operator@maxtarget}%
+               {\yquant@circuit@operator@numtarget}%
+             \yquant@prepare{\yquant@lang@attr@value}{}%
+            }%
+}
+% END_FOLD

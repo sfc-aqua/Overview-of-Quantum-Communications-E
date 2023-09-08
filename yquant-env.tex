@@ -1,0 +1,997 @@
+\newif\ifyquant@env@lazy
+\newif\ifyquantmeasuring
+
+\protected\def\yquant@envunstar{%
+   \yquant@env@lazyfalse%
+   \yquant@env@begin%
+}
+
+\protected\def\yquant@envstar{%
+   \yquant@env@lazytrue%
+   \yquant@env@begin%
+}
+
+\protected\def\yquant@env@begin{%
+   % We check for an optional argument, but if it is in a new line, we don't take it - it
+   % might well be the square brace of an argument. Temporary change newlines to ordinary
+   % characters.
+   \catcode`\^^M=12 %
+   \yquant@futurenonspacelet\yquant@env@begin@next\yquant@env@begin@checkarg%
+}
+
+{\catcode`\^^M=12 \global\let\yquant@env@linebreak=^^M}
+
+\protected\def\yquant@env@begin@checkarg{%
+   \catcode`\^^M=5 %
+   \ifx\yquant@env@begin@next[%
+      \expandafter\yquant@env@begin@arg%
+   \else%
+      \ifx\yquant@env@begin@next\yquant@env@linebreak%
+         % In this case we don't really want to inject the wrong-catcode linebreak back,
+         % which would produce an error.
+         \afterassignment\yquant@env@begin@noarg%
+         \expandafter\expandafter\expandafter\let%
+         \expandafter\expandafter\expandafter\@eattoken%
+         % since ^^M is an ordinary character, no need for "= ".
+      \else%
+         \expandafter\expandafter\expandafter\yquant@env@begin@noarg%
+      \fi%
+   \fi%
+}
+
+\def\yquant@env@begin@noarg{%
+   \yquant@env@begin@arg[]%
+}
+
+\def\yquant@env@begin@arg{%
+   \let\yquant@env@check=\yquant@env@check@%
+   \yquant@env@begin@generic\yquant%
+}
+
+% sync with yquantlanguage-groups
+\long\protected\def\yquant@env@begin@generic#1[#2]{%
+   \begingroup%
+      \let\yquant@parent=\yquant@prefix%
+      \global\advance\yquant@env by 1 %
+      \edef\yquant@prefix{yquant@env\the\yquant@env @}%
+      \ifnum\yquant@env=1 %
+         \yquantmeasuringtrue%
+         \yquant@env@substitute%
+         \global\cslet{\yquant@prefix parameters}\empty%
+      \else%
+         \let\yquant@lang@reset@attrs@inputoutput=\yquant@lang@reset@attrs@inputoutput@subcircuit%
+         \global\cslet{\yquant@prefix parameters}\yquant@circuit@subcircuit@param%
+         \yquant@env@lazyfalse% forbid lazy register creation in subcircuits. We need a proper and in-order declaration of the subcircuit's interface.
+      \fi%
+      \let#1=\yquant@env@scan%
+      \yquant@env@reset@commands%
+      \csgdef{\yquant@prefix registers}{0}%
+      \global\cslet{\yquant@prefix draw}\relax%
+      \global\cslet{\yquant@prefix outputs}\relax%
+      \global\cslet{\yquant@prefix subcircuits}\empty%
+      \global\cslet{\yquant@prefix inonly}\empty%
+      \global\csletcs{\yquant@prefix seamless}{ifyquant@config@circuit@seamless}%
+      \ifdefined\yquant@prevseamless%
+         \cslet{ifyquant@config@circuit@seamless}\yquant@prevseamless%
+         \undef\yquant@prevseamless%
+      \fi%
+      \csxdef{\yquant@prefix cleanup}{%
+         \expandafter\noexpand\csname\yquant@prefix registers\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix draw\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix outputs\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix parameters\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix subcircuits\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix inonly\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix seamless\endcsname%
+         \expandafter\noexpand\csname\yquant@prefix cleanup\endcsname%
+      }%
+      \scope[{/yquant/.cd, #2, /tikz/.cd, /yquant/every circuit, /yquant/internal/setup done}]%
+}
+
+\protected\def\yquant@env@end{%
+         \ifnum\csname\yquant@prefix registers\endcsname>0 %
+            \begingroup%
+               \let\yquant@circuit@operator@pctrls=\empty%
+               \yquant@for \i := 1 to \csname\yquant@prefix registers\endcsname {%
+                  \yquant@register@execclear@lastgate{\i}{@end}%
+               }%
+            \endgroup%
+            \csgappto{\yquant@prefix draw}{%
+               \yquant@circuit@endwires%
+            }%
+            \expandafter\unless\expandafter\ifx\csname\yquant@prefix outputs\endcsname\relax%
+               \begingroup%
+                  \def\yquant@config@operator@minimum@width{0pt}%
+                  \let\yquant@prepare@single=\yquant@prepare@output@single%
+                  \let\yquant@prepare@multi=\yquant@prepare@output@multi%
+                  \csname\yquant@prefix outputs\endcsname%
+               \endgroup%
+            \fi%
+            \csgappto{\yquant@prefix draw}{%
+               \yquant@circuit@endwires@finalize%
+            }%
+            % also calculate the true y positions
+            \unless\ifdefined\yquant@parent%
+               \yquant@env@end@calcypositions%
+            \fi%
+         \else%
+            \ifdefined\yquant@parent%
+               \PackageError{yquant.sty}{Empty subcircuit}%
+                            {Subcircuits must contain registers.}%
+            \else%
+               \PackageWarning{yquant.sty}{Empty quantum circuit}%
+            \fi%
+         \fi%
+         \global\let\yquant@env@scan=\relax% don't rescan after the scope
+      \endscope% this will exit five to seven groups (depending on the transparency group state, and it might even be driver-dependent, though it is not at the moment), so better make the relax global
+      \global\let\yquant@env@scan=\yquant@env@scan@%
+      \ifdefined\yquant@parent%
+         % We are in a subcircuit. The drawing and cleanup is delayed until the end.
+         \csxappto{\yquant@parent cleanup}%
+            {\unexpanded\expandafter\expandafter\expandafter{%
+               \csname\yquant@prefix cleanup\endcsname%
+            }}%
+         \ifyquantdebug%
+            \csshow{\yquant@prefix draw}%
+         \fi%
+      \else%
+         % Now we actually carry out the tikz commands which were previously stored in the draw command. But before this, we get rid of all \yquant@env@scan calls and also restore the scope command, since this would add itself once again. And get@y needs to expand.
+         \let\path=\tikz@command@path%
+         \let\tikz@lib@scope@check=\yquant@env@substikz@scopecheck%
+         \let\tikz@scope@opt=\yquant@env@substikz@scope%
+         \let\endtikz@scope@env=\yquant@env@substikz@endscope%
+         \let\endscope=\endtikz@scope@env%
+         \let\stopscope=\endscope%
+         \yquant@register@get@y@@expandable%
+         \ifyquantdebug%
+            \csshow{\yquant@prefix draw}%
+         \fi%
+         \yquantmeasuringfalse%
+         \csname\yquant@prefix draw\endcsname%
+         \expandafter\expandafter\expandafter\yquant@cleanup\csname\yquant@prefix cleanup\endcsname|%
+         \global\yquant@env=0 %
+      \fi%
+   \endgroup%
+}
+
+\protected\def\ifyquant@env@seamless{%
+   \csname\yquant@prefix seamless\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+}
+
+\newif\ifyquant@env@end@calcypositions@godeep
+\protected\def\yquant@env@end@calcypositions{%
+   \begingroup%
+      \dimen4=\yquant@config@register@sep %
+      \yquant@sort@clear%
+      % Setup...
+      \yquant@env@end@calcypositions@setup1%
+      % and go!
+      \let\redolist=\empty%
+      \yquant@env@end@calcypositions@godeeptrue%
+      \yquant@env@end@calcypositions@run1%
+      \yquant@env@end@calcypositions@godeepfalse%
+      \yquant@env@end@calcypositions@redo%
+      % The macros now set up performed all the proper and unambiguous justification. After that, we will also need to take care of the multi gates. We expect that for most of all multi gates, we already have enough space. But sometimes, this may not be the case, so we need to increase overall spacing and re-evaluate all spacing. In order to get a proper balanced layout, we start with the largest enlargement that is required. Every enlargement step will equally distribute the registers in between. Starting with the largest one, this is likely to also solve issues with smaller ones.
+      \yquant@env@end@calcypositions@multi%
+      % Turn the preliminary positions into true ones at every level.
+      \yquant@env@end@setypositions1%
+   \endgroup%
+}
+
+\protected\def\yquant@env@end@calcypositions@setup#1{%
+   \def\yquant@prefix{yquant@env#1@}%
+   % Our problem is a linear program. To solve it, we proceed iteratively: We define macros for each subcircuit that, based on the current positions, calculate the allowed positions.
+   \letcs\max{\yquant@prefix registers}%
+   % BEGIN_FOLD find out about the first and last register with maps
+   \let\firstinout=\relax%
+   \let\lastinout=\relax%
+   \yquant@for \i := 1 to \max {%
+      \ifcsname\yquant@prefix registermap@\i\endcsname%
+         \ifx\firstinout\relax%
+            \let\firstinout=\i%
+         \fi%
+         \let\lastinout=\i%
+      \fi%
+   }%
+   % END_FOLD
+   % BEGIN_FOLD Take care with internal registers before the first inout
+   % We could in principle merge the loop to define \firstinout/\lastinout, but nested for loops are problematic.
+   \ifx\firstinout\relax%
+      \dimen0=\yquant@register@get@height1 %
+      \def\i{1}%
+   \else%
+      \edef\outerlevel{\yquant@register@get@parent{\firstinout}}%
+      \dimen0=\csname yquant@env\expandafter\@firstoftwo\outerlevel @env@endy@\expandafter\@secondoftwo\outerlevel\endcsname\relax%
+      \ifnum\firstinout>1 %
+         % We need to take special care with internal registers if the first one is not a connected one. In this case, the internal registers will grow upwards instead... Since the y position may change in both upward and downward direction, we need to have an additional bookkeeping value that stores the last y position of the first item in this subcircuit.
+         \csedef{\yquant@prefix env@endyprev}{\the\dimen0}%
+         \yquant@fordown \i := \numexpr\firstinout-1\relax downto 1 {%
+            \advance \dimen0 by -\dimexpr%
+               \expandafter\yquant@register@get@height\expandafter{\the\numexpr\i+1\relax}+%
+               \dimen4+%
+               \yquant@register@get@depth\i%
+            \relax%
+            % We know for sure there's none with a parent in this loop
+            \csedef{\yquant@prefix env@endy@\i}{\the\dimen0}%
+            \csedef{yquant@env@end@calcypositions@#1@\i}{%
+               \advance\dimen0 by -\dimexpr%
+                  \noexpand\yquant@register@get@height{\the\numexpr\i+1\relax}+%
+                  \dimen4+%
+                  \noexpand\yquant@register@get@depth{\i}%
+               \relax%
+               % The first connected wire might have been re-aligned, which destroys all our knowledge. \dimen2 will contain the relative shift that we must take into account.
+               % Make sure the current y position is at most the previous y position + previous depth + separation + current height.
+               \noexpand\ifdim\dimexpr\dimen0-\dimen2\relax<\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\space%
+                  \edef\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname{\noexpand\the\dimen0}%
+                  \ifinlist{#1}\noexpand\redolist\relax{%
+                     \listadd\noexpand\redolist{#1}%
+                  }%
+               \noexpand\else%
+                  \noexpand\ifdim\dimen2=0pt %
+                     % No change at all
+                     \dimen0=\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\space%
+                  \noexpand\else%
+                     % We must still overwrite the position macro due to the shift
+                     \dimen0=\dimexpr\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname+\dimen2\relax%
+                     \edef\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname{\noexpand\the\dimen0}%
+                     \ifinlist{#1}\noexpand\redolist\relax{%
+                        \listadd\noexpand\redolist{#1}%
+                     }%
+                  \noexpand\fi
+               \noexpand\fi%
+               \unless\ifx\i1%
+                  \expandafter\noexpand\csname yquant@env@end@calcypositions@#1@\the\numexpr\i-1\relax\endcsname%
+               \fi%
+            }%
+         }%
+      \fi%
+      \let\i=\firstinout%
+   \fi%
+   % END_FOLD
+   % BEGIN_FOLD Define initial macro
+   \csedef{yquant@env@end@calcypositions@#1}{%
+      \def\noexpand\yquant@prefix{\yquant@prefix}%
+      \dimen0=\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\relax%
+      \listremove\noexpand\redolist{#1}%
+      \expandafter\noexpand\csname yquant@env@end@calcypositions@#1@\i\endcsname%
+      \expandafter\unless\expandafter\ifx\csname\yquant@prefix subcircuits\endcsname\empty%
+         \noexpand\forlistloop%
+            \yquant@env@end@calcypositions@run%
+            \expandafter\noexpand\csname\yquant@prefix subcircuits\endcsname%
+      \fi%
+   }%
+   % END_FOLD
+   % BEGIN_FOLD Set up chain of other macros
+   % We set up a chain of position evaluation macros. We start with the first [external] register in the outermost circuit; it is supposed to call the evaluation macro of its successor. Next, we iterate through all subcircuits (recursively). Whenever we find a register that is mapped to an outer one, we take appropriate measures.
+   \yquant@for \i := \i to \max {%
+      \ifcsname\yquant@prefix registermap@\i\endcsname%
+         % \outery = env@endy macro of parent wire
+         \edef\outerlevel{\yquant@register@get@parent{\i}}%
+         \edef\outery{%
+            \expandafter\noexpand\csname yquant@env\expandafter\@firstoftwo\outerlevel @env@endy@\expandafter\@secondoftwo\outerlevel\endcsname%
+         }%
+         % in this initialization step, we only check in one direction
+         \ifdim\dimen0<\outery\space%
+            \dimen0=\outery\space%
+         \fi%
+      \fi%
+      \csedef{\yquant@prefix env@endy@\i}{\the\dimen0}%
+      \unless\ifx\i\max%
+         \advance \dimen0 by \dimexpr%
+            \yquant@register@get@depth\i+%
+            \dimen4+%
+            \expandafter\yquant@register@get@height\expandafter{\the\numexpr\i+1\relax}%
+         \relax%
+      \fi%
+      \csedef{yquant@env@end@calcypositions@#1@\i}{%
+         % make sure the current y position is at least the previous y position + previous depth + separation + current height
+         \noexpand\ifdim\dimen0>\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\space%
+            \edef\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname{\noexpand\the\dimen0}%
+            \ifinlist{#1}\noexpand\redolist\relax{%
+               \listadd\noexpand\redolist{#1}%
+            }%
+         \noexpand\else%
+            \dimen0=\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\space%
+         \noexpand\fi%
+         % now \dimen0 holds the current y position of register \i
+         % BEGIN_FOLD map
+         \ifcsname\yquant@prefix registermap@\i\endcsname%
+            % if this is an in/out register, put it at the same position as the outer one
+            \noexpand\ifdim\dimen0<\expandafter\noexpand\outery\space%
+               \dimen0=\expandafter\noexpand\outery\space%
+               \let\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname\expandafter\noexpand\outery%
+               \ifinlist{#1}\noexpand\redolist\relax{%
+                  \listadd\noexpand\redolist{#1}%
+               }%
+            \noexpand\fi%
+            \noexpand\ifdim\dimen0>\expandafter\noexpand\outery\space%
+               \let\expandafter\noexpand\outery\expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname%
+               \ifinlist{\expandafter\@firstoftwo\outerlevel}\noexpand\redolist\relax{%
+                  \listadd\noexpand\redolist{\expandafter\@firstoftwo\outerlevel}%
+               }%
+            \noexpand\fi%
+            \ifx\i\firstinout%
+               % This is the first in/out register. Find all previous internal registers and make sure the parent has enough height.
+               \ifnum\i>1 %
+                  % Here, we must now call the (backwards-running) alignment macros of the previous registers. First fill \dimen2 with the relative shift of this wire's position with respect to the last iteration.
+                  \dimen2=\dimexpr\dimen0-\expandafter\noexpand\csname\yquant@prefix env@endyprev\endcsname\relax%
+                  % Store \dimen0...
+                  \dimen6=\dimen0 %
+                  % ...call previous calculations...
+                  \expandafter\noexpand\csname yquant@env@end@calcypositions@#1@\the\numexpr\i-1\relax\endcsname%
+                  % ...restore...
+                  \dimen0=\dimen6 %
+                  % ...and backup its value for the next iteration.
+                  \edef\expandafter\noexpand\csname\yquant@prefix env@endyprev\endcsname{\noexpand\the\dimen0}%
+                  \expandafter\noexpand\csname ifdim\endcsname\noexpand\yquant@register@peek@height\outerlevel<\dimexpr%
+                     \noexpand\yquant@register@get@height1+%
+                     \expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname-%
+                     \expandafter\noexpand\csname\yquant@prefix env@endy@1\endcsname%
+                  \relax%
+                     \yquant@register@set@height@remote\outerlevel{\noexpand\the\dimexpr%
+                        \noexpand\yquant@register@get@height1+%
+                        \expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname-%
+                        \expandafter\noexpand\csname\yquant@prefix env@endy@1\endcsname%
+                     }%
+               \else%
+                  \expandafter\noexpand\csname ifdim\endcsname\noexpand\yquant@register@peek@height\outerlevel<%
+                     \noexpand\yquant@register@get@height1 %
+                     \yquant@register@set@height@remote\outerlevel{%
+                        \noexpand\yquant@register@get@height1%
+                     }%
+               \fi%
+                     \ifinlist{\expandafter\@firstoftwo\outerlevel}\noexpand\redolist\relax{%
+                        \listadd\noexpand\redolist{\expandafter\@firstoftwo\outerlevel}%
+                     }%
+                  \expandafter\noexpand\csname fi\endcsname%
+            \fi%
+            \ifx\i\lastinout%
+               % this is the last in/out register. Find all following internal registers and make sure the parent has enough depth.
+               \ifnum\i<\max\space%
+                  \expandafter\noexpand\csname ifdim\endcsname\noexpand\yquant@register@peek@depth\outerlevel<\dimexpr%
+                     \noexpand\yquant@register@get@depth{\max}+%
+                     \expandafter\noexpand\csname\yquant@prefix env@endy@\max\endcsname-%
+                     \expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname%
+                  \relax%
+                     \yquant@register@set@depth@remote\outerlevel{\noexpand\the\dimexpr%
+                        \noexpand\yquant@register@get@depth{\max}+%
+                        \expandafter\noexpand\csname\yquant@prefix env@endy@\max\endcsname-%
+                        \expandafter\noexpand\csname\yquant@prefix env@endy@\i\endcsname%
+                     }%
+               \else%
+                  \expandafter\noexpand\csname ifdim\endcsname\noexpand\yquant@register@peek@depth\outerlevel<%
+                     \noexpand\yquant@register@get@depth{\max} %
+                     \yquant@register@set@depth@remote\outerlevel{%
+                        \noexpand\yquant@register@get@depth{\max}%
+                     }%
+               \fi%
+                     \ifinlist{\expandafter\@firstoftwo\outerlevel}\noexpand\redolist\relax{%
+                        \listadd\noexpand\redolist{\expandafter\@firstoftwo\outerlevel}%
+                     }%
+                  \expandafter\noexpand\csname fi\endcsname%
+            \fi%
+         \fi%
+         % END_FOLD
+         \unless\ifx\i\max%
+            \advance\dimen0 by \dimexpr%
+               \noexpand\yquant@register@get@depth{\i}+%
+               \dimen4+%
+               \noexpand\yquant@register@get@height{\the\numexpr\i+1\relax}%
+            \relax%
+            \expandafter\noexpand\csname yquant@env@end@calcypositions@#1@\the\numexpr\i+1\relax\endcsname%
+         \fi%
+      }%
+      % for every multi-register space requirement, install the requirement in the sortlist
+      \edef\multidata{\yquant@register@get@multispace\i}%
+      \forlistloop{\yquant@env@end@calcypositions@setupmulti{#1}}\multidata%
+   }%
+   % END_FOLD
+   \forlistcsloop\yquant@env@end@calcypositions@setup{\yquant@prefix subcircuits}%
+}
+
+\protected\def\yquant@env@end@calcypositions@setupmulti#1#2{%
+   \yquant@sort@eadd{%
+      {#1}%
+      {\i}%
+      {\expandafter\@firstoftwo\yquant@env@end@calcypositions@setupmulti@group#2\yquant@end}%
+      {\expandafter\@secondoftwo\yquant@env@end@calcypositions@setupmulti@group#2\yquant@end}%
+   }%
+}
+
+\def\yquant@env@end@calcypositions@setupmulti@group#1:#2\yquant@end{{#1}{#2}}
+
+\protected\def\yquant@env@end@calcypositions@run#1{%
+   \csname yquant@env@end@calcypositions@#1\endcsname%
+}
+
+\protected\def\yquant@env@end@calcypositions@redo@min#1{%
+   \ifnum#1<\redoitem\space %
+      \def\redoitem{#1}%
+   \fi%
+}
+
+\protected\def\yquant@env@end@calcypositions@redo{%
+   % instead of looping through the list, we only check the lowest item - since running it may actually remove some other items from the list. Note that the lowest item is not necessarily the outermost, but for sure the topmost wire that should be redone is contained in it.
+   \unless\ifx\redolist\empty%
+      \def\redoitem{2147483647}%
+      \forlistloop\yquant@env@end@calcypositions@redo@min\redolist%
+      % this will automatically remove the item from the list
+      \expandafter\yquant@env@end@calcypositions@run\expandafter{\redoitem}%
+   \fi%
+   \unless\ifx\redolist\empty%
+      \expandafter\yquant@env@end@calcypositions@redo%
+   \fi%
+}
+
+\def\yquant@env@end@calcypositions@multiheight#1#2#3#4{%
+   \dimexpr%
+      \csname yquant@env#1@env@endy@#3\endcsname-
+      \csname yquant@env#1@env@endy@#2\endcsname+%
+      \yquant@register@peek@height{#1}{#2}+%
+      \yquant@register@peek@depth{#1}{#3}%
+   \relax%
+}
+
+\def\yquant@env@end@calcypositions@sortmulti#1#2{%
+   % sort, in descending order, by the amount of missing space
+   \ifdim\dimexpr\@fourthoffour#2-\yquant@env@end@calcypositions@multiheight#2\relax>%
+      \dimexpr\@fourthoffour#1-\yquant@env@end@calcypositions@multiheight#1\relax%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+}
+
+\protected\def\yquant@env@end@calcypositions@multi{%
+   % We will always only operate on the first item in the sortlist, which is determined anew in each iteration - as changes due to this first item will potentially affect all others, including which one is the next...
+   \yquant@sort@findfirst\yquant@env@end@calcypositions@sortmulti\first%
+   \unless\ifx\first\empty%
+      \dimdef\missing{%
+         \expandafter\@fourthoffour\first-%
+         \expandafter\yquant@env@end@calcypositions@multiheight\first%
+      }%
+      % maybe this was already resolved?
+      \ifdim\missing>0pt %
+         \edef\yquant@prefix{yquant@env\expandafter\@firstoffour\first @}%
+         \numdef\divisor{\expandafter\@thirdoffour\first-\expandafter\@secondoffour\first}% not +1, since we will not move the first element
+         \dimdef\add{1sp+\dimexpr\missing-1sp\relax/\divisor}%
+         \let\inc=\add%
+         \edef\max{\expandafter\@thirdoffour\first}%
+         \ifnum\expandafter\@secondoffour\first<\max\relax%
+            \yquant@for \i := \numexpr\expandafter\@secondoffour\first+1\relax to \max {%
+               \csdimdef{\yquant@prefix env@endy@\i}{\csname\yquant@prefix env@endy@\i\endcsname+\add}%
+               \dimdef\add{\add+\inc}%
+            }%
+         \fi%
+         \yquant@env@end@calcypositions@godeeptrue%
+         \csname yquant@env@end@calcypositions@\expandafter\@firstoffour\first\endcsname%
+         \yquant@env@end@calcypositions@godeepfalse%
+         \yquant@env@end@calcypositions@redo%
+         \expandafter\expandafter\expandafter\yquant@env@end@calcypositions@multi%
+      \fi%
+   \fi%
+}
+
+\protected\def\yquant@env@end@setypositions#1{%
+   \def\yquant@prefix{yquant@env#1@}%
+   \ifyquantdebug%
+      \yquant@for \i := 1 to \csname\yquant@prefix registers\endcsname {%
+         \ifcsname\yquant@prefix registermap@\i\endcsname%
+            \message{^^J \yquant@orientation@y(#1, \i): external}%
+         \else%
+            \message{^^J \yquant@orientation@y(#1, \i): \csname\yquant@prefix env@endy@\i\endcsname}%
+            % do not use \yquant@orientation@minus: this will lead to an explicit + in vertical mode, and the value of the register y position is directly used for TikZ coordinates. However, those are parsed using \pgfmathsetlength, which will skip pgf's parser if the value starts with an explicit +. We don't want this.
+            \yquant@register@set@y\i{\ifyquanthorz{-}{}\csname\yquant@prefix env@endy@\i\endcsname}%
+         \fi%
+      }%
+   \else%
+      \yquant@for \i := 1 to \csname\yquant@prefix registers\endcsname {%
+         \unless\ifcsname\yquant@prefix registermap@\i\endcsname%
+            \yquant@register@set@y\i{\ifyquanthorz{-}{}\csname\yquant@prefix env@endy@\i\endcsname}%
+         \fi%
+      }%
+   \fi%
+   \forlistcsloop\yquant@env@end@setypositions{\yquant@prefix subcircuits}%
+}
+
+\tikzaddtikzonlycommandshortcutlet\yquant\yquant@envunstar
+\expandafter\tikzaddtikzonlycommandshortcutlet\csname yquant*\endcsname\yquant@envstar
+\tikzaddtikzonlycommandshortcutlet\endyquant\yquant@env@end
+\expandafter\tikzaddtikzonlycommandshortcutlet\csname endyquant*\endcsname\yquant@env@end
+
+\protected\def\yquantset{%
+   \pgfqkeys{/yquant}%
+}
+\let\yquant@set=\yquantset%
+
+% In order to allow nested environments and also grouping (without the need to smuggle definitions out of the groups whenever necessary), we count the number of nested environments.
+\newcount\yquant@env
+
+% Some commands may be overwritten while a subcircuit is processed, in particular attributes, but also some others. However, within the subcircuit, they need to have their original (un)definition.
+\protected\def\yquant@env@reset@commands{%
+   \yquant@lang@reset@attrs%
+   \yquant@register@reset@multi%
+}
+
+\protected\def\yquant@env@substikz@finish{%
+   % Rendering pipeline
+   \endgroup%
+   \global\pgflinewidth=\tikzscope@linewidth\relax%
+   \tikz@path@do@at@end%
+}
+
+% first undoes the substikz commands, next turns the \path command into a virtual one that does not produce any output.
+\protected\def\yquant@env@virtualize@path{%
+   \yquant@register@get@y@@expandable%
+   \let\path=\tikz@command@path%
+   \let\tikz@finish=\yquant@env@substikz@finish%
+   \let\tikz@lib@scope@check=\yquant@env@substikz@scopecheck%
+   % we will often access the bounding box, which is never transformed
+   \pgftransformreset%
+}
+
+\protected\def\yquant@env@protectidx{%
+   \ifundef\idx{%
+      \let\idx=\yquant@protectedempty%
+   }\relax%
+   \ifundef\reg{%
+      \let\reg=\yquant@protectedempty%
+   }\relax%
+   \ifundef\regidx{%
+      \let\regidx=\yquant@protectedempty%
+   }\relax%
+   \ifundef\len{%
+      \let\len=\yquant@protectedempty%
+   }\relax%
+}
+
+\let\yquant@env@substitutions=\empty
+\def\yquant@env@substitute{%
+   \forlistloop\@firstofone\yquant@env@substitutions%
+}
+
+% substitute the tikz commands (defined in \tikz@installcommands) so that they can be arbitrarily interleaved with yquant code. We patch \path, \scope, \endscope, \stopscope, their internal complements, and also patch \yquantset.
+\listadd\yquant@env@substitutions\yquant@env@substikz
+\protected\def\yquant@env@substikz{%
+   % \tikz@path@do@at@end is called after a path. Hence, it is an ideal candidate to re-invoke \yquant@env@scan. However, it is by default defined to be \tikz@lib@scope@check, and we need this definition for the scopes library to work correctly. But since \tikz@lib@scope@check is also called after a scope and the end of a scope, this is even better. Yet, we need to check whether the scopes library is present or not.
+   \let\yquant@env@substikz@scopecheck=\tikz@lib@scope@check%
+   \ifx\tikz@lib@scope@check\pgfutil@empty%
+      % no, it is not. This is simple.
+      \def\tikz@lib@scope@check{\yquant@env@scan}%
+   \else%
+      % yes, it is. Call it after the special behavior is done.
+      \patchcmd\tikz@lib@scope@check{{}}{\yquant@env@scan}\relax{%
+         \PackageWarning{yquant.sty}{Patching \string\tikz@lib@scope@check\space failed; you must invoke \string\yquant\space manually after every tikz command to switch back to yquant code.}%
+      }%
+   \fi%
+   % We not only need to re-invoke yquant after the tikz command, but we must also make sure that the tikz command is not actually drawn now, but at the end. However, what happens if some macros are used within the command? Here, we choose to expand the macros to the values they have _now_, but protected (which should prevent bad things for formatting commands). If you find this to be an issue, please report.
+   \def\path##1;{%
+      \protected@csxappto{\yquant@prefix draw}{%
+         \noexpand\path##1;%
+      }%
+      \yquant@env@scan%
+   }%
+   % no need for \scoped, because it internally calls \scope.
+   % We need to hack into \scope, but this is a bit tricky due to its argument handling. In order to get all optional arguments, including the possible animations library, correct, we change \tikz@scope@opt.
+   \ifdefined\tikz@scope@opt%
+      \let\yquant@env@substikz@scope=\tikz@scope@opt%
+      \def\tikz@scope@opt[##1]{%
+         \begingroup%
+            \yquant@env@protectidx% scope options may contain \idx, \reg, and \regidx
+            \protected@csxappto{\yquant@prefix draw}{%
+               \noexpand\tikz@scope@env[{##1}]%
+            }%
+         \endgroup%
+         \yquant@env@substikz@scope[{##1}]%
+      }%
+   \else%
+      % this is for the arXiv, which has a very outdated version of TikZ
+      \let\yquant@env@substikz@scope=\tikz@@scope@env%
+      \def\tikz@@scope@env[##1]{%
+         \begingroup%
+            \yquant@env@protectidx% scope options may contain \idx, \reg, and \regidx
+            \protected@csxappto{\yquant@prefix draw}{%
+               \noexpand\tikz@@scope@env[{##1}]%
+            }%
+         \endgroup%
+         \yquant@env@substikz@scope[{##1}]%
+      }%
+   \fi%
+   \let\yquant@env@substikz@endscope=\endtikz@scope@env%
+   \def\endtikz@scope@env{%
+      \csgappto{\yquant@prefix draw}{%
+         \yquant@env@substikz@endscope%
+      }%
+      \yquant@env@substikz@endscope%
+   }%
+   \let\endscope=\endtikz@scope@env%
+   \let\stopscope=\endscope%
+   % We define \yquantset as a pgfkeys-like macro. Anything else would deteriorate performance badly, as \pgfkeys, \pgfqkeys, or \tikzset are used a lot internally.
+   \protected\def\yquantset##1{%
+      \begingroup%
+         \yquant@env@protectidx% yquant options may contain \idx, \reg, and \regidx
+         \protected@csxappto{\yquant@prefix draw}{%
+            \noexpand\pgfqkeys{/yquant}{##1}%
+         }%
+      \endgroup%
+      \pgfqkeys{/yquant}{##1}%
+      \yquant@env@scan%
+   }%
+}
+
+\listadd\yquant@env@substitutions\yquant@env@secondpass
+\protected\def\yquant@env@secondpass{%
+   \protected\long\def\yquantsecondpass##1{%
+      \csgappto{\yquant@prefix draw}{##1}%
+      \yquant@env@scan%
+   }%
+   \protected\long\def\yquantesecondpass##1{%
+      \protected@csxappto{\yquant@prefix draw}{##1}%
+      \yquant@env@scan%
+   }%
+   \protected\long\def\yquantescape##1{%
+      ##1%
+      \protected@csxappto{\yquant@prefix draw}{##1}%
+      \yquant@env@scan%
+   }%
+   \protected\long\def\yquanteescape##1{%
+      ##1%
+      \csgappto{\yquant@prefix draw}{##1}%
+      \yquant@env@scan%
+   }%
+}
+
+% Scan until the next non-space token is found and execute it as a csname
+\def\yquant@env@scan{%
+   \begingroup%
+      \yquant@env@contscan%
+}
+\let\yquant@env@scan@=\yquant@env@scan
+
+\protected\def\yquant@env@contscan{%
+   \yquant@futurenonspacelet\yquant@env@nextchar\yquant@env@check%
+}
+
+\def\yquant@env@rescan{%
+   \endgroup%
+   \yquant@env@scan%
+}
+
+\ifdefined\beamer@masterdecode
+   \expandafter\@firstoftwo
+\else
+   \expandafter\@secondoftwo
+\fi{%
+   \protected\def\yquant@env@check@findmacro{%
+      % we only put the beamer macros in here that effectively remove things from the input stream. Everything that is typeset in a special way will end the group
+      \ifx\yquant@env@nextchar\only%
+         \let\next=\yquant@env@beamer@only%
+      \else%
+         \ifx\yquant@env@nextchar\alt%
+            \let\next=\yquant@env@beamer@alt%
+         \else%
+            \ifx\yquant@env@nextchar\temporal%
+               \let\next=\yquant@env@beamer@temporal%
+            \else%
+               \ifx\yquant@env@nextchar\note%
+                  \let\next=\yquant@env@beamer@note%
+               \else%
+                  % in principle: \endgroup for all in here, but need to preserve \yquant@env@nextchar
+                  \ifx\yquant@env@nextchar\uncover%
+                     \endgroup%
+                     \let\next=\yquant@env@beamer@uncover%
+                  \else%
+                     \ifx\yquant@env@nextchar\visible%
+                        \endgroup%
+                        \let\next=\yquant@env@beamer@visible%
+                     \else%
+                        \ifx\yquant@env@nextchar\invisible%
+                           \endgroup%
+                           \let\next=\yquant@env@beamer@invisible%
+                        \else%
+                           \ifx\yquant@env@nextchar\onslide%
+                              \endgroup%
+                              \let\next=\yquant@env@beamer@onslide%
+                           \else%
+                              \ifx\yquant@env@nextchar\pause%
+                                 \endgroup%
+                                 \let\next=\yquant@env@beamer@pause%
+                              \else%
+                                 \ifx\yquant@env@nextchar\yquant@env@beamer@checkifactive%
+                                    \endgroup%
+                                    \let\yquant@env@beamer@checkifactive@true=\relax%
+                                    \let\next=\relax%
+                                 \else%
+                                    \endgroup%
+                                    \let\next=\relax%
+                                 \fi%
+                              \fi%
+                           \fi%
+                        \fi%
+                     \fi%
+                  \fi%
+               \fi%
+            \fi%
+         \fi%
+      \fi%
+   }%
+
+   \listadd\yquant@env@substitutions\yquant@env@substbeamer
+   \protected\def\yquant@env@substbeamer{%
+      \long\def\yquant@env@beamer@only@arga<##1>##2{%
+         \beamer@alt<##1>{\yquant@env@contscan##2}{\yquant@env@contscan}%
+      }%
+      \long\def\yquant@env@beamer@alt@arga<##1>##2##3{%
+         \beamer@alt<##1>{\yquant@env@contscan##2}{\yquant@env@contscan##3}%
+      }%
+      \protected\long\def\yquant@env@beamer@temporal\temporal<##1>##2##3##4{%
+         \temporal<##1>{\yquant@env@contscan##2}{\yquant@env@contscan##3}{\yquant@env@contscan##4}%
+      }%
+      % There's no need for the fakeinvisible or spacingcover macros, since we are within TikZ anyway
+      \mode<presentation>{
+         \protected\long\def\yquant@env@beamer@visibilitymacros##1##2##3##4{%
+            \yquant@env@beamer@visibilitymacros@flip##1%
+            \beamer@altget%
+               {\yquant@env@scan##3}%
+               {%
+                  \begingroup%
+                     \letcs\yquant@env@beamer@olddraw{\yquant@prefix draw}%
+                     \global\cslet{\yquant@prefix draw}\empty%
+                     \undef\yquant@env@beamer@checkifactive@true%
+                     ##2{\yquant@env@scan##3\yquant@env@beamer@checkifactive}%
+                     \csxdef{\yquant@prefix draw}{%
+                        \unexpanded\expandafter{\yquant@env@beamer@olddraw}%
+                        \ifx0##1%
+                           \noexpand\beamer@alt##4{}%
+                        \else%
+                           \noexpand\beamer@only##4%
+                        \fi%
+                        {%
+                           \unexpanded{##2}{%
+                              \unexpanded\expandafter\expandafter\expandafter{\csname\yquant@prefix draw\endcsname}%
+                           }%
+                        }%
+                     }%
+                     \expandafter%
+                  \endgroup%
+                  \ifdefined\yquant@env@beamer@checkifactive@true%
+                     \expandafter\@firstofone%
+                  \else%
+                     \expandafter\@gobble%
+                  \fi%
+                  \yquant@env@scan%
+              }%
+              ##4%
+         }
+         \newcommand<>\yquant@env@beamer@onslidenoargs[2]{%
+            \let\yquant@env@beamer@onslideappdraw=\empty%
+            \appto\yquant@env@beamer@onslideappdraw{\beamer@endpause}%
+            \yquant@for \i := 1 to \csname\yquant@prefix registers\endcsname{%
+               \eappto\yquant@env@beamer@onslideappdraw{\noexpand\yquant@circuit@flushwire{\i}}%
+            }%
+            \csxappto{\yquant@prefix draw}%
+                     {\unexpanded\expandafter{\yquant@env@beamer@onslideappdraw}}%
+            \beamer@alt##3%
+               {\csgappto{\yquant@prefix draw}{%
+                   \global\let\beamer@endpause=\empty%
+                }%
+                \yquant@env@scan}%
+               {\csgappto{\yquant@prefix draw}{%
+                   ##1%
+                   \gdef\beamer@endpause{##2}%
+                }%
+                \yquant@env@scan%
+               }%
+         }
+         % This is \beamer@inframenote, but we are always in a frame if we an in yquant
+         \newcommand<>{\yquant@env@beamer@note@}[2][]{%
+            \beamer@inframenote##3[{##1}]{##2}%
+            \yquant@env@contscan%
+         }
+      }%
+      \mode<article>{
+         \newcommand<>\yquant@env@beamer@uncover@[1]{%
+            \beamer@alt##2{\yquant@env@scan##1}{\yquant@env@scan}%
+         }
+         % we don't need \yquant@env@beamer@visible@ in this mode, since \uncover and \visible are equal (w.r.t. \ifx), so we will always end up with the \uncover path
+         \newcommand<>\yquant@env@beamer@invisible@[1]{%
+            \beamer@alt##2{\yquant@env@scan}{\yquant@env@scan##1}%
+         }
+         \newcommand<>{\yquant@env@beamer@note@}[2][]{\yquant@env@contscan}
+         \newrobustcmd\yquant@env@beamer@pause@[1][]{\yquant@env@scan}
+      }
+      \protected\def\yquant@env@beamer@onslide@{%
+         \@ifstar{\yquant@env@scan\only}%
+                 {\@ifnextchar+{\expandafter\yquant@env@beamer@visibleonslide\@gobble}%
+                               {\yquant@env@beamer@mainonslide}%
+                 }%
+      }%
+   }
+
+   \protected\def\yquant@env@beamer@only\only{\@ifnextchar<{\yquant@env@beamer@only@arga}%
+                                                           {\yquant@env@beamer@only@argb}}%
+   \long\def\yquant@env@beamer@only@argb#1{%
+      \beamer@ifnextcharospec{\yquant@env@beamer@only@argb@{#1}}{#1}%
+   }%
+   \long\def\yquant@env@beamer@only@argb@#1<#2>{%
+      \yquant@env@beamer@only@arga<#2>{#1}%
+   }%
+   \protected\def\yquant@env@beamer@alt\alt{\@ifnextchar<{\yquant@env@beamer@alt@arga}%
+                                                         {\yquant@env@beamer@alt@argb}}%
+   \long\def\yquant@env@beamer@alt@argb#1#2{%
+      \beamer@ifnextcharospec{\yquant@env@beamer@alt@argb@{#1}{#2}}{#1}%
+   }
+   \long\def\yquant@env@beamer@alt@argb@#1#2<#3>{%
+      \yquant@env@beamer@alt@arga<#3>{#1}{#2}%
+   }
+
+   \def\yquant@env@beamer@checkifactive{%
+      % this should not compare to anything else, but should also not give an error on expansion
+      \yquant@env@beamer@checkifactive@%
+   }
+   \let\yquant@env@beamer@checkifactive@=\empty%
+   \def\yquant@env@beamer@note\note{\yquant@env@beamer@note@}
+   % note: in article mode, the definitions of \uncover and \visible are identical, hence we will mistake \visible for \uncover (which is checked first); therefore, \yquant@env@beamer@uncover may be followed by \uncover or \visible, just take an arbitrary argument.
+   \def\yquant@env@beamer@uncover#1{\yquant@env@beamer@uncover@}
+   \def\yquant@env@beamer@visible\visible{\yquant@env@beamer@visible@}
+   \def\yquant@env@beamer@invisible\invisible{\yquant@env@beamer@invisible@}
+   \def\yquant@env@beamer@onslide\onslide{\yquant@env@beamer@onslide@}
+   \def\yquant@env@beamer@pause\pause{\yquant@env@beamer@pause@}
+
+   \mode<presentation>{
+      \long\def\yquant@env@beamer@visibilitymacros@flip#1#2#3#4{%
+         \ifx1#1%
+            \expandafter\@firstoftwo%
+         \else%
+            \expandafter\@secondoftwo%
+         \fi%
+         {#2{#4}{#3}}{#2{#3}{#4}}%
+      }
+      \newcommand<>\yquant@env@beamer@uncover@[1]{%
+         \yquant@env@beamer@visibilitymacros0\beamer@makecovered{#1}{#2}%
+      }
+      \newcommand<>\yquant@env@beamer@visible@[1]{%
+         \yquant@env@beamer@visibilitymacros0\beamer@reallymakeinvisible{#1}{#2}%
+      }
+      \newcommand<>\yquant@env@beamer@invisible@[1]{%
+         \yquant@env@beamer@visibilitymacros1\beamer@reallymakeinvisible{#1}{#2}%
+      }
+      \newrobustcmd\yquant@env@beamer@pause@[1][]{%
+         \ifblank{#1}%
+            {\stepcounter{beamerpauses}}%
+            {\setcounter{beamerpauses}{#1}}%
+         \yquant@env@beamer@onslidenoargs<\value{beamerpauses}->\beamer@startcovered\beamer@endcovered%
+      }
+   }
+   \mode<article>{
+      \newcommand<>\yquant@env@beamer@onslidenoargs[2]{}
+   }
+   \newcommand<>{\yquant@env@beamer@visibleonslide}{%
+      \@ifnextchar\bgroup{\yquant@env@beamer@visible@#1}%
+                         {\yquant@env@beamer@onslidenoargs#1\beamer@begininvisible\beamer@endinvisible}%
+   }
+   \newcommand<>{\yquant@env@beamer@mainonslide}{%
+      \@ifnextchar\bgroup{\yquant@env@beamer@uncover@#1}%
+                         {\yquant@env@beamer@onslidenoargs#1\beamer@startcovered\beamer@endcovered}%
+   }
+}{%
+   \def\yquant@env@check@findmacro{%
+      \endgroup%
+      \let\next=\relax%
+   }
+}%
+
+\protected\def\yquant@env@check@{%
+   \let\next=\relax%
+   % Here we assume standard catcodes for A and [, but our language specification also requires this implicitly.
+   \ifx\yquant@env@nextchar[%
+      \let\next=\yquant@langhelper@check@attrs%
+   \else%
+      \ifcat\noexpand\yquant@env@nextchar A% letter
+         \let\next=\yquant@langhelper@check@name%
+      \else%
+         \ifcat\noexpand\yquant@env@nextchar\bgroup%
+            \endgroup%
+            \let\next=\yquant@env@opengroup%
+         \else%
+            \ifcat\noexpand\yquant@env@nextchar\egroup%
+               \endgroup%
+               \let\next=\yquant@env@closegroup%
+            \else%
+               \ifx\yquant@env@nextchar\par%
+                  \let\next=\yquant@env@gobblepar%
+               \else%
+                  \ifcat\noexpand\yquant@env@nextchar\relax%
+                     \yquant@env@check@findmacro%
+                  \else%
+                     \PackageError{yquant.sty}%
+                        {Invalid yquant syntax: `\meaning\yquant@env@nextchar'}%
+                        {Adhere to the specs!}%
+                  \fi%
+               \fi%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+   \next%
+}
+
+\protected\def\yquant@env@opengroup{%
+   \afterassignment\yquant@env@opengroup@aux%
+   \let\@eattoken= %
+}
+
+\def\yquant@env@opengroup@aux{%
+   \bgroup%
+      \csgappto{\yquant@prefix draw}{\begingroup}%
+      \yquant@env@scan%
+}
+
+\def\yquant@env@closegroup{%
+   \csgappto{\yquant@prefix draw}{\endgroup}%
+   \aftergroup\yquant@env@scan%
+}
+
+\def\yquant@env@gobblepar{%
+   \afterassignment\yquant@env@contscan%
+   \let\@eattoken= %
+}
+
+\def\yquantimport@now#1{%
+   \expandafter\yquant\@@input #1\relax%
+}
+
+\def\yquantimportcommand{\yquantimport@now}%
+
+\AtBeginDocument{%
+   % do we have the import package?
+   \ifdefined\@doimport%
+      \providecommand\yquantimportpath{./}%
+      \def\yquantimportcommand{\@doimport\yquantimport@now{\yquantimportpath}}%
+   \fi%
+}
+
+\def\yquantimport{%
+   \@ifstar{\yquantimport@i{*}}{\yquantimport@i{}}%
+}
+
+\def\yquantimport@i#1{%
+   \@ifnextchar[{\yquantimport@ii{#1}}{\yquantimport@ii{#1}[]}%
+}%
+
+\def\yquantimport@ii#1[#2]#3{%
+   \ifpgfpicture%
+      \ifnum\yquant@env>0 %
+         \begingroup%
+            \ifstrequal{#1}{*}{%
+               \yquant@env@lazytrue%
+            }{%
+               \yquant@env@lazyfalse%
+            }%
+            \ifstrempty{#2}{%
+               \yquantimportcommand{#3}%
+            }{%
+               \scope%
+                  \yquantset{#2}%
+                  \yquantimportcommand{#3}%
+               \endscope%
+            }%
+         \endgroup%
+         \expandafter\expandafter\expandafter\yquant%
+      \else%
+         \begin{yquant#1}[{#2}]
+            \yquantimportcommand{#3}%
+         \end{yquant#1}%
+      \fi%
+   \else%
+      \begin{tikzpicture}%
+         \begin{yquant#1}[{#2}]
+            \yquantimportcommand{#3}%
+         \end{yquant#1}%
+      \end{tikzpicture}
+   \fi%
+}

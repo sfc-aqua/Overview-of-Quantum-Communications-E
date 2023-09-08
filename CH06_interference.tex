@@ -59,15 +59,15 @@ In other words, increasing the wave number ``compresses the oscillations'', whil
                     ylabel={$\Psi(x,0)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(-x))};
         \addlegendentry{$k=1$}
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(-0.5*x))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(-0.5*x))};
         \addlegendentry{$k=0.5$}
-        \node[circle,fill,inner sep=1.5pt,blue!80] at (axis cs:3*pi/2,1) {};
-        \node[circle,fill,inner sep=1.5pt,blue!80] at (axis cs:7*pi/2,1) {};
+        \node[circle,fill,inner sep=1.5pt,myblue] at (axis cs:3*pi/2,1) {};
+        \node[circle,fill,inner sep=1.5pt,myblue] at (axis cs:7*pi/2,1) {};
         \draw[dashed, blue!80, thick] (axis cs:3*pi/2,1) -- node[above] {$\lambda=2\pi/1.0$} (axis cs:7*pi/2,1);
-        \node[circle,fill,inner sep=1.5pt,orange!80] at (axis cs:pi,-1) {};
-        \node[circle,fill,inner sep=1.5pt,orange!80] at (axis cs:5*pi,-1) {};
+        \node[circle,fill,inner sep=1.5pt,myorange] at (axis cs:pi,-1) {};
+        \node[circle,fill,inner sep=1.5pt,myorange] at (axis cs:5*pi,-1) {};
         \draw[dashed, orange!80, thick] (axis cs:pi,-1) -- node[below] {$\lambda=2\pi/0.5$} (axis cs:5*pi,-1);
         \end{axis}
     \end{tikzpicture}
@@ -97,9 +97,9 @@ The wavelength of the wave remains unaffected.
                     ylabel={$\Psi(x,0)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(-x))};
         \addlegendentry{$\phi_0=0$}
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(-x+pi/2))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(-x+pi/2))};
         \addlegendentry{$\phi_0=\pi/2$}
         \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:3*pi/2,1) {};
         \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:2*pi,1) {};
@@ -135,13 +135,13 @@ We observe that the wave is propagating faster as it covers longer distance in t
                     ylabel={$\Psi(x,t)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(0.1*15-x))};
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.2] {sin(deg(0.1*0-x))};
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.6] {sin(deg(0.1*7.5-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(0.1*15-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.2] {sin(deg(0.1*0-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.6] {sin(deg(0.1*7.5-x))};
         \addlegendentry{$\omega=0.1$}
-        \node[blue!80,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
-        \node[blue!80,opacity=0.6] at (axis cs:3*pi/2+0.1*7.5,1.15) {$t_2$};
-        \node[blue!80] at (axis cs:3*pi/2+0.1*15,1.15) {$t_3$};
+        \node[myblue,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
+        \node[myblue,opacity=0.6] at (axis cs:3*pi/2+0.1*7.5,1.15) {$t_2$};
+        \node[myblue] at (axis cs:3*pi/2+0.1*15,1.15) {$t_3$};
         \end{axis}
     
         \begin{axis}[name=plotB,
@@ -159,13 +159,13 @@ We observe that the wave is propagating faster as it covers longer distance in t
                     ylabel={$\Psi(x,t)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick] {sin(deg(0.2*15-x))};
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.2] {sin(deg(0.2*0-x))};
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.6] {sin(deg(0.2*7.5-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(0.2*15-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.2] {sin(deg(0.2*0-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.6] {sin(deg(0.2*7.5-x))};
         \addlegendentry{$\omega=0.2$}
-        \node[orange!80,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
-        \node[orange!80,opacity=0.6] at (axis cs:3*pi/2+0.2*7.5,1.15) {$t_2$};
-        \node[orange!80] at (axis cs:3*pi/2+0.2*15,1.15) {$t_3$};
+        \node[myorange,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
+        \node[myorange,opacity=0.6] at (axis cs:3*pi/2+0.2*7.5,1.15) {$t_2$};
+        \node[myorange] at (axis cs:3*pi/2+0.2*15,1.15) {$t_3$};
         \end{axis}
     \end{tikzpicture}
     }
@@ -261,11 +261,11 @@ In this region, the interference is destructive.
                     ylabel={$\Psi(x,t)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick,opacity=0.5] {sin(deg(-x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.5] {sin(deg(-x))};
         \addlegendentry{$k_1=1.0$}
-        \addplot[domain=-1:18,samples=100,smooth,orange!80,thick,opacity=0.5] {sin(deg(-0.8*x))};
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.5] {sin(deg(-0.8*x))};
         \addlegendentry{$k_2=0.8$}
-        \addplot[domain=-1:18,samples=100,smooth,newgreen,very thick] {sin(deg(-x))+sin(deg(-0.8*x))};
+        \addplot[domain=-1:18,samples=100,smooth,mygreen,very thick] {sin(deg(-x))+sin(deg(-0.8*x))};
         \end{axis}
     \end{tikzpicture}
     }
@@ -320,7 +320,7 @@ We see that in the simple case of a single-frequency wave, the phase velocity is
                     ylabel={$\Psi(x,t)$},
                     width=9cm,
                     height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,blue!80,thick] {sin(deg(x))};
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(x))};
         \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:5*pi/2,1) {};
         \node[black!80] at (axis cs:5*pi/2,1.15) {$P_1$};
         \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:9*pi/2,1) {};
@@ -367,9 +367,9 @@ We have assumed that the two waves have same amplitude, and we set the initial p
                     ylabel={$\Psi(x,t)$},
                     width=12cm,
                     height=6cm]
-        \addplot[domain=-1:100,samples=500,smooth,blue!80,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))};
-        \addplot[domain=-1:100,samples=500,smooth,orange!80,thick,dashed] {2*cos(deg(-0.5*(2.0-2.1)*x))};
-        \addplot[domain=-1:100,samples=500,smooth,orange!80,thick,dashed] {-2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myblue,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {-2*cos(deg(-0.5*(2.0-2.1)*x))};
         \end{axis}
     \end{tikzpicture}
     }   
@@ -425,7 +425,7 @@ It is also the group velocity that tells us how quickly a signal carries informa
                     ylabel={$\Psi(x,0)$},
                     width=12cm,
                     height=6cm]
-        \addplot[domain=-1:100,samples=500,smooth,blue!80,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))+sin(deg(-2.2*x))+sin(deg(-2.3*x))+sin(deg(-2.4*x))+sin(deg(-2.5*x))+sin(deg(-2.6*x))+sin(deg(-2.7*x))+sin(deg(-2.8*x))+sin(deg(-2.9*x))+sin(deg(-3.0*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myblue,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))+sin(deg(-2.2*x))+sin(deg(-2.3*x))+sin(deg(-2.4*x))+sin(deg(-2.5*x))+sin(deg(-2.6*x))+sin(deg(-2.7*x))+sin(deg(-2.8*x))+sin(deg(-2.9*x))+sin(deg(-3.0*x))};
         \end{axis}
     \end{tikzpicture}
     }   
@@ -447,262 +447,615 @@ It is these pulses that can be used to carry information at the group velocity o
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interference with single photons}
-\label{sec:6-4_interference_single_photons}
+\label{sec:6-3_interference_single_photons}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % double_slit standard
 \begin{figure}[H]
    \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/standard_double_slit.pdf}    
-        \caption{The canonical two-slit experiment.}
+    % \includegraphics[width=0.8\textwidth]{lesson6/standard_double_slit.pdf}
+
+    \resizebox {0.95\textwidth} {!} {
+    \begin{tikzpicture}[nodal/.style={black!75,dashed,very thin},
+            declare function={
+            xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
+            ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
+            intensity(\y,\lam,\a,\L) = exp(-\y*\y/5)*cos(180*\a*\y/(2*\lam*sqrt(\L*\L+\y*\y)))^2;}]
+  
+    \def\L{3.8}       % distance between walls
+    \def\H{5.4}       % total wall height
+    \def\h{2.8}       % plane wave height
+    \def\t{0.15}      % wall thickness
+    \def\a{1.15}      % slit distance
+    \def\d{0.20}      % slit size
+    \def\N{21}        % number of waves
+    \def\lambd{0.20}  % wavelength
+    \def\R{\N*\lambd} % wave radius
+    \def\Nlines{3}    % number of nodal lines
+    \def\A{1.6}       % amplitude
+    \def\nsamples{100}
+    \def\ang{62}
+  
+    \begin{scope}
+    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
+    
+    % NODAL LINES
+    \draw[nodal] (0.08*\N*\lambd,0) -- (1.06*\R,0);
+    \coordinate (NP0) at (\L,0);  % to avoid "Dimension too large error"
+    \foreach \dn [evaluate={
+                   \f=\a/\lambd;
+                   \nmin=2.5+0.2*\dn; %0.501*(-\dn+\f)
+                   \nmax=10; %(NP0)
+                   \c=int(\dn<\f);
+                   \y=\L/sqrt((\a/(\lambd*\dn))^2-1);
+                 }] in {1,...,\Nlines}{
+      \coordinate (NP+\dn) at (\L,\y);  % to avoid "Dimension too large error"
+      \coordinate (NP-\dn) at (\L,-\y); % to avoid "Dimension too large error"
+      \ifnum\c=1
+        \draw[nodal,variable=\n,samples=\nsamples,smooth]
+          plot[domain=\nmin:\nmax] ({xnode(\n,\dn,\lambd,\f)},{ynode(\n,\dn,\lambd,\f)})
+          -- (NP+\dn);
+        \draw[nodal,variable=\n,samples=\nsamples,smooth]
+          plot[domain=\nmin:\nmax] ({xnode(\n,\dn,\lambd,\f)},{-ynode(\n,\dn,\lambd,\f)})
+          -- (NP-\dn);
+      \fi
+    }
+    
+    % WAVES
+    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
+      \ifodd\i
+        \draw[myred,line width=0.8] (0,\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
+        \draw[myred,line width=0.8] (0,-\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
+      \else
+        \draw[myred!75,line width=0.1] (0,\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
+        \draw[myred!75,line width=0.1] (0,-\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
+      \fi
+    }
+  \end{scope}
+  
+  % PLANE WAVES
+  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
+    \ifodd\i
+      \draw[myred,line width=0.8] (\x,-\h/2) -- (\x,\h/2);
+    \else
+      \draw[myred!75,line width=0.1] (\x,-\h/2) -- (\x,\h/2);
+    \fi
+  }
+  
+  % WALL
+  \fill[wall]
+    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
+    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
+    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
+    (\L,-\H/2) rectangle (\L+\t,\H/2);
+  
+  % SHADES
+  \begin{scope}[shift={(1.08*\L,0)}]
+    \def\yz{\L/sqrt((\a/\lambd)^2-1)} % m = +- 1/2
+    \def\yZ{\L/sqrt((\a/\lambd/2)^2-1)} % m = +- 1
+    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
+    \fill[white] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
+    \foreach \i [evaluate={\n=0.5*\i;\yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
+                 }] in {1,...,\Nlines}{
+      \ifodd\i % if even
+        \fill[myred] (0,{-\yn-0.1}) rectangle++ (\A,0.2); % to fill seams
+        \fill[myred] (0,{ \yn-0.1}) rectangle++ (\A,0.2); % to fill seams
+      \fi
+    }
+    \path[left color=black,right color=black,middle color=myred,shading angle={180}]
+      (0,{-\yz}) rectangle (\A,{\yz});
+    \foreach \i [evaluate={
+                  \n=0.5*\i;
+                  \m=0.5*(\i+1);
+                  \yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
+                  \ym=\L/sqrt((\a/(2*\lambd*\m))^2-1);
+                  \dang=mod(\i,2)*180;
+                 }] in {1,...,\Nlines}{
+      \path[left color=black,right color=myred,shading angle={\dang}]
+        (0,\yn) rectangle (\A,\ym);
+      \path[left color=black,right color=myred,shading angle={180+\dang}]
+        (0,-\yn) rectangle (\A,-\ym);
+    }
+  \end{scope}
+  
+  % INTENSITY
+  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
+    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$}; % I axis
+    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
+    \draw[nodal] (NP0) --++ (0.15*\L+2.1*\A,0); % green nodal lines
+    \foreach \i in {1,...,\Nlines}{ % green nodal lines
+      \draw[nodal] (NP+\i) --++ (2,0);
+      \draw[nodal] (NP-\i) --++ (2,0);
+    }
+    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity(\y,\lambd,\a,\L)},\y);
+    \tick{0,{\L/sqrt((\a/(\lambd*1))^2-1)}}{180} node[right=0,scale=0.85] {$\pi$};
+    \tick{0,{\L/sqrt((\a/(\lambd*2))^2-1)}}{180} node[right=0,scale=0.85] {$2\pi$};
+    \tick{0,{\L/sqrt((\a/(\lambd*3))^2-1)}}{180} node[right=0,scale=0.85] {$3\pi$};
+    \tick{0,{-\L/sqrt((\a/(\lambd*1))^2-1)}}{180} node[right=0,scale=0.85] {$-\pi$};
+    \tick{0,{-\L/sqrt((\a/(\lambd*2))^2-1)}}{180} node[right=0,scale=0.85] {$-2\pi$};
+    \tick{0,{-\L/sqrt((\a/(\lambd*3))^2-1)}}{180} node[right=0,scale=0.85] {$-3\pi$};
+    \end{scope}
+    \end{tikzpicture}
+    }
+    \caption[Double-slit experiment.]{Double-slit experiment with coherent light.}
     \label{fig:two-slit}
-   
 \end{figure}
 
-I'm sure you have already seen the scenario of a double slit experiment with laser light in another of your physics classes, but let's review it again.
+Perhaps you have encountered the scenario of a double-slit experiment from one of your physics classes.
+In Fig.~\ref{fig:two-slit}, coherent light produced by a laser is incident on a screen with two narrow slits.
+The peaks of the waves are represented by thick lines while the troughs are represented by the thin lines.
+The two slits diffract the incident light and act as two sources of spherical waves.
+The waves propagate towards a second screen, where we observe an interference pattern of alternating bright and dark fringes.
+Bright fringes are a result of constructive interference, where two peaks or two troughs meet.
+Dark fringes on the other hand are a result of destructive interference where a peak is cancelled by a trough.
+The dashed lines mark the points of constructive and destructive interference.
 
-In this experiment we have a source of coherent light, canonically a laser. In Fig.~\ref{fig:two-slit}, the laser light is incident on a screen, where there are only two small slits where the light can go through, and then it propagates towards another screen where we detect a pattern. The pattern that we see looks something like this: we have fringes of bright light (pink in the figure), and then fringes where there is no light (blank, or white, in the figure). Why is that?  The pink lines represent the peaks of the electromagnetic waves. They are straight before coming to the screen, perpendicular to the direction of travel. After passing through the slits, they radiate out in a circular pattern.  Following the light blue lines, you can see that where the peaks from the two slits meet, the lines cross.  Those blue lines are where we get constructive interference, giving us the strong pink illumination on the screen. Halfway in between those blue lines, you can see that the wave from one slit is at its peak when the other is at its trough.  This will give us destructive interference.
+For example, consider the point right in the middle of the screen in Fig.~\ref{fig:two-slit}.
+The distances travelled by light passing through the upper and lower slits are equal, therefore there is no phase difference between the two waves, $\delta=0$.
+This leads to constructive interference and the average intensity $\langle I\rangle$ reaches its maximum.
+This is also true for the cases when the phase difference is an even integer multiple of $\pi$.
+We observe repeating bright fringes when the phase difference is $\delta=\pm 2\pi n$, for $n\in\{0,1,2,\ldots\}$.
+On the other hand, when the phase difference is an odd integer multiple of $\pi$, that is when $\delta=\pm \pi n$, for $n\in\{0,1,2,\ldots\}$, the two waves cancel each other due to destructive interference.
+This results in vanishing average intensity $\langle I \rangle$.
+The bright fringes become fainter as we move away from the center of the screen due to diffraction effects modulating the average intensity.
 
-% As you can see, as the light is propagating through here (follow pointer), these lines, they represent the peaks of the electromagnetic wave, whereas the space in between them represent the valleys, the troughs. So as the two waves go through these slits, they have a chance to interfere constructively or destructively. Where their peaks meet, the wave- the interference of the two waves reinforces their amplitude. On the other hand, if a peak meets a trough or a valley, then the amplitudes cancel, and here we can see these light blue lines, these are the lines along which we see constructive interference.
+Let's consider the scenario where we attenuate the laser light to such low levels that only single photons are incident at the first screen with the two slits.
+In order to gain some intuition into the pattern that is observed on the second screen, let's analyze the case when one of the slits is covered, as shown in Fig.~\ref{fig:single-slit-attenuated}.
+The incident photons can pass only through the open slit where they get diffracted.
+Most photons pass through the slit without too much diffraction and hit the second screen at a point that is in line with the open slit's position.
+Few photons do get diffracted significantly, resulting in an intensity distribution that shows a bring peak in the middle but decreases as we move away from this peak.
+We can swap which slit is open and which is closed, and the observed pattern will be nearly the same.
+The only difference will be that the peak of the average intensity would shift to be in line with the open slit.
 
-For example, consider the point right in the middle of the screen, as shown in Fig.~\ref{fig:two-slit-constructive}. The light coming from the top slit and light coming from the bottom slit travel the same distance. The path length of these two paths are equal, therefore there is no phase difference between the two waves coming from the top slit and the bottom slit, and we observe constructive interference. On the other hand, for the fringe above the middle, the path length for the top path is a little bit shorter than the bottom one. But the phase difference introduced for this case is exactly $2\pi$, which again, corresponds to constructive interference as we have seen in the previous section. Similarly for the top fringe in our figure, we have a phase difference of $4\pi$.
-% constructive interference
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/double_slit_constructive.pdf}    
-        \caption{Constructive interference.}
-    \label{fig:two-slit-constructive}    
+\begin{figure}[t]
+    \centering
+    \resizebox {0.95\textwidth} {!} {
+    \begin{tikzpicture}[
+    nodal/.style={black!75,dashed,very thin},
+    declare function={
+      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/2 );
+      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
+      intensity(\y,\a) = exp(-(\y-\a/2)^2);
+    }
+  ]
+  
+  \def\L{3.8}       % distance between walls
+  \def\H{5.4}       % total wall height
+  \def\h{2.8}       % plane wave height
+  \def\t{0.15}      % wall thickness
+  \def\a{1.15}      % slit distance
+  \def\d{0.20}      % slit size
+  \def\N{21}        % number of waves
+  \def\lambd{0.20}  % wavelength
+  \def\R{\N*\lambd} % wave radius
+  \def\Nlines{3}    % number of nodal lines
+  \def\A{1.6}       % amplitude
+  \def\nsamples{100}
+  \def\ang{62}
+  
+  \begin{scope}
+    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
+    \newcommand*\Angles{{5,2,-3,20,-1,-10,0,4,-7,6,1,2,-3,1,15,-8,-6,2,-4,5,2,3}}
+    % WAVES
+    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
+      \ifodd\i
+        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,0\a/2) circle (0.08);
+      \fi
+    }
+  \end{scope}
+  
+  % PLANE WAVES
+  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
+    \ifodd\i
+      \filldraw[fill=myred] (\x,0) circle (0.08);
+    \fi
+  }
+  
+  % WALL
+  \fill[wall]
+    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
+    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
+    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
+    (\L,-\H/2) rectangle (\L+\t,\H/2)
+    (\t,-\a/2+\d/2) rectangle (\t/2,-\a/2-\d/2);
+  
+  % SHADE
+  \begin{scope}[shift={(1.08*\L,0)}]
+    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
+    \fill[black] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
+    \path[left color=black,right color=black, middle color=myred, shading angle=0] (0,-\H/2+\a/2) rectangle (\A,\H/2+\a/2);
+  \end{scope}
+  
+  % INTENSITY
+  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
+    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$};
+    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
+    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity(\y,\a)},\y);
+  \end{scope}
+
+    \end{tikzpicture}
+    }
+    \caption[Single-slit experiment with single photons.]{Single-slit experiment with single photons.}
+    \label{fig:single-slit-attenuated}
 \end{figure}
 
-On the other hand, consider the paths shown in Fig.~\ref{fig:two-slit-destructive}. Along these paths, peaks meet the troughs, where the path differences are odd integer multiples of $\pi$. So for this first dark (blank white) region on the screen, we have the phase difference being $\pi$; for the second dark region on the screen, we have the phase difference being $3\pi$, and so on.
+What happens when both slits are open?
+Naive expectation would suggest that since the photons can pass through either slit, we should add the two intensity distributions obtained from the photons passing through the top slit and the photons passing through the bottom slit.
+The resulting pattern should look like the one displayed in Fig.~\ref{fig:two-slit-expectation}.
+Individual intensity distributions are shown in thin pink lines, while the total expected distribution is their sum, shown in thick red.
+Our naive expectation does not display any interference pattern, rather it is a simple consequence of diffraction of photons from the two slits.
+However, this is \emph{\textbf{not}} what is observed when the experiment is performed in a laboratory.
 
-% destructive inteference
 \begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/double_slit_destructive.pdf}
-        \caption{Destructive interference.}
-    \label{fig:two-slit-destructive}    
+    \centering
+    \resizebox {0.95\textwidth} {!} {
+    \begin{tikzpicture}[
+    nodal/.style={black!75,dashed,very thin},
+    declare function={
+      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
+      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
+      intensity_single(\y,\a) = exp(-(\y+\a/2)^2)/1.5;
+      intensity_total(\y,\a) = (exp(-(\y-\a/2)^2)+exp(-(\y+\a/2)^2))/1.5;
+    }
+  ]
+  
+  \def\L{3.8}       % distance between walls
+  \def\H{5.4}       % total wall height
+  \def\h{2.8}       % plane wave height
+  \def\t{0.15}      % wall thickness
+  \def\a{1.15}      % slit distance
+  \def\d{0.20}      % slit size
+  \def\N{21}        % number of waves
+  \def\lambd{0.20}  % wavelength
+  \def\R{\N*\lambd} % wave radius
+  \def\Nlines{3}    % number of nodal lines
+  \def\A{1.6}       % amplitude
+  \def\nsamples{100}
+  \def\ang{62}
+  
+  \begin{scope}
+    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
+    \newcommand*\Angles{{5,2,-3,20,-1,-10,0,4,-7,6,1,2,-3,1,15,-8,-6,2,-4,5,2,3}}
+    % WAVES
+    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
+        \ifodd\i
+        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,\a/2) circle (0.08);
+        \else
+        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,-\a/2) circle (0.08);
+      \fi
+    }
+  \end{scope}
+  
+  % PLANE WAVES
+  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
+    \ifodd\i
+      \filldraw[fill=myred] (\x,0) circle (0.08);
+      % \filldraw[fill=myred] (\x,-\a/2) circle (0.08);
+    \fi
+  }
+  
+  % WALL
+  \fill[wall]
+    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
+    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
+    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
+    (\L,-\H/2) rectangle (\L+\t,\H/2);
+  
+  % SHADE
+  \begin{scope}[shift={(1.08*\L,0)}]
+    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
+    \fill[black] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
+    \path[left color=black,right color=black, middle color=myred, shading angle=0] (0,-4) rectangle (\A,4);
+    % \path[left color=none,middle color=myred, shading angle=0] (0,-\H/2-\a/2) rectangle (\A,\H/2-\a/2);
+  \end{scope}
+  
+  % INTENSITY
+  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
+    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I \rangle$}; % I axis
+    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
+    \draw[myred!50,thin,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity_single(\y,\a)},\y);
+    \draw[myred!50,thin,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity_single(\y,-\a)},\y);
+    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity_total(\y,\a)},\y);
+    \end{scope}
+
+    \end{tikzpicture}
+    }
+    \caption[Double-slit experiment with single photons, naive expectation.]{Naive expectation of the observed pattern for a double-slit experiment with single photons. This pattern is not observed in a real experiment.}
+    \label{fig:two-slit-expectation}
 \end{figure}
 
-Now, let's consider the scenario where we attenuate the laser light to such low levels that it's only firing single photons at a time, and furthermore, the level of attenuation is so high that we can be pretty sure that there's only one photon at a time between this screen where we place the double slits, and the screen where we are recording the pattern. So, what happens? Well, we know that the photons must go through one of these slits. So, let's try covering one of them. What do we expect? If we cover the bottom one, then definitely the photons have to go through the top slit in order to hit the screen, so we expect most of the photons hitting the screen will appear in the region that's the closest to the top slit, as in Fig.~\ref{fig:two-slit-lower-blocked}. On the other hand, if we block the top slit, as in Fig.~\ref{fig:two-slit-upper-blocked}, and the photons are allowed to pass through this bottom slit, then we expect most of the photons to be recorded on the lower portion of the screen. What happens if we open both of the slits, as in Fig.~\ref{fig:two-slit-single-photon-wrong}? They can go through the top, and they can go through the bottom, so we expect something like this: we expect that the two previous distributions are just added together. Is this really what we see? Well, let's find out. 
+The observed pattern is that of bright and dark interference fringes as shown in Fig.~\ref{fig:two-slit-single-photon-pattern}.
+These are nearly the same as the ones we observed when coherent light was incident on the screen with the two slits.
+This may not be that surprising upon a quick reflection.
+We have started with strong coherent light in Fig.~\ref{fig:two-slit}, where we observed the interference pattern.
+All we have done was we attenuated the light to the level of single photons, therefore there is no reason to expect the observed pattern to change.
+It may take longer for the pattern to emerge clearly on the screen due to the attenuation of the light, but that is the only difference.
 
-% attenuated laser
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/attenuate_laser.pdf}    
-        \caption{Attenuated laser light.}
-    \label{fig:two-slit-attenuated}
-\end{figure}
+The situation gets a lot more interesting if we attenuate the incident light even further, such that with high probability there is only a single photon travelling between the two screens.
+After enough time, the clear interference pattern of Fig.~\ref{fig:two-slit-single-photon-pattern} emerges yet again.
+This is a lot spookier than the previous scenario since it seems a single photon can interfere with itself.
+The incident photon has a two possibilities when it reaches the first screen in the form of the two open slits.
+It is these possibilities that further interfere between the two screens, resulting in some places on the second screen having zero probability of detecting a photon.
 
-% block bottom
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/block_bottom.pdf}
+\begin{figure}[t]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.png}
+    \resizebox {0.95\textwidth} {!} {
+    \begin{tikzpicture}[
+    nodal/.style={black!75,dashed,very thin},
+    declare function={
+      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
+      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
+      intensity(\y,\lam,\a,\L) = exp(-\y*\y/5)*cos(180*\a*\y/(2*\lam*sqrt(\L*\L+\y*\y)))^2;
+    }
+  ]
+  
+  \def\L{3.8}       % distance between walls
+  \def\H{5.4}       % total wall height
+  \def\h{2.8}       % plane wave height
+  \def\t{0.15}      % wall thickness
+  \def\a{1.15}      % slit distance
+  \def\d{0.20}      % slit size
+  \def\N{21}        % number of waves
+  \def\lambd{0.20}  % wavelength
+  \def\R{\N*\lambd} % wave radius
+  \def\Nlines{3}    % number of nodal lines
+  \def\A{1.6}       % amplitude
+  \def\nsamples{100}
+  \def\ang{62}
+  
+    % PHOTONS
+    \filldraw[fill=myred] (-2*\lambd,0) circle (0.08);
+    \filldraw[fill=myred] (17*\lambd,0) circle (0.08);
+  
+  % WALL
+  \fill[wall]
+    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
+    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
+    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
+    (\L,-\H/2) rectangle (\L+\t,\H/2);
+  
+  % SHADE
+  \begin{scope}[shift={(1.08*\L,0)}]
+    \def\yz{\L/sqrt((\a/\lambd)^2-1)} % m = +- 1/2
+    \def\yZ{\L/sqrt((\a/\lambd/2)^2-1)} % m = +- 1
+    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
+    \fill[myred] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
+    \foreach \i [evaluate={\n=0.5*\i;\yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
+                 }] in {1,...,\Nlines}{
+      \ifodd\i % if even
+        \fill[myred] (0,{-\yn-0.1}) rectangle++ (\A,0.2); % to fill seams
+        \fill[myred] (0,{ \yn-0.1}) rectangle++ (\A,0.2); % to fill seams
+      \fi
+    }
+    \path[left color=black,right color=black,middle color=myred,shading angle={180}]
+      (0,{-\yz}) rectangle (\A,{\yz});
+    \foreach \i [evaluate={
+                  \n=0.5*\i;
+                  \m=0.5*(\i+1);
+                  \yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
+                  \ym=\L/sqrt((\a/(2*\lambd*\m))^2-1);
+                  \dang=mod(\i,2)*180;
+                 }] in {1,...,\Nlines}{
+      \path[left color=black,right color=myred,shading angle={\dang}]
+        (0,\yn) rectangle (\A,\ym);
+      \path[left color=black,right color=myred,shading angle={180+\dang}]
+        (0,-\yn) rectangle (\A,-\ym);
+    }
+  \end{scope}
+  
+  % INTENSITY
+    \coordinate (NP0) at (\L,0);  % to avoid "Dimension too large error"
+    \foreach \dn [evaluate={
+                   \f=\a/\lambd;
+                   \nmin=2.5+0.2*\dn; %0.501*(-\dn+\f)
+                   \nmax=10; %(NP0)
+                   \c=int(\dn<\f);
+                   \y=\L/sqrt((\a/(\lambd*\dn))^2-1);
+                 }] in {1,...,\Nlines}{
+      \coordinate (NP+\dn) at (\L,\y);  % to avoid "Dimension too large error"
+      \coordinate (NP-\dn) at (\L,-\y); % to avoid "Dimension too large error"
+    }
     
-        \caption{Pattern observed when the lower slit is blocked.}
-    \label{fig:two-slit-lower-blocked}
-    
-\end{figure}
+  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
+    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$}; % I axis
+    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
+    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
+      plot({\A*intensity(\y,\lambd,\a,\L)},\y);
+  \end{scope}
 
-% block top
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/block_top.pdf}
-    
-        \caption{Pattern observed when the upper slit is blocked.}
-    \label{fig:two-slit-upper-blocked}
-    
-\end{figure}
-
-
-% block netiher expectation
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/block_neither.pdf}
-    
-        \caption{When single photons are used and both slits are open, is this the pattern we observe?}
-    \label{fig:two-slit-single-photon-wrong}
-    
-\end{figure}
-
-In fact, we see the following: we start firing photons at the screen. Originally, there's not much pattern that we can discern, as on the left side of Fig.~\ref{fig:two-slit-single-photon-pattern}, but as time progresses, more and more photons hit the screen and we can clearly see these fringes being formed, as on the right side of the figure. These fringes are the same fringes we could see before with strong laser light. Let's pause and appreciate really what's going on. We saw these fringes on the right with a strong laser light, and it wasn't very surprising. Here, somehow each individual photon knows that they still need to follow the same pattern. Still they are drawn toward the bright fringes on the screen, and they avoid the dark fringes in between. This is because of interference of different possible paths. Even though we only have a single photon between the laser and the screen, still it obeys the same rules of interference as if we had a strong laser pulse.
-
-
-% block neither reality
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.png}    
-        \caption{In fact, when both slits are open, even single photons will create the same pattern after a large number of individual photons have accumulated.}
-        \label{fig:two-slit-single-photon-pattern}
-
+    \end{tikzpicture}
+    }
+    \caption[Double-slit experiment with single photons.]{Interference pattern remains even if the photons arrive slowly enough that a single photon is present between the screens.}
+    \label{fig:two-slit-single-photon-pattern}
 \end{figure}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interference with qubits}
+\label{sec:6-4_interference_single_qubits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+We have finished Sec.~\ref{sec:6-3_interference_single_photons} by saying that a single photon's all possible routes to the second screen interfere together, resulting in a pattern displaying bright and dark fringes.
+In this Section, we will learn more about this concept in its simplest form.
+But before we do that, let's consider interference from a more abstract perspective of a single qubit.
 
-
-
-We have seen how light interferes, how waves interfere, and even how single photons interfere. We can, in fact, see interference also with single qubits. Let's see how.
-
-Consider that we have a Hadamard gate, and we apply it on the state of a qubit. We will consider two states: one is our state $\ket{0}$ which is given by the state vector (one zero), and the other is the state $\ket{1}$, which is given by its orthogonal friend (zero one), and the Hadamard gate $H$ is given by the transformation matrix,
+Consider the action of a Hadamard operation on a qubit.
+We will consider two initial states, state $\ket{0}$ and state $\ket{1}$.
+The initial states and the Hadamard operation can be represented in matrix form as follows,
 \begin{equation}
-\begin{aligned}
-|0\rangle &=\left(\begin{array}{l}
-1 \\
-0
-\end{array}\right) \quad|1\rangle=\left(\begin{array}{l}
-0 \\
-1
-\end{array}\right) \quad H=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
-1 & 1 \\
-1 & -1
-\end{array}\right)
-\end{aligned}
+    |0\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad
+    |1\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \quad
+    H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.
 \end{equation}
+If the initial state is $\ket{0}$, applying the Hadamard operation creates an equal superposition of the states $\ket{0}$ and $\ket{1}$,
+\begin{equation}
+    |0\rangle \longrightarrow H|0\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle).
+\end{equation}
+We can apply the Hadamard again, this time to the superposition,
+\begin{equation}
+    H\left[\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\right] = \frac{1}{2}(|0\rangle+|1\rangle+|0\rangle-|1\rangle) = |0\rangle.
+    \label{eq:qubit_interference}
+\end{equation}
+This may seem like a trivial calculation.
+The Hadamard is a unitary operation, therefore applying it twice should return the initial state.
+But it is worth pausing briefly and thinking about the calculation in Eq.~(\ref{eq:qubit_interference}).
+We can observe that both $|0\rangle$ terms have the same probability amplitude, $+1$.
+This is another example of constructive interference.
+On the other hand, the terms $|1\rangle$ have probability amplitudes $+1$ and $-1$, leading to destructive interference.
 
-If we start in the state $\ket{0}$ and apply the Hadamard gate to it, we have seen that we create an equal superposition of state $\ket{0}$ and $\ket{1}$,
-\begin{equation}
-\begin{aligned}
-|0\rangle & \longrightarrow H|0\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)
-\end{aligned}
-\end{equation}
-Now we can do the same thing again, we can apply another Hadamard gate to this superposition,
-\begin{equation}
-\begin{aligned}
-H\left[\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\right] &=\frac{1}{2}(|0\rangle+|1\rangle+|0\rangle-|1\rangle) \\
-&=|0\rangle
-\end{aligned}
-\end{equation}
-This can be seen by breaking the equation into its separate terms. From the first term, applying the Hadamard to the state $\ket{0}$ creates another superposition $\ket{0}+\ket{1}$. Applying Hadamard gate to the second term, the state $\ket{1}$ creates a superposition $\ket{0}-\ket{1}$. So after applications of two Hadamard gates, this is our state: the two $\ket{0}$ terms have the same sign and add up, or constructively interfere. The two $\ket{1}$ terms have opposite signs and cancel, or destructively interfere.
-%You can see that these terms (0+1, 0-1), they both have a positive probability amplitude, plus a half, plus a half. Whereas the other two terms have opposite amplitudes, they've got plus a half, and negative a half. So the effect of that is that the probability amplitudes for ones cancel, whereas the probability amplitudes for the zeros, they constructively interfere, and we end up in a state zero which was our initial state, and this works also for state one if we use that as an initial state, but this time the cancellation of probability amplitudes happens for the zero terms, because they have plus one half minus one half, and the one terms, they constructively interfere because both of them have plus a half, plus a half probability amplitudes. So 
-This may not surprise you too much. After all, applying Hadamard twice actually applies the identity, because the Hadamard gate is its own inverse.
+We can draw a parallel between the double-slit experiment with single photons and the interference of a single qubit in Eq.~(\ref{eq:qubit_interference}).
+In the double-slit experiment, the photon had infinitely many possibilities where to hit the second screen.
+Due to interference, some of these possibilities had finite probability of occurring, while the probability vanished for others.
+In the case of a single-qubit interference, there are only two possibilities, represented by states $|0\rangle$ and $|1\rangle$.
+It is the \textbf{\emph{interference of probability amplitudes}} that determines whether the state of the qubit is $|0\rangle$ or $|1\rangle$.
 
-So let's consider two different transformations. Let's call them BS1 and BS2,
+Let's consider two transformations that are not hermitian conjugates of each other, denoted by BS1 and BS2,
 \begin{equation}
-B S 1=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
-1 & 1 \\
-1 & -1
-\end{array}\right) \quad B S 2=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
--1 & 1 \\
-1 & 1
-\end{array}\right) \quad B S 2 \cdot B S 1 \neq I.
+    \text{BS}1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \quad
+    \text{BS}2 = \frac{1}{\sqrt{2}}\begin{pmatrix} -1 & 1 \\ 1 & 1 \end{pmatrix}, \quad
+    \text{BS}2 \cdot \text{BS1} \neq I.
+    \label{eq:BS_transformations}
 \end{equation}
-You can see that BS1 is actually our previous Hadamard gate but let's just keep calling it BS1 for reasons that will become apparent a little bit later.  BS2 looks a little bit  like a Hadamard gate, but this time the minus is not located in the bottom right, but instead is in the top left. You can check for yourself that applying these gates in sequence is not the same thing as doing nothing. In particular, BS2 times BS1 is not equal to the identity.
+The operation BS1 is none other than the Hadamard operation.
+The choice of notation will become clear in a short while. 
+BS2 appears to be similar to BS1, the difference being that -1 is not located in the bottom right, but instead is in the top left.
+You can check for yourself that applying these gates in sequence is not the same thing as doing nothing.
+In particular, the product of BS2 and BS1 is not equal to the identity.
+To see this, let's apply BS1, followed by BS2, to the initial state $|1\rangle$,
+\begin{align}
+    \text{BS}2 \cdot \text{BS}1 |1\rangle & = \text{BS}2 \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix} \nonumber\\
+    & = \text{BS}2 \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix} \nonumber\\
+    & = \frac{1}{2} \begin{pmatrix} -1 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix} \nonumber\\
+    & = \frac{1}{2} \begin{pmatrix} -2 \\ 0 \end{pmatrix} \nonumber\\
+    & = -|0\rangle = |0\rangle.
+    \label{eq:BS2-BS1}
+\end{align}
+The global phase in the last line can be ignored as it has no physically observable consequence.
+Application of BS1 creates a superposition of states $|0\rangle$ and $|1\rangle$.
+Subsequent application of BS2 results in destructive interference of probability amplitudes for $|1\rangle$.
 
-But let's see what happens when we do apply them. Let's say our initial state is $\ket{1}$. We first apply the transformation BS1, then BS2, and what we get is the following
-\begin{equation}
-\begin{aligned}
-B S 2 \cdot B S 1|1\rangle &=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{cc}
-1 & 1 \\
-1 & -1
-\end{array}\right)\left(\begin{array}{l}
-0 \\
-1
-\end{array}\right) \\
-&=B S 2 \cdot \frac{1}{\sqrt{2}}\left(\begin{array}{c}
-1 \\
--1
-\end{array}\right) \\
-&=\frac{1}{2}\left(\begin{array}{cc}
--1 & 1 \\
-1 & 1
-\end{array}\right)\left(\begin{array}{c}
-1 \\
--1
-\end{array}\right) \\
-&=\frac{1}{2}\left(\begin{array}{c}
--2 \\
-0
-\end{array}\right)=-|0\rangle=|0\rangle
-\end{aligned}
-\end{equation}
-We apply the Hadamard gate to the vector (zero one), and after simple multiplication we get the superposition $\ket{0}-\ket{1}$. Then, we apply BS2, and what we get is in fact another translation. The probability amplitudes corresponding to state $\ket{0}$, they constructively interfere, whereas the probability amplitudes contributing towards state $\ket{1}$, they destructively interfere. Therefore the probability amplitude for state $\ket{1}$ becomes zero. The minus term that appears on the front is not important, it has no consequence because it's just a global phase, so we can just ignore it.
- 
-Now, let's consider an optical instrument called a \emph{Mach-Zehnder Interferometer}\index{Mach-Zehnder interferometer}\index{interferometer}, as shown in Fig.~\ref{fig:mach-zehnder}.
-% Mach-Zehnder set-up
-\begin{figure}[H]
+The previous discussion of qubit interference may seem a little abstract.
+Now is the time to make more concrete by considering an optical instrument called the \textbf{\emph{Mach-Zehnder interferometer}}\index{Mach-Zehnder interferometer}\index{interferometer}, as shown in Fig.~\ref{fig:mach-zehnder}.
+\begin{figure}[t]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/mach_zehnder.pdf}
-    
-        \caption{Mach-Zehnder interferometer.}
-    \label{fig:mach-zehnder}
-    
+    \caption{Mach-Zehnder interferometer.}
+    \label{fig:mach-zehnder}  
 \end{figure}
-It consists of two beam splitters which are BS1 and BS2, two mirrors, and two detectors.  The game that we like to play with this Mach-Zehnder Interferometer is this: we feed in some light into the first beam splitter, and then we ask the questions, "When will D0 click?  When will detector D1 click? What's the intensity measured at detector D0? What's the intensity measured at detected D1?" and so on. In this particular case, we assume that we only have light coming in from the bottom, and the mirrors and beam splitters are set in such a way that the path lengths are the same. The light can be reflected from the first beam splitter, bounce off the mirror, and enter the second beam splitter, or it can be transmitted through the first beam splitter, bounce off the top mirror, hit the second beam splitter interfere with the beam coming from the bottom branch, and it will be detected either at D0 and D1. If the path lengths are the same, then for this scenario, it will always be detected in the top detector D0.
+It consists of two beam splitters, BS1 and BS2, two mirrors, and two detectors.
+The experiment that we would like to carry out is as follows.
+We use a source of light as input for the beam splitter BS1.
+The light can enter the beam splitter either from the top port or from the bottom one.
+The detectors are placed at the two output ports of beam splitter BS2.
+We are interested in the detection pattern of D0 and D1 based on the input pattern.
+For the particular input in Fig.~\ref{fig:mach-zehnder}, only detector D0 registers a click, the light is never detected by D1.
 
-That's what happens with strong, classical light. Now, let's consider what happens when only a single photon enters our Mach-Zehnder Interferometer, as in Fig.~\ref{fig:mach-zehnder-single-photon}. Again, the single photon can be reflected at the first one or transmitted. It bounces off the mirrors, which don't really do anything except alter the path of the photon.  The two paths then recombine at the second beam splitter, and we ask the question: is the photon detected at D0 or is it detected at D1?
-% Single photon Mach-Zehnder case
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/mach_zehnder_single_photon.pdf}
-    
-        \caption{Mach-Zehnder interferometer with a single photon.}
-    \label{fig:mach-zehnder-single-photon}    
-\end{figure}
-
-In addition, the Mach-Zehnder Interferometer implements our qubit. How? Where is the qubit? Well, if the photon is found in the top half of the interferometer, we say that it's in the state $\ket{0}$, as in Fig.~\ref{fig:m-z-upper}. On the other hand if it's found in the bottom half, we say that it's in the state one, Fig.~\ref{fig:m-z-lower}. 
-%So here the different paths encode different computational states of the qubit.
-
-% 0 ket top
-\begin{figure}[H]
+The Mach-Zehnder interferometer can be used to encode a qubit.
+An incident photon, regardless of the input port, has two possible paths that it can take to BS2.
+If it is in the upper half of the interferometer then we say the state of the qubit is $|0\rangle$, as shown in Fig.~\ref{fig:m-z-upper}.
+If the photon is found in the bottom half of the interferometer, the state of the qubit is $|1\rangle$ as shown in Fig.~\ref{fig:m-z-lower}.
+We say that the qubit is \textbf{\emph{spatially encoded}}\index{spatial encoding}.
+\begin{figure}[t]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/0_ket_botttom.pdf}
-    
-        \caption{$\ket{0}$ state is represented by a photon in the upper path.}
+    \caption[State $|0\rangle$ in the MI interferometer.]{State $\ket{0}$ is represented by a photon in the upper path.}
     \label{fig:m-z-upper}
-    
 \end{figure}
-
-% 1 ket bottom
-\begin{figure}[H]
+\begin{figure}[t]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/1_ket_bottom.pdf}
-    
-        \caption{$\ket{1}$ state is represented by a photon in the lower path.}
+    \caption[State $|1\rangle$ in the MI interferometer.]{State $\ket{1}$ is represented by a photon in the lower path.}
     \label{fig:m-z-lower}
-    
 \end{figure}
 
-Let's consider our initial state to be $\ket{1}$, meaning it enters our Mach-Zehnder Interferometer from the bottom half.
+Let's consider the initial state to be $\ket{1}$, meaning the photon enters the interferometer from the bottom port.
+Now it is more clear why we have called those previous transformations in Eq.~(\ref{eq:BS_transformations}) BS1 and BS2.
+They correspond to the mathematical description of how the beam splitters affect the probability amplitudes of our qubit~\footnote{In fact, the quantum mechanical description of a beam splitter always has to involve writing down the state of both of the input ports to the beam splitter; here, we are being a little loose with the description. BS2 in this figure shows the correct accounting for photons coming from above and below the beam splitter, but for BS1 we have ignored the fact that we need to count the number of photons coming in from both above and below it, as well.  In future courses, you will see a more rigorous treatment.}.
+We proved in Eq.~(\ref{eq:BS2-BS1}) that if we first act on the input qubit $|1\rangle$ with BS1, and subsequently with BS2, then the final state of the qubit will be $|0\rangle$.
+This means that a photon in the bottom input port of BS1 will be always detected by detector D0 after passing through the Mach-Zehnder interferometer.
+This is one of the most bare-bones demonstrations of single-photon interference and also shows how the abstract calculation in Eq.~(\ref{eq:BS2-BS1}) connects to the real world.
 
-Now you see why we have called those previous transformations BS1 and BS2. They correspond to the mathematical description of how these beam splitters affect the probability amplitudes of our qubit~\footnote{In fact, the quantum mechanical description of a beam splitter always has to involve writing down the state of both of the input ports to the beam splitter; here, we are being a little loose with the description. BS2 in this figure shows the correct accounting for photons coming from above and below the beam splitter, but for BS1 we have ignored the fact that we need to count the number of photons coming in from both above and below it, as well.  In future courses in this sequence, you will see a more rigorous treatment.}. We proved before that if we first act on our qubit with beam splitter one, and subsequently with beam splitter two, then we know that if the initial state is in the bottom half, then the output state will always be found in the top half, meaning D0 detector always clicks, as in Fig.~\ref{fig:m-z-d0}. The situation is very similar to the previous section. Here, there is only a single photon found in the Mach-Zehnder Interferometer. A photon is a single unit. There's always just one and it can't be divided, yet somehow it knows that it has to interfere with itself and always goes towards detector D0.
-
-Now, let's do a simple test to better understand the behavior. Let's actually put some absorbing material and block the possibility of the photon going through the lower half of the Mach-Zehnder Interferometer, as in Fig.~\ref{fig:m-z-blocked}. What do we see? Well, the photon coming from below can get reflected at BS1. If it does get reflected, then it hits the block, gets absorbed and we don't get any clicks. However, if it gets transmitted at BS1, it bounces off the upper mirror and it is incident onto the second beam splitter, where again, it has an equal probability of being reflected or passing through the beam splitter. Therefore, it has a probability of being detected by both detector D0 and the detector D1. Effectively, by blocking this path of photon in the bottom of the Mach-Zehnder Interferometer, we have prevented interference from taking place at BS2. That is why we see both possibilities D0 and D1.
-
-\if0
-\begin{equation}
-B S 2 \cdot B S 1|1\rangle=|0\rangle
-\end{equation}
-\fi
-
-% D0 always clicks
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.8\textwidth]{lesson6/d0_always_clicks.pdf}
-    
-        \caption{$D0$ clicks with 100\% probability.}
-    \label{fig:m-z-d0}
-    
-\end{figure}
-
-% block bottom path
-\begin{figure}[H]
+Let's do a simple test to better understand the behavior of the Mach-Zehnder interferometer.
+Let's put some absorbing material and block the possibility of the photon going through the lower half of the Mach-Zehnder Interferometer, as in Fig.~\ref{fig:m-z-blocked}.
+An input photon at BS1 in the bottom port has a chance to get reflected at BS1.
+If it does, it hits the block, gets absorbed and we don't get any clicks at either detector.
+However, if it gets transmitted at BS1, it bounces off the upper mirror and it is incident onto the second beam splitter, where again, it has an equal probability of being reflected or passing through the beam splitter.
+Therefore, it has a probability of being detected by both detector D0 and the detector D1.
+Effectively, by blocking the bottom path of the Mach-Zehnder Interferometer, we have prevented interference from taking place at BS2.
+That is why we see both possibilities D0 and D1.
+\begin{figure}[t]
    \centering
     \includegraphics[width=0.8\textwidth]{lesson6/bottom_blocked.png}
-    
-        \caption[Lower path blocked.]{Lower path blocked. Because there is no photon coming from the lower path at BS2, no interference occurs, and any photon coming from above has a 50/50 chance of being directed to either detector.}
+    \caption[Lower path blocked.]{Lower path blocked. Because there is no photon coming from the lower path at BS2, no interference occurs, and any photon coming from above has a 50/50 chance of being directed to either detector.}
     \label{fig:m-z-blocked}
-    
 \end{figure}
 
 
 \newpage
 \begin{exercises}
 
-\exer{Write some code to reproduce the static plot in Fig.~\ref{fig:decaying-superposition}.  Try to make your code represent the equations as nearly exactly as possible.  The plots and animations in our course were created using the Python package {\tt manim}, but your instructor may have different instructions for you.}
+\exer{
+\emph{Visualization of wave propagation.}
+Significant portions of this Chapter discuss propagation of waves in time. Naturally, this is can be only partially visualized in the form of a book. This exercise gives you the opportunity to write some basic code that will create an animation depicting interference of two waves in time. You can choose any package or library. If you are not familiar with creating animations, we suggest you look in to {\tt Python} library called {\tt matplotlib}.
+\subexer{
+Begin by replicating Fig.~\ref{fig:6-2_superposition}. Choose any two sinusoidal waves, but make sure you can clearly see the fast and slow oscillations.
+}
+\subexer{
+Create an animation that clearly shows how the interference of the two waves propagates in time.
+}
+\subexer{
+Using a small square, mark a point of constant phase on the interference pattern.
+Using a small circle, mark a point on the envelope that modulates the oscillations.
+For your chosen parameters, which point has higher velocity?
+}
+\subexer{
+Change the parameters and make sure you can create animations that demonstrate the following three cases clearly: $v_p>v_g$, $v_p=v_g$, $v_p<v_g$.
+}
+\subexer{
+Can you find parameters for the two waves, such that the phase velocity of the resulting wave is negative, $v_p<0$?
+}
+}
 
-\exer{Write some code to reproduce the animated plot in Fig.~\ref{fig:propagating-waves}.  Try to make your code represent the equations as nearly exactly as possible.  The plots and animations in our course were created using the Python package {\tt manim}, but your instructor may have different instructions for you.}
+\exer{
+\emph{Single-qubit interference.}
+Consider the Mach-Zehnder interferometer of Fig.~\ref{fig:mach-zehnder}.
+\subexer{
+Show that BS1 and BS2 are not hermitian conjugates of each other, that $\text{BS}1\cdot\text{BS}2\neq I$.
+}
+\subexer{
+What are the detection probabilities of the D0 and D1 if the input state is an equal superposition $(|0\rangle + |1\rangle)/\sqrt{2}$?
+}
+\subexer{
+Can you think of a way to physically implement such an input state?
+}
+}
+
+\exer{
+\emph{Destroying the interference.}
+We said that the interference at BS2 can be destroyed by placing an obstacle in one of the arms of the Mach-Zehnder interferometer, see Fig.~\ref{fig:m-z-blocked}. Let's better quantitative intuition into this scenario by replacing the obstacle with another detector, labelled by D2.
+\subexer{
+What is the state of the qubit immediately after BS1?
+}
+\subexer{
+What is the probability of detector D2 detecting a photon?
+}
+\subexer{
+What is the state of the qubit given that detector D2 did not click?
+}
+\subexer{
+What are the individual click probabilities for the three detectors?
+}
+\subexer{
+If we input a photon in the top port of BS1, where is it most likely going to be detected?
+}
+}
 
 \end{exercises}
 

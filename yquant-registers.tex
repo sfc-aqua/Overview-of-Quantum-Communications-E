@@ -1,0 +1,1176 @@
+\def\yquant@register@type@none{0}
+\def\yquant@register@type@q{1}
+\def\yquant@register@type@c{2}
+\def\yquant@register@type@qs{3}
+
+\def\yquant@register@type@tostring#1{%
+   \ifcase#1 %
+      nobit%
+   \or%
+      qubit%
+   \or%
+      cbit%
+   \or%
+      qubits%
+   \else%
+      \PackageError{yquant.sty}{Internal inconsistency detected}%
+                   {Unknown wire type: `#1'.}%
+   \fi%
+}
+
+\protected\def\yquant@register@type@fromstring#1#2{%
+   \expandafter\ifstrequal\expandafter{#1}{qubit}%
+      {\let#2=\yquant@register@type@q}%
+      {%
+         \expandafter\ifstrequal\expandafter{#1}{cbit}%
+         {\let#2=\yquant@register@type@c}%
+         {%
+            \expandafter\ifstrequal\expandafter{#1}{qubits}%
+            {\let#2=\yquant@register@type@qs}%
+            {%
+               \PackageError{yquant.sty}{Invalid bit type: `#1'}%
+                  {Use one of `qubit', `cbit', or `qubits'.}%
+            }%
+         }%
+      }%
+}
+
+% Internally, we store the register information in a single macro. Indeed, this is almost always faster than using multiple macros (at least in the way implemented here), apart from changing a single type of information, which is almost as fast.
+% BEGIN_FOLD Constructor: create single register and cleanup environment
+
+% #1: type
+% #2: name
+% #3: index
+\protected\def\yquant@register@define#1#2#3{%
+   \csnumgdef{\yquant@prefix registers}%
+             {\csname\yquant@prefix registers\endcsname+1}%
+   % sync with yquantlanguage-groups/\yquantgroup@startenvironment
+   \csxdef{\yquant@prefix register@\csname\yquant@prefix registers\endcsname}{%
+      {#1}% type
+      {0pt}% x pos
+      {{\yquant@config@register@minimum@height}%
+       {\yquant@config@register@minimum@depth}%
+       {}}% height, depth, and multi-space parts; at the end, the y position
+      {{0pt}{0pt}{}{}}% wire start positions and clipping
+      {}% wire style
+      {\yquant@register@flag@clean}% information about the last gate
+   }%
+   \global\csletcs{\yquant@prefix registername@#2[#3]}{\yquant@prefix registers}%
+   \csxdef{\yquant@prefix registerhigh@#2}{#3}%
+   \yquant@cleanup@csadd{\yquant@prefix register@\csname\yquant@prefix registers\endcsname}%
+   \yquant@cleanup@csadd{\yquant@prefix registername@#2[#3]}%
+   \ifnum0=#3\relax%
+      \yquant@cleanup@csadd{\yquant@prefix registerhigh@#2}%
+   \fi%
+}
+
+% in a subcircuit, create a new register that is only an alias for an existing register in the outer circuit.
+% #4: id in the outer circuit
+\protected\def\yquant@register@alias#1#2#3#4{%
+   \csnumgdef{\yquant@prefix registers}%
+             {\csname\yquant@prefix registers\endcsname+1}%
+   \ifcsname\yquant@parent registermap@#4\endcsname%
+      % the parent is already an alias itself, pass this on transparently
+      \global\csletcs%
+         {\yquant@prefix registermap@\csname\yquant@prefix registers\endcsname}%
+         {\yquant@parent registermap@#4}%
+   \else%
+      \csxdef{\yquant@prefix registermap@\csname\yquant@prefix registers\endcsname}%
+             {\yquant@parent register@#4}%
+   \fi%
+   % we still store height, depth, and multi-space parts. To keep the same macros, we create a full register structure, but "abuse" the type component to contain the direct parent
+   \csxdef{\yquant@prefix register@\csname\yquant@prefix registers\endcsname}{%
+      {{\expandafter\yquant@register@alias@extract\yquant@parent}{#4}}% direct parent (circuit id, register id)
+      {}% unused
+      {{\yquant@config@register@minimum@height}%
+       {\yquant@config@register@minimum@depth}%
+       {}}% height, depth, and multi-space parts
+      {}% unused
+      {}% unused
+      {}% unused
+   }%
+   \global\csletcs{\yquant@prefix registername@#2[#3]}{\yquant@prefix registers}%
+   \csxdef{\yquant@prefix registerhigh@#2}{#3}%
+   \yquant@cleanup@csadd{\yquant@prefix register@\csname\yquant@prefix registers\endcsname}%
+   \yquant@cleanup@csadd{\yquant@prefix registermap@\csname\yquant@prefix registers\endcsname}%
+   \yquant@cleanup@csadd{\yquant@prefix registername@#2[#3]}%
+   \ifnum0=#3\relax%
+      \yquant@cleanup@csadd{\yquant@prefix registerhigh@#2}%
+   \fi%
+   \expandafter\yquant@register@set@@aux%
+      \csname\csname\yquant@prefix registermap@\csname\yquant@prefix registers\endcsname\endcsname\endcsname%
+      \yquant@register@set@typelastgate@aux%
+      {{#1}{\yquant@register@flag@clean}}%
+}
+
+\def\yquant@register@alias@extract yquant@env#1@{#1}%
+% END_FOLD
+
+% BEGIN_FOLD Converter: convert a register name to its id
+% store the number corresponding to register #2 into #1
+\protected\def\yquant@register@get@id#1#2{%
+   \ifcsname\yquant@prefix registername@#2\endcsname%
+      \letcs#1{\yquant@prefix registername@#2}%
+   \else%
+      \yquant@register@get@id@lazycreate{#2}%
+      \letcs#1{\yquant@prefix registers}%
+   \fi%
+}
+
+% same as before, but resolves to the _index_ of the last register
+\protected\def\yquant@register@get@id@high#1#2{%
+   \unless\ifcsname\yquant@prefix registerhigh@#2\endcsname%
+      \yquant@register@get@id@lazycreate{#2}%
+   \fi%
+   \letcs#1{\yquant@prefix registerhigh@#2}%
+}
+
+% In the lazy mode, we create all unknown registers on-the-fly.
+\def\yquant@register@get@id@lazycreate#1{%
+   \ifyquant@env@lazy%
+      % In principle, we could just call \yquant@lang@@qubit. However, if access to a vector register is desired and a _part_ of this does already exist (though not the requested index), we only create the missing registers.
+      \yquant@register@get@id@lazycreate@parse#1[;%
+   \else%
+      \PackageError{yquant.sty}{Register `#1' unknown}%
+         {You referred to an unknown register.
+          Declare registers first using `qubit' and friends.}%
+   \fi%
+}
+
+\def\yquant@register@get@id@lazycreate@parse#1[#2;{%
+   \ifstrempty{#2}{%
+      \yquant@register@get@id@lazycreate@do#1[0][;%
+   }{%
+      \yquant@register@get@id@lazycreate@do#1[#2;%
+   }%
+}
+
+\protected\def\yquant@register@get@id@lazycreate@do#1[#2]#3[;{%
+   \begingroup%
+      % parse length
+      \ifstrempty{#3}{%
+         \yquant@langhelper@validate\len\count{#2}%
+         \numdef\len{\len+1}%
+      }{%
+         \PackageError{yquant.sty}{Invalid register name}%
+            {Register names must not contain `[' apart from register length indication.}%
+      }%
+      \edef\reg{\trim@spaces{#1}}%
+      % Was this register already defined?
+      \ifcsname\yquant@prefix registerhigh@\reg\endcsname%
+         \numdef\idx{\csname\yquant@prefix registerhigh@\reg\endcsname+1}%
+         \unless\ifnum\idx<\len\relax%
+            \PackageError{yquant.sty}{Internal inconsistency detected}%
+               {Tried to create a register on-the-fly that already existed.}%
+         \fi%
+      \else%
+         \def\idx{0}%
+      \fi%
+      % define text macros
+      \ifnum\len=1 %
+         \let\regidx=\reg%
+      \else%
+         \def\regidx{\reg[\idx]}%
+      \fi%
+      \numdef\yquant@circuit@operator@mintarget{\csname\yquant@prefix registers\endcsname+1}%
+      \begingroup%
+         \yquant@for \idx := \idx to \numexpr \len -1\relax {%
+            \yquant@prepare@create\reg\idx\yquant@register@type@q%
+         }%
+      \endgroup%
+      \ifx\yquant@config@register@default@lazyname\empty%
+         \expandafter\@gobble%
+      \else%
+         \expandafter\@firstofone%
+      \fi%
+      {%
+         \let\yquant@lang@attr@value=\yquant@config@register@default@lazyname%
+         % gather details about the created registers
+         \letcs\yquant@circuit@operator@maxtarget{\yquant@prefix registers}%
+         \numdef\yquant@circuit@operator@numtarget{\yquant@circuit@operator@maxtarget-\yquant@circuit@operator@mintarget+1}%
+         \edef\yquant@circuit@operator@targets{%
+            \yquant@list@range%
+               \yquant@circuit@operator@mintarget%
+               \yquant@circuit@operator@maxtarget%
+         }%
+         \let\yquant@circuit@operator@pctrls=\empty%
+         \def\yquant@circuit@operator@minpctrl{2147483647}%
+         \def\yquant@circuit@operator@maxpctrl{0}%
+         \let\yquant@circuit@operator@numpctrl=\yquant@circuit@operator@maxpctrl%
+         \let\yquant@circuit@operator@nctrls=\empty%
+         \let\yquant@circuit@operator@minnctrl=\yquant@circuit@operator@minpctrl%
+         \let\yquant@circuit@operator@maxnctrl=\yquant@circuit@operator@maxpctrl%
+         \let\yquant@circuit@operator@numnctrl=\yquant@circuit@operator@numpctrl%
+         \let\yquant@circuit@operator@minctrl=\yquant@circuit@operator@mintarget%
+         \let\yquant@circuit@operator@maxctrl=\yquant@circuit@operator@maxtarget%
+         % there are no multi inits in this context
+         \preto\yquant@attrs@remaining{internal/move label,}%
+         \def\yquant@config@operator@minimum@width{0pt}%
+         \unless\ifx\yquant@lang@attr@value\empty%
+            % make sure to immediately remove the "clear" marker again if we have a text
+            \yquant@for \i := \yquant@circuit@operator@mintarget to \yquant@circuit@operator@maxtarget {%
+               \yquant@register@execclear@lastgate{\i}{init}%
+            }%
+         \fi%
+         \expandafter\yquant@prepare%
+            \expandafter{\yquant@lang@attr@value}%
+            {/yquant/every label, /yquant/every initial label,%
+             /yquant/every qubit label}%
+      }%
+   \endgroup%
+}
+
+\newif\ifyquant@register@get@allowmulti
+% converts names to indices
+% #1: comma-separated string of names or ranges
+%     range format: startname-endname
+%     Both startname and endname may be omitted, denoting the very first and last
+%     register, respectively
+%     If \ifyquant@register@get@allowmulti is set to true, multi-qubit registers are
+%     allowed, which are surrounded by parentheses. They may not appear in ranges.
+% \yquant@register@get@ids@list, \yquant@register@get@ids@min, \yquant@register@get@ids@max and \yquant@register@get@ids@count will be set appropriately
+\begingroup%
+\catcode`[=\active%
+\catcode`(=\active%
+\protected\gdef\yquant@register@get@ids#1{%
+   \begingroup%
+      \let\yquant@register@get@ids@list=\empty%
+      \count0=2147483647 % minimal id
+      \count2=0 % maximal id
+      \count4=0 % number of total registers
+      \ifblank{#1}{}{%
+         \let\ifinmulti=\iffalse%
+         \let\ifallowmain=\iffalse%
+         \let\do=\yquant@register@get@ids@outerlist%
+         \begingroup%
+            \catcode`[=\active%
+            \catcode`(=\active%
+            \def[##1]{\yquant@register@get@ids@@index{##1}}%
+            \def(##1){\yquant@register@get@ids@@multi{##1}}%
+            % this is also invoked by other languages which might have completely redefined all catcodes (qasm redefines the backslash), so don't just add \noexpand at the end of the \scantokens...
+            \everyeof{\noexpand}%
+            \endlinechar=-1 %
+            \edef\yquant@register@get@ids@retokenized{\scantokens{#1}}%
+            \expandafter%
+         \endgroup%
+         \expandafter\docsvlist\expandafter{\yquant@register@get@ids@retokenized}%
+      }%
+      \global\let\yquant@register@get@ids@list=\yquant@register@get@ids@list%
+      \xdef\yquant@register@get@ids@min{\the\count0}%
+      \xdef\yquant@register@get@ids@max{\the\count2}%
+      \xdef\yquant@register@get@ids@count{\the\count4}%
+   \endgroup%
+}
+\endgroup
+
+\let\yquant@register@get@ids@@index=\yquant@protectedempty
+\let\yquant@register@get@ids@@multi=\yquant@protectedempty
+
+\def\yquant@register@get@ids@outerlist#1{%
+   \ifyquant@firsttoken\yquant@register@get@ids@@multi{#1}{%
+      \unless\ifyquant@register@get@allowmulti%
+         \PackageError{yquant.sty}{Multi-register gate not allowed}%
+                      {The selected gate can only be used in a single-register context.}%
+      \fi%
+      \yquant@register@get@ids@multi#1\yquant@sep%
+   }{%
+      \yquant@register@get@ids@checkrange#1-\yquant@sep%
+   }%
+}
+
+\protected\def\yquant@register@get@ids@multi\yquant@register@get@ids@@multi#1\yquant@sep{%
+   \begingroup%
+      \let\yquant@register@get@ids@list=\empty%
+      \count0=2147483647 % minimal id
+      \count2=0 % maximal id
+      \count4=0 % number of total registers
+      \count6=-1 % index of main register
+      \let\ifinmulti=\iftrue%
+      \let\ifallowmain=\iftrue%
+      \let\do=\yquant@register@get@ids@multilist%
+      \docsvlist{#1}%
+      \ifnum\count6=-1 %
+         \count6=\count0 %
+      \fi%
+      \yquant@register@multi@splitparts%
+      \edef\process{%
+            \endgroup%
+         \noexpand\listadd\noexpand\yquant@register@get@ids@list{%
+            \noexpand\yquant@register@multi%
+               {\the\count0}{\the\count2}{\the\count4}%
+               {\yquant@register@get@ids@list}%
+         }%
+         \noexpand\ifnum\count0>\the\count0\space%
+            \count0=\the\count0\space%
+         \noexpand\fi%
+         \noexpand\ifnum\count2<\the\count2\space%
+            \count2=\the\count2\space%
+         \noexpand\fi%
+         \advance\count4 by 1 %
+      }%
+      \process%
+}
+
+\def\yquant@register@get@ids@multilist#1{%
+   \yquant@register@get@ids@checkrange#1-\yquant@sep%
+}
+
+\def\yquant@register@get@ids@checkrange#1-#2\yquant@sep{%
+   \ifstrempty{#2}{%
+      % the string does not contain a dash
+      \yquant@register@get@ids@norange{#1}%
+   }{%
+      % this is a range argument
+      \yquant@register@get@ids@range#1-#2\yquant@sep%
+   }%
+}
+
+\def\yquant@register@get@ids@norange#1{%
+   % the register is not used within a range, which gives us full freedom with respect to sub-index selections
+   \yquant@register@get@ids@norange@checkindex%
+      #1%
+      \yquant@register@get@ids@@index%
+      \yquant@sep%
+}
+
+\protected\def\yquant@register@get@ids@norange@checkindex#1\yquant@register@get@ids@@index#2\yquant@sep{%
+   \edef\current{\trim@spaces{#1}}%
+   \ifallowmain%
+      \expandafter\ifyquant@firsttoken\expandafter*\expandafter{\current}{%
+         \edef\current{%
+            \expandafter\expandafter\expandafter\trim@spaces%
+            \expandafter\expandafter\expandafter{%
+               \expandafter\@gobble\current%
+            }%
+         }%
+         % catch the minimal index
+         \edef\yquant@register@get@ids@norange@checkindex@setmain{%
+            \count6=\count2%
+            \ifnum\count0<\the\count0 %
+               \count0=\the\count0 %
+            \fi%
+         }%
+         \count0=2147483647 %
+         \csletcs{ifallowmain}{iffalse}%
+      }{%
+         \let\yquant@register@get@ids@norange@checkindex@setmain=\relax%
+      }%
+   \else%
+      \let\yquant@register@get@ids@norange@checkindex@setmain=\relax%
+   \fi%
+   \ifstrempty{#2}{%
+      % the string does not contain a sub-index; we add the full register
+      \yquant@register@get@id\first{\current[0]}%
+      \letcs\high{\yquant@prefix registerhigh@\current}%
+      \yquant@register@get@id\last{\current[\high]}%
+      \ifnum\first<\count0 %
+         \count0=\first\relax%
+      \fi%
+      \ifnum\last>\count2 %
+         \count2=\last\relax%
+      \fi%
+      \advance\count4 by \numexpr\high+1\relax%
+      \yquant@for \i := 0 to \high {%
+         \yquant@register@get@id\idx{\current[\i]}%
+         \listeadd\yquant@register@get@ids@list{\idx}%
+      }%
+   }{%
+      \yquant@register@get@ids@norange@index#2%
+   }%
+   \yquant@register@get@ids@norange@checkindex@setmain%
+}
+
+\protected\def\yquant@register@get@ids@norange@index#1\yquant@register@get@ids@@index{%
+   \let\olddo=\do%
+   % the string contains sub-indices; since we are not in a range, multi-indices may still be allowed
+   \ifinmulti%
+      \let\do=\yquant@register@get@ids@subindex@nomulti%
+   \else%
+      \let\do=\yquant@register@get@ids@subindex@allowmulti%
+   \fi%
+   \docsvlist{#1}%
+   \let\do=\olddo%
+}
+
+\def\yquant@register@get@ids@subindex@nomulti#1{%
+   \yquant@register@get@ids@subindex@checkrange#1-\yquant@sep%
+}
+
+\def\yquant@register@get@ids@subindex@allowmulti#1{%
+   \ifyquant@firsttoken\yquant@register@get@ids@@multi{#1}{%
+      \unless\ifyquant@register@get@allowmulti%
+         \PackageError{yquant.sty}{Multi-register gate not allowed}%
+                      {The selected gate can only be used in a single-register context.}%
+      \fi%
+      \yquant@register@get@ids@subindex@multi#1\yquant@sep%
+   }{%
+      \yquant@register@get@ids@subindex@checkrange#1-\yquant@sep%
+   }%
+}
+
+\protected\def\yquant@register@get@ids@subindex@multi\yquant@register@get@ids@@multi#1\yquant@sep{%
+   \begingroup%
+      \let\yquant@register@get@ids@list=\empty%
+      \count0=2147483647 % minimal id
+      \count2=0 % maximal id
+      \count4=0 % number of total registers
+      \count6=-1 % index of main register
+      \let\ifinmulti=\iftrue%
+      \let\ifallowmain=\iftrue%
+      \let\do=\yquant@register@get@ids@subindex@nomulti%
+      \docsvlist{#1}%
+      \ifnum\count6=-1 %
+         \count6=\count0 %
+      \fi%
+      \yquant@register@multi@splitparts%
+      \edef\process{%
+            \endgroup%
+         \noexpand\listadd\noexpand\yquant@register@get@ids@list{%
+            \noexpand\yquant@register@multi%
+               {\the\count0}{\the\count2}{\the\count4}%
+               {\yquant@register@get@ids@list}%
+         }%
+         \noexpand\ifnum\count0>\the\count0\space%
+            \count0=\the\count0\space%
+         \noexpand\fi%
+         \noexpand\ifnum\count2<\the\count2\space%
+            \count2=\the\count2\space%
+         \noexpand\fi%
+         \advance\count4 by 1 %
+      }%
+      \process%
+}
+
+\def\yquant@register@get@ids@subindex@checkrange#1-#2\yquant@sep{%
+   \ifstrempty{#2}{%
+      % the string does not contain a dash, this is a single sub-item
+      \edef\idx{\trim@spaces{#1}}%
+      \expandafter\yquant@register@get@ids@subindex@norange\expandafter{\idx}%
+   }{%
+      % this is a range argument
+      \yquant@register@get@ids@subindex@range#1-#2\yquant@sep%
+   }%
+}
+
+\protected\def\yquant@register@get@ids@subindex@norange#1{%
+   \ifallowmain%%
+      \ifyquant@firsttoken*{#1}{%
+         \edef\idx{\current[\expandafter\trim@spaces\expandafter{\@gobble#1}]}%
+         \expandafter\yquant@register@get@id\expandafter\idx\expandafter{\idx}%
+         \count6=\idx%
+         \csletcs{ifallowmain}{iffalse}%
+      }{%
+         \yquant@register@get@id\idx{\current[#1]}%
+      }%
+   \else%
+      \yquant@register@get@id\idx{\current[#1]}%
+   \fi%
+   \ifnum\idx<\count0 %
+      \count0=\idx\relax%
+   \fi%
+   \ifnum\idx>\count2 %
+      \count2=\idx\relax%
+   \fi%
+   \advance\count4 by 1\relax%
+   \listeadd\yquant@register@get@ids@list{\idx}%
+}
+
+\protected\def\yquant@register@get@ids@subindex@range#1-#2-\yquant@sep{%
+   \ifallowmain%
+      \ifyquant@firsttoken*{#1}{%
+         \expandafter\ifblank\expandafter{\@gobble#1}{%
+            \def\first{0}%
+         }{%
+            \expandafter\yquant@langhelper@validate\expandafter\first\expandafter\count\expandafter{\@gobble#1}%
+         }%
+         \yquant@register@get@id\idx{\current[\first]}%
+         \count6=\idx%
+         \csletcs{ifallowmain}{iffalse}%
+      }{%
+         \ifblank{#1}{%
+            \def\first{0}%
+         }{%
+            \yquant@langhelper@validate\first\count{#1}%
+         }%
+      }%
+   \else%
+      \ifblank{#1}{%
+         \def\first{0}%
+      }{%
+         \yquant@langhelper@validate\first\count{#1}%
+      }%
+   \fi%
+   \ifallowmain%
+      % in #1, all initial spaces are gobbled automatically, but not in #2
+      \expandafter\ifyquant@firsttoken\expandafter*\expandafter{\empty#2}{%
+         \expandafter\ifblank\expandafter{\@gobble#2}{%
+            \yquant@register@get@id@high\last\current%
+         }{%
+            \expandafter\yquant@langhelper@validate\expandafter\last\expandafter\count\expandafter{\@gobble#2}%
+         }%
+         \yquant@register@get@id\idx{\current[\last]}%
+         \count6=\idx%
+         \csletcs{ifallowmain}{iffalse}%
+      }{%
+         \ifblank{#2}{%
+            \yquant@register@get@id@high\last\current%
+         }{%
+            \yquant@langhelper@validate\last\count{#2}%
+         }%
+      }%
+   \else%
+      \ifblank{#2}{%
+         \yquant@register@get@id@high\last\current%
+      }{%
+         \yquant@langhelper@validate\last\count{#2}%
+      }%
+   \fi%
+   \yquant@for \i := \first to \last {%
+      \yquant@register@get@ids@subindex@norange\i%
+   }%
+}
+
+\protected\def\yquant@register@get@ids@range#1-#2-\yquant@sep{%
+   % being a range between two registers, those must be uniquely identifiable, i.e. either a single sub-indexed part of a vector register, or no vector specification at all.
+   \ifallowmain%
+      \ifyquant@firsttoken*{#1}{%
+         \expandafter\ifblank\expandafter{\@gobble#1}{%
+            \def\first{1}%
+         }{%
+            \expandafter\yquant@register@get@ids@range@getfirst\@gobble#1\yquant@register@get@ids@@index\yquant@sep%
+         }%
+         \count6=\first%
+         \csletcs{ifallowmain}{iffalse}%
+      }{%
+         \ifblank{#1}{%
+            \def\first{1}%
+         }{%
+            \yquant@register@get@ids@range@getfirst#1\yquant@register@get@ids@@index\yquant@sep%
+         }%
+      }%
+   \else%
+      \ifblank{#1}{%
+         \def\first{1}%
+      }{%
+         \yquant@register@get@ids@range@getfirst#1\yquant@register@get@ids@@index\yquant@sep%
+      }%
+   \fi%
+   % it does not make sense to allow to set the main part on the second half of the range, since a range over registers (not indices) is automatically visual, so this range will be contiguous.
+   \ifblank{#2}{%
+      \letcs\last{\yquant@prefix registers}%
+   }{%
+      \yquant@register@get@ids@range@getlast#2\yquant@register@get@ids@@index\yquant@sep%
+   }%
+   \ifnum\first<\last\relax%
+      \ifnum\first<\count0 %
+         \count0=\first\relax%
+      \fi%
+      \ifnum\last>\count2 %
+         \count2=\last\relax%
+      \fi%
+      \advance\count4 by \numexpr\last-\first+1\relax%
+   \else%
+      \ifnum\last<\count0 %
+         \count0=\last\relax%
+      \fi%
+      \ifnum\first>\count2 %
+         \count2=\first\relax%
+      \fi%
+      \advance\count4 by \numexpr\first-\last+1\relax%
+   \fi%
+   \yquant@for \i := \first to \last {%
+      \listeadd\yquant@register@get@ids@list{\i}%
+   }%
+}
+
+\def\yquant@register@get@ids@range@getfirst#1\yquant@register@get@ids@@index#2\yquant@sep{%
+   \ifstrempty{#2}{%
+      \yquant@register@get@id\first{\trim@spaces{#1}[0]}%
+   }{%
+      \yquant@register@get@ids@range@get\first#1\yquant@register@get@ids@@index#2%
+   }%
+}
+
+\protected\def\yquant@register@get@ids@range@getlast#1\yquant@register@get@ids@@index#2\yquant@sep{%
+   \ifstrempty{#2}{%
+      \yquant@register@get@id@high\last{\trim@spaces{#1}}%
+      \yquant@register@get@id\last{\trim@spaces{#1}[\last]}%
+   }{%
+      \yquant@register@get@ids@range@get\last#1\yquant@register@get@ids@@index#2%
+   }%
+}
+
+\def\yquant@register@get@ids@range@get#1#2\yquant@register@get@ids@@index#3\yquant@register@get@ids@@index{%
+   \yquant@register@get@id#1{\trim@spaces{#2}[\trim@spaces{\trim@spaces#3}]}%
+}
+
+\let\yquant@register@multi=\empty
+\let\yquant@register@multi@contiguous=\yquant@protectedempty
+
+% splits \yquant@register@get@ids@list into a list of contiguous parts
+\protected\def\yquant@register@multi@splitparts{%
+   \begingroup%
+      \let\registers=\yquant@register@get@ids@list%
+      \yquant@sort@list\registers\yquant@sort@ascending%
+      \let\newlist=\empty%
+      \count2=-1 %
+      \def\do##1{%
+         \ifnum\count2=-1 %
+            \count2=##1 %
+            \count4=\count2 %
+         \else%
+            \advance\count2 by 1 %
+            \ifnum##1>\count2 %
+               % this is a discontiguous change (we disallow duplicate entries)
+               \eappto\newlist{%
+                  \yquant@register@multi@contiguous%
+                     {\the\count4}{\the\numexpr\count2-1\relax}%
+                     {\ifnum\count6<\count2 %
+                         \ifnum\count4>\count6 %
+                            0%
+                         \else%
+                            1%
+                         \fi%
+                      \else%
+                         0%
+                      \fi}%
+               }%
+               \count2=##1 %
+               \count4=\count2 %
+            \fi%
+         \fi%
+      }%
+      \dolistloop\registers%
+      % we disallow empty lists
+      \eappto\newlist{%
+         \yquant@register@multi@contiguous%
+            {\the\count4}{\the\count2}%
+            {\ifnum\count6>\count2 %
+                0%
+             \else%
+                \ifnum\count4>\count6 %
+                   0%
+                \else%
+                   1%
+                \fi%
+             \fi}%
+      }%
+      \expandafter%
+   \endgroup%
+   \expandafter\def\expandafter\yquant@register@get@ids@list\expandafter{%
+      \newlist%
+   }%
+}
+
+% splits \yquant@register@get@ids@list into a list of discontiguous parts
+\protected\def\yquant@register@multi@splitparts@sepall{%
+   \begingroup%
+      \let\registers=\yquant@register@get@ids@list%
+      \yquant@sort@list\registers\yquant@sort@ascending%
+      \let\newlist=\empty%
+      \def\do##1{%
+         \eappto\newlist{%
+            \yquant@register@multi@contiguous%
+               {##1}{##1}%
+               {\ifnum##1=\count6 %
+                   1%
+                \else%
+                   0%
+                \fi%
+               }%
+         }%
+      }%
+      \dolistloop\registers%
+      \expandafter%
+   \endgroup%
+   \expandafter\def\expandafter\yquant@register@get@ids@list\expandafter{%
+      \newlist%
+   }%
+}
+
+\protected\def\yquant@register@multi@splitparts@sort{%
+   \yquant@sort@list\yquant@register@get@ids@list\yquant@sort@ascending%
+}
+
+\protected\def\yquant@register@get@multiassingle{%
+   \yquant@register@get@allowmultitrue%
+   \let\yquant@register@multi@splitparts=\yquant@register@multi@splitparts@sepall%
+   \preto\yquant@attrs@remaining{/yquant/operator/multi as single,}%
+}
+
+\protected\def\yquant@register@get@multiaslist{%
+   \yquant@register@get@allowmultitrue%
+   \let\yquant@register@multi@splitparts=\yquant@register@multi@splitparts@sort%
+}
+
+\let\yquant@register@multi@reset@original@splitparts=\yquant@register@multi@splitparts%
+\protected\def\yquant@register@reset@multi{%
+%   \yquant@register@get@allowmultifalse% not needed, as \yquant@circuit@operator automatically resets it
+   \let\yquant@register@multi@splitparts=\yquant@register@multi@reset@original@splitparts%
+}
+% END_FOLD
+
+% BEGIN_FOLD Getters: extract the requested information from the register with given id
+\def\yquant@register@get@type#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@type@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   \else%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@type@aux\csname\yquant@prefix register@#1\endcsname%
+   \fi%
+}
+
+\def\yquant@register@get@parent#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@type@aux\csname\yquant@prefix register@#1\endcsname%
+   \else%
+      \PackageError{yquant.sty}{Internal inconsistency detected}%
+                   {Tried to get parent of a non-connected wire.}%
+   \fi%
+}
+
+\def\yquant@register@get@type@aux#1#2#3#4#5#6{#1}
+
+\def\yquant@register@get@x#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@x@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   \else%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@x@aux\csname\yquant@prefix register@#1\endcsname%
+   \fi%
+}
+
+\def\yquant@register@get@x@aux#1#2#3#4#5#6{#2}
+
+\def\yquant@register@get@height#1{%
+   \expandafter\expandafter\expandafter%
+   \yquant@register@get@height@aux\csname\yquant@prefix register@#1\endcsname%
+}
+
+\def\yquant@register@peek@height#1#2{%
+   \expandafter\expandafter\expandafter%
+   \yquant@register@get@height@aux\csname yquant@env#1@register@#2\endcsname%
+}
+
+\def\yquant@register@get@height@aux#1#2#3#4#5#6{\@firstofthree#3}
+
+\def\yquant@register@get@depth#1{%
+   \expandafter\expandafter\expandafter%
+   \yquant@register@get@depth@aux\csname\yquant@prefix register@#1\endcsname%
+}
+
+\def\yquant@register@peek@depth#1#2{%
+   \expandafter\expandafter\expandafter%
+   \yquant@register@get@depth@aux\csname yquant@env#1@register@#2\endcsname%
+}
+
+\def\yquant@register@get@depth@aux#1#2#3#4#5#6{\@secondofthree#3}
+
+\def\yquant@register@get@multispace#1{%
+   \expandafter\expandafter\expandafter%
+   \yquant@register@get@multispace@aux\csname\yquant@prefix register@#1\endcsname%
+}
+
+\def\yquant@register@get@multispace@aux#1#2#3#4#5#6{\@thirdofthree#3}
+
+% The y parameter get macros exist in two forms: The protected one is used during the storage to the draw macro; it should never be executed. The env environment then maps them to their proper expandable forms.
+\protected\def\yquant@register@get@y{%
+   \PackageError%
+      {yquant.sty}%
+      {Execution of a get-y macro in an illegal context}%
+      {get-y macros may not be called unless the yquant environment ends.}%
+}
+
+% This plays a similar role: It must never be expanded before the tikz command is invoked (because it does not exist).
+\let\nodepart=\yquant@protectedempty
+
+\def\yquant@register@get@y@unprotected#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@y@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   \else%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@y@aux\csname\yquant@prefix register@#1\endcsname%
+   \fi%
+}
+
+\def\yquant@register@get@y@aux#1#2#3#4#5#6{#3}
+
+% y distance between two registers.
+\def\yquant@register@get@ydist#1#2{%
+   \expandafter\yquant@abs\expandafter%
+      {\the\dimexpr\yquant@register@get@y{#2}-\yquant@register@get@y{#1}\relax}%
+}
+
+\protected\def\yquant@register@get@y@@expandable{%
+   \let\yquant@register@get@y=\yquant@register@get@y@unprotected%
+}
+
+\def\yquant@register@get@lastwire#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@lastwire@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@lastwire@aux\csname\yquant@prefix register@#1\endcsname%
+   }%
+}
+
+\protected\def\yquant@register@get@lastwire@aux#1#2#3#4#5#6#7{%
+   \def#7{#4}%
+}
+
+\def\yquant@register@get@style#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@style@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   \else%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@style@aux\csname\yquant@prefix register@#1\endcsname%
+   \fi%
+}
+
+\def\yquant@register@get@style@aux#1#2#3#4#5#6{#5}
+
+\protected\long\def\yquant@register@execclear@lastgate#1#2{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter%
+      \yquant@register@execclear@lastgate@aux@i\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname{#2}%
+   \else%
+      \expandafter%
+      \yquant@register@execclear@lastgate@aux@i\csname\yquant@prefix register@#1\endcsname{#2}%
+   \fi%
+}
+
+\def\yquant@register@execclear@lastgate@aux@i#1{%
+   \expandafter\yquant@register@execclear@lastgate@aux@ii#1#1%
+}
+
+\long\def\yquant@register@execclear@lastgate@aux@ii#1#2#3#4#5#6#7#8{%
+   \ifstrempty{#6}\relax{%
+      #6{#8}%
+      \xdef#7{\unexpanded{{#1}{#2}{#3}{#4}{#5}{}}}%
+   }%
+}
+
+\def\yquant@register@get@typeywire#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@typeywire@aux\csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\expandafter\expandafter%
+      \yquant@register@get@typeywire@aux\csname\yquant@prefix register@#1\endcsname%
+   }%
+}
+
+\protected\def\yquant@register@get@typeywire@aux#1#2#3#4#5#6#7#8#9{%
+   \def#7{#1}%
+   \def#8{#3}%
+   \def#9{#4}%
+}%
+
+% Set #1 to the maximum x (vertical: minimum y) value found between #2 and #3
+\protected\def\yquant@register@get@maxxrange#1#2#3{%
+   \begingroup%
+      \dimen0=\yquant@orientation@minus16383.99999pt %
+      \yquant@for \yquant@register@get@maxx@i := #2 to #3 {%
+         \dimen2=\yquant@register@get@x{\yquant@register@get@maxx@i}\relax%
+         \ifdim\yquant@orientation@plus\dimen0<\yquant@orientation@plus\dimen2 %
+            \dimen0=\dimen2 %
+         \fi%
+      }%
+      \expandafter%
+   \endgroup%
+   \expandafter\def\expandafter#1\expandafter{\the\dimen0}%
+}
+
+% Set #1 to the maximum x (vertical: minimum y) value found in the list #2
+\protected\def\yquant@register@get@maxxlist#1#2{%
+   \begingroup%
+      \dimen0=\yquant@orientation@minus16383.99999pt %
+      \def\do##1{%
+         \dimen2=\yquant@register@get@x{##1}\relax%
+         \ifdim\yquant@orientation@plus\dimen0<\yquant@orientation@plus\dimen2 %
+            \dimen0=\dimen2 %
+         \fi%
+      }%
+      \dolistloop{#2}%
+      \expandafter%
+   \endgroup%
+   \expandafter\def\expandafter#1\expandafter{\the\dimen0}%
+}
+
+\protected\def\yquant@register@flag@clean#1{%
+   \ifstrequal{#1}{init}{%
+      \advance\count8 by 1 %
+   }\relax%
+}
+% END_FOLD
+
+% BEGIN_FOLD Setters: change register information
+\protected\long\def\yquant@register@set@@aux#1#2#3{%
+   \xdef#1{\expandafter#2#1{#3}}%
+}
+
+\protected\def\yquant@register@set@type#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@type@aux%
+}
+
+\long\def\yquant@register@set@type@aux#1#2#3#4#5#6#7{%
+   {#7}\unexpanded{{#2}{#3}{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@set@x#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@x@aux%
+}
+
+\long\def\yquant@register@set@x@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}}{#7}\unexpanded{{#3}{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@update@height#1#2{%
+   \unless\ifyquant@lang@attr@overlay@height%
+      \ifdim#2>%
+         \expandafter\expandafter\expandafter%
+            \yquant@register@get@height@aux\csname\yquant@prefix register@#1\endcsname%
+         \relax%
+         \expandafter\yquant@register@set@@aux%
+            \csname\yquant@prefix register@#1\endcsname%
+            \yquant@register@set@height@aux{#2}%
+      \fi%
+   \fi%
+}
+
+\protected\def\yquant@register@set@height@remote#1#2#3{%
+   \expandafter\yquant@register@set@@aux%
+      \csname yquant@env#1@register@#2\endcsname%
+      \yquant@register@set@height@aux{#3}%
+}
+
+\long\def\yquant@register@set@height@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}%
+   {{#7}%
+    {\unexpanded\expandafter{\@secondofthree#3}}%
+    {\unexpanded\expandafter{\@thirdofthree#3}}}%
+   \unexpanded{{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@update@depth#1#2{%
+   \unless\ifyquant@lang@attr@overlay@depth%
+      \ifdim#2>%
+         \expandafter\expandafter\expandafter%
+            \yquant@register@get@depth@aux\csname\yquant@prefix register@#1\endcsname%
+         \relax%
+         \expandafter\yquant@register@set@@aux%
+            \csname\yquant@prefix register@#1\endcsname%
+            \yquant@register@set@depth@aux{#2}%
+      \fi%
+   \fi%
+}
+
+\protected\def\yquant@register@set@depth@remote#1#2#3{%
+   \expandafter\yquant@register@set@@aux%
+      \csname yquant@env#1@register@#2\endcsname%
+      \yquant@register@set@depth@aux{#3}%
+}
+
+\long\def\yquant@register@set@depth@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}%
+   {{\unexpanded\expandafter{\@firstofthree#3}}%
+    {#7}%
+    {\unexpanded\expandafter{\@thirdofthree#3}}}%
+   \unexpanded{{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@update@multispace#1#2#3{%
+   \unless\ifnum#1<#2 %
+      \PackageError{yquant.sty}{Internal inconsistency detected}%
+                   {Setting multispace part in wrong order.}%
+   \fi%
+   \unless\ifyquant@lang@attr@overlay@multi%
+      \begingroup%
+         \edef\tmp{%
+            \expandafter\expandafter\expandafter%
+            \yquant@register@get@multispace@aux\csname\yquant@prefix register@#1\endcsname%
+         }%
+         \let\old=\tmp%
+         \yquant@list@eupdateorinsert\tmp{#2}{#3}%
+         \unless\ifx\old\tmp%
+            \expandafter\yquant@register@set@@aux%
+               \csname\yquant@prefix register@#1\endcsname%
+               \yquant@register@set@multispace@aux\tmp%
+         \fi%
+      \endgroup%
+   \fi%
+}
+
+\long\def\yquant@register@set@multispace@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}%
+   {{\unexpanded\expandafter{\@firstofthree#3}}%
+    {\unexpanded\expandafter{\@secondofthree#3}}%
+    {#7}}%
+   \unexpanded{{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@inject@extents#1#2{%
+   % enlarge the last subcircuit that was created previously by height #1 and depth #2.
+   % We enforce subcircuits to have registers, so no check needed.
+   \expandafter\yquant@register@set@@aux%
+      \csname yquant@env\the\yquant@env @register@1\endcsname%
+      \yquant@register@inject@height@aux{#1}%
+   \expandafter\yquant@register@set@@aux%
+      \csname yquant@env\the\yquant@env @register@\csname yquant@env\the\yquant@env @registers\endcsname\endcsname%
+      \yquant@register@inject@depth@aux{#2}%
+}
+
+\long\def\yquant@register@inject@height@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}%
+   {{\the\dimexpr\@firstofthree#3+#7\relax}%
+    {\unexpanded\expandafter{\@secondofthree#3}}%
+    {\unexpanded\expandafter{\@thirdofthree#3}}}%
+   \unexpanded{{#4}{#5}{#6}}%
+}
+
+\long\def\yquant@register@inject@depth@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}%
+   {{\unexpanded\expandafter{\@firstofthree#3}}%
+    {\the\dimexpr\@secondofthree#3+#7\relax}%
+    {\unexpanded\expandafter{\@thirdofthree#3}}}%
+   \unexpanded{{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@set@y#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@y@aux%
+}
+
+\long\def\yquant@register@set@y@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}}{#7}\unexpanded{{#4}{#5}{#6}}%
+}
+
+\protected\def\yquant@register@set@lastwire#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@lastwire@aux%
+}
+
+\long\def\yquant@register@set@lastwire@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}{#3}}{#7}\unexpanded{{#5}{#6}}%
+}
+
+\protected\def\yquant@register@set@typelastwire#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \PackageError{yquant.sty}{Internal inconsistency detected}%
+                   {Setting type and lastwire was requested for a subcircuit.}%
+   \fi%
+   \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+      \yquant@register@set@typelastwire@aux%
+}
+
+\long\def\yquant@register@set@typelastwire@aux#1#2#3#4#5#6#7{%
+   {\@firstoftwo#7}\unexpanded{{#2}{#3}}{\@secondoftwo#7}\unexpanded{{#5}{#6}}%
+}
+
+\protected\def\yquant@register@set@style#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@style@aux%
+}
+
+\long\def\yquant@register@set@style@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}{#3}{#4}}{#7}\unexpanded{{#6}}%
+}
+
+\protected\def\yquant@register@set@lastgate#1{%
+   \ifcsname\yquant@prefix registermap@#1\endcsname%
+      \expandafter\@firstoftwo%
+   \else%
+      \expandafter\@secondoftwo%
+   \fi%
+   {%
+      \expandafter\yquant@register@set@@aux%
+         \csname\csname\yquant@prefix registermap@#1\endcsname\endcsname%
+   }{%
+      \expandafter\yquant@register@set@@aux%
+      \csname\yquant@prefix register@#1\endcsname%
+   }%
+   \yquant@register@set@lastgate@aux%
+}
+
+\long\def\yquant@register@set@lastgate@aux#1#2#3#4#5#6#7{%
+   \unexpanded{{#1}{#2}{#3}{#4}{#5}}{#7}%
+}
+
+\long\def\yquant@register@set@typelastgate@aux#1#2#3#4#5#6#7{%
+   {\@firstoftwo#7}\unexpanded{{#2}{#3}{#4}{#5}}{\@secondoftwo#7}%
+}
+% END_FOLD

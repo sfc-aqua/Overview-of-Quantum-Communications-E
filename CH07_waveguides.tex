@@ -10,13 +10,13 @@ We conclude this chapter by looking at the basic construction of optical fibers 
 
 Light is an excellent information carrier.
 In previous chapters, we have focused mainly on light's speed and robustness to noise as the characteristics that make it so suitable for communication.
-We have not really discussed another important property of light, namely that is travels in \textit{\textbf{straight lines}}.
+We have not really discussed another important property of light, namely that is travels in \emph{\textbf{straight lines}}.
 At first, this might seem like another advantage.
 Coupled with light's speed and insensitivity to noise, it would seem that all we have to do is point at our intended target and light will carry our message to its destination unimpeded.
 However, this is not quite true.
 Due to the curvature of the Earth, the range of direct transmission is limited.
 This range depends on the altitude at which the source of light as well as the receiver are found.
-In order to increase the range, both need be placed as high as possible.
+In order to increase the range, both need to be placed as high as possible.
 
 \begin{figure}[H]
     \centering
@@ -35,7 +35,7 @@ And this is without worrying about absorption due to bad weather.
 Being able to transmit light through a waveguide gets around some of these problems.
 Weather conditions are no concern anymore.
 Absorption is still an issue but not a fundamental obstacle, as we will learn in Chapter \ref{sec:11_long-distance}.
-Before learning how optical fibers work, it is worth at some brief history of guiding light.
+Before learning how optical fibers work, it is worth looking at some brief history of guiding light.
 
 \begin{figure}[t]
     \centering
@@ -44,7 +44,7 @@ Before learning how optical fibers work, it is worth at some brief history of gu
     \label{fig:7-1_tyndall}
 \end{figure}
 
-One of the earliest demonstrations of guiding light in a waveguide was in an experiment by John Tyndall in 1870.
+One of the earliest demonstrations of guiding light in a waveguide was in an experiment by John Tyndall in 1870, depicted in Fig.~\ref{fig:7-1_tyndall}.
 He filled a large vessel with water and let the water pour out from a hole in one of the sides.
 He observed that light entering the water vessel did not exit the bucket through the hole in a straight line.
 Remarkably, the light rays were guided by the water and seemingly followed the water's path.
@@ -61,28 +61,31 @@ Twenty years later, in 1990, it was possible to transmit 96\% of the original po
 
 Let's have a quick look at what we're going to discuss in this chapter.
 First, we're going to begin with two basic phenomena of how light behaves when it hits the interface of two materials.
-We're going to talk about reflection and refraction.
+We're going to talk about \textbf{\emph{reflection}}\index{reflection} and \textbf{\emph{refraction}}\index{refraction}.
 These two are crucial for understanding how fiber optics works.
-Then we will talk about total internal reflection, where we're going to combine reflection and refraction and derive the condition for total internal reflection.
+Then we will talk about \textbf{\emph{total internal reflection}}\index{total internal reflection}, where we're going to combine reflection and refraction and derive the condition for total internal reflection.
 Total internal reflection is what we have seen in Tyndall's experiment, where light was not escaping the water stream but was being reflected.
 We will conclude with some basics of fiber optic cables, in particular how they are constructed and the differences between various types of optical fibers.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Light at an interface}
 \label{sec:7-2_light_at_interface}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we will look how light behaves when it travels from one medium to another.
+In this section, we will look at how light behaves when it travels from one medium to another.
 To make this quantitative, we need a way to describe light. 
 There are three major descriptions we can use, all useful in different circumstances.
 Light can be viewed as a particle traveling in straight lines.
-This scenario is described by \textit{\textbf{geometric optics}} and all that is required is some basic knowledge of trigonometry, making this scenario the easiest of the three to work with.
+This scenario is described by \textbf{\emph{geometric optics}}\index{geometric optics}.
+All that is required to understand geometric description of light is some basic knowledge of trigonometry, making it fairly straightforward to understand and use.
 
 However, light possesses wave properties as well.
-We have seen this on the example of the double-slit experiment in Section~\ref{sec:6-4_interference_single_photons}. 
+We have seen this on the example of the double-slit experiment in Section~\ref{sec:6-3_interference_single_photons}. 
 In order to correctly account for these phenomena, we have to abandon geometric optics and resort to the use of \textit{\textbf{wave optics}}.
 This description is necessary in some cases when light is travelling down a very narrow fiber.
-In such a case we need the full power of Electromagnetism and Maxwell's equations.
-This description is a lot harder and we're not going to use it here~\footnote{Maxwell's equations are covered in the second module in this series, "From Classical to Quantum Light".  They use partial differential equations (PDEs), which we briefly introduce in that module, but we recommend taking a math class that covers PDEs if you can. The more you have worked with PDEs the easier Maxwell's equations will be.}.
+In such a case we need the full power of electromagnetism and Maxwell's equations.
+This description is a lot harder and we're not going to use it here~\footnote{Maxwell's equations are covered in the second module in this series, ``From Classical to Quantum Light''.  They use partial differential equations (PDEs), which we briefly introduce in that module, but we recommend taking a math class that covers PDEs if you can. The more you have worked with PDEs the easier Maxwell's equations will be.}.
 
 Finally, the third description is \textit{\textbf{quantum electrodynamics}}, because light is fundamentally a quantum field.
 In this course, we will only use geometric optics.
@@ -91,8 +94,8 @@ Quantum electrodynamics describes interaction of light with matter at the atomic
 We will not worry about such a detailed description in this Chapter.
 Similarly, wave optics are really only necessary for single-mode fibers that have cross-section $d$ comparable to the wavelength of light $\lambda$, where wave effects become important.
 We will mainly discuss multi-mode fibers with cross-sections much larger than the wavelength of light.
-Such fibers have cross-sections anywhere between $d=10$ micrometers to $d=200$ micrometers. \rdv{Did we resolve this core diameter issue?}
-They often carry light of wavelength $\lambda=1550$ nanometers.
+Such fibers have cross-sections at the order of tens of micrometers, and
+they often carry light of wavelength $\lambda=1550$ nanometers.
 
 \begin{figure}[t]
     \centering
@@ -101,11 +104,11 @@ They often carry light of wavelength $\lambda=1550$ nanometers.
     \label{fig:7-2_interface}
 \end{figure}
 
-Having settled on geometric optics as the means to describe how light behaves, let's see how to apply it to the case of light arriving at an interface of two different media.
+Having settled on geometric optics as the means to describe how light behaves, let's see how to apply it to the case of light arriving at an interface of two different materials.
 To be more concrete, let's consider the light ray travelling in air, and being incident onto a piece of glass.
-The \textit{\textbf{angle of incidence}} $\theta_i$ is measured with respect to the normal to the surface as shown in Fig.~\ref{fig:7-2_interface}.
-At the interface between air and glass, a portion of the incoming light is reflected back at the \textit{\textbf{angle of reflection}} $\theta_R$, again measured with respect to the normal.
-The rest of the light enters the glass but the angle at which it travels changes to the \textit{\textbf{angle of refraction}} $\theta_r$.
+The \textbf{\emph{angle of incidence}}\index{angle of incidence} $\theta_i$ is measured with respect to the normal to the surface as shown in Fig.~\ref{fig:7-2_interface}.
+At the interface between air and glass, a portion of the incoming light is reflected back at the \textbf{\emph{angle of reflection}}\index{angle of reflection} $\theta_R$, again measured with respect to the normal.
+The rest of the light enters the glass but the angle at which it travels changes to the \textbf{\emph{angle of refraction}} \index{angle of refraction}$\theta_r$.
 
 The amount of light that is reflected and refracted is not important to our discussion right now, but we will return to it in our next module ``From Classical to Quantum Light''.
 We are going to focus on the angles of reflection $\theta_R$ and refraction $\theta_r$.
@@ -116,16 +119,16 @@ The relationship between the angle of incidence and the angle of reflection is s
 
 The relationship between the angles of incidence and refraction is a little bit more involved.
 We can observe from Fig.~\ref{fig:7-2_interface} that $\theta_r \neq \theta_i$.
-An important quantity that helps with determining how much the angle of travel changes as light travels from one medium into another is the \textit{\textbf{refractive index}} $n$, defined as the ratio of the speed of light in vacuum $c$ to the speed of light in the medium $v$,
+An important quantity that helps with determining how much the angle of propagation changes as light travels from one medium into another is the \textbf{\emph{refractive index}}\index{refractive index} $n$, defined as the ratio of the speed of light in vacuum $c$ to the speed of light in the medium $v$,
 \begin{equation}
     n = \frac{c}{v}.
     \label{eq:7-2_refractive_index}
 \end{equation}
 The refractive index tells us how much the speed of light changes when travelling through different media.
-The speed of light is greatest in vacuum and therefore $n\geq 1$ for all media.
+The speed of light is greatest in vacuum and therefore $n\geq 1$ for all materials.
 The refractive index of air is slightly larger than one, meaning that light slows down when travelling in air only very slightly.
-Glass, on the other hand, has a refractive index of $n_{glass} = 1.46$, meaning the light travels 1.46 times slower in the glass than when we compare it with the speed of light in vacuum.
-Light slows down even more in diamond, which has a refractive index of $n_{diamond} = 2.42$, giving diamond its unique and prized sparkling properties.
+Glass, on the other hand, has a refractive index of $n_{\text{glass}} = 1.46$, meaning the light travels 1.46 times slower in the glass than in vacuum.
+Light slows down even more in diamond, which has a refractive index of $n_{\text{diamond}} = 2.42$, giving diamond its unique and prized sparkling properties.
 
 Let's return to the setting of Fig.~\ref{fig:7-2_interface}.
 The light is initially travelling in some material, in our case air, at speed $v_i$, giving the refractive index $n_i = c / v_i$.
@@ -160,28 +163,31 @@ This can be satisfied only when the angle of refraction is smaller than the angl
     \theta_r < \theta_i, \qquad \text{when } \; n_i < n_r.
 \end{equation}
 We can also consider the opposite case when the light travels from \textit{\textbf{glass to air}}, as shown in the right panel of Fig.~\ref{fig:7-2_snell_law}.
-This time, the refractive indices are reversed and we have $n_i > n_r$.
-Repeating the same argument as above, we discover that the light moves away from the normal to the surface,
+This time, the refractive indices satisfy $n_i > n_r$.
+Repeating the same argument as above, we discover that the light moves away from the normal,
 \begin{equation}
     \theta_r > \theta_i, \qquad \text{when } \; n_i > n_r.
 \end{equation}
 This second case when light travels from a denser material to a less dense one will be studied in more detail in the next section.
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Total internal reflection}
+\label{sec:7-3_total_internal_reflection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.4\textwidth]{lesson7/7-3_total_internal_reflection.pdf}
-    \caption[Total internal reflection]{At the critical angle, reflected light travels just along the surface of the glass.}
+    \caption[Total internal reflection.]{At the critical angle, reflected light travels just along the surface of the glass.}
     \label{fig:7-3_total_internal_reflection}
 \end{figure}
 We saw that if light is incident on an interface between two materials and traveling from a more dense material into a less dense one, then it gets refracted away from the normal.
-The angle of refraction is larger than the angle of incidence, $\theta_r > \theta_i$. Consider the scenario where we are steadily increasing the angle of incidence as pictured in Fig.~\ref{fig:7-3_total_internal_reflection}.
-The refracted beam is moving correspondingly moving further away from the normal.
+The angle of refraction is larger than the angle of incidence, $\theta_r > \theta_i$.
+Consider the scenario where we are steadily increasing the angle of incidence, as pictured in Fig.~\ref{fig:7-3_total_internal_reflection}.
+The refracted beam is moving further away from the normal.
 An interesting question to ask is at what angle of incidence will the refracted beam travel parallel to the surface between the two materials.
 We can answer this question by setting $\theta_r=90^{\circ}$ in Eq.~(\ref{eq:7-2_snell}).
-The \textit{\textbf{critical angle}} $\theta_c$ is the angle at which this is true, so we also replace the angle of incidence $\theta_i$ with $\theta_c$,
+The \textbf{\emph{critical angle}}\index{critical angle} $\theta_c$ is the angle at which this is true, so we also replace the angle of incidence $\theta_i$ with $\theta_c$,
 \begin{equation}
     n_i \sin \theta_c = n_r \sin 90^{\circ}.
     \label{eq:7-4_crit_angle}
@@ -192,21 +198,19 @@ Using $\sin 90^{\circ} = 1$, we can obtain an expression for the critical angle,
     \label{eq:7-3_crit_angle}
 \end{equation}
 
-%We have that the $n_i$, the refractive index of glass, times the sine of the angle of incidence, is equal to the refractive index of air $n_r$, times the sine of $\theta_r$, but we know that here we are looking for a scenario where the sine of $\theta_r$ is just sine of ninety degrees which is equal to one. So we have the following relationship (see pointer), and we have changed the subscript here on this $\theta$ to "$\theta_c$" which stands for "critical angle", because that's the critical angle where we obtain angle of refraction of ninety degrees. Now we can just rearrange to get sine of $\theta_c$, equal to as a simple fraction of $n_r / n_i$. In our case, here $n_r$ is the refractive index of air and $n_i$ is the refractive index of glass, and we can just take the arc sine ($\sin^{-1}$) to obtain this expression for the critical angle. 
-
 When light is at this angle $\theta_c$, then after reaching the interface, the light ray travels parallel to the surface.
 We can keep increasing the angle of incidence so that $\theta_i > \theta_c$.
-In this case, all of the light gets reflected back, undergoing \textit{\textbf{total internal reflection}}.
+In this case, all of the light gets reflected back, undergoing \textbf{\emph{total internal reflection}}\index{total internal reflection}.
 This is the basic working principle behind optical fibers and it is in fact responsible for the observations made by Tyndall in his experiment.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{lesson7/7-3_crit_angle.pdf}
-    \caption[Critical angle]{The critical angle gets smaller as the refractive index increases.}
+    \caption[Critical angle.]{The critical angle gets smaller as the refractive index increases.}
     \label{fig:7-3_crit_angle}
 \end{figure}
 
-In the left panel of Fig.~\ref{fig:7-3_crit_angle}, we can plot how the critical angle $\theta_c$ changes with the refractive index $n_i$ of the material the waveguide is made from.
+Left panel of Fig.~\ref{fig:7-3_crit_angle} shows a plot of how the critical angle $\theta_c$ changes with the refractive index $n_i$ of the material the waveguide is made from.
 We assume that the material outside of the waveguide is still just air with a refractive index of $n_r = 1.00028$.
 As the refractive index of the waveguide increases, the critical angle decreases.
 This has important implications for the design of an optical fiber.
@@ -214,9 +218,10 @@ Fibers with smaller refractive indices must ensure that the light is incident on
 On the other hand, fibers made from material with high refractive index make very good waveguides because they are capable of containing the light better, as shown in the right panel of Fig.~\ref{fig:7-3_crit_angle}.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Optical fibers}
 \label{sec:7-4_optical fibers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[t]
     \centering
@@ -227,12 +232,12 @@ On the other hand, fibers made from material with high refractive index make ver
 
 Let's have a look at the composition of a typical optical fiber\index{optical fiber}.
 Often, many fibers are bundled into a fiber-optic cable, but here we will look at an individual fiber as shown in Fig.~\ref{fig:7-4_fiber}. 
-The outermost layer is the \textit{\textbf{jacket}}.
+The outermost layer is the \textbf{\emph{jacket}}\index{jacket}.
 Its function is to protect the inside components of the fiber from the environment.
-Under the jacket is the \textit{\textbf{buffer}}.
+Under the jacket is the \textbf{\emph{buffer}}\index{buffer}.
 The buffer offers further protection, and sometimes bundles multiple optical fibers.
-The next layer under the buffer is the \textit{\textbf{cladding}}.
-This is the material that is responsible for reflecting light back and keeping it contained within the innermost layer, which is the \textit{\textbf{core}}.
+The next layer under the buffer is the \textbf{\emph{cladding}}\index{cladding}.
+This is the material that is responsible for reflecting light back and keeping it contained within the innermost layer, which is the \textbf{\emph{core}}\index{core}.
 Cladding serves as a form of protection and prevents cross-talk in the case of multiple fibers bundled within the buffer.
 Having two cores next to each other would result in light leaking from one core to the other.
 The refractive index of the cladding must be smaller than the refractive index of the core in order for the light signal to have a chance of undergoing total internal reflection.
@@ -240,34 +245,34 @@ The refractive index of the cladding must be smaller than the refractive index o
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson7/7-4_multi_single_fiber.pdf}
-    \caption[Multimode and singlemode fibers]{Two main types of optical fibers, multimode and singlemode.}
+    \caption[Multimode and singlemode fibers.]{Two main types of optical fibers, multimode and singlemode.}
     \label{fig:7-4_multimode_singlemode_fiber}
 \end{figure}
 
 Depending on the thickness of the core, optical fibers are classified into two types, as shown in Fig.~\ref{fig:7-4_multimode_singlemode_fiber}.
-\textit{\textbf{Multimode fiber}}\index{multimode fiber} has cross-section diameter much larger than the wavelength of light.
+\textbf{\emph{Multimode fiber}}\index{multimode fiber} has cross-section diameter much larger than the wavelength of light.
 The mode of light here refers to the spatial direction in which each beam of light travels.
 The multimode fiber in Fig.~\ref{fig:7-4_multimode_singlemode_fiber} has three modes coupling to it but only two modes making the journey all the way to the end.
 We will discuss why this is shortly.
-\textit{\textbf{Singlemode fiber}} \index{single-mode fiber} has cross-section diameter comparable to the wavelength of light and is able to support only a single mode of light.
-This mode is called the \textit{\textbf{transverse mode}}\index{transverse mode} of light.
+\textbf{\emph{Singlemode fiber}} \index{single-mode fiber} has cross-section diameter comparable to the wavelength of light and is able to support only a single mode of light.
+This mode is called the \textbf{\emph{transverse mode}}\index{transverse mode} of light.
 
-Let's look at multimode fibers first.
+Let's look at a multimode fiber first.
 Figure~\ref{fig:7-4_multimode_singlemode_fiber} shows one of the modes of light being lost in the multimode fiber.
 This mode leaks out of the fiber due to its angle of incidence onto the cladding being less than the critical angle.
-Modes of light can couple to a multimode fiber only if they are within the \textit{\textbf{acceptance cone}} \index{acceptance angle}, represented by the dashed lines.
+Modes of light can couple to a multimode fiber only if they are within the \textbf{\emph{acceptance cone}}\index{acceptance angle}, represented by the dashed lines.
 Any modes that arriving at the entrance of the fiber from outside of this cone will be refracted by the cladding and leak out of the fiber.
 This suggests there is a relationship between the angle of acceptance and the critical angle.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.6\textwidth]{lesson7/7-4_acceptance_cone.pdf}
-    \caption[Acceptance cone]{Maximum incidence angle of the light beam onto the fiber's core such that it hits the cladding at the critical angle.}
+    \caption[Acceptance cone.]{Maximum incidence angle of the light beam onto the fiber's core such that it hits the cladding at the critical angle.}
     \label{fig:7-4_acceptance_cone}
 \end{figure}
 
 Let's make this relationship more quantitative.
-Consider the situation of Fig.~\ref{fig:7-4_acceptance_cone} where a light beam is incident onto the core of a fiber at point $A$, gets refracted, and is later incident onto the cladding at point $B$.
+Consider the situation of Fig.~\ref{fig:7-4_acceptance_cone}, where a light beam is incident onto the core of a fiber at point $A$, gets refracted, and is later incident onto the cladding at point $B$.
 Our aim is to find the maximum angle of incidence $\theta_{max}$ onto the core such that angle of incidence onto the cladding is the critical angle $\theta_c$.
 We denote the refractive index of the material outside the fiber by $n_i$, the refractive index of the core by $n_f$, and the refractive index of the cladding by $n_c$.
 Using Snell's law at point $A$, we have $n_i \sin \theta_i = n_f \sin \theta_r$.
@@ -290,7 +295,7 @@ Bringing the refractive index of the fiber under square root, we obtain
     n_i \sin \theta_{max} = \sqrt{n_f^2 -  n_c^2}.
     \label{eq:7-4_theta_max}
 \end{equation}
-The expression on the left of Eq.~(\ref{eq:7-4_theta_max}), $n_i \sin \theta_{max}$, is known as the \textit{\textbf{numerical aperture}}\index{numerical aperture}.
+The expression on the left of Eq.~(\ref{eq:7-4_theta_max}), $n_i \sin \theta_{max}$, is known as the \textbf{\emph{numerical aperture}}\index{numerical aperture}.
 A larger numerical aperture means that it is easier to couple to the fiber as the acceptance cone is wider.
 Equation~(\ref{eq:7-4_theta_max}) allows us to calculate the maximum incidence angle given the three refractive indices $n_i$, $n_c$, and $n_f$.
 The acceptance cone is given by twice this angle, $2 \theta_{max}$.
@@ -298,9 +303,9 @@ The acceptance cone is given by twice this angle, $2 \theta_{max}$.
 We said that the diameter of the core for a multimode fiber is much larger than the wavelength of light, leading to the core being able to support a number of modes.
 The speed of light in the core is the same for all these modes, however the time it takes for individual modes to reach the end of the fiber is different.
 Due to the different angles of incidence of different modes, they have to cover different total distances before reaching the end.
-This is known as \textit{\textbf{mode dispersion}}\index{mode dispersion}.
+This is known as \textbf{\emph{mode dispersion}}\index{mode dispersion}.
 We will cover mode dispersion in more detail in Section~\ref{sec:11-2_mode_dispersion}.
-Because of this, multimode fibers are more suitable for short distances, such as in data center, office and campus networks.
+Because of this, multimode fibers are more suitable for short distances, such as in data centers, offices and campus networks.
 On the other hand, because the core does not need to be extremely small, multimode fibers are easier to manufacture, leading to savings in production costs.
 
 In contrast, singlemode fibers are much more difficult to produce, as their core diameter is typically less than $10$ micrometers.
@@ -308,7 +313,7 @@ For comparison, the average width of a human hair is larger than $20$ micrometer
 Singlemode fibers support only the transverse mode, therefore there is no mode dispersion.
 Mode dispersion changes the shape of the signal received at the far end, so the rate at which a signal can be changed while maintaining a clean signal at the receiver is determined by the amount of this dispersion.
 Singlemode fibers allow for high rate of transfer of data, making them suitable for long distance communications.
-They have to be boosted by repeaters approximately every 50 kilometers because they are still susceptible to attenuation.
+They are still susceptible to attenuation, and therefore the signal must be boosted approximately every 50 kilometers.
 We will discuss how to combat attenuation in Section~\ref{sec:11-4_overcoming_losses}.
 
 \begin{figure}[t]
@@ -325,47 +330,89 @@ Instead, the capacity was reached in eighteen months, necessitating the laying o
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
+\exer{
+\emph{How far is the horizon?}
+We motivated the need for optical fibers by saying that direct line of sight transmission of information is limited in range.
+How far is the horizon for an average human?
+Assume spherical Earth, no dispersion due to atmosphere, and average human height of 1.7 meters.
+}
+
+\exer{
+\emph{Light passing through a glass tube.}
+Consider a ray of light being incident onto a long glass tube at angle $\theta_i$. The light gets refracted when entering the tube and when leaving the tube.
+\subexer{
+Draw this scenario. Using your drawing, what is the angle to the normal at which the light ray exits the glass tube.
+}
+\subexer{
+Confirm your previous answer by calculating it from Snell's law. 
+}
+\subexer{
+If the thickness of the glass tube is $h$, calculate the deviation $\Delta$ of the light ray with respect to its original path.
+}
+}
+
+\exer{
+\emph{Negative refractive index.}
+We mentioned in this chapter that the refractive index is a positive number. This is true of conventional materials light air, water, or glass. However, metamaterials can be engineered to have a \textbf{\emph{negative refractive index}}\index{negative refractive index}.
+\subexer{
+Can you guess what happens when a light ray, travelling through material with refractive index $n$, is incident onto a material with refractive index $-n$?
+}
+\subexer{
+Use Snell's law to check your answer.
+}
+}
+
+\exer{
+\emph{Acceptance angle for typical optical fibers.}
+Consider an optical fiber with core refractive index of $1.522$, and cladding refractive index of $1.343$.
+\subexer{
+What is the critical angle $\theta_c$ for this optical fiber?
+}
+\subexer{
+Compute the numerical aperture for this fiber?
+}
+\subexer{
+What is the angle of acceptance $\theta_{max}$ for this fiber?
+}
+\subexer{
+What does the angle of acceptance increase to if we use a diamond core?
+}
+}
 
 
 \end{exercises}
 
 \newpage
 \section*{Quiz}
-  \addcontentsline{toc}{section}{Quiz}
+\addcontentsline{toc}{section}{Quiz}
+The online version of this course includes a quiz for this block of chapters.
+Discussion of the quiz questions will be provided there.
 
 \section*{Further reading Chapters 5-7}
-  \addcontentsline{toc}{section}{Further reading Chapters 5-7}
+\addcontentsline{toc}{section}{Further reading Chapters 5-7}
 
-{\bf Chapter 5}
+{\bf Chapter 5}\\
 
-This Chapter discusses the various types of light depending on their coherence properties. Coherent light produced by lasers is crucially important from the perspective of communication. A good qualitative as well as quantitative introduction to lasers can be found in Chapter 1 of:
+This Chapter discusses the various types of light depending on their coherence properties. Coherent light produced by lasers is crucially important from the perspective of communication. A good qualitative as well as quantitative introduction to lasers can be found in Chapter 1 of Orazio Svelto's \emph{Principles of Lasers}~\cite{svelto2010principles}.
 
-Orazio Svelto, \emph{Principles of Lasers}, Springer, 2009.
+A great discussion of lasing behaviour from the perspective of a mathematician is in Chapter 3 of Steven Strogatz's \emph{Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering}~\cite{strogatz2018nonlinear}.\\
 
-A great discussion of lasing behaviour from the perspective of a mathematician (but still explained very intuitively) is in Chapter 3 of the classic:
+{\bf Chapter 6}\\
 
-Steven H. Strogatz, \emph{Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering}, CRC Press, 2000.
+Following three books are great excellent introductions as well as references for the topics of geometric and wave optics:
+\begin{enumerate}
+    \item Eugene Hecht, \emph{Optics}~\cite{hecht2012optics}
+    \item Grant R. Fowles, \emph{Introduction to Optics}~\cite{fowles1989introduction}
+    \item Bahaa E. A. Saleh, Malven C. Teich, \emph{Fundamentals of Photonics}~\cite{saleh2019fundamentals}
+\end{enumerate}
 
-{\bf Chapter 6}
+These books provide a good foundation for transitioning to quantum optics which we will do later.
+The first is a common undergraduate textbook, while the last is more advanced and contains a lot of specialized information, perhaps best suited to those planning further study in optics.
 
-Three great optics textbooks for this Block as well as the following ones are:
+Interference is an extremely important concept.
+We encourage you to read and understand the discussion in Chapter 1 of
+Richard P. Feynman, Robert P. Leighton, Matthew Sands, \emph{The Feynman Lectures on Physics}~\cite{feynman1971feynman}.\\
 
-Eugene Hecht, \emph{Optics}, Pearson, 2015. \\
-Grant R. Fowles, \emph{Introduction to Modern Optics}, Dover Publications, 1989. \\
-Bahaa E. A. Saleh, Malvin C. Twitch, \emph{Fundamentals of Photonics}, Wiley-Interscience, 2007.
-
-These books focus on wave and geometric optics and provide a good foundation for transitioning to quantum optics which we will do later. The first is a common undergraduate textbook, while the last is more advanced and contains a lot of specialized information, perhaps best suited to those planning further study in optics.
-
-Interference is an extremely important concept. We encourage you to read and understand the discussion in Chapter 1 in:
-
-Richard P. Feynman, Robert P. Leighton, Matthew Sands, \emph{The Feynman Lectures on Physics}, Vol. 3, Addison Wesley, 1971.
-
-{\bf Chapter 7}
+{\bf Chapter 7}\\
 
 This Chapter relies mainly on the geometric description of light propagation. Section 4.3 and Section 5.6 of Hecht’s textbook contain great discussion of reflection and propagation in optical fibers, respectively.

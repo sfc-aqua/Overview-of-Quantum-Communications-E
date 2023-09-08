@@ -1,0 +1,65 @@
+% yquant.sty
+%  Typesetting quantum circuits using a flow-oriented language
+%
+% Copyright 2019-2023 Benjamin Desef
+%
+% This work may be distributed and/or modified under the conditions of the LaTeX Project
+% Public License, either version 1.3c of this license or (at your option) any later
+% version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX version 2005/12/01 or
+% later.
+%
+% This work has the LPPL maintenance status `author-maintained'.
+%
+% The Current Maintainer of this work is Benjamin Desef.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{yquant}[2023/03/05 v0.7.4 Yet another quantum circuit library for LaTeX]
+
+\RequirePackage{etoolbox}[2018/02/11]
+\RequirePackage{tikz}[2015/08/29]
+\RequirePackage{trimspaces}[2009/09/17]
+\RequirePackage{xkeyval}[2005/05/07]
+\usetikzlibrary{arrows.meta,decorations.pathreplacing,decorations.pathmorphing}
+
+\define@choicekey+{yquant.sty}{compat}[\val\yquant@compat]{newest,0.3,0.4,0.6}{
+   \ifnum\yquant@compat=0 %
+      \def\yquant@compat{3} % current version
+   \fi%
+}{
+   \PackageWarning{yquant.sty}{Invalid value for `compat` key specified. Using `0.3`.}
+}
+\ProcessOptionsX
+\unless\ifdefined\yquant@compat
+   \PackageWarning{yquant.sty}{Please specify the `compat` key for yquant. Using `0.3`. Current compatibility version `0.6`.}
+   \def\yquant@compat{1}
+\fi
+
+\newif\ifyquantdebug
+\pgfdeclarelayer{wires}
+\pgfdeclarelayer{behindwires}
+\input yquant-tools.tex
+\input yquant-shapes.tex
+\input yquant-config.tex
+\input yquant-registers.tex
+\input yquant-env.tex
+\input yquant-langhelper.tex
+\input yquant-circuit.tex
+\input yquant-prepare.tex
+\input yquant-draw.tex
+\input yquant-lang.tex
+
+% usually, \\ is robust; but when using \centering, it is \let to \@centercr, which is not robust (probably because this happens only when not protecting). Fix this, so that \\ does not require \protect if a centered circuit is drawn.
+\robustify\@centercr
+
+\def\useyquantlanguage@#1{%
+   \RequirePackage{yquantlanguage-#1}%
+}
+\outer\def\useyquantlanguage{%
+   \forcsvlist\useyquantlanguage@
+}
+
+\endinput
+%%
+%% End of file `yquant.sty'.
