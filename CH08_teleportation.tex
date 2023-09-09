@@ -302,39 +302,61 @@ We went from input $\ket{1}\ket{0}$ to output $\ket{1}\ket{1}$, cloning the qubi
 How about if we consider a superposition of zero and one as our input? The input is $\ket{+}\ket{0}$, and the desired cloned output is $\ket{+}\ket{+}$.
 However, applying the CNOT, we obtain an entangled state $(\ket{0}\ket{0}+\ket{1}\ket{1})/\sqrt{2}$, which is not the product state that we were aiming for. Cloning has failed in this case.
 
-The two cases in Eq.~(\ref{})
-Let's look at the cases when it worked and then when it didn't. It worked when we were trying to clone the state $\ket{0}$ and the state $\ket{1}$, but it failed when we were trying to clone some superposition of these two states. It appears that we can only clone states which are orthogonal. Let's try and prove this interesting hypothesis.
+The two cases in Eq.~(\ref{eq:cloning_examples_CNOT}) that were cloned successfully, states \ket{0} and \ket{1}, were orthogonal.
+On the other hand, the one case that failed, state \ket{+}, was a superposition of these two.
+Let's keep this observation in mind, and consider the case of a general cloning unitary applied to a general input state.
 
-Let's say that we are trying to clone an arbitrary state $\ket{\psi}$, so our desired output is $\ket{\psi}\ket{\psi}$.
-
-Let's assume that it works for any two input states. It doesn't matter if our input is $\ket{\psi}$ or some other general state $\ket{\phi}$. We require from our cloning device that it works in any scenario. In the first case when our input set is $\ket{\psi}\ket{0}$, our output is $\ket{\psi} \ket{\psi}$, whereas in the second case when our input is $\ket{\phi}\ket{0}$, our output is $\ket{\phi}\ket{\phi}$,
+We start by assuming that the cloning unitary can be applied successfully to two different states \ket{\psi} and \ket{\phi}.
+In other words applying the cloning unitary $U$ to the input states \ket{\psi}\ket{0} and \ket{\phi}\ket{0} produces the following outputs,
+\begin{align}
+    U(\ket{\psi}\ket{0}) & = \ket{\psi}\ket{\psi}, \label{eq:cloning_first_eq}\\
+    U(\ket{\phi}\ket{0}) & = \ket{\phi}\ket{\phi} \label{eq:cloning_second_eq}
+\end{align}
+We next take the inner product between the two equations.
+This may seem like a strange things to do, but it is a standard trick that you will see on numerous occasions in the future.
+We begin by taking the adjoint of Eq.~(\ref{eq:cloning_second_eq}),
 \begin{equation}
-\begin{aligned}
-U(\ket{\psi}\ket{0}) &=\ket{\psi}\ket{\psi} \\
-U(\ket{\phi}\ket{0}) &=\ket{\phi}\ket{\phi}
-\end{aligned}
+    (\bra{\phi}\bra{0}) U^{\dagger} = \bra{\phi}\bra{\phi}. 
 \end{equation}
-Now we can take these two expressions and we can take the inner product of the left hand sides and the right hand sides of these two expressions,
+Next, we multiply the left-hand side Eq.~(\ref{eq:cloning_first_eq}) by the left-hand side of Eq.~(\ref{eq:cloning_second_eq}), and similarly for the right-hand sides of both equations,
 \begin{equation}
-\begin{aligned}
-(U(\ket{\phi}\ket{0}))^{\dagger}U(\ket{\psi}\ket{0}) &= \bra{\phi}\braket{\phi}{\psi}\ket{\psi} \\
-(\bra{0}\bra{\phi}))U^{\dagger}U(\ket{\psi}\ket{0}) &= \braket{\phi}{\psi}\braket{\phi}{\psi} \\
-\bra{0}\braket{\phi}{\psi}\ket{0} &= \braket{\phi}{\psi}^2\\
-\braket{\phi}{\psi}\braket{0}{0} &= \braket{\phi}{\psi}^2\\
-\braket{\phi}{\psi} &= \braket{\phi}{\psi}^2
-\end{aligned}
+    (\bra{\phi}\bra{0}) \underbrace{U^{\dagger} \cdot U}_{=I} \ket{\psi}\ket{0} = (\bra{\phi}\bra{\phi}) \cdot (\ket{\psi}\ket{\psi}).
 \end{equation}
-The right hand side of the equations is quite simple. We take the inner product of $\ket{\phi}$ of the first qubit with $\ket{\psi}$ of the first qubit. To take the inner product, we have to change \ket{\phi} into \bra{\phi}, giving us $\braket{\phi}{\psi}$ in the middle of the equation. That inner product is a scalar (just a number), so we are allowed to move it to the left of the other \ket{\phi}. We see that we also have the inner product of the second $\ket{\phi}$ and the second $\ket{\psi}$, giving us the value $\braket{\phi}{\psi}^2$. On the left hand side of the two equations, we have the states modified by the unitary operations $U$.  When we take the inner product, the second unitary turns into a $U^\dagger$, and we know that one of the defining properties of a unitary is that $U^\dagger U = I$. So, those unitaries cancel, and we get the inner product of $\ket{\phi}$ and $\ket{\psi}$, multiplied by the inner product $\braket{0}{0}$. We know that the inner product $\braket{0}{0} = 1$, so that just cancels out.
-
-On the left hand side, we end up with just the inner product of $\ket{\phi}$ and $\ket{\psi}$, and that has to be equal to the same inner product squared. Now we can easily solve for what the inner product between these two arbitrary states should be. For any scalar $x$, if we have $x = x^2$, then in order to satisfy this equation, $x$ has to be 0 or 1. So what does this actually mean? When the inner product of two states is one, it means that the two states are actually identical, and mathematically we get an identity statement that doesn't tell us anything. On the other hand, when the inner product is zero, it means that the two states are orthogonal.
-
-This proves that our cloning really works, as we saw in the example before, \emph{only} for states that can be distinguished with certainty -- there is no ambiguity or overlap in their superpositions. (Remember, orthogonal states are always distinguishable deterministically.) So we can say that we cannot clone an arbitrary state in quantum mechanics, which is in stark contrast to classical physics. This is the \emph{no-cloning theorem}.
-
-Now let's ask a second interesting question: is teleportation instantaneous? Does it allow us to communicate faster than the speed of light? In order to answer that question, we have to consider the timeline of events during our teleportation protocol, as in Fig.~\ref{fig:teleportation-timeline}. We start at time $t_0$, when we initialize our system. At some later time $t_1$, Alice performs her measurement in the Bell basis on the two qubits that she holds. At some later time $t_2$, Alice sends the outcome of the measurements to Bob, and he receives these outcomes at time $t_3$.
-
-Let's go step by step and consider what is going on with Bob's state. At time $t_0$, we said that Bob's qubit is part of a maximally entangled pair, which means that the reduced density matrix of his qubit is a maximally mixed state,
+The cloning operation is assumed to be unitary, meaning $U^{\dagger}U=I$.
+Therefore we can write
 \begin{equation}
-\left|\Phi^{+}\right\rangle_{A_2 B}=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle) \longrightarrow \rho_B=\frac{1}{2}\ketbra{0}{0} +\frac{1}{2}\ketbra{1}{1}.
+    \braket{\phi}{\psi} \cdot \underbrace{\braket{0}{0}}_{=1} = \braket{\phi}{\psi} \cdot \braket{\phi}{\psi}, \longrightarrow
+    \braket{\phi}{\psi} = \braket{\phi}{\psi}^2.
+    \label{eq:cloning_scalars}
+\end{equation}
+The inner product \braket{\phi}{\psi} is complex scalar.
+Only scalars that satisfy Eq.~(\ref{eq:cloning_scalars}) are
+\begin{equation}
+    \braket{\phi}{\psi} = 0, \quad \text{and } \quad \braket{\phi}{\psi} = 1.
+\end{equation}
+This tells us something interesting about the initial states \ket{\psi} and \ket{\phi}.
+Either the states are orthogonal, meaning $\braket{\phi}{\psi}=0$, or the states are the same, meaning $\braket{\phi}{\psi}=1$.
+Any other state, for example a superposition of \ket{\psi} and \ket{\phi}, will not satisfy Eq.~(\ref{eq:cloning_scalars}), and therefore will not be cloned successfully by the unitary $U$.
+
+This proves that our cloning really works \textbf{\emph{only}} for states that can be distinguished with certainty -- there is no ambiguity or overlap in their superpositions.
+(Remember, orthogonal states are always distinguishable deterministically.)
+So we can say that we cannot clone an arbitrary state in quantum mechanics, which is in stark contrast to classical physics.
+This is the essence of \textbf{\emph{no-cloning theorem}}\index{no-cloning theorem}.
+
+The second interesting question that we would like to answer about teleportation is the following.
+\textbf{\emph{Is teleportation instantaneous?}}
+Does it allow us to communicate faster than the speed of light?
+In order to answer this question, we have to consider the timeline of events during the teleportation protocol.
+This is pictured in Fig.~\ref{fig:teleportation-timeline}.
+We start at time $t_0$, when we initialize our system.
+At some later time $t_1$, Alice performs her measurement in the Bell basis on the two qubits that she holds.
+At some later time $t_2$, Alice sends the outcome of the measurements to Bob.
+He receives these outcomes at time $t_3$.
+
+Let's go step by step and consider what the state of Bob's qubit at these different times.
+At time $t_0$, we said that Bob's qubit is part of a maximally entangled pair, which means that the reduced density matrix of his qubit is a maximally mixed state,
+\begin{equation}
+    \left|\Phi^{+}\right\rangle_{A_2 B}=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle) \longrightarrow \rho_B=\frac{1}{2}\ketbra{0}{0} +\frac{1}{2}\ketbra{1}{1}.
 \end{equation}
 This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get the outcome zero ($+1$ eigenvalue) with probability one half, or the outcome one ($-1$ eigenvalue) with probability one half. In fact, if he measures in any basis, he will get the outcome $+1$ or $-1$ with the same probability, so he's maximally unsure about his own state. That also means that he has no idea what state Alice is trying to send him.
 \begin{figure}[H]
@@ -344,7 +366,11 @@ This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get th
     \label{fig:teleportation-timeline}
 \end{figure}
 
-At time $t_1$, Alice performs her measurement. Just before the measurement, the total state of all three qubits is given by the expression in Eq.~\ref{eq:teleport-alice-basis}. We can rewrite the initial state in terms of the Bell basis for Alice's qubits, which leaves Bob's qubit in the following states subscripted with $B$, depending on which state Alice has. At this time, does Bob know anything about Alice's state $A_1$? He doesn't, because nothing really happened. We have only rewritten the initial state.
+At time $t_1$, Alice performs her measurement.
+Just before the measurement, the total state of all three qubits is given by the expression in Eq.~(\ref{eq:teleport-alice-basis}).
+Bob does not know anything about Alice's state $A_1$.
+The initial state written in the form of Eq.~(\ref{eq:teleport-alice-basis}) might suggest that he knows something about the state of his own qubit.
+This is however not true, Bob's qubit is still in a maximally mixed state.
 
 Then we ask what happens just after $t_1$, just after Alice measures in the Bell basis. Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained each of the other three  Bell states. So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,\\
 $\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$\\
