@@ -102,7 +102,7 @@ Her second qubit, $A_2$, is one half of the entangled Bell pair.\
 We designate Bob's qubit, which is the other half of the entangled pair that he is sharing with Alice, as $B$.
 If we write out the initial three-qubit state in its full form, we have
 \begin{align}
-    |\psi\rangle_{A_{1}}\left|\Phi^{+}\right\rangle_{A_{2} B} &=(\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \nonumber\\
+    |\psi\rangle_{A_{1}}|\Phi^{+}\rangle_{A_{2} B} &=(\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \nonumber\\
     &=\frac{1}{\sqrt{2}}(\alpha|000\rangle+\alpha|011\rangle+\beta|100\rangle+\beta|111\rangle)_{A_{1} A_{2} B}.
     \label{eq:teleportation_initial_state}
 \end{align}
@@ -131,12 +131,12 @@ We do the same thing for the next term in the initial state $\ket{01}$, and we s
 In full, we get the following superposition,
 \begin{align}
     \begin{aligned}
-        |\psi\rangle_{A_{1}}\left|\Phi^{+}\right\rangle_{A_{2} B} &=(\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \\
-        =&\frac{1}{\sqrt{2}}(\alpha|000\rangle+\alpha|011\rangle+\beta|100\rangle+\beta|111\rangle)_{A_{1} A_{2} B} \\
-        =& \frac{1}{2}\left(\alpha\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right)|0\rangle\right.\\
-        &+\alpha\left(\left|\Psi^{+}\right\rangle+\left|\Psi^{-}\right\rangle\right)|1\rangle \\
-        &+\beta\left(\left|\Psi^{+}\right\rangle-\left|\Psi^{-}\right\rangle\right)|0\rangle \\
-        &\left.+\beta\left(\left|\Phi^{+}\right\rangle-\left|\Phi^{-}\right\rangle\right)|1\rangle\right). \\
+        |\psi\rangle_{A_{1}}|\Phi^{+}\rangle_{A_{2} B} & = (\alpha|0\rangle+\beta|1\rangle)_{A_{1}} \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{A_{2} B} \\
+        = & \frac{1}{\sqrt{2}}(\alpha|000\rangle+\alpha|011\rangle+\beta|100\rangle+\beta|111\rangle)_{A_{1} A_{2} B} \\
+        = & \frac{1}{2}\left( \alpha\left(|\Phi^{+}\rangle+|\Phi^{-}\rangle\right)|0\rangle\right.\\
+        & + \alpha\left(|\Psi^{+}\rangle+|\Psi^{-}\rangle\right)|1\rangle \\
+        & + \beta\left(|\Psi^{+}\rangle-|\Psi^{-}\rangle\right)|0\rangle \\
+        & \left. +\beta\left(|\Phi^{+}\rangle-|\Phi^{-}\rangle\right)|1\rangle\right). \\
 \end{aligned}
 \end{align}
 Let's collect all the terms that have the same Bell state for Alice's qubits $A_1$ and $A_2$.
@@ -146,10 +146,10 @@ For the last term, we have probability amplitude $\beta$ and Bob's qubit is in t
 We collect them together, and we get the expression
 \begin{align}
 \begin{aligned}
-    |\psi\rangle_{A_{1}}\left|\Phi^{+}\right\rangle_{A_{2} B} & = \frac{1}{2}\left|\Phi^{+}\right\rangle_{A_{1} A_{2}}(\alpha|0\rangle+\beta|1\rangle)_{B} \\
-    & + \frac{1}{2}\left|\Phi^{-}\right\rangle_{A_{1} A_{2}}(\alpha|0\rangle-\beta|1\rangle)_{B} \\
-    & + \frac{1}{2}\left|\Psi^{+}\right\rangle_{A_{1} A_{2}}(\alpha|1\rangle+\beta|0\rangle)_{B} \\
-    & + \frac{1}{2}\left|\Psi^{-}\right\rangle_{A_{1} A_{2}}(\alpha|1\rangle-\beta|0\rangle)_{B}
+    |\psi\rangle_{A_{1}}|\Phi^{+}\rangle_{A_{2} B} & = \frac{1}{2}\left|\Phi^{+}\right\rangle_{A_{1} A_{2}}(\alpha|0\rangle+\beta|1\rangle)_{B} \\
+    & + \frac{1}{2}|\Phi^{-}\rangle_{A_{1} A_{2}}(\alpha|0\rangle-\beta|1\rangle)_{B} \\
+    & + \frac{1}{2}|\Psi^{+}\rangle_{A_{1} A_{2}}(\alpha|1\rangle+\beta|0\rangle)_{B} \\
+    & + \frac{1}{2}|\Psi^{-}\rangle_{A_{1} A_{2}}(\alpha|1\rangle-\beta|0\rangle)_{B}.
 \end{aligned}
 \label{eq:teleport-alice-basis}
 \end{align}
@@ -166,7 +166,7 @@ Notice that the probabilities of the four possible outcomes are also independent
 
 The outcome of Alice's measurement determines the state of Bob's qubit.
 If Alice measures $\ket{\Phi^+}$, then we know that Bob has the desired output state $\alpha|0\rangle+\beta|1\rangle$, which was the initial state that Alice was trying to communicate to him.
-So in that case, we can say, ``Great! Our teleportation has succeeded.''
+So in that case, we can say, ``Great! The teleportation has succeeded.''
 
 How about the other measurement outcomes?
 Remember we said that all of these outcomes are equally likely, so Alice might get $\ket{\Phi^-}$, $\ket{\Psi^+}$ or $\ket{\Psi^-}$ as the outcome of her Bell state measurement.
@@ -193,6 +193,7 @@ Summarizing,
     Z|\psi\rangle &=\alpha|0\rangle-\beta|1\rangle \\
     X|\psi\rangle &=\alpha|1\rangle+\beta|0\rangle \\
     X Z|\psi\rangle &=\alpha|1\rangle-\beta|0\rangle.
+    \label{eq:teleportation_possible_states}
 \end{aligned}
 \end{align}
 Note that all of those operations are unitary.  This means the states can be \textbf{\emph{returned}} to the original, desired state $\ket{\psi}$ using their adjoint operations.
@@ -346,7 +347,8 @@ This is the essence of \textbf{\emph{no-cloning theorem}}\index{no-cloning theor
 The second interesting question that we would like to answer about teleportation is the following.
 \textbf{\emph{Is teleportation instantaneous?}}
 Does it allow us to communicate faster than the speed of light?
-In order to answer this question, we have to consider the timeline of events during the teleportation protocol.
+The short answer is no, otherwise teleportation would violate the special theory of relativity.
+In order to understand why this is the case, we have to consider the timeline of events during the teleportation protocol.
 This is pictured in Fig.~\ref{fig:teleportation-timeline}.
 We start at time $t_0$, when we initialize our system.
 At some later time $t_1$, Alice performs her measurement in the Bell basis on the two qubits that she holds.
@@ -359,7 +361,7 @@ At time $t_0$, we said that Bob's qubit is part of a maximally entangled pair, w
     \left|\Phi^{+}\right\rangle_{A_2 B}=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle) \longrightarrow \rho_B=\frac{1}{2}\ketbra{0}{0} +\frac{1}{2}\ketbra{1}{1}.
 \end{equation}
 This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get the outcome zero ($+1$ eigenvalue) with probability one half, or the outcome one ($-1$ eigenvalue) with probability one half. In fact, if he measures in any basis, he will get the outcome $+1$ or $-1$ with the same probability, so he's maximally unsure about his own state. That also means that he has no idea what state Alice is trying to send him.
-\begin{figure}[H]
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson8/teleportation-timeline.png}
         \caption[Event timing in teleportation.]{The timeline of necessary events and messages in teleportation makes it clear that the speed of light is not violated.}
@@ -372,50 +374,132 @@ Bob does not know anything about Alice's state $A_1$.
 The initial state written in the form of Eq.~(\ref{eq:teleport-alice-basis}) might suggest that he knows something about the state of his own qubit.
 This is however not true, Bob's qubit is still in a maximally mixed state.
 
-Then we ask what happens just after $t_1$, just after Alice measures in the Bell basis. Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained each of the other three  Bell states. So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,\\
-$\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$\\
-$\operatorname{Prob}\left(\left|\Phi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle-\beta|1\rangle$\\
-$\operatorname{Prob}\left(\left|\Psi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle+\beta|0\rangle$\\
-$\operatorname{Prob}\left(\left|\Psi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle-\beta|0\rangle$.\\
+Let's look at what is known immediately after Alice measures in the Bell basis at time $t_1$.
+Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained each of the other three  Bell states.
+So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,
 
-This is a distribution which we can write in the density matrix formalism, so let's do that. Bob's qubit can be written as follows:
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$
+
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle-\beta|1\rangle$
+
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Psi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle+\beta|0\rangle$
+
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Psi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle-\beta|0\rangle$.
+This is a distribution which we can write in the density matrix formalism.
+The calculation is a bit lengthy but stick with it.
+Bob's qubit can be written as follows:
 \begin{equation}
 \begin{aligned}
-\rho_B &=\frac{1}{4}(\alpha|0\rangle+\beta|1\rangle)\left(\alpha^*\langle 0|+\beta^*\langle 1|\right) \\
-&+\frac{1}{4}(\alpha|0\rangle-\beta|1\rangle)\left(\alpha^*\langle 0|-\beta^*\langle 1|\right) \\
-&+\frac{1}{4}(\alpha|1\rangle+\beta|0\rangle)\left(\alpha^*\langle 1|+\beta^*\langle 0|\right) \\
-&+\frac{1}{4}(\alpha|1\rangle-\beta|0\rangle)\left(\alpha^*\langle 1|-\beta^*\langle 0|\right) \\
-&=\frac{1}{2}\left(|\alpha|^2+|\beta|^2\right)\ketbra{0}{0} \\
-&+\frac{1}{2}\left(|\alpha|^2+|\beta|^2\right)\ketbra{1}{1} \\
-&=\frac{1}{2}\ketbra{0}{0}+\frac{1}{2}\ketbra{1}{1}
+    \rho_B &=\frac{1}{4}(\alpha|0\rangle+\beta|1\rangle)\left(\alpha^*\langle 0|+\beta^*\langle 1|\right) \\
+    &+\frac{1}{4}(\alpha|0\rangle-\beta|1\rangle)\left(\alpha^*\langle 0|-\beta^*\langle 1|\right) \\
+    &+\frac{1}{4}(\alpha|1\rangle+\beta|0\rangle)\left(\alpha^*\langle 1|+\beta^*\langle 0|\right) \\
+    &+\frac{1}{4}(\alpha|1\rangle-\beta|0\rangle)\left(\alpha^*\langle 1|-\beta^*\langle 0|\right) \\
+    &=\frac{1}{2}\left(|\alpha|^2+|\beta|^2\right)\ketbra{0}{0} + \frac{1}{2}\left(|\alpha|^2+|\beta|^2\right)\ketbra{1}{1} \\
+    &=\frac{1}{2}\ketbra{0}{0}+\frac{1}{2}\ketbra{1}{1}\\
+    \label{eq:Bobs_qubit_t2}
 \end{aligned}
 \end{equation}
-%with probability a quarter, he has the state alpha zero plus beta one, which in density matrix formalism is given by the outer product. With probability one quarter, here's the following state, and so on and so forth for the other two possibilities. 
-We can go through the algebra and we will see that the cross terms cancel, and in fact what we obtain is that the state of Bob, given by $\rho_B$, which can simplify to, again, a maximally mixed state. This is because we started with state $\ket{\psi}$ which is normalized, meaning $|\alpha|^2+|\beta|^2 = 1$. So even just after the measurement, Bob still doesn't know anything about the state $\ket{\psi}$. His qubit is maximally mixed.
+In the penultimate line, we used the fact that Alice's state to be teleported is normalized, meaning $|\alpha|^2+|\beta|^2=1$.
+Alice's measurement breaks the entanglement between her and Bob's qubit.
+Yet, Bob's qubit is still in a maximally mixed state, meaning he has no information about the state \ket{\psi}.
 
-Let's see what happens when we go to time $t_2$. At this time, we say that Alice sends the outcome to Bob. Nothing really changes from just after the measurement occurred at time $t_1$, because Bob has not received the message about the outcomes of the measurements, so his state is still the maximally mixed state. He has no information about the state to be teleported, $\ket{\psi}$. So teleportation still has not been completed, even though the measurement by Alice has been performed at time $t_1$. Finally, at time $t_3$, Bob receives Alice's message containing two classical bits telling him about which outcome she measured.
+Let's move to the later time $t_2$ when Alice sends her measurement outcome to Bob.
+Nothing really changes on Bob's side compared to the situation a time $t_1$.
+His qubit is still in a maximally mixed state described by Eq.~(\ref{eq:Bobs_qubit_t2}).
+Bob still has no information about the state \ket{\psi} because the information sent by Alice about her measurement outcome requires a finite amount of time to travel to Bob.
 
-Bob finally has the following state: he has the state $\ket{\psi}$ up to some unitary, Pauli $X$, $Y$, or the product of $X$ and $Y$. So it's only at time $t_3$, when he receives the message, that teleportation really, truly, has taken place. Bob must receive the classical message in order for teleportation to work, so he has to wait all the time from $t_2$ to $t_3$ to receive this message, which can travel at best at the speed of light. In short, we don't communicate faster than the speed of light and we do not violate special relativity.
+Finally, at time $t_3$, Bob receives Alice's message about the measurement outcome.
+This changes the state of his qubit to one of the four possibilities in Eq.~(\ref{eq:teleportation_possible_states}).
+He applies the appropriate correction unitary ensuring his qubit is in the desired state \ket{\psi}.
 
 
-\section{Simulating teleportation}
-\label{sec:8-4_simulating}
 
-(Hands-on exercises for simulating teleportation to be added as a Jupyter Qiskit notebook.)
 
 
 \newpage
 \begin{exercises}
 
-\exer{Return to the exercises on measurement in Ch.~\ref{sec:2_quantum_states}. Let's do the math on teleportation using the notation of Ex.~\ref{ex:dirac-notation-measurement}. \rdv{Label numbering seems busted.}
+\exer{
+\emph{Filling in the gaps.}
+During our discussion of the teleportation we have skipped some details, which we will consider now.
 \subexer{
-For measuring two qubits together, we need four measurement operators.
-Write out the measurement operators in the computational basis using the Dirac notation and for the full matrix notation.
+Consider the input state of the three qubits $A_1,A_2$, and $B$ in Eq.~(\ref{eq:teleportation_initial_state}).
+Write down, both in Dirac and matrix notation, the initial state of each of the three qubits.
 }
 \subexer{
-Find the Bell basis measurement operators for two qubits. Write them out in both the Dirac notation and the full matrix notation.
+Write down Alice's measurement operators in the computational basis and in both Dirac and matrix notation.
 }
-\rdv{More on the math of projections and traces using the full measurement equation and on measuring subsets of qubits in multi-qubit states.}
+\subexer{
+Convince yourself that the probabilities of the four possible outcomes are independent of the initial state $A_1$.
+}
+}
+
+\exer{
+\emph{Teleporting the state \ket{0}.}
+Let's work through an example of teleportation to reinforce our understanding of the protocol.
+Rather than teleporting a general pure state \ket{\psi}, we wish to teleport the state \ket{0}.
+\subexer{
+Write down the initial state of all three qubits in the computational basis.
+}
+\subexer{
+Rewrite the initial state, such that Alice's qubits $A_1$ and $A_2$ are written in the Bell basis, while Bob's qubit is in the computational basis.
+}
+\subexer{
+How many possible outcomes of Alice's Bell-basis measurement are there?
+What are their corresponding probabilities?
+}
+\subexer{
+How many classical bits of information does Alice need to communicate to Bob to inform him of the measurement outcome?
+}
+\subexer{
+What correction operations does Bob need to apply to ensure he receives the state \ket{0} after the teleportation protocol is finished?
+}
+}
+
+\exer{
+\emph{Teleporting a mixed state.}
+So far we have only looked at the case when Alice wishes to teleport a pure state.
+Let's teleport a mixed state, for example a state that is diagonal in the computational basis,
+\begin{equation}
+    \rho = a \ket{0}\bra{0} + b \ket{1}\bra{1}.
+\end{equation}
+\subexer{
+Write down the initial state of all three qubits in the computational basis.
+}
+\subexer{
+Compute the probabilities of Alice's measurement outcomes on the two qubits.
+Did you expect your answer?
+}
+\subexer{
+Find the state of Bob's qubit when Alice obtains \ket{\Phi^+} as the outcome of her measurement.
+}
+\subexer{
+Find the state of Bob's qubit when Alice obtains \ket{\Phi^-} as the outcome of her measurement.
+}
+\subexer{
+What are the correction operations that Bob needs to apply in order to successfully receive the state $\rho$, regardless of Alice's measurement outcome?
+}
+}
+
+\exer{
+\emph{Different initial entangled states.}
+Up until now, we have consider the initial entangled state between Alice and Bob to be \ket{\Phi^+}.
+Let's see what happens when we use the other Bell states.
+\subexer{
+Go through the teleportation protocol in order to find out Bob's correction operations in the following cases.
+}
+\subexer{
+When the shared state is \ket{\Phi^-}.
+}
+\subexer{
+When the shared state is \ket{\Psi^+}.
+}
+\subexer{
+When the shared state is \ket{\Psi^-}.
+}
+\subexer{
+Can you see a pattern?
+}
 }
 
 \end{exercises}

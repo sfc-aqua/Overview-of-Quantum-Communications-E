@@ -1,29 +1,56 @@
 \chapter{E91: Entanglement-based QKD}
 \label{sec:10_E91}
 
-Continuing with our study of Quantum Key Distribution (QKD), in this chapter we introduce an entanglement-based protocol known as E91.
+Continuing with our study of quantum key distribution, in this Chapter we discuss an entanglement-based protocol, known as E91.
+This protocol was introduced by Artur Ekert in 1991.
+Unlike BB84, the E91 protocol relies on entanglement shared between Alice and Bob to establish a correlated secret key.
+We will see that this difference offers Alice and Bob a very powerful tool when it comes to verifying the security of their key.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+\label{sec:E91-introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Step One: Introduction
+In the previous chapter, we learned about the BB84 single photon-based quantum key distribution protocol.
+However, that is not the end of the story for QKD.
+In fact, we are more concerned with entanglement-based services than single-photon states in this book.
+Before we get into the \textbf{\emph{how}} of entanglement-based QKD, let's look at one reason \textbf{\emph{why}}, beginning with a little review of BB84.
 
-In the previous chapter, we learned about the BB84 single photon-based quantum key distribution protocol. However, that's not the end of the story for QKD.  In fact, in this book we are more concerned with entanglement-based services than single-photon states.  Before we get into the \emph{how} of entanglement-based QKD, let's look at one reason \emph{why}, beginning with a little review of BB84.
+In BB84, Alice and Bob use a public quantum channel to establish a secret key.
+Alice prepares qubits in four different states, chosen at random from $\{\ket{0}, \ket{1}, \ket{+}, \ket{-}\}$.
+She transmits these states to Bob, who randomly measures them in either the $X$ or $Z$ basis.
+After the measurement is finished, Alice and Bob exchange information about the preparation and measurement bases.
+If the bases coincide, they keep the results for those measurements, forming the basis for their secret key.
+If they dedicate a portion of the key material to eavesdropper detection, they can determine if anyone is listening in on the state, thanks to the non-orthogonality of the original encoded qubit states.
 
-In BB84, Alice and Bob use a public quantum channel to establish a secret key.  Alice prepares qubits in four different states, chosen at random from $\{\ket{0}, \ket{1}, \ket{+}, \ket{-}\}$. Then she transmits these states to Bob. Then Bob randomly measures them in either the $X$ or $Z$ basis. After the measurement is finished, Alice and Bob exchange information about the preparation bases and the measurement bases. If the bases coincide, they keep the results for those measurements, forming the basis for their secret key. If they dedicate a portion of the key material to eavesdropper detection, they can determine if anyone is listening in on the state, thanks to the non-orthogonality of the original encoded qubit states.
+Let's consider how Eve's knowledge of the preparation bases affects the security of the protocol.
+In Chapter~\ref{sec:9_bb84}, we saw that if Eve has no knowledge of Alice's preparation bases, the probability that her eavesdropping is detecting is $1/4$.
+In the exercises following that Chapter, we saw that having some knowledge of the preparation bases gives Eve a better chance of staying undetected.
 
-Imagine that there is an eavesdropper, Eve. We will demonstrate why it is a necessary condition that she cannot know the preparation basis. Consider the case where she does have information about the bases in which Alice prepared the original qubits, as shown in Fig.~\ref{fig:eve-bb84}. She intercepts the first qubit. Because she knows that this qubit was prepared in the $Z$ basis, she measures it in the $Z$ basis and obtains the corresponding classical bit, and then she sends the qubit on to Bob. (In many implementations, actually, she would create an identical photon that she sends on to Bob.) She intercepts the second qubit, and again because she knows the information about Alice's preparation basis, she measures in the appropriate basis, for example the $X$ basis. In this case, if the state is \ket{-}, she obtains a classical bit one. She repeats this procedure for every qubit.
-%She measures in the Pauli $Z$ basis for the third qubit, she obtains a classical bit zero, and then resends that qubit back to Bob. 
-Although she's measuring these qubits, she is not disturbing them at all because she's always measuring in the same bases in which they were prepared. In this way, she can actually build up a secret key that's perfectly correlated with the key that Alice and Bob are sharing.
-
-\begin{figure}[H]
+Let's consider the limit of this situation, where Eve has perfect knowledge of the preparation bases, as shown in Fig.~\ref{fig:eve-bb84}.
+She intercepts the first qubit.
+Because she knows that this qubit was prepared in the $Z$ basis, she measures it in the $Z$ basis and obtains the corresponding classical bit, and then she sends the qubit on to Bob\footnote{In many implementations, actually, she would create an identical photon that she sends on to Bob.}.
+She intercepts the second qubit, and again because she knows the information about Alice's preparation basis, she measures in the appropriate basis, for example the $X$ basis.
+In this case, if the state is \ket{-}, she obtains a classical bit one. She repeats this procedure for every qubit.
+Although she is measuring these qubits, she is not disturbing them at all because she always measures in the same bases in which they were prepared.
+In this way, she can build up a secret key that's perfectly correlated with the key that Alice and Bob end up sharing sharing.
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson10/eavesdropping-on-bb84.png}
         \caption[Successful eavesdropping on BB84]{If Eve can learn the qubit preparation bases for the BB84 photons, she can measure the qubits without disturbing them, remaining undetected as she forwards the qubits to Bob.}
     \label{fig:eve-bb84}
 \end{figure}
+This sneaky measurement attack by Eve is a big problem, causing the whole procedure of BB84 to fail.
+Even though Alice and Bob can try to detect Eve as they would in the normal protocol, she has not disturbed any of the qubits.
+Therefore, they will never detect her presence.
 
-Of course, this sneaky measurement by Eve is a big problem, causing the whole procedure of BB84 to fail. Even though Alice and Bob can try to detect Eve as they would in the normal protocol, she has not disturbed any of the qubits. Therefore, they will never detect her presence. In this chapter, we will present a protocol that's a little bit more secure in this sense. The protocol relies on pre-shared entanglement between Alice and Bob. We will assume that Alice and Bob can communicate over a classical channel, and also that there is some source of entangled states, as in Fig.~\ref{fig:e91-setup}. This source generates multiple copies of an entangled state and distributes the qubits to Alice and to Bob. We will see that in this protocol, even if Eve controls the source of the qubits, as in Fig.~\ref{fig:eve-e91}, the protocol still remains secure in the sense that Alice and Bob can easily detect an eavesdropping Eve.
-%So, let's learn about this protocol.
+In this chapter, we will show that the E91 protocol is more robust against these kind of attacks.
+The protocol relies on pre-shared entanglement between Alice and Bob.
+We will assume that Alice and Bob can communicate over a classical channel, and also that there is some source of entangled states, as in Fig.~\ref{fig:e91-setup}.
+This source generates multiple copies of an entangled state and distributes the qubits to Alice and to Bob.
+We will see that in this protocol, even if Eve controls the source of the qubits, as in Fig.~\ref{fig:eve-e91}, the protocol still remains secure in the sense that Alice and Bob can easily detect an eavesdropping Eve.
 
 \begin{figure}[H]
     \centering
@@ -39,287 +66,224 @@ Of course, this sneaky measurement by Eve is a big problem, causing the whole pr
     \label{fig:eve-e91}
 \end{figure}
 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Basic ingredients}
-%Step Two: Basic Ingredients
+\label{sec:E91-basic-ingredients}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-There are two basic ingredients to 
-our entanglement-based QKD protocol.
-The first ingredient is the procedure for
-establishing a secret key.
-For that purpose, we will use an entangled state 
-of two qubits.
-Let's consider the case where Alice and Bob are sharing the following Bell 
-pair,
+There are two basic ingredients to entanglement-based QKD protocols.
+The first ingredient is the procedure for establishing a secret key.
+For that purpose, we will use an entangled state of two qubits.
+Let's consider the case where Alice and Bob are sharing the following Bell pair,
 \begin{align}
-\ket{\Psi^{+}}=\frac{1}{\sqrt{2}}(|\ket{01}+\ket{10}).
+    |\Psi^{+}\rangle = \frac{1}{\sqrt{2}}(\ket{01}+\ket{10}).
 \end{align}
-%The state is described by this state,
-%vector psi plus, which is an equal superposition 
-%of basis states zero one and one zero.
+If we measure these qubits in the same basis, the outcomes will be
+correlated or anti-correlated, depending on which basis is used to measure them, and the probability of these outcomes is uniformly random.
 
-Now, if we measure these qubits in 
-the same basis, the outcomes will be
-correlated or anti-correlated, depending on which 
-basis is used to measure them. Also, the probability
-of these outcomes is uniformly random. Let's 
-look at an example to demonstrate how this measurement works.
-
-Let's say that both Alice and Bob
-measure in the $X$ basis. We can compute the 
-probabilities of all four possible outcomes.
+Let's look at an example to demonstrate how this measurement works.
+Let's say that both Alice and Bob measure in the $X$ basis.
+We can compute the probabilities of all four possible outcomes.
 \begin{align}
 \begin{aligned}
-\operatorname{Prob}\left\{\ket{++}_{A B}\right\} &= \frac{1}{2} \\ 
-\operatorname{Prob}\left\{\ket{--}_{A B}\right\} &= \frac{1}{2} \\
-\operatorname{Prob}\left\{\ket{+-}_{A B}\right\} &= 0 \\ 
-\operatorname{Prob}\left\{\ket{-+}_{A B}\right\} &= 0
+    \operatorname{Prob}\left\{\ket{++}_{A B}\right\} & = \frac{1}{2}, \quad  \operatorname{Prob}\left\{\ket{+-}_{A B}\right\} = 0, \\
+    \operatorname{Prob}\left\{\ket{--}_{A B}\right\} & = \frac{1}{2}, \quad \operatorname{Prob}\left\{\ket{-+}_{A B}\right\} = 0.
 \end{aligned}
 \end{align}
-The probability that both Alice and Bob 
-obtain a correlated result of plus plus
-is given by a half. The probability that they 
-get a  minus minus outcome is also a half,
-leaving the other two probabilities to be zero.
+The probability that both Alice and Bob obtain a correlated result of \ket{++} is given by a half.
+The probability that they get a \ket{--} outcome is also a half,
+leaving the other wiht no probability of being observed.
 
-In this way, when Alice measures state 
-\ket{+}, Bob always measures state \ket{+}. When
-Alice measures state \ket{-}, Bob always measures 
-state \ket{-}. The classical bits
-that are the outcomes of their 
-measurements will always be either zero
-zero with probability a half, or one one with the 
-same probability of fifty percent. In this way,
-they can establish a secret, random correlated 
-key.
+In this way, when Alice measures state \ket{+}, Bob always measures state \ket{+}.
+When Alice measures state \ket{-}, Bob always measures state \ket{-}.
+The classical bits that are the outcomes of their measurements will always be either 00 with probability a half, or 11 with the same probability.
+In this way, they can establish a secret, random correlated key.
 
-What if they measure in the $Z$ basis? The scenario is very similar, although 
-now the results are anti-correlated,
+What if they measure in the $Z$ basis? The scenario is very similar, although now the results are anti-correlated,
 \begin{align}
 \begin{aligned}
-\operatorname{Prob}\left\{\ket{00}_{A B}\right\} &= 0 \\ 
-\operatorname{Prob}\left\{\ket{11}_{A B}\right\} &= 0 \\
-\operatorname{Prob}\left\{\ket{01}_{A B}\right\} &= \frac{1}{2} \\ 
-\operatorname{Prob}\left\{\ket{10}_{A B}\right\} &= \frac{1}{2}
+    \operatorname{Prob}\left\{\ket{00}_{A B}\right\} & = 0, \quad \operatorname{Prob}\left\{\ket{01}_{A B}\right\} = \frac{1}{2}, \\ 
+    \operatorname{Prob}\left\{\ket{11}_{A B}\right\} & = 0, \quad \operatorname{Prob}\left\{\ket{10}_{A B}\right\} = \frac{1}{2}.
 \end{aligned}
 \end{align}
-
-The probability of correlated outcomes is zero.
-When Alice and Bob both measure in the Z basis, the outcome will never be $|00\rangle_{AB}$ or $|11\rangle_{AB}$.
+The probability of correlated outcomes is zero this time.
+When Alice and Bob both measure in the $Z$ basis, the outcomes will never be $|00\rangle_{AB}$ or $|11\rangle_{AB}$.
 The outcomes are always anti-correlated, meaning that when Alice's outcome is $|0\rangle_A$, Bob will measure $|1\rangle_B$.
 Similarly, when Alice measures $|1\rangle_A$, Bob's outcome will be $|0\rangle_B$.
 An important thing to note is that both possibilities are equally probable, with $50\%$ probability they share $|01\rangle_{AB}$, and with the same probability they share $|10\rangle_{AB}$.
 The corresponding classical keys are anti-correlated as well.
-All that Bob has to do is flip his bits in order to obtain a random, correlated key, which can then be used to encrypt data.
+All that Bob has to do is flip his bits in order to obtain a random, correlated key, which can then be used to encrypt data for communication.
 
-The second ingredient now is to verify that they 
-have an entangled state. Why do they need to do
-this verification? The first reason, as we just saw, is
-that entangled states can be used to generate a
-correlated random key, so it's nice to confirm that we really have entanglement before we try to use it. There is a very 
-important second reason: entanglement 
-can be used for security as well, in a manner that goes beyond what BB84 can achieve. Namely, maximally
-entangled states are guaranteed to be secure due 
-to something known as \emph{monogamy of entanglement}\index{monogamy of entanglement}.
+The second ingredient of en entanglement-based QKD protocol is to verify that they have an entangled state.
+Why do they need to do this verification?
+The first reason, as we just saw, is that entangled states can be used to generate a correlated random key, so it is crucial to confirm that we really have entanglement before we try to use it.
+There is a very important second reason: entanglement can be used for security as well, in a manner that goes beyond what BB84 can achieve. Maximally entangled states are guaranteed to be secure due to \textbf{\emph{monogamy of entanglement}}\index{monogamy of entanglement}.
 
-%So what is monogamy of entanglement?
-Monogamy of entanglement is a very 
-fundamental property of quantum states,
-and it constrains how correlated
-multiple qubits can be. In particular, if Alice 
-and Bob share a maximally entangled state,
-then we are guaranteed that they cannot share 
-any correlations with a third party, such as Eve.
+Monogamy of entanglement is a fundamental property of quantum states,
+and it constrains how correlated multiple qubits can be.
+In particular, if Alice and Bob share a maximally entangled state,
+then we are guaranteed that they cannot share any correlations with a third party, such as Eve.
+This makes monogamy of entanglement an important tool for QKD security.
+If Alice and Bob can demonstrate and verify that they have a maximally entangled state, they are automatically demonstrating that whatever
+key they establish is secure and Eve does not have any information about their secret key.
 
-In terms of security, this monogamy is very important.
-If Alice and Bob can demonstrate and verify that
-they have a maximally entangled state, they 
-are automatically demonstrating that whatever
-key they establish is secure and Eve does not 
-have any information about their secret key.
+In general, there is a trade-off: if Alice and Bob share a non-maximally entangled state, they can still share some correlations with Eve.
+The stronger the entanglement that they share, the less correlated they are with Eve, until the point where they
+are maximally entangled and therefore they share no correlations with Eve.
+\textbf{\emph{Stronger entanglement between Alice and Bob implies more a secure key between Alice and Bob.}}
 
-In general, there is a trade-off: if 
-Alice and Bob share some entanglement, but it's not very strong,
-they could still share some correlations with Eve.
-The stronger the entanglement that they share,
-the less correlated they are with Eve, 
-until the point where they
-are maximally entangled and therefore 
-they share no correlations with Eve.
-\emph{Stronger entanglement between Alice and Bob implies more a secure key between Alice and Bob.}
+How can Alice and Bob verify that they share a maximally entangled key?
+This is done via the use of the \textbf{\emph{CHSH inequality}}\index{CHSH inequality}, which we hinted at back in Sec.~\ref{sec:chsh-game} when we introduced the CHSH game.
 
-So how do we actually verify that Alice and 
-Bob are sharing a maximally entangled key?
-We use something known as the \emph{CHSH inequality}\index{CHSH inequality}, which we hinted at back in Sec.~\ref{sec:chsh-game} when we introduced the CHSH game.
-
-Let's start by considering four classical random 
-variables, denoted $A$,
-$\bar{A}$, $B$, and $\bar{B}$. They can 
-have values of $+1$ or $-1$.
-Now, let's say that we form the function 
+Let's start by considering four classical random variables, denoted $A$,
+$\bar{A}$, $B$, and $\bar{B}$, each of which can have values $+1$ or $-1$.
+Let's say that we form the function
 \begin{equation}
-A(B+\bar{B})+\bar{A}(B-\bar{B})=\pm 2
+    A(B+\bar{B})+\bar{A}(B-\bar{B})=\pm 2
 \end{equation}
-with these random variables.
-We take $B$ and $\bar{B}$,
-and we add them together and multiply by the 
-value of $A$. We also take $B$ and $\bar{A}$ and take
-the difference between them and multiply by $\bar{A}$, 
-and then we sum the two together. You can easily
-convince yourself that for any combination of 
-$+1$ or $-1$, the maximum value that
-you can get for this expression is $+2$, and 
-the minimum value that you can get is $-2$.
+You can easily convince yourself that for any combination of $+1$ or $-1$, the maximum value that you can get for this expression is $+2$, and the minimum value that you can get is $-2$.
 
-Now imagine that you are constantly generating 
-these random variables, and you are
-interested in the average value you get for this function.
-We will write this as
+Now imagine that we are constantly generating these random variables.
+We are interested in the average value of this function,
 \begin{equation}
-|\langle A(B+\bar{B})\rangle+\langle\bar{A}(B-\bar{B})\rangle| \leq 2.
+    |\langle A(B+\bar{B})\rangle+\langle\bar{A}(B-\bar{B})\rangle| \leq 2.
 \end{equation}
-The angular brackets $\langle\cdot\rangle$ denote the average value 
-of the expression. The maximum we can
-get is $+2$. The minimum we can get is $-2$. 
-So those are the two extremes, and the expectation
-value will be somewhere in between, depending 
-on the details of the probability distributions
-for these random classical variables. We expand these expectation values, then take the absolute value of the whole sum,
-which is constrained to be less than or equal to 
-two.
-We get the following expression 
-which we are going to denote by the symbol $\mathcal{S}$,
+The angular brackets $\langle\cdot\rangle$ denote the average value of the expression.
+The two extremes values are $+2$ and $-2$.
+The expectation value will therefore be somewhere in between, depending on the details of the probability distributions for these random classical variables.
+We expand these expectation values, then take the absolute value of the whole sum, which is constrained to be less than or equal to two.
+We get the following expression which we are going to denote by the symbol $\mathcal{S}$,
 \begin{equation}
-\mathcal{S}=|\langle A B\rangle+\langle A \bar{B}\rangle+\langle\bar{A} B\rangle-\langle\bar{A} \bar{B}\rangle| \leq 2.
-\label{eq:chsh-inequality}
+    \mathcal{S}=|\langle A B\rangle+\langle A \bar{B}\rangle+\langle\bar{A} B\rangle-\langle\bar{A} \bar{B}\rangle| \leq 2.
+    \label{eq:chsh-inequality}
 \end{equation}
-% which we refer to as the CHSH expression, and that 
-% as we said has to be less or equal to two.
-This inequality is known 
-as the CHSH inequality.
-Any set of classical random variables $A$,
-$\bar{A}$, $B$, and $\bar{B}$, have to satisfy this constraint, even if A and B are classically correlated.
+This inequality is known as the CHSH inequality.
+Any set of classical random variables $A$, $\bar{A}$, $B$, and $\bar{B}$, have to satisfy this constraint, even if $A$ and $B$ are classically correlated.
 
-Okay, that was the classical case. What happens 
-in the quantum case? We can consider $A$,
-$\bar{A}$, $B$, and $\bar{B}$ to be the 
-measurement outcomes in a certain basis on some
-state \ket{\psi}. Just to remind you, the expectation 
-value of an observable where Alice measures $A$ and
-Bob measures $B$ is given by the expression
+What happens in the quantum case?
+We can consider $A$, $\bar{A}$, $B$, and $\bar{B}$ to be the measurement outcomes when state \ket{\psi} is measured in a certain basis.
+Just to remind you, the expectation value of an observable where Alice measures observable $A$ and Bob measures observable $B$ is given by the expression
 \begin{equation}
-\langle A B\rangle=\langle\psi|A \otimes B| \psi\rangle.
+    \langle A B\rangle=\langle\psi|A \otimes B| \psi\rangle.
 \end{equation}
-%Take the tensor product of the observables A and B,
-%and then we compute the following expectation 
-%value with respect to the state psi.
+Given that the measurement outcomes are still $\pm1$, we might expect that the CHSH inequality in Eq.~(\ref{eq:chsh-inequality}) applies to the quantum case too.
 
-Amazingly, for some quantum states, we 
-can actually violate the CHSH inequality.
-By "violating", we mean that we 
-can obtain a value that's larger than two, allowing us to use
-this expression to detect entanglement.
+Amazingly, for some quantum states, we can violate the CHSH inequality.
+By ``violating'', we mean that we can obtain a value $\mathcal{S}$ that is larger than 2.
 
-In particular, in an experiment where we measure 
-and compute these four expectation values and then we sum them up in this manner, if we 
-obtain a CHSH expression which is less than two,
-then we can say \emph{maybe} the states are classically 
-correlated. But, if we measure a CHSH expression
-which is larger than two, then we can, in fact, 
-say that \emph{definitely} these states are entangled.
-In quantum mechanics, the CHSH expression 
-can go all the way up to a value of $2\sqrt{2}$, which happens for maximally 
-entangled states.
+In particular, in an experiment where we measure and compute these four expectation values and then we sum them up in this manner, if we obtain a CHSH expression which is less than two,
+then we can say \textbf{\emph{maybe}} the states are classically correlated.
+But, if we measure a CHSH expression which is larger than two, then we can, say that \textbf{\emph{definitely}} these states are entangled.
+In quantum mechanics, the CHSH expression can go all the way up to a value of $2\sqrt{2}$, which happens for maximally entangled states.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson10/chsh-values.png}
-        \caption{Possible CHSH values.}
+    \caption{Possible CHSH values.}
     \label{fig:chsh-values}
 \end{figure}
 
-Let's consider a particular example. Let's 
-say we take one of the Bell pairs, \ket{\Psi^+},
-and we know that it's a maximally entangled 
-state. For the measurement settings,
-we consider the following: $A$ is the Pauli $Z$ 
-observable, $\bar{A}$ is the $X$ observable, while $B$ and $\bar{B}$ are given by combinations of $Z$ and $X$, giving us rotated measurement bases $B=\frac{1}{\sqrt{2}}(Z-X)$ and $\bar{B}=\frac{1}{\sqrt{2}}(Z+X)$.
+Let's consider a particular example.
+Take one of the Bell pairs, \ket{\Psi^+}.
+For the measurement settings, we consider the following: $A$ is the Pauli $Z$ basis, $\bar{A}$ is the $X$ observable, while $B$ and $\bar{B}$ are given by combinations of $Z$ and $X$, giving us rotated measurement bases $B=\frac{1}{\sqrt{2}}(Z-X)$ and $\bar{B}=\frac{1}{\sqrt{2}}(Z+X)$.
 
-Then, we can just go through the algebra of 
-computing the expectation values, and in fact, we find that for a maximally entangled state, we obtain the CHSH expression of $2\sqrt{2}$. Keep in mind that this is a statistical measure; we have to produce and measure a lot of copies of our state to calculate each of the four averages in Eq.~\ref{eq:chsh-inequality}. The four measurement bases and four possible outcomes mean that the calculation requires sixteen values. An example set of values is shown in Tab.~\ref{tab:chsh-calculation}.  Each entry $P_{ij}$ is the probability that the measurement basis on the left produces the outcomes $i$ at Alice and $j$ at Bob, normalized from counts so that the four $P_{ij}$ values in each line sum to 1.  For this set of values,
+We can go through the algebra of computing the expectation values.
+We find that for a maximally entangled state, we obtain the CHSH expression of $\mathcal{S}=2\sqrt{2}$.
+Keep in mind that this is a statistical measure; we have to produce and measure a lot of copies of the state \ket{\psi} to estimate each of the four averages in Eq.~\ref{eq:chsh-inequality}.
+The four measurement bases and four possible outcomes mean that the calculation requires sixteen values.
+An example set of values is shown in Tab.~\ref{tab:chsh-calculation}.  Each entry $P_{ij}$ is the probability that the measurement basis on the left produces the outcomes $i$ at Alice and $j$ at Bob, normalized from counts so that the four $P_{ij}$ values in each line sum to 1.
+For this set of values,
 \begin{equation}
 \begin{aligned}
-\mathcal{S} &= |\langle A B\rangle+\langle A \bar{B}\rangle+\langle\bar{A} B\rangle-\langle\bar{A} \bar{B}\rangle| \\
-&= | -0.64 -0.74 - 0.68 - 0.54 | \\
-&= 2.60 \geq 2,
+    \mathcal{S} &= |\langle A B\rangle+\langle A \bar{B}\rangle+\langle\bar{A} B\rangle-\langle\bar{A} \bar{B}\rangle| \\
+    &= | -0.71 -0.71 - 0.65 - 0.65 | \\
+    &= 2.72 \geq 2,
 \end{aligned}
 \label{eq:chsh-example}
 \end{equation}
-giving us a strong CHSH inequality violation.  (This value of 2.60 is a little less than $2\sqrt{2}$; more about this in the next section.)
-
-% This example with all 16 values in the table and calculate the results isn't in the video. Original for the book.
-
+giving us a strong CHSH inequality violation.
 
 \begin{table}[t]
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
     \centering
-    \begin{tabular}{c|c|c|c|c|c}
-          & Results \\\hline
-         Basis & $P_{00}$ & $P_{11}$ & $P_{01}$ & $P_{10}$ & $\langle MN \rangle$ \\
-         \hline
-        $AB$ & 0.1 & 0.08 & 0.4 & 0.42 & -0.64 \\
-         $A\bar{B}$ & 0.04 & 0.09 & 0.43 & 0.44 & -0.74 \\
-        $\bar{A}B$ & 0.12 & 0.04 & 0.44 & 0.44 & -0.68 \\
-         $\bar{A}\bar{B}$ & 0.36 & 0.42 & 0.15 & 0.07 & 0.54 \\
-\hline
-\end{tabular}
-    \caption{Calculation of the CHSH $\mathcal{S}$ value. $P_{00}$ is the probability of getting the $+1$ eigenstate for both measurements when measuring in the basis in the left column, etc.  $\langle MN \rangle$ is the expectation value calculated using $\langle MN \rangle = \bra{\psi}M\otimes N\ket{B} = P_{00} + P_{11} - P_{01} - P_{10}$ where $M$ is either $A$ or $\bar{A}$ and $N$ is $B$ or $\bar{B}$,  giving the bases in the left column.}
+    \begin{tabular}{cccccc}
+        \hline
+        & \boldmath$P_{++}$ & \boldmath$P_{+-}$ & \boldmath$P_{-+}$ & \boldmath$P_{--}$ & \boldmath$\langle MN \rangle$ \\
+        \hline
+        \boldmath$AB$ & 0.04 & 0.26 & 0.60 & 0.10 & -0.71 \\
+        \boldmath$A\bar{B}$ & 0.04 & 0.26 & 0.60 & 0.10 & -0.71 \\
+        \boldmath$\bar{A}B$ & 0.16 & 0.34 & 0.48 & 0.02 & -0.65 \\
+        \boldmath$\bar{A}\bar{B}$ & 0.16 & 0.34 & 0.48 & 0.02 & 0.65 \\
+        \hline
+    \end{tabular}
+    \caption[Calculation of the $\mathcal{S}$ value.]{Calculation of the CHSH $\mathcal{S}$ value. $P_{++}$ is the probability of getting the $+1$ eigenstate for both measurements when measuring in the basis in the left column, etc. $\langle MN \rangle$ is the expectation value calculated using $\langle MN \rangle = \bra{\psi}M\otimes N\ket{B} = P_{++} + P_{--} - P_{+-} - P_{-+}$, where $M$ is either $A$ or $\bar{A}$, and $N$ is $B$ or $\bar{B}$,  giving the bases in the left column.}
     \label{tab:chsh-calculation}
 \end{table}
 
+This calculation gives us a way of verifying entangled states, and particularly verifying maximally entangled states, a very important condition for the entanglement-based QKD protocol.
+If we can demonstrate that we violate the CHSH inequality maximally, with a value of $S = 2\sqrt{2}$, then we can certify that
+the state Alice and Bob share is a maximally entangled state.
+If the states we are making are maximally entangled, then the principle of monogamy of entanglement\index{monogamy of entanglement} tells us that they are \textbf{\emph{not}} correlated with Eve, and therefore we can guarantee the security of Alice and Bob's secret key.
 
-This calculation gives us a way of verifying entangled 
-states, and particularly verifying maximally
-entangled states, a very important condition for 
-our entanglement-based QKD protocol. If we can
-demonstrate that we violate the CHSH inequality 
-maximally, with a value of 
-$S = 2\sqrt{2}$, then we can certify that
-the state Alice and Bob share is a maximally
-entangled state. If the states we are making are maximally entangled, then the principle of monogamy of entanglement\index{monogamy of entanglement} tells us  
-that they are \emph{not} correlated with Eve, and therefore we can 
-guarantee the security of Alice and Bob's secret, random key.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Protocol}
+\label{sec:E91-protocol}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Step Three: Protocol
+We have described the two basic ingredients of the E91 protocol.
+Let's put them together.
+The setting is the following: Alice and Bob can communicate over a classical channel, and they share multiple copies of a maximally entangled state \ket{\Psi^+}.
+These copies can be generated by Eve herself.
 
-We have described the two basic ingredients of the E91 protocol. Now let's put them together. The setting is the following: Alice and Bob can communicate over a classical channel, and they share multiple copies of a maximally entangled state. And again, these copies can be generated by Eve herself.
-
-Then, Alice and Bob randomly choose a measurement basis in which they measure their qubits. Alice chooses from three measurement bases, as shown in Fig.~\ref{fig:e91-bases}. The circle represents the $XZ$ plane of a Bloch sphere. Alice's measurement setting or measurement basis $A_1$ corresponds to measurement in the $Z$ basis. If she chooses this basis, she projects the state either into a \ket{0} or into a \ket{1}. She can also measure in the $A_2$ basis, which corresponds to $X$ basis, given by the horizontal direction. Or, she can measure by a rotated basis $A_3=\frac{1}{\sqrt{2}}(Z+X)$, which is a linear combination of $Z$ plus $X$. Bob, on the other hand, can measure also in the $Z$ basis, given by $B_1$, or in the rotated basis $B_2 = \frac{1}{\sqrt{2}}(Z-X)$, or in the basis $B_3=\frac{1}{\sqrt{2}}(Z+X)$.
+Alice and Bob randomly choose a measurement basis in which they measure their qubits.
+Alice chooses from three measurement bases, as shown in Fig.~\ref{fig:e91-bases}.
+The circle represents the $XZ$ plane of a Bloch sphere.
+Alice's measurement setting or measurement basis $A_1$ corresponds to measurement in the $Z$ basis.
+If she chooses this basis, she projects the state either onto \ket{0} or onto \ket{1}.
+She can also measure in the $A_2$ basis, which corresponds to $X$ basis, given by the horizontal direction.
+She can also measure in a rotated basis $A_3=\frac{1}{\sqrt{2}}(Z+X)$, which is a linear combination of $Z$ and $X$.
+Bob can also measure in the $Z$ basis, given by $B_1$, or in the rotated basis $B_2 = \frac{1}{\sqrt{2}}(Z-X)$, or in the basis $B_3=\frac{1}{\sqrt{2}}(Z+X)$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson10/10-3_bases.pdf}
-        \caption[E91 basis choices for Alice and Bob.]{E91 basis choices for Alice and Bob.  The circle is the $XZ$ plane of the Bloch sphere.}
+    \caption[E91 measurement bases.]{E91 basis choices for Alice and Bob. The circle is the $XZ$ plane of the Bloch sphere.}
     \label{fig:e91-bases}
 \end{figure}
 
 Why do we have three different measurements for Alice and three different measurements for Bob rather than two, like we had in the previous protocol, BB84?
 
-Some of these measurements are overlapping, which is needed for generating the secret random key. Remember, we said that if both Alice and Bob measure the entangled state in the same basis, they can use the classical outcomes to generate and establish a classical, correlated random key. Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for this key. On the other hand, we need some rotated bases in order to compute the CHSH expression and see if it violates the classical CHSH inequality and establish that Alice and Bob are really sharing an entangled state. For this calculation, we use the basis choices $(A_1,B_3), (A_1,B_2), (A_2,B_2), (A_2,B_3)$.
+Notice that some of these measurement bases overlap.
+If both Alice and Bob measure the entangled state in the same basis, they can use the classical outcomes to generate and establish a classical, correlated random key.
+This follows similar logic to BB84.
+Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for key generation.
+On the other hand, we need some rotated bases in order to compute the CHSH expression $\mathcal{S}$, and see if it violates the classical CHSH inequality.
+Violation of the inequality establish that Alice and Bob are really sharing an entangled state.
+For this calculation, we use the basis choices $(A_1,B_3)$, $(A_1,B_2)$, $(A_2,B_2)$, $(A_2,B_3)$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{lesson10/10-3-bases_key.pdf}
-        \caption[E91 example of a series of basis choices for measurements.]{E91 example of a series of basis choices for measurements.  The $A_1$ and $A_3$ bases for Alice and $B_1$ and $B_3$ bases for Bob can be used to generate key bits when Alice and Bob select the same basis, as shown with the green check marks.}
+        \caption[E91 example of a series of basis choices for measurements.]{E91 example of a series of basis choices for measurements. The $A_1$ and $A_3$ bases for Alice and $B_1$ and $B_3$ bases for Bob can be used to generate key bits when Alice and Bob select the same basis, as shown with the green check marks.}
     \label{fig:e91-example}
 \end{figure}
 
 In order to establish the key, Alice measures either in $A_1$ or $A_3$, and Bob measures in $B_1$ or $B_3$. They randomly measure their multiple copies of entangled states, and then they exchange information about the basis of their measurements. 
-%So, for example, Alice has the following choices- A1, A3, A1, A2, A3, A3, A1, A3, and so on. And Bob has some other random string of measurement choices, B1, B2, B3, B1, and so on. 
-They exchange the information about these bases and look at the places where their measurement basis choices coincide, as shown in Fig.~\ref{fig:e91-example}.  Each partner then keeps the measurement outcome as a bit in their shared secret.
-%So in this case, it's over here. Here, Alice measures A1 and Bob measures B1, meaning both of them measured in the $Z$ basis. If they do that, as we saw, they get anti-correlated outcomes, which they can use to generate a correlated classical key. Over here, again, they measure in the $Z$ basis, and here they measure both in the rotated A3 B3 basis.
+They exchange the information about these bases and look at the places where their measurement basis choices coincide, as shown in Fig.~\ref{fig:e91-example}.
+Each partner then keeps the measurement outcome as a bit in their shared secret.
 
-Those two cases where Alice and Bob chose the same measurement basis take care of generating the key. In some other cases, they will not measure in bases that coincide. They don't discard these results, but instead  use them to compute the CHSH expression and check for a violation of the classical bound on the CHSH inequality. In particular, they look for scenarios where they chose $(A_1,B_2), (A_1,B_3), (A_2,B_2),$ or $(A_2,B_3)$ as shown in Fig.~\ref{fig:10-3_e91_example_CHSH}.
+Those two cases where Alice and Bob chose the same measurement basis take care of generating the key.
+In some other cases, they will not measure in bases that coincide.
+They don't discard these results, but instead  use them to compute the CHSH expression and check for a violation of the classical bound on the CHSH inequality.
+In particular, they look for scenarios where they chose $(A_1,B_2), (A_1,B_3), (A_2,B_2),$ or $(A_2,B_3)$ as shown in Fig.~\ref{fig:10-3_e91_example_CHSH}.
 Using these measurement outcomes, Alice and Bob then calculate the CHSH correlation function $\mathcal{S}$,
 \begin{equation}
     \mathcal{S} = |\langle A_1B_2\rangle + \langle A_1B_3\rangle + \langle A_2B_2\rangle - \langle A_2B_3\rangle|.
@@ -327,24 +291,42 @@ Using these measurement outcomes, Alice and Bob then calculate the CHSH correlat
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson10/10-3_bases_CHSH.pdf}
-    \caption[E91 - CHSH bases]{When the basis choices don't coincide the measurement outcomes can be still used for the CHSH test.}
+    \caption[E91 - CHSH bases.]{When the basis choices don't coincide the measurement outcomes can be still used for the CHSH test.}
     \label{fig:10-3_e91_example_CHSH}
 \end{figure}
 
-% So, visually it does correspond to Alice looking for cases where she measures in the $Z$ basis and in the $X$ basis, and Bob measures in this rotated bases B2 and B3, and then they use those measurement results to compute the following expression, which is just the sum of expectation values where Alice measured B1 and Bob measured B2, Alice measured A1 and Bob measured B3, and so on. 
-This way, they don't need to discard information as was done in BB84. They get to use the information to calculate either the secret correlated key or the CHSH violation. (See the exercises for more on this.) If they obtain a CHSH correlation function such that $\mathcal{S} \leq 2$, they say "okay, we cannot conclude whether or not we have an entangled state, but it's safer to just abort."  If they have a $\mathcal{S} > 2$, then they conclude, "yes, we are sharing an entangled state, therefore we can proceed with the protocol." Remember, we said that monogamy of entanglement ensures that if they have an entangled state, then Eve cannot be not strongly correlated with either of them.  In particular, if Alice and Bob have a maximally entangled state, then Eve is not correlated with them at all, so they are looking for as strong a violation as they can get.
+This way, they don't need to discard information as was done in BB84. They get to use the information to calculate either the secret correlated key or the CHSH violation.
+If they obtain a CHSH correlation function such that $\mathcal{S} \leq 2$, they say ``okay, we cannot conclude whether or not we have an entangled state, but it's safer to just abort.''
+If they have $\mathcal{S} > 2$, then they conclude, ``yes, we are sharing an entangled state, therefore we can proceed with the protocol.''
+Remember, we said that monogamy of entanglement ensures that if they have an entangled state, then Eve cannot be not strongly correlated with either of them.
+In particular, if Alice and Bob have a maximally entangled state, then Eve is not correlated with them at all.
 
-So far, we have considered the case where everything was ideal, with no noise. But what happens in real life, where noise is always present? How does noise affect our QKD protocols? In real life, the CHSH value will not equal exactly $2\sqrt{2}$, as we saw in Tab.~\ref{tab:chsh-calculation}.  Moreover, Alice and Bob will not be able to generate a perfectly correlated key, meaning that either noise or the tinkering of Eve will introduce some inconsistencies into the key. Even if Eve is not trying to actively eavesdrop and disrupt the protocol, still, due to inherent noise in the system, these keys will not be perfectly correlated.
+So far, we have considered the case where everything was ideal, with no noise.
+But what happens in real life, where noise is always present? How does noise affect the E91 protocol?
+In real life, the CHSH value will not equal exactly $2\sqrt{2}$, as we saw in Tab.~\ref{tab:chsh-calculation}.
+Moreover, Alice and Bob will not be able to generate a perfectly correlated key, meaning that either noise or the tinkering of Eve will introduce some inconsistencies into the key.
 
-Alice and Bob have to decide on the acceptable security risk even if the keys are not perfectly correlated. They have to agree, "Okay, if the correlation is not one hundred percent, but it's very close, we can still use this to do something useful. We can use it to secure a digital conversation." If they agree to this in principle, then they have to engage in two more protocols. One is called  \emph{information reconciliation}, which takes the initial secret key that's not perfectly correlated and produces a more correlated key.  It increases the correlation between the secret keys obtained by Alice and Bob.  As cryptosystems generally are designed so that a single bit's difference in the keys changes half of the bits in the encrypted message~\footnote{A characteristic sometimes called the \emph{avalanche effect} or \emph{strict avalanche criterion} by cryptographers.}, they require that exactly the same key be used at both ends.  Alice and Bob also can perform something known as \emph{privacy amplification}, where they take their generated secret key and produce a shorter, more secure key. They are basically trying to eliminate any possible correlation with Eve.
+Alice and Bob have to decide on the acceptable security risk even if the keys are not perfectly correlated.
+They have to agree, ``Okay, if the correlation is not one hundred percent, but it's very close, we can still use this to do something useful.''
+If they agree to this in principle, then they have to engage in two more protocols.
+One is called  \textbf{\emph{information reconciliation}}\index{information reconciliation}, which takes the initial secret key that is not perfectly correlated and produces a more correlated key.
+It increases the correlation between the secret bit strings obtained by Alice and Bob.
+As cryptosystems are generally designed so that a single bit difference in the keys changes half of the bits in the encrypted message~\footnote{A characteristic sometimes called the \textbf{\emph{avalanche effect}} or \textbf{\emph{strict avalanche criterion}} by cryptographers.}, they require that exactly the same key be used at both ends.
+Alice and Bob can also perform something known as \textbf{\emph{privacy amplification}}\index{privacy amplification}, where they take their generated secret key and produce a shorter, more secure key.
+Privacy amplification is a procedure that attempts to eliminate any possible correlations with Eve.
 
-So, which protocol is better, BB84 or E91? One is based on the indistinguishability of single photons prepared in non-orthogonal bases, and the other uses entanglement. In particular, we care about the security of both of these protocols. Let's compare from the point of view of when the secret key is generated.
+So, which protocol is better, BB84 or E91?
+One is based on the indistinguishability of single photons prepared in non-orthogonal bases, and the other uses entanglement.
+In particular, we care about the security of both of these protocols. Let's compare from the point of view of when the secret key is generated.
 
-In the case of the BB84 protocol, candidate bits for the key are generated when Alice generates her random string right at the beginning of the protocol. Remember, she generates two random $n$-bit strings. One string encodes the information about the basis of preparation, and the other encodes the bits themselves. So if Alice chooses the $Z$ basis, the state she prepares is a \ket{0} or a \ket{1}, whereas if she chooses the $X$ basis, she prepares a \ket{+} or a \ket{-}. So the secret key (or an extended form of it before photons are lost and their corresponding bits are discarded) exists right from the beginning, before any communication between Bob and Alice takes place.
+In the case of the BB84 protocol, candidate bits for the key are generated when Alice generates her random string right at the beginning of the protocol.
+Remember, she generates two random $n$-bit strings.
+One string encodes the information about the basis of preparation, and the other encodes the bits themselves.
+So if Alice chooses the $Z$ basis, the state she prepares is a \ket{0} or a \ket{1}, whereas if she chooses the $X$ basis, she prepares a \ket{+} or a \ket{-}.
+The secret key (or an extended form of it before photons are lost and their corresponding bits are discarded) exists right from the beginning, before any communication between Bob and Alice takes place.
 
 In BB84, a clever Eve can actually find a way to obtain some information about this secret bit string. In particular, we can consider a very paranoid scenario where the random number generator (RNG) that Alice is using to generate a random bit string was actually built by Eve, therefore information about the random bit string that the device produces gets passed on to Eve. We saw at the beginning of this chapter that this weakness poses a huge security risk for BB84 protocol.
 
-% \rdv{I weakened this; if Eve controls the RNG used for basis selection and can measure, she can also defeat E91.}
 In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured: not when Eve produces those entangled pairs, nor when they arrive at Alice and Bob, but only after Alice and Bob measure them in their random bases. Even if Eve controls the generation and distribution of entangled pairs, she cannot defeat E91. \emph{However}, if Eve controls or can predict the output of the RNGs that Alice and Bob use for basis selection, she can defeat E91. Coupled with the ability to measure the entangled states in the quantum channel before Alice and Bob receive them, she can measure only the key pairs and recover the key in parallel with Alice and Bob, undetected. This process is harder for Eve, so perhaps we can say that E91 is more secure than BB84.
 % In that sense, we can say that the key is unconditionally secure, and we see that entanglement is very essential for security.
 

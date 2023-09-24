@@ -25,10 +25,11 @@ Let's consider a wave oscillating at a single frequency, and which is propagatin
 We denote the wave with $\Psi(x,t)$.
 The \textbf{\emph{amplitude}}\index{amplitude}, denoted by $A$, is the maximum value that $\Psi(x,t)$ takes.
 It signifies how how much the wave is displaced from its rest state.
-The symbol $\omega$ (small Greek letter ``omega'') is the \textbf{\emph{angular frequency}}\index{angular frequency}, which determines how quickly the wave oscillates.
+\michal{The symbol $\omega$ (small Greek letter ``omega'') is the \textbf{\emph{angular frequency}}\index{angular frequency}, and it determines how quickly the wave propagates in time.
 Time is denoted by $t$.
 The symbol $k$ is known as the \textbf{\emph{wave number}}\index{wave number}.
-It is related to how fast the wave is propagating as well, and in three dimensions, it also gives you the direction of propagation.
+It tells us how quickly the wave oscillates in space, and therefore is related to the wavelength of the oscillations.
+The wave number also tells us about the direction in which the wave propagates.}
 Finally, $\phi_0$ (small Greek letter ``phi'') is called the initial phase of oscillations.
 The angular frequency $\omega$, and the wave number $k$, are related to the period of oscillations $T$ and the wavelength $\lambda$, respectively,
 \begin{equation}
@@ -40,7 +41,7 @@ Now is a good time to have a look at some simple examples of the simple wave des
 Let's freeze the wave at time $t=0$, and for convenience we also set $\phi_0 = 0$, and only vary the wave number $k$.
 The blue wave in Fig.~\ref{fig:two-waves} represents the case when $k=1$, whereas the orange one represents the case when $k=0.5$.
 The wavelength is the shortest distance between two points of the where it begins to repeat itself.
-We can see that decreasing the wave number $k$ by a half doubles the wavelength.
+We can see that halving the wave number $k$ doubles the wavelength.
 In other words, increasing the wave number ``compresses the oscillations'', while decreasing the wave number ``stretches'' them.
 
 \begin{figure}[t]
@@ -116,6 +117,13 @@ The angular frequency of the blue wave is set to $\omega=0.1$.
 Figure~\ref{fig:propagating-waves} plots the wave at three different times $t_1$, $t_2$, $t_3$, where $t_1<t_2<t_3$.
 The angular frequency of the orange wave is set to $\omega=0.2$.
 We observe that the wave is propagating faster as it covers longer distance in the same amount of time.
+\michal{
+We can compare Fig.~\ref{fig:propagating-waves} with Fig.~\ref{fig:two-waves} to better appreciate the difference between the angular frequency $\omega$ and the wave number $k$.
+The wave number $k$ controls the ``shape'' of the wave.
+More specifically, it stretches or contracts the oscillations by determining their wavelength.
+On the other hand, the angular frequency $\omega$ controls how much the whole wave shifts in time.
+We will see in Sec~\ref{sec:6-2_phase_group_velocity} that both $\omega$ and $k$ are related to the velocity at which the wave propagates.
+}
 
 \begin{figure}[t]
    \centering
@@ -229,7 +237,7 @@ Using the principle of superposition, we determined the mathematical description
 From Eq.~(\ref{eq:superposition-amplitude}), we can see that the amplitude of $\Psi(x,t)$ is determined by the amplitudes and phases of $\Psi_1(x,t)$ and $\Psi_2(x,t)$.
 The last term in Eq.~(\ref{eq:superposition-amplitude}) is known as the \textbf{\emph{interference term}}\index{interference term}.
 It oscillates as a function of the phase difference $\delta\equiv\alpha_2 - \alpha_1$, resulting in either positive or negative contribution to the amplitude of $\Psi(x,t)$.
-When the phase difference is such that $\cos\delta>1$, the interference term contribute by increasing the amplitude $A$, which is known as \textbf{\emph{constructive interference}}\index{constructive interference}.
+When the phase difference is such that $\cos\delta>1$, the interference term contributes by increasing the amplitude $A$, which is known as \textbf{\emph{constructive interference}}\index{constructive interference}.
 On the other hand, when $\cos\delta<1$, the interference term contributes negatively, situation known as \textbf{\emph{destructive interference}}\index{destructive interference}.
 
 Let's look at the example, where the amplitudes of the initial two waves are equal, $A_1=A_2$, but their wave numbers are different.
