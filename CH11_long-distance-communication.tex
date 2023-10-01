@@ -1,80 +1,135 @@
 \chapter{Long-distance communication}
 \label{sec:11_long-distance}
 
-In this chapter, we will give you the context of how we can communicate over long distances in classical networks, and see how that fits within the context of quantum communication as well.
+This chapter covers the challenges that we face when trying to communicate over long distances.
+We focus on the main sources of noise and error that affect classical communication, and discuss ways of mitigating their deleterious effects.
+Finally, we consider how these sources of error affect quantum communication and discover that classical mitigation techniques are not suitable for use in quantum networking.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:ld-intro}
+%%%%%%%%%%%%%%%%%%%%%%
 
-% Hi, and welcome to Lesson Eleven on Long Distance Communication.
-
-Let's go back to the year 1852 and consider a little of the historical background of long-distance communication.
-
+Let's go back to the year 1852 and consider some of the historical background of long-distance communication.
 \begin{table}
-\centering
-\begin{tabular}{|c|c|}
-\hline \multicolumn{2}{|c|}{ Letter from London ${ }^*$} \\
-\hline to & took [days] \\
-\hline New York & 12 \\
-Bombay & 33 \\
-Singapore & 45 \\
-Sydney & 73 \\
-\hline
-\end{tabular}
-\caption{Prior to the invention and deployment of the telegraph, long-distance communication was slow.}
-\label{tab:london-letter}
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    
+    \begin{tabular}{cc}
+    \hline
+    \textbf{From London to} & \textbf{Days} \\
+    \hline
+    \textbf{New York City} & 12 \\
+    \textbf{Bombay} & 33 \\
+    \textbf{Singapore} & 45 \\
+    \textbf{Sydney} & 73 \\
+    \hline
+    \end{tabular}
+    \caption[Communication before the telegraph.]{Duration a letter took to deliver from London the destination city. Prior to the invention and deployment of the telegraph, long-distance communication was very wslow.}
+    \label{tab:london-letter}
 \end{table}
+Just before the widespread deployment of the telegraph, communication was extremely slow. To give you some idea, a letter sent from London to New York City took around twelve days to arrive, as shown in Tab.~\ref{tab:london-letter}. Delivering the letter to Sydney took staggering seventy three days. 
+A faster method was needed. 
 
-Just before the widespread deployment of the telegraph, communication was extremely slow. To give you some idea of how slow it was, if you wanted to send a letter from London to New York, it took around twelve days to arrive, as shown in Tab.~\ref{tab:london-letter}. If you wanted to send it to Sydney, then you had to wait seventy three days for the letter to be delivered. 
-A faster method was needed. Along came the telegraph. 
+Long-distance communication became considerably faster with the invention of the electric telegraph.
+The first long-distance demonstration of the power of electric telegraphy was performed by Samuel Morse and Alfred Vail in 1844.
+The telegram was sent from the Capitol in Washington, D.C. to Baltimore, a distance of 44 kilometers.
+The virtually instantaneous communication over this formidable distance made it clear that in order to achieve fast-speed communication at global scale, submarine cables carrying electric signals were be needed.
+In 1850, the first submarine telegraph cable was laid across the English Channel, connecting England and France.
+This demonstrated the feasibility of telegraphic communication using submarine cables, and sparked serious interest from wealthy industrialists in funding the laying of transoceanic telegraph cables.
+For the next fifteen years various telegraph companies made numerous attempts at laying a functional transatlantic cable.
+In 1858, one such attempt was successful enough for Queen Victoria of the United Kingdom and President Buchanan of the United States to exchange a message. 
+However, it was not until 1866 that the first truly successful transatlantic cable was laid and operated.
+Despite the enormous challenges, by 1871, all of the continents except Antarctica were connected by telegraphic cables.
+Between 1902 and 1906, the first transpacific cables were laid, connecting mainland US with Hawaii, Guam, later the Philippines, and finally Japan~\footnote{rdv finds it an interesting historical anecdote that one of Japan's first undersea cables came ashore in the seaside town of Kamakura, where he lives, in 1931.  It connected to Midway, Hawaii, then the continental U.S. It was in use for around a dozen years.}.
 
-With the invention of the telegraph with its use of telegraph wires, communication became considerably faster. The first long distance telegraph line stretched from Baltimore to Washington, D.C., and allowed immediate communication. People realized that if they could use the telegraph to communicate over land so quickly, they should be able to communicate across water using a submarine cable. In 1850, the first submarine telegraph cable was laid, connecting England and France. That cable worked so well that people wanted to lay a cable across the Atlantic Ocean. For the next fifteen years, there were many failed attempts. These attempts sparked a focused mathematical analysis of long distance communication. \rdv{tell me more...?} Although, in 1858, one cable functioned well enough for Queen Victoria of the United Kingdom and President Buchanan of the United States to exchange a message, it wasn't until 1866 that they first truly successful transatlantic cable was laid and used. By 1871, only a few years later, all of the continents except Antarctica were connected.
+The telegraphic cables were eventually phased out and were replaced by telephone cables.
+The first transatlantic telecommunications cable, named TAT-1, was laid in 1956.
+This coaxial telephone cable was initially able to handle 36 concurrent telephone conversations, which was later upgraded to 72 ocncurrent conversations. 
+Compare that with the state two decades later, when the last of the coaxial copper telephone cables, TAT-7, was in use.
+It could handle a staggering 4000 telephone conversations concurrently.
+The first transatlantic fiber optic cable, the TAT-8, was laid in 1988 and increased the bandwidth to the equivalent of forty thousand telephone conversations.
 
-%The first long-distance telegraph line, made of copper wire, stretched over land from Washington to Baltimore, but the telegraph immediately sparked the dream of a transatlantic submarine cable. People realized that if they can use the telegraph to communicate over land so quickly, they should be able to connect continents with submarine cables as well. So in 1850 the very first submarine telegraphic cable was laid, connecting England and France. That worked fine, so immediately people wanted to lay a cable across the Atlantic Ocean. For the next fifteen years there were many failed attempts, but this sparked a focused mathematical analysis of very long distance communication. \rdv{tell me more...?}. Although one cable functioned long enough for Queen Victoria of the United Kingdom and President Buchanan of the United States to exchange messages in 1858, it wasn't until 1866 that the first truly successful transatlantic telegraphic cable was laid and used~\footnote{This preceded the first transatlantic radio communication by thirty-five years.}. By 1871, only few years later, all of the continents except Antarctica were connected.
+All of these cables, both copper coaxial cables as in TAT-1 through TAT-7 and fiber optic cables from TAT-8 to the present day, carry more than one conversation over a single physical connection.
+The earliest telephone wires, in the nineteenth century, supported only a single conversation, because they used \textbf{\emph{baseband communication}}\index{baseband communication}.
+In baseband communication, the signal to be sent is sent on the wire unadorned.
+If you want to send a 3kHz sine wave, then the wire carries your 3kHz sine wave.
+This requires one physical connection for every concurrent conversation, which obviously incurs an enormous cost.
+It would not be practical to have one pair of copper wires for each phone conversation crossing the Atlantic.
+Instead, \textbf{\emph{signal modulation}}\index{signal modulation} is used.
+The original data signal is used to modulate, or modify, a \textbf{\emph{carrier signal}}\index{carrier signal}.
+For example, if your data signal is just binary data, the simplest form of modulation might be \textbf{\emph{on-off keying}}\index{on-off keying}, where the carrier is simply turned on and off, like blinking a light.
+For both analog and digital data signals, many modulation schemes have been developed, but this topic is beyond the scope of this book.
+See the ``Further Reading'' at the end of the chapter block for more.
 
-
-Then, between 1902 and 1906, the first transpacific cables were laid, connecting mainland US with Hawaii, Guam, later the Philippines, and finally Japan~\footnote{rdv finds it an interesting historical anecdote that one of Japan's first undersea cables came ashore in the seaside town of Kamakura, where he lives, in 1931.  It connected to Midway, Hawaii, then the continental U.S.  It was in use for around a dozen years.}. After the telegraphic cables came telephone cables, and in 1956 we had the first transatlantic telecommunications cable, called TAT-1. This coaxial telephone cable initially was able to handle 36 concurrent telephone conversations, later upgraded to 72. 
-Compare that with the state two decades later, when the last of the coaxial copper 
-%\rdv{dedicated? analog? coaxial? non-fiber?} 
-telephone cables, TAT-7, was in use. It could handle a staggering 4000 telephone conversations concurrently. After this came the fiber optic cables. As we saw in Ch.~\ref{sec:7_waveguides}, in 1988, the first transatlantic fiber optic cable, called TAT-8, was laid and increased the bandwidth to the equivalent of forty thousand telephone conversations.
-
-All of these cables, both copper coaxial cables as in TAT-1 through TAT-7 and fiber optic cables from TAT-8 to the present day, carry more than one conversation over a single physical connection.  The earliest telephone wires, in the nineteenth century, supported only a single conversation, because they used \emph{baseband communication}\index{baseband communication}. In baseband communication, the signal to be sent is, well, sent on the wire, unadorned.  If you want to send a 3kHz sine wave, then the wire carries your 3kHz sine wave. This requires one physical connection for every concurrent conversation, which obviously incurs enormous cost.  It would not be practical to have one pair of copper wires for each phone conversation crossing the Atlantic.  Instead, \emph{signal modulation}\index{signal modulation} is used.  The original data signal is used to modulate, or modify, a \emph{carrier signal}\index{carrier signal}. For example, if your data signal is just binary data, the simplest form of modulation might be \emph{on-off keying}\index{on-off keying}, where the carrier is simply turned on and off, like blinking a light. For both analog and digital data signals, many modulation schemes have been developed, but this topic is beyond the scope of this book. See the "Further Reading" at the end of the chapter block for more.  Generally speaking, the carrier signal must be a higher frequency than the baseband signal you are modulating. By using separate carrier frequencies, we can have a copper cable or optical fiber carry more than one conversation at the same time. These frequencies are divided into \emph{channels}\index{channel (frequency or wavelength)}~\footnote{In this book, usually when we use the term "channel", we are referring to the physical fiber or connection, instead of this frequency-based concept.  Sometimes, we are referring to an abstraction that carries a qubit through space or time, usually in the context of error analysis and correction, as in "bit flip channel".}.  This is a form of \emph{frequency division multiplexing}, or FDM\index{frequency division multiplexing (FDM)}, the same scheme used for radio stations and television channels. When applied to fiber optics, this technique is usually referred to as \emph{wavelength division multiplexing} (WDM)\index{wavelength division multiplexing (WDM)}, instead of FDM.  We will see other multiplexing schemes for sharing physical resources in the next chapter.
+Generally speaking, the carrier signal must be a higher frequency than the baseband signal you are modulating.
+By using separate carrier frequencies, we can have a copper cable or optical fiber carry more than one conversation at the same time. These frequencies are divided into \textbf{\emph{channels}}\index{channel (frequency or wavelength)}~\footnote{In this book, usually when we use the term ``channel'', we are referring to the physical fiber or connection, instead of this frequency-based concept. Sometimes, we are referring to an abstraction that carries a qubit through space or time, usually in the context of error analysis and correction, as in ``bit flip channel''.}.
+This is a form of \textbf{\emph{frequency division multiplexing}}, or FDM\index{frequency division multiplexing (FDM)}, the same scheme used for radio stations and television channels.
+When applied to fiber optics, this technique is usually referred to as \textbf{\emph{wavelength division multiplexing}} (WDM)\index{wavelength division multiplexing (WDM)}, instead of FDM.
+We will see other multiplexing schemes for sharing physical resources in the next chapter.
 
 In this chapter, we are going to focus on the main considerations when designing these cables, particularly bandwidth and noise.
 
-Bandwidth tells us basically how much information a cable or fiber can carry.
-The bandwidth depends on both the physical properties of the fiber itself, as well as how clever we are when it comes to encoding this information before it gets transmitted. With modern techniques such as dense wavelength division multiplexing (DWDM), we are able to reach some staggering speeds. For example, in a standard cable over the distance of 6,600 kilometers, we can reach speeds of something like 65 terabits per second. In a more specialized cable and over shorter distances, this can be increased to over 150 terabits per second. Over very short distances, we achieved speeds of one petabit per second. This is something incredible! (A terabit, just for your reference, is $10^{12}$ bits, while a petabit is $10^{15}$ bits.)
+\textbf{\emph{Bandwidth}}\index{bandwidth} tells us how much information a cable or fiber can carry.
+The bandwidth depends on both the physical properties of the fiber itself, as well as how clever we are when it comes to encoding this information before it gets transmitted.
+With modern techniques such as \textbf{\emph{dense wavelength division multiplexing}} (DWDM)\index{dense wavelength division multiplexing (DWDM)}, we are able to reach some staggering speeds.
+For example, in a standard cable over the distance of 6,600 kilometers, speeds of around 65 terabits per second can be reached.
+In a more specialized cable and over shorter distances, this can be increased to over 150 terabits per second.
+Over very short distances, we achieved speeds of one petabit per second\footnote{For your reference, a terabit is $10^{12}$ bits, while a petabit is $10^{15}$ bits.}.
 
-Of course, no system is a hundred percent efficient, and what we put in is not exactly what we're going to get out at the end of the cable. We must consider the main sources of loss in optical fibers. We will consider the following five losses: dispersion, absorption, scattering, bending, and coupling. The combined result of all of these sources of loss is that our signal becomes \emph{attenuated}\index{attenuation}, meaning that the output signal will have less power than the input signal. It's very important to know how much the signal becomes attenuated and how we can prevent or combat this attenuation.
+No system is perfect, and what we put in is not exactly what we are going to get out at the end of the cable.
+We must consider the main sources of loss in optical fibers.
+We will consider the following five losses: mode dispersion, absorption, scattering, bending of the fiber, and coupling.
+The combined result of all of these sources of loss is that our signal becomes \textbf{\emph{attenuated}}\index{attenuation}, meaning that the output signal will have less power than the input signal.
+It is very important to know how much the signal becomes attenuated and how we can combat this attenuation.
 
 Another important factor that affects how much the optical signal is attenuated is the wavelength of the light used for encoding.
 Different wavelengths have different absorption coefficients.
 This naturally makes certain wavelengths more suitable for long-distance communication.
-The main three wavelengths used for fiber optic communication are near 850, 1300, and 1550 nanometers, which all lie in the infrared spectrum.
+The three main wavelengths used for fiber optic communication are near 850, 1300, and 1550 nanometers, which all lie in the infrared spectrum.
 The wavelength of light is important in quantum communication for other reasons as well.
-Not all sources of light can produce single photons of the desired wavelength. Detector efficiencies depend on the wavelength of the photons, and quantum memories can couple to light only in certain wavelength regions. When multiple connections (whether classical or quantum) share the fiber, they are assigned separate wavelengths. If the assigned wavelengths are too far apart, then fewer channels can be carried; if they are too close together, \emph{filtering}, or selecting out, the desired channel is hard and inter-channel interference becomes a problem. 
-All these factors introduce extra complications which must be accounted for when designing and implementing quantum networks.
+Not all sources of light can produce single photons of the desired wavelength.
+Detector efficiencies depend on the wavelength of the photons, and quantum memories can couple to light only in certain wavelength regions. When multiple connections (whether classical or quantum) share the fiber, they are assigned separate wavelengths.
+If the assigned wavelengths are too far apart, then fewer channels can be carried; if they are too close together, \textbf{\emph{filtering}}\index{filtering}, or selecting out, the desired channel is hard and inter-channel interference becomes a problem. 
+All these factors introduce complications which must be accounted for when designing and implementing quantum networks.
 
 First, we will talk about the dispersion in optical fibers, then we will consider the other sources of attenuation. Next, we will move on to overcoming these losses, and finally, we will consider the challenges these sources of loss present in the context of quantum communication.
 
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mode dispersion}
 \label{sec:11-2_mode_dispersion}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{lesson11/11-2_dispersion.pdf}
-    \caption[Mode dispersion]{Different modes traverse the length of the fiber in different times, leading to mode dispersion. Initially sharp signals become difficult to decode.}
+    \caption[Mode dispersion.]{Different modes traverse the length of the fiber in different times, leading to mode dispersion. Initially sharp signals become difficult to decode.}
     \label{fig:11-2_mode_dispersion}
 \end{figure}
-Mode dispersion\index{mode dispersion} is the first source of signal degradation in the fiber that we're going to consider.
+\textbf{\emph{Mode dispersion}}\index{mode dispersion} is the first source of signal degradation in the fiber that we are going to consider.
 Let's examine the propagation of different modes in a multimode fiber\index{multimode fiber}, as in Fig.~\ref{fig:11-2_mode_dispersion}.
-A multimode fiber can contain many modes, all traveling different paths. For example, you can have the axial path which travels directly down the fiber, or you can have other modes which totally reflect internally within the fiber. The different modes propagate down the fiber at different speeds because they have to traverse different lengths. It's very important to compute the time difference introduced by the different modes traveling at different speeds down the fiber, and as you might expect, this depends on the launch angle. Depending on the angle with which the light is coupled to the fiber, the path that it takes will be different, and therefore the time that it takes that mode to traverse the fiber will be also different.
+A multimode fiber can contain many modes, all traveling along different paths.
+The shortest route is the \textbf{\emph{axial path}}\index{axial path}, which travels directly down the fiber.
+The light can also take non-axial paths where it undergoes total internal reflection\index{total internal reflection}.
+The total length travelled by non-axial modes is longer than for the axial mode, resulting in a longer propagation time for those modes.
 
-The fastest mode, as you can clearly see, travels directly down the center of the fiber. This is known as the \emph{axial mode} because it travels down the axis of the fiber. The slowest mode is the one that is incident on the cladding just at the critical angle, meaning it just barely gets internally reflected.
+It is important to quantify the time difference between the different modes.
+From Fig.~\ref{fig:11-2_mode_dispersion}, it is intuitive that depending on the angle with which the light is coupled to the fiber, the path that it takes will be different.
+The fastest mode, travels directly down the center of the fiber.
+This is the axial mode.
+The slowest mode is the one that is incident on the cladding just at the critical angle, meaning it just barely gets internally reflected.
 
-Your initial digitized signal may look something like the clean modulated square wave in the upper right of Fig.~\ref{fig:11-2_mode_dispersion}. It's very sharp and it's very easy to read out when you have a zero and when you have a one. But as the different modes propagate down the fiber, the whole packet will spread and disperse. After some distance, it will look something like the bottom right of the figure.
-This means that the readability of the output signal worsens, making it easier to make a mistake when you're actually trying to decode your signal after it propagates through the fiber.
+The initial digitized signal may look something like the clean modulated square wave in the upper right of Fig.~\ref{fig:11-2_mode_dispersion}. It is easy to read out the value of the individual bits.
+But as the different modes propagate down the fiber, the whole packet spreads and disperses.
+After some distance, it resembles the noisy signal at the bottom right of the Fig.~\ref{fig:11-2_mode_dispersion}.
+This means that the readability of the output signal worsens, making it easier to make a mistake during decoding of the signal.
 
 \begin{figure}
     \centering
@@ -83,13 +138,13 @@ This means that the readability of the output signal worsens, making it easier t
     \label{fig:11-2_dispersion_delay}
 \end{figure}
 
-% \michal{I started the rewrite from here until the end of this section.}
 How quickly this dispersion occurs can be quantified by the time between the fastest and slowest modes.
-We're going to consider a horizontal length $L$ that the fastest axial mode traverses. The time that it takes for this mode to traverse this distance is $t_{\text{min}}$,
+We are going to consider a horizontal length $L$ that the axial mode traverses.
+The time that the axial mode takes to cover distance $L$ is the following,
 \begin{equation}
     t_{\min } =\frac{L}{v_f}.
 \end{equation}
-The speed of of light in the fiber depends on the fiber's refractive index, $v_f = c / n_f$.
+The speed of of light in the fiber, $v_f$, depends on the refractive index of the material, $n_f$, that the fiber is made of, $v_f = c / n_f$.
 Therefore the minimum time can be written as
 \begin{equation}
     t_{\min } =\frac{Ln_f}{c}.
@@ -97,7 +152,7 @@ Therefore the minimum time can be written as
 
 Before considering the time $t_{\max}$ that the slowest mode takes to cover the horizontal distance $L$, we consider a general non-axial mode as shown in Fig.~\ref{fig:11-2_dispersion_delay}.
 The total distance $l$ that this mode travels is larger than $L$.
-The distance travelled before the internal reflection is $l_1$, and the distance traveled after the internal reflection is $l_2$.
+The distance traveled before the internal reflection is $l_1$, while the distance traveled after the internal reflection is $l_2$.
 Naturally, we have $l = l_1 + l_2$.
 
 Let's start by computing $l_1$,
@@ -129,7 +184,8 @@ Substituting for $\cos\theta_r$ in Eq.~(\ref{eq:11-2_cos_theta_r}), we obtain th
 \begin{equation}
     t_{\max }=\frac{L n_f^2}{c n_c}.
 \end{equation}
-Now it's very easy to put the expressions for $t_{\mathrm{max}}$ and $t_{\mathrm{min}}$ together, and obtain the time delay between the fastest and slowest modes, 
+
+It is now easy to put the expressions for $t_{\mathrm{max}}$ and $t_{\mathrm{min}}$ together, and obtain the time delay between the fastest and slowest modes, 
 \begin{equation}
     \Delta t = t_{\max} - t_{\min} = \frac{L n_f}{c}\left(\frac{n_f}{n_c}-1\right).
     \label{eq:11-2_time_delay}
@@ -141,146 +197,218 @@ Using Eq.~(\ref{eq:11-2_time_delay}), we obtain the following time delay per kil
 \begin{equation}
     \frac{\Delta t}{L}=37 \mathrm{~ns} / \mathrm{km}.
 \end{equation}
-This doesn't seem like much.
+This does not seem much.
 Let's see the consequences of this small delay.
-The speed of light in this fiber is given by $c$ divided by the refractive index of this fiber, which is just $v_f=c / n_f=2 \times 10^8 \mathrm{~m} / \mathrm{s}$.
-This time delay between the fastest and slowest modes means that our pulse spreads over a distance as it travels through the fiber. We can quantify this dispersion and obtain the value $7.4$ meters per kilometer -- our slowest signal is about three-quarters of one percent slower than our fastest. Every kilometer that our signal travels, it becomes more and more spread by this distance, $7.4$ meters.
-%This reduces the readability of the output signal. 
-Because our wave packets are becoming more spread out, we are losing the sharpness of our signal and they become more difficult to decode. In order to be able to read our output signal, we may demand that the pulses that are coming out of our fiber be separated by twice the value of the spread.
-This means that in order for the dispersed signal that's coming out of the fiber to be intelligible, we require that the input pulses also be separated by at least $2\times 7.4 = 14.8$ meters even when connecting over a distance of only one kilometer. This inadvertently places a limit on how fast we can transmit information because the pulses have to be separated by a certain amount.
-%, so we cannot place them closer together. 
+The speed of light in this fiber is given by $c$ divided by the refractive index of this fiber, which is $v_f=c / n_f=2 \times 10^8 \mathrm{~m} / \mathrm{s}$.
+This time delay between the fastest and slowest modes means that our pulse spreads over a distance as it travels through the fiber. We can quantify this dispersion and obtain the value $7.4$ meters per kilometer -- our slowest signal is about three-quarters of one percent slower than our fastest. Every kilometer that our signal travels, it becomes more and more spread by this distance of $7.4$ meters.
+Because our wave packets are becoming more spread out, we are losing the sharpness of our signal and they become more difficult to decode.
+In order to be able to read the output signal clearly, we demand that the pulses that are coming out of our fiber be separated by twice the value of the spread.
+This means that in order for the dispersed signal that is coming out of the fiber to be intelligible, we require that the input pulses also be separated by at least $2\times 7.4 = 14.8$ meters even when connecting over a distance of only one kilometer.
+This inadvertently places a limit on how fast we can transmit information because the pulses have to be separated by a certain amount.
 Dispersion has a direct consequence on the maximum frequency of the input signal.
 
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Attenuation}
 \label{sec:11-3_attenuation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+First, let's look at \textbf{\emph{absorption}}\index{absorption}.
+Absorption occurs due to the interaction of light with the material of the fiber.
+There are two types of absorption: \textbf{\emph{intrinsic absorption}}\index{intrinsic absorption} and \textbf{\emph{extrinsic absorption}}\index{extrinsic absorption}.
+Intrinsic absorption is responsible for attenuating the signal due to electronic and vibrational resonances of the molecules in the fiber.
+For silica molecules, electronic resonances occur in the ultraviolet region, and vibrational resonances in the infrared region.
+These resonances cause the light to transfer energy to the molecules in the fiber resulting in a power loss in the signal.
+This is an intrinsic property of the fiber and we cannot really affect it; it's something that we just have to live with and accept.
+Luckily, it's not a very significant source of error, especially when we compare it to the other type of absorption.
+
+Extrinsic absorption is due to impurities introduced during the manufacturing process.
+On one hand, this is a much more significant source of absorption, but on the other we can control it by perfecting the manufacturing process.
+Generally, the manufacturers of fiber optic cables try to keep the the amount of impurities below one percent.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{lesson11/11-3_attenuation.pdf}
-    \caption[Attenuation losses]{Various types of attenuation losses.}
+    \caption[Attenuation losses.]{Various types of attenuation losses.}
     \label{fig:11-3_attenuation}
 \end{figure}
 In this section, we will consider the rest of the sources of losses that we listed in Sec.~\ref{sec:ld-intro}.
 They are all pictured in Fig.~\ref{fig:11-3_attenuation}.
 
-First, let's look at \emph{absorption}\index{absorption}.
-Absorption happens due to the interaction of light with the material of the fiber. There are two types of absorption: \emph{intrinsic absorption} and \emph{extrinsic absorption}. Intrinsic absorption is responsible for attenuating the signal due to electronic and vibrational resonances of the molecules in the fiber. For silica molecules, electronic resonances occur in the ultraviolet region, and vibrational resonances in the infrared region. These resonances cause the light to transfer energy to the molecules in the fiber resulting in a power loss in the signal. This is an intrinsic property of the fiber and we cannot really affect it; it's something that we just have to live with and accept. Luckily, it's not a very significant source of error, especially when we compare it to the other type, extrinsic absorption.
-
-Extrinsic absorption is due to impurities in the form of bubbles that are present in the fiber and were introduced during the manufacturing process. On one hand, this is a much more significant source of absorption, but on the other hand we can control it by perfecting our manufacturing process. Generally during manufacture, the manufacturers are trying to keep the the amount of impurities that are present in the fiber below one percent.
-
-Another source of attenuation is \emph{scattering}, which can be due to small fluctuations of the density in the fiber material which are introduced during manufacturing process.
+Another source of attenuation is \textbf{\emph{scattering}}\index{scattering}, which can be due to small fluctuations of the density in the fiber material which are introduced during manufacturing process.
 This results in a non-uniform refractive index in the material causing scattering of light.
 Other sources of scattering include molecules absorbing the light and re-emitting it in a random direction.
 
-The final two sources of attenuation are \emph{bending} and \emph{coupling}. Bending is when we actually physically bend the fiber. Remember, we said that the angle of incidence is crucial for total internal reflection to take place, and therefore for the signal to propagate down the fiber. If we bend the fiber, we can have a situation where at first, the light ray is traveling down the fiber totally internally reflected but then it hits the angle at the bend and suddenly at the interface it is reflected in such a way that it cannot satisfy the condition for total internal reflection anymore, and it just gets absorbed or it leaves the fiber.  Generally, the manufacturer specifies some minimum bending radius, typically around ten to twenty times the diameter of the fiber.
+The final two sources of attenuation are \textbf{\emph{bending}}\index{bending} and \textbf{\emph{coupling}}\index{coupling}.
+Losses due to bending occur when the fiber is bent at a sharp enough angle that the light leaks from it.
+Remember, we said that the angle of incidence is crucial for total internal reflection to take place, and therefore for the signal to propagate down the fiber.
+Typically, the manufacturers specify a minimum bending radius, usually around 10-20 times the diameter of the fiber.
+Inevitably, we will have to join two fibers together.
+If the coupling between the fibers introduces a gap, or if the fibers are not aligned correctly, some of the light will leak leading to attenuation of the signal.
 
-The other source of error is the coupling error. Inevitably, we will have to join two fibers together, and if there's a gap between the fibers, then the light can of course escape. Another source of coupling error is when the fibers are not aligned properly, so even if there is no gap but they are slightly misaligned as in Fig.~\ref{fig:11-3_attenuation}, then light is allowed to escape and leave the fiber, and the overall signal will become attenuated.
-
-Now that we have discussed the main sources of loss, let's discuss how to quantify the attenuation in a fiber.
-
-As the signal propagates through the fiber, it loses power, so we need to quantify how much power it lost. This is done by a unit called the \emph{decibel}\index{decibel}. The decibel designates the ratio of the two power levels: the power in and the power out.
-
-The number of decibels is defined as the following expression:
+Now that we have covered the main sources of loss, let's discuss how to quantify the attenuation in the fiber.
+The degree of attenuation is expressed by a unit called the \textbf{\emph{decibel}}\index{decibel}.
+Decibel is the ratio of the power that is received at the end of the fiber, $P_o$, given the initial power of the signal, $P_i$.
+The number of decibels is defined as the following expression,
 \begin{equation}
-\# \text { of } \mathrm{dB}=-10 \log _{10} \frac{P_o}{P_i}
-\label{eq:decibels}
+    \# \text { of } \mathrm{dB}=-10 \log _{10} \frac{P_o}{P_i}
+    \label{eq:decibels}
 \end{equation}
-where $P_i$ is the power in and $P_o$ is the power out. Remember, the power out has to be less than power in, because the signal is getting attenuated.  Because this ratio is less than one, the logarithm is negative, so applying a minus sign lets us talk in terms of positive numbers. For convenience, we multiply by ten ("deci" means ten) and talk about decibels. Why take the logarithm? Because we will be considering a large span of orders of magnitude between the power in and the power out; therefore, if we take the logarithm, then it will produce a sort of generally nice scale for the number of decibels.  Moreover, since every kilometer of fiber multiplies the power loss, using this logarithmic scale we can easily calculate total loss when we know the distance.
+Remember, the power out $P_o$ is smaller than power in $P_i$.
+This ratio is smaller than one, meaning the logarithm is negative.
+Applying a minus sign in front of the whole expression lets us talk in terms of positive numbers of decibels.
+For convenience, we multiply by ten (``deci'' means ten) and talk about decibels.
+Why take the logarithm?
+Often, the powers in and out are separated by orders of magnitude.
+Taking the logarithm produces a nicer scale for the number of decibels.
+Moreover, since every kilometer of fiber multiplies the power loss, using a logarithmic scale makes computations of total loss easier.
 
 \begin{table}
-\centering
-\begin{tabular}{r|c}
-$P_o: P_i$ & $\mathrm{~dB}$ \\
-\hline $1: 10$ & 10 \\
-$1: 100$ & 20 \\
-$1: 1000$ & 30
-\end{tabular}
-\caption{Examples of calculating loss in decibels (dB).}
-\label{tab:decibels}
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{cc}
+        \hline
+        \boldmath$P_o/P_i$ & \textbf{dB} \\
+        \hline $1/10$ & 10 \\
+        $1/100$ & 20 \\
+        $1/1000$ & 30 \\
+        \hline
+    \end{tabular}
+    \caption[Decibels example.]{Examples of calculating loss in decibels (dB).}
+    \label{tab:decibels}
 \end{table}
 
-For example, if we have the ratio of power out to power in as $1:10$, meaning that ninety percent of the power is lost to attenuation, then this corresponds to ten decibels (10dB), as you can convince yourself by substituting for $p_0/p_i$ into Eq.~\ref{eq:decibels}. If the ratio is $1:100$, then this corresponds to twenty decibels (20dB); if it's $1:1000$, this corresponds to thirty decibels (30dB). You can see that when the ratio of the power out over power in shrinks by an order of magnitude, the loss in decibels increases by adding ten. This calculation is linear due to the definition in terms of the logarithm.
+We can see few examples what various levels of decibels mean in Tab.~\ref{tab:decibels}.
+Ratio of power out to power in as $1/10$, meaning that ninety percent of the power is lost, corresponds to 10 decibels (10dB), as you can convince yourself by substituting for $P_0/P_i$ into Eq.~\ref{eq:decibels}.
+Ratio is $1/100$ corresponds to 20 decibels, and ratio of $1/1000$ corresponds to 30 decibels.
+You can see that when the ratio of the power out over power in shrinks by an order of magnitude, the loss in decibels increases by ten decibels.
 
-We can define the attenuation parameter $\alpha$ to be the number of decibels per kilometer, so $\alpha$ is just our previous expression divided by the length of the fiber $L$. We can now rearrange it and get an expression for the fraction of the power out over power in,
+The quality of an optical fiber is often characterized by the \textbf{\emph{attenuation parameter}}\index{attenuation parameter} $\alpha$.
+Its units are decibels per kilometer (dB/km).
+Dividing Eq.~(\ref{eq:decibels}) by the length of the fiber $L$, and after quick rearrangement obtain hte following,
 \begin{equation}
-\begin{aligned}
-\alpha & =-\frac{10}{L} \log _{10} \frac{P_o}{P_i} \\
--\frac{\alpha L}{10} & =\log _{10} \frac{P_o}{P_i} \\
-\frac{P_o}{P_i} & =10^{-\alpha L / 10}.
-\end{aligned}
+    \alpha = -\frac{10}{L} \log _{10} \frac{P_o}{P_i}, \quad \rightarrow \quad \frac{P_o}{P_i} = 10^{-\alpha L / 10}.
+    \label{eq:attenuation_parameter}
 \end{equation}
+The ratio $P_o/P_i$ does not only represent how weaker the output signal is compared to the initial signal, but also the \textbf{\emph{probability of a single photon travelling the length of the fiber without being lost}}.
 
-We said in the previous chapters that in 1970, optical fiber managed to transmit just $1\%$ of the power that was put in over a distance of one kilometer. We can now plug that into our formula, and we will find that $\alpha$, the attenuation parameter, is twenty decibels per kilometer (20 dB/km). Two decades later, the transmission rose to around $96\%$ over a kilometer, which corresponds to an attenuation level of 0.18 dB/km. Three decades later, attenuation levels remain around this value.
+We can compute the attenuation parameter for the optical fiber that manages to transmit just $1\%$ of the initial power over a distance of one kilometer.
+This was state-of-the-art around 1970.
+Using Eq.~(\ref{eq:attenuation_parameter}), the attenuation parameter is $\alpha=20$ dB/km.
+The transmission probability rose to around $96\%$ over a kilometer two decades later, which corresponds to an attenuation level of 0.18 dB/km. Three decades later, attenuation levels remain around this value, though attenuation parameters as low as 0.12 dB/km have been demonstrated.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{lesson11/11-3_attenuation_dB.pdf}
-    \caption[Power loss in fiber]{Loss in the fiber with distance has improved substantially.}
+    \caption[Power loss in fiber.]{Loss in the fiber with distance has improved substantially over the last few decades.}
     \label{fig:11-3_attenuation_dB}
 \end{figure}
-Figure~\ref{fig:11-3_attenuation_dB} shows the loss versus distance for these two values of attenuation loss. On the horizontal axis, we plot the length of the fiber through which our signal is traveling, and on the vertical axis we have the ratio of the power out over power in. If the length of the fiber is zero, then of course the ratio is one. Our signal hasn't traveled anywhere, so it didn't have a chance to be attenuated. As it travels through the fiber, the blue line corresponds to the attenuation levels that were achieved in 1970, with $\alpha$ set to twenty decibels per kilometer, while the orange line is the attenuation levels achieved  in 1990 with $\alpha$ of 0.18dB/km. We can see how quickly the ratio approaches zero for the high attenuation parameter, whereas for the very low attenuation parameter, it decreases much more slowly.
+Figure~\ref{fig:11-3_attenuation_dB} shows the loss versus distance for these two values of attenuation loss.
+On the horizontal axis, we plot the length of the fiber through which our signal is traveling, and on the vertical axis we have the ratio of the power out over power in.
+If the length of the fiber is zero, then of course the ratio is one.
+The signal has not traveled anywhere.
+As it travels through the fiber, the blue line corresponds to the attenuation levels that were achieved in 1970, with $\alpha=20$ dB/km, while the orange line is the attenuation parameter achieved in 1990 with $\alpha=0.18$ dB/km.
+We can see how quickly the ratio approaches zero for the high attenuation parameter, whereas for the very low attenuation parameter, it decreases much more slowly.
 
-Now that we know what the main sources of loss are and how to quantify them, how can we counteract these losses in our fiber?
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overcoming losses}
 \label{sec:11-4_overcoming_losses}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have seen what the sources of losses are. Now, let's discuss how we can overcome them.
+Let's begin with tackling mode dispersion as it is one of the most straightforward sources of error to overcome.
+We discussed how a signal propagating in a multi-mode fiber deteriorates due to the difference in lengths of the various paths that the modes take.
+Decreasing the cross-section of the fiber has the effect of limiting the number of modes that the fiber can support.
+\textbf{\emph{Single-mode fibers}}\index{single-mode fiber} are narrow enough that they only support the axial mode.
+Having only a single mode propagating in the fiber eliminates mode dispersion completely since there is nothing that can get dispersed.
 
-Let's look at dispersion first, that's probably one of the easiest. We saw that the signal and the different modes become dispersed in a multi-mode fiber. This is not the case in a single-mode fiber, where there is only one mode so there's nothing to be dispersed. Therefore, if in some situations, mode dispersion is a big source of error, it's best to switch to a single-mode fiber. We saw that absorption and scattering can be reduced by improving the manufacturing process because the main source is the impurities in the fiber. Bending loss, of course, is reduced by not bending your fiber unless you absolutely have to, and being very mindful of how much you bend it. Finally, coupling errors can be eliminated, at least partially, by ensuring that the fibers are aligned properly and there is no gap between them. Even if we try to do all of these things, there still will be some attenuation and some losses. We can look at  our expression to confirm how much power we lose for a given input power over a distance $L$ with some attenuation parameter $\alpha$.
+We mentioned that absorption and scattering can be reduced by improving the manufacturing process.
+Bending loss is reduced by keeping in mind manufacturer's advice about the maximum bending radius.
+Coupling errors can be eliminated, at least partially, by ensuring that the fibers are aligned properly and there is no gap between them.
 
-No matter how careful we are about manufacturing and using single-mode fibers and coupling the fibers together properly, we will always have the attenuation parameter $\alpha$ as non-negative. Therefore, there will be some attenuation on the signal. In the previous section, we saw how much the signal becomes attenuated over a short distance of five kilometers, if the $\alpha$ parameter is set to something very low, like 0.18. The signal becomes attenuated, but not by that much: still around 80\% of the signal gets through. If we extend it to a hundred kilometers, immediately you see that even in a low-loss fiber with $\alpha = 0.18$, eventually the signal will go to nearly zero. After twenty kilometers, it's around 44\% of the initial power; after  fifty kilometers, 13\%, and at a hundred kilometers it is virtually zero. A hundred kilometers is not such a long distance; we need systems that can reach thousands of kilometers. So the question is, how can we use fiber optics to actually transmit signals over such extreme long distances?
+No matter how many precautions we take when manufacturing and using the fiber, there will always be attenuation resulting in deterioration of the signal.
+In Fig.~\ref{fig:11-3_attenuation_dB}, even for a fiber with low attenuation parameter of $\alpha=0.18$ dB/km, the signal becomes attenuated.
+The power decreases to 80\% over a short distance of 5 kilometers.
+After 20 kilometers, the power drops to 44\%; after 50 kilometers to a mere 13\%, and at a hundred kilometers it is virtually zero.
+Hundred kilometers is not such a long distance.
+We require systems that can transmit signals over thousands of kilometers.
 
-Long-distance transmission is achieved with the help of \emph{repeaters}\index{repeater (classical)}~\footnote{Just to remind you, we will encounter this term "repeater" in the next chapter as well, where we will be talking about quantum repeaters, but they work on a very different basis than classical repeaters. Here, we are talking only about classical repeaters.}, which are devices that are used to boost the signal strength. There are many different kinds of repeaters based on many different physical principles; as an example, we introduce the \emph{erbium-doped fiber amplifiers}\index{amplifier}, or EDFA\index{erbium-doped fiber amplifier (EDFA)} for short. To build one, we introduce erbium atoms into a stretch of fiber. To use it, we pump the erbium atoms, meaning that we excite these atoms into their higher energy state, creating population inversion. Then, as the weak signal that we are aiming to boost passes through this segment of fiber, it can stimulate emission from these erbium atoms. We know that in the process of stimulated emission, the photons that are emitted are basically of the same kind as the incoming signal photons. They have the same phase, same coherence, and most importantly, they travel in the same direction. Basically, an EDFA is using the principle that is behind lasing to boost our weak signal. In this process, we obtain a signal that becomes amplified and can travel further before it needs amplification again.
-
+Long-distance transmission is achieved with the help of \textbf{\emph{repeaters}}\index{repeater (classical)}~\footnote{Just to remind you, we will encounter this term "repeater" in the next chapter as well, where we will be talking about quantum repeaters, but they work on a very different basis than classical repeaters. Here, we are talking only about classical repeaters.}, which are devices that are used to boost the signal strength.
+There are many different kinds of repeaters based on different physical principles; as an example, we introduce the \textbf{\emph{erbium-doped fiber amplifiers}}\index{amplifier}, or EDFA\index{erbium-doped fiber amplifier (EDFA)} for short.
+Fig.~\ref{fig:11-4_edfa} illustrates the basic idea behind EDFA.
+Erbium atoms are introduced into a portion of the fiber.
+The erbium atoms are excited into their higher energy states using a strong pump, creating population inversion.
+As the weak signal passes through this segment of the fiber, it stimulates emission from the erbium atoms.
+We know that in the process of stimulated emission, the photons that are emitted are of the same kind as the incoming signal photons.
+They have the same phase and travel in the same direction.
+Basically, an EDFA is using the principle that is behind lasing to boost the weak signal.
+The EDFA amplifies the signal, allowing it to travel further before it needs amplification again.
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.6\textwidth]{lesson11/11-4_edfa.pdf}
-    \caption[Erbium-doped fiber amplifier (EDFA)]{Basic working principle of an erbium-doped fiber amplifier.}
+    \caption[Erbium-doped fiber amplifier (EDFA).]{Basic working principle of an erbium-doped fiber amplifier.}
     \label{fig:11-4_edfa}
 \end{figure}
-
-%\michal{Added gain and active region}
-Figure~\ref{fig:11-4_edfa} shows the basics of an EDFA.
-A portion of the fiber, the central portion shown in red, contains erbium atoms. The erbium atoms are pumped strongly to create population inversion. As the weak signal comes in, it stimulates emission from the red part where we introduced the erbium atoms. In that process, the signal is boosted, and we allow it to travel for another fifty kilometers or so before it needs boosting again.
 Commercially available amplifiers are capable of producing gains of up to 40 dB, and are fairly compact with the active region (red in Fig.~\ref{fig:11-4_edfa}) being only few centimeters long.
 
 There is one problem with this approach that we have to keep in mind.
-EDFAs not only amplify the signal, they also amplify the noise as well.
+EDFAs not only amplify the signal, they also amplify any noise as well.
 The excited erbium atoms amplify the signal when they undergo stimulated emission caused by the photons in the signal.
 On occasion, these excited atoms emit photons via spontaneous emission, as we discussed in Section~\ref{sec:5-2_coherent_vs_incoherent}.
 Photons emitted this way travel in a random direction.
-When they are emitted in the opposite direction from the incoming signal, it is not a big issue. This does attenuate the signal but at least the spontaneously emitted photons do not pollute the signal.
-On the other hand, when the spontaneously emitted photons travel in the same direction as the signal, they contribute to the noise and are responsible for deterioration in the signal-to-noise ratio.
+It is not a big issue when they are emitted in the opposite direction from the incoming signal, as the propagating signal does not get polluted by these spontaneously emitted photons.
+On the other hand, when the spontaneously emitted photons travel in the same direction as the signal, they contribute to the noise and are responsible for deterioration of the \textbf{\emph{signal-to-noise ratio (SNR)}}\index{signal-to-noise ratio (SNR)}.
 Furthermore, these noisy photons may interact with other excited erbium atoms, stimulating their emission and inadvertently producing more noisy photons.
 
-This is the basic principle of a classical repeater amplifying the signal optically. We will see in the next Section how the sources of noise affect the propagation of signals over long distances in the quantum case.
-We will see that the set of challenges that are facing us there are quite different.
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum challenges}
+\label{sec:quantum_challenges}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In quantum communication, the signal is at the level of individual photons, which is very different from classical communication, where we are sending many, many photons. Photon loss in the fiber therefore becomes a major problem. Classically, if we are communicating and we lose a single photon, it is very insignificant. The whole signal propagates and we can still read it out at the output. However, when this happens in a quantum communication protocol and we lose a single photon, then the entire protocol fails. Consider, for example, E91 or BB84, where the loss of a single photon becomes a huge problem.
+So far, we have considered classical signals comprised of large number of photons.
+In quantum communication, the signal is at the level of individual photons.
+Photon loss in the fiber therefore becomes a major problem.
+Losing a photon in from a classical signal slightly decreases the power of the signal.
+Loss of a photon in quantum communication results in losing the entire signal itself!
 
-How can we combat photon loss? We saw that it's possible classically. This is also possible in quantum communication.
+Can we combat photon loss the way it is done in classical communication?
+Namely, can we create backup copies of the single photons at regular intervals and resend those?
+We can, but only if we limit ourselves to communication with orthogonal states.
+For example, if we only wish to communicate qubits \ket{0} and \ket{1}, creating backup copies presents no issues and can be done.
+This, however, would limit us to classical communication only.
+All the magic of quantum communication lies in non-orthogonal states and entangled states.
+We saw that creating copies of such states is not allowed by the no-cloning theorem in Sec.~\ref{sec:8-3_no-cloning}.
 
-Amplification of a signal worked in classical communication. Can we do that for quantum signals as well? Namely, can we create backup copies of the single photons such that if one gets lost, we can still use the backups in order to proceed with the protocol? We can, but only if we limit ourselves to orthogonal states. If the states that we are sending are, for example, just qubits \ket{} and \ket{1} in some pattern, fine, we can do that and we can create backup copies. But, in quantum communication all the magic happens with non-orthogonal states, and often these states are entangled with some other qubits somewhere else. Therefore, we have to be able to copy arbitrary states, and this is where we hit the roadblock that we saw in Sec.~\ref{sec:8-3_no-cloning}: the no cloning theorem\index{no-cloning theorem}.
-
-Okay, so amplification will not work in quantum communication. How about just sending the photon and hoping for the best?
-
-Let's do a very quick calculation that will demonstrate that this isn't a very good strategy. The probability that we transmit the photon through a fiber over distance $L$, where the attenuation parameter in the fiber is $\alpha$, is given by the expression
+Since copy and resend strategy is fundamentally not allowed in quantum communication, it would seem we have to resort to send the single photons and hope for the best that they arrive at the destination.
+Let's do a quick calculation that will demonstrate that this also is not a viable strategy.
+The probability that we transmit the photon through a fiber with attenuation parameter $\alpha$ over distance $L$ is given by the following,
 \begin{equation}
-P_{\text {success }}=10^{-\alpha L / 10}.
+    P_{\text {success }}=10^{-\alpha L / 10}.
 \end{equation}
+Let's plug in some numbers to give us some intuition of what this probability is.
+Consider a long fiber of 1000 km (which in the context of global communication is not that long), and assume a best-case scenario where the fiber has ultra-low attenuation of a mere $0.1$ dB/km.
+The probability that a single photon gets successfully transmitted is $10^{-10}$.
+This is indeed a very small number, but to gain some intuition of how small, consider the case of a source that produces one photon every second.
+Every second a single photon gets sent down the fiber.
+How long do we need to wait in order for the photon to get successfully transmitted?
+On average, we expect to wait 317 years!
+We can see that even with ultra-low loss fibers over moderate distances, sending a single photon down the fiber and hoping for the best is not very practical.
 
-Let's plug in some numbers to give us some intuition of what this probability is. Consider a long fiber of a thousand kilometers (which in the context of global communication is not actually that long), and assume a best-case scenario where the fiber has ultra-low attenuation of a mere $0.1$ decibels per kilometer. The probability that we actually successfully transmit a single photon is $10^{-10}$. This looks like a very small number, and indeed it is, but to give you some intuition of  how small, consider the case of a source that produces one photon every second. Every second we are sending a single photon down the fiber. How long do we need to wait in order for someone who is at the end of this fiber a thousand kilometers away to actually successfully receive a single photon? Well, we have to wait, on average, 317 years. We can see that even with ultra-low loss fibers over moderate distances, sending a single photon down the fiber and hoping for the best is not a very good idea.
+Loss is only one source of error that we have to contend with in long distance quantum communication.
+Other sources include unitary errors such as Pauli errors, namely $X$ errors that randomly flip the state of our photons, or $Z$ errors where we introduce a phase to the photons.
+There are several types of non-unitary errors such as relaxation that can affect the state of qubits.
+We do not have to deal with most of these errors in classical communication.
+The situation looks dire for quantum communication.
+However, we will see in the next Chapter that quantum problems require quantum solutions, and indeed there are clever ways that address these issues.
 
-Loss is only one source of error that we have to contend with in long distance quantum communication. Other sources include unitary errors such as Pauli errors, namely $X$ errors that randomly flip the state of our photons, or $Z$ errors where we introduce some phase to the photons. There are several types of non-unitary errors, such as coherence, dephasing, and relaxation.  Most of these errors we don't have to deal with in classical communication.
 
-So the situation looks quite dire. Is there any hope for long-distance quantum computation? Not quite. We will see in the next chapter that quantum problems require quantum solutions.
 
 
 

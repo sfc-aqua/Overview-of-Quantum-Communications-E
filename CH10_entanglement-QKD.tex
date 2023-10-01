@@ -287,6 +287,7 @@ In particular, they look for scenarios where they chose $(A_1,B_2), (A_1,B_3), (
 Using these measurement outcomes, Alice and Bob then calculate the CHSH correlation function $\mathcal{S}$,
 \begin{equation}
     \mathcal{S} = |\langle A_1B_2\rangle + \langle A_1B_3\rangle + \langle A_2B_2\rangle - \langle A_2B_3\rangle|.
+    \label{eq:CHSH-inequality-basis}
 \end{equation}
 \begin{figure}[t]
     \centering
@@ -315,53 +316,138 @@ As cryptosystems are generally designed so that a single bit difference in the k
 Alice and Bob can also perform something known as \textbf{\emph{privacy amplification}}\index{privacy amplification}, where they take their generated secret key and produce a shorter, more secure key.
 Privacy amplification is a procedure that attempts to eliminate any possible correlations with Eve.
 
-So, which protocol is better, BB84 or E91?
-One is based on the indistinguishability of single photons prepared in non-orthogonal bases, and the other uses entanglement.
-In particular, we care about the security of both of these protocols. Let's compare from the point of view of when the secret key is generated.
+Having cover the basics of both single-photon and entanglement-based QKD, can we say which protocol is better more secure?
+BB84 is based on the indistinguishability of single photons prepared in non-orthogonal bases to discover an eavesdropper, while E91 uses quantum correlations between two qubits to bound the information that is potentially compromised.
+Let's compare the two protocols from the point when the secret key is generated.
 
-In the case of the BB84 protocol, candidate bits for the key are generated when Alice generates her random string right at the beginning of the protocol.
+In the case of BB84, candidate bits for the key are generated when Alice generates her random string $a$ right at the beginning of the protocol.
 Remember, she generates two random $n$-bit strings.
-One string encodes the information about the basis of preparation, and the other encodes the bits themselves.
-So if Alice chooses the $Z$ basis, the state she prepares is a \ket{0} or a \ket{1}, whereas if she chooses the $X$ basis, she prepares a \ket{+} or a \ket{-}.
+String $b$ encodes the information about the basis of preparation, and string $a$ encodes the bits themselves.
+If Alice chooses the $Z$ basis, the state she prepares is a \ket{0} or a \ket{1}, whereas if she chooses the $X$ basis, she prepares a \ket{+} or a \ket{-}.
 The secret key (or an extended form of it before photons are lost and their corresponding bits are discarded) exists right from the beginning, before any communication between Bob and Alice takes place.
 
-In BB84, a clever Eve can actually find a way to obtain some information about this secret bit string. In particular, we can consider a very paranoid scenario where the random number generator (RNG) that Alice is using to generate a random bit string was actually built by Eve, therefore information about the random bit string that the device produces gets passed on to Eve. We saw at the beginning of this chapter that this weakness poses a huge security risk for BB84 protocol.
+In BB84, a clever Eve can find a way to obtain some information about this secret bit string.
+In particular, we can consider a very paranoid scenario where the random number generator (RNG) that Alice is using to generate a random bit string was built by Eve herself.
+Eve constructed the RNG in such a way that any information about the random bit string that the device produces gets passed on to Eve iwthout Alice's knowledge.
+We saw at the beginning of this chapter that this weakness poses a huge security risk for the BB84 protocol.
 
-In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured: not when Eve produces those entangled pairs, nor when they arrive at Alice and Bob, but only after Alice and Bob measure them in their random bases. Even if Eve controls the generation and distribution of entangled pairs, she cannot defeat E91. \emph{However}, if Eve controls or can predict the output of the RNGs that Alice and Bob use for basis selection, she can defeat E91. Coupled with the ability to measure the entangled states in the quantum channel before Alice and Bob receive them, she can measure only the key pairs and recover the key in parallel with Alice and Bob, undetected. This process is harder for Eve, so perhaps we can say that E91 is more secure than BB84.
-% In that sense, we can say that the key is unconditionally secure, and we see that entanglement is very essential for security.
+In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured.
+The key is not produced when the entangled qubit pairs are created, nor when they arrive at Alice and Bob, but only after Alice and Bob measure them in their random bases.
+Even if Eve controls the generation and distribution of entangled pairs, she cannot defeat E91.
+\emph{However}, if Eve controls or can predict the output of the RNGs that Alice and Bob use for basis selection, she can defeat E91.
+Coupled with the ability to measure the entangled states in the quantum channel before Alice and Bob receive them, she can measure only the key pairs and recover the key in parallel with Alice and Bob, undetected. This process is harder for Eve, so perhaps we can say that E91 is more secure than BB84.
 
-Let's conclude this chapter by talking about some entanglement-based QKD experiments. We saw in the discussion of BB84 that there were network testbeds for single photon QKD networks. The development of entanglement-based QKD is not as advanced, but it exists at the level of establishing a secret key over a single link. One such experiment was performed over free space, meaning that the entangled photons traveled through through air.  This experiment was done over a distance of 144 kilometers between La Palma and Tenerife, two islands in the Canary Islands. Photon pairs were produced by the spontaneous parametric down-conversion (SPDC)\index{spontaneous parametric down-conversion (SPDC)} process which we saw in Sec.~\ref{sec:4-4_spdc}. The qubit was encoded in the polarization of the photons. The obtained CHSH value, $\mathcal{S} =2.508$, was quite a substantial amount above the classical value of 2, giving a strong CHSH violation.
+Let's conclude this chapter by talking about some entanglement-based QKD experiments.
+We saw in the discussion of BB84 that there were network testbeds for single photon QKD networks.
+The development of entanglement-based QKD is not as advanced, but it exists at the level of establishing a secret key over a single link.
+One such experiment was performed over free space, meaning that the entangled photons traveled through through air.
+This experiment was done over a distance of 144 kilometers between La Palma and Tenerife, two islands in the Canary Islands.
+Photon pairs were produced by the spontaneous parametric down-conversion (SPDC)\index{spontaneous parametric down-conversion (SPDC)} process which we saw in Sec.~\ref{sec:4-4_spdc}.
+The qubits were encoded in the polarization of the photons.
+The obtained CHSH value, $\mathcal{S} =2.508$, was quite a substantial amount above the maximum classical value of 2, giving a strong CHSH violation.
 
-A different, more recent experiment was done over a distance of hundreds of kilometers, but in a lab over optical fiber wound around a spool.  Two distances were tested. The  first distance was 311 kilometers over standard fiber, and the second distance was 404 kilometers over an ultra-low loss fiber.  In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol. If we wish to use this scheme in real life, we would actually have to add these functions, further lowering the bit rate.
+A different, more recent experiment was done over a distance of hundreds of kilometers, but in a lab over optical fiber wound around a spool.  Two distances were tested.
+The first distance was 311 kilometers over standard fiber, and the second distance was 404 kilometers over an ultra-low loss fiber.
+In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol.
+If we wish to use this scheme in real life, we would have to add these functions, further lowering the bit rate.
 
-Another fantastic experiment was performed with satellites, where the satellite actually distributed entangled pairs between two ground stations 1,120 kilometers apart. Remember, we said that the light travels in a straight line, so by using a satellite we can overcome the complication of curved earth's surface (and reduce the atmospheric disturbance as well) to establish a quantum key over much longer distances. The total distance was over one thousand kilometers, and the measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation. The obtained bit rate was 0.12 bits per second. Now, one could ask the question, what if we actually used a single fiber to connect these two ground stations? Well, the paper that reported these results estimated that the fiber would have been around eleven orders of magnitude less efficient than using the satellites, which is quite incredible.  At the beginning of this chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{sec:11_long-distance} and beyond.
+Another fantastic experiment was performed with satellites, where the satellite was use to distribute entangled pairs between two ground stations 1,120 kilometers apart.
+Remember, we said that the light travels in a straight line, so by using a satellite we can overcome the complication of curved earth's surface (and reduce the atmospheric disturbance as well) to establish a quantum key over much longer distances.
+The measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation.
+The obtained bit rate was 0.12 bits per second.
+One could ask the question, what if we actually used a single fiber to connect these two ground stations?
+Well, the paper that reported these results estimated that the fiber would have been around eleven orders of magnitude less efficient than using the satellites.
+At the beginning of this chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{sec:11_long-distance} and beyond.
 
-Thus concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems and this block of lessons. In the final two blocks, we will investigate the construction and of quantum repeaters and networks.
+Thus concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems and this block of lessons.
+In the final two blocks, we will investigate the construction of quantum repeaters and networks.
+
+
+
+
 
 \newpage
 \begin{exercises}
 \exer{
+\emph{More measurement bases in E91.}
 In E91, Alice and Bob each have three choices of measurement basis, which they are expected to select randomly.  We described how six different pairs of choices are used to generate the secret key and to calculate the CHSH inequality to check for the presence of an eavesdropper.
-% A2B1, A3B1, A3B2 aren't mentioned.  A2B1 is orthogonal bases and should be just random. A3B1 and A3B2 are equivalent to two of the other measurements, and could be included in a CHSH calculation, with appropriate normalization.
 \subexer{
 Sharp-eyed readers may have recognized that, in the explanation, we neglected three choices of basis.  Which ones did we not mention, and why?  What should be done with the data collected when those bases are chosen?
 }
 \subexer{Taking into account the answer to the prior question, what fraction of total measurements are dedicated to key generation, and what fraction to CHSH testing?}
 }
 
-\exer{We described E91 using \ket{\Psi^+} Bell pairs.  Does anything change if we use a different kind of Bell pair?}
+\exer{
+\emph{Optimality of CHSH violation.}
+On the Bloch sphere, the four basis choice angles for CHSH are 45\degree apart.
+In this exercise we will explore why we measure at these angles and not some other ones.
+\subexer{
+Let's fix Alice's measurements to be the same like in Eq.~(\ref{eq:CHSH-inequality-basis}).
+But Bob's measurement basis can be different. It is at some angle $\theta$ as shown in the figure below.
+Write down the two observables, $B_1$ and $B_2$, that Bob measures in terms of the angle $\theta$.
+}
+\subexer{
+Write down the four expectation values $\langle A_1B_1\rangle$, $\langle A_1B_2\rangle$, $\langle A_2B_1\rangle$, and $\langle A_2B_2\rangle$ in terms of the angle $\theta$.
+}
+\subexer{
+Construct the CHSH value and find the angle $\theta$ that maximizes it.
+}
+}
 
-\exer{Calculate the value of $\mathcal{S}$ for a CHSH inequality based on \rdv{add some data here, whether real or fake.  Maybe one real one each from an IBM machine and the QuTools?}.}
+\exer{
+\emph{E91 with other Bell pairs.}
+We described E91 using \ket{\Psi^+} Bell pairs.
+Let's explore what happens when we use one of the other Bell pairs,
+\begin{equation}
+    |\Phi^+\rangle = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11}).
+\end{equation}
+\subexer{
+Compute the CHSH value $\mathcal{S}$ given in Eq.~(\ref{eq:CHSH-inequality-basis}). Did you expect this value?
+}
+\subexer{
+Write a new CHSH expression tailored to the new Bell pair $|\Phi^+\rangle$. Does it recover the expected violation of $\mathcal{S}=2\sqrt{2}$?
+}
+\subexer{
+What is maximum value of this new CHSH value if Alice and Bob only classical states?
+}
+\subexer{
+Write down a CHSH inequality for the state $|\Psi^-\rangle$.
+}
+}
 
-\exer{If the success probability for transmitting a photon through $1,120$km of fiber is $10^{-14}$, determine the loss per kilometer, in dB.}
+\exer{
+\emph{CHSH with noisy states.}
+Typically, the distributed entangled states will not be pure.
+Let's consider an imperfect source of entangled states, which produces the desired state \ket{\Psi^+} with probability $\operatorname{Pr}(\ket{\Psi^+})=1-p_{\epsilon}$.
+With equal probability the source produces one of the other Bell pairs, $\operatorname{Pr}(\ket{\Phi^+})=\operatorname{Pr}(\ket{\Phi^-})=\operatorname{Pr}(\ket{\Psi^-})=p_{\epsilon}$.
+\subexer{
+Write down the density matrix $\rho$ of the two-qubit state that the source generates in Dirac notation.
+}
+\subexer{
+Compute the CHSH value $\mathcal{S}$ for the desired output state \ket{\Psi^+} in terms of the error parameter $p_{\epsilon}$.
+}
+\subexer{
+Compute the fidelity $F$ of the mixed state $\rho$.
+}
+\subexer{
+Plot the CHSH value $\mathcal{S}$ and fidelity $F$ as functions of the error parameter $p_{\epsilon}$.
+}
+\subexer{
+At what value of the error parameter $p_{\epsilon}$ can we no longer guarantee that the state is entangled? What is the fidelity of such a state?
+}
+}
 
-\exer{On the Bloch sphere, the four basis choice angles for CHSH are 45\degree apart.  Derive an expression for the maximum $\mathcal{S}$ value as a function of that angle, assuming the four bases are all the same distance apart.  Prove that the canonical choice of 45\degree is optimal.}
-
+% \exer{
+% If the success probability for transmitting a photon through $1,120$km of fiber is $10^{-14}$, determine the loss per kilometer, in dB.
+% }
 \end{exercises}
+
+
+
 
 \newpage
 \section*{Quiz}
-  \addcontentsline{toc}{section}{Quiz}
+\addcontentsline{toc}{section}{Quiz}
 
 A quiz is available in the online learning system.
 
@@ -401,4 +487,6 @@ This paper is unfortunately behind a paywall but you should be able to access it
 A brief discussion of entanglement-based QKD can be also found in Chapter 12 of “Mike \& Ike”.
 
 The exact security statistics necessary for effective QKD protocols, whether BB84 or E91, are a complex matter.  Information reconciliation and privacy amplification are major research topics in their own right.
-%A paper on the topic for ambitious learners is \rdv{YYY}.
+Fantastic introduction to all these topics as well as other parts of quantum cryptography can be found in the following new book:
+
+Thomas Vidick, and Stephanie Wehner, \emph{Introduction to Quantum Cryptography} (2023)~\cite{vidick_wehner_2023}.
