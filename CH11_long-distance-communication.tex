@@ -415,11 +415,71 @@ However, we will see in the next Chapter that quantum problems require quantum s
 \newpage
 \begin{exercises}
 
-\exer{Confirm the calculation of 317 years to receive a single photon over 1,000 km of optical fiber.}
+\exer{
+\emph{Pulse broadening due to mode dispersion.}
+We would like to send a burst of light through a fiber of length $L$.
+The light rays enter the fiber simultaneously but at different angles $\theta$, given by some distribution $d(\theta)$.
+\subexer{
+Draw the shape of the input signal.
+}
+\subexer{
+What is the shape of the output signal if all light rays are incident onto the fiber core along the fiber's axis? What is the delay in the output signal?
+}
+\subexer{
+What is the shape of the output signal if all light rays are incident a the maximum acceptance angle $\theta_{\text{max}}$? What is the delay in the output signal?
+}
+\subexer{
+What is the shape of the output signal if the distribution of the incident angles is
+\begin{equation}
+    d(\theta) = \frac{\delta(0)+\delta(\theta-\theta_{\text{max}})}{2},
+\end{equation}
+that is half of the light rays are incident along the fiber's axis, and half are incident at the maximum acceptance angle? What is the delay in the output signal?
+}
+\subexer{
+Write some code that lets the user input an arbitrary distribution of angles $d(\theta)$, refractive indices of the core the core and cladding, and computes the shape of the output pulse.
+}
+}
 
-\exer{We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the fiber loss and the spacing of amplifiers in real-world deployments and the amount of gain an EDFA can generate.}
+\exer{
+\emph{Direct transmission of classical signals.}
+Consider a signal of some initial power $P_i$.
+After travelling in the fiber for length $L$, the power decreases to $P_o$.
+\subexer{
+How much of the initial signal remains if the signal undergoes a loss of 1 dB, 2 dB, 5 dB, 10 dB, and 50 dB?
+}
+\subexer{
+Plot the fraction of the remaining power of the signal, $P_o/P_i$, as a function of the number of dB.
+}
+\subexer{
+For each of the cases in subexercise \textbf{a)}, compute the attenuation parameter $\alpha$, if the length of the fiber is $L=10$ km.
+}
+}
 
-\exer{Write some code to simulate mode dispersion of a square wave as it passes down a multimode fiber of length $L$. Be sure to describe your setup and describe any approximations or assumptions you make.  You will want to make as many of the parameters as possible settable by the user.}
+\exer{
+\emph{Direct transmission of single photons.}
+Consider transmitting single photons through the fiber of length $L$.
+\subexer{
+Compute the probability of the photon being transmitted if it suffers loss of 1 dB, 2 dB, 5 dB, 10 dB, and 50 dB?
+}
+\subexer{
+Check the claim that we would need to wait 317 years on average to receive a photon sent through a 1000 km long fiber with attenuation parameter 0.1 dB/km, given the repetition rate is 1 Hz.
+}
+\subexer{
+How long would we expect to wait if the attenuation rate was 0.2 dB/km, but the repetition rate increased to 1 GHz?
+}
+}
+
+\exer{
+\emph{Amplification of classical signals.}
+We have seen how Eq.~(\ref{eq:decibels}) describes decrease in power of the classical signal as it propagates through a fiber.
+But decibels can describe power gain, that is amplification, as well.
+\subexer{
+Can you think of a way of altering Eq.~(\ref{eq:decibels}) such that it describes power gain in dB?
+}
+\subexer{
+We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the fiber loss and the spacing of amplifiers in real-world deployments and the amount of gain an EDFA can generate.
+}
+}
 
 \end{exercises}
 

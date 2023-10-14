@@ -37,15 +37,15 @@ The rules of the game are the following:
     \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
     \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
 
-    \node[state,fill=red!50]    (R)                     {R};
-    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
-    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
+    \node[state,fill=myred!50]    (R)                     {R};
+    \node[state,fill=mygreen!50]   (A)[below left of=R]    {A};
+    \node[state,fill=mygreen!50]   (B)[below right of=R]   {B};
 
     \path
-    (R) edge[bend right,above,red!60,thick]	node[yshift=1pt]{$x$}	(A)
-    (R) edge[bend left,above,red!60,thick]	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
-    (A) edge[bend right,left,newgreen,thick]	node[yshift=1pt]{$a$}	(R)
-    (B) edge[bend left,right,newgreen,thick]	node[yshift=2pt]{$b$}	(R);
+    (R) edge[bend right,above,myred!60,thick]	node[yshift=1pt]{$x$}	(A)
+    (R) edge[bend left,above,myred!60,thick]	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
+    (A) edge[bend right,left,mygreen,thick]	node[yshift=1pt]{$a$}	(R)
+    (B) edge[bend left,right,mygreen,thick]	node[yshift=2pt]{$b$}	(R);
 
     \end{tikzpicture}
     
@@ -67,9 +67,9 @@ Before discussing what an optimal strategy would look like, let's have a look at
         \hline
         & $x$ & $y$ & $a$ & $b$ & $x\cdot y$ & $a\oplus b$ \\
         \hline
-        \textbf{Round 1} & 0 & 1 & 0 & 1 & 0 & 1 & \textcolor{darkred}{Loss} \\
-        \textbf{Round 2} & 0 & 1 & 1 & 1 & 0 & 0 & \textcolor{newgreen}{Win} \\
-        \textbf{Round 3} & 1 & 1 & 1 & 0 & 1 & 1 & \textcolor{newgreen}{Win} \\
+        \textbf{Round 1} & 0 & 1 & 0 & 1 & 0 & 1 & \textcolor{myred}{Loss} \\
+        \textbf{Round 2} & 0 & 1 & 1 & 1 & 0 & 0 & \textcolor{mygreen}{Win} \\
+        \textbf{Round 3} & 1 & 1 & 1 & 0 & 1 & 1 & \textcolor{mygreen}{Win} \\
         \hline
     \end{tabular}
     \caption[CHSH game example.]{Three example rounds of the CHSH game.}
