@@ -230,7 +230,6 @@ Using the arrangement in Fig.~\ref{fig:13-BSA-clicks}, we can only implement a p
     \renewcommand\theadfont{}
     \makegapedcells
     \centering
-    \centering
     \begin{tabular}{cccc}
     \hline
         \textbf{Pattern}  & \textbf{Result} & \textbf{Reason} & \textbf{Action} \\
@@ -277,60 +276,102 @@ The extended list of these criteria, with the first five for quantum computing a
     \item Able to carry flying qubits long distances.
 \end{enumerate}
 
-First, if we want to build a good quantum computer, we need a well-defined qubit. Now, qubits don't come for free in nature. Usually, we have very complicated systems with many different energy levels. In order to have a well-defined qubit, we must be able to take a system for which we can address two of those energy levels, distinguish them and control them as a pair, without slipping into the other energy levels.  (Sometimes a third level is used as a temporary state to achieve certain effects such as emitting a photon, but the computation is done by restricting actions to the two levels we want to use.)
+If we want to build a good quantum computer, we need a \textbf{\emph{well-defined qubit}}.
+Qubits do not come for free in nature.
+Most naturally occurring systems have a complicated energy level structure.
+In order to have a well-defined qubit, we must be able to take a system for which we can address two of those energy levels, distinguish them and control them as a pair, without slipping into the other energy levels.
+(Sometimes a third level is used as a temporary state to achieve certain effects such as emitting a photon, but the computation is done by restricting actions to the two levels we want to use.)
 
-Second, we need to be able to initialize this qubit. Initialization is important because then we know exactly the state from which our quantum computation begins. If we have a good procedure for initializing our qubit, we are much more likely to carry out good quantum computation.  (This initialization also sometimes involves the temporary use of a third state.)
+Second, we need to be able to \textbf{\emph{initialize}} this qubit.
+Initialization is important because knowing the initial state of the system is crucial for computation.
+Without reliable initialization, we would always get a different answer to out problem.
+(This initialization also sometimes involves the temporary use of a third state.)
 
-Third, we want long lifetimes, meaning that when we put our qubits in a superposition of states, they don't decohere very quickly. Long lifetimes allow us to carry out longer and longer quantum computations, which of course we need if we want to solve harder and harder problems.  This criterion is especially important in quantum networking, as we will see below.
+Third, the qubits need to have \textbf{\emph{long lifetimes}}. This means that the state of qubit, particularly a superposition state, stays stable for a sufficiently long time such that the required operations can be applied to it.
+Long lifetimes allow us to carry out longer quantum computations, which we need if we want to solve harder problems.
+This criterion is especially important in quantum networking, as we will see below.
 
-Fourth, we must be able to implement a universal set of gates. Our qubit and our physical system typically have a couple of ways that the bit can be manipulated, with a parameter for how long we turn on the effect.  This set needs to be designed such that they can collectively produce an arbitrary unitary evolution. If we can rotate any point on the Bloch sphere to any other point and we can entangle two qubits, that is enough.
+Fourth, we must be able to implement a \textbf{\emph{universal set of gates}}.
+The physical system implementing a qubit dictates how we can interact with and manipulate the state of the qubit.
+Typically this is done with a set of laser pulses in the case of ion qubits sitting in a magnetic trap, or with microwave pulses in the case of superconducting qubits.
+If is usually difficult to implement an arbitrary operation with a single pulse.
+Luckily, any complicated operation can be broken down and approximated by a series of simpler operations.
+Usually, it is enough to be able to implement simple rotations of single qubits and apply entangling operations between two qubits.
 
-Fifth, of course, we need efficient measurements. Just carrying out transformations of the state in a quantum manner is not enough, we somehow we must extract the information at the end of the quantum computation.
+Fifth, we need \textbf{\emph{efficient measurements}}.
+Just carrying out transformations of the state in a quantum manner is not enough.
+We must extract the information from the physical system at the end of the quantum computation.
+The measurements process should be accurate with low probability of error, and should be able to be performed in a timely manner.
 
-In the context of quantum communication, we have two more requirements to consider. The first of these is conversion or entanglement between stationary and flying qubits, which we already saw earlier in this chapter. Stationary qubits are those qubits that are sitting in our quantum network nodes, loaded into the quantum memories.
-%They don't really move, which is why we call them stationary. 
-Flying qubits are those qubits that are used for entanglement swapping in the BSAs to create link level entanglement between between the quantum memories. We must be able to entangle photons (the flying qubits) with the stationary qubits inside the memories, but also we must be able to use entanglement swapping to create end-to-end entanglement.
+In the context of quantum communication, we have two more requirements to consider.
+The first of these is \textbf{\emph{conversion or entanglement }}between stationary and flying qubits, which we already saw earlier in this chapter.
+Stationary qubits are those qubits that are sitting in the quantum network nodes, loaded into the quantum memories. 
+Flying qubits are those qubits that are used for entanglement swapping in the BSAs to create link level entanglement between between the quantum memories.
+We must be able to entangle photons (the flying qubits) with the stationary qubits inside the memories, but also we must be able to use entanglement swapping to create end-to-end entanglement.
 
-Lastly, we also must be able to transport flying qubits over long distances.
+Lastly, we also must be able to \textbf{\emph{transport flying qubits}} over long distances.
+The physical system used for flying qubits needs to be robust enough to survive the long journey between the network nodes.
+It is for this reason that photons are a good physical system used for communication between distant nodes.
 
-Here, we will look at memory lifetime and the two communications requirements.
+In this Section, we will look at the memory lifetime, and the two communications requirements.
 
-Why is memory lifetime important? In computers, if our memory lifetime is long and our gate speeds are fast, we are able to implement longer, more complex computations.  Thus, the ratio of gate speed to memory lifetime is an important factor. In the context of quantum communication, we often store qubits for long periods of time without acting on them, as we await messages from partners in the network.  Therefore, what's really important is not the gate speed itself, but the ratio of memory lifetime to communication time, 
-provided that the gate time is short compared to the round trip time (RTT). 
+We mentioned already that the ratio of gate speed to memory lifetime is important in quantum computing.
+Longer memory lifetimes and shorter gate speeds let us carry out more complex calculations
+In the context of quantum communications, we often store qubits for long periods of time without acting on them, as we await messages from partners in the network.
+Therefore, what is more important is not the gate speed itself, but the ratio of memory lifetime to communication time, 
+provided that the gate time is short compared to the \textbf{\emph{round trip time (RTT)}}\index{rount trip time (RTT)}. 
 
-Let's consider how we establish link level entanglement. We start with quantum memories, and they emit photons. These photons are entangled with the memories, and they travel to a Bell state analyzer that is halfway between the quantum nodes. The BSA performs a Bell-state measurement, but then it communicate classically back to the nodes about the outcome of the Bell-state measurements. The photon going one way and the classical message returning is our node-to-BSA round trip time~\footnote{RTT for a link can be node to BSA and back again in some contexts, or all the way memory node to memory node and back again in others. It should be clear from the context which we mean.}. If our memory lifetime is shorter than the RTT, then we cannot really do much. Even if we successfully perform the Bell-state measurements on those photon pairs, by the time the return messages are received, our memories will have decohered and are not useful anymore.
+Let's consider how we establish link level entanglement using the MIM architecture.
+The quantum memories emit photons entangled with their respective memory.
+These photons are guided by the optical fiber to the BSA, where they get get measured in the Bell basis.
+The BSA then communicates the outcome of the measurement back to the  network nodes via a classical message.
+The total time needed for the emitted photon to reach the BSA and the classical message to reach the node holding the quantum memory is the round trip time~\footnote{RTT for a link can be node to BSA and back again in some contexts, or all the way memory node to memory node and back again in others. It should be clear from the context which we mean.}.
+If the memory lifetime is shorter than the RTT, then we cannot reliably establish the link-level entanglement.
+Even if we successfully perform the Bell-state measurements on the photon pairs at the BSA, by the time the return messages are received, our memories will have decohered and are not useful anymore.
 
-To give an idea of the latencies that we're talking about, see Tab.~\ref{tab:rtt}. The speed of light in a fiber is approximately $0.2$ meters per nanosecond,
-%two hundred millimeters per nanosecond, 
-so if our nodes are one kilometer apart, one round trip from one node to the other and back takes ten microseconds. For a hundred kilometers, it increases to one millisecond, and for ten thousand kilometers it goes all the way up to a hundred milliseconds (0.1 seconds) per round trip time.  The values \emph{five nanoseconds per meter one way} and \emph{10 microseconds per km round trip} are easy metrics to remember.
+Table~\ref{tab:rtt} shows some typical RTTs for various length of fiber.
+The speed of light in a fiber is approximately $0.2$ meters per nanosecond, so if our nodes are one kilometer apart, one round trip from one node to the other and back takes 10 microseconds. For a hundred kilometers, it increases to one millisecond, and for ten thousand kilometers it goes all the way up to 100 milliseconds (0.1 seconds) per round trip time.
+The values \textbf{\emph{five nanoseconds per meter one way}} and \textbf{\emph{10 microseconds per km round trip}} are easy metrics to remember.
 
 \begin{table}
-\centering
-\begin{tabular}{l|r}
-distance (km)  & RTT in fiber \\\hline
-1     & $10\mu$sec \\
-10    & $100\mu$sec \\
-100   & $1$msec \\
-1,000 & $10$msec \\
-10,000 & $100$msec
-\end{tabular}
-\caption{Round trip times in optical fiber.}
-\label{tab:rtt}
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{cc}
+    \hline
+    \textbf{distance (km)}  & \textbf{RTT in fiber} \\
+    \hline
+    1     & $10\mu$sec \\
+    10    & $100\mu$sec \\
+    100   & $1$msec \\
+    1,000 & $10$msec \\
+    10,000 & $100$msec \\
+    \hline
+    \end{tabular}
+    \caption{Round trip times in optical fiber.}
+    \label{tab:rtt}
 \end{table}
 
-What processes degrade our memories? The two main processes are \emph{energy relaxation}\index{energy relaxation} and \emph{dephasing}\index{dephasing}, and they are characterized by two different time scales, referred to as the $T_1$ time\index{$T_1$ time} scale and the $T_2$ time\index{$T_2$ time} scale.  $T_1$ characterizes the energy relaxation time, whereas $T_2$ gives us the characteristic dephasing time. First, let's consider the energy relaxation time given by $T_1$.
+What processes degrade the quantum memories?
+The two main processes are \textbf{\emph{energy relaxation}}\index{energy relaxation} and \textbf{\emph{dephasing}}\index{dephasing}.
+They are characterized by two different time scales, referred to as the $T_1$ time\index{$T_1$ time} scale and the $T_2$ time\index{$T_2$ time} scale, respectively.
 
+Let's consider the energy relaxation time, given by $T_1$, first.
+The two states of the physical system encoding the qubit often have different energies.
+All physical systems have the tendency to try and seek the lowest energy state.
+So a system initialized in the excited state will not stay there indefinitely, eventually it will lose energy and transition to a state of lower energy.
+Typically, the lower-energy state is chosen to encode a \ket{0}, while the higher-energy state encodes a \ket{1}.
+Of course that choice is by convention, not an immutable fact of physics.
+The relaxation time $T_1$ measures at what time scales the qubit relaxes and undergoes the transition $\ket{1}\rightarrow\ket{0}$.
+It tells the probability that a qubit initialized in \ket{1} is still in that state after time $t$,
 \begin{equation}
-\begin{aligned}
-&T_1:|1\rangle \rightarrow|0\rangle \\
-&\operatorname{Prob}(\ket{1})=e^{-t / T_1}
-\end{aligned}
+    \operatorname{Prob}(\ket{1})=e^{-t / T_1}.
 \end{equation}
+The probability that after $T_1$ seconds we still find our state in \ket{1} is given by $\frac{1}{e}$.
 
-This basically tells us how quickly our qubit decays from the excited state to the ground state, or from state \ket{1} into state \ket{0}. If we initialize our state in \ket{1}, the probability that after some time $t$ we still find it in the state \ket{1} is given by the expression $e^{-t/T_1}$. The probability that after $T_1$ seconds we still find our state in \ket{1} is given by $\frac{1}{e}$. This process of going from \ket{1} to \ket{0} captures the fact that usually \ket{1} is encoded into a state of our quantum memory that has a higher energy, while \ket{0} in a lower-energy state such as the ground state. (Of course that choice is by convention, not an immutable fact of physics.)  That's why we call $T_1$ the energy relaxation time.
-
-The dephasing time gives us the time scale for the loss of phase coherence in our qubit. If we are only use qubits to implement classical communication,  $T_1$ is important but  $T_2$ not so much, because there is no quantum coherence and we are not using superpositions. But in quantum networking and quantum communication, superpositions are crucial, and those superpositions can be destroyed by this dephasing process.
-
+The dephasing time tells us about the time scale of losing phase coherence in the qubit.
+It tells us how quickly superpositions are washed out and the qubit decoheres and loses its wonderful quantum properties.
 If we start in an equal superposition of \ket{0} and \ket{1} (the \ket{+} state), $T_1$ is the characteristic time scale that tells us when we will end in a completely mixed state,
 \begin{equation}
 \begin{aligned}
