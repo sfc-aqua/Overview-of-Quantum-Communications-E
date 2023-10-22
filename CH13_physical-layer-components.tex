@@ -370,108 +370,227 @@ It tells the probability that a qubit initialized in \ket{1} is still in that st
 \end{equation}
 The probability that after $T_1$ seconds we still find our state in \ket{1} is given by $\frac{1}{e}$.
 
-The dephasing time tells us about the time scale of losing phase coherence in the qubit.
-It tells us how quickly superpositions are washed out and the qubit decoheres and loses its wonderful quantum properties.
-If we start in an equal superposition of \ket{0} and \ket{1} (the \ket{+} state), $T_1$ is the characteristic time scale that tells us when we will end in a completely mixed state,
+The dephasing time $T_2$ tells us about the time scale of a different decoherence process, namely the loss of phase coherence in the qubit.
+Unlike the relaxation process, the qubit does not necessarily lose energy, but its phase between the states \ket{0} and \ket{1} becomes uncertain over time.
+The $T_2$ time tells us how quickly superpositions are washed out and the qubit decoheres and loses its wonderful quantum properties.
+If we start in an equal superposition of \ket{0} and \ket{1} (the \ket{+} state), the dephasing process spreads the Bloch vector corresponding to \ket{+} around the equator of the Bloch sphere.
+The fully dephased state of the qubit is then an equal mixture,
 \begin{equation}
-\begin{aligned}
-\rho_{\textrm{completely mixed}} =\frac{\ketbra{0}{0}+\ketbra{1}{1}}{2}.
-\end{aligned}
+    \rho = \frac{1}{2} ( \ketbra{+}{+}+\ketbra{-}{-} ) = \frac{1}{2} ( \ketbra{0}{0}+\ketbra{1}{1} ) = \frac{I}{2}.
 \end{equation}
-In Sec.~\ref{sec:3-3_density_matrices}, we saw the crucial difference between complete mixtures and equal superpositions. Here, if we prepare the state in the pure state, after some time $t$ we will have the mixed state
-% $T_2:|+\rangle \rightarrow$ completely mixed state
-\begin{equation}
-\begin{aligned}
-\rho=P|+\rangle\langle+|+\left(\frac{1-P}{2}\right)(|0\rangle\langle 0|+| 1\rangle\langle 1|)\text{, where }  P=e^{-t / T_2}.
-\end{aligned}
-\end{equation}
-With probability $P$, we will still be in the ideal initial state, and with probability $1-P$, we will have decohered into a completely mixed state. Both of these processes, the relaxation process and the dephasing process, are \emph{Poisson processes}\index{Poisson process}. It's a little bit ironic since we're talking about memories, but these processes are also called \emph{memoryless decay processes}\index{memoryless decay process}, meaning that their past history doesn't matter, only their current state.
 
-Now that we have talked about the lifetimes of memories and why they are important, and given some characteristic time scales for long-distance communication, let's address the question of how we actually entangle atoms and photons.
+In Sec.~\ref{sec:3-3_density_matrices}, we saw the crucial difference between complete mixtures and equal superpositions. Here, if we prepare the state in the pure state, after some time $t$ we will have the mixed state,
+\begin{equation}
+    \rho = P |+\rangle\langle+| + (1-P)\frac{I}{2} \quad \text{, where }  P=e^{-t / T_2}.
+\end{equation}
+With probability $P$, the state of the qubit will still be the initial \ket{+}, and with probability $1-P$, it will have decohered into a completely mixed state.
+
+Both of these processes, the relaxation process and the dephasing process, are \textbf{\emph{Poisson processes}}\index{Poisson process}.
+It is a little bit ironic since we are talking about memories, but these processes are also called \textbf{\emph{memoryless decay processes}}\index{memoryless decay process}, meaning that their past history does not matter, only their current state.
+
+Now that we have talked about the lifetimes of memories, why they are important, and given some characteristic time scales for long-distance communication, let's address the question of how atoms can be entangled with photons at the physical level.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson13/13-4_memory-first.pdf}
-    \caption[First idea for memory]{Our first idea for a memory qubit is to use two energy levels of a system, such as ground and excited states of an atom.}
+    \caption[First idea for memory.]{Our first idea for a memory qubit is to use two energy levels of a system, such as ground and excited states of an atom.}
     \label{fig:13-memory-first}
 \end{figure}
 
-First, where is our qubit \ket{0} and \ket{1} in our quantum memory? Our quantum memory is a two-level system, and it has a ground state \ket{g}, and some excited state of higher energy which we can label \ket{e}. These are natural candidates for representing \ket{0} and \ket{1}. For example, Fig.~\ref{fig:13-memory-first} shows a two-level atom where $\ket{0}\equiv\ket{g}$ and $\ket{1}\equiv\ket{e}$. Now, how do we represent the flying qubit so that it works well with this memory qubit definition? One possibility is to use the presence or absence of a photon as a qubit, giving the definitions $\ket{0}\equiv\ket{\textrm{no photon}},\ket{1}\equiv\ket{\textrm{photon}}$.
-We can see that if the atom decays from the excited state into its ground state, that is, it makes a transition from \ket{1} to \ket{0}, it emits a photon.
+First we should consider what states of the atom represent the qubit basis states \ket{0} and \ket{1} in the quantum memory?
+Natural choice, though not the only one, for the state \ket{0} is to use the ground state of the atom, denoted by \ket{\textrm{g}}.
+The other computational basis state of the qubit, \ket{1}, is then represented by one of the excited states of the atom, denoted by \ket{\textrm{e}}.
+Fig.~\ref{fig:13-memory-first} shows a two-level atom where $\ket{0}\equiv\ket{\textrm{g}}$ and $\ket{1}\equiv\ket{\textrm{e}}$.
 
-%\rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
+Next, what states of the photon can we use to represent the basis states of the flying qubit?
+One possibility is to use the presence or absence of a photon as a qubit, giving the representation $\ket{0}\equiv\ket{\textrm{no photon}},\ket{1}\equiv\ket{\textrm{photon}}$.
+We can see in the middle panel of Fig.~\ref{fig:13-memory-first} that if the atom decays from the excited state into its ground state, it emits a photon.
+The total state of the quantum memory and the flying photon undergoes the following transition,
 \begin{equation}
-\begin{array}{ll}
-\text{memory qubit} & \text{flying qubit} \\
-
-|0\rangle \equiv|g\rangle \quad \text { ground state } & \quad|0\rangle \equiv \mid \text {no photon}\rangle \\
-|1\rangle \equiv|e\rangle \quad \text { excited state } & \quad|1\rangle \equiv \mid \text {photon}\rangle \\
-\end{array}
+    \ket{\textrm{e}}\ket{\textrm{no photon}} \rightarrow \ket{\textrm{g}}\ket{\textrm{photon}}.
+    \label{eq:memory-photon-emit}
 \end{equation}
+The summary of the representations for the quantum meory and the flying qubits is shown in Tab.~\ref{tab:physical_representation}.
+\begin{table}
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccc}
+    \hline
+    & \textbf{quantum memory} & \textbf{flying qubit} \\
+    \hline
+    \textbf{physical system} & two-level atoms & emitted photons \\
+    \boldmath\ket{0} & \ket{\textrm{g}} & \ket{\textrm{no photon}} \\
+    \boldmath\ket{1} & \ket{\textrm{e}} & \ket{\textrm{photon}}\\
+    \hline
+    \end{tabular}
+    \caption{Physical representation for the quantum memory and the flying qubits.}
+    \label{tab:physical_representation}
+\end{table}
 
-Now, how about coherences and superpositions? We can prepare our memory in a superposition of the ground state and the excited state by applying an appropriately timed energy pulse. If we use this state representation for memory, then our question is, "Well, what happens when we prompt the atom to emit a photon? Does it get emitted, or does it not get emitted? If it does get emitted, in what state will it be?" We see that the atom has a 50\% probability to be found in the ground state, where it cannot emit any energy. In that case, our photonic qubit will be in the \emph{no photon}, or \ket{0}, state. The atom also has a 50\% probability of being in the excited state, from where it can emit a photon. In this way, we can think about our photonic qubit as being in a superposition of \ket{0} and \ket{1}, or \ket{\textrm{no photon}} and \ket{\textrm{photon}}.
-Since this this technique leaves the memory qubit in \ket{0}, we can say that it transfers the state \ket{+} from the atomic memory to the flying qubit. 
-
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{lesson13/memory-first-idea-problem.png}
-%     \caption[Problem with our first idea for memory]{Our first idea for a memory qubit appears to have a clean correspondence with the flying qubit, but then loss of the photon can make the state ambiguous.}
-%     \label{fig:13-memory-first-problem}
-% \end{figure}
+We may now ask whether the emitted photon is entangled with the memory.
+We saw in Eq.~\ref{eq:memory-photon-emit} that if the atom is prepared in the excited state \ket{\textrm{e}}, the memory-photon total state is not entangled.
+We may try a different approach of initializing the atom in a superposition state $(\ket{\textrm{g}}+\ket{\textrm{e}})/\sqrt{2}$.
+Let's write out the total memory-photon state step-by-step,
+\begin{align}
+    \frac{1}{\sqrt{2}}\left( \ket{\textrm{g}}+\ket{\textrm{e}} \right) \ket{\textrm{no photon}} & = \frac{1}{\sqrt{2}} \left( \ket{\textrm{g}}\ket{\textrm{no photon}} + \ket{\textrm{e}}\ket{\textrm{no photon}} \right) \nonumber\\
+    & \rightarrow \frac{1}{\sqrt{2}} \left( \ket{\textrm{g}}\ket{\textrm{no photon}} + \ket{\textrm{g}}\ket{\textrm{photon}} \right) \nonumber\\
+    & = \frac{1}{\sqrt{2}} \ket{\textrm{g}} \left( \ket{\textrm{no photon}} + \ket{\textrm{photon}} \right)
+    \label{eq:memory-photon-superpostion}
+\end{align}
+We see that the atom has a 50\% probability to be found in the ground state initially, where it cannot emit any energy.
+In that case, our photonic qubit will be in the \textbf{\emph{no photon}} state.
+The atom also has a 50\% probability of being in the excited state, from where it can emit a photon.
+The final state of the photon is a superposition of both being and not being emitted.
+The initial superposition of the atom has been transferred to the photon.
+However, we can clearly see from Eq.~(\ref{eq:memory-photon-superpostion}) that the memory is entangled with the flying photon.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.3\textwidth]{lesson13/13-4_memory-second.pdf}
-    \caption[Our second idea for memory]{Our second idea for a memory qubit is to use the post-decay spin of an atom. This allows us to use a polarized photon as a flying qubit robust against loss.}
+    \caption[Our second idea for memory.]{Our second idea for a memory qubit is to use the ground-state spin of an atom. This allows us to use a polarized photon as a flying qubit robust against loss.}
     \label{fig:13-memory-second-idea}
 \end{figure}
 
-This is a very naive picture that demonstrates only some of the basic principles of how stationary and flying qubits interact. In real systems, things are a lot more complicated. In particular, when we look at this encoding of using two levels for our quantum memory, it is usable but it's not a very good qubit for communication. Due to the energy relaxation process, our excited state will eventually decay into a \ket{0}, destroying whatever state we had encoded into the quantum memory. Similarly, our choice of encoding for the flying qubit is not very good due to the attenuation of light in fiber. 
-% We described it in some detail that as we send photons down a fiber, attenuation means they are very likely to be lost. 
-If we are waiting for some message at the end of the fiber and we don't receive a photon, we cannot be sure if the original message was really \ket{\textrm{no photon}} (\ket{0}), or if the initial message was \ket{\textrm{photon}} (\ket{1}) and the photon just got lost along the way. So, we have to be a little bit more careful and think of a better, more robust way to encode our information.
+This is a naive picture that demonstrates some of the basic principles of how stationary and flying qubits interact.
+However, it suffers from a few important shortcomings.
+The first one being the robustness of the encoding for the quantum memory.
+Using the excited state \ket{\textrm{e}} to represent one of the computational basis states makes the memory susceptible to energy relaxation, characterized by the $T_1$ time.
+Depending on the rate of energy relaxation and round trip times required, the state stored in the quantum memory might decohere and become useless.
+Second, our choice of encoding for the flying qubit is not suitable due to the attenuation of light in fiber. 
+If we are waiting for a message at the end of the fiber and we do not receive a photon, we cannot be sure if the original message was really \ket{\textrm{no photon}} (\ket{0}), or if the initial message was \ket{\textrm{photon}} (\ket{1}) and the photon just got lost along the way.
+To fix these two problems, we will now introduce a slightly more complex version of the atom for the quantum memory and a less ambiguous encoding for the flying qubit.
 
-What's our next choice for stationary memory qubit and flying qubit?
+Figure~\ref{fig:13-memory-second-idea} shows the new atomic structure for quantum memory.
+The ground state is now degenerate~\footnote{Meaning ``having the same energy''; no moral weakness implied.}, and spanned by two orthogonal states.
+The two ground states are distinguished by their spin.
+One is spin\index{spin} up \ket{\uparrow}, and the other is spin down \ket{\downarrow}.
+Suitable encoding for the flying qubit is the linear polarization of the photon.
+State \ket{0} is represented by vertical polarization \ket{V}, and \ket{1} is represented by horizontal polarization \ket{H} as we saw at the beginning of this chapter.
+This new representation is summarized in Tab.~\ref{tab:physical_representation_updated}.
+\begin{table}
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccc}
+    \hline
+    & \textbf{quantum memory} & \textbf{flying qubit} \\
+    \hline
+    \textbf{physical system} & ground state spin & linear polarization \\
+    \boldmath\ket{0} & \ket{\uparrow} & \ket{V} \\
+    \boldmath\ket{1} & \ket{\downarrow} & \ket{H}\\
+    \hline
+    \end{tabular}
+    \caption{New physical representation for the quantum memory and the flying qubits.}
+    \label{tab:physical_representation_updated}
+\end{table}
 
-Consider the following atomic structure: we have two degenerate~\footnote{Meaning "having the same energy"; no moral weakness implied.} ground states, and we will label them as ground state up (\ket{\uparrow}) and ground state down (\ket{\downarrow}), as shown in Fig.~\ref{fig:13-memory-second-idea}. These can represent the two spins\index{spin} of our atom.
-For our flying qubits, the matching state will be polarization, where \ket{0} will be represented by vertical polarization (\ket{V}), and \ket{1} will be represented by horizontal polarization (\ket{H}). 
-
-% \rdv{layout here isn't quite right, words in the middle should really be grouped with equations on the left}
+Let's see how this representation leads to an entangled memory-photon pair.
+We start by preparing the atom in the excited state \ket{\textrm{e}}.
+The atom has a 50-50 probability of decaying either to the spin up \ket{\uparrow} or the spin down \ket{\downarrow} ground state.
+If the atom decays into the \ket{\uparrow} state, the emitted photon will be polarized in the \ket{V} state. 
+If the atom decays into the spin \ket{\downarrow} state, the photon will be polarized in the \ket{H} state.
+Since we do not know the polarization of the emitted photon until we measure it, the total memory-photon state is an equal superposition of the two possibilities.
+We can write this transformation as
 \begin{equation}
-\begin{array}{ll}
-\text{memory qubit} & \text{flying qubit} \\
-|0\rangle \equiv|\uparrow\rangle \text { spin up } & |0\rangle \equiv|V\rangle \\
-|1\rangle \equiv|\downarrow\rangle \text { spin down } & |1\rangle \equiv|H\rangle
-\end{array}
+    \ket{\textrm{e}} \rightarrow \frac{1}{\sqrt{2}} \left( \ket{\uparrow}\ket{V}+\ket{\downarrow}\ket{H} \right).
 \end{equation}
-
-We prepare our atom initially in the excited state, then stimulate the atom to decay, either to the ground state with spin up, or to the ground state with spin down, each with 50\% probability.  If the atom decays into the spin up state, the emitted photon will be vertically polarized.  If the atom decays into the spin down state, the photon will be horizontally polarized.  The thing is, we can only see that a photon comes out, and we don't actually know into which ground state the atom decayed. We are effectively implementing the following transformation: we go from the excited state of the atom to a superposition of the atom being found in the spin up state and the spin down state. 
-%If that's true, then the photon that gets emitted just happens to have a vertical polarization. On the other hand, if it decays into the other ground state given by spin down, then the photon will have a horizontal polarization. So really, what we are doing is we are obtaining the following superposition of two qubits (top right eq.). 
-Moreover, since the state of the emitted photon depends on the final state of the atom, we now have an equal superposition of the atom being in the spin up state and the emitted photon being vertically polarized, and the atom being found in the spin down state and the photon being horizontally polarized. We can write this transformation as
-\begin{equation}
-\ket{e} \rightarrow \frac{\ket{\uparrow V}+\ket{\downarrow H}}{\sqrt{2}}
-\end{equation}
-where the up and down arrows represent the post-decay state of the atom and the letters represent the polarization of the emitted photon.  (The left hand side of the equation has no photon, only the state of the atom.) In this way, we are entangling the flying photon with the stationary qubit of the memory.
-
-Fig.~\ref{fig:13-MIM-energy} brings this all back to a concrete representation of our Bell-state analyzer. We have drawn this before very abstractly, but now we have a much better idea how to make it work in practice. In the middle are the two single-mode fibers. On the left are the two quantum memories at our two repeater nodes, separated by some distance, represented by their energy level diagrams. Each memory is prepared initially in the excited state \ket{e}, which decays into one of its ground states, either spin up \ket{\uparrow} or spin down \ket{\downarrow}. We don't know which state it decays into, leaving us with a flying photon that is entangled with its respective memory. These flying photons travel through the single mode fibers, then hit the central beam splitter, where (if all goes well) they interfere and we perform a Bell-state measurement using the other two beam splitters and the four detectors. In this way, we can establish link-level entanglement between the atomic memories sitting at the ends of the link. This is exactly the scheme that we have described previously for a midpoint-interference-memory (MIM) link. In terms of physics is the same as a direct memory-to-memory connection (MM).
+This is clearly an entangled state of the quantum memory and the flying qubit required by most of the link-level architectures we studied in Sec.~\ref{sec:12-2_making_link_level_rantanglement}.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{lesson13/13-4_MIM_with_energy_levels.pdf}
-    \caption[MIM with energy levels]{A different view of an MIM link. On the left are the energy level diagrams for the qubits, which decay into a superposition of two states while emitting photons entangled with the memories. On the right is a large view of the Bell state analyzer with three beam splitters and four photon detectors.}
+    \caption[Physical implementation of the MIM link.]{A different view of an MIM link. On the left are the energy level diagrams for the qubits, which decay into a superposition of two states while emitting photons entangled with the memories. On the right is a large view of the Bell state analyzer with three beam splitters and four photon detectors.}
     \label{fig:13-MIM-energy}
 \end{figure}
+
+Fig.~\ref{fig:13-MIM-energy} brings this all back to a concrete representation of our Bell-state analyzer.
+So far, we have discussed the BSA only abstractly but now we have a much better idea how to make it work in practice.
+In the middle are the two single-mode fibers.
+On the left are the two quantum memories at our two repeater nodes, separated by some distance, represented by their energy level diagrams.
+Each memory is prepared initially in the excited state \ket{\textrm{e}}, which decays into one of its ground states, either spin up \ket{\uparrow} or spin down \ket{\downarrow}.
+We do not know which state it decays into, leaving us with a flying photon that is entangled with its respective memory.
+These flying photons travel through the single mode fibers, then hit the central beam splitter, where (if all goes well) they interfere and we perform a Bell-state measurement using the setup we discussed in Sec.~\ref{sec:bell-state-measurements-II}.
+In this way, we can establish link-level entanglement between the atomic memories sitting at the ends of the link.
+This concludes our discussion of the physical implementation of the MIM link architecture.
+In fact out discussion applies to the MM link architecture as well, we just need to place the BSA inside one of the nodes.
+Addition of a source of entangled photon pairs, such as the one we discussed in Sec~\ref{sec:4-4_spdc} would cover also the physical implementation of the MSM link architecture.
+
+
 
 
 
 
 \newpage
 \begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
+\exer{
+\emph{Bell-state measurement revisited.}
+Let's explore the quantum circuit for a Bell-state measurement in Fig.~\ref{fig:13-2_measurementBell} a bit more detail.
+\subexer{
+Consider the qubits to be initialized in \ket{11} state.
+What are the probabilities of the four measurement outcomes?
+}
+\subexer{
+How do the probabilities change when the input state is \ket{\Phi^+}?
+}
+\subexer{
+What input state should be used if the desired measurement outcome is $c_1=1$ and $c_2=1$?
+}
+}
+
+\exer{
+\emph{Measurement in the graph-state basis.}
+We have seen how to describe Bell-state measurements using the language of quantum circuits in Sec.~\ref{sec:bell-state-measurements-I}.
+In this exercise, we will explore a two-qubit measurement in a different but related basis.
+\subexer{
+Two-qubit graph state is an entangled state that is related to the Bell states,
+\begin{equation}
+    \ket{G_{00}} = I \otimes H \ket{\Phi^+}.
+    \label{eq:graph-state-G00}
+\end{equation}
+Write down the graph state \ket{G_{00}} in Dirac notation.
+}
+\subexer{
+Just like there are four Bell states, there are four orthogonal graph states,
+\begin{equation}
+    \ket{G_{mn}} = Z^m \otimes Z^n \ket{G_{00}}.
+\end{equation}
+Write down all four of these states in Dirac notation, and verify they are orthogonal.
+}
+\subexer{
+Draw the quantum circuit that prepares the state \ket{G_{00}}, given the input qubits are both initialized in the \ket{0} state.
+}
+\subexer{
+Draw the quantum circuit representation for a measurement in the graph state basis.
+}
+}
+
+\exer{
+\emph{Round trip time and decohering memories.}
+Consider the MIM link architecture with memories that are affected by depolarizing noise with $T_1=100\mu$s.
+\subexer{
+Assume that the state of the memory-photon immediately after the photon emission is
+\begin{equation}
+    \ket{\Psi}_{\textrm{mem-phot}} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow}\ket{V} + \ket{\downarrow}\ket{H} \right).
+\end{equation}
+What is the fidelity of this state after time $t$ that the photon has spent in flight? 
+}
+\subexer{
+Assume that the distance of the BSA to either of the memories is $d=25$ km, and that the BSA succeeds without introducing any noise.
+What is the fidelity of the Bell pair shared between the quantum memories immediately after the BSA completes?
+}
+\subexer{
+The BSA communicates the success of entanglement swapping to the nodes.
+What is the fidelity of the Bell pair after the nodes receive the classical BSA message.
+}
+\subexer{
+Consider using a better quantum memory with $T_1=10$ ms.
+What is the fidelity of the memory-memory Bell pair after receiving the BSA message?
+}
+}
+
 
 
 \end{exercises}
@@ -487,13 +606,11 @@ Fig.~\ref{fig:13-MIM-energy} brings this all back to a concrete representation o
 
 {\bf Chapter 11}
 
-For those interested in how submarine fiber optic cables are made, laid and operated we recommend the following online article found here.\rdv{where???}
-
 Our discussion of mode dispersion closely followed Section 5.6 of Hecht’s textbook and we encourage you to read it for the extra details that can be found in the book.
 
 A qualitative review of classical amplifiers (with just the right amount of technical detail) can be found here:
 
-Emmanuel Desurvire, The Golden Age of Optical Fiber Amplifiers, \emph{Physics Today} 47, 20 (1994).
+Emmanuel Desurvire, The Golden Age of Optical Fiber Amplifiers, \emph{Physics Today} 47, 20 (1994)~\cite{desurvire1994golden}.
 
 Unfortunately, this article is behind a paywall so you will have to use your university’s online system to access it.
 
@@ -501,9 +618,9 @@ Unfortunately, this article is behind a paywall so you will have to use your uni
 
 Quantum repeaters are the "bread and butter" of quantum networks. The names Wolfgang D\"ur and Hans Briegel cannot be mentioned often enough in the history of repeaters. Those interested in the paper that introduced the idea of a quantum repeater (and are not scared off by maths) might have a look here:
 
-Hans J. Briegel, Wolfgang Dür, Juan I. Cirac, Peter Zoller, Quantum repeaters: The role of imperfect local operations in quantum communication, \emph{Physical Review Letters} 81, 5932, 1998~\cite{briegel98:_quant_repeater}.
+Hans J. Briegel, Wolfgang Dür, Juan I. Cirac, Peter Zoller, Quantum repeaters: The role of imperfect local operations in quantum communication, \emph{Physical Review Letters} 81, 5932, (1998)~\cite{briegel98:_quant_repeater}.
 
-The paper is behind a paywall and needs to be accessed through your university’s library online services. An earlier version of the paper can be accessed openly here.
+The paper is behind a paywall and needs to be accessed through your university’s library online services.
 
 One place to learn more is Prof. Van Meter's previous book,\\
 Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014~\cite{van-meter14:_quantum_networking}.
@@ -513,10 +630,10 @@ Rodney Van Meter, \emph{Quantum Networking}, Wiley-ISTE, 2014~\cite{van-meter14:
 {\bf Chapter 13}
 
 A great popular article about the physical layer components of quantum networks can be found here:
-Dan Hurley, The quantum internet will blow your mind. Here’s what it will look like, \emph{Discover Magazine}, 2020.
+Dan Hurley, The quantum internet will blow your mind. Here’s what it will look like, \emph{Discover Magazine}, 2020~\cite{hurley2020quantum}.
 
 Another fantastic review of physical layer components can be found here:
 
 Nicolas Sangouard, Christoph Simon, Hugues de Riedmatten, Nicolas Gisin, Quantum repeaters based on atomic ensembles and linear optics, \emph{Review of Modern Physics} 83, 33, 2011~\cite{sangouard2011quantum}.
 
-Again, the published version is behind a paywall but the pre-publication version can be accessed for free here. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.
+Again, the published version is behind a paywall. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.
