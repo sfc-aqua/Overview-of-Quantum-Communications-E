@@ -1,6 +1,7 @@
 \chapter{Quantum Internet}
 
-In this chapter, we conclude the book with a discussion of extending from the technologies we have developed throughout the book to a full \emph{Quantum Internet}, a global network of quantum networks. We also give some thoughts about developing \emph{standards} for quantum communications, and how understanding quantum communication can lead to a variety of careers in quantum. This chapter is presented as a dialog between the two main authors. It is adapted and updated from the video transcripts and edited for clarity and accuracy, and hence is not a direct transcript.
+In this chapter, we conclude the book with a discussion of extending from the technologies we have developed throughout the book to a full \textbf{\emph{Quantum Internet}}\index{quantum Internet}, a global network of quantum networks.
+We also give some thoughts about developing \textbf{\emph{standards}}\index{standards} for quantum communications, and how understanding quantum communication can lead to a variety of careers in quantum. This chapter is presented as a dialog between the two main authors. It is adapted and updated from the video transcripts and edited for clarity and accuracy, and hence is not a direct transcript.
 
 \section{Networks of networks}
 
@@ -8,39 +9,36 @@ In this chapter, we conclude the book with a discussion of extending from the te
 
 So, welcome to chapter fifteen: Quantum Internet.
 
-%Up until this point, I've been behind the camera instead of in front of it, but we thought we'd do this last chapter together.
-
 \mmm Well, sad to say, we've reached the end!
 
 So, what is the Quantum Internet?
 Let's begin with the phrase ``network of networks''.
-This is a combination of words that you've been hearing quite a lot throughout this book, and here we will give you a slightly more concrete idea of what it really means.
+This is a combination of words that you have been hearing quite a lot throughout this book, and here we will give you a slightly more concrete idea of what it really means.
 
 \rrr First off, the (classical) Internet is this really complicated thing. There are a whole bunch of individual networks, and a whole bunch of individual nodes that make up each network. So the global Internet is a ``network of networks''. Let's see a little bit about how that works.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\textwidth]{lesson15/R2L15fig1.pdf}
-    \caption[Network of Networks]{Across an internetwork, a connection passes through many separate, independently managed networks that cooperate with each other for communication purposes.  The internal structure of each network is opaque to any node that is not a member of that network; outsiders know only that the network agrees to facilitate communication between neighboring networks.}
+    \caption[Network of Networks.]{Across an internetwork, a connection passes through many separate, independently managed networks that cooperate with each other for communication purposes. The internal structure of each network is opaque to any node that is not a member of that network; outsiders know only that the network agrees to facilitate communication between neighboring networks.}
     \label{fig:15-1-NofN}
 \end{figure}
 
-
 Assume you want to start in the upper left-hand corner of Fig.~\ref{fig:15-1-NofN}. Your home network is the blue network, and you want to connect to some service that's out on the green network, and you have to get there through the series of pink networks. Michal, how are we going to get there?
 
-\mmm Well, we don't actually know, because we are on the blue network, we just tell the Internet, ``get us there'' and magically it happens!
+\mmm Well, we do not actually know, because we are on the blue network, we just tell the Internet, ``get us there'' and magically it happens!
 
-\rrr We have this path that we've sketched out here on this arbitrary sort of network. The reality is that you're connected to one network and your traffic is going to go from your current location to what's called a \emph{gateway}\index{gateway} to the outside world (also called a \emph{border router}\index{border router}), and from there your traffic will hop across some other networks to get to where it wants to be. But, in order to make the whole system work, the Internet is organized such that you don't know anything about the inside of those other networks. You only know about the blue network.
+\rrr We have this path that we have sketched out here on this arbitrary sort of network. The reality is that you are connected to one network and your traffic is going to go from your current location to what is called a \textbf{\emph{gateway}}\index{gateway} to the outside world (also called a \textbf{\emph{border router}}\index{border router}), and from there your traffic will hop across some other networks to get to where it wants to be. But, in order to make the whole system work, the Internet is organized such that you do not know anything about the inside of those other networks. You only know about the blue network.
 
-The other networks are all opaque to the users that are outside of those networks. If you are the operator of one of these networks, this opacity provides you with \emph{scalability}, \emph{privacy}, and \emph{autonomy}. Scalability is crucial, of course --- otherwise, how are we going to get to billions and billions of nodes on the internetwork?
+The other networks are all opaque to the users that are outside of those networks. If you are the operator of one of these networks, this opacity provides you with \textbf{\emph{scalability}}\index{scalability}, \textbf{\emph{privacy}}\index{privacy}, and \textbf{\emph{autonomy}}\index{autonomy}. Scalability is crucial, of course --- otherwise, how are we going to get to billions and billions of nodes on the internetwork?
 
-\mmm True! You can't have every single node on the network know everything about every other node on the entire network, it can't scale that way.
+\mmm True! You can't have every single node on the network know everything about every other node on the entire network, it can not scale that way.
 
-\rrr A second reason for having this information hiding is that the people who own networks want to be able to evolve what's inside the network at their own rate, using their own choices of technology and changing what's going on on the inside. They don't want to share that information outside for business reasons, or for privacy reasons, or for competitive advantage reasons, and this information hiding gives us a certain amount of autonomy. Starting from your network (the blue one on the left), you have to know how to get across your network to that gateway, and then the gateway has to know which network to send things to next. But even that gateway doesn't have to know anything about the structure inside of that neighboring network.
+\rrr A second reason for having this information hiding is that the people who own networks want to be able to evolve what is inside the network at their own rate, using their own choices of technology and changing what is going on on the inside. They do not want to share that information outside for business reasons, or for privacy reasons, or for competitive advantage reasons, and this information hiding gives us a certain amount of autonomy. Starting from your network (the blue one on the left), you have to know how to get across your network to that gateway, and then the gateway has to know which network to send things to next. But even that gateway does not have to know anything about the structure inside of that neighboring network.
 
 \mmm Let's have a look where the classical Internet is right now. As of January 2023, there are around seventy-four thousand autonomous systems.
 
-\rrr So what's an autonomous system?
+\rrr So what is an autonomous system?
 
 \mmm I was going to ask the same question!
 
@@ -48,13 +46,12 @@ The other networks are all opaque to the users that are outside of those network
 
 \mmm There are around 940,000 IPv4 routing table entries. What does that actually mean? Can you put that into perspective? It sounds like a large number, but what really does it mean?
 
-\rrr It does sound like a large number! But that's not actually the right number to worry about -- that number is how many ``prefixes'', or contiguous blocks of IP addresses, are in use~\footnote{The first video release of this step included an incorrect description of this concept. The description here is more accurate.}.  Many ASes advertise more than one block of addresses.
+\rrr It does sound like a large number! But that is not actually the right number to worry about -- that number is how many ``prefixes'', or contiguous blocks of IP addresses, are in use~\footnote{The first video release of this step included an incorrect description of this concept. The description here is more accurate.}.  Many ASes advertise more than one block of addresses.
 
-Instead, we want to know how many \emph{neighbors} each network has in the graph of ASes.  This neighbor relationship is known as an \emph{adjacency} or \emph{peering} and is based on a \emph{peering agreement}.
-% So what it means is that those 74,000 networks have 870,000 relationships between pairs of networks, roughly twelve or thirteen connections per network.
-On average, each one of those pink or blue or green networks in Fig.~\ref{fig:15-1-NofN} is connected to about 3.3 other networks. But that average hides a huge range of connections. Of those 74,000 networks, 63,000 are ``stub ASes'' that have only a single neighbor in the AS graph. At the other end of the spectrum, the largest \emph{transit network} specializing in connecting networks together, rather than serving individual users, has more than 9,500 peers, more than ten percent of all of the networks that make up the Internet.
+Instead, we want to know how many \textbf{\emph{neighbors}} each network has in the graph of ASes.  This neighbor relationship is known as an \textbf{\emph{adjacency}}\index{adjacency} or \textbf{\emph{peering}}\index{peering} and is based on a \textbf{\emph{peering agreement}}\index{peering agreement}.
+On average, each one of those pink or blue or green networks in Fig.~\ref{fig:15-1-NofN} is connected to about 3.3 other networks. But that average hides a huge range of connections. Of those 74,000 networks, 63,000 are ``stub ASes'' that have only a single neighbor in the AS graph. At the other end of the spectrum, the largest \textbf{\emph{transit network}}\index{transit netwoek} specializing in connecting networks together, rather than serving individual users, has more than 9,500 peers, more than ten percent of all of the networks that make up the Internet.
 
-These network-to-network connections may be direct between two networks (known as \emph{private peering}), or shared with several networks at places that are called \emph{Internet exchange points}, or IXPs or sometimes just IXes\index{Internet exchange point (IXP)}.
+These network-to-network connections may be direct between two networks (known as \textbf{\emph{private peering}}\index{private peering}), or shared with several networks at places that are called \textbf{\emph{Internet exchange points}}, or IXPs or sometimes just IXes\index{Internet exchange point (IXP)}.
 
 \mmm Right.
 
@@ -64,47 +61,45 @@ These network-to-network connections may be direct between two networks (known a
 
 \rrr What?
 
-\mmm Of the previous animations that we had of the completely connected graph, where we said it doesn't make sense to just connect all of the nodes to all of the other possible nodes in the network. Same here, you said there are around three to four connections between the autonomous systems. It's the same logic, right?
+\mmm Of the previous animations that we had of the completely connected graph, where we said it does not make sense to just connect all of the nodes to all of the other possible nodes in the network. Same here, you said there are around three to four connections between the autonomous systems. It's the same logic, right?
 
-\rrr Exactly! Actually, if you took that whole 74,000 networks and connected every network to every other network in a \emph{complete graph}...how many connections would that be?  What's 74,000 squared divided by two? That would be...two and a half billion adjacencies!  The reality is that they can't all connect to each other, and so the total is about 120,000 adjacencies in the Internet.
+\rrr Exactly! Actually, if you took that whole 74,000 networks and connected every network to every other network in a \textbf{\emph{complete graph}}\index{complete graph}...how many connections would that be?  What's 74,000 squared divided by two? That would be...two and a half billion adjacencies!  The reality is that they can't all connect to each other, and so the total is about 120,000 adjacencies in the Internet.
 
 Now, the whole evolution of how the Internet got this way, how many networks there are, and the current structure comes from historical business relationships and the like. The quantum Internet will probably evolve in a very different fashion, but this same general idea of having networks that are owned and operated by independent organizations that connect to other networks, that same idea is going to stay.
 
 \mmm I can imagine that.
+Developing quantum technology is a very expensive business, so you do not just give everybody access to everything that you have spent so much money in developing and researching.
 
-Developing quantum technology is a very expensive business, so you don't just give everybody access to everything that you have spent so much money in developing and researching.
-
-\rrr Yeah! There are already billions of nodes connected to the Internet (which we talked about earlier in this book) -- computers and mobile phones and IoT devices -- and there is no central node registry, so the true number of these things isn't known. If you run a network, you can put more devices on the network (subject to certain constraints) as long as you have the ability to give them addresses and send their traffic out to the broader Internet. In contrast, the phone system has a more centralized authority that gives out phone numbers, and so hypothetically somebody could actually count all of the phone numbers and tell you where they are and you can figure out how many phones there are.  But with the Internet, no one knows how many devices are actually connected to it, because of the autonomy provided by the system allowing each of the individual networks to control what goes on inside of its own network.
+\rrr Yeah! There are already billions of nodes connected to the Internet (which we talked about earlier in this book) -- computers and mobile phones and IoT devices -- and there is no central node registry, so the true number of these things is not known. If you run a network, you can put more devices on the network (subject to certain constraints) as long as you have the ability to give them addresses and send their traffic out to the broader Internet. In contrast, the phone system has a more centralized authority that gives out phone numbers, and so hypothetically somebody could actually count all of the phone numbers and tell you where they are and you can figure out how many phones there are.  But with the Internet, no one knows how many devices are actually connected to it, because of the autonomy provided by the system allowing each of the individual networks to control what goes on inside of its own network.
 
 \mmm That sounds like a very clever system, it must have taken quite some time to develop this system, no?
 
 \rrr Well, you know, it has been half a century or so since the earliest ARPANET experiments in 1969.  
-%Let's see, when did this real sort of system of autonomous networks and other protocols, including, so one of the things that's mentioned here on the slide that we haven't mentioned yet is BGP, that's 
-The modern Internet Protocol suite, known as TCP/IP, was proposed in 1972-74. IP became the only protocol on the network on January 1, 1983, paving the way for the modern network-of-networks structure. 
+The modern Internet Protocol suite, known as TCP/IP\index{TCP/IP}, was proposed in 1972-74. IP became the only protocol on the network on January 1, 1983, paving the way for the modern network-of-networks structure. 
 The Border Gateway Protocol\index{Border Gateway Protocol (BGP)} is the protocol that exchanges information about the relationships between networks. This modern structure for the Internet was laid out the late 1980s and early 90s. The first document describing BGP was published in 1989~\footnote{\url{https://www.rfc-editor.org/info/rfc1105}}, and the protocol became the central routing mechanism for the Internet in 1994.
 
 \mmm So where do you think the quantum Internet is in relation to the classical Internet?
 
-\rrr We're still decades and decades away from reaching this kind of scale, but we want to apply what we have learned over the last half century in the process of developing the classical internet, and use that knowledge to actually design and develop the quantum Internet as we go.
+\rrr We are still decades and decades away from reaching this kind of scale, but we want to apply what we have learned over the last half century in the process of developing the classical internet, and use that knowledge to actually design and develop the quantum Internet as we go.
 
 \mmm Right. Very interesting...
 
-\rrr One other topic that we haven't talked about yet is a big trend in classical information system structures, including both the Internet and computing systems: \emph{virtualization}. In the process of virtualization, a computer or even a network might not correspond exactly to a single physical system. You might have a virtual server -- a collection of software and data -- that you think is running on a particular piece of hardware.  However, it might not actually be running \emph{here}, it might be running \emph{over there} instead, somewhere else. There are a lot of mechanisms built into the classical Internet, computer hardware and software to make that virtualization possible, so that services can appear in multiple places and copies of those services can be in different places. All of this allows the services to migrate around based on current conditions or management plans. This virtualization brings a lot of benefits. We're still a long ways away from wanting something like that kind of service virtualization for the quantum Internet, but maybe eventually we'll get there.
+\rrr One other topic that we haven't talked about yet is a big trend in classical information system structures, including both the Internet and computing systems: \textbf{\emph{virtualization}}\index{virtualization}. In the process of virtualization, a computer or even a network might not correspond exactly to a single physical system. You might have a virtual server -- a collection of software and data -- that you think is running on a particular piece of hardware.  However, it might not actually be running \emph{here}, it might be running \emph{over there} instead, somewhere else. There are a lot of mechanisms built into the classical Internet, computer hardware and software to make that virtualization possible, so that services can appear in multiple places and copies of those services can be in different places. All of this allows the services to migrate around based on current conditions or management plans. This virtualization brings a lot of benefits. We are still a long ways away from wanting something like that kind of service virtualization for the quantum Internet, but maybe eventually we will get there.
 
-But a related concept is \emph{recursion}!
+But a related concept is \textbf{\emph{recursion}}\index{recursion}!
 
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.5\textwidth]{lesson15/R2L15fig2.pdf}
-    \caption[A simple network]{A simple network.}
+    \caption[A simple network.]{A simple network.}
     \label{fig:15-2-simple}
 \end{figure}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=.5\textwidth]{lesson15/R2L15fig3.pdf}
-    \caption[A recursive network]{A recursive network. In this representation, each "node" in the graph is actually an abstraction of an underlying physical network, represented by the smaller nodes and links. In classical Internet terms, the larger nodes and graph could be the graph of autonomous systems.  In a  recursive network, two layers are shown here but the recursion could go deeper.}
+    \caption[A recursive network.]{A recursive network. In this representation, each ``node'' in the graph is actually an abstraction of an underlying physical network, represented by the smaller nodes and links. In classical Internet terms, the larger nodes and graph could be the graph of autonomous systems. In a  recursive network, two layers are shown here but the recursion could go deeper.}
     \label{fig:15-3-recursive}
 \end{figure}
 
@@ -112,20 +107,24 @@ But a related concept is \emph{recursion}!
 
 So we said that the Internet is a network of networks, where every network can be thought of as a single node of some other different layer of a network. Is that what recursion is in the context of networks?
 
-\rrr In Fig.~\ref{fig:15-1-NofN} we had the blue network, and four or five pink networks, and the green network. Each one of those inside has a structure, but we can also talk about the graph that connects that set of networks. You can think about that as the recursion in the system. The system is essentially two layers: the interior gateway protocol and the exterior gateway protocol. The interior protocol is used to manage how you get around inside of your own network. You actually have the choice to use a different protocol or a different algorithm for routing inside your network, as long as you can meet your contractual obligations with others to exchange information with them and to carry traffic back and forth across your network in some reasonable way~\footnote{Commonly used protocols include OSPF and IS-IS, both of which are \emph{link state} protocols where each router learns enough information about the network to run Dijkstra's algorithm (which we saw back on p.~\pageref{dijkstra}) and build a \emph{spanning tree} that it will use to make decisions. Numerous other protocols have been used and continue to be used.}. Today, there is only one choice for the exterior gateway protocol: BGP. BGP is involved in the graph of the relationships between those \emph{autonomous systems}\index{autonomous system}, the Internet-level total architecture between the whole thing. So that's two levels, but the reality is that in most modern local area networks, there's actually another sort of routing system that's built into local area networks as well, so we've already got three layers~\footnote{If you have a network of Ethernet switches, it might in fact be Radja Perlman's \emph{spanning tree protocol}.}. Conceptually, this process could actually be repeated indefinitely and we can build what's called a \emph{recursive network}.
+\rrr In Fig.~\ref{fig:15-1-NofN} we had the blue network, and four or five pink networks, and the green network. Each one of those inside has a structure, but we can also talk about the graph that connects that set of networks. You can think about that as the recursion in the system. The system is essentially two layers: the interior gateway protocol and the exterior gateway protocol. The interior protocol is used to manage how you get around inside of your own network. You actually have the choice to use a different protocol or a different algorithm for routing inside your network, as long as you can meet your contractual obligations with others to exchange information with them and to carry traffic back and forth across your network in some reasonable way~\footnote{Commonly used protocols include OSPF and IS-IS, both of which are \textbf{\emph{link state}}\index{link state} protocols where each router learns enough information about the network to run Dijkstra's algorithm (which we saw back on p.~\pageref{dijkstra}) and build a \textbf{\emph{spanning tree}}\index{spanning tree} that it will use to make decisions. Numerous other protocols have been used and continue to be used.}. Today, there is only one choice for the exterior gateway protocol: BGP. BGP is involved in the graph of the relationships between those \textbf{\emph{autonomous systems}}\index{autonomous system}, the Internet-level total architecture between the whole thing. So that is two levels, but the reality is that in most modern local area networks, there's actually another sort of routing system that is built into local area networks as well, so we have already got three layers~\footnote{If you have a network of Ethernet switches, it might in fact be Radja Perlman's spanning tree protocol.}. Conceptually, this process could be repeated indefinitely and we can build what is called a \textbf{\emph{recursive network}}\index{recursive network}.
 
 \mmm In Fig.~\ref{fig:15-2-simple} we see a graph, then in Fig.~\ref{fig:15-3-recursive} see that each of those nodes is really a different network.
 
-\rrr Each one of the individual nodes might be an abstraction, where it is implemented as a network of nodes and links inside. Then inside of that, each one of \emph{those} nodes might, in turn, be implemented as a network inside, and so conceptually at least, it could go to arbitrary depth. Again, that gains us scalability in what we're actually building. It allows us to reuse a lot of the mechanisms that we're designing and building at the level of the global internet; we reuse them when building a wide area network, and then again for an organizational network, and then again for a local area network. Finally, possibly, even inside the individual machines you can actually use similar techniques, and sometimes --- not often, but sometimes --- you'll actually have a virtual network inside of your own machine that actually reuses some of those concepts inside, and there's no reason why that process can't just continue recursively.
+\rrr Each one of the individual nodes might be an abstraction, where it is implemented as a network of nodes and links inside. Then inside of that, each one of \emph{those} nodes might, in turn, be implemented as a network inside, and so conceptually at least, it could go to arbitrary depth. Again, that gains us scalability in what we are actually building. It allows us to reuse a lot of the mechanisms that we are designing and building at the level of the global internet; we reuse them when building a wide area network, and then again for an organizational network, and then again for a local area network. Finally, possibly, even inside the individual machines you can actually use similar techniques, and sometimes --- not often, but sometimes --- you will actually have a virtual network inside of your own machine that actually reuses some of those concepts inside, and there's no reason why that process cannot just continue recursively.
 
 \mmm Very cool! So that is the ``network of networks'' concept that underlies today's classical Internet and tomorrow's quantum Internet.  Next, we will see how they work together.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Integration with classical systems}
 \label{sec:classical-integration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mmm Rod, the title of this section is ``integration with classical systems''. Does that mean that the quantum Internet is not going to replace the classical Internet?
 
-\rrr That's a good question, but yes, the quantum internet will not replace the classical Internet! There will be two networks.
+\rrr That is a good question, but yes, the quantum internet will not replace the classical Internet! There will be two networks.
 
 \mmm Right, so how are they going to talk to each other? How are they going to integrate?
 
@@ -133,110 +132,104 @@ So we said that the Internet is a network of networks, where every network can b
 
 \mmm Well, over the course of this module we have seen that the main purpose of a quantum network is to distribute entanglement between parties, whether it be bipartite entanglement or multipartite entanglement, so that it can be used as a resource for communication tasks such as teleportation and QKD (which might be entanglement-based or single photon-based).
 
-\rrr QKD is, in fact, the example that's written in the figure, so what are the QKD devices doing across across the quantum network? Remind us, what's the service they provide?
+\rrr QKD is, in fact, the example that is written in the figure, so what are the QKD devices doing across across the quantum network? Remind us, what's the service they provide?
 
 \mmm Well, they're trying to establish a secret, correlated key between two communicating parties without any eavesdropper knowing what the key is. The key is a secret classical string of bits that we can use to hide our message.
 
-\rrr All right, so it's a string of random bits that are guaranteed to be secret, based on what we've done so far. So what we want to do, once we have them is...
+\rrr All right, so it is a string of random bits that are guaranteed to be secret, based on what we have done so far. So what we want to do, once we have them is...
 
 \mmm ...to use them with the classical Internet.
 
-\rrr Yes! So in fact, that's what we're going to do next. The first task is for the quantum network to make those keys, turning quantum states into classical bits, and then the quantum network is going to share those bits with a couple of boxes called IPsec gateways (one at each end), that are connected to an IP network. Have you heard of IPsec\index{IPsec}?
+\rrr Yes! So in fact, that is what we are going to do next. The first task is for the quantum network to make those keys, turning quantum states into classical bits, and then the quantum network is going to share those bits with a couple of boxes called IPsec gateways (one at each end), that are connected to an IP network. Have you heard of IPsec\index{IPsec}?
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\textwidth]{lesson15/R2L15fig4.pdf}
-    \caption[IPsec with QKD]{The Internet standard encryption protocol known as IPsec can be adapted to use keys generated via QKD rather than Diffie-Hellman key exchange.}
+    \caption[IPsec with QKD.]{The Internet standard encryption protocol known as IPsec can be adapted to use keys generated via QKD rather than Diffie-Hellman key exchange.}
     \label{fig:15-4-ipsec-with-qkd}
 \end{figure}
 
 \mmm Not really, no.
 
-\rrr IPsec is one of the standard Internet protocols for encrypting data that you're going to share across the network. One of the other famous protocols is called Transport Layer Security, or TLS\index{Transport Layer Security (TLS)}, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely. You send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there.
+\rrr IPsec is one of the standard Internet protocols for encrypting data that you are going to share across the network. One of the other famous protocols is called Transport Layer Security, or TLS\index{Transport Layer Security (TLS)}, which is used for web browsing and for a lot of other things. IPsec is actually slightly older than TLS, and its original design was to connect one network to another network securely. You send data to your nearby IPsec gateway and it encrypts the data and sends it to another IPsec gateway at the other end, where it gets decrypted and sent to your partner over there.
 
 Before the use of QKD, these IPsec gateways worked together to negotiate a key exchange of some sort.
 
 \mmm Back in Sec.~\ref{sec:crypto-phases}, we talked about three phases of an encrypted conversation. The three phases are authentication, key generation and then the bulk data encryption.
 
-% \mmm Right.
+\rrr Right. The authentication is often done using \textbf{\emph{public key cryptography}}\index{public key cryptography}. Prior to QKD, and still in most cases today, the key generation was primarily done using a mechanism called \textbf{\emph{Diffie-Hellman key exchange}}\index{Diffie-Hellman key exchange}, which we are going to replace with QKD, as in Fig.~\ref{fig:15-4-ipsec-with-qkd}. Data (random bits) that come out of the QKD network --- or the quantum Internet and the QKD devices attached to it --- will be used to create the keys that are used by the IPsec gateways for encrypting large amounts of data which get sent using an encryption mechanism. Most commonly these days, we use an encryption mechanism called AES, the Advanced Encryption Standard\index{Advanced Encryption Standard (AES)}. Note  that the QKD connection itself actually requires that you also have an authenticated classical channel between the nodes in order to prevent someone standing in the middle of the network and pretending to be Alice in one direction and pretending to be Bob in the other direction, an attack that's called a \textbf{\emph{man-in-the-middle attack}}\index{man-in-the-middle}.
 
-\rrr Right. The authentication is often done using \emph{public key cryptography}\index{public key cryptography}. Prior to QKD, and still in most cases today, the key generation was primarily done using a mechanism called \emph{Diffie-Hellman key exchange}\index{Diffie-Hellman key exchange}, which we're going to replace with QKD, as in Fig.~\ref{fig:15-4-ipsec-with-qkd}. Data (random bits) that come out of the QKD network --- or the quantum Internet and the QKD devices attached to it --- will be used to create the keys that are used by the IPsec gateways for encrypting large amounts of data which get sent using an encryption mechanism. Most commonly these days, we use an encryption mechanism called AES, the Advanced Encryption Standard\index{Advanced Encryption Standard (AES)}. Note  that the QKD connection itself actually requires that you also have an authenticated classical channel between the nodes in order to prevent someone standing in the middle of the network and pretending to be Alice in one direction and pretending to be Bob in the other direction, an attack that's called a \emph{man-in-the-middle attack}\index{man-in-the-middle}.
-
-\mmm I see, so let me get this straight. The role of the quantum network really is just one step in a number of steps during a secret communication. So we start classically, we authenticate classically, but then when we require the generation of the key, that's where the quantum part comes in. That's where the quantum magic happens, either through non-fully distinguishable states such as we saw in the BB84 protocol (Ch.~\ref{sec:9_bb84}), or entanglement-based quantum key distribution using the E91 protocol (Ch.~\ref{sec:10_E91}). And whatever the result of that is, it should be a secret, correlated key that's not known to any malicious party.  The secret then gets passed back into the classical network, and we proceed classically again.
+\mmm I see, so let me get this straight. The role of the quantum network really is just one step in a number of steps during a secret communication. So we start classically, we authenticate classically, but then when we require the generation of the key, that is where the quantum part comes in. That is where the quantum magic happens, either through non-fully distinguishable states such as we saw in the BB84 protocol (Ch.~\ref{sec:9_bb84}), or entanglement-based quantum key distribution using the E91 protocol (Ch.~\ref{sec:10_E91}). And whatever the result of that is, it should be a secret, correlated key that is not known to any malicious party. The secret then gets passed back into the classical network, and we proceed classically again.
 
 \rrr Exactly!
-
 And so all of this put together makes for an integrated quantum-and-classical system.
-
-Let's set aside encryption and look at other applications of quantum networking. You're the expert on a couple of these other things that we might want to do with entanglement.
+Let's set aside encryption and look at other applications of quantum networking. You are the expert on a couple of these other things that we might want to do with entanglement.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\textwidth]{lesson15/R2L15fig5.pdf}
-    \caption[Uses of quantum networking]{Quantum networks will be used for distributed quantum computation (left) and sensing applications such as clock synchronization (right).}
+    \caption[Uses of quantum networking.]{Quantum networks will be used for distributed quantum computation (left) and sensing applications such as clock synchronization (right).}
     \label{fig:15-5-apps}
 \end{figure}
 
+\mmm We have talked about distributed quantum computation where Alice, Bob, Eve, Dave and Charlie share some quantum resources, but individually they cannot perform some desired computation because they don't have enough quantum power. They have to figure out how to share their individual quantum power with each other, and to create something that allows them to tackle much larger quantum problems. Fig.~\ref{fig:15-5-apps} illustrates how such a system might be organized. They have to share some quantum resources using the quantum network, but then they have to coordinate with classical messages using the classical network. They basically use the classical control provided by the classical network to coordinate the actions they perform on the quantum part of their systems -- their quantum processors and memories.
 
-\mmm We've talked about distributed quantum computation where Alice, Bob, Eve, Dave and Charlie share some quantum resources, but individually they cannot perform some desired computation because they don't have enough quantum power. They have to figure out how to share their individual quantum power with each other, and to create something that allows them to tackle much larger quantum problems. Fig.~\ref{fig:15-5-apps} illustrates how such a system might be organized. They have to share some quantum resources using the quantum network, but then they have to coordinate with classical messages using the classical network. They basically use the classical control provided by the classical network to coordinate the actions they perform on the quantum part of their systems -- their quantum processors and memories.
+\rrr This network of quantum computers that is going to do this distributed computation, is that a complete application? Is that, like, quantum Photoshop or a quantum Oracle database or something? Or...?
 
-\rrr This network of quantum computers that's going to do this distributed computation, is that a complete application? Is that, like, quantum Photoshop or a quantum Oracle database or something? Or...?
+\mmm Well, I would say, ``never say never'', but for now the problems that we envision tackling with quantum systems are things that are genuinely quantum, where classical computers can help but are too slow. For example, diagonalizing large matrices, finding new properties of new drugs, new materials, and so on. I do not think that there will be an application of a quantum Photoshop. I do not even know how that would work in reality.
 
-\mmm Well, I would say, "never say never", but for now the problems that we envision tackling with quantum systems are things that are genuinely quantum, where classical computers can help but are too slow. For example, diagonalizing large matrices, finding new properties of new drugs, new materials, and so on. I don't think that there will be an application of a quantum Photoshop. I don't even know how that would work in reality.
+\rrr I do not either! The chemistry one is a really good example, because as I understand it, there will be some classical pre-processing and then we will do a quantum step and then after you get back your quantum answers, then there is going to be some more classical computing to do, is that right?
 
-\rrr I don't either! The chemistry one's a really good example, because as I understand it, there will be some classical pre-processing and then we'll do a quantum step and then after you get back your quantum answers, then there's going to be some more classical computing to do, is that right?
-
-\mmm That's true. One tool that is used in quantum algorithms for quantum chemistry is known as VQE, or the Variational Quantum Eigensolver, where the quantum part is just one tiny step in a larger framework. It's a very important step that handles a portion of the problem that is particularly slow when you try to solve it using only classical computation and classical devices.
+\mmm That is true. One tool that is used in quantum algorithms for quantum chemistry is known as VQE, or the Variational Quantum Eigensolver, where the quantum part is just one tiny step in a larger framework. It is a very important step that handles a portion of the problem that is particularly slow when you try to solve it using only classical computation and classical devices.
 
 \rrr Then all of that will fit together into an integrated quantum and classical system --- the information system that other people will then use.
 
-\mmm That's right. Since this is an example of a single computation, it might be done by multiple quantum computers inside a single data center, instead of across a wide-area network.
+\mmm That is right. Since this is an example of a single computation, it might be done by multiple quantum computers inside a single data center, instead of across a wide-area network.
 
 \rrr Okay, tell me about the other application of distributed entanglement that you have in mind.
 
-\mmm Well, the other one is clock synchronization, which we discussed in Sec.~\ref{sec:14-3_clock_sync}.  We mentioned that having a global time standard where everybody agrees on the same time is of crucial importance in many, many areas of our modern life. Again, it's not that we want to do something special with quantum time --- the time is classical --- but the way we agree on the same global standard of time comes through using quantum resources such as bipartite entanglement.
+\mmm Well, the other one is clock synchronization, which we discussed in Sec.~\ref{sec:14-3_clock_sync}. We mentioned that having a global time standard where everybody agrees on the same time is of crucial importance in many, many areas of our modern life. Again, it is not that we want to do something special with quantum time --- the time is classical --- but the way we agree on the same global standard of time comes through using quantum resources such as bipartite entanglement.
 
-\rrr Okay, once you have that, what's it used for?
+\rrr Okay, once you have that, what is it used for?
 
 \mmm The timing signal gets bumped back into the classical network, where important applications might include transportation, such as the global positioning system (GPS). In financial markets even tiny fractions of a second are crucial, they can either gain you millions or lose you millions. So, time is very important and keeping the same time as somebody on the other side of the world is very important as well.
 
-\rrr Right, so all of this will fit together. There is going to be a quantum network and there's going to be some IP network --- the existing classical Internet or what have you --- and these two things have to come together in order to build complete, integrated, hybrid quantum-classical distributed systems.
+\rrr Right, so all of this will fit together. There is going to be a quantum network and there is going to be some IP network --- the existing classical Internet or what have you --- and these two things have to come together in order to build complete, integrated, hybrid quantum-classical distributed systems.
 
 \mmm And they are all synchronized!
-
 When we were talking about a distributed computation like chemistry, we said that it may be done within a data center. This application is useful in wide-area networks as well.
 
-\rrr That's an important point too.
+\rrr That is an important point too.
 
 \mmm Okay, let's shift direction a little bit and see how we can bring these things together.
 
-\rrr All right, let's discuss standardization. If you are a developer, the first thing you're going to do, of course, is to actually build and test some sort of system. Let's say you have a prototype that's up and running. Then what?
+\rrr All right, let's discuss standardization. If you are a developer, the first thing you are going to do, of course, is to actually build and test some sort of system. Let's say you have a prototype that's up and running. Then what?
 
 \mmm Well then, once that is working, we would like everybody else to use it.
 
-\rrr Yeah, and in communications, that means is that it's  nice if my communications device will talk to your communications device.
+\rrr Yeah, and in communications, that means is that it is nice if my communications device will talk to your communications device.
 
 \mmm Yes! Even though I was the one who made my device, and you were the one who created your device, maybe using completely different means. So how do we standardize these things?
 
-\rrr A standard is a document written and agreed to by a group of people, usually from different organizations~\footnote{The word "standard" usually means that it has some official standing, and makers are \emph{required} to follow it, but not all shared specifications have that kind of force; they may just be a temporary, experimental agreement. Here we won't worry about this distinction.}. The information exchange is done in face-to-face meetings, online meetings and extended exchanges on email lists.
+\rrr A standard is a document written and agreed to by a group of people, usually from different organizations~\footnote{The word ``standard'' usually means that it has some official standing, and makers are \emph{required} to follow it, but not all shared specifications have that kind of force; they may just be a temporary, experimental agreement. Here we will not worry about this distinction.}. The information exchange is done in face-to-face meetings, online meetings and extended exchanges on email lists.
 
-For a concrete example, we might think about the physical layer and the network protocol layer. Those two layers might actually be standardized by different organizations. At the physical layer, for example dealing with electrical signals for the Ethernet, a standards organization will define voltage levels and how long a single cable can be~\footnote{e.g., the standard wired electrical Ethernet today is called \emph{Cat 5e}. See \url{https://en.wikipedia.org/wiki/Category_5_cable}.}. One of the things we talked about back in Sec.~\ref{sec:11-2_mode_dispersion} was distortion of signals due to mode dispersion\index{mode dispersion}. We were talking about that in terms of optical fibers, but various types of damage happen with any kind of signal, and so one of the things you have to worry about is how much degradation of the signal is allowed so that you can still guarantee that the end nodes will be able to reconstruct the original message. Engineers come together in a meeting and work out the calculations, usually making some trade-offs between reliability, speed and cost, and decide as a group what is best.  Then they write that down in a document called a \emph{specification}. All of that is done for classical signals. What are the equivalents of that for photons?
+For a concrete example, we might think about the physical layer and the network protocol layer. Those two layers might actually be standardized by different organizations. At the physical layer, for example dealing with electrical signals for the Ethernet, a standards organization will define voltage levels and how long a single cable can be~\footnote{e.g., the standard wired electrical Ethernet today is called \emph{Cat 5e}. See \url{https://en.wikipedia.org/wiki/Category_5_cable}.}. One of the things we talked about back in Sec.~\ref{sec:11-2_mode_dispersion} was distortion of signals due to mode dispersion\index{mode dispersion}. We were talking about that in terms of optical fibers, but various types of damage happen with any kind of signal, and so one of the things you have to worry about is how much degradation of the signal is allowed so that you can still guarantee that the end nodes will be able to reconstruct the original message. Engineers come together in a meeting and work out the calculations, usually making some trade-offs between reliability, speed and cost, and decide as a group what is best. Then they write that down in a document called a \textbf{\emph{specification}}\index{specification}. All of that is done for classical signals. What are the equivalents of that for photons?
 
-\mmm Well, we said that in quantum communication, we're interested in exchanging information via single photons, so we have to think about how to get two different devices to talk, particularly at the border between two networks, which will have to exchange photons. How can we ensure that whatever photons I send to the other network will be accepted, and vice versa? I imagine that important factors will include the wavelength of the photons, the shape of the wave packet of the photons, and the time of arrival. When we talked about the BSA in Sec.~\ref{sec:13-3_Bell_state_measurement_2}, we stressed that in order for interference to work properly, the two photons that are coming in must be indistinguishable. Somehow, we must have a standard procedure that makes sure that whatever photons you are sending me are the same as the photons as I'm sending to you. Then when they hit each other and interfere at the BSA, entanglement is created between us, and between the two networks that we are part of.
+\mmm Well, we said that in quantum communication, we're interested in exchanging information via single photons, so we have to think about how to get two different devices to talk, particularly at the border between two networks, which will have to exchange photons. How can we ensure that whatever photons I send to the other network will be accepted, and vice versa? I imagine that important factors will include the wavelength of the photons, the shape of the wave packet of the photons, and the time of arrival. When we talked about the BSA in Sec.~\ref{sec:13-3_Bell_state_measurement_2}, we stressed that in order for interference to work properly, the two photons that are coming in must be indistinguishable. Somehow, we must have a standard procedure that makes sure that whatever photons you are sending me are the same as the photons as I am sending to you. Then when they hit each other and interfere at the BSA, entanglement is created between us, and between the two networks that we are part of.
 
-\rrr The organizations that do standards, like the IETF, the IEEE, ANSI, ITU, will be involved at some point, too.  In fact, for QKD, some standards are already being developed; see the ITU-T Y.3800-3999 series~\footnote{\url{https://www.itu.int/ITU-T/recommendations/rec.aspx?id=13990&lang=en}.}
+\rrr The organizations that do standards, like the IETF, the IEEE, ANSI, ITU, will be involved at some point, too. In fact, for QKD, some standards are already being developed; see the ITU-T Y.3800-3999 series~\footnote{\url{https://www.itu.int/ITU-T/recommendations/rec.aspx?id=13990&lang=en}.}
 
-The Internet Research Task Force (IRTF), a sister organization to the Internet Engineering Task Force (IETF), focuses on bringing the Internet community together to develop a shared understanding of problems and solutions that may eventually lead to standards. IRTF work sometimes leads to documents known as \emph{Requests for Comments}, or RFCs, and the Quantum Internet Research Group published its first quantum repeater network-releated RFC in 2023~\footnote{\url{https://www.rfc-editor.org/info/rfc9340}}.
+The Internet Research Task Force (IRTF), a sister organization to the Internet Engineering Task Force (IETF), focuses on bringing the Internet community together to develop a shared understanding of problems and solutions that may eventually lead to standards. IRTF work sometimes leads to documents known as \textbf{\emph{Requests for Comments}}\index{Request for Comments}, or RFCs, and the Quantum Internet Research Group published its first quantum repeater network-releated RFC in 2023~\footnote{\url{https://www.rfc-editor.org/info/rfc9340}}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Putting it all together}
+\label{sec:putting-it-all-together}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \mmm Rod, let's put all of these things that we learned in this module (or book) into some context.
-
-% \rrr All right! But before we do that, let's say, this is the last video of this entire module, it's not the last step, there are a couple of other things after this, but we should thank everybody who's helped us put all of this together! So we should thank, you know, Husni, and we should thank the editors, and we should thank all of the students who have done all of the work on all of this, without you guys, it wouldn't have happened, okay?
-
-% \mmm Thank you very, very much!
 
 \rrr Let's go all the way back to the core idea. There are four things that a repeater has to do, and then once we have  successfully built repeaters, then we can build a network. So the first thing...
 
@@ -253,7 +246,6 @@ The Internet Research Task Force (IRTF), a sister organization to the Internet E
 \rrr The primary mechanism we used for doing that was entanglement swapping\index{entanglement swapping}. 
 
 \mmm That's right.
-
 Third, we have to think about how to handle state and operation errors. We saw a few examples in our calculations of unitary errors, but there are also other types of errors. The main protocol that we used was purification, which works against both unitary and non-unitary errors.
 
 \rrr All right, and then the last thing?
@@ -270,51 +262,50 @@ All right! So all of those are technical requirements for how you go about build
 
 \mmm So what are these specializations?
 
-\rrr Well, I'm an architect, so I list architecture first. Architecture involves defining the subsystems within a larger system and defining the relationships, so you define block A and block B and the relationship between the two --- the contractual agreement between them, what messages they exchange, what behavior is expected of the different subsystems. All of that allows you to make forward progress by dividing a large problem into a set of smaller problems, and then each of those can be worked on independently to a certain extent.
+\rrr Well, I am an architect, so I list architecture first. Architecture involves defining the subsystems within a larger system and defining the relationships, so you define block A and block B and the relationship between the two --- the contractual agreement between them, what messages they exchange, what behavior is expected of the different subsystems. All of that allows you to make forward progress by dividing a large problem into a set of smaller problems, and then each of those can be worked on independently to a certain extent.
 
 Someone has to design the protocols! The protocols define the messages that get exchanged on the wire and the behavior: what you do when you get a message, but also what you do when you \emph{don't} get a message. These and other sets of rules you have to follow, including the sort of promises you make as a condition of participating in a particular network communication, for example, all form a protocol.  As we just discussed, the work in protocol design and standardization involves working with many people.
 
 \mmm Hardware is very important. That's closer to my heart as a physicist, but hardware are the physical things that basically allow all of these more abstract things such as architecture and protocols to work. So we need to design the hardware, we need to analyze it, we have to ensure that our quantum boxes or network nodes, including the quantum memories, are distributing entanglement properly. If something goes wrong, what do we do, and how do we test things, and how do we build them?
 
-\rrr Everything we're talking about here is all super critical. You have to have all of these things in order to build a network, but fundamentally if the hardware doesn't work, we're just toast right off the bat.
+\rrr Everything we are talking about here is all super critical. You have to have all of these things in order to build a network, but fundamentally if the hardware does not work, we are just toast right off the bat.
 
-You have to have software, too. Some of that is software that's internal to the boxes you're building, and so nobody cares if you change that implementation. What they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. And that building hardware is hard, right? Building software, people think it's easy, but ---
+You have to have software, too. Some of that is software that is internal to the boxes you are building, and so nobody cares if you change that implementation. What they care about is the external behavior of the box. But software also includes implementation of those protocols that we talked about earlier. And that building hardware is hard, right? Building software, people think it's easy, but ---
 
-\mmm It doesn't happen automatically.
+\mmm It does not happen automatically.
 
-\rrr It's also the case that software can be iterated more quickly than hardware. You can make small changes to things in software and redeploy software fairly quickly. But! Where software meets protocols, once the protocols are defined, it starts to get to be a lot harder to change. Although protocol software may iterate quickly, because getting that right also takes a lot of work, interoperability is critical and that requires stable interfaces and protocols. You have to have the right balance between hardware and software, both when designing the system and when hiring and assigning people. Although it often seems like it's easier to get software up and running quickly and easily, building a complete and robust system that does everything that's expected and nothing it's not expected to do, that's all hard work, too.
+\rrr It is also the case that software can be iterated more quickly than hardware. You can make small changes to things in software and redeploy software fairly quickly. But! Where software meets protocols, once the protocols are defined, it starts to get to be a lot harder to change. Although protocol software may iterate quickly, because getting that right also takes a lot of work, interoperability is critical and that requires stable interfaces and protocols. You have to have the right balance between hardware and software, both when designing the system and when hiring and assigning people. Although it often seems like it is easier to get software up and running quickly and easily, building a complete and robust system that does everything that is expected and nothing it is not expected to do, that is all hard work, too.
 
 \mmm Right.
 
-\rrr We also have to have operations and management of the networks! So, once all these boxes are built, somebody's job is going to be to order boxes from the companies that provide this stuff and bring them into your building and unbox them and set them up and turn them on and run them and make sure that they connect to the local systems and that everything works and then keep track of what's working, what's not. All of that falls under the category of operations and maintenance. That's an important career path in the classical Internet as well.
+\rrr We also have to have operations and management of the networks! So, once all these boxes are built, somebody's job is going to be to order boxes from the companies that provide this stuff and bring them into your building and unbox them and set them up and turn them on and run them and make sure that they connect to the local systems and that everything works and then keep track of what is working, what is not. All of that falls under the category of operations and maintenance. That is an important career path in the classical Internet as well.
 
-\mmm The next one is education and community, exactly what we're doing now through this online course and book! We are educating people ---
+\mmm The next one is education and community, exactly what we are doing now through this online course and book! We are educating people ---
 
-\rrr ...and we're participating in the community! You and I are both researchers and educators, but this applies not only at the university level where we are right now, but also includes high school and post-secondary education. It can involve educating the public as well as educating people within a formal school context. All of that is vital, so some people studying this module could wind up as high school teachers. That's a perfectly fine career path for going forward, because I'm certain that there are going to be quantum classes in high schools in the future.
+\rrr ...and we are participating in the community! You and I are both researchers and educators, but this applies not only at the university level where we are right now, but also includes high school and post-secondary education. It can involve educating the public as well as educating people within a formal school context. All of that is vital, so some people studying this module could wind up as high school teachers. That is a perfectly fine career path for going forward, because I am certain that there are going to be quantum classes in high schools in the future.
 
-Another aspect of community is \emph{ethics}. There is a lot of discussion these days about the ethics of artificial intelligence, or AI. There is just beginning to be a conversation about the ethics of of quantum as well. In addition to the moral issues, we must consider how all this quantum technology is going to fit into society and our legal system, because in particular, quantum networks and quantum computers both have a significant impact on cryptography, which is considered to be a sensitive issue.
+Another aspect of community is \textbf{\emph{ethics}}\index{ethics}. There is a lot of discussion these days about the ethics of artificial intelligence, or AI. There is just beginning to be a conversation about the ethics of of quantum as well. In addition to the moral issues, we must consider how all this quantum technology is going to fit into society and our legal system, because in particular, quantum networks and quantum computers both have a significant impact on cryptography, which is considered to be a sensitive issue.
 
-\mmm It seems like a very disruptive technology.  Anything quantum, whether it's communication or computation...
+\mmm It seems like a very disruptive technology.  Anything quantum, whether it is communication or computation...
 
-\rrr Businesses and governments both care about this and how it's going to affect their their own operations as well as their own societies.
-
+\rrr Businesses and governments both care about this and how it is going to affect their their own operations as well as their own societies.
 Finally, we come to theory! That would be you, wouldn't it?
 
 \mmm That would be me, yes! Theory is always needed, particularly when it comes to quantum computation and quantum technologies. One quite important field is information theory: the formal mathematical theory of how to process information, how to distribute information, how to communicate information. These are all included under the umbrella of information theory, which can be either quantum or classical, but quantum is the more fun one -- and often the more surprising one.
 
-The design of new algorithms, of course, is the domain of theory! We always want to know how to do things better or how to do things which we haven't thought of, and quantum is the perfect playground for that. There is truly a large opportunity for creativity: let it run free, and and see what amazing new algorithms and applications we can come up with.
+The design of new algorithms, of course, is the domain of theory! We always want to know how to do things better or how to do things which we have not thought of, and quantum is the perfect playground for that. There is truly a large opportunity for creativity: let it run free, and see what amazing new algorithms and applications we can come up with.
 
-\rrr It's a fantastic and exciting time to be in quantum, whether quantum networking or quantum communication. I've been doing this since 2003. Prior to that I was doing primarily classical systems, and you know, every year quantum gets to be more and more exciting, and more and more real.
+\rrr It is a fantastic and exciting time to be in quantum, whether quantum networking or quantum communication. I have been doing this since 2003. Prior to that I was doing primarily classical systems, and you know, every year quantum gets to be more and more exciting, and more and more real.
 
-\mmm Particularly with the recent developments by IBM and Google and other new startup companies like IonQ and PsiQuantum, it's a truly, truly mesmerizing time to be in quantum, whether it's computation, communication or sensing!
+\mmm Particularly with the recent developments by IBM and Google and other new startup companies like IonQ and PsiQuantum, it is a truly mesmerizing time to be in quantum, whether it's computation, communication or sensing!
 
 \rrr And now is a great time for you all to be ``quantum natives'' and to come join all of us in the process of this.
 
-So, thank you all for participating in this module (or reading this book), and we'll see you again in the next module (or book)!
+So, thank you all for participating in this module (or reading this book), and we will see you again in the next module (or book)!
 
 \mmm See you, bye!
 
-And a \emph{huge} thanks to all of the people that helped us create and edit both the online course and this textbook.  You'll find their names in the front of the book.
+And a \textbf{\emph{huge}} thanks to all of the people that helped us create and edit both the online course and this textbook. You will find their names in the front of the book.
 
 
 
@@ -340,7 +331,6 @@ Extension of the Bell inequality to three particles and its experimental violati
 
 Jian-Wei Pan, Dik Bouwmeester, Matthew Daniell, Harald Weinfurter, Anton Zeilinger, Experimental test of quantum nonlocality in three-photon Greenberger-Horne-Zeilinger entanglement, \emph{Nature} 403, 515 (2000)~\cite{pan2000experimental}.
 
-This paper can be accessed freely here.
 
 {\bf Chapter 15}
 
