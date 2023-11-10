@@ -1,6 +1,5 @@
 \chapter{Entanglement}
 \label{sec:4_entanglement}
-%\begin{abstract}
 
 In this chapter, we will finally learn about \textbf{\emph{entanglement}}: a special and unique feature of quantum mechanics.
 We will begin by demonstrating how strange and counter-intuitive entanglement can be.
@@ -8,11 +7,12 @@ Then, we will move on to the definition of entangled states.
 Following that, we will discuss a particular class of entangled states called ``Bell states'', which play an important role in quantum communication.
 Finally, we will finish by framing entanglement as a resource for computational and communication tasks.
 
-%\end{abstract}
 
+%%%%%%%%%%%%%%%%%%%%%
 \section{CHSH Game}
 \label{sec:chsh-game}
 \index{CHSH game}
+%%%%%%%%%%%%%%%%%%%%%
 
 We begin with a game that will demonstrate just how wonderful and strange entangled states are.
 The game is related to a proposal of four scientists named Clauser, Horn, Shimony, and Holt, though it is normally referred to as the \textbf{\emph{CHSH game}}\index{CHSH game}.
@@ -30,10 +30,8 @@ The rules of the game are the following:
     \item IMPORTANT: The players are not allowed to communicate once the game has started.
 \end{itemize}
 
-% game diagram
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.5\textwidth]{lesson4/CHSH_diagram.pdf}
     \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
     \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
 
@@ -402,7 +400,7 @@ Often these photons are referred to as the \textbf{\emph{signal}}\index{signal p
         \node[] at (1.2,1.05) {\scriptsize signal};
         \node[] at (1.2,-0.05) {\scriptsize idler};
     \end{tikzpicture}
-    \caption[Spontaneous parametric down conversion (SPDC)]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy photons, with some very low probability.}
+    \caption[Spontaneous parametric down conversion (SPDC).]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy photons, with some very low probability.}
     \label{fig:spdc}
 \end{figure}
 
@@ -458,7 +456,7 @@ A natural choice for the photons is their \textbf{\emph{polarization}}\index{pol
         \node[blue!50] at (1.9, 1.4) {diagonal};
         \node[blue!50] at (2.15, 1.05) {polarization};
     \end{tikzpicture}
-    \caption[Linear polarization of light]{Linear polarization of light. Horizontally polarized light can be superposed with vertically polarized one to form diagonal polarization.}
+    \caption[Linear polarization of light.]{Linear polarization of light. Horizontally polarized light can be superposed with vertically polarized one to form diagonal polarization.}
     \label{fig:polarization}
 \end{figure}
 
@@ -958,8 +956,6 @@ What is the wavelength of the down-converted photons if both have the same energ
 \section*{Quiz}
   \addcontentsline{toc}{section}{Quiz}
 
-% \section{Learning more}
-
 The online version of this course includes a quiz for this block of chapters. Discussion of the quiz questions will be provided there.
 
 \section*{Further reading for chapters 1-4}
@@ -988,7 +984,7 @@ An article called ``Quantum Computing as a High School Module''~\cite{perry2019q
 
 A more advanced introduction to the mathematical concepts in this chapter can be found in the classic textbook by Michael A. Nielsen and Isaac L. Chuang, \emph{Quantum Computation and Quantum Information}~\cite{nielsen-chuang:qci}. Almost all serious quantum researchers have a copy of this book, but its learning curve is steep and we recommend attacking it after a more introductory book or course (which you presumably are gaining through this learning module and other courses). This book, known as "Mike and Ike", covers key ideas in computer science theory, the basic quantum information ideas and algorithms, and the principles of quantum hardware. Its descriptions of hardware and error correction are now rather out of date, and the description of algorithms is limited to a few important cases, but the principles are foundational and the explanation clear.
 
-An alternative to Mike and Ike is John Preskill's lecture notes, which are available chapter by chapter as open access PDF files~\cite{preskill:PH-CS219}.
+An alternative to Mike and Ike is John Preskill's lecture notes, which are available chapter by chapter as open access PDF files.~\cite{preskill1998lecture}.
 
 A new textbook that covers the basics of quantum information and their role in quantum computation and communication is Robert Sutor's \emph{Dancing with Qubits}~\cite{sutor19:dancing}. This textbook spends great effort in explaining the basics and goes over the fundamental calculations in great detail. The first half of the book covers the basic mathematics you will need, including complex numbers, probability and linear algebra (vectors and matrices). We strongly recommend this book for all beginning students, especially those who are worried about the math required. We recommend it to our own beginning undergraduates.
 
@@ -1001,6 +997,8 @@ The third chapter continues with our exposition of the basic mathematical formal
 Chapter 2 of “Mike \& Ike” and Perry’s article mentioned above are great for this chapter as well. Another fantastic book on quantum information (though primarily targeted at graduate students so parts of it might be too technical to follow) is Mark Wilde's \emph{Quantum Information Theory}~\cite{wilde2013quantum}.
 
 Chapter 3 of Wilde’s textbook deals with noisy states. Discussion on fidelity of quantum states can be found in Chapter 9 of “Mike \& Ike” and in Chapter 9 of Wilde’s textbook.\\
+
+\newpage
 
 \textbf{Chapter 4}\\
 

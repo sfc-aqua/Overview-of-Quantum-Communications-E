@@ -1,6 +1,5 @@
 \chapter{Quantum repeaters}
 \label{sec:12_quantum_repeaters}
-\label{sec:repeaters}
 
 \section{The need for repeaters}
 \label{sec:12-1_need_for_repeaters}
@@ -58,7 +57,7 @@ Another name for this architecture is ``meet-in-the-middle''.
 We tend to avoid using this term to reduce the chance of confusion with man-in-the-middle, which is a type of security attack.
 Each repeater node is equipped with a quantum memory, and is coupled to an optical fiber.
 The fibers lead to a \emph{\textbf{Bell state analyzer}} (BSA)\index{Bell state analyzer (BSA)}, an optical device which is capable of measuring two incoming photons in the Bell basis.
-We will discuss an implementation of the BSA in Section~\ref{sec:13-3_Bell_state_measurement_2}.
+We will discuss an implementation of the BSA in Section~\ref{sec:bell-state-measurements-II}.
 
 \begin{figure}[t]
     \centering
@@ -83,7 +82,7 @@ Even relatively small delays in their arrival times reduce the indistinguishabil
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.85\textwidth]{lesson12/12-2_MM_MSM.pdf}
-    \caption[MM and MSM architectures]{Memory-memory and Memory-source-memory link-level architectures.}
+    \caption[MM and MSM architectures.]{Memory-memory and Memory-source-memory link-level architectures.}
     \label{fig:12-2_MM_MSM}
 \end{figure}
 
@@ -312,7 +311,7 @@ We summarize all 4 possibilities in Tab.~\ref{tab:12-4_purification_X_error}.
         $\left|\Psi^{+}\right\rangle$ & $\left|\Psi^{+}\right\rangle$ & $(1-F)^{2}$ & 00 or 11 & \textcolor{mygreen}{Keep} & $\left|\Psi^{+}\right\rangle$ \\
         \hline
     \end{tabular}
-    \caption[X error purification]{Purification for a Pauli $X$ error.}
+    \caption[X error purification.]{Purification for a Pauli $X$ error.}
     \label{tab:12-4_purification_X_error}
 \end{table}
 
