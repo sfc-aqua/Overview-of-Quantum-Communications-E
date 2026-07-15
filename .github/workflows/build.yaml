@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Get and print env
       # https://stackoverflow.com/questions/59077079/how-to-get-pull-request-number-within-github-actions-workflow
       # https://docs.github.com/en/developers/webhooks-and-events/events/github-event-types#pullrequestevent
@@ -40,7 +40,7 @@ jobs:
           cp main.pdf Quantum-Communications-${{ env.SHORT_SHA }}.pdf
       # The artifact is also stored as a Zip file
     - name: Upload artifact  
-      uses: actions/upload-artifact@v3            # Upload the artifact
+      uses: actions/upload-artifact@v4            # Upload the artifact
       with:
           name: artifact-${{ env.SHORT_SHA }}
           path: Quantum-Communications-${{ env.SHORT_SHA }}.pdf
