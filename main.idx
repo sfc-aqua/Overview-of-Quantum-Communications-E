@@ -1,0 +1,259 @@
+\indexentry{bit|hyperpage}{5}
+\indexentry{CIA triad|hyperpage}{16}
+\indexentry{confidentiality|hyperpage}{16}
+\indexentry{integrity|hyperpage}{16}
+\indexentry{availability|hyperpage}{16}
+\indexentry{encryption|hyperpage}{16}
+\indexentry{qubit|hyperpage}{19}
+\indexentry{superposition|hyperpage}{19}
+\indexentry{Dirac notation|hyperpage}{20}
+\indexentry{ket|hyperpage}{20}
+\indexentry{basis states|hyperpage}{20}
+\indexentry{probability amplitudes|hyperpage}{20}
+\indexentry{Bloch sphere|hyperpage}{21}
+\indexentry{plus state|hyperpage}{21}
+\indexentry{minus state|hyperpage}{21}
+\indexentry{ion traps|hyperpage}{23}
+\indexentry{superconducting qubits|hyperpage}{23}
+\indexentry{identity operation|hyperpage}{24}
+\indexentry{Pauli X operation|hyperpage}{24}
+\indexentry{Hadamard|hyperpage}{24}
+\indexentry{reversible operation|hyperpage}{24}
+\indexentry{adjoint operator|hyperpage}{24}
+\indexentry{Pauli operator|hyperpage}{26}
+\indexentry{complex conjugate|hyperpage}{27}
+\indexentry{self-adjoint|hyperpage}{28}
+\indexentry{rotation|hyperpage}{28}
+\indexentry{state collapse|hyperpage}{31}
+\indexentry{eigenvector|hyperpage}{31}
+\indexentry{computational basis|hyperpage}{31}
+\indexentry{basis|hyperpage}{32}
+\indexentry{inner product|hyperpage}{33}
+\indexentry{bra|hyperpage}{33}
+\indexentry{single-shot measurement|hyperpage}{34}
+\indexentry{expectation value|hyperpage}{35}
+\indexentry{fluctuations|hyperpage}{36}
+\indexentry{tensor product|hyperpage}{37}
+\indexentry{state preparation|hyperpage}{43}
+\indexentry{information processing|hyperpage}{43}
+\indexentry{quantum communication|hyperpage}{44}
+\indexentry{outer product|hyperpage}{45}
+\indexentry{projector|hyperpage}{45}
+\indexentry{projective measurements|hyperpage}{46}
+\indexentry{pure states|hyperpage}{48}
+\indexentry{mixed state|hyperpage}{48}
+\indexentry{bit-flip channel|hyperpage}{48}
+\indexentry{density matrix|hyperpage}{49}
+\indexentry{maximally mixed state|hyperpage}{51}
+\indexentry{purity|hyperpage}{53}
+\indexentry{fidelity|hyperpage}{53}
+\indexentry{threshold fidelity|hyperpage}{55}
+\indexentry{CHSH game|hyperpage}{59}
+\indexentry{CHSH game|hyperpage}{59}
+\indexentry{entangled state|hyperpage}{61}
+\indexentry{rotated basis|hyperpage}{61}
+\indexentry{local state|hyperpage}{62}
+\indexentry{global state|hyperpage}{62}
+\indexentry{product state|hyperpage}{63}
+\indexentry{entangled state|hyperpage}{63}
+\indexentry{Bell states|hyperpage}{64}
+\indexentry{Bell-basis measurement|hyperpage}{65}
+\indexentry{spontaneous parametric down-conversion|hyperpage}{67}
+\indexentry{pump photon|hyperpage}{67}
+\indexentry{BBO|hyperpage}{67}
+\indexentry{signal photon|hyperpage}{67}
+\indexentry{idler photon|hyperpage}{67}
+\indexentry{ground state|hyperpage}{68}
+\indexentry{excited state|hyperpage}{68}
+\indexentry{degree of freedom|hyperpage}{69}
+\indexentry{polarization|hyperpage}{69}
+\indexentry{horizontally polarized|hyperpage}{69}
+\indexentry{vertically polarized|hyperpage}{69}
+\indexentry{diagonal polarization|hyperpage}{69}
+\indexentry{polarizer|hyperpage}{69}
+\indexentry{optic axis|hyperpage}{71}
+\indexentry{indistinguishability condition|hyperpage}{72}
+\indexentry{waveguides|hyperpage}{86}
+\indexentry{incoherent light|hyperpage}{87}
+\indexentry{coherent light|hyperpage}{87}
+\indexentry{thermal excitation|hyperpage}{87}
+\indexentry{radiative excitation|hyperpage}{88}
+\indexentry{spontaneous emission|hyperpage}{88}
+\indexentry{laser|hyperpage}{89}
+\indexentry{stimulated emission|hyperpage}{89}
+\indexentry{light amplification|hyperpage}{90}
+\indexentry{unstable state|hyperpage}{93}
+\indexentry{metastable state|hyperpage}{93}
+\indexentry{lasing transition|hyperpage}{93}
+\indexentry{gain medium|hyperpage}{93}
+\indexentry{optical cavity|hyperpage}{94}
+\indexentry{fixed points|hyperpage}{95}
+\indexentry{stable fixed point|hyperpage}{96}
+\indexentry{unstable fixed points|hyperpage}{96}
+\indexentry{attenuation|hyperpage}{97}
+\indexentry{amplification|hyperpage}{97}
+\indexentry{second-order correlation function|hyperpage}{98}
+\indexentry{anti-bunched light|hyperpage}{99}
+\indexentry{bunched light|hyperpage}{99}
+\indexentry{heralded single-photon source|hyperpage}{99}
+\indexentry{dark counts|hyperpage}{99}
+\indexentry{nitrogen-vacancy|hyperpage}{100}
+\indexentry{spin|hyperpage}{100}
+\indexentry{amplitude|hyperpage}{103}
+\indexentry{angular frequency|hyperpage}{103}
+\indexentry{wave number|hyperpage}{103}
+\indexentry{principle of superposition|hyperpage}{106}
+\indexentry{interference term|hyperpage}{107}
+\indexentry{constructive interference|hyperpage}{107}
+\indexentry{destructive interference|hyperpage}{107}
+\indexentry{phase velocity|hyperpage}{108}
+\indexentry{pulse|hyperpage}{111}
+\indexentry{Mach-Zehnder interferometer|hyperpage}{116}
+\indexentry{interferometer|hyperpage}{116}
+\indexentry{spatial encoding|hyperpage}{117}
+\indexentry{reflection|hyperpage}{123}
+\indexentry{refraction|hyperpage}{123}
+\indexentry{total internal reflection|hyperpage}{123}
+\indexentry{geometric optics|hyperpage}{123}
+\indexentry{angle of incidence|hyperpage}{124}
+\indexentry{angle of reflection|hyperpage}{124}
+\indexentry{angle of refraction|hyperpage}{124}
+\indexentry{refractive index|hyperpage}{125}
+\indexentry{critical angle|hyperpage}{127}
+\indexentry{total internal reflection|hyperpage}{127}
+\indexentry{optical fiber|hyperpage}{128}
+\indexentry{jacket|hyperpage}{128}
+\indexentry{buffer|hyperpage}{128}
+\indexentry{cladding|hyperpage}{128}
+\indexentry{core|hyperpage}{128}
+\indexentry{multimode fiber|hyperpage}{128}
+\indexentry{single-mode fiber|hyperpage}{128}
+\indexentry{transverse mode|hyperpage}{128}
+\indexentry{acceptance angle|hyperpage}{129}
+\indexentry{numerical aperture|hyperpage}{130}
+\indexentry{mode dispersion|hyperpage}{130}
+\indexentry{negative refractive index|hyperpage}{132}
+\indexentry{teleportation|hyperpage}{141}
+\indexentry{no-cloning theorem|hyperpage}{148}
+\indexentry{cryptographic key|hyperpage}{154}
+\indexentry{bulk data enxryption|hyperpage}{154}
+\indexentry{symmetric key cryptosystem|hyperpage}{154}
+\indexentry{Advanced Encryption Standard (AES)|hyperpage}{154}
+\indexentry{one-time pad (OTP)|hyperpage}{154}
+\indexentry{Vernam cipher|hyperpage}{154}
+\indexentry{pre-shared key (PSK)|hyperpage}{154}
+\indexentry{public key cryptography|hyperpage}{155}
+\indexentry{asymmetric encryption|hyperpage}{155}
+\indexentry{Advanced Encryption Standard (AES)|hyperpage}{155}
+\indexentry{computational security|hyperpage}{155}
+\indexentry{one-time pad (OTP)|hyperpage}{156}
+\indexentry{no-cloning theorem|hyperpage}{161}
+\indexentry{Advanced Encryption Standard (AES)|hyperpage}{165}
+\indexentry{monogamy of entanglement|hyperpage}{173}
+\indexentry{CHSH inequality|hyperpage}{173}
+\indexentry{monogamy of entanglement|hyperpage}{175}
+\indexentry{information reconciliation|hyperpage}{178}
+\indexentry{privacy amplification|hyperpage}{178}
+\indexentry{spontaneous parametric down-conversion (SPDC)|hyperpage}{180}
+\indexentry{baseband communication|hyperpage}{190}
+\indexentry{signal modulation|hyperpage}{190}
+\indexentry{carrier signal|hyperpage}{190}
+\indexentry{on-off keying|hyperpage}{191}
+\indexentry{channel (frequency or wavelength)|hyperpage}{191}
+\indexentry{frequency division multiplexing (FDM)|hyperpage}{191}
+\indexentry{wavelength division multiplexing (WDM)|hyperpage}{191}
+\indexentry{bandwidth|hyperpage}{191}
+\indexentry{dense wavelength division multiplexing (DWDM)|hyperpage}{191}
+\indexentry{attenuation|hyperpage}{191}
+\indexentry{filtering|hyperpage}{192}
+\indexentry{mode dispersion|hyperpage}{192}
+\indexentry{multimode fiber|hyperpage}{192}
+\indexentry{axial path|hyperpage}{192}
+\indexentry{total internal reflection|hyperpage}{192}
+\indexentry{absorption|hyperpage}{195}
+\indexentry{intrinsic absorption|hyperpage}{195}
+\indexentry{extrinsic absorption|hyperpage}{195}
+\indexentry{scattering|hyperpage}{195}
+\indexentry{bending|hyperpage}{196}
+\indexentry{coupling|hyperpage}{196}
+\indexentry{decibel|hyperpage}{196}
+\indexentry{attenuation parameter|hyperpage}{197}
+\indexentry{single-mode fiber|hyperpage}{198}
+\indexentry{repeater (classical)|hyperpage}{199}
+\indexentry{amplifier|hyperpage}{199}
+\indexentry{erbium-doped fiber amplifier (EDFA)|hyperpage}{199}
+\indexentry{signal-to-noise ratio (SNR)|hyperpage}{200}
+\indexentry{quantum repeater|hyperpage}{206}
+\indexentry{link-level entanglement|hyperpage}{206}
+\indexentry{entanglement swapping|hyperpage}{206}
+\indexentry{memory-interfere-memory (MIM)|hyperpage}{206}
+\indexentry{Bell state analyzer (BSA)|hyperpage}{207}
+\indexentry{indistinguishable photons|hyperpage}{208}
+\indexentry{MM link|hyperpage}{208}
+\indexentry{MSM link|hyperpage}{208}
+\indexentry{entanglement swapping|hyperpage}{209}
+\indexentry{quantum error correction (QEC)|hyperpage}{212}
+\indexentry{purification|hyperpage}{212}
+\indexentry{routing algorithm|hyperpage}{215}
+\indexentry{Dijkstra's shortest path first|hyperpage}{216}
+\indexentry{multiplexing|hyperpage}{216}
+\indexentry{contention|hyperpage}{217}
+\indexentry{quantum memory|hyperpage}{221}
+\indexentry{optical fiber|hyperpage}{221}
+\indexentry{polarizing beam splitter (PBS)|hyperpage}{225}
+\indexentry{DiVincenzo criteria|hyperpage}{228}
+\indexentry{rount trip time (RTT)|hyperpage}{230}
+\indexentry{energy relaxation|hyperpage}{231}
+\indexentry{dephasing|hyperpage}{231}
+\indexentry{$T_1$ time|hyperpage}{231}
+\indexentry{$T_2$ time|hyperpage}{231}
+\indexentry{Poisson process|hyperpage}{232}
+\indexentry{memoryless decay process|hyperpage}{232}
+\indexentry{spin|hyperpage}{234}
+\indexentry{multipartite entanglement|hyperpage}{250}
+\indexentry{GHZ state|hyperpage}{250}
+\indexentry{W state|hyperpage}{251}
+\indexentry{monogamy of entanglement|hyperpage}{252}
+\indexentry{graph state|hyperpage}{253}
+\indexentry{graph|hyperpage}{253}
+\indexentry{control-phase gate|hyperpage}{254}
+\indexentry{cluster states|hyperpage}{254}
+\indexentry{clock synchronization|hyperpage}{255}
+\indexentry{Einstein's clock synchronization|hyperpage}{255}
+\indexentry{Eddington clock synchronization|hyperpage}{255}
+\indexentry{distributed quantum computation|hyperpage}{256}
+\indexentry{measurement-based quantum computation|hyperpage}{257}
+\indexentry{blind quantum computation|hyperpage}{258}
+\indexentry{quantum Internet|hyperpage}{261}
+\indexentry{standards|hyperpage}{261}
+\indexentry{gateway|hyperpage}{262}
+\indexentry{border router|hyperpage}{262}
+\indexentry{scalability|hyperpage}{262}
+\indexentry{privacy|hyperpage}{262}
+\indexentry{autonomy|hyperpage}{262}
+\indexentry{adjacency|hyperpage}{263}
+\indexentry{peering|hyperpage}{263}
+\indexentry{peering agreement|hyperpage}{263}
+\indexentry{transit netwoek|hyperpage}{263}
+\indexentry{private peering|hyperpage}{264}
+\indexentry{Internet exchange point (IXP)|hyperpage}{264}
+\indexentry{complete graph|hyperpage}{264}
+\indexentry{TCP/IP|hyperpage}{265}
+\indexentry{Border Gateway Protocol (BGP)|hyperpage}{265}
+\indexentry{virtualization|hyperpage}{265}
+\indexentry{recursion|hyperpage}{266}
+\indexentry{autonomous system|hyperpage}{266}
+\indexentry{link state|hyperpage}{266}
+\indexentry{spanning tree|hyperpage}{266}
+\indexentry{recursive network|hyperpage}{267}
+\indexentry{IPsec|hyperpage}{268}
+\indexentry{Transport Layer Security (TLS)|hyperpage}{269}
+\indexentry{public key cryptography|hyperpage}{269}
+\indexentry{Diffie-Hellman key exchange|hyperpage}{269}
+\indexentry{Advanced Encryption Standard (AES)|hyperpage}{269}
+\indexentry{man-in-the-middle|hyperpage}{270}
+\indexentry{mode dispersion|hyperpage}{273}
+\indexentry{specification|hyperpage}{273}
+\indexentry{Request for Comments|hyperpage}{273}
+\indexentry{entanglement swapping|hyperpage}{274}
+\indexentry{ethics|hyperpage}{276}

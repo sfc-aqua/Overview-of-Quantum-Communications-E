@@ -1,0 +1,121 @@
+\contentsline {starchap}{List of Figures}{xi}{section*.4}%
+\contentsline {starchap}{Contributors}{xv}{section*.6}%
+\contentsline {starchap}{Preface}{xvii}{section*.8}%
+\contentsline {starchap}{Using This Book}{xix}{section*.10}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt I\hfill }{\uppercase {Quantum Mechanics for Quantum Communication}}}{1}{part.1}%
+\contentsline {partintro}{Introduction to the first chapter block}{3}{section*.14}%
+\contentsline {chapter}{\hbox to\@tempdima {1\hfill }{Introduction}}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}History of Communication}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Analog to digital}{10}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Bits as building blocks}{12}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Quantum communication}{14}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Security in the quantum age}{16}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Module Overview}{17}{section.1.6}%
+\contentsline {chapter}{\hbox to\@tempdima {2\hfill }{Quantum States}}{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Qubits}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Unitary Operations}{23}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Measurement}{30}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Probabilities, expectation, variance}{34}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Multiple Qubits}{37}{section.2.5}%
+\contentsline {section}{\numberline {}Exercises}{41}{section*.16}%
+\contentsline {chapter}{\hbox to\@tempdima {3\hfill }{Pure and Mixed States}}{43}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Noisy world}{43}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Outer product}{44}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Density matrices}{48}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Pure vs mixed states}{51}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Fidelity}{53}{section.3.5}%
+\contentsline {section}{\numberline {}Exercises}{56}{section*.17}%
+\contentsline {chapter}{\hbox to\@tempdima {4\hfill }{Entanglement}}{59}{chapter.4}%
+\contentsline {section}{\numberline {4.1}CHSH Game}{59}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Entangled states}{62}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Bell states}{64}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Spontaneous parametric down-conversion}{67}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Entanglement as a resource}{72}{section.4.5}%
+\contentsline {section}{\numberline {}Exercises}{75}{section*.18}%
+\contentsline {section}{Quiz}{77}{section*.19}%
+\contentsline {section}{Further reading for chapters 1-4}{77}{section*.20}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt II\hfill }{\uppercase {Fundamentals of Optics}}}{81}{part.2}%
+\contentsline {partintro}{Introduction to the second chapter block}{83}{section*.21}%
+\contentsline {chapter}{\hbox to\@tempdima {5\hfill }{Coherent Light and Single Photons}}{85}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{85}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Coherent vs incoherent light}{87}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Lasers I: Stimulated emission}{89}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Lasers II: Population inversion}{92}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Single photons}{97}{section.5.5}%
+\contentsline {section}{\numberline {}Exercises}{101}{section*.23}%
+\contentsline {chapter}{\hbox to\@tempdima {6\hfill }{Interference}}{103}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Constructive and destructive interference}{103}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Phase and group velocities}{108}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Interference with single photons}{111}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Interference with qubits}{114}{section.6.4}%
+\contentsline {section}{\numberline {}Exercises}{119}{section*.24}%
+\contentsline {chapter}{\hbox to\@tempdima {7\hfill }{Waveguides}}{121}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Brief history of guiding light}{121}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Light at an interface}{123}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Total internal reflection}{127}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Optical fibers}{128}{section.7.4}%
+\contentsline {section}{\numberline {}Exercises}{132}{section*.25}%
+\contentsline {section}{Quiz}{133}{section*.26}%
+\contentsline {section}{Further reading Chapters 5-7}{133}{section*.27}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt III\hfill }{\uppercase {Quantum Communication Protocols}}}{135}{part.3}%
+\contentsline {partintro}{Introduction to the third chapter block}{137}{section*.28}%
+\contentsline {chapter}{\hbox to\@tempdima {8\hfill }{Teleportation}}{139}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introduction}{139}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Teleportation protocol}{142}{section.8.2}%
+\contentsline {section}{\numberline {8.3}No-cloning theorem and Faster-than-light communication}{145}{section.8.3}%
+\contentsline {section}{\numberline {}Exercises}{151}{section*.30}%
+\contentsline {chapter}{\hbox to\@tempdima {9\hfill }{BB84: Single-photon QKD}}{153}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Three phases of cryptographically secure communication}{153}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Key agreement and use}{154}{section.9.2}%
+\contentsline {section}{\numberline {9.3}BB84 Protocol}{157}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Eavesdropper detection}{160}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Existing QKD network testbeds}{165}{section.9.5}%
+\contentsline {section}{\numberline {}Exercises}{167}{section*.31}%
+\contentsline {chapter}{\hbox to\@tempdima {10\hfill }{E91: Entanglement-based QKD}}{169}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Introduction}{169}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Basic ingredients}{171}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Protocol}{175}{section.10.3}%
+\contentsline {section}{\numberline {}Exercises}{181}{section*.32}%
+\contentsline {section}{Quiz}{183}{section*.33}%
+\contentsline {section}{Further reading for chapters 8-10}{183}{section*.34}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt IV\hfill }{\uppercase {Fundamentals of Quantum Repeaters}}}{185}{part.4}%
+\contentsline {partintro}{Introduction to the fourth lesson block}{187}{section*.35}%
+\contentsline {chapter}{\hbox to\@tempdima {11\hfill }{Long-distance communication}}{189}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Introduction}{189}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Mode dispersion}{192}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Attenuation}{195}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Overcoming losses}{198}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Quantum challenges}{200}{section.11.5}%
+\contentsline {section}{\numberline {}Exercises}{202}{section*.37}%
+\contentsline {chapter}{\hbox to\@tempdima {12\hfill }{Quantum repeaters}}{205}{chapter.12}%
+\contentsline {section}{\numberline {12.1}The need for repeaters}{205}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Making link-level entanglement}{206}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Reaching for distance: Entanglement swapping}{208}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Detecting errors: purification}{211}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Making a network}{215}{section.12.5}%
+\contentsline {section}{\numberline {}Exercises}{218}{section*.38}%
+\contentsline {chapter}{\hbox to\@tempdima {13\hfill }{Physical Layer Components}}{221}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Introduction}{221}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Bell State Measurements I}{222}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Bell State Measurements II}{225}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Stationary and flying qubits}{228}{section.13.4}%
+\contentsline {section}{\numberline {}Exercises}{237}{section*.39}%
+\contentsline {section}{Quiz}{239}{section*.40}%
+\contentsline {section}{Further reading chapters 11-13}{239}{section*.41}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt V\hfill }{\uppercase {Quantum Repeater Systems}}}{241}{part.5}%
+\contentsline {partintro}{Introduction to the fifth lesson block}{243}{section*.42}%
+\contentsline {chapter}{\hbox to\@tempdima {14\hfill }{Entanglement Revisited}}{245}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Bipartite entanglement}{245}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Multipartite entanglement}{249}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Clock synchronization}{255}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Distributed and blind quantum computation}{256}{section.14.4}%
+\contentsline {section}{\numberline {}Exercises}{259}{section*.44}%
+\contentsline {chapter}{\hbox to\@tempdima {15\hfill }{Quantum Internet}}{261}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Networks of networks}{261}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Integration with classical systems}{268}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Putting it all together}{274}{section.15.3}%
+\contentsline {section}{Quiz}{278}{section*.45}%
+\contentsline {section}{Further reading chapters 14-15}{278}{section*.46}%
+\vskip 8pt
+\contentsline {starchap}{Bibliography}{281}{section*.48}%
+\contentsline {starchap}{Index}{283}{section*.50}%

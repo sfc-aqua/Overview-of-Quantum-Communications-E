@@ -1,0 +1,316 @@
+\begin{theindex}
+
+  \item $T_1$ time, \hyperpage{231}
+  \item $T_2$ time, \hyperpage{231}
+
+  \indexspace
+
+  \item absorption, \hyperpage{195}
+  \item acceptance angle, \hyperpage{129}
+  \item adjacency, \hyperpage{263}
+  \item adjoint operator, \hyperpage{24}
+  \item Advanced Encryption Standard (AES), \hyperpage{154, 155}, 
+		\hyperpage{165}, \hyperpage{269}
+  \item amplification, \hyperpage{97}
+  \item amplifier, \hyperpage{199}
+  \item amplitude, \hyperpage{103}
+  \item angle of incidence, \hyperpage{124}
+  \item angle of reflection, \hyperpage{124}
+  \item angle of refraction, \hyperpage{124}
+  \item angular frequency, \hyperpage{103}
+  \item anti-bunched light, \hyperpage{99}
+  \item asymmetric encryption, \hyperpage{155}
+  \item attenuation, \hyperpage{97}, \hyperpage{191}
+  \item attenuation parameter, \hyperpage{197}
+  \item autonomous system, \hyperpage{266}
+  \item autonomy, \hyperpage{262}
+  \item availability, \hyperpage{16}
+  \item axial path, \hyperpage{192}
+
+  \indexspace
+
+  \item bandwidth, \hyperpage{191}
+  \item baseband communication, \hyperpage{190}
+  \item basis, \hyperpage{32}
+  \item basis states, \hyperpage{20}
+  \item BBO, \hyperpage{67}
+  \item Bell state analyzer (BSA), \hyperpage{207}
+  \item Bell states, \hyperpage{64}
+  \item Bell-basis measurement, \hyperpage{65}
+  \item bending, \hyperpage{196}
+  \item bit, \hyperpage{5}
+  \item bit-flip channel, \hyperpage{48}
+  \item blind quantum computation, \hyperpage{258}
+  \item Bloch sphere, \hyperpage{21}
+  \item Border Gateway Protocol (BGP), \hyperpage{265}
+  \item border router, \hyperpage{262}
+  \item bra, \hyperpage{33}
+  \item buffer, \hyperpage{128}
+  \item bulk data enxryption, \hyperpage{154}
+  \item bunched light, \hyperpage{99}
+
+  \indexspace
+
+  \item carrier signal, \hyperpage{190}
+  \item channel (frequency or wavelength), \hyperpage{191}
+  \item CHSH game, \hyperpage{59}
+  \item CHSH inequality, \hyperpage{173}
+  \item CIA triad, \hyperpage{16}
+  \item cladding, \hyperpage{128}
+  \item clock synchronization, \hyperpage{255}
+  \item cluster states, \hyperpage{254}
+  \item coherent light, \hyperpage{87}
+  \item complete graph, \hyperpage{264}
+  \item complex conjugate, \hyperpage{27}
+  \item computational basis, \hyperpage{31}
+  \item computational security, \hyperpage{155}
+  \item confidentiality, \hyperpage{16}
+  \item constructive interference, \hyperpage{107}
+  \item contention, \hyperpage{217}
+  \item control-phase gate, \hyperpage{254}
+  \item core, \hyperpage{128}
+  \item coupling, \hyperpage{196}
+  \item critical angle, \hyperpage{127}
+  \item cryptographic key, \hyperpage{154}
+
+  \indexspace
+
+  \item dark counts, \hyperpage{99}
+  \item decibel, \hyperpage{196}
+  \item degree of freedom, \hyperpage{69}
+  \item dense wavelength division multiplexing (DWDM), \hyperpage{191}
+  \item density matrix, \hyperpage{49}
+  \item dephasing, \hyperpage{231}
+  \item destructive interference, \hyperpage{107}
+  \item diagonal polarization, \hyperpage{69}
+  \item Diffie-Hellman key exchange, \hyperpage{269}
+  \item Dijkstra's shortest path first, \hyperpage{216}
+  \item Dirac notation, \hyperpage{20}
+  \item distributed quantum computation, \hyperpage{256}
+  \item DiVincenzo criteria, \hyperpage{228}
+
+  \indexspace
+
+  \item Eddington clock synchronization, \hyperpage{255}
+  \item eigenvector, \hyperpage{31}
+  \item Einstein's clock synchronization, \hyperpage{255}
+  \item encryption, \hyperpage{16}
+  \item energy relaxation, \hyperpage{231}
+  \item entangled state, \hyperpage{61}, \hyperpage{63}
+  \item entanglement swapping, \hyperpage{206}, \hyperpage{209}, 
+		\hyperpage{274}
+  \item erbium-doped fiber amplifier (EDFA), \hyperpage{199}
+  \item ethics, \hyperpage{276}
+  \item excited state, \hyperpage{68}
+  \item expectation value, \hyperpage{35}
+  \item extrinsic absorption, \hyperpage{195}
+
+  \indexspace
+
+  \item fidelity, \hyperpage{53}
+  \item filtering, \hyperpage{192}
+  \item fixed points, \hyperpage{95}
+  \item fluctuations, \hyperpage{36}
+  \item frequency division multiplexing (FDM), \hyperpage{191}
+
+  \indexspace
+
+  \item gain medium, \hyperpage{93}
+  \item gateway, \hyperpage{262}
+  \item geometric optics, \hyperpage{123}
+  \item GHZ state, \hyperpage{250}
+  \item global state, \hyperpage{62}
+  \item graph, \hyperpage{253}
+  \item graph state, \hyperpage{253}
+  \item ground state, \hyperpage{68}
+
+  \indexspace
+
+  \item Hadamard, \hyperpage{24}
+  \item heralded single-photon source, \hyperpage{99}
+  \item horizontally polarized, \hyperpage{69}
+
+  \indexspace
+
+  \item identity operation, \hyperpage{24}
+  \item idler photon, \hyperpage{67}
+  \item incoherent light, \hyperpage{87}
+  \item indistinguishability condition, \hyperpage{72}
+  \item indistinguishable photons, \hyperpage{208}
+  \item information processing, \hyperpage{43}
+  \item information reconciliation, \hyperpage{178}
+  \item inner product, \hyperpage{33}
+  \item integrity, \hyperpage{16}
+  \item interference term, \hyperpage{107}
+  \item interferometer, \hyperpage{116}
+  \item Internet exchange point (IXP), \hyperpage{264}
+  \item intrinsic absorption, \hyperpage{195}
+  \item ion traps, \hyperpage{23}
+  \item IPsec, \hyperpage{268}
+
+  \indexspace
+
+  \item jacket, \hyperpage{128}
+
+  \indexspace
+
+  \item ket, \hyperpage{20}
+
+  \indexspace
+
+  \item laser, \hyperpage{89}
+  \item lasing transition, \hyperpage{93}
+  \item light amplification, \hyperpage{90}
+  \item link state, \hyperpage{266}
+  \item link-level entanglement, \hyperpage{206}
+  \item local state, \hyperpage{62}
+
+  \indexspace
+
+  \item Mach-Zehnder interferometer, \hyperpage{116}
+  \item man-in-the-middle, \hyperpage{270}
+  \item maximally mixed state, \hyperpage{51}
+  \item measurement-based quantum computation, \hyperpage{257}
+  \item memory-interfere-memory (MIM), \hyperpage{206}
+  \item memoryless decay process, \hyperpage{232}
+  \item metastable state, \hyperpage{93}
+  \item minus state, \hyperpage{21}
+  \item mixed state, \hyperpage{48}
+  \item MM link, \hyperpage{208}
+  \item mode dispersion, \hyperpage{130}, \hyperpage{192}, 
+		\hyperpage{273}
+  \item monogamy of entanglement, \hyperpage{173}, \hyperpage{175}, 
+		\hyperpage{252}
+  \item MSM link, \hyperpage{208}
+  \item multimode fiber, \hyperpage{128}, \hyperpage{192}
+  \item multipartite entanglement, \hyperpage{250}
+  \item multiplexing, \hyperpage{216}
+
+  \indexspace
+
+  \item negative refractive index, \hyperpage{132}
+  \item nitrogen-vacancy, \hyperpage{100}
+  \item no-cloning theorem, \hyperpage{148}, \hyperpage{161}
+  \item numerical aperture, \hyperpage{130}
+
+  \indexspace
+
+  \item on-off keying, \hyperpage{191}
+  \item one-time pad (OTP), \hyperpage{154}, \hyperpage{156}
+  \item optic axis, \hyperpage{71}
+  \item optical cavity, \hyperpage{94}
+  \item optical fiber, \hyperpage{128}, \hyperpage{221}
+  \item outer product, \hyperpage{45}
+
+  \indexspace
+
+  \item Pauli operator, \hyperpage{26}
+  \item Pauli X operation, \hyperpage{24}
+  \item peering, \hyperpage{263}
+  \item peering agreement, \hyperpage{263}
+  \item phase velocity, \hyperpage{108}
+  \item plus state, \hyperpage{21}
+  \item Poisson process, \hyperpage{232}
+  \item polarization, \hyperpage{69}
+  \item polarizer, \hyperpage{69}
+  \item polarizing beam splitter (PBS), \hyperpage{225}
+  \item pre-shared key (PSK), \hyperpage{154}
+  \item principle of superposition, \hyperpage{106}
+  \item privacy, \hyperpage{262}
+  \item privacy amplification, \hyperpage{178}
+  \item private peering, \hyperpage{264}
+  \item probability amplitudes, \hyperpage{20}
+  \item product state, \hyperpage{63}
+  \item projective measurements, \hyperpage{46}
+  \item projector, \hyperpage{45}
+  \item public key cryptography, \hyperpage{155}, \hyperpage{269}
+  \item pulse, \hyperpage{111}
+  \item pump photon, \hyperpage{67}
+  \item pure states, \hyperpage{48}
+  \item purification, \hyperpage{212}
+  \item purity, \hyperpage{53}
+
+  \indexspace
+
+  \item quantum communication, \hyperpage{44}
+  \item quantum error correction (QEC), \hyperpage{212}
+  \item quantum Internet, \hyperpage{261}
+  \item quantum memory, \hyperpage{221}
+  \item quantum repeater, \hyperpage{206}
+  \item qubit, \hyperpage{19}
+
+  \indexspace
+
+  \item radiative excitation, \hyperpage{88}
+  \item recursion, \hyperpage{266}
+  \item recursive network, \hyperpage{267}
+  \item reflection, \hyperpage{123}
+  \item refraction, \hyperpage{123}
+  \item refractive index, \hyperpage{125}
+  \item repeater (classical), \hyperpage{199}
+  \item Request for Comments, \hyperpage{273}
+  \item reversible operation, \hyperpage{24}
+  \item rotated basis, \hyperpage{61}
+  \item rotation, \hyperpage{28}
+  \item rount trip time (RTT), \hyperpage{230}
+  \item routing algorithm, \hyperpage{215}
+
+  \indexspace
+
+  \item scalability, \hyperpage{262}
+  \item scattering, \hyperpage{195}
+  \item second-order correlation function, \hyperpage{98}
+  \item self-adjoint, \hyperpage{28}
+  \item signal modulation, \hyperpage{190}
+  \item signal photon, \hyperpage{67}
+  \item signal-to-noise ratio (SNR), \hyperpage{200}
+  \item single-mode fiber, \hyperpage{128}, \hyperpage{198}
+  \item single-shot measurement, \hyperpage{34}
+  \item spanning tree, \hyperpage{266}
+  \item spatial encoding, \hyperpage{117}
+  \item specification, \hyperpage{273}
+  \item spin, \hyperpage{100}, \hyperpage{234}
+  \item spontaneous emission, \hyperpage{88}
+  \item spontaneous parametric down-conversion, \hyperpage{67}
+  \item spontaneous parametric down-conversion (SPDC), \hyperpage{180}
+  \item stable fixed point, \hyperpage{96}
+  \item standards, \hyperpage{261}
+  \item state collapse, \hyperpage{31}
+  \item state preparation, \hyperpage{43}
+  \item stimulated emission, \hyperpage{89}
+  \item superconducting qubits, \hyperpage{23}
+  \item superposition, \hyperpage{19}
+  \item symmetric key cryptosystem, \hyperpage{154}
+
+  \indexspace
+
+  \item TCP/IP, \hyperpage{265}
+  \item teleportation, \hyperpage{141}
+  \item tensor product, \hyperpage{37}
+  \item thermal excitation, \hyperpage{87}
+  \item threshold fidelity, \hyperpage{55}
+  \item total internal reflection, \hyperpage{123}, \hyperpage{127}, 
+		\hyperpage{192}
+  \item transit netwoek, \hyperpage{263}
+  \item Transport Layer Security (TLS), \hyperpage{269}
+  \item transverse mode, \hyperpage{128}
+
+  \indexspace
+
+  \item unstable fixed points, \hyperpage{96}
+  \item unstable state, \hyperpage{93}
+
+  \indexspace
+
+  \item Vernam cipher, \hyperpage{154}
+  \item vertically polarized, \hyperpage{69}
+  \item virtualization, \hyperpage{265}
+
+  \indexspace
+
+  \item W state, \hyperpage{251}
+  \item wave number, \hyperpage{103}
+  \item waveguides, \hyperpage{86}
+  \item wavelength division multiplexing (WDM), \hyperpage{191}
+
+\end{theindex}
