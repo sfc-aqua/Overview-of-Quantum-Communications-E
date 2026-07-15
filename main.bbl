@@ -1,0 +1,357 @@
+\begin{thebibliography}{32}
+% BibTex style file: spr-chicago.bst, 2011-02-21
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1} \fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1} \fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{\textit{#1}}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1} \fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1} \fi
+\ifx \bvolume  \undefined \def \bvolume#1{#1}\fi
+\ifx \byear  \undefined \def \byear#1{#1} \fi
+\ifx \bissue  \undefined \def \bissue#1{#1} \fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1} \fi
+\ifx \blpage  \undefined \def \blpage #1{#1} \fi
+\ifx \burl  \undefined \def \burl#1{#1} \fi
+\ifx \doiurl  \undefined \def \doiurl#1{#1} \fi
+\ifx \betal  \undefined \def \betal{et al.} \fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1} \fi
+\ifx \beditor  \undefined \def \beditor#1{#1} \fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1} \fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{\textit{#1}} \fi
+\ifx \bedition  \undefined \def \bedition#1{#1} \fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1} \fi
+\ifx \blocation  \undefined \def \blocation#1{#1} \fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{\textit{#1}} \fi
+\ifx \bsnm \undefined \def \bsnm#1{#1} \fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1} \fi
+\ifx \bparticle \undefined \def \bparticle#1{#1} \fi
+\ifx \barticle \undefined \def \barticle#1{#1} \fi
+\ifx \botherref \undefined \def \botherref #1{#1} \fi
+\ifx \url \undefined \def \url#1{#1} \fi
+\ifx \bchapter \undefined \def \bchapter#1{#1} \fi
+\ifx \bbook \undefined \def \bbook#1{#1} \fi
+\ifx \bcomment \undefined \def \bcomment#1{#1} \fi
+\ifx \oauthor \undefined \def \oauthor#1{#1} \fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1} \fi
+\ifx \texttildelow  \undefined \def \texttildelow{\symbol{126}} \fi
+\def \endbibitem {}
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1} \fi
+
+\bibitem[\protect\citeauthoryear{Bennett and Brassard}{1984}]{bennett:bb84}
+\begin{bchapter}
+\bauthor{\bsnm{Bennett}, \binits{C.~H.}}, and \bauthor{\binits{G.} \bsnm{Brassard}}.
+\byear{1984}.
+\bctitle{Quantum cryptography: Public key distribution and coin tossing}.
+In \bbtitle{Proc. ieee international conference on computers, systems, and signal processing},
+\bfpage{175}--\blpage{179}.
+\bpublisher{IEEE}.
+\burl{http://www.research.ibm.com/people/b/bennetc/bennettc198469790513.pdf}.
+\end{bchapter}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Bennett et~al.}{1993}]{bennett:teleportation}
+\begin{barticle}
+\bauthor{\bsnm{Bennett}, \binits{C.~H.}}, \bauthor{\binits{G.} \bsnm{Brassard}}, \bauthor{\binits{C.} \bsnm{Cr\'{e}peau}}, \bauthor{\binits{R.} \bsnm{Josza}}, \bauthor{\binits{A.} \bsnm{Peres}}, and \bauthor{\binits{W.} \bsnm{Wootters}}.
+\byear{1993}.
+\batitle{Teleporting an unknown quantum state via dual classical and {EPR} channels}.
+\bjtitle{Physical Review Letters}
+\bvolume{70}: \bfpage{1895}--\blpage{1899}.
+\burl{http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.70.1895}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Bishop}{2018}]{bishop2002art}
+\begin{bbook}
+\bauthor{\bsnm{Bishop}, \binits{Matthew~A}}.
+\byear{2018}.
+\bbtitle{Computer security: Art and science},
+\bedition{2nd} edn.
+\bpublisher{Addison-Wesley Professional}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Bouwmeester et~al.}{1999}]{bouwmeester:ghz}
+\begin{barticle}
+\bauthor{\bsnm{Bouwmeester}, \binits{Dik}}, \bauthor{\binits{Jian-Wei} \bsnm{Pan}}, \bauthor{\binits{Matthew} \bsnm{Daniell}}, \bauthor{\binits{Harald} \bsnm{Weinfurter}}, and \bauthor{\binits{Anton} \bsnm{Zeilinger}}.
+\byear{1999}.
+\batitle{Observation of three-photon greenberger-horne-zeilinger entanglement}.
+\bjtitle{Phys. Rev. Lett.}
+\bvolume{82}: \bfpage{1345}--\blpage{1349}.
+doi:\doiurl{10.1103/PhysRevLett.82.1345}.
+\burl{https://link.aps.org/doi/10.1103/PhysRevLett.82.1345}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Briegel et~al.}{1998}]{briegel98:_quant_repeater}
+\begin{barticle}
+\bauthor{\bsnm{Briegel}, \binits{H.~J.}}, \bauthor{\binits{W.} \bsnm{D\"ur}}, \bauthor{\binits{J.~I.} \bsnm{Cirac}}, and \bauthor{\binits{P.} \bsnm{Zoller}}.
+\byear{1998}.
+\batitle{Quantum repeaters: the role of imperfect local operations in quantum communication}.
+\bjtitle{Physical Review Letters}
+\bvolume{81}: \bfpage{5932}--\blpage{5935}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Cerf et~al.}{1974}]{RFC0675}
+\begin{botherref}
+\oauthor{\bsnm{Cerf}, \binits{Vinton}}, \oauthor{\binits{Yogen} \bsnm{Dalal}}, and \oauthor{\binits{Carl} \bsnm{Sunshine}}.
+1974.
+Specification of internet transmission control program,
+RFC 675,
+RFC Editor.
+\url{http://www.rfc-editor.org/rfc/rfc675.txt}.
+\url{http://www.rfc-editor.org/rfc/rfc675.txt}.
+\end{botherref}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chen et~al.}{2021}]{chen2021integrated}
+\begin{barticle}
+\bauthor{\bsnm{Chen}, \binits{Yu-Ao}}, \bauthor{\binits{Qiang} \bsnm{Zhang}}, \bauthor{\binits{Teng-Yun} \bsnm{Chen}}, \bauthor{\binits{Wen-Qi} \bsnm{Cai}}, \bauthor{\binits{Sheng-Kai} \bsnm{Liao}}, \bauthor{\binits{Jun} \bsnm{Zhang}}, \bauthor{\binits{Kai} \bsnm{Chen}}, \bauthor{\binits{Juan} \bsnm{Yin}}, \bauthor{\binits{Ji-Gang} \bsnm{Ren}}, \bauthor{\binits{Zhu} \bsnm{Chen}}, \betal.
+\byear{2021}.
+\batitle{An integrated space-to-ground quantum communication network over 4,600 kilometres}.
+\bjtitle{Nature}
+\bvolume{589} (\bissue{7841}): \bfpage{214}--\blpage{219}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Clark}{2018}]{clark2018designing}
+\begin{bbook}
+\bauthor{\bsnm{Clark}, \binits{David~D}}.
+\byear{2018}.
+\bbtitle{Designing an internet}.
+\bpublisher{MIT Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Desurvire}{1994}]{desurvire1994golden}
+\begin{barticle}
+\bauthor{\bsnm{Desurvire}, \binits{Emmanuel}}.
+\byear{1994}.
+\batitle{{The Golden Age of Optical Fiber Amplifiers}}.
+\bjtitle{Physics Today}
+\bvolume{47} (\bissue{1}): \bfpage{20}--\blpage{27}.
+doi:\doiurl{10.1063/1.881418}.
+\burl{https://doi.org/10.1063/1.881418}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Ekert}{1991}]{ekert1991qcb}
+\begin{barticle}
+\bauthor{\bsnm{Ekert}, \binits{A.~K.}}
+\byear{1991}.
+\batitle{Quantum cryptography based on {Bell's} theorem}.
+\bjtitle{Physical Review Letters}
+\bvolume{67} (\bissue{6}): \bfpage{661}--\blpage{663}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Feynman et~al.}{1971}]{feynman1971feynman}
+\begin{bbook}
+\bauthor{\bsnm{Feynman}, \binits{Richard~Phillips}}, \bauthor{\binits{Robert~B} \bsnm{Leighton}}, \bauthor{\binits{Matthew} \bsnm{Sands}}, \betal.
+\byear{1971}.
+\bbtitle{The feynman lectures on physics},
+Vol. \bseriesno{3}.
+\bpublisher{Addison-Wesley Reading, MA}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Fowles}{1989}]{fowles1989introduction}
+\begin{bbook}
+\bauthor{\bsnm{Fowles}, \binits{Grant~R}}.
+\byear{1989}.
+\bbtitle{Introduction to modern optics}.
+\bpublisher{Courier Corporation}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Gilder}{2008}]{gilder08:_age_of_entanglement}
+\begin{bbook}
+\bauthor{\bsnm{Gilder}, \binits{Louisa}}.
+\byear{2008}.
+\bbtitle{The age of entanglement: When quantum physics was reborn}.
+\bpublisher{Vintage}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Gleick}{2012}]{gleick2012information}
+\begin{bbook}
+\bauthor{\bsnm{Gleick}, \binits{James}}.
+\byear{2012}.
+\bbtitle{The information: A history, a theory, a flood},
+\bedition{illustrated} edn.
+\bpublisher{Vintage}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Hecht}{2015}]{hecht2012optics}
+\begin{bbook}
+\bauthor{\bsnm{Hecht}, \binits{Eugene}}.
+\byear{2015}.
+\bbtitle{Optics}.
+\bpublisher{Pearson}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Hurley}{1994}]{hurley2020quantum}
+\begin{barticle}
+\bauthor{\bsnm{Hurley}, \binits{Dan}}.
+\byear{1994}.
+\batitle{{The Quantum Internet Will Blow Your Mind. Here’s What It Will Look Like}}.
+\bjtitle{{Discover Magazine}}.
+doi:\doiurl{10.1063/1.881418}.
+\burl{https://www.discovermagazine.com/technology/the-quantum-internet-will-blow-your-mind-heres-what-it-will-look-like}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Kimble}{2008}]{kimble08:_quant_internet}
+\begin{barticle}
+\bauthor{\bsnm{Kimble}, \binits{H.~J.}}
+\byear{2008}.
+\batitle{The quantum {Internet}}.
+\bjtitle{Nature}
+\bvolume{453}: \bfpage{1023}--\blpage{1030}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Nielsen and Chuang}{2000}]{nielsen-chuang:qci}
+\begin{bbook}
+\bauthor{\bsnm{Nielsen}, \binits{Michael~A.}}, and \bauthor{\binits{Isaac~L.} \bsnm{Chuang}}.
+\byear{2000}.
+\bbtitle{Quantum computation and quantum information}.
+\bpublisher{Cambridge University Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Pan et~al.}{2000}]{pan2000experimental}
+\begin{barticle}
+\bauthor{\bsnm{Pan}, \binits{Jian-Wei}}, \bauthor{\binits{Dik} \bsnm{Bouwmeester}}, \bauthor{\binits{Matthew} \bsnm{Daniell}}, \bauthor{\binits{Harald} \bsnm{Weinfurter}}, and \bauthor{\binits{Anton} \bsnm{Zeilinger}}.
+\byear{2000}.
+\batitle{Experimental test of quantum nonlocality in three-photon greenberger--horne--zeilinger entanglement}.
+\bjtitle{Nature}
+\bvolume{403} (\bissue{6769}): \bfpage{515}--\blpage{519}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Perry et~al.}{2019}]{perry2019quantum}
+\begin{botherref}
+\oauthor{\bsnm{Perry}, \binits{Anastasia}}, \oauthor{\binits{Ranbel} \bsnm{Sun}}, \oauthor{\binits{Ciaran} \bsnm{Hughes}}, \oauthor{\binits{Joshua} \bsnm{Isaacson}}, and \oauthor{\binits{Jessica} \bsnm{Turner}}.
+2019.
+Quantum computing as a high school module.
+\url{https://www.osti.gov/biblio/1527395}.
+\end{botherref}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Preskill}{1998}]{preskill1998lecture}
+\begin{barticle}
+\bauthor{\bsnm{Preskill}, \binits{John}}.
+\byear{1998}.
+\batitle{Lecture notes for physics 229: Quantum information and computation}.
+\bjtitle{California Institute of Technology}
+\bvolume{16} (\bissue{1}): \bfpage{1}--\blpage{8}.
+\burl{http://theory.caltech.edu/\texttildelow preskill/ph229/}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Rieffel and Polak}{2011}]{rieffel2011quantum}
+\begin{bbook}
+\bauthor{\bsnm{Rieffel}, \binits{Eleanor~G}}, and \bauthor{\binits{Wolfgang~H} \bsnm{Polak}}.
+\byear{2011}.
+\bbtitle{Quantum computing: A gentle introduction}.
+\bpublisher{MIT Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Saleh and Teich}{2019}]{saleh2019fundamentals}
+\begin{bbook}
+\bauthor{\bsnm{Saleh}, \binits{Bahaa~EA}}, and \bauthor{\binits{Malvin~Carl} \bsnm{Teich}}.
+\byear{2019}.
+\bbtitle{Fundamentals of photonics}.
+\bpublisher{John Wiley \& sons}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Sangouard et~al.}{2011}]{sangouard2011quantum}
+\begin{barticle}
+\bauthor{\bsnm{Sangouard}, \binits{N.}}, \bauthor{\binits{C.} \bsnm{Simon}}, \bauthor{\binits{H.} \bsnm{De~Riedmatten}}, and \bauthor{\binits{N.} \bsnm{Gisin}}.
+\byear{2011}.
+\batitle{Quantum repeaters based on atomic ensembles and linear optics}.
+\bjtitle{Reviews of Modern Physics}
+\bvolume{83} (\bissue{1}): \bfpage{33}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Strogatz}{2018}]{strogatz2018nonlinear}
+\begin{bbook}
+\bauthor{\bsnm{Strogatz}, \binits{Steven~H}}.
+\byear{2018}.
+\bbtitle{Nonlinear dynamics and chaos: With applications to physics, biology, chemistry, and engineering}.
+\bpublisher{CRC press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Sutor}{2019}]{sutor19:dancing}
+\begin{bbook}
+\bauthor{\bsnm{Sutor}, \binits{Robert~S.}}
+\byear{2019}.
+\bbtitle{Dancing with qubits}.
+\bpublisher{Packt Publishing}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Svelto et~al.}{2010}]{svelto2010principles}
+\begin{bbook}
+\bauthor{\bsnm{Svelto}, \binits{Orazio}}, \bauthor{\binits{David~C} \bsnm{Hanna}}, \betal.
+\byear{2010}.
+\bbtitle{Principles of lasers},
+Vol. \bseriesno{1}.
+\bpublisher{Springer}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Touch et~al.}{2006}]{touch2006recursive}
+\begin{botherref}
+\oauthor{\bsnm{Touch}, \binits{Joe}}, \oauthor{\binits{Yu-Shun} \bsnm{Wang}}, and \oauthor{\binits{Venkata} \bsnm{Pingali}}.
+2006.
+A recursive network architecture.
+\textit{ISI, Tech. Rep}
+626.
+\end{botherref}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Van{ }Meter}{2014}]{van-meter14:_quantum_networking}
+\begin{bbook}
+\bauthor{\bsnm{Van{ }Meter}, \binits{Rodney}}.
+\byear{2014}.
+\bbtitle{Quantum networking}.
+\bpublisher{Wiley-ISTE}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Van{ }Meter et~al.}{2011}]{van-meter11:rqrn}
+\begin{botherref}
+\oauthor{\bsnm{Van{ }Meter}, \binits{Rodney}}, \oauthor{\binits{Joe} \bsnm{Touch}}, and \oauthor{\binits{Clare} \bsnm{Horsman}}.
+2011.
+Recursive quantum repeater networks.
+\textit{Progress in Informatics}.
+\end{botherref}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Vidick and Wehner}{2023}]{vidick_wehner_2023}
+\begin{bbook}
+\bauthor{\bsnm{Vidick}, \binits{Thomas}}, and \bauthor{\binits{Stephanie} \bsnm{Wehner}}.
+\byear{2023}.
+\bbtitle{Introduction to {Q}uantum {C}ryptography}.
+\bpublisher{Cambridge University Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Wilde}{2013}]{wilde2013quantum}
+\begin{bbook}
+\bauthor{\bsnm{Wilde}, \binits{Mark~M}}.
+\byear{2013}.
+\bbtitle{Quantum information theory}.
+\bpublisher{Cambridge University Press}.
+\end{bbook}
+\endbibitem
+
+\end{thebibliography}

@@ -1,0 +1,4508 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  15 JUL 2026 10:35
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/michal/Overview-of-Quantum-Communications-E/main.tex
+(/Users/michal/Overview-of-Quantum-Communications-E/main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./newmath.cls
+\widthofcropmarks=\dimen148
+\raisetopcropmarks=\dimen149
+\raisebottomcropmarks=\dimen150
+\movecropmarksright=\dimen151
+\manuSkip=\dimen152
+\notenum=\count275
+\endnotenum=\count276
+\c@tocchapnum=\count277
+\chapnumberbox=\box53
+\spaceaboveline=\dimen153
+\c@chapapp=\count278
+\c@part=\count279
+\c@chapter=\count280
+\c@section=\count281
+\c@subsection=\count282
+\c@subsubsection=\count283
+\c@paragraph=\count284
+\c@subparagraph=\count285
+\c@theorem=\count286
+\c@corollary=\count287
+\c@figure=\count288
+\c@table=\count289
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count290
+)
+\bibindent=\dimen154
+\iletterskip=\skip53
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+)
+\@indexfile=\write3
+\openout3 = `main.idx'.
+
+
+Writing index file main.idx
+\c@boxtextnum=\count291
+\c@exercise=\count292
+\c@subexercise=\count293
+\c@subsubexercise=\count294
+\timing=\count295
+\hourcount=\count296
+\oldtime=\count297
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip54
+\LTright=\skip55
+\LTpre=\skip56
+\LTpost=\skip57
+\LTchunksize=\count298
+\LTcapwidth=\dimen155
+\LT@head=\box54
+\LT@firsthead=\box55
+\LT@foot=\box56
+\LT@lastfoot=\box57
+\LT@gbox=\box58
+\LT@cols=\count299
+\LT@rows=\count300
+\c@LT@tables=\count301
+\c@LT@chunks=\count302
+\LT@p@ftn=\toks17
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
+\c@tracingmulticols=\count303
+\mult@box=\box59
+\multicol@leftmargin=\dimen156
+\c@unbalance=\count304
+\c@collectmore=\count305
+\doublecol@number=\count306
+\multicoltolerance=\count307
+\multicolpretolerance=\count308
+\full@width=\dimen157
+\page@free=\dimen158
+\premulticols=\dimen159
+\postmulticols=\dimen160
+\multicolsep=\skip58
+\multicolbaselineskip=\skip59
+\partial@page=\box60
+\last@line=\box61
+\mc@boxedresult=\box62
+\maxbalancingoverflow=\dimen161
+\mult@rightbox=\box63
+\mult@grightbox=\box64
+\mult@firstbox=\box65
+\mult@gfirstbox=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\c@minrows=\count309
+\c@columnbadness=\count310
+\c@finalcolumnbadness=\count311
+\last@try=\dimen162
+\multicolovershoot=\dimen163
+\multicolundershoot=\dimen164
+\mult@nat@firstbox=\box103
+\colbreak@box=\box104
+\mc@col@check@num=\count312
+\g__mc_curr_col_int=\count313
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen165
+\Gin@req@width=\dimen166
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip60
+\fb@frw=\dimen167
+\fb@frh=\dimen168
+\FrameRule=\dimen169
+\FrameSep=\dimen170
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip61
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen171
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen172
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count314
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count315
+\leftroot@=\count316
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count317
+\DOTSCASE@=\count318
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box105
+\strutbox@=\box106
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen173
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count319
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count320
+\dotsspace@=\muskip17
+\c@parentequation=\count321
+\dspbrk@lvl=\count322
+\tag@help=\toks20
+\row@=\count323
+\column@=\count324
+\maxfields@=\count325
+\andhelp@=\toks21
+\eqnshift@=\dimen174
+\alignsep@=\dimen175
+\tagshift@=\dimen176
+\tagwidth@=\dimen177
+\totwidth@=\dimen178
+\lineht@=\dimen179
+\@envbody=\toks22
+\multlinegap=\skip62
+\multlinetaggap=\skip63
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/txfonts.sty
+Package: txfonts 2008/01/22 v3.2.1
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/txr/m/n --> OT1/txr/bx/n on input line 22.
+\symitalic=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `italic' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/txss/m/n --> OT1/txss/b/n on input line 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/txtt/m/n --> OT1/txtt/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/txmi/m/it --> OML/txmi/bx/it on input line 59.
+\symlettersA=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
+(Font)                  U/txmia/m/it --> U/txmia/bx/it on input line 67.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/txsy/m/n --> OMS/txsy/bx/n on input line 78.
+\symAMSa=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/txsya/m/n --> U/txsya/bx/n on input line 94.
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/txsyb/m/n --> U/txsyb/bx/n on input line 103.
+\symsymbolsC=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
+(Font)                  U/txsyc/m/n --> U/txsyc/bx/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/txex/m/n --> OMX/txex/bx/n on input line 121.
+\symlargesymbolsA=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
+(Font)                  U/txexa/m/n --> U/txexa/bx/n on input line 129.
+LaTeX Encoding Info:    Redeclaring text symbol \L (encoding OT1) on input line 160.
+LaTeX Encoding Info:    Redeclaring text symbol \l (encoding OT1) on input line 161.
+LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 164.
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 591.
+LaTeX Info: Redefining \not on input line 1043.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count326
+\float@exts=\toks24
+\float@box=\box107
+\@float@everytoks=\toks25
+\@floatcapt=\box108
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks26
+\c@algorithm=\count327
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count328
+\c@ALG@rem=\count329
+\c@ALG@nested=\count330
+\ALG@tlm=\skip64
+\ALG@thistlm=\skip65
+\c@ALG@Lnr=\count331
+\c@ALG@blocknr=\count332
+\c@ALG@storecount=\count333
+\c@ALG@tmpcounter=\count334
+\ALG@tmplength=\skip66
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+\cropmarktext=\box109
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2491.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2491.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Trying to load font information for OT1+txr on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/ot1txr.fd
+File: ot1txr.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for OML+txmi on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/omltxmi.fd
+File: omltxmi.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/omstxsy.fd
+File: omstxsy.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for OMX+txex on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/omxtxex.fd
+File: omxtxex.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txexa on input line 2492.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/txfonts/utxexa.fd
+File: utxexa.fd 2000/12/15 v3.1
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks27
+\inpenc@posthook=\toks28
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks29
+\pgfutil@tempdima=\dimen180
+\pgfutil@tempdimb=\dimen181
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box110
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks32
+))
+\pgf@x=\dimen182
+\pgf@y=\dimen183
+\pgf@xa=\dimen184
+\pgf@ya=\dimen185
+\pgf@xb=\dimen186
+\pgf@yb=\dimen187
+\pgf@xc=\dimen188
+\pgf@yc=\dimen189
+\pgf@xd=\dimen190
+\pgf@yd=\dimen191
+\w@pgf@writea=\write4
+\r@pgf@reada=\read2
+\c@pgf@counta=\count335
+\c@pgf@countb=\count336
+\c@pgf@countc=\count337
+\c@pgf@countd=\count338
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
+\pgf@sys@id@count=\count339
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count340
+\pgfsyssoftpath@bigbuffer@items=\count341
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen192
+\pgfmath@count=\count342
+\pgfmath@box=\box111
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count343
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen193
+\pgf@picmaxx=\dimen194
+\pgf@picminy=\dimen195
+\pgf@picmaxy=\dimen196
+\pgf@pathminx=\dimen197
+\pgf@pathmaxx=\dimen198
+\pgf@pathminy=\dimen199
+\pgf@pathmaxy=\dimen256
+\pgf@xx=\dimen257
+\pgf@xy=\dimen258
+\pgf@yx=\dimen259
+\pgf@yy=\dimen260
+\pgf@zx=\dimen261
+\pgf@zy=\dimen262
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen263
+\pgf@path@lasty=\dimen264
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen265
+\pgf@shorten@start@additional=\dimen266
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box112
+\pgf@hbox=\box113
+\pgf@layerbox@main=\box114
+\pgf@picture@serial@count=\count344
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen267
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen268
+\pgf@pt@y=\dimen269
+\pgf@pt@temp=\dimen270
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen271
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen272
+\pgf@sys@shading@range@num=\count345
+\pgf@shadingcount=\count346
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box115
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box116
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen273
+\pgf@nodesepend=\dimen274
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen275
+\pgffor@skip=\dimen276
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count347
+\pgfplotmarksize=\dimen277
+)
+\tikz@lastx=\dimen278
+\tikz@lasty=\dimen279
+\tikz@lastxsaved=\dimen280
+\tikz@lastysaved=\dimen281
+\tikz@lastmovetox=\dimen282
+\tikz@lastmovetoy=\dimen283
+\tikzleveldistance=\dimen284
+\tikzsiblingdistance=\dimen285
+\tikz@figbox=\box117
+\tikz@figbox@bg=\box118
+\tikz@tempbox=\box119
+\tikz@tempbox@bg=\box120
+\tikztreelevel=\count348
+\tikznumberofchildren=\count349
+\tikznumberofcurrentchild=\count350
+\tikz@fig@count=\count351
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count352
+\pgfmatrixcurrentcolumn=\count353
+\pgf@matrix@numberofcolumns=\count354
+)
+\tikz@expandcount=\count355
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2025/08/14 v1.18.2 Data Visualization (1.18.2)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks41
+\t@pgfplots@tokb=\toks42
+\t@pgfplots@tokc=\toks43
+\pgfplots@tmpa=\dimen286
+\c@pgfplots@coordindex=\count356
+\c@pgfplots@scanlineindex=\count357
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count358
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count359
+\t@pgfplotstable@a=\toks44
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count360
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen287
+\pgfdecoratedremainingdistance=\dimen288
+\pgfdecoratedinputsegmentcompleteddistance=\dimen289
+\pgfdecoratedinputsegmentremainingdistance=\dimen290
+\pgf@decorate@distancetomove=\dimen291
+\pgf@decorate@repeatstate=\count361
+\pgfdecorationsegmentamplitude=\dimen292
+\pgfdecorationsegmentlength=\dimen293
+)
+\tikz@lib@dec@box=\box121
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count362
+\pgfplots@xmin@reg=\dimen294
+\pgfplots@xmax@reg=\dimen295
+\pgfplots@ymin@reg=\dimen296
+\pgfplots@ymax@reg=\dimen297
+\pgfplots@zmin@reg=\dimen298
+\pgfplots@zmax@reg=\dimen299
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (./tikz-3dplot-circleofsphere.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/xifthen/xifthen.sty
+Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count363
+\calc@Bcount=\count364
+\calc@Adimen=\dimen300
+\calc@Bdimen=\dimen301
+\calc@Askip=\skip67
+\calc@Bskip=\skip68
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count365
+\calc@Cskip=\skip69
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
+Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+File: tikzlibrary3d.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\arrowsize=\dimen302
+)))) (./yquant.sty
+Package: yquant 2023/03/05 v0.7.4 Yet another quantum circuit library for LaTeX
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count366
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks45
+\XKV@tempa@toks=\toks46
+\XKV@tempb@toks=\toks47
+)
+\XKV@depth=\count367
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen303
+\pgfarrowlength=\dimen304
+\pgfarrowwidth=\dimen305
+\pgfarrowlinewidth=\dimen306
+)
+\pgf@layerbox@wires=\box122
+\pgf@layerboxsaved@wires=\box123
+\pgf@layerbox@behindwires=\box124
+\pgf@layerboxsaved@behindwires=\box125
+ (./yquant-tools.tex
+\yquant@sort@count=\count368
+) (./yquant-shapes.tex) (./yquant-config.tex) (./yquant-registers.tex) (./yquant-env.tex
+\yquant@env=\count369
+) (./yquant-langhelper.tex) (./yquant-circuit.tex) (./yquant-prepare.tex
+\yquant@prepare@injections=\count370
+\yquant@prepare@subcircuit@box=\box126
+) (./yquant-draw.tex
+\yquant@draw@@currentcontroltype=\count371
+) (./yquant-lang.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryautomata.code.tex
+File: tikzlibraryautomata.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodepartlowerbox=\box127
+\pgfnodeparttwobox=\box128
+\pgfnodepartthreebox=\box129
+\pgfnodepartfourbox=\box130
+\pgfnodeparttwentybox=\box131
+\pgfnodepartnineteenbox=\box132
+\pgfnodeparteighteenbox=\box133
+\pgfnodepartseventeenbox=\box134
+\pgfnodepartsixteenbox=\box135
+\pgfnodepartfifteenbox=\box136
+\pgfnodepartfourteenbox=\box137
+\pgfnodepartthirteenbox=\box138
+\pgfnodeparttwelvebox=\box139
+\pgfnodepartelevenbox=\box140
+\pgfnodeparttenbox=\box141
+\pgfnodepartninebox=\box142
+\pgfnodeparteightbox=\box143
+\pgfnodepartsevenbox=\box144
+\pgfnodepartsixbox=\box145
+\pgfnodepartfivebox=\box146
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
+(Font)                  U/txsya/m/n --> U/msa/m/n on input line 59.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/txsya/bx/n --> U/msa/m/n on input line 59.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 60.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
+(Font)                  U/txsyb/m/n --> U/msb/m/n on input line 60.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/txsyb/bx/n --> U/msb/m/n on input line 60.
+LaTeX Font Info:    Redeclaring math delimiter \ulcorner on input line 74.
+LaTeX Font Info:    Redeclaring math delimiter \urcorner on input line 75.
+LaTeX Font Info:    Redeclaring math delimiter \llcorner on input line 76.
+LaTeX Font Info:    Redeclaring math delimiter \lrcorner on input line 77.
+LaTeX Font Info:    Redeclaring math symbol \square on input line 141.
+LaTeX Font Info:    Redeclaring math symbol \lozenge on input line 142.
+)
+LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 44.
+LaTeX Font Info:    Redeclaring math symbol \boxplus on input line 45.
+LaTeX Font Info:    Redeclaring math symbol \boxtimes on input line 46.
+LaTeX Font Info:    Redeclaring math symbol \blacksquare on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \centerdot on input line 49.
+LaTeX Font Info:    Redeclaring math symbol \blacklozenge on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \circlearrowright on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \circlearrowleft on input line 53.
+LaTeX Font Info:    Redeclaring math symbol \leftrightharpoons on input line 56.
+LaTeX Font Info:    Redeclaring math symbol \boxminus on input line 57.
+LaTeX Font Info:    Redeclaring math symbol \Vdash on input line 58.
+LaTeX Font Info:    Redeclaring math symbol \Vvdash on input line 59.
+LaTeX Font Info:    Redeclaring math symbol \vDash on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \twoheadrightarrow on input line 61.
+LaTeX Font Info:    Redeclaring math symbol \twoheadleftarrow on input line 62.
+LaTeX Font Info:    Redeclaring math symbol \leftleftarrows on input line 63.
+LaTeX Font Info:    Redeclaring math symbol \rightrightarrows on input line 64.
+LaTeX Font Info:    Redeclaring math symbol \upuparrows on input line 65.
+LaTeX Font Info:    Redeclaring math symbol \downdownarrows on input line 66.
+LaTeX Font Info:    Redeclaring math symbol \upharpoonright on input line 67.
+LaTeX Font Info:    Redeclaring math symbol \downharpoonright on input line 69.
+LaTeX Font Info:    Redeclaring math symbol \upharpoonleft on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \downharpoonleft on input line 71.
+LaTeX Font Info:    Redeclaring math symbol \rightarrowtail on input line 72.
+LaTeX Font Info:    Redeclaring math symbol \leftarrowtail on input line 73.
+LaTeX Font Info:    Redeclaring math symbol \leftrightarrows on input line 74.
+LaTeX Font Info:    Redeclaring math symbol \rightleftarrows on input line 75.
+LaTeX Font Info:    Redeclaring math symbol \Lsh on input line 76.
+LaTeX Font Info:    Redeclaring math symbol \Rsh on input line 77.
+LaTeX Font Info:    Redeclaring math symbol \leftrightsquigarrow on input line 79.
+LaTeX Font Info:    Redeclaring math symbol \looparrowleft on input line 80.
+LaTeX Font Info:    Redeclaring math symbol \looparrowright on input line 81.
+LaTeX Font Info:    Redeclaring math symbol \circeq on input line 82.
+LaTeX Font Info:    Redeclaring math symbol \succsim on input line 83.
+LaTeX Font Info:    Redeclaring math symbol \gtrsim on input line 84.
+LaTeX Font Info:    Redeclaring math symbol \gtrapprox on input line 85.
+LaTeX Font Info:    Redeclaring math symbol \multimap on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \therefore on input line 87.
+LaTeX Font Info:    Redeclaring math symbol \because on input line 88.
+LaTeX Font Info:    Redeclaring math symbol \doteqdot on input line 89.
+LaTeX Font Info:    Redeclaring math symbol \triangleq on input line 91.
+LaTeX Font Info:    Redeclaring math symbol \precsim on input line 92.
+LaTeX Font Info:    Redeclaring math symbol \lesssim on input line 93.
+LaTeX Font Info:    Redeclaring math symbol \lessapprox on input line 94.
+LaTeX Font Info:    Redeclaring math symbol \eqslantless on input line 95.
+LaTeX Font Info:    Redeclaring math symbol \eqslantgtr on input line 96.
+LaTeX Font Info:    Redeclaring math symbol \curlyeqprec on input line 97.
+LaTeX Font Info:    Redeclaring math symbol \curlyeqsucc on input line 98.
+LaTeX Font Info:    Redeclaring math symbol \preccurlyeq on input line 99.
+LaTeX Font Info:    Redeclaring math symbol \leqq on input line 100.
+LaTeX Font Info:    Redeclaring math symbol \leqslant on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \lessgtr on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \backprime on input line 103.
+LaTeX Font Info:    Redeclaring math symbol \risingdotseq on input line 104.
+LaTeX Font Info:    Redeclaring math symbol \fallingdotseq on input line 105.
+LaTeX Font Info:    Redeclaring math symbol \succcurlyeq on input line 106.
+LaTeX Font Info:    Redeclaring math symbol \geqq on input line 107.
+LaTeX Font Info:    Redeclaring math symbol \geqslant on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \gtrless on input line 109.
+LaTeX Font Info:    Redeclaring math symbol \bigstar on input line 117.
+LaTeX Font Info:    Redeclaring math symbol \between on input line 118.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangledown on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleright on input line 120.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleleft on input line 121.
+LaTeX Font Info:    Redeclaring math symbol \vartriangle on input line 122.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangle on input line 123.
+LaTeX Font Info:    Redeclaring math symbol \triangledown on input line 124.
+LaTeX Font Info:    Redeclaring math symbol \eqcirc on input line 125.
+LaTeX Font Info:    Redeclaring math symbol \lesseqgtr on input line 126.
+LaTeX Font Info:    Redeclaring math symbol \gtreqless on input line 127.
+LaTeX Font Info:    Redeclaring math symbol \lesseqqgtr on input line 128.
+LaTeX Font Info:    Redeclaring math symbol \gtreqqless on input line 129.
+LaTeX Font Info:    Redeclaring math symbol \Rrightarrow on input line 130.
+LaTeX Font Info:    Redeclaring math symbol \Lleftarrow on input line 131.
+LaTeX Font Info:    Redeclaring math symbol \veebar on input line 132.
+LaTeX Font Info:    Redeclaring math symbol \barwedge on input line 133.
+LaTeX Font Info:    Redeclaring math symbol \doublebarwedge on input line 134.
+LaTeX Font Info:    Redeclaring math symbol \measuredangle on input line 137.
+LaTeX Font Info:    Redeclaring math symbol \sphericalangle on input line 138.
+LaTeX Font Info:    Redeclaring math symbol \varpropto on input line 139.
+LaTeX Font Info:    Redeclaring math symbol \smallsmile on input line 140.
+LaTeX Font Info:    Redeclaring math symbol \smallfrown on input line 141.
+LaTeX Font Info:    Redeclaring math symbol \Subset on input line 142.
+LaTeX Font Info:    Redeclaring math symbol \Supset on input line 143.
+LaTeX Font Info:    Redeclaring math symbol \Cup on input line 144.
+LaTeX Font Info:    Redeclaring math symbol \Cap on input line 146.
+LaTeX Font Info:    Redeclaring math symbol \curlywedge on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \curlyvee on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \leftthreetimes on input line 150.
+LaTeX Font Info:    Redeclaring math symbol \rightthreetimes on input line 151.
+LaTeX Font Info:    Redeclaring math symbol \subseteqq on input line 152.
+LaTeX Font Info:    Redeclaring math symbol \supseteqq on input line 153.
+LaTeX Font Info:    Redeclaring math symbol \bumpeq on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Bumpeq on input line 155.
+LaTeX Font Info:    Redeclaring math symbol \lll on input line 156.
+LaTeX Font Info:    Redeclaring math symbol \ggg on input line 158.
+LaTeX Font Info:    Redeclaring math symbol \circledS on input line 160.
+LaTeX Font Info:    Redeclaring math symbol \pitchfork on input line 161.
+LaTeX Font Info:    Redeclaring math symbol \dotplus on input line 162.
+LaTeX Font Info:    Redeclaring math symbol \backsim on input line 163.
+LaTeX Font Info:    Redeclaring math symbol \backsimeq on input line 164.
+LaTeX Font Info:    Redeclaring math symbol \complement on input line 165.
+LaTeX Font Info:    Redeclaring math symbol \intercal on input line 166.
+LaTeX Font Info:    Redeclaring math symbol \circledcirc on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \circledast on input line 168.
+LaTeX Font Info:    Redeclaring math symbol \circleddash on input line 169.
+LaTeX Font Info:    Redeclaring math symbol \lvertneqq on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \gvertneqq on input line 172.
+LaTeX Font Info:    Redeclaring math symbol \nleq on input line 173.
+LaTeX Font Info:    Redeclaring math symbol \ngeq on input line 174.
+LaTeX Font Info:    Redeclaring math symbol \nless on input line 175.
+LaTeX Font Info:    Redeclaring math symbol \ngtr on input line 176.
+LaTeX Font Info:    Redeclaring math symbol \nprec on input line 177.
+LaTeX Font Info:    Redeclaring math symbol \nsucc on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \lneqq on input line 179.
+LaTeX Font Info:    Redeclaring math symbol \gneqq on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \nleqslant on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \ngeqslant on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \lneq on input line 183.
+LaTeX Font Info:    Redeclaring math symbol \gneq on input line 184.
+LaTeX Font Info:    Redeclaring math symbol \npreceq on input line 185.
+LaTeX Font Info:    Redeclaring math symbol \nsucceq on input line 186.
+LaTeX Font Info:    Redeclaring math symbol \precnsim on input line 187.
+LaTeX Font Info:    Redeclaring math symbol \succnsim on input line 188.
+LaTeX Font Info:    Redeclaring math symbol \lnsim on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \gnsim on input line 190.
+LaTeX Font Info:    Redeclaring math symbol \nleqq on input line 191.
+LaTeX Font Info:    Redeclaring math symbol \ngeqq on input line 192.
+LaTeX Font Info:    Redeclaring math symbol \precneqq on input line 193.
+LaTeX Font Info:    Redeclaring math symbol \succneqq on input line 194.
+LaTeX Font Info:    Redeclaring math symbol \precnapprox on input line 195.
+LaTeX Font Info:    Redeclaring math symbol \succnapprox on input line 196.
+LaTeX Font Info:    Redeclaring math symbol \lnapprox on input line 197.
+LaTeX Font Info:    Redeclaring math symbol \gnapprox on input line 198.
+LaTeX Font Info:    Redeclaring math symbol \nsim on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \ncong on input line 200.
+LaTeX Font Info:    Redeclaring math symbol \diagup on input line 201.
+LaTeX Font Info:    Redeclaring math symbol \diagdown on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \varsubsetneq on input line 203.
+LaTeX Font Info:    Redeclaring math symbol \varsupsetneq on input line 204.
+LaTeX Font Info:    Redeclaring math symbol \nsubseteqq on input line 205.
+LaTeX Font Info:    Redeclaring math symbol \nsupseteqq on input line 206.
+LaTeX Font Info:    Redeclaring math symbol \subsetneqq on input line 207.
+LaTeX Font Info:    Redeclaring math symbol \supsetneqq on input line 208.
+LaTeX Font Info:    Redeclaring math symbol \varsubsetneqq on input line 209.
+LaTeX Font Info:    Redeclaring math symbol \varsupsetneqq on input line 210.
+LaTeX Font Info:    Redeclaring math symbol \subsetneq on input line 211.
+LaTeX Font Info:    Redeclaring math symbol \supsetneq on input line 212.
+LaTeX Font Info:    Redeclaring math symbol \nsubseteq on input line 213.
+LaTeX Font Info:    Redeclaring math symbol \nsupseteq on input line 214.
+LaTeX Font Info:    Redeclaring math symbol \nparallel on input line 215.
+LaTeX Font Info:    Redeclaring math symbol \nmid on input line 216.
+LaTeX Font Info:    Redeclaring math symbol \nshortmid on input line 217.
+LaTeX Font Info:    Redeclaring math symbol \nshortparallel on input line 218.
+LaTeX Font Info:    Redeclaring math symbol \nvdash on input line 219.
+LaTeX Font Info:    Redeclaring math symbol \nVdash on input line 220.
+LaTeX Font Info:    Redeclaring math symbol \nvDash on input line 221.
+LaTeX Font Info:    Redeclaring math symbol \nVDash on input line 222.
+LaTeX Font Info:    Redeclaring math symbol \ntrianglerighteq on input line 223.
+LaTeX Font Info:    Redeclaring math symbol \ntrianglelefteq on input line 224.
+LaTeX Font Info:    Redeclaring math symbol \ntriangleleft on input line 225.
+LaTeX Font Info:    Redeclaring math symbol \ntriangleright on input line 226.
+LaTeX Font Info:    Redeclaring math symbol \nleftarrow on input line 227.
+LaTeX Font Info:    Redeclaring math symbol \nrightarrow on input line 228.
+LaTeX Font Info:    Redeclaring math symbol \nLeftarrow on input line 229.
+LaTeX Font Info:    Redeclaring math symbol \nRightarrow on input line 230.
+LaTeX Font Info:    Redeclaring math symbol \nLeftrightarrow on input line 231.
+LaTeX Font Info:    Redeclaring math symbol \nleftrightarrow on input line 232.
+LaTeX Font Info:    Redeclaring math symbol \divideontimes on input line 233.
+LaTeX Font Info:    Redeclaring math symbol \varnothing on input line 234.
+LaTeX Font Info:    Redeclaring math symbol \nexists on input line 235.
+LaTeX Font Info:    Redeclaring math symbol \Finv on input line 236.
+LaTeX Font Info:    Redeclaring math symbol \Game on input line 237.
+LaTeX Font Info:    Redeclaring math symbol \eth on input line 240.
+LaTeX Font Info:    Redeclaring math symbol \eqsim on input line 241.
+LaTeX Font Info:    Redeclaring math symbol \beth on input line 242.
+LaTeX Font Info:    Redeclaring math symbol \gimel on input line 243.
+LaTeX Font Info:    Redeclaring math symbol \daleth on input line 244.
+LaTeX Font Info:    Redeclaring math symbol \lessdot on input line 245.
+LaTeX Font Info:    Redeclaring math symbol \gtrdot on input line 246.
+LaTeX Font Info:    Redeclaring math symbol \ltimes on input line 247.
+LaTeX Font Info:    Redeclaring math symbol \rtimes on input line 248.
+LaTeX Font Info:    Redeclaring math symbol \shortmid on input line 249.
+LaTeX Font Info:    Redeclaring math symbol \shortparallel on input line 250.
+LaTeX Font Info:    Redeclaring math symbol \smallsetminus on input line 251.
+LaTeX Font Info:    Redeclaring math symbol \thicksim on input line 252.
+LaTeX Font Info:    Redeclaring math symbol \thickapprox on input line 253.
+LaTeX Font Info:    Redeclaring math symbol \approxeq on input line 254.
+LaTeX Font Info:    Redeclaring math symbol \succapprox on input line 255.
+LaTeX Font Info:    Redeclaring math symbol \precapprox on input line 256.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowleft on input line 257.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowright on input line 258.
+LaTeX Font Info:    Redeclaring math symbol \digamma on input line 259.
+LaTeX Font Info:    Redeclaring math symbol \varkappa on input line 260.
+LaTeX Font Info:    Redeclaring math symbol \Bbbk on input line 261.
+LaTeX Font Info:    Redeclaring math symbol \hslash on input line 262.
+LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count372
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen307
+\Hy@linkcounter=\count373
+\Hy@pagecounter=\count374
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count375
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count376
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen308
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count377
+\Field@Width=\dimen309
+\Fld@charsize=\dimen310
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count378
+\c@Item=\count379
+\c@Hfootnote=\count380
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count381
+\c@bookmark@seq@number=\count382
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip70
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/doclicense/doclicense.sty
+Package: doclicense 2023/10/01 v3.3.0 Support for putting documents under a license
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/xstring/xstring.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/xstring/xstring.tex
+\xs_counta=\count383
+\xs_countb=\count384
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks48
+\verbatim@line=\toks49
+\verbatim@in@stream=\read3
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperxmp/hyperxmp.sty
+Package: hyperxmp 2024/03/17 v5.13 Store hyperref metadata in XMP format
+\hyxmp@aep@toks=\toks50
+\@hyxmp@count=\count385
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/ifdraft.sty
+Package: ifdraft 2016/05/16 v1.4 Detect class options draft and final (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+))
+\doclicense@hsize=\skip71
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/doclicense/doclicense-english.ldf
+File: doclicense-english.ldf 
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/gensymb/gensymb.sty
+Package: gensymb 2022/10/17 v1.0.2 (KJH)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen311
+\ar@mcellbox=\box147
+\extrarowheight=\dimen312
+\NC@list=\toks51
+\extratabsurround=\skip72
+\backup@length=\skip73
+\ar@cellbox=\box148
+)
+\rotheadsize=\dimen313
+\c@nlinenum=\count386
+\TeXr@lab=\toks52
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/ccicons/ccicons.sty
+Package: ccicons 2017/10/30 v1.6 LaTeX support for Creative Commons icons
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/csquotes/csquotes.sty
+Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
+\csq@reset=\count387
+\csq@gtype=\count388
+\csq@glevel=\count389
+\csq@qlevel=\count390
+\csq@maxlvl=\count391
+\csq@tshold=\count392
+\csq@ltx@everypar=\toks53
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/csquotes/csquotes.def
+File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/csquotes/csquotes.cfg
+File: csquotes.cfg 
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count393
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+ (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count394
+\scratchdimen=\dimen314
+\scratchbox=\box149
+\nofMPsegments=\count395
+\nofMParguments=\count396
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count397
+\MPscratchDim=\dimen315
+\MPnumerator=\count398
+\makeMPintoPDFobject=\count399
+\everyMPtoPDFconversion=\toks55
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+ on input line 156.
+
+
+Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
+(hyperref)                using 11in.
+
+Package hyperref Info: Link coloring OFF on input line 156.
+(./main.out) (./main.out)
+\@outlinefile=\write5
+\openout5 = `main.out'.
+
+LaTeX Info: Redefining \celsius on input line 156.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 156.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 156.
+Package gensymb Info: Using \Omega for \ohm on input line 156.
+
+Package gensymb Warning: Not defining \micro.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[2
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 168.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 168.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[3]
+Underfull \hbox (badness 2253) in paragraph at lines 172--172
+[]\OT1/ptm/m/n/9 This work is li-censed un-der a []Cre-ative Com-mons
+ []
+
+<doclicense-CC-by-sa-88x31.pdf, id=532, 90.3375pt x 31.61812pt>
+File: doclicense-CC-by-sa-88x31.pdf Graphic file (type pdf)
+<use doclicense-CC-by-sa-88x31.pdf>
+Package pdftex.def Info: doclicense-CC-by-sa-88x31.pdf  used on input line 172.
+(pdftex.def)             Requested size: 90.0pt x 31.5003pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[4 </usr/local/texlive/2025/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by-sa-88x31.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
+
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[5
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[6
+
+] (./main.toc
+Overfull \hbox (46.32558pt too wide) in paragraph at lines 5--5
+ [] [][]\OT1/ptm/b/n/10 QUANTUM ME-CHAN-ICS FOR QUAN-TUM COM-MU-NI-CA-TION[] []  
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[7
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[8]
+Overfull \hbox (11.29pt too wide) in paragraph at lines 65--65
+ [][] [][]\prefaceauthorfont No-cloning the-o-rem and Faster-than-light com-mu-ni-ca-tion[] [][]  
+ []
+
+
+Overfull \hbox (8.11003pt too wide) in paragraph at lines 68--68
+ [][] [][]\prefaceauthorfont Three phases of cryp-to-graph-i-cally se-cure com-mu-ni-ca-tion[] [][]  
+ []
+
+
+Underfull \vbox (badness 1377) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[9])
+\tf@toc=\write6
+\openout6 = `main.toc'.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[10]
+
+Package hyperref Warning: bookmark level for unknown starchap defaults to 0.
+
+(./main.lof
+Underfull \vbox (badness 2573) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[11
+
+
+]
+Overfull \hbox (4.59pt too wide) in paragraph at lines 52--52
+ [][] [] [] \prefaceauthorfont Double-slit ex-per-i-ment with sin-gle pho-tons, naive ex-pec-ta-tion.[] [][]  
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[12]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[13])
+\tf@lof=\write7
+\openout7 = `main.lof'.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[14]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[15
+
+
+] (./preface.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[16
+
+]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[17
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[18]) (./using.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--5
+[][][][]$\OT1/pcr/m/n/8 https : / / www . youtube . com / playlist ? list = PLCTGenrx1 -[] SOC -[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[19
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][][][]$\OT1/pcr/m/n/8 https : / / github . com / sfc -[] aqua / Overview -[] of -[] Quantum -[] Communications -[]
+ []
+
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[21]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[22
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uppercase' on input line 247.
+
+
+Overfull \hbox (23.988pt too wide) in paragraph at lines 247--247
+\chapternumberfont I [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[1]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[2] (./intro-block-1.tex
+
+Package hyperref Warning: bookmark level for unknown partintro defaults to 0.
+
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 2.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[3
+
+]) (./CH01_Introduction.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[4
+
+]
+Chapter 1.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 1 []
+ []
+
+<Figures/Chapter01/Color/communication.pdf, id=1030, 808.01875pt x 481.8pt>
+File: Figures/Chapter01/Color/communication.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/communication.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/communication.pdf  used on input line 20.
+(pdftex.def)             Requested size: 187.2019pt x 111.62035pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[6 <./Figures/Chapter01/Color/communication.pdf>]
+<Figures/Chapter01/Color/1-1_napoleon.pdf, id=1045, 188.03833pt x 27.29742pt>
+File: Figures/Chapter01/Color/1-1_napoleon.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-1_napoleon.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-1_napoleon.pdf  used on input line 82.
+(pdftex.def)             Requested size: 218.39905pt x 31.70584pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[7]
+<Figures/Chapter01/Color/1-1_morse.pdf, id=1052, 438.30235pt x 198.76477pt>
+File: Figures/Chapter01/Color/1-1_morse.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-1_morse.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-1_morse.pdf  used on input line 113.
+(pdftex.def)             Requested size: 249.60095pt x 113.19093pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[8 <./Figures/Chapter01/Color/1-1_napoleon.pdf>]
+<Figures/Chapter01/Color/1-1_rotary_telephone.pdf, id=1066, 464.01863pt x 128.03525pt>
+File: Figures/Chapter01/Color/1-1_rotary_telephone.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-1_rotary_telephone.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-1_rotary_telephone.pdf  used on input line 129.
+(pdftex.def)             Requested size: 312.0pt x 86.09184pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[9 <./Figures/Chapter01/Color/1-1_morse.pdf> <./Figures/Chapter01/Color/1-1_rotary_telephone.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/Chapter01/Color/1-1_rotary_telephone.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<Figures/Chapter01/Color/1-2_communication.pdf, id=1083, 286.41954pt x 66.24423pt>
+File: Figures/Chapter01/Color/1-2_communication.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-2_communication.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-2_communication.pdf  used on input line 164.
+(pdftex.def)             Requested size: 218.39905pt x 50.51392pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[10 <./Figures/Chapter01/Color/1-2_communication.pdf>]
+<Figures/Chapter01/Color/1-2_signals.pdf, id=1096, 866.01392pt x 329.8561pt>
+File: Figures/Chapter01/Color/1-2_signals.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-2_signals.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-2_signals.pdf  used on input line 183.
+(pdftex.def)             Requested size: 312.0pt x 118.8387pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[11 <./Figures/Chapter01/Color/1-2_signals.pdf>]
+<Figures/Chapter01/Color/1-3_warisover.pdf, id=1144, 241.09837pt x 27.31311pt>
+File: Figures/Chapter01/Color/1-3_warisover.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-3_warisover.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-3_warisover.pdf  used on input line 226.
+(pdftex.def)             Requested size: 249.60095pt x 28.27658pt.
+<Figures/Chapter01/Color/1-3_morse_signal.pdf, id=1145, 866.01392pt x 273.48077pt>
+File: Figures/Chapter01/Color/1-3_morse_signal.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-3_morse_signal.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-3_morse_signal.pdf  used on input line 239.
+(pdftex.def)             Requested size: 312.0pt x 98.5281pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[12 <./Figures/Chapter01/Color/1-3_warisover.pdf>]
+Overfull \hbox (3.01811pt too wide) in paragraph at lines 267--276
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[13 <./Figures/Chapter01/Color/1-3_morse_signal.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[14]
+<Figures/Chapter01/Color/1-4_transistors.pdf, id=1206, 522.1727pt x 339.90268pt>
+File: Figures/Chapter01/Color/1-4_transistors.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-4_transistors.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-4_transistors.pdf  used on input line 328.
+(pdftex.def)             Requested size: 249.60095pt x 162.47717pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[15 <./Figures/Chapter01/Color/1-4_transistors.pdf>]
+<Figures/Chapter01/Color/1-5_security.pdf, id=1241, 217.16072pt x 151.86491pt>
+File: Figures/Chapter01/Color/1-5_security.pdf Graphic file (type pdf)
+<use Figures/Chapter01/Color/1-5_security.pdf>
+Package pdftex.def Info: Figures/Chapter01/Color/1-5_security.pdf  used on input line 369.
+(pdftex.def)             Requested size: 156.0pt x 109.0947pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[17 <./Figures/Chapter01/Color/1-5_security.pdf>]) (./CH02_quantum-states.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[18]
+Chapter 2.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 2 []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[19
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[21]
+<Figures/Chapter02/Color/2-2_classical_quantum_info.pdf, id=1288, 305.33543pt x 92.99893pt>
+File: Figures/Chapter02/Color/2-2_classical_quantum_info.pdf Graphic file (type pdf)
+<use Figures/Chapter02/Color/2-2_classical_quantum_info.pdf>
+Package pdftex.def Info: Figures/Chapter02/Color/2-2_classical_quantum_info.pdf  used on input line 166.
+(pdftex.def)             Requested size: 280.7981pt x 85.53023pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[22]
+Overfull \hbox (2.35638pt too wide) in paragraph at lines 175--176
+\OT1/ptm/m/n/10 more com-plete math-e-mat-i-cal de-scrip-tion, let's look at some ex-am-ples, as shown
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[23 <./Figures/Chapter02/Color/2-2_classical_quantum_info.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[25]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[26]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[27]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[28]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[29]
+<Figures/Chapter02/Color/2-2_measurement_Z.pdf, id=1367, 329.32704pt x 56.60904pt>
+File: Figures/Chapter02/Color/2-2_measurement_Z.pdf Graphic file (type pdf)
+<use Figures/Chapter02/Color/2-2_measurement_Z.pdf>
+Package pdftex.def Info: Figures/Chapter02/Color/2-2_measurement_Z.pdf  used on input line 563.
+(pdftex.def)             Requested size: 249.60095pt x 42.90582pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[30]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[31 <./Figures/Chapter02/Color/2-2_measurement_Z.pdf>]
+<Figures/Chapter02/Color/2-2_measurement_X.pdf, id=1396, 359.95842pt x 56.60904pt>
+File: Figures/Chapter02/Color/2-2_measurement_X.pdf Graphic file (type pdf)
+<use Figures/Chapter02/Color/2-2_measurement_X.pdf>
+Package pdftex.def Info: Figures/Chapter02/Color/2-2_measurement_X.pdf  used on input line 604.
+(pdftex.def)             Requested size: 265.2019pt x 41.70862pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[32 <./Figures/Chapter02/Color/2-2_measurement_X.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[33]
+<Figures/Chapter02/Color/2-2_measurement_many.pdf, id=1439, 294.03249pt x 56.60904pt>
+File: Figures/Chapter02/Color/2-2_measurement_many.pdf Graphic file (type pdf)
+<use Figures/Chapter02/Color/2-2_measurement_many.pdf>
+Package pdftex.def Info: Figures/Chapter02/Color/2-2_measurement_many.pdf  used on input line 712.
+(pdftex.def)             Requested size: 234.0pt x 45.0506pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[34]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[35 <./Figures/Chapter02/Color/2-2_measurement_many.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[37]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[38]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[39]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[41]) (./CH03_pure-mixed.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[42]
+Chapter 3.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 3 []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[43
+
+]
+<Figures/Chapter03/Color/3-1_noise.pdf, id=1531, 251.68634pt x 93.55502pt>
+File: Figures/Chapter03/Color/3-1_noise.pdf Graphic file (type pdf)
+<use Figures/Chapter03/Color/3-1_noise.pdf>
+Package pdftex.def Info: Figures/Chapter03/Color/3-1_noise.pdf  used on input line 36.
+(pdftex.def)             Requested size: 312.0pt x 115.98705pt.
+
+Overfull \hbox (2.3065pt too wide) in paragraph at lines 41--47
+[]\OT1/ptm/m/n/10 The last ex-am-ple deals with the cen-tral sce-nario of these lec-ture notes, namely
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[44 <./Figures/Chapter03/Color/3-1_noise.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[45]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[46]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[47]
+<Figures/Chapter03/Color/3-3_noisy_communication.pdf, id=1590, 237.2592pt x 44.86093pt>
+File: Figures/Chapter03/Color/3-3_noisy_communication.pdf Graphic file (type pdf)
+<use Figures/Chapter03/Color/3-3_noisy_communication.pdf>
+Package pdftex.def Info: Figures/Chapter03/Color/3-3_noisy_communication.pdf  used on input line 191.
+(pdftex.def)             Requested size: 312.0pt x 58.9948pt.
+<Figures/Chapter03/Color/3-3_bit_flip_channel.pdf, id=1594, 216.46931pt x 48.39948pt>
+File: Figures/Chapter03/Color/3-3_bit_flip_channel.pdf Graphic file (type pdf)
+<use Figures/Chapter03/Color/3-3_bit_flip_channel.pdf>
+Package pdftex.def Info: Figures/Chapter03/Color/3-3_bit_flip_channel.pdf  used on input line 218.
+(pdftex.def)             Requested size: 280.7981pt x 62.78194pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[48 <./Figures/Chapter03/Color/3-3_noisy_communication.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[49 <./Figures/Chapter03/Color/3-3_bit_flip_channel.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[50]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[51]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[52]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[53]
+Overfull \hbox (1.72298pt too wide) in paragraph at lines 519--520
+\OT1/ptm/m/n/10 the pure tar-get state $\OMS/txsy/m/n/10 j\OT1/txr/m/n/10 00\OMS/txsy/m/n/10 i$ \OT1/ptm/m/n/10 and the max-i-mally mixed state $\OML/txmi/m/it/10 ^^Z \OT1/txr/m/n/10 = (\OMS/txsy/m/n/10 j\OT1/txr/m/n/10 00\OMS/txsy/m/n/10 ih\OT1/txr/m/n/10 00\OMS/txsy/m/n/10 j \OT1/txr/m/n/10 + \OMS/txsy/m/n/10 j\OT1/txr/m/n/10 01\OMS/txsy/m/n/10 ih\OT1/txr/m/n/10 01\OMS/txsy/m/n/10 j \OT1/txr/m/n/10 +
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[54]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[55]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[56]) (./CH04_entanglement.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[57]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[58
+
+]
+Chapter 4.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 4 []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[59]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[60]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[61]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[62]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[63]
+Overfull \hbox (1.3166pt too wide) in paragraph at lines 280--283
+\OT1/ptm/m/n/10 where the prob-a-bil-ity am-pli-tude sat-isfy the usual nor-mal-iza-tion con-di-tion, $\OMS/txsy/m/n/10 j\OML/txmi/m/it/10 \OMS/txsy/m/n/10 j[] \OT1/txr/m/n/10 +
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[64]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[65]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[66]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[67]
+<Figures/Chapter04/Color/4-8_spdc.pdf, id=1799, 472.17073pt x 138.97354pt>
+File: Figures/Chapter04/Color/4-8_spdc.pdf Graphic file (type pdf)
+<use Figures/Chapter04/Color/4-8_spdc.pdf>
+Package pdftex.def Info: Figures/Chapter04/Color/4-8_spdc.pdf  used on input line 413.
+(pdftex.def)             Requested size: 249.60095pt x 73.46477pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[68 <./Figures/Chapter04/Color/4-8_spdc.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[69]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[70]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[71]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[72]
+<Figures/Chapter04/Color/4-5_resource_network.pdf, id=1852, 426.03906pt x 87.94785pt>
+File: Figures/Chapter04/Color/4-5_resource_network.pdf Graphic file (type pdf)
+<use Figures/Chapter04/Color/4-5_resource_network.pdf>
+Package pdftex.def Info: Figures/Chapter04/Color/4-5_resource_network.pdf  used on input line 860.
+(pdftex.def)             Requested size: 312.0pt x 64.4067pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[73]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[74 <./Figures/Chapter04/Color/4-5_resource_network.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[75]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 964--965
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 977--978
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 979--980
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[77]
+Underfull \hbox (badness 10000) in paragraph at lines 991--992
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 993--994
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 999--1000
+
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[78]
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1004
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1009
+[][][][]$\OT1/pcr/m/n/8 https : / / etd . ohiolink . edu / apexprod / rws _ olink / r / 1501 / 10 ? clear = 10 &
+ []
+
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[79]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[80
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uppercase' on input line 254.
+
+
+Overfull \hbox (35.97601pt too wide) in paragraph at lines 254--254
+\chapternumberfont II [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[81]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[82] (./intro-block-2.tex
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 3.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[83
+
+]) (./CH05_coherent_light_single_photons.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[84
+
+]
+Chapter 5.
+
+Overfull \hbox (20.0pt too wide) detected at line 2
+\chapternumberfont 5 []
+ []
+
+
+Overfull \vbox (0.2362pt too high) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[85]
+<Figures/Chapter05/Color/5-1_underwater_cable_map.png, id=1969, 1472.50125pt x 1005.7575pt>
+File: Figures/Chapter05/Color/5-1_underwater_cable_map.png Graphic file (type png)
+<use Figures/Chapter05/Color/5-1_underwater_cable_map.png>
+Package pdftex.def Info: Figures/Chapter05/Color/5-1_underwater_cable_map.png  used on input line 55.
+(pdftex.def)             Requested size: 249.60095pt x 170.48541pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[86 <./Figures/Chapter05/Color/5-1_underwater_cable_map.png>]
+<Figures/Chapter05/Color/5-2_spontaneous_emission.pdf, id=1985, 563.57567pt x 306.70857pt>
+File: Figures/Chapter05/Color/5-2_spontaneous_emission.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-2_spontaneous_emission.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-2_spontaneous_emission.pdf  used on input line 96.
+(pdftex.def)             Requested size: 312.0pt x 169.79938pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[87]
+<Figures/Chapter05/Color/5-2_incoherent_emission.pdf, id=1996, 472.22208pt x 110.97449pt>
+File: Figures/Chapter05/Color/5-2_incoherent_emission.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-2_incoherent_emission.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-2_incoherent_emission.pdf  used on input line 134.
+(pdftex.def)             Requested size: 249.60095pt x 58.65701pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[88 <./Figures/Chapter05/Color/5-2_spontaneous_emission.pdf>]
+<Figures/Chapter05/Color/5-3_three_interactions.pdf, id=2044, 358.80237pt x 315.87184pt>
+File: Figures/Chapter05/Color/5-3_three_interactions.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-3_three_interactions.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-3_three_interactions.pdf  used on input line 169.
+(pdftex.def)             Requested size: 171.60095pt x 151.06729pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[89 <./Figures/Chapter05/Color/5-2_incoherent_emission.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[90 <./Figures/Chapter05/Color/5-3_three_interactions.pdf>]
+<Figures/Chapter05/Color/5-3_population_inversion.pdf, id=2081, 671.56952pt x 397.72418pt>
+File: Figures/Chapter05/Color/5-3_population_inversion.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-3_population_inversion.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-3_population_inversion.pdf  used on input line 214.
+(pdftex.def)             Requested size: 312.0pt x 184.77597pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[91 <./Figures/Chapter05/Color/5-3_population_inversion.pdf>]
+<Figures/Chapter05/Color/5-4_three-level-atom.pdf, id=2096, 665.69687pt x 196.46011pt>
+File: Figures/Chapter05/Color/5-4_three-level-atom.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-4_three-level-atom.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-4_three-level-atom.pdf  used on input line 254.
+(pdftex.def)             Requested size: 312.0pt x 92.07545pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[92 <./Figures/Chapter05/Color/5-4_three-level-atom.pdf>]
+<Figures/Chapter05/Color/5-4_laser_construction.pdf, id=2113, 600.63116pt x 193.86945pt>
+File: Figures/Chapter05/Color/5-4_laser_construction.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-4_laser_construction.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-4_laser_construction.pdf  used on input line 296.
+(pdftex.def)             Requested size: 312.0pt x 100.70618pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[93]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[94 <./Figures/Chapter05/Color/5-4_laser_construction.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[95]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[96]
+<Figures/Chapter05/Color/5-5_single_photons.pdf, id=2171, 438.48013pt x 316.6964pt>
+File: Figures/Chapter05/Color/5-5_single_photons.pdf Graphic file (type pdf)
+<use Figures/Chapter05/Color/5-5_single_photons.pdf>
+Package pdftex.def Info: Figures/Chapter05/Color/5-5_single_photons.pdf  used on input line 479.
+(pdftex.def)             Requested size: 280.7981pt x 202.81064pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[97]
+Overfull \hbox (3.13864pt too wide) in paragraph at lines 496--509
+\OT1/ptm/m/n/10 some-thing called the \OT1/ptm/b/it/10 second-order cor-re-la-tion func-tion[] $\OML/txmi/m/it/10 g[]\OT1/txr/m/n/10 (\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 )$\OT1/ptm/m/n/10 . The full deriva-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[98 <./Figures/Chapter05/Color/5-5_single_photons.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[99]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[100]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[101]) (./CH06_interference.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[102]
+Chapter 6.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 6 []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[103
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[104]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[105]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[106]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[107]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[108]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[109]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[110]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[111]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[112]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[113]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[114]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[115]
+<Figures/Chapter06/Color/mach_zehnder.pdf, id=2362, 846.19048pt x 496.76855pt>
+File: Figures/Chapter06/Color/mach_zehnder.pdf Graphic file (type pdf)
+<use Figures/Chapter06/Color/mach_zehnder.pdf>
+Package pdftex.def Info: Figures/Chapter06/Color/mach_zehnder.pdf  used on input line 954.
+(pdftex.def)             Requested size: 249.60095pt x 146.53029pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[116 <./Figures/Chapter06/Color/mach_zehnder.pdf>]
+<Figures/Chapter06/Color/0_ket_botttom.pdf, id=2374, 776.9025pt x 590.205pt>
+File: Figures/Chapter06/Color/0_ket_botttom.pdf Graphic file (type pdf)
+<use Figures/Chapter06/Color/0_ket_botttom.pdf>
+Package pdftex.def Info: Figures/Chapter06/Color/0_ket_botttom.pdf  used on input line 973.
+(pdftex.def)             Requested size: 249.60095pt x 189.61693pt.
+<Figures/Chapter06/Color/1_ket_bottom.pdf, id=2375, 735.97408pt x 594.38388pt>
+File: Figures/Chapter06/Color/1_ket_bottom.pdf Graphic file (type pdf)
+<use Figures/Chapter06/Color/1_ket_bottom.pdf>
+Package pdftex.def Info: Figures/Chapter06/Color/1_ket_bottom.pdf  used on input line 979.
+(pdftex.def)             Requested size: 249.60095pt x 201.57994pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[117 <./Figures/Chapter06/Color/0_ket_botttom.pdf>]
+<Figures/Chapter06/Color/bottom_blocked.pdf, id=2390, 748.29562pt x 529.98pt>
+File: Figures/Chapter06/Color/bottom_blocked.pdf Graphic file (type pdf)
+<use Figures/Chapter06/Color/bottom_blocked.pdf>
+Package pdftex.def Info: Figures/Chapter06/Color/bottom_blocked.pdf  used on input line 1001.
+(pdftex.def)             Requested size: 249.60095pt x 176.77817pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[118 <./Figures/Chapter06/Color/1_ket_bottom.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[119 <./Figures/Chapter06/Color/bottom_blocked.pdf>]) (./CH07_waveguides.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[120]
+Chapter 7.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 7 []
+ []
+
+<Figures/Chapter07/Color/7-1_everest.pdf, id=2412, 394.91522pt x 46.18843pt>
+File: Figures/Chapter07/Color/7-1_everest.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-1_everest.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-1_everest.pdf  used on input line 23.
+(pdftex.def)             Requested size: 234.0pt x 27.3686pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[121
+
+ <./Figures/Chapter07/Color/7-1_everest.pdf>]
+<Figures/Chapter07/Color/7-1_tyndall.pdf, id=2427, 280.83653pt x 294.88747pt>
+File: Figures/Chapter07/Color/7-1_tyndall.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-1_tyndall.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-1_tyndall.pdf  used on input line 42.
+(pdftex.def)             Requested size: 140.39905pt x 147.42535pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[122 <./Figures/Chapter07/Color/7-1_tyndall.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[123]
+<Figures/Chapter07/Color/7-2_light-interface.pdf, id=2442, 419.88362pt x 247.4499pt>
+File: Figures/Chapter07/Color/7-2_light-interface.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-2_light-interface.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-2_light-interface.pdf  used on input line 102.
+(pdftex.def)             Requested size: 202.7981pt x 119.51465pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[124 <./Figures/Chapter07/Color/7-2_light-interface.pdf>]
+<Figures/Chapter07/Color/7-2_snell.pdf, id=2460, 490.69138pt x 273.60696pt>
+File: Figures/Chapter07/Color/7-2_snell.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-2_snell.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-2_snell.pdf  used on input line 148.
+(pdftex.def)             Requested size: 218.39905pt x 121.77766pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[125]
+<Figures/Chapter07/Color/7-3_total_internal_reflection.pdf, id=2474, 285.25302pt x 170.18404pt>
+File: Figures/Chapter07/Color/7-3_total_internal_reflection.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-3_total_internal_reflection.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-3_total_internal_reflection.pdf  used on input line 180.
+(pdftex.def)             Requested size: 124.7981pt x 74.45532pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[126 <./Figures/Chapter07/Color/7-2_snell.pdf> <./Figures/Chapter07/Color/7-3_total_internal_reflection.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/Chapter07/Color/7-3_total_internal_reflection.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<Figures/Chapter07/Color/7-3_crit_angle.pdf, id=2502, 616.064pt x 222.06853pt>
+File: Figures/Chapter07/Color/7-3_crit_angle.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-3_crit_angle.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-3_crit_angle.pdf  used on input line 208.
+(pdftex.def)             Requested size: 280.7981pt x 101.22092pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[127 <./Figures/Chapter07/Color/7-3_crit_angle.pdf>]
+<Figures/Chapter07/Color/7-4_fiber.pdf, id=2519, 520.18866pt x 199.32832pt>
+File: Figures/Chapter07/Color/7-4_fiber.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-4_fiber.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-4_fiber.pdf  used on input line 228.
+(pdftex.def)             Requested size: 218.39905pt x 83.68689pt.
+<Figures/Chapter07/Color/7-4_multi_single_fiber.pdf, id=2521, 553.72992pt x 327.2904pt>
+File: Figures/Chapter07/Color/7-4_multi_single_fiber.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-4_multi_single_fiber.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-4_multi_single_fiber.pdf  used on input line 247.
+(pdftex.def)             Requested size: 218.39905pt x 129.08601pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[128 <./Figures/Chapter07/Color/7-4_fiber.pdf>]
+<Figures/Chapter07/Color/7-4_acceptance_cone.pdf, id=2537, 496.67932pt x 237.44196pt>
+File: Figures/Chapter07/Color/7-4_acceptance_cone.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-4_acceptance_cone.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-4_acceptance_cone.pdf  used on input line 269.
+(pdftex.def)             Requested size: 187.2019pt x 89.4934pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[129 <./Figures/Chapter07/Color/7-4_multi_single_fiber.pdf> <./Figures/Chapter07/Color/7-4_acceptance_cone.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/Chapter07/Color/7-4_acceptance_cone.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[130]
+<Figures/Chapter07/Color/7-4_TAT8.pdf, id=2573, 1920.10342pt x 784.14937pt>
+File: Figures/Chapter07/Color/7-4_TAT8.pdf Graphic file (type pdf)
+<use Figures/Chapter07/Color/7-4_TAT8.pdf>
+Package pdftex.def Info: Figures/Chapter07/Color/7-4_TAT8.pdf  used on input line 321.
+(pdftex.def)             Requested size: 312.0pt x 127.41678pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[131 <./Figures/Chapter07/Color/7-4_TAT8.pdf>]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[132]
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 412--415
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[133]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[134
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uppercase' on input line 260.
+
+
+Overfull \hbox (47.96402pt too wide) in paragraph at lines 260--260
+\chapternumberfont III [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[135]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[136] (./intro-block-3.tex
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 3.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[137
+
+]) (./CH08_teleportation.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[138
+
+]
+Chapter 8.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 8 []
+ []
+
+<Figures/Chapter08/Color/quantum-network.png, id=2642, 532.99126pt x 322.20375pt>
+File: Figures/Chapter08/Color/quantum-network.png Graphic file (type png)
+<use Figures/Chapter08/Color/quantum-network.png>
+Package pdftex.def Info: Figures/Chapter08/Color/quantum-network.png  used on input line 21.
+(pdftex.def)             Requested size: 156.0pt x 94.30197pt.
+<Figures/Chapter08/Color/hop-by-hop.png, id=2643, 471.7625pt x 307.1475pt>
+File: Figures/Chapter08/Color/hop-by-hop.png Graphic file (type png)
+<use Figures/Chapter08/Color/hop-by-hop.png>
+Package pdftex.def Info: Figures/Chapter08/Color/hop-by-hop.png  used on input line 27.
+(pdftex.def)             Requested size: 156.0pt x 101.5652pt.
+<Figures/Chapter08/Color/link-down.png, id=2644, 458.71375pt x 272.01625pt>
+File: Figures/Chapter08/Color/link-down.png Graphic file (type png)
+<use Figures/Chapter08/Color/link-down.png>
+Package pdftex.def Info: Figures/Chapter08/Color/link-down.png  used on input line 33.
+(pdftex.def)             Requested size: 156.0pt x 92.5092pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[139 <./Figures/Chapter08/Color/quantum-network.png>]
+<Figures/Chapter08/Color/partitioned.png, id=2650, 447.6725pt x 273.02pt>
+File: Figures/Chapter08/Color/partitioned.png Graphic file (type png)
+<use Figures/Chapter08/Color/partitioned.png>
+Package pdftex.def Info: Figures/Chapter08/Color/partitioned.png  used on input line 39.
+(pdftex.def)             Requested size: 156.0pt x 95.14183pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[140 <./Figures/Chapter08/Color/hop-by-hop.png> <./Figures/Chapter08/Color/link-down.png> <./Figures/Chapter08/Color/partitioned.png>]
+<Figures/Chapter08/Color/teleportation.png, id=2663, 664.4825pt x 404.51125pt>
+File: Figures/Chapter08/Color/teleportation.png Graphic file (type png)
+<use Figures/Chapter08/Color/teleportation.png>
+Package pdftex.def Info: Figures/Chapter08/Color/teleportation.png  used on input line 67.
+(pdftex.def)             Requested size: 249.60095pt x 151.9444pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[141 <./Figures/Chapter08/Color/teleportation.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[142]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[143]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[144]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[145]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[146]
+Overfull \hbox (7.29764pt too wide) in paragraph at lines 321--323
+\OT1/ptm/m/n/10 Next, we mul-ti-ply the left-hand side Eq. ([]8.11[]) by the left-hand side of Eq. ([]8.12[]),
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[147]
+<Figures/Chapter08/Color/teleportation-timeline.png, id=2733, 623.32875pt x 344.28625pt>
+File: Figures/Chapter08/Color/teleportation-timeline.png Graphic file (type png)
+<use Figures/Chapter08/Color/teleportation-timeline.png>
+Package pdftex.def Info: Figures/Chapter08/Color/teleportation-timeline.png  used on input line 366.
+(pdftex.def)             Requested size: 249.60095pt x 137.8644pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[148 <./Figures/Chapter08/Color/teleportation-timeline.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[149]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[150]
+Overfull \hbox (0.58174pt too wide) in paragraph at lines 457--457
+  []\OT1/ptm/m/n/9 How many pos-si-ble out-comes of Al-ice's Bell-basis mea-sure-ment are there? What
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[151]) (./CH09_photon-QKD.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[152]
+Chapter 9.
+
+Overfull \hbox (20.0pt too wide) detected at line 1
+\chapternumberfont 9 []
+ []
+
+
+Overfull \hbox (0.20715pt too wide) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 This chap-ter in-tro-duces single-photon quan-tum key dis-tri-bu-tion (QKD), specif-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[153
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[154]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[155]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[156]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[157]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[158]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[159]
+<Figures/Chapter09/Color/eve-copy-and-send.png, id=2817, 646.415pt x 331.2375pt>
+File: Figures/Chapter09/Color/eve-copy-and-send.png Graphic file (type png)
+<use Figures/Chapter09/Color/eve-copy-and-send.png>
+Package pdftex.def Info: Figures/Chapter09/Color/eve-copy-and-send.png  used on input line 328.
+(pdftex.def)             Requested size: 249.60095pt x 127.89832pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[160]
+<Figures/Chapter09/Color/eve-disturbance.png, id=2829, 638.385pt x 387.4475pt>
+File: Figures/Chapter09/Color/eve-disturbance.png Graphic file (type png)
+<use Figures/Chapter09/Color/eve-disturbance.png>
+Package pdftex.def Info: Figures/Chapter09/Color/eve-disturbance.png  used on input line 348.
+(pdftex.def)             Requested size: 249.60095pt x 151.48819pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[161 <./Figures/Chapter09/Color/eve-copy-and-send.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[162 <./Figures/Chapter09/Color/eve-disturbance.png>]
+<Figures/Chapter09/Color/9-4_detection.pdf, id=2843, 532.86891pt x 394.93736pt>
+File: Figures/Chapter09/Color/9-4_detection.pdf Graphic file (type pdf)
+<use Figures/Chapter09/Color/9-4_detection.pdf>
+Package pdftex.def Info: Figures/Chapter09/Color/9-4_detection.pdf  used on input line 407.
+(pdftex.def)             Requested size: 218.39905pt x 161.8651pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[163]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[164 <./Figures/Chapter09/Color/9-4_detection.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[165]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[166]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[167]) (./CH10_entanglement-QKD.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[168]
+Chapter 10.
+
+Overfull \hbox (38.0pt too wide) detected at line 1
+\chapternumberfont 10 []
+ []
+
+<Figures/Chapter10/Color/eavesdropping-on-bb84.png, id=2935, 527.9725pt x 248.93pt>
+File: Figures/Chapter10/Color/eavesdropping-on-bb84.png Graphic file (type png)
+<use Figures/Chapter10/Color/eavesdropping-on-bb84.png>
+Package pdftex.def Info: Figures/Chapter10/Color/eavesdropping-on-bb84.png  used on input line 41.
+(pdftex.def)             Requested size: 249.60095pt x 117.68082pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[169
+
+]
+<Figures/Chapter10/Color/e91-setup.png, id=2942, 507.8975pt x 259.97125pt>
+File: Figures/Chapter10/Color/e91-setup.png Graphic file (type png)
+<use Figures/Chapter10/Color/e91-setup.png>
+Package pdftex.def Info: Figures/Chapter10/Color/e91-setup.png  used on input line 57.
+(pdftex.def)             Requested size: 249.60095pt x 127.7599pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[170 <./Figures/Chapter10/Color/eavesdropping-on-bb84.png>]
+<Figures/Chapter10/Color/e91-eve-as-source.png, id=2949, 514.92375pt x 291.0875pt>
+File: Figures/Chapter10/Color/e91-eve-as-source.png Graphic file (type png)
+<use Figures/Chapter10/Color/e91-eve-as-source.png>
+Package pdftex.def Info: Figures/Chapter10/Color/e91-eve-as-source.png  used on input line 64.
+(pdftex.def)             Requested size: 249.60095pt x 141.0973pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[171 <./Figures/Chapter10/Color/e91-setup.png> <./Figures/Chapter10/Color/e91-eve-as-source.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[172]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[173]
+<Figures/Chapter10/Color/chsh-values.png, id=2972, 620.3175pt x 108.405pt>
+File: Figures/Chapter10/Color/chsh-values.png Graphic file (type png)
+<use Figures/Chapter10/Color/chsh-values.png>
+Package pdftex.def Info: Figures/Chapter10/Color/chsh-values.png  used on input line 185.
+(pdftex.def)             Requested size: 249.60095pt x 43.61926pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[174 <./Figures/Chapter10/Color/chsh-values.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[175]
+<Figures/Chapter10/Color/10-3_bases.pdf, id=2990, 335.49823pt x 146.90631pt>
+File: Figures/Chapter10/Color/10-3_bases.pdf Graphic file (type pdf)
+<use Figures/Chapter10/Color/10-3_bases.pdf>
+Package pdftex.def Info: Figures/Chapter10/Color/10-3_bases.pdf  used on input line 257.
+(pdftex.def)             Requested size: 218.39905pt x 95.63365pt.
+<Figures/Chapter10/Color/10-3-bases_key.pdf, id=2991, 335.49823pt x 196.7695pt>
+File: Figures/Chapter10/Color/10-3-bases_key.pdf Graphic file (type pdf)
+<use Figures/Chapter10/Color/10-3-bases_key.pdf>
+Package pdftex.def Info: Figures/Chapter10/Color/10-3-bases_key.pdf  used on input line 274.
+(pdftex.def)             Requested size: 249.60095pt x 146.39378pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[176 <./Figures/Chapter10/Color/10-3_bases.pdf>]
+<Figures/Chapter10/Color/10-3_bases_CHSH.pdf, id=3001, 335.49823pt x 146.90631pt>
+File: Figures/Chapter10/Color/10-3_bases_CHSH.pdf Graphic file (type pdf)
+<use Figures/Chapter10/Color/10-3_bases_CHSH.pdf>
+Package pdftex.def Info: Figures/Chapter10/Color/10-3_bases_CHSH.pdf  used on input line 294.
+(pdftex.def)             Requested size: 218.39905pt x 95.63365pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[177 <./Figures/Chapter10/Color/10-3-bases_key.pdf>]
+Overfull \hbox (0.59773pt too wide) in paragraph at lines 319--322
+[]\OT1/ptm/m/n/10 Having cover the ba-sics of both single-photon and entanglement-based QKD,
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[178 <./Figures/Chapter10/Color/10-3_bases_CHSH.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[179]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[180]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[181]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[182]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[183])
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[184]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uppercase' on input line 266.
+
+
+Overfull \hbox (49.98001pt too wide) in paragraph at lines 266--266
+\chapternumberfont IV [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[185
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[186] (./intro-block-4.tex
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 3.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[187
+
+]) (./CH11_long-distance-communication.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[188
+
+]
+Chapter 11.
+
+Overfull \hbox (38.0pt too wide) detected at line 1
+\chapternumberfont 11 []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[189]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[190]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[191]
+<Figures/Chapter11/Color/11-2_dispersion.pdf, id=3119, 745.98486pt x 160.20833pt>
+File: Figures/Chapter11/Color/11-2_dispersion.pdf Graphic file (type pdf)
+<use Figures/Chapter11/Color/11-2_dispersion.pdf>
+Package pdftex.def Info: Figures/Chapter11/Color/11-2_dispersion.pdf  used on input line 112.
+(pdftex.def)             Requested size: 312.0pt x 67.00589pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[192 <./Figures/Chapter11/Color/11-2_dispersion.pdf>]
+<Figures/Chapter11/Color/11-2_dispersion_delay.pdf, id=3136, 691.9683pt x 225.85773pt>
+File: Figures/Chapter11/Color/11-2_dispersion_delay.pdf Graphic file (type pdf)
+<use Figures/Chapter11/Color/11-2_dispersion_delay.pdf>
+Package pdftex.def Info: Figures/Chapter11/Color/11-2_dispersion_delay.pdf  used on input line 136.
+(pdftex.def)             Requested size: 249.60095pt x 81.47069pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[193 <./Figures/Chapter11/Color/11-2_dispersion_delay.pdf>]
+Overfull \hbox (7.54808pt too wide) in paragraph at lines 181--184
+\OT1/ptm/m/n/10 where the last equal-ity comes from Eq. ([]7.8[]). Sub-sti-tut-ing for $[] \OML/txmi/m/it/10 ^^R[]$ \OT1/ptm/m/n/10 in Eq. ([]11.6[]),
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[194]
+<Figures/Chapter11/Color/11-3_attenuation.pdf, id=3160, 1626.84619pt x 669.85437pt>
+File: Figures/Chapter11/Color/11-3_attenuation.pdf Graphic file (type pdf)
+<use Figures/Chapter11/Color/11-3_attenuation.pdf>
+Package pdftex.def Info: Figures/Chapter11/Color/11-3_attenuation.pdf  used on input line 233.
+(pdftex.def)             Requested size: 312.0pt x 128.4593pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[195]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[196 <./Figures/Chapter11/Color/11-3_attenuation.pdf>]
+<Figures/Chapter11/Color/11-3_attenuation_dB.pdf, id=3215, 401.8221pt x 226.67014pt>
+File: Figures/Chapter11/Color/11-3_attenuation_dB.pdf Graphic file (type pdf)
+<use Figures/Chapter11/Color/11-3_attenuation_dB.pdf>
+Package pdftex.def Info: Figures/Chapter11/Color/11-3_attenuation_dB.pdf  used on input line 306.
+(pdftex.def)             Requested size: 187.2019pt x 105.60112pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[197]
+<Figures/Chapter11/Color/11-4_edfa.pdf, id=3226, 455.24413pt x 207.72064pt>
+File: Figures/Chapter11/Color/11-4_edfa.pdf Graphic file (type pdf)
+<use Figures/Chapter11/Color/11-4_edfa.pdf>
+Package pdftex.def Info: Figures/Chapter11/Color/11-4_edfa.pdf  used on input line 354.
+(pdftex.def)             Requested size: 187.2019pt x 85.4164pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[198 <./Figures/Chapter11/Color/11-3_attenuation_dB.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[199 <./Figures/Chapter11/Color/11-4_edfa.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[200]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[201]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[202]) (./CH12_quantum-repeaters.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[203]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[204
+
+]
+Chapter 12.
+
+Overfull \hbox (38.0pt too wide) detected at line 1
+\chapternumberfont 12 []
+ []
+
+<Figures/Chapter12/Color/12-1_all_to_all.pdf, id=3285, 323.40997pt x 172.64638pt>
+File: Figures/Chapter12/Color/12-1_all_to_all.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-1_all_to_all.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-1_all_to_all.pdf  used on input line 19.
+(pdftex.def)             Requested size: 265.2019pt x 141.57356pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[205]
+Overfull \hbox (2.29564pt too wide) in paragraph at lines 54--61
+\OT1/ptm/m/n/10 the \OT1/ptm/b/it/10 memory-interfere-memory \OT1/ptm/m/n/10 (MIM)[] link ar-chi-tec-ture, is pic-tured in Fig. []12.2[].
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[206 <./Figures/Chapter12/Color/12-1_all_to_all.pdf>]
+<Figures/Chapter12/Color/12-2_MIM.pdf, id=3307, 252.41501pt x 233.3345pt>
+File: Figures/Chapter12/Color/12-2_MIM.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-2_MIM.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-2_MIM.pdf  used on input line 64.
+(pdftex.def)             Requested size: 249.60095pt x 230.73839pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[207 <./Figures/Chapter12/Color/12-2_MIM.pdf>]
+<Figures/Chapter12/Color/12-2_MM_MSM.pdf, id=3322, 283.58035pt x 117.0678pt>
+File: Figures/Chapter12/Color/12-2_MM_MSM.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-2_MM_MSM.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-2_MM_MSM.pdf  used on input line 84.
+(pdftex.def)             Requested size: 265.2019pt x 109.4864pt.
+
+Overfull \hbox (2.10692pt too wide) in paragraph at lines 89--97
+[]\OT1/ptm/m/n/10 Figure []12.3[] shows two more link-level ar-chi-tec-tures. The first one is \OT1/ptm/b/it/10 memory-
+ []
+
+<Figures/Chapter12/Color/12-3_entanglement_swapping.pdf, id=3326, 261.19954pt x 135.9027pt>
+File: Figures/Chapter12/Color/12-3_entanglement_swapping.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-3_entanglement_swapping.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-3_entanglement_swapping.pdf  used on input line 113.
+(pdftex.def)             Requested size: 249.60095pt x 129.872pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[208 <./Figures/Chapter12/Color/12-2_MM_MSM.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[209 <./Figures/Chapter12/Color/12-3_entanglement_swapping.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[210]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[211]
+<Figures/Chapter12/Color/12-4_purification.pdf, id=3374, 175.4037pt x 60.27222pt>
+File: Figures/Chapter12/Color/12-4_purification.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-4_purification.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-4_purification.pdf  used on input line 245.
+(pdftex.def)             Requested size: 218.39905pt x 75.0513pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[212]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[213 <./Figures/Chapter12/Color/12-4_purification.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[214]
+<Figures/Chapter12/Color/12-5_routing_multiplexing.pdf, id=3408, 325.83247pt x 135.69626pt>
+File: Figures/Chapter12/Color/12-5_routing_multiplexing.pdf Graphic file (type pdf)
+<use Figures/Chapter12/Color/12-5_routing_multiplexing.pdf>
+Package pdftex.def Info: Figures/Chapter12/Color/12-5_routing_multiplexing.pdf  used on input line 359.
+(pdftex.def)             Requested size: 249.60095pt x 103.94809pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[215]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[216 <./Figures/Chapter12/Color/12-5_routing_multiplexing.pdf>]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[217]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[218]) (./CH13_physical-layer-components.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[219]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[220
+
+]
+Chapter 13.
+
+Overfull \hbox (38.0pt too wide) detected at line 2
+\chapternumberfont 13 []
+ []
+
+<Figures/Chapter13/Color/13-1_repeater.pdf, id=3451, 252.41505pt x 76.14255pt>
+File: Figures/Chapter13/Color/13-1_repeater.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-1_repeater.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-1_repeater.pdf  used on input line 20.
+(pdftex.def)             Requested size: 218.39905pt x 65.8833pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[221]
+<Figures/Chapter13/Color/13-2_measurementPauli.pdf, id=3463, 377.19643pt x 114.72025pt>
+File: Figures/Chapter13/Color/13-2_measurementPauli.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-2_measurementPauli.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-2_measurementPauli.pdf  used on input line 70.
+(pdftex.def)             Requested size: 187.2019pt x 56.93636pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[222 <./Figures/Chapter13/Color/13-1_repeater.pdf>]
+<Figures/Chapter13/Color/13-2_measurementBell.pdf, id=3481, 582.47354pt x 116.92247pt>
+File: Figures/Chapter13/Color/13-2_measurementBell.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-2_measurementBell.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-2_measurementBell.pdf  used on input line 108.
+(pdftex.def)             Requested size: 280.7981pt x 56.36476pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[223 <./Figures/Chapter13/Color/13-2_measurementPauli.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[224 <./Figures/Chapter13/Color/13-2_measurementBell.pdf>]
+<Figures/Chapter13/Color/13-3_PBS.pdf, id=3648, 200.82266pt x 79.99576pt>
+File: Figures/Chapter13/Color/13-3_PBS.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-3_PBS.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-3_PBS.pdf  used on input line 165.
+(pdftex.def)             Requested size: 187.2019pt x 74.57349pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[225 <./Figures/Chapter13/Color/13-3_PBS.pdf>]
+<Figures/Chapter13/Color/13-3_PBS_measure.pdf, id=3675, 236.61319pt x 130.23994pt>
+File: Figures/Chapter13/Color/13-3_PBS_measure.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-3_PBS_measure.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-3_PBS_measure.pdf  used on input line 181.
+(pdftex.def)             Requested size: 218.39905pt x 120.21568pt.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 182.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 182.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[226 <./Figures/Chapter13/Color/13-3_PBS_measure.pdf>]
+<Figures/Chapter13/Color/13-3_BSA_clicks.pdf, id=3699, 180.72679pt x 161.92416pt>
+File: Figures/Chapter13/Color/13-3_BSA_clicks.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-3_BSA_clicks.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-3_BSA_clicks.pdf  used on input line 213.
+(pdftex.def)             Requested size: 187.2019pt x 167.7325pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[227 <./Figures/Chapter13/Color/13-3_BSA_clicks.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[228]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[229]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[230]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[231]
+<Figures/Chapter13/Color/13-4_memory-first.pdf, id=3747, 217.80095pt x 40.43756pt>
+File: Figures/Chapter13/Color/13-4_memory-first.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-4_memory-first.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-4_memory-first.pdf  used on input line 395.
+(pdftex.def)             Requested size: 218.39905pt x 40.54912pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[232 <./Figures/Chapter13/Color/13-4_memory-first.pdf>]
+<Figures/Chapter13/Color/13-4_memory-second.pdf, id=3767, 83.09715pt x 39.95605pt>
+File: Figures/Chapter13/Color/13-4_memory-second.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-4_memory-second.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-4_memory-second.pdf  used on input line 451.
+(pdftex.def)             Requested size: 93.60095pt x 45.00833pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[233]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[234 <./Figures/Chapter13/Color/13-4_memory-second.pdf>]
+<Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf, id=3787, 197.22539pt x 212.20244pt>
+File: Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf Graphic file (type pdf)
+<use Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf>
+Package pdftex.def Info: Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf  used on input line 504.
+(pdftex.def)             Requested size: 218.39905pt x 234.99055pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[235 <./Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf>]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[236]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[237]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[238]
+Overfull \hbox (3.63814pt too wide) in paragraph at lines 626--628
+\OT1/ptm/m/n/10 Rodney Van Me-ter, \OT1/ptm/m/it/10 Quan-tum Net-work-ing\OT1/ptm/m/n/10 , Wiley-ISTE, 2014 []Van Me-ter[] ([]2014[]). 
+ []
+
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[239]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[240
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uppercase' on input line 272.
+
+
+Overfull \hbox (37.992pt too wide) in paragraph at lines 272--272
+\chapternumberfont V [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[241]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[242] (./intro-block-5.tex
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 2.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[243
+
+]) (./CH14_entanglement-revisited.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[244
+
+]
+Chapter 14.
+
+Overfull \hbox (38.0pt too wide) detected at line 1
+\chapternumberfont 14 []
+ []
+
+<Figures/Chapter14/Color/14-1_bipartite_network.pdf, id=3868, 398.8121pt x 271.87636pt>
+File: Figures/Chapter14/Color/14-1_bipartite_network.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-1_bipartite_network.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-1_bipartite_network.pdf  used on input line 18.
+(pdftex.def)             Requested size: 312.0pt x 212.70985pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[245]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[246 <./Figures/Chapter14/Color/14-1_bipartite_network.pdf>]
+<Figures/Chapter14/Color/14-1_QKD.pdf, id=3889, 125.81955pt x 72.54498pt>
+File: Figures/Chapter14/Color/14-1_QKD.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-1_QKD.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-1_QKD.pdf  used on input line 66.
+(pdftex.def)             Requested size: 124.7981pt x 71.95921pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[247 <./Figures/Chapter14/Color/14-1_QKD.pdf>]
+Overfull \hbox (5.64708pt too wide) in paragraph at lines 107--109
+\OT1/ptm/m/n/10 For the ideal state, the ex-pec-ta-tion val-ues can be com-puted ac-cord-ing to $\OMS/txsy/m/n/10 h\OML/txmi/m/it/10 A[]B[]\OMS/txsy/m/n/10 i \OT1/txr/m/n/10 =
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[248]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[249]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[250]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[251]
+<Figures/Chapter14/Color/14-2_monogamy.pdf, id=3963, 425.6079pt x 116.58786pt>
+File: Figures/Chapter14/Color/14-2_monogamy.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-2_monogamy.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-2_monogamy.pdf  used on input line 245.
+(pdftex.def)             Requested size: 312.0pt x 85.46954pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[252 <./Figures/Chapter14/Color/14-2_monogamy.pdf>]
+<Figures/Chapter14/Color/14-2_graph_state.pdf, id=3995, 300.30418pt x 137.76022pt>
+File: Figures/Chapter14/Color/14-2_graph_state.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-2_graph_state.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-2_graph_state.pdf  used on input line 279.
+(pdftex.def)             Requested size: 187.2019pt x 85.87709pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[253 <./Figures/Chapter14/Color/14-2_graph_state.pdf>]
+<Figures/Chapter14/Color/14-2_cluster_state.pdf, id=4013, 507.61162pt x 146.81622pt>
+File: Figures/Chapter14/Color/14-2_cluster_state.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-2_cluster_state.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-2_cluster_state.pdf  used on input line 301.
+(pdftex.def)             Requested size: 312.0pt x 90.24103pt.
+<Figures/Chapter14/Color/14-3_clock_sync.pdf, id=4016, 425.18636pt x 126.22318pt>
+File: Figures/Chapter14/Color/14-3_clock_sync.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-3_clock_sync.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-3_clock_sync.pdf  used on input line 332.
+(pdftex.def)             Requested size: 249.60095pt x 74.09929pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[254 <./Figures/Chapter14/Color/14-2_cluster_state.pdf>]
+<Figures/Chapter14/Color/14-3_bloch.pdf, id=4038, 1294.04622pt x 582.16115pt>
+File: Figures/Chapter14/Color/14-3_bloch.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-3_bloch.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-3_bloch.pdf  used on input line 359.
+(pdftex.def)             Requested size: 249.60095pt x 112.28177pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[255 <./Figures/Chapter14/Color/14-3_clock_sync.pdf>]
+<Figures/Chapter14/Color/14-4_distributed_qc.pdf, id=4070, 156.9297pt x 133.3887pt>
+File: Figures/Chapter14/Color/14-4_distributed_qc.pdf Graphic file (type pdf)
+<use Figures/Chapter14/Color/14-4_distributed_qc.pdf>
+Package pdftex.def Info: Figures/Chapter14/Color/14-4_distributed_qc.pdf  used on input line 395.
+(pdftex.def)             Requested size: 124.7981pt x 106.08014pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[256 <./Figures/Chapter14/Color/14-3_bloch.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[257 <./Figures/Chapter14/Color/14-4_distributed_qc.pdf>]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[258]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[259]) (./CH15_quantum-internet.tex
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[260]
+Chapter 15.
+
+Overfull \hbox (38.0pt too wide) detected at line 1
+\chapternumberfont 15 []
+ []
+
+<Figures/Chapter15/Color/R2L15fig1.pdf, id=4121, 722.7pt x 406.51875pt>
+File: Figures/Chapter15/Color/R2L15fig1.pdf Graphic file (type pdf)
+<use Figures/Chapter15/Color/R2L15fig1.pdf>
+Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig1.pdf  used on input line 22.
+(pdftex.def)             Requested size: 312.0pt x 175.50058pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[261
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[262 <./Figures/Chapter15/Color/R2L15fig1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[263]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[264]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[265]
+<Figures/Chapter15/Color/R2L15fig2.pdf, id=4186, 313.004pt x 300.95897pt>
+File: Figures/Chapter15/Color/R2L15fig2.pdf Graphic file (type pdf)
+<use Figures/Chapter15/Color/R2L15fig2.pdf>
+Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig2.pdf  used on input line 94.
+(pdftex.def)             Requested size: 156.0pt x 149.99692pt.
+<Figures/Chapter15/Color/R2L15fig3.pdf, id=4187, 349.88995pt x 334.16078pt>
+File: Figures/Chapter15/Color/R2L15fig3.pdf Graphic file (type pdf)
+<use Figures/Chapter15/Color/R2L15fig3.pdf>
+Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig3.pdf  used on input line 101.
+(pdftex.def)             Requested size: 156.0pt x 148.98915pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[266 <./Figures/Chapter15/Color/R2L15fig2.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[267 <./Figures/Chapter15/Color/R2L15fig3.pdf>]
+<Figures/Chapter15/Color/R2L15fig4.pdf, id=4210, 722.7pt x 406.51875pt>
+File: Figures/Chapter15/Color/R2L15fig4.pdf Graphic file (type pdf)
+<use Figures/Chapter15/Color/R2L15fig4.pdf>
+Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig4.pdf  used on input line 147.
+(pdftex.def)             Requested size: 312.0pt x 175.50058pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[268]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[269 <./Figures/Chapter15/Color/R2L15fig4.pdf>]
+<Figures/Chapter15/Color/R2L15fig5.pdf, id=4272, 722.7pt x 406.51875pt>
+File: Figures/Chapter15/Color/R2L15fig5.pdf Graphic file (type pdf)
+<use Figures/Chapter15/Color/R2L15fig5.pdf>
+Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig5.pdf  used on input line 170.
+(pdftex.def)             Requested size: 312.0pt x 175.50058pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[270 <./Figures/Chapter15/Color/R2L15fig5.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[271]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[272]
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[][][][]$\OT1/pcr/m/n/8 https : / / www . itu . int / ITU -[] T / recommendations / rec . aspx ? id = 13990 &
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[273]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[274]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[275]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[276]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[277]
+Overfull \hbox (5.12723pt too wide) in paragraph at lines 327--329
+\OT1/ptm/m/n/10 tan-gle-ment, \OT1/ptm/m/it/10 Phys-i-cal Re-view Let-ters \OT1/ptm/m/n/10 82, 1345 (1999) []Bouwmeester et al.[] ([]1999[]).
+ []
+
+
+Overfull \hbox (24.65692pt too wide) in paragraph at lines 332--333
+\OT1/ptm/m/n/10 ton Zeilinger, Ex-per-i-men-tal test of quan-tum non-lo-cal-ity in three-photon Greenberger-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[278]) (./main.bbl
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[279]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[280
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 42--51
+[]\OT1/ptm/m/n/9 Bennett, C. H., and G. Bras-sard. 1984. Quan-tum cryp-tog-ra-phy: Pub-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--51
+\OT1/ptm/m/n/9 lic key dis-tri-bu-tion and coin toss-ing. In \OT1/ptm/m/it/9 Proc. ieee in-ter-na-tional con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--51
+\OT1/ptm/m/it/9 fer-ence on com-put-ers, sys-tems, and sig-nal pro-cess-ing\OT1/ptm/m/n/9 , 175--179. IEEE.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--62
+[]\OT1/ptm/m/n/9 Bennett, C. H., G. Bras-sard, C. Cr[]epeau, R. Josza, A. Peres, and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--62
+\OT1/ptm/m/n/9 W. Woot-ters. 1993. Tele-port-ing an un-known quan-tum state via dual
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--62
+\OT1/ptm/m/n/9 clas-si-cal and EPR chan-nels. \OT1/ptm/m/it/9 Phys-i-cal Re-view Let-ters \OT1/ptm/m/n/9 70: 1895--1899.
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 75--84
+\OT1/ptm/m/n/9 tan-gle-ment. \OT1/ptm/m/it/9 Phys. Rev. Lett. \OT1/ptm/m/n/9 82: 1345--1349. doi:10.1103/PhysRevLett.82.1345.
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[281]
+Underfull \hbox (badness 5403) in paragraph at lines 197--205
+[]\OT1/ptm/m/n/9 Hurley, Dan. 1994. The Quan-tum In-ter-net Will Blow Your Mind. Here's
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--205
+\OT1/ptm/m/n/9 What It Will Look Like. \OT1/ptm/m/it/9 Dis-cover Mag-a-zine\OT1/ptm/m/n/9 . doi:10.1063/1.881418.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--205
+\OT1/ptm/m/n/9 https://www.discovermagazine.com/technology/the-quantum-internet-will-blow-
+ []
+
+LaTeX Info: Symbol \texttildelow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 251.
+
+Underfull \hbox (badness 6995) in paragraph at lines 246--254
+[]\OT1/ptm/m/n/9 Preskill, John. 1998. Lec-ture notes for physics 229: Quan-tum in-for-ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--254
+\OT1/ptm/m/n/9 tion and com-pu-ta-tion. \OT1/ptm/m/it/9 Cal-i-for-nia In-sti-tute of Tech-nol-ogy \OT1/ptm/m/n/9 16 (1): 1--8.
+ []
+
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[282{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./main.ind
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[283
+
+
+]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[284]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[285]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/se-utf8.def
+File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
+) [286
+
+]) (./main.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 916EBA63DD7823A7BF4E367100B052A0;19331.
+ ) 
+Here is how much of TeX's memory you used:
+ 47406 strings out of 467533
+ 1087236 string characters out of 5419489
+ 1858053 words of memory out of 5000000
+ 74424 multiletter control sequences out of 15000+600000
+ 743467 words of font info for 279 fonts, out of 8000000 for 9000
+ 1147 hyphenation exceptions out of 8191
+ 84i,22n,94p,2079b,2296s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on main.pdf (308 pages, 5723569 bytes).
+PDF statistics:
+ 5023 PDF objects out of 5155 (max. 8388607)
+ 4118 compressed objects within 42 object streams
+ 1012 named destinations out of 1200 (max. 500000)
+ 1560 words of extra memory for PDF output out of 10000 (max. 10000000)
+
