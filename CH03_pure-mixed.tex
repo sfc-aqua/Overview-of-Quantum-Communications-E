@@ -33,7 +33,7 @@ The output might be affected by incoherent errors, such as probabilistic Pauli e
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Chapter03/Color/3-1_noise.pdf}
+    \includegraphics[width=\textwidth]{Figures/Chapter03/BW/3-1_noise_BW.pdf}
     \caption[Noisy world.]{Real quantum states are noisy.}
     \label{fig:3-1_noise}
 \end{figure}
@@ -188,7 +188,7 @@ In order to describe more realistic quantum states, we have to resort to descrip
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Chapter03/Color/3-3_noisy_communication.pdf}
+    \includegraphics[width=\textwidth]{Figures/Chapter03/BW/3-3_noisy_communication_BW.pdf}
     \caption[Noisy quantum communication.]{Ideal quantum input state becomes a probabilistic mixture at the output as a result of the noise introduced by the optical fiber.}
     \label{fig:3-3_noisy_communication}
 \end{figure}
@@ -215,7 +215,7 @@ It is important to remember is that the $p_i$'s are probabilities and therefore 
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.9\textwidth]{Figures/Chapter03/Color/3-3_bit_flip_channel.pdf}
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter03/BW/3-3_bit_flip_channel_BW.pdf}
     \caption[Bit-flip channel.]{Bit-flip channel. Pauli $X$ is applied to the input with probability $p$. The input is unaffected with probability $1-p$.}
     \label{fig:3-3_bit_flip_channel}
 \end{figure}
@@ -290,80 +290,7 @@ The calculation is very similar,
 
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=\textwidth]{lesson3/3-3_bloch_new.pdf}
-    \def\r{4}
-    \tdplotsetmaincoords{70}{115}
-    \def\azimuthP{40}
-    \def\polarP{60}
-    \def\circleSize{88.5}
-    
-    \begin{tikzpicture}[tdplot_main_coords,scale=0.35,every node/.style={scale=0.35}]
-
-    \tdplotsetcoord{O}{0}{0}{0}
-    \tdplotsetcoord{P}{\r}{\azimuthP}{\polarP}
-    \tdplotsetcoord{Q}{\r*sin(\azimuthP)}{90}{\polarP}
-
-    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r); 
-    \tdplotCsDrawLonCircle[tdplotCsBack/.style={black!50,dashed},thin]{\r}{\polarP-90}
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed},very thin]{\r}{90-\azimuthP}
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-    \draw[-latex,semithick] (O) -- (1.3*\r,0,0) node[pos=1.15] {\Huge $x$};
-    \draw[-latex,semithick] (O) -- (0,1.3*\r,0) node[pos=1.07] {\Huge $y$};
-    \draw[-latex,semithick] (O) -- (0,0,1.3*\r) node[pos=1.06] {\Huge $z$};
-    
-    \draw[-latex,thick,blue!50] (O) -- (P);
-    
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{\polarP}{\azimuthP}{1.05*\circleSize}
-    \node[] at (4, 3.8, 5.1) {\Huge $|\psi\rangle$};
-    \node[] at (0, 0, 6.5) {\Huge Pure state};
-
-    \begin{scope}[xshift=10cm]
-    
-    \tdplotsetcoord{O}{0}{0}{0}
-    \tdplotsetcoord{P}{0.4*\r}{\azimuthP}{\polarP}
-    \tdplotsetcoord{Q}{0.4*\r*sin(\azimuthP)}{90}{\polarP}
-
-    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-    \shade[tdplot_screen_coords,ball color=blue!30,opacity=0.5] (0,0,0) circle (0.4*\r);
-    \tdplotCsDrawLonCircle[tdplotCsBack/.style={black!50,dashed},thin]{0.4*\r}{\polarP-90}
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed},thin]{0.4*\r}{90-\azimuthP}
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{0.4*\r}{0}
-
-    \draw[-latex,semithick] (O) -- (1.3*\r,0,0) node[pos=1.15] {\Huge $x$};
-    \draw[-latex,semithick] (O) -- (0,1.3*\r,0) node[pos=1.07] {\Huge $y$};
-    \draw[-latex,semithick] (O) -- (0,0,1.3*\r) node[pos=1.06] {\Huge $z$};
-    
-    \draw[-latex,thick,blue!50] (O) -- (P);
-    
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{0.4*\r}{\polarP}{\azimuthP}{1.09*\circleSize}
-    \node[] at (1, 1.8, 1.3) {\Huge $\rho$};
-    \node[] at (0, 0, 6.5) {\Huge Mixed state};
-    
-    \end{scope}
-
-    \begin{scope}[xshift=20cm]
-    
-    \tdplotsetcoord{O}{0}{0}{0}
-    \tdplotsetcoord{P}{0.4*\r}{\azimuthP}{\polarP}
-    \tdplotsetcoord{Q}{0.4*\r*sin(\azimuthP)}{90}{\polarP}
-
-    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-    \draw[-latex,semithick] (O) -- (1.3*\r,0,0) node[pos=1.15] {\Huge $x$};
-    \draw[-latex,semithick] (O) -- (0,1.3*\r,0) node[pos=1.07] {\Huge $y$};
-    \draw[-latex,semithick] (O) -- (0,0,1.3*\r) node[pos=1.06] {\Huge $z$};
-
-    \filldraw[blue!50,draw=black,thick] (0,0) circle (5pt);
-    \node[] at (1, 1.5, 1.2) {\Huge $I/2$};
-    \node[] at (0, 0, 6.5) {\Huge Maximally mixed state};
-    
-    \end{scope}  
-    \end{tikzpicture}
-
+    \includegraphics[width=\textwidth]{Figures/Chapter03/BW/3-3_Bloch_pure_mixed_BW.pdf}
     \caption[Bloch sphere and mixed states.]{Bloch sphere representation of a pure state $|\psi\rangle$, a mixed state $\rho$ and the maximally mixed state $I/2$.}
     \label{fig:3-3_bloch}
 \end{figure}

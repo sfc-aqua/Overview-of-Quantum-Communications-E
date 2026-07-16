@@ -12,39 +12,11 @@ Most of this chapter will be familiar to those who have taken an introductory qu
 
 \section{Qubits}
 
-% \subsection*{2.1.1: Qubits (Quantum bit)}
-
-% Recall from Chapter 1 that all information can be represented by classical bits in the classical world. Classical bits are confined to either the zero or one states, whereas the qubit can be "in-between" zero or one in  \textbf{\emph{superposition}}\index{superposition} states. Mathematically, the general qubit state for a superposition of $\ket{0}$ and $\ket{1}$ is represented using notation known as \textbf{\emph{Dirac Notation}}, written
-% \begin{equation}
-% \ket{\psi} = \alpha \ket{0} + \beta\ket{1} 
-% \end{equation}
-%  where $\ket{\cdot}$ is pronounced \emph{ket}, $\psi$ (\emph{psi}) represents a general qubit state, $\alpha,\beta \in \mathbb{C}$.\label{def:ket}
-
-
-
-
 First, let's discuss quantum bits, also known as \textbf{\emph{qubits}}\index{qubit}. We have seen in the previous chapter that information can be represented by classical bits. In the classical world, a classical bit can only be in two states: it can be in a state we label \emph{zero}, or in a state we label \emph{one}, nothing in between. In contrast, a quantum bit can be anything in between. It can be 100\% zero or 100\% one, but it can also be 50\% zero and 50\% one or 1\% zero and 99\% one. Such a state is called a \textbf{\emph{superposition}}\index{superposition} of zero and one. It's not that we don't know what the state is, it really is neither zero nor one but it's somewhere in between. (This notion of "in between" is not a completely accurate description, but it will do for now.  As we do the mathematics over the next several sections, your understanding will grow.)
 
-% Dirac Notation w/ annotation
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{lesson2/dirac_notation.pdf}
-    % \includegraphics[width=1\textwidth]{lesson2/R2L2fig1.pdf}
-    \begin{tikzpicture}
-    \node[] at (0,0) {\Large $|\psi\rangle \; = \; \alpha \; |0\rangle \; + \; \beta \; |1\rangle$};
-    
-    \draw[-latex,red!60] (0.05,0.4) arc[start angle=160, end angle=130, radius=1.5];
-    \draw[-latex,red!60] (1.8,0.4) arc[start angle=20, end angle=50, radius=1.5];
-    \node[red!60] at (0.9,1.3) {basis states};
-
-    \draw[-latex,blue!50] (-0.5,-0.4) arc[start angle=200, end angle=230, radius=1.5];
-    \draw[-latex,blue!50] (1.3,-0.4) arc[start angle=340, end angle=310, radius=1.5];
-    \node[blue!50] at (0.6,-1.3) {probability amplitudes};
-
-    \draw[-latex,orange!80] (-1.9,-0.4) arc[start angle=340, end angle=310, radius=1.5];
-    \node[orange!80] at (-2.6,-1.3) {``ket psi''};
-    \end{tikzpicture}
-    
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter02/BW/2-1_Dirac_notation_BW.pdf}
     \caption[Dirac ket notation.]{Breakdown of the Dirac ket notation.}
     \label{fig:ket-notation}
 \end{figure}
@@ -58,47 +30,9 @@ The funny angle bracket \ket{\cdot} is called a \textbf{\emph{ket}}\index{ket}. 
 \end{align}
 It should be read as ``mod alpha squared plus mod beta squared is equal to one''. This condition ensures that whatever measurements we do in the future on this state produce results with the correct probabilities.
 
-
-% Bloch Sphere
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere.pdf}
-    \def\r{4}
-    \tdplotsetmaincoords{70}{115}
-    \def\azimuthP{40}
-    \def\polarP{60}
-    \def\circleSize{88.5}
-    
-    \begin{tikzpicture}[tdplot_main_coords,scale=0.7,every node/.style={scale=0.7}]
-
-        \tdplotsetcoord{O}{0}{0}{0}
-        \tdplotsetcoord{P}{\r}{\azimuthP}{\polarP}
-        \tdplotsetcoord{Q}{\r*sin(\azimuthP)}{90}{\polarP}
-
-        \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);    % sphere
-        \tdplotCsDrawLonCircle[tdplotCsBack/.style={black!50,dashed},thin]{\r}{\polarP-90}
-        \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed},thin]{\r}{90-\azimuthP}
-        \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-        \draw[-,blue!50,thick] (0:0.5*\r) arc (0:\polarP:0.5*\r);
-        \node[] at ({0.4*\polarP}:0.27*\r) {\Large $\phi$};
-        \tdplotsetthetaplanecoords{\polarP}
-        \draw[tdplot_rotated_coords,-,blue!50,thick] (0:0.4*\r) arc (0:\azimuthP:0.4*\r);
-        \node[tdplot_rotated_coords] at ({0.5*\azimuthP}:0.27*\r) {\Large $\theta$};
-
-        \draw[-latex,thick] (O) -- (1.3*\r,0,0) node[pos=1.15] {\Large $x$};
-        \draw[-latex,thick] (O) -- (0,1.3*\r,0) node[pos=1.07] {\Large $y$};
-        \draw[-latex,thick] (O) -- (0,0,1.3*\r) node[pos=1.06] {\Large $z$};
-        \draw[dashed,black!50] (O) -- (-\r,0,0);
-        \draw[dashed,black!50] (O) -- (0,-\r,0);
-        \draw[dashed,black!50] (O) -- (0,0,-\r);
-    
-        \draw[-latex,thick,blue!50] (O) -- (P);
-        \draw[thick,dashed,blue!50] (O) -- (Q) -- (P);
-    
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{\polarP}{\azimuthP}{\circleSize}
-        \node[] at (4, 3.8, 4.7) {\Large $|\psi\rangle$};
-    \end{tikzpicture}
+    \includegraphics[width=0.7\textwidth]{Figures/Chapter02/BW/2-1_Bloch_sphere_BW.pdf}
     \caption[Bloch sphere.]{Bloch sphere visualization of a pure state $|\psi\rangle$.}
     \label{fig:bloch}
 \end{figure}
@@ -114,44 +48,9 @@ This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~
     |\pm\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm|1\rangle), \qquad|\pm i\rangle=\frac{1}{\sqrt{2}}(|0\rangle \pm i|1\rangle).
 \end{equation}
 
-% insert Bloch sphere w/ axes labelled and |+> |-> meanings
 \begin{figure}[H]
     \centering
-    \def\r{4}
-    \def\circleSize{88.5}
-    \tdplotsetmaincoords{70}{115}
-    \begin{tikzpicture}[tdplot_main_coords,scale=0.7,every node/.style={scale=0.7}]
-
-        \tdplotsetcoord{O}{0}{0}{0}
-
-        \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);    % sphere
-        \tdplotCsDrawLonCircle[tdplotCsBack/.style={black!50,dashed},thin]{\r}{0}
-        \tdplotCsDrawLonCircle[tdplotCsBack/.style={black!50,dashed},thin]{\r}{90}
-        \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-        \draw[thick] (O) -- (\r,0,0);
-        \draw[thick] (O) -- (0,\r,0);
-        \draw[thick] (O) -- (0,0,\r);
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{0}{0}{\circleSize}
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,tdplotCsBack/.style={-},thick]{\r}{0}{0}{-88.8}
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{0}{90}{\circleSize}
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,tdplotCsBack/.style={-},thick]{\r}{0}{90}{-\circleSize}
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{90}{90}{\circleSize}
-        \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,tdplotCsBack/.style={-},thick]{\r}{90}{90}{-\circleSize}
-        \draw[dashed,black!50] (O) -- (-\r,0,0);
-        \draw[dashed,black!50] (O) -- (0,-\r,0);
-        \draw[dashed,black!50] (O) -- (0,0,-\r);
-        \draw[-latex,thick] (\r,0,0) -- (1.3*\r,0,0) node[pos=1.5] {\Large $x$};
-        \draw[-latex,thick] (0,\r,0) -- (0,1.3*\r,0) node[pos=1.4] {\Large $y$};
-        \draw[-latex,thick] (0,0,\r) -- (0,0,1.3*\r) node[pos=1.38] {\Large $z$};
-    
-        \node[] at (\r,0.5,-0.4) {\Large $|+\rangle$};
-        \node[] at (-\r,0.5,0.4) {\Large $|-\rangle$};
-        \node[] at (0,\r+0.4,-0.4) {\Large $|i\rangle$};
-        \node[] at (0,-\r-0.7,0.2) {\Large $|-i\rangle$};
-        \node[] at (0,0.35,\r+0.6) {\Large $|0\rangle$};
-        \node[] at (0,0.35,-\r-0.6) {\Large $|1\rangle$};
-    \end{tikzpicture}
+    \includegraphics[width=0.7\textwidth]{Figures/Chapter02/BW/2-1_Bloch_states_BW.pdf}
     \caption{Bloch sphere with Pauli $X$, $Y$, and $Z$ basis states.}
     \label{fig:annotated-bloch}
 \end{figure}
@@ -159,11 +58,9 @@ This \ket{\psi} is a general state, but let's look at some examples, as in Fig.~
 \section{Unitary Operations}
 \label{sec:2-2_unitary_operations}
 
-
-% Classical (SSD) VS Quantum (Ion Trap)
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Figures/Chapter02/Color/2-2_classical_quantum_info.pdf}
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter02/BW/2-2_classical_quantum_info_BW.pdf}
     \caption[Physical information-processing systems.]{Examples of physical systems processing classical and quantum information.}
     \label{fig:physical-system}
 \end{figure}
@@ -174,7 +71,6 @@ In quantum information, on the other hand, we have physical systems such as \tex
 
 But how do we actually describe these transformations? Before giving a more complete mathematical description, let's look at some examples, as shown in Tab.~\ref{tab:unitary-table}. The simplest transformation that we can think of is actually to do nothing. We call this the \textbf{\emph{identity operation}}\index{identity operation}, and it is usually represented by a capital $I$. When it's acting on a ket, it takes $\ket{0}$ to $\ket{0}$  (written $\ket{0}\rightarrow\ket{0}$) and $\ket{1}$ to $\ket{1}$ ($\ket{1}\rightarrow\ket{1}$). Classically, we can also do something similar by just not touching our classical bit. 0 remains 0 and 1 remains 1.
 
-% Simple unitary operations
 \begin{table}[h]
     \setcellgapes{5pt}
     \renewcommand\theadfont{}
@@ -186,22 +82,12 @@ But how do we actually describe these transformations? Before giving a more comp
         \hline
         \thead{Identity \\ (do nothing)} & $I$ & {$\begin{aligned} |0\rangle & \rightarrow|0\rangle \\ |1\rangle & \rightarrow|1\rangle \end{aligned}$} & {$\begin{aligned} 0&\rightarrow0 \\ 1&\rightarrow1 \end{aligned}$} \\
         \thead{Pauli $X$ \\ (flip)} & $X$ & {$\begin{aligned} |0\rangle & \rightarrow|1\rangle \\ |1\rangle & \rightarrow|0\rangle \end{aligned}$} & {$\begin{aligned} 0&\rightarrow1 \\ 1&\rightarrow0 \end{aligned}$} \\
-        \thead{Hadamard \\ (create superposition)} & $H$ & {$\begin{aligned} |0\rangle & \rightarrow \frac{|0\rangle + |1\rangle}{\sqrt{2}} \\ |1\rangle & \rightarrow \frac{|0\rangle - |1\rangle}{\sqrt{2}} \end{aligned}$} & \textcolor{darkred}{\xmark} \\
+        \thead{Hadamard \\ (create superposition)} & $H$ & {$\begin{aligned} |0\rangle & \rightarrow \frac{|0\rangle + |1\rangle}{\sqrt{2}} \\ |1\rangle & \rightarrow \frac{|0\rangle - |1\rangle}{\sqrt{2}} \end{aligned}$} & \xmark \\
         \hline
     \end{tabular}
     \caption{Simple unitary transforms. The bit flip has both a classical and a quantum form, but the Hadamard gate that creates a quantum superposition has no classical equivalent.}
     \label{tab:unitary-table}
 \end{table}
-
-% Simple Unitary Operations 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{lesson2/simple_unitary_ops.pdf}
-    
-%         \caption{Simple unitary transforms. The bit flip has both a classical and a quantum form, but the Hadamard gate that creates a quantum superposition has no classical equivalent.}
-    
-%     \label{fig:unitary-table}
-% \end{figure}
 
 Another basic operation is the \textbf{\emph{Pauli X operation}}\index{Pauli X operation}, often called the ``flip''. We represent it by a capital $X$, and it does exactly what you would expect. It takes the input $\ket{0}$ into an output $\ket{1}$, and vice versa, $\ket{1}$ into a $\ket{0}$. Again, you have a corresponding classical operation as well, the NOT gate, which takes input 0 into classical bit 1 and input 1 into classical bit 0.
 
@@ -215,14 +101,11 @@ Let's put these two equalities together. Use the above equality for \ket{\psi}, 
 |\psi\rangle=U^{\dagger}\left|\psi^{\prime}\right\rangle=U^{\dagger} U|\psi\rangle.
 \end{equation} 
 
-% We apply the $U^\dagger$, which is the same as applying the adjoint to the state $\ket{\psi'}$. But then again, we know the expression for $\ket{\psi'}$ from over here. So we can just substitute it in and we get $U^\dagger$ times U times the state $\ket{\psi}$, and that's it! You see that in order for these sides to be equal, we must conclude that $U^\dagger$ times U is the identity operator, and that makes logical sense. We are undoing the operation U with the adjoint, so the total effect of these two is we are doing nothing. Similarly, we can do it for $\ket{\psi'}$ which is equal to U applied to $\ket{\psi}$, and again we substitute for $\ket{\psi}$ this expression over here, and we get a similar expression as above: U times $U^\dagger$ times the state $\ket{\psi'}$. 
-
 We can also do similar operations starting from the other expression and get
 \begin{equation}
 \left|\psi^{\prime}\right\rangle=U|\psi\rangle=U U^{\dagger}\left|\psi^{\prime}\right\rangle.
 \end{equation}
 From these equations,  we can see that $UU^\dagger$ must be equal to the identity operator, and also $U^\dagger U$ must be equal to the identity.
-% that's precisely the definition of unitary operations. There you go, that U times $U^\dagger$ must be equal to $U^\dagger$ times U, and that is equal to the identity. 
 In fact, this becomes precisely our definition of a unitary operation.
 If we have that 
 \begin{equation}
@@ -320,8 +203,6 @@ X|0\rangle &=\left(\begin{array}{ll}
 \end{array}\right)=|1\rangle.
 \end{aligned}
 \end{equation}
-
-%So we see that 0 times 1 is 0, plus 1 times 0 is 0. So we get a 0 here in this first element of this new column vector, but then we have 1 times 1 plus 0 times 0 which is 1, and you see that this is actually our ket 1, so it indeed did flip a 0 into 1 as we would expect.
 
 We can do the same thing for $\ket{1}$. Again, multiply the matrix representation of the Pauli $X$ operator with the column vector representation of state $\ket{1}$,
 \begin{equation}
@@ -431,52 +312,10 @@ It does look a little bit complicated, but in the Bloch sphere representation it
     R_{\hat{n}}(\theta)|\psi\rangle=|\psi^{\prime}\rangle.
 \end{equation}
 
-% So we can write this as follows: this exponential decomposes into cosine theta over 2 times the identity matrix minus i times sine theta 2, and then this expression which is just the dot product between these two vectors, so we multiply $n_x$ by Pauli matrix $X$, plus $n_y$ times Pauli matrix $Y$, plus $n_z$ times Pauli matrix $Z$. 
-
-
-
-% insert Bloch sphere rotation y-axis
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere_y_axis.pdf}
-
-    \def\r{4}
-    \tdplotsetmaincoords{70}{115}
-    
-    \begin{tikzpicture}[tdplot_main_coords,scale=0.7,every node/.style={scale=0.7}]
-
-    \tdplotsetcoord{O}{0}{0}{0}
-
-    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);    % sphere
-    \tdplotCsDrawLonCircle[tdplotCsFill/.style={blue!50,opacity=0.1},tdplotCsBack/.style={black!50,dashed},thin]{\r}{90}
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-    \draw[blue!50] (O) -- (\r,0,0);
-    \draw[thick] (O) -- (0,\r,0);
-    \draw[blue!50] (O) -- (0,0,\r);
-    \draw[dashed,black!50] (O) -- (-\r,0,0);
-    \draw[dashed,black!50] (O) -- (0,-\r,0);
-    \draw[dashed,black!50] (O) -- (0,0,-\r);
-
-    \tdplotsetthetaplanecoords{0}
-    \draw[tdplot_rotated_coords,-,blue!50,very thick,decoration={markings, mark=at position 0.5 with {\arrow{latex}}},postaction={decorate}] (0:\r) arc (0:90:\r);
-    \draw[tdplot_rotated_coords,-,blue!50] (0:0.3*\r) arc (0:90:0.3*\r);
-    
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{0}{0}{88.5}
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{0}{90}{88.5}
-
-    \draw[-latex,thick] (\r,0,0) -- (1.3*\r,0,0) node[pos=1.5] {\Large $x$};
-    \draw[-latex,thick] (0,\r,0) -- (0,1.3*\r,0) node[pos=1.4] {\Large $y$};
-    \draw[-latex,thick] (0,0,\r) -- (0,0,1.3*\r) node[pos=1.38] {\Large $z$};
-    
-    \node[] at (\r,0.5,-0.4) {\Large $|+\rangle$};
-    \node[] at (0,0.35,\r+0.6) {\Large $|0\rangle$};
-
-    \node[] at (\r,-0.5,3.5) {\Large $R_y(\pi/2)$};
-    \end{tikzpicture}
-    
+    \includegraphics[width=0.7\textwidth]{Figures/Chapter02/BW/2-2_Bloch_Y_rotation_BW.pdf}
     \caption[Rotation about $y$ axis.]{Rotation about the $Y$ axis by an angle $\pi/2$.}
-    
     \label{fig:y-rot}
 \end{figure}
 
@@ -488,70 +327,14 @@ R_y(\pi / 2)\ket{0}=\ket{+}.
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.5\textwidth]{lesson2/bloch_sphere_general_axis.pdf}
-
-    \def\r{4}
-    \def\alp{110}
-    \def\bet{25}
-    \def\eps{40}
-    \tdplotsetmaincoords{70}{115}
-
-    \begin{tikzpicture}[tdplot_main_coords,scale=0.7,every node/.style={scale=0.7}]
-
-    \tdplotsetcoord{O}{0}{0}{0}
-    \tdplotsetcoord{pointAxis}{\r}{\alp}{\bet}
-
-    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);    % sphere
-    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
-
-    \pgfmathsetmacro\re {\r*cos(\eps)}
-    \pgfmathsetmacro\ze {\r*sin(\eps)}
-    \pgfmathsetmacro\coX{\ze*cos(\alp)*sin(\bet)}
-    \pgfmathsetmacro\coY{\ze*sin(\alp)*sin(\bet)}
-    \pgfmathsetmacro\coZ{\ze*cos(\bet)}
-    \pgfmathsetmacro\length{sqrt(\coX*\coX+\coY*\coY+\coZ*\coZ)}
-    \coordinate (pointAxis) at (\r*\coX/\length,\r*\coY/\length,\r*\coZ/\length);
-    
-    \draw[thick,-latex] (O) -- (pointAxis) node[anchor=east,yshift=4pt]{\Large $\hat{n}$};
-
-    \draw[thick] (O) -- (\r,0,0);
-    \draw[thick] (O) -- (0,\r,0);
-    \draw[thick] (O) -- (0,0,\r);
-    \draw[dashed,black!50] (O) -- (-\r,0,0);
-    \draw[dashed,black!50] (O) -- (0,-\r,0);
-    \draw[dashed,black!50] (O) -- (0,0,-\r);
-
-    \draw[-latex,thick] (\r,0,0) -- (1.3*\r,0,0) node[pos=1.5] {\Large $x$};
-    \draw[-latex,thick] (0,\r,0) -- (0,1.3*\r,0) node[pos=1.4] {\Large $y$};
-    \draw[-latex,thick] (0,0,\r) -- (0,0,1.3*\r) node[pos=1.38] {\Large $z$};
-
-    \tdplotCsDrawCircle[tdplotCsFill/.style={blue!50,opacity=0.1},tdplotCsBack/.style={black!50,dashed},thin]{\r}{\alp}{\bet}{\eps}
-
-    \tdplotsetrotatedcoords{\alp}{\bet}{0}
-    \coordinate (coffs) at (\coX,\coY,\coZ);
-    \tdplotsetrotatedcoordsorigin{(coffs)}
-    
-    \draw[tdplot_rotated_coords,blue!50,very thick,decoration={markings, mark=at position 0.6 with {\arrow{latex}}},postaction={decorate}] (-160:\re) arc (-160:-30:\re) node[pos=0.6,below,black,yshift=-4pt] {\Large $R_{\hat{n}}(\theta)$};
-    
-    \draw[tdplot_rotated_coords,blue!50] (-160:0.3*\re) arc (-160:-30:0.3*\re);
-    \draw[tdplot_rotated_coords,blue!50] (0,0,0) -- (-160:\re) node[black,anchor=east,xshift=-1pt,yshift=-4pt]{\Large $|\psi\rangle$};
-    \draw[tdplot_rotated_coords,blue!50] (0,0,0) -- (-30:\re) node[anchor=north,black,yshift=-3pt]{\Large $|\psi'\rangle$};
-
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{-34}{27.9}{88.5}
-    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{85.5}{72.3}{88.5}
-    \end{tikzpicture}
-    
+    \includegraphics[width=0.7\textwidth]{Figures/Chapter02/BW/2-2_Bloch_general_rotation_BW.pdf}
     \caption{Rotation about an arbitrary axis $\hat{n}$.}
-    
     \label{fig:arb-rot}
 \end{figure}
 
 More generally, it is not necessary to rotate about one of these orthogonal axes; you can rotate about any axis that you want, as in Fig.~\ref{fig:arb-rot}. You are rotating in the plane defined by your chosen axis and parameterized by the angle $\theta$. Take some initial state $\ket{\psi}$ that's on the surface of the Bloch sphere, follow the surface and end at some new state $\ket{\psi'}$.  (Note that the plane a particular state is rotating in does not have to pass through the center of the Bloch sphere, but the axis of rotation is normal to the plane.) 
 
 So you can see that you can work in the matrix representation or you can work also in the Bloch sphere representation for single-qubit operations.
-
-
-% $U_{00}$, $U_{01}$, $U_{10}$, $U_{11}$ 
 
 \section{Measurement}
 \label{sec:measurement}
@@ -560,7 +343,7 @@ Now, let's consider measurements and how they can extract information from qubit
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter02/Color/2-2_measurement_Z.pdf}
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter02/BW/2-2_measurement_Z_BW.pdf}
     \caption{Measurement in the $Z$ basis.}
     \label{fig:z-measure}
 \end{figure}
@@ -575,7 +358,7 @@ The probabilities of these measurement outcomes, corresponding to state \ket{0} 
 
 We refer to this particular measurement as a measurement in the \textbf{\emph{computational basis}\index{computational basis}} or in the Pauli $Z$ basis. This already hints at the fact that this is not the only measurement we can do. We can also ask the following question: is the state in the $\ket{+}$ state or in the $\ket{-}$ state? We can answer this question by rewriting our original state
 \begin{equation}
-    \psi\rangle=\alpha|0\rangle+\beta|1\rangle
+    |\psi\rangle=\alpha|0\rangle+\beta|1\rangle
     \label{eq:superposition_basisZ}
 \end{equation}
 using the algebraic identities
@@ -583,7 +366,6 @@ using the algebraic identities
 |0\rangle=\frac{1}{\sqrt{2}}(|+\rangle+|-\rangle) \quad|1\rangle=\frac{1}{\sqrt{2}}(|+\rangle-|-\rangle).
 \end{equation}
 Notice that $\ket{0}$ is given by an equal superposition of the $\ket{+}$ state with the $\ket{-}$ state and the state $\ket{1}$ is also an equal superposition of $\ket{+}$ and $\ket{-}$, but this time with a minus phase in front of the $\ket{-}$ state. We can rewrite our original state $\ket{\psi}$ in terms of these \ket{+} and \ket{-} states, but this time the probability amplitudes are
-%for the state plus is $\alpha+\beta$ renormalized by the square root of two, and the probability amplitude for the minus state is $\alpha-\beta$,
 \begin{equation}
     \ket{\psi}=\frac{\alpha+\beta}{\sqrt{2}}\ket{+}+\frac{\alpha-\beta}{\sqrt{2}}\ket{-}.
     \label{eq:superposition_basisX}
@@ -596,12 +378,11 @@ Again, we can feed our qubit into the measurement device and it will give us an 
 \operatorname{Prob}\{-1\}=\frac{|\alpha-\beta|^2}{2} \rightarrow \textrm{state is } |-\rangle.
 \end{align}
 You can see that the probabilities still depend on $\alpha$ and $\beta$, but they're not just $|\alpha|^2$ and $|\beta|^2$.
-%they're in fact alpha plus beta the whole thing mod squared and alpha minus beta the whole thing squared and both of them are divided by two. 
 Because we were asking a different question (whether the state state is in $\ket{+}$ or $\ket{-}$), the state changes from $\ket{\psi}$ and goes to $\ket{+}$ or $\ket{-}$ after the measurement, depending on the measurement outcome. This measurement is known as measurement in the Pauli $X$ basis, and is shown in Fig.~\ref{fig:x-meas}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{Figures/Chapter02/Color/2-2_measurement_X.pdf}
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter02/BW/2-2_measurement_X_BW.pdf}
     \caption{Measurement in the Pauli $X$ basis.}
     \label{fig:x-meas}
 \end{figure}
@@ -617,7 +398,6 @@ This is known as the Pauli $Y$ basis, and their vector representations are given
     |i\rangle=\frac{1}{\sqrt{2}}\left(\begin{array}{l}1 \\ i\end{array}\right) \quad|-i\rangle=\frac{1}{\sqrt{2}}\left(\begin{array}{c}1 \\ -i\end{array}\right).
     \label{eq:Pauli_Y_basis}
 \end{align}
-%So it's just (1, i) and (1, -i) with the appropriate normalization factor in front, and 
 Then the state $|\psi\rangle$ can be rewritten as
 \begin{equation}
     |\psi\rangle=\frac{\alpha-i \beta}{\sqrt{2}}|i\rangle+\frac{\alpha+i \beta}{\sqrt{2}}|-i\rangle.
@@ -692,9 +472,6 @@ Using the definition of the Pauli $Y$ basis states in Eq.~(\ref{eq:Pauli_Y_basis
 \end{equation}
 Notice that the for the case of measuring in the Pauli $Y$ basis, the inner product is a complex number, but the probability obtained from the inner product is a real number, as one would expect.
 
-% To summarize the measurement process, start with some initial state written in some basis,
-% and then say, okay I want to perform a measurement in a given basis described by these basis states $\ket{b_0}$ and $\ket{b_1}$. If my outcome is $+1$, which happens with the probability given by the inner product between the basis state with the original state modulus squared, then my post measurement state is given by $\ket{b_0}$. Or, if I get the $-1$ outcome, which happens with probability given by the inner product of $\ket{b_1}$ with the initial state $\ket{\psi}$ modulus squared, then my post measurement state is given by $\ket{b_1}$.
-
 There is something very important to keep in mind: the measurement outcome is only $+1$ or $-1$. A single measurement does not reveal any information about the probability amplitudes $\alpha$ and $\beta$.
 In the next section, we will consider multiple measurements, which can be used to obtain information about the probabilities of measurement outcomes.
 
@@ -709,7 +486,7 @@ This is known as \textbf{\emph{single-shot measurement}}\index{single-shot measu
 Now let's consider the scenario where we have many copies of the same state \ket{\psi} and we keep measuring them again and again by feeding them to our measurement device, as shown in Fig.~\ref{fig:many-copies}. What comes out of the measurement device is a string of $+1$ and $-1$ results.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{Figures/Chapter02/Color/2-2_measurement_many.pdf}
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter02/BW/2-2_measurement_many_BW.pdf}
     \caption[Repeated measurements.]{Repeated measurements of many copies of the state $|\psi\rangle$.}
     \label{fig:many-copies}
 \end{figure}

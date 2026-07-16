@@ -12,7 +12,7 @@
 \indexentry{probability amplitudes|hyperpage}{20}
 \indexentry{Bloch sphere|hyperpage}{21}
 \indexentry{plus state|hyperpage}{21}
-\indexentry{minus state|hyperpage}{21}
+\indexentry{minus state|hyperpage}{22}
 \indexentry{ion traps|hyperpage}{23}
 \indexentry{superconducting qubits|hyperpage}{23}
 \indexentry{identity operation|hyperpage}{24}
@@ -30,10 +30,10 @@
 \indexentry{basis|hyperpage}{32}
 \indexentry{inner product|hyperpage}{33}
 \indexentry{bra|hyperpage}{33}
-\indexentry{single-shot measurement|hyperpage}{34}
+\indexentry{single-shot measurement|hyperpage}{35}
 \indexentry{expectation value|hyperpage}{35}
-\indexentry{fluctuations|hyperpage}{36}
-\indexentry{tensor product|hyperpage}{37}
+\indexentry{fluctuations|hyperpage}{37}
+\indexentry{tensor product|hyperpage}{38}
 \indexentry{state preparation|hyperpage}{43}
 \indexentry{information processing|hyperpage}{43}
 \indexentry{quantum communication|hyperpage}{44}
