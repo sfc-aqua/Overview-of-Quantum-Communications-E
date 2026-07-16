@@ -15,7 +15,7 @@
 \contentsline {section}{\numberline {2.1}Qubits}{19}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Unitary Operations}{23}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Measurement}{30}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Probabilities, expectation, variance}{34}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Probabilities, expectation, variance}{35}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Multiple Qubits}{37}{section.2.5}%
 \contentsline {section}{\numberline {}Exercises}{41}{section*.16}%
 \contentsline {chapter}{\hbox to\@tempdima {3\hfill }{Pure and Mixed States}}{43}{chapter.3}%

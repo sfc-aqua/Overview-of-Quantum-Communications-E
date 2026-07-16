@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-3dplot-circleofsphere}
+\usepackage{newtxmath}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\def\r{4}
+\def\alp{110}
+\def\bet{25}
+\def\eps{40}
+\tdplotsetmaincoords{70}{115}
+
+\begin{tikzpicture}[tdplot_main_coords,scale=0.7,every node/.style={scale=0.7}]
+
+    \tdplotsetcoord{O}{0}{0}{0}
+    \tdplotsetcoord{pointAxis}{\r}{\alp}{\bet}
+
+    \shade[tdplot_screen_coords,ball color=gray!40,opacity=0.5] (0,0,0) circle (\r);    % sphere
+    \tdplotCsDrawLatCircle[tdplotCsBack/.style={black!50,dashed}]{\r}{0}
+
+    \pgfmathsetmacro\re {\r*cos(\eps)}
+    \pgfmathsetmacro\ze {\r*sin(\eps)}
+    \pgfmathsetmacro\coX{\ze*cos(\alp)*sin(\bet)}
+    \pgfmathsetmacro\coY{\ze*sin(\alp)*sin(\bet)}
+    \pgfmathsetmacro\coZ{\ze*cos(\bet)}
+    \pgfmathsetmacro\length{sqrt(\coX*\coX+\coY*\coY+\coZ*\coZ)}
+    \coordinate (pointAxis) at (\r*\coX/\length,\r*\coY/\length,\r*\coZ/\length);
+    
+    \draw[thick,-latex] (O) -- (pointAxis) node[anchor=east,yshift=4pt]{\Large $\hat{n}$};
+
+    \draw[thick] (O) -- (\r,0,0);
+    \draw[thick] (O) -- (0,\r,0);
+    \draw[thick] (O) -- (0,0,\r);
+    \draw[dashed,black!50] (O) -- (-\r,0,0);
+    \draw[dashed,black!50] (O) -- (0,-\r,0);
+    \draw[dashed,black!50] (O) -- (0,0,-\r);
+
+    \draw[-latex,thick] (\r,0,0) -- (1.3*\r,0,0) node[pos=1.5] {\Large $x$};
+    \draw[-latex,thick] (0,\r,0) -- (0,1.3*\r,0) node[pos=1.4] {\Large $y$};
+    \draw[-latex,thick] (0,0,\r) -- (0,0,1.3*\r) node[pos=1.38] {\Large $z$};
+
+    \tdplotCsDrawCircle[tdplotCsFill/.style={blue!50,opacity=0.1},tdplotCsBack/.style={black!50,dashed},thin]{\r}{\alp}{\bet}{\eps}
+
+    \tdplotsetrotatedcoords{\alp}{\bet}{0}
+    \coordinate (coffs) at (\coX,\coY,\coZ);
+    \tdplotsetrotatedcoordsorigin{(coffs)}
+    
+    \draw[tdplot_rotated_coords,blue!50,very thick,decoration={markings, mark=at position 0.6 with {\arrow{latex}}},postaction={decorate}] (-160:\re) arc (-160:-30:\re) node[pos=0.6,below,black,yshift=-4pt] {\Large $R_{\hat{n}}(\theta)$};
+    
+    \draw[tdplot_rotated_coords,blue!50] (-160:0.3*\re) arc (-160:-30:0.3*\re);
+    \draw[tdplot_rotated_coords,blue!50] (0,0,0) -- (-160:\re) node[black,anchor=east,xshift=-1pt,yshift=-4pt]{\Large $|\psi\rangle$};
+    \draw[tdplot_rotated_coords,blue!50] (0,0,0) -- (-30:\re) node[anchor=north,black,yshift=-3pt]{\Large $|\psi'\rangle$};
+
+    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{-34}{27.9}{88.5}
+    \tdplotCsDrawCircle[tdplotCsFill/.style=blue!50,thick]{\r}{85.5}{72.3}{88.5}
+\end{tikzpicture}
+
+\end{document}
