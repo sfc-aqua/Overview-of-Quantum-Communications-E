@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{newtxmath}
+
+% definitions for interference images
+\colorlet{wall}{blue!30!black}
+\colorlet{myblue}{blue!70!black}
+\colorlet{myorange}{orange!90!black!80}
+\colorlet{myred}{red!70!black}
+\colorlet{mydarkred}{red!50!black}
+\colorlet{mylightgreen}{green!60!black!70}
+\colorlet{mygreen}{green!60!black}
+\colorlet{myredgrey}{red!50!black!80}
+\colorlet{myshadow}{blue!30!black!90}
+\tikzstyle{wave}=[myblue,thick]
+
+\begin{document}
+
+\begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-2,-1,1,2},
+                    yticklabels={$-2A$,$-A$,$A$,$2A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=0.2},
+                    enlarge y limits={abs=0.8},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=9cm,
+                    height=6cm]
+        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.5] {sin(deg(-x))};
+        \addlegendentry{$k_1=1.0$}
+        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.5] {sin(deg(-0.8*x))};
+        \addlegendentry{$k_2=0.8$}
+        \addplot[domain=-1:18,samples=100,smooth,mygreen,very thick] {sin(deg(-x))+sin(deg(-0.8*x))};
+        \end{axis}
+\end{tikzpicture}
+
+\end{document}

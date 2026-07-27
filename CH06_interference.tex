@@ -46,33 +46,7 @@ In other words, increasing the wave number ``compresses the oscillations'', whil
 
 \begin{figure}[t]
     \centering
-    \resizebox {0.6\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-1,1},
-                    yticklabels={$-A$,$A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.3},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,0)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(-x))};
-        \addlegendentry{$k=1$}
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(-0.5*x))};
-        \addlegendentry{$k=0.5$}
-        \node[circle,fill,inner sep=1.5pt,myblue] at (axis cs:3*pi/2,1) {};
-        \node[circle,fill,inner sep=1.5pt,myblue] at (axis cs:7*pi/2,1) {};
-        \draw[dashed, blue!80, thick] (axis cs:3*pi/2,1) -- node[above] {$\lambda=2\pi/1.0$} (axis cs:7*pi/2,1);
-        \node[circle,fill,inner sep=1.5pt,myorange] at (axis cs:pi,-1) {};
-        \node[circle,fill,inner sep=1.5pt,myorange] at (axis cs:5*pi,-1) {};
-        \draw[dashed, orange!80, thick] (axis cs:pi,-1) -- node[below] {$\lambda=2\pi/0.5$} (axis cs:5*pi,-1);
-        \end{axis}
-    \end{tikzpicture}
-    }
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter06/BW/6-1_wave_number_BW.pdf}
     \caption[Same frequency, different wave numbers.]{Two independent waves with $k=1$ (blue), and $k=0.5$ (orange). The time is frozen at $t=0$, and we set the initial phase to be $\phi_0=0$ for convenience.}    
     \label{fig:two-waves}
 \end{figure}
@@ -84,30 +58,7 @@ The wavelength of the wave remains unaffected.
 
 \begin{figure}[t]
     \centering
-    \resizebox {0.6\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-1,1},
-                    yticklabels={$-A$,$A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.3},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,0)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(-x))};
-        \addlegendentry{$\phi_0=0$}
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(-x+pi/2))};
-        \addlegendentry{$\phi_0=\pi/2$}
-        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:3*pi/2,1) {};
-        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:2*pi,1) {};
-        \draw[dashed, black!80, thick] (axis cs:3*pi/2,1) -- node[above] {$\pi/2$} (axis cs:2*pi,1);
-        \end{axis}
-    \end{tikzpicture}
-    }
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter06/BW/6-1_phase_BW.pdf}
     \caption[Same wavelength, different initial phase.]{Two waves with the same wavelength and frequency but different initial phases, $\phi_0 = 0$ (blue), $\phi_0=\pi/2$ (orange).}
     \label{fig:phase-diff-waves}
 \end{figure}
@@ -125,56 +76,7 @@ We will see in Sec~\ref{sec:6-2_phase_group_velocity} that both $\omega$ and $k$
 
 \begin{figure}[t]
    \centering
-    % \includegraphics[width=0.8\textwidth]{lesson6/w.pdf}
-    \resizebox {0.6\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[name=plotA,
-                    xtick=\empty,
-                    ytick={-1,1},
-                    yticklabels={$-A$,$A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.3},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,t)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(0.1*15-x))};
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.2] {sin(deg(0.1*0-x))};
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.6] {sin(deg(0.1*7.5-x))};
-        \addlegendentry{$\omega=0.1$}
-        \node[myblue,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
-        \node[myblue,opacity=0.6] at (axis cs:3*pi/2+0.1*7.5,1.15) {$t_2$};
-        \node[myblue] at (axis cs:3*pi/2+0.1*15,1.15) {$t_3$};
-        \end{axis}
-    
-        \begin{axis}[name=plotB,
-                    at=(plotA.outer south west),
-                    anchor=outer north west,
-                    xtick=\empty,
-                    ytick={-1,1},
-                    yticklabels={$-A$,$A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.3},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,t)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick] {sin(deg(0.2*15-x))};
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.2] {sin(deg(0.2*0-x))};
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.6] {sin(deg(0.2*7.5-x))};
-        \addlegendentry{$\omega=0.2$}
-        \node[myorange,opacity=0.2] at (axis cs:3*pi/2,1.15) {$t_1$};
-        \node[myorange,opacity=0.6] at (axis cs:3*pi/2+0.2*7.5,1.15) {$t_2$};
-        \node[myorange] at (axis cs:3*pi/2+0.2*15,1.15) {$t_3$};
-        \end{axis}
-    \end{tikzpicture}
-    }
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter06/BW/6-1_frequency_BW.pdf}
     \caption[Propagation of waves in time.]{Propagation of waves in time. We observe that the wave with angular frequency $\omega=0.1$ (blue) propagates more slowly compared to the wave with angular frequency $\omega=0.2$ (orange).}
     \label{fig:propagating-waves}    
 \end{figure}
@@ -253,28 +155,7 @@ We also say that the waves are ``out of phase''.
 In this region, the interference is destructive.
 \begin{figure}[t]
     \centering
-    \resizebox {0.6\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-2,-1,1,2},
-                    yticklabels={$-2A$,$-A$,$A$,$2A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.8},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,t)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick,opacity=0.5] {sin(deg(-x))};
-        \addlegendentry{$k_1=1.0$}
-        \addplot[domain=-1:18,samples=100,smooth,myorange,thick,opacity=0.5] {sin(deg(-0.8*x))};
-        \addlegendentry{$k_2=0.8$}
-        \addplot[domain=-1:18,samples=100,smooth,mygreen,very thick] {sin(deg(-x))+sin(deg(-0.8*x))};
-        \end{axis}
-    \end{tikzpicture}
-    }
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter06/BW/6-1_interference_wave_numbers_BW.pdf}
     \caption[Superposition of two waves.]{Interference of two waves with different wave numbers.}
     \label{fig:interference_example}    
 \end{figure}
@@ -312,29 +193,7 @@ We see that in the simple case of a single-frequency wave, the phase velocity is
 
 \begin{figure}[t]
     \centering
-    \resizebox {0.6\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-2,-1,1,2},
-                    yticklabels={$-2A$,$-A$,$A$,$2A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=0.2},
-                    enlarge y limits={abs=0.3},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,t)$},
-                    width=9cm,
-                    height=6cm]
-        \addplot[domain=-1:18,samples=100,smooth,myblue,thick] {sin(deg(x))};
-        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:5*pi/2,1) {};
-        \node[black!80] at (axis cs:5*pi/2,1.15) {$P_1$};
-        \node[circle,fill,inner sep=1.5pt,black!80] at (axis cs:9*pi/2,1) {};
-        \node[black!80] at (axis cs:9*pi/2,1.15) {$P_2$};
-        \draw[dashed, black!80, thick] (axis cs:5*pi/2,1) -- node[above] {$\lambda$} (axis cs:9*pi/2,1);
-        \end{axis}
-    \end{tikzpicture}
-    }   
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter06/BW/6-2_phase_velocity_BW.pdf}
     \caption[Phase velocity.]{The black points represent points of same phase and are separated by the wavelength $\lambda$.}
     \label{fig:6-2_phase_velocity}
 \end{figure}
@@ -359,26 +218,7 @@ Let's take things slow at first by considering only two interfering waves.,
 We have assumed that the two waves have same amplitude, and we set the initial phase to $\phi_0=0$ for convenience.
 \begin{figure}[t]
     \centering
-    \resizebox {0.9\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-2,2},
-                    yticklabels={$-2A$,$2A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=2},
-                    enlarge y limits={abs=0.6},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,t)$},
-                    width=12cm,
-                    height=6cm]
-        \addplot[domain=-1:100,samples=500,smooth,myblue,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))};
-        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {2*cos(deg(-0.5*(2.0-2.1)*x))};
-        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {-2*cos(deg(-0.5*(2.0-2.1)*x))};
-        \end{axis}
-    \end{tikzpicture}
-    }   
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter06/BW/6-2_group_velocity_BW.pdf} 
     \caption[Group velocity.]{Superposition of two sinusoidal waves. The fast oscillations (blue solid line) are modulated by a slowly-varying envelope (orange dashed line).}
     \label{fig:6-2_superposition}
 \end{figure}
@@ -416,25 +256,7 @@ It is also the group velocity that tells us how quickly a signal carries informa
 
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.8\textwidth]{lesson6/6-2_superpostion_many.pdf} 
-    \resizebox {0.9\textwidth} {!} {
-    \begin{tikzpicture}
-        \begin{axis}[xtick=\empty,
-                    ytick={-11,11},
-                    yticklabels={$-11A$,$11A$},
-                    axis lines=middle,
-                    enlarge x limits={abs=2},
-                    enlarge y limits={abs=4},
-                    x label style={anchor=north},
-                    y label style={anchor=east},
-                    xlabel={$x$},
-                    ylabel={$\Psi(x,0)$},
-                    width=12cm,
-                    height=6cm]
-        \addplot[domain=-1:100,samples=500,smooth,myblue,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))+sin(deg(-2.2*x))+sin(deg(-2.3*x))+sin(deg(-2.4*x))+sin(deg(-2.5*x))+sin(deg(-2.6*x))+sin(deg(-2.7*x))+sin(deg(-2.8*x))+sin(deg(-2.9*x))+sin(deg(-3.0*x))};
-        \end{axis}
-    \end{tikzpicture}
-    }   
+    \includegraphics[width=0.9\textwidth]{Figures/Chapter06/BW/6-2_superposition_many_BW.pdf} 
     \caption[Superposition of more than two waves.]{Superposition of more than two sinusoidal waves resulting in a pulse.}
     \label{fig:6-2_pulse}
 \end{figure}
@@ -459,131 +281,7 @@ It is these pulses that can be used to carry information at the group velocity o
 % double_slit standard
 \begin{figure}[H]
    \centering
-    % \includegraphics[width=0.8\textwidth]{lesson6/standard_double_slit.pdf}
-
-    \resizebox {0.95\textwidth} {!} {
-    \begin{tikzpicture}[nodal/.style={black!75,dashed,very thin},
-            declare function={
-            xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
-            ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
-            intensity(\y,\lam,\a,\L) = exp(-\y*\y/5)*cos(180*\a*\y/(2*\lam*sqrt(\L*\L+\y*\y)))^2;}]
-  
-    \def\L{3.8}       % distance between walls
-    \def\H{5.4}       % total wall height
-    \def\h{2.8}       % plane wave height
-    \def\t{0.15}      % wall thickness
-    \def\a{1.15}      % slit distance
-    \def\d{0.20}      % slit size
-    \def\N{21}        % number of waves
-    \def\lambd{0.20}  % wavelength
-    \def\R{\N*\lambd} % wave radius
-    \def\Nlines{3}    % number of nodal lines
-    \def\A{1.6}       % amplitude
-    \def\nsamples{100}
-    \def\ang{62}
-  
-    \begin{scope}
-    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
-    
-    % NODAL LINES
-    \draw[nodal] (0.08*\N*\lambd,0) -- (1.06*\R,0);
-    \coordinate (NP0) at (\L,0);  % to avoid "Dimension too large error"
-    \foreach \dn [evaluate={
-                   \f=\a/\lambd;
-                   \nmin=2.5+0.2*\dn; %0.501*(-\dn+\f)
-                   \nmax=10; %(NP0)
-                   \c=int(\dn<\f);
-                   \y=\L/sqrt((\a/(\lambd*\dn))^2-1);
-                 }] in {1,...,\Nlines}{
-      \coordinate (NP+\dn) at (\L,\y);  % to avoid "Dimension too large error"
-      \coordinate (NP-\dn) at (\L,-\y); % to avoid "Dimension too large error"
-      \ifnum\c=1
-        \draw[nodal,variable=\n,samples=\nsamples,smooth]
-          plot[domain=\nmin:\nmax] ({xnode(\n,\dn,\lambd,\f)},{ynode(\n,\dn,\lambd,\f)})
-          -- (NP+\dn);
-        \draw[nodal,variable=\n,samples=\nsamples,smooth]
-          plot[domain=\nmin:\nmax] ({xnode(\n,\dn,\lambd,\f)},{-ynode(\n,\dn,\lambd,\f)})
-          -- (NP-\dn);
-      \fi
-    }
-    
-    % WAVES
-    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
-      \ifodd\i
-        \draw[myred,line width=0.8] (0,\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
-        \draw[myred,line width=0.8] (0,-\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
-      \else
-        \draw[myred!75,line width=0.1] (0,\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
-        \draw[myred!75,line width=0.1] (0,-\a/2)++(\ang:\R) arc (\ang:-\ang:\R);
-      \fi
-    }
-  \end{scope}
-  
-  % PLANE WAVES
-  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
-    \ifodd\i
-      \draw[myred,line width=0.8] (\x,-\h/2) -- (\x,\h/2);
-    \else
-      \draw[myred!75,line width=0.1] (\x,-\h/2) -- (\x,\h/2);
-    \fi
-  }
-  
-  % WALL
-  \fill[wall]
-    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
-    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
-    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
-    (\L,-\H/2) rectangle (\L+\t,\H/2);
-  
-  % SHADES
-  \begin{scope}[shift={(1.08*\L,0)}]
-    \def\yz{\L/sqrt((\a/\lambd)^2-1)} % m = +- 1/2
-    \def\yZ{\L/sqrt((\a/\lambd/2)^2-1)} % m = +- 1
-    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
-    \fill[white] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
-    \foreach \i [evaluate={\n=0.5*\i;\yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
-                 }] in {1,...,\Nlines}{
-      \ifodd\i % if even
-        \fill[myred] (0,{-\yn-0.1}) rectangle++ (\A,0.2); % to fill seams
-        \fill[myred] (0,{ \yn-0.1}) rectangle++ (\A,0.2); % to fill seams
-      \fi
-    }
-    \path[left color=black,right color=black,middle color=myred,shading angle={180}]
-      (0,{-\yz}) rectangle (\A,{\yz});
-    \foreach \i [evaluate={
-                  \n=0.5*\i;
-                  \m=0.5*(\i+1);
-                  \yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
-                  \ym=\L/sqrt((\a/(2*\lambd*\m))^2-1);
-                  \dang=mod(\i,2)*180;
-                 }] in {1,...,\Nlines}{
-      \path[left color=black,right color=myred,shading angle={\dang}]
-        (0,\yn) rectangle (\A,\ym);
-      \path[left color=black,right color=myred,shading angle={180+\dang}]
-        (0,-\yn) rectangle (\A,-\ym);
-    }
-  \end{scope}
-  
-  % INTENSITY
-  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
-    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$}; % I axis
-    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
-    \draw[nodal] (NP0) --++ (0.15*\L+2.1*\A,0); % green nodal lines
-    \foreach \i in {1,...,\Nlines}{ % green nodal lines
-      \draw[nodal] (NP+\i) --++ (2,0);
-      \draw[nodal] (NP-\i) --++ (2,0);
-    }
-    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity(\y,\lambd,\a,\L)},\y);
-    \tick{0,{\L/sqrt((\a/(\lambd*1))^2-1)}}{180} node[right=0,scale=0.85] {$\pi$};
-    \tick{0,{\L/sqrt((\a/(\lambd*2))^2-1)}}{180} node[right=0,scale=0.85] {$2\pi$};
-    \tick{0,{\L/sqrt((\a/(\lambd*3))^2-1)}}{180} node[right=0,scale=0.85] {$3\pi$};
-    \tick{0,{-\L/sqrt((\a/(\lambd*1))^2-1)}}{180} node[right=0,scale=0.85] {$-\pi$};
-    \tick{0,{-\L/sqrt((\a/(\lambd*2))^2-1)}}{180} node[right=0,scale=0.85] {$-2\pi$};
-    \tick{0,{-\L/sqrt((\a/(\lambd*3))^2-1)}}{180} node[right=0,scale=0.85] {$-3\pi$};
-    \end{scope}
-    \end{tikzpicture}
-    }
+    \includegraphics[width=\textwidth]{Figures/Chapter06/BW/6-3_double_slit_waves_BW.pdf}
     \caption[Double-slit experiment.]{Double-slit experiment with coherent light.}
     \label{fig:two-slit}
 \end{figure}
@@ -616,73 +314,7 @@ The only difference will be that the peak of the average intensity would shift t
 
 \begin{figure}[t]
     \centering
-    \resizebox {0.95\textwidth} {!} {
-    \begin{tikzpicture}[
-    nodal/.style={black!75,dashed,very thin},
-    declare function={
-      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/2 );
-      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
-      intensity(\y,\a) = exp(-(\y-\a/2)^2);
-    }
-  ]
-  
-  \def\L{3.8}       % distance between walls
-  \def\H{5.4}       % total wall height
-  \def\h{2.8}       % plane wave height
-  \def\t{0.15}      % wall thickness
-  \def\a{1.15}      % slit distance
-  \def\d{0.20}      % slit size
-  \def\N{21}        % number of waves
-  \def\lambd{0.20}  % wavelength
-  \def\R{\N*\lambd} % wave radius
-  \def\Nlines{3}    % number of nodal lines
-  \def\A{1.6}       % amplitude
-  \def\nsamples{100}
-  \def\ang{62}
-  
-  \begin{scope}
-    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
-    \newcommand*\Angles{{5,2,-3,20,-1,-10,0,4,-7,6,1,2,-3,1,15,-8,-6,2,-4,5,2,3}}
-    % WAVES
-    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
-      \ifodd\i
-        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,0\a/2) circle (0.08);
-      \fi
-    }
-  \end{scope}
-  
-  % PLANE WAVES
-  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
-    \ifodd\i
-      \filldraw[fill=myred] (\x,0) circle (0.08);
-    \fi
-  }
-  
-  % WALL
-  \fill[wall]
-    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
-    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
-    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
-    (\L,-\H/2) rectangle (\L+\t,\H/2)
-    (\t,-\a/2+\d/2) rectangle (\t/2,-\a/2-\d/2);
-  
-  % SHADE
-  \begin{scope}[shift={(1.08*\L,0)}]
-    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
-    \fill[black] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
-    \path[left color=black,right color=black, middle color=myred, shading angle=0] (0,-\H/2+\a/2) rectangle (\A,\H/2+\a/2);
-  \end{scope}
-  
-  % INTENSITY
-  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
-    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$};
-    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
-    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity(\y,\a)},\y);
-  \end{scope}
-
-    \end{tikzpicture}
-    }
+    \includegraphics[width=\textwidth]{Figures/Chapter06/BW/6-3_double_slit_covered_BW.pdf}
     \caption[Single-slit experiment with single photons.]{Single-slit experiment with single photons.}
     \label{fig:single-slit-attenuated}
 \end{figure}
@@ -696,81 +328,7 @@ However, this is \emph{\textbf{not}} what is observed when the experiment is per
 
 \begin{figure}[H]
     \centering
-    \resizebox {0.95\textwidth} {!} {
-    \begin{tikzpicture}[
-    nodal/.style={black!75,dashed,very thin},
-    declare function={
-      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
-      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
-      intensity_single(\y,\a) = exp(-(\y+\a/2)^2)/1.5;
-      intensity_total(\y,\a) = (exp(-(\y-\a/2)^2)+exp(-(\y+\a/2)^2))/1.5;
-    }
-  ]
-  
-  \def\L{3.8}       % distance between walls
-  \def\H{5.4}       % total wall height
-  \def\h{2.8}       % plane wave height
-  \def\t{0.15}      % wall thickness
-  \def\a{1.15}      % slit distance
-  \def\d{0.20}      % slit size
-  \def\N{21}        % number of waves
-  \def\lambd{0.20}  % wavelength
-  \def\R{\N*\lambd} % wave radius
-  \def\Nlines{3}    % number of nodal lines
-  \def\A{1.6}       % amplitude
-  \def\nsamples{100}
-  \def\ang{62}
-  
-  \begin{scope}
-    \clip (-\t/2,-\H/2) rectangle (\L,\H/2);
-    \newcommand*\Angles{{5,2,-3,20,-1,-10,0,4,-7,6,1,2,-3,1,15,-8,-6,2,-4,5,2,3}}
-    % WAVES
-    \foreach \i [evaluate={\R=\i*\lambd;}] in {1,...,\N}{
-        \ifodd\i
-        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,\a/2) circle (0.08);
-        \else
-        \filldraw[fill=myred,rotate around={\Angles[\i]:(0,\a/2)}] (\R,-\a/2) circle (0.08);
-      \fi
-    }
-  \end{scope}
-  
-  % PLANE WAVES
-  \foreach \i [evaluate={\x=-\i*\lambd;}] in {0,...,5}{
-    \ifodd\i
-      \filldraw[fill=myred] (\x,0) circle (0.08);
-      % \filldraw[fill=myred] (\x,-\a/2) circle (0.08);
-    \fi
-  }
-  
-  % WALL
-  \fill[wall]
-    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
-    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
-    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
-    (\L,-\H/2) rectangle (\L+\t,\H/2);
-  
-  % SHADE
-  \begin{scope}[shift={(1.08*\L,0)}]
-    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
-    \fill[black] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
-    \path[left color=black,right color=black, middle color=myred, shading angle=0] (0,-4) rectangle (\A,4);
-    % \path[left color=none,middle color=myred, shading angle=0] (0,-\H/2-\a/2) rectangle (\A,\H/2-\a/2);
-  \end{scope}
-  
-  % INTENSITY
-  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
-    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I \rangle$}; % I axis
-    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
-    \draw[myred!50,thin,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity_single(\y,\a)},\y);
-    \draw[myred!50,thin,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity_single(\y,-\a)},\y);
-    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity_total(\y,\a)},\y);
-    \end{scope}
-
-    \end{tikzpicture}
-    }
+    \includegraphics[width=\textwidth]{Figures/Chapter06/BW/6-3_double_slit_naive_BW.pdf}
     \caption[Double-slit experiment with single photons, naive expectation.]{Naive expectation of the observed pattern for a double-slit experiment with single photons. This pattern is not observed in a real experiment.}
     \label{fig:two-slit-expectation}
 \end{figure}
@@ -790,93 +348,7 @@ It is these possibilities that further interfere between the two screens, result
 
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.8\textwidth]{lesson6/block_neither_reality.png}
-    \resizebox {0.95\textwidth} {!} {
-    \begin{tikzpicture}[
-    nodal/.style={black!75,dashed,very thin},
-    declare function={
-      xnode(\n,\dn,\lam,\f) = \lam/\f*sqrt( \n^2*(\f^2-\dn^2)+\n*\dn*(\f^2-\dn^2)+\dn^2*\f^2/2-(\f^4+\dn^4)/4 );
-      ynode(\n,\dn,\lam,\a) = (2*\n*\dn+\dn^2)*\lam/(2*\f);
-      intensity(\y,\lam,\a,\L) = exp(-\y*\y/5)*cos(180*\a*\y/(2*\lam*sqrt(\L*\L+\y*\y)))^2;
-    }
-  ]
-  
-  \def\L{3.8}       % distance between walls
-  \def\H{5.4}       % total wall height
-  \def\h{2.8}       % plane wave height
-  \def\t{0.15}      % wall thickness
-  \def\a{1.15}      % slit distance
-  \def\d{0.20}      % slit size
-  \def\N{21}        % number of waves
-  \def\lambd{0.20}  % wavelength
-  \def\R{\N*\lambd} % wave radius
-  \def\Nlines{3}    % number of nodal lines
-  \def\A{1.6}       % amplitude
-  \def\nsamples{100}
-  \def\ang{62}
-  
-    % PHOTONS
-    \filldraw[fill=myred] (-2*\lambd,0) circle (0.08);
-    \filldraw[fill=myred] (17*\lambd,0) circle (0.08);
-  
-  % WALL
-  \fill[wall]
-    (\t/2,\a/2-\d/2) rectangle (-\t/2,-\a/2+\d/2)
-    (\t/2,\a/2+\d/2) rectangle (-\t/2,\H/2)
-    (\t/2,-\a/2-\d/2) rectangle (-\t/2,-\H/2)
-    (\L,-\H/2) rectangle (\L+\t,\H/2);
-  
-  % SHADE
-  \begin{scope}[shift={(1.08*\L,0)}]
-    \def\yz{\L/sqrt((\a/\lambd)^2-1)} % m = +- 1/2
-    \def\yZ{\L/sqrt((\a/\lambd/2)^2-1)} % m = +- 1
-    \clip (0,-\H/2) rectangle (1.1*\A,\H/2);
-    \fill[myred] (0,-\H/2) rectangle++ (\A,\H); % to fill seams
-    \foreach \i [evaluate={\n=0.5*\i;\yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
-                 }] in {1,...,\Nlines}{
-      \ifodd\i % if even
-        \fill[myred] (0,{-\yn-0.1}) rectangle++ (\A,0.2); % to fill seams
-        \fill[myred] (0,{ \yn-0.1}) rectangle++ (\A,0.2); % to fill seams
-      \fi
-    }
-    \path[left color=black,right color=black,middle color=myred,shading angle={180}]
-      (0,{-\yz}) rectangle (\A,{\yz});
-    \foreach \i [evaluate={
-                  \n=0.5*\i;
-                  \m=0.5*(\i+1);
-                  \yn=\L/sqrt((\a/(2*\lambd*\n))^2-1);
-                  \ym=\L/sqrt((\a/(2*\lambd*\m))^2-1);
-                  \dang=mod(\i,2)*180;
-                 }] in {1,...,\Nlines}{
-      \path[left color=black,right color=myred,shading angle={\dang}]
-        (0,\yn) rectangle (\A,\ym);
-      \path[left color=black,right color=myred,shading angle={180+\dang}]
-        (0,-\yn) rectangle (\A,-\ym);
-    }
-  \end{scope}
-  
-  % INTENSITY
-    \coordinate (NP0) at (\L,0);  % to avoid "Dimension too large error"
-    \foreach \dn [evaluate={
-                   \f=\a/\lambd;
-                   \nmin=2.5+0.2*\dn; %0.501*(-\dn+\f)
-                   \nmax=10; %(NP0)
-                   \c=int(\dn<\f);
-                   \y=\L/sqrt((\a/(\lambd*\dn))^2-1);
-                 }] in {1,...,\Nlines}{
-      \coordinate (NP+\dn) at (\L,\y);  % to avoid "Dimension too large error"
-      \coordinate (NP-\dn) at (\L,-\y); % to avoid "Dimension too large error"
-    }
-    
-  \begin{scope}[shift={(1.1*\L+1.1*\A,0)}]
-    \draw[->,thick] (-0.08*\A,0) -- (1.3*\A,0) node[right=0] {$\langle I\rangle$}; % I axis
-    \draw[->,thick] (0,-0.52*\H) -- (0,0.54*\H) node[right] {$\delta$}; % y axis
-    \draw[myred,thick,variable=\y,samples=\nsamples,smooth,domain=-\H/2:\H/2]
-      plot({\A*intensity(\y,\lambd,\a,\L)},\y);
-  \end{scope}
-
-    \end{tikzpicture}
-    }
+    \includegraphics[width=\textwidth]{Figures/Chapter06/BW/6-3_double_slit_photons_BW.pdf}
     \caption[Double-slit experiment with single photons.]{Interference pattern remains even if the photons arrive slowly enough that a single photon is present between the screens.}
     \label{fig:two-slit-single-photon-pattern}
 \end{figure}
@@ -951,7 +423,7 @@ The previous discussion of qubit interference may seem a little abstract.
 Now is the time to make more concrete by considering an optical instrument called the \textbf{\emph{Mach-Zehnder interferometer}}\index{Mach-Zehnder interferometer}\index{interferometer}, as shown in Fig.~\ref{fig:mach-zehnder}.
 \begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/Color/mach_zehnder.pdf}
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/BW/6-4_MZ_BW.pdf}
     \caption{Mach-Zehnder interferometer.}
     \label{fig:mach-zehnder}  
 \end{figure}
@@ -970,13 +442,13 @@ If the photon is found in the bottom half of the interferometer, the state of th
 We say that the qubit is \textbf{\emph{spatially encoded}}\index{spatial encoding}.
 \begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/Color/0_ket_botttom.pdf}
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/BW/6-4_MZ_ket_0_BW.pdf}
     \caption[State $|0\rangle$ in the MI interferometer.]{State $\ket{0}$ is represented by a photon in the upper path.}
     \label{fig:m-z-upper}
 \end{figure}
 \begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/Color/1_ket_bottom.pdf}
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/BW/6-4_MZ_ket_1_BW.pdf}
     \caption[State $|1\rangle$ in the MI interferometer.]{State $\ket{1}$ is represented by a photon in the lower path.}
     \label{fig:m-z-lower}
 \end{figure}
@@ -998,7 +470,7 @@ Effectively, by blocking the bottom path of the Mach-Zehnder Interferometer, we 
 That is why we see both possibilities D0 and D1.
 \begin{figure}[t]
    \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/Color/bottom_blocked.pdf}
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter06/BW/6-4_MZ_blocked_BW.pdf}
     \caption[Lower path blocked.]{Lower path blocked. Because there is no photon coming from the lower path at BS2, no interference occurs, and any photon coming from above has a 50/50 chance of being directed to either detector.}
     \label{fig:m-z-blocked}
 \end{figure}

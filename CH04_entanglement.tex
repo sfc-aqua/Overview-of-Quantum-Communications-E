@@ -32,21 +32,7 @@ The rules of the game are the following:
 
 \begin{figure}[t]
     \centering
-    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
-    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
-
-    \node[state,fill=myred!50]    (R)                     {R};
-    \node[state,fill=mygreen!50]   (A)[below left of=R]    {A};
-    \node[state,fill=mygreen!50]   (B)[below right of=R]   {B};
-
-    \path
-    (R) edge[bend right,above,myred!60,thick]	node[yshift=1pt]{$x$}	(A)
-    (R) edge[bend left,above,myred!60,thick]	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
-    (A) edge[bend right,left,mygreen,thick]	node[yshift=1pt]{$a$}	(R)
-    (B) edge[bend left,right,mygreen,thick]	node[yshift=2pt]{$b$}	(R);
-
-    \end{tikzpicture}
-    
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter04/BW/4-1_CHSH-game_BW.pdf}
     \caption[CHSH game.]{CHSH game view. The players A and B attempt to collaborate to beat the referee R.}
     \label{fig:chsh-game}
 \end{figure}
@@ -65,9 +51,9 @@ Before discussing what an optimal strategy would look like, let's have a look at
         \hline
         & $x$ & $y$ & $a$ & $b$ & $x\cdot y$ & $a\oplus b$ \\
         \hline
-        \textbf{Round 1} & 0 & 1 & 0 & 1 & 0 & 1 & \textcolor{myred}{Loss} \\
-        \textbf{Round 2} & 0 & 1 & 1 & 1 & 0 & 0 & \textcolor{mygreen}{Win} \\
-        \textbf{Round 3} & 1 & 1 & 1 & 0 & 1 & 1 & \textcolor{mygreen}{Win} \\
+        \textbf{Round 1} & 0 & 1 & 0 & 1 & 0 & 1 & Loss \\
+        \textbf{Round 2} & 0 & 1 & 1 & 1 & 0 & 0 & Win \\
+        \textbf{Round 3} & 1 & 1 & 1 & 0 & 1 & 1 & Win \\
         \hline
     \end{tabular}
     \caption[CHSH game example.]{Three example rounds of the CHSH game.}
@@ -94,10 +80,10 @@ There are four possible pairs, as shown in Tab.~\ref{tab:4-2_chsh_strategy}, and
         \hline
         $x$ & $y$ & $x\cdot y$ & $a=b$ & $a\oplus b$ & \\
         \hline
-        0 & 0 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
-        0 & 1 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
-        1 & 0 & 0 & 0 & 0 & \textcolor{newgreen}{Win} \\
-        1 & 1 & 1 & 0 & 0 & \textcolor{darkred}{Loss} \\
+        0 & 0 & 0 & 0 & 0 & Win \\
+        0 & 1 & 0 & 0 & 0 & Win \\
+        1 & 0 & 0 & 0 & 0 & Win \\
+        1 & 1 & 1 & 0 & 0 & Loss \\
         \hline
     \end{tabular}
     \caption[CHSH game classical strategy.]{An example strategy for the CHSH game. Players $A$ and $B$ always reply with 0, regardless of the values of the input bits sent by the referee $R$.}
@@ -133,36 +119,9 @@ Only difference is that player $B$ measures in a \textbf{\emph{rotated basis}}\i
 If the input bit is $y=0$, player $B$ measures in the $(Z+X)/\sqrt{2}$ basis.
 For $y=1$, player $B$ measures in the $(Z-X)/\sqrt{2}$ basis.
 
-% insert quantum diagram
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.5\textwidth]{lesson4/CHSH_quantum_diagram.pdf}
-    \begin{tikzpicture}[auto, semithick, node distance=3cm]
-    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
-
-    \node[state,fill=red!50]    (R)                     {R};
-    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
-    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
-
-    \path
-    (R) edge[bend right,above,red!60,thick,->,>=stealth']	node[yshift=1pt]{$x$}	(A)
-    (R) edge[bend left,above,red!60,thick,->,>=stealth']	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
-    (A) edge[bend right,left,newgreen,thick,->,>=stealth']	node[yshift=1pt]{$a$}	(R)
-    (B) edge[bend left,right,newgreen,thick,->,>=stealth']	node[yshift=2pt]{$b$}	(R);
-
-    \coordinate (qubitA) at ($(A)+(0,-1)$);
-    \coordinate (qubitB) at ($(B)+(0,-1)$);
-
-    \draw[decorate,decoration={coil,aspect=0},thick] (qubitA)  -- (qubitB);
-    \filldraw[black!30,draw=black,thick] (qubitA) circle (5pt);
-    \filldraw[black!30,draw=black,thick] (qubitB) circle (5pt);
-
-    \node[] at (-3, -3.15) {qubit A};
-    \node[] at (3, -3.15) {qubit B};
-    \node[] at (0, -3.5) {$|\Phi^+\rangle$};
-
-    \end{tikzpicture}
-    
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter04/BW/4-1_CHSH-Bell_BW.pdf}
     \caption[Optimal quantum CHSH game strategy.]{Optimal quantum strategy for the CHSH game requires the players to pre-share an entangled state of two qubits.}
     \label{fig:chsh-game_entanglement}
 \end{figure}
@@ -339,8 +298,6 @@ Similar calculation can be repeated for the case of the -1 measurement outcome,
 \label{page:plus-is-pure}
 At this point, you may be a little puzzled; didn't we see this same fifty-fifty behavior with a single qubit in the $\ket{+}$ state?  What is different with entanglement?  When measuring in the Z basis, it is true that we always see the fifty-fifty statistics.  However, if we measure a $\ket{+}$ in the X basis, we will always find that the state is in the $+1$ state.  We can also choose to apply a Hadamard gate to the $\ket{+}$ state and return it to a known $\ket{0}$ state.  Thus, although the qubit is in superposition, we have complete information about that superposition.  In contrast, when we hold only one qubit of an entangled pair and attempt to measure it, our results will differ.
 
-%\rdv{This par fails to completely close the deal in demonstrating that we don't have any local information, since the outcomes are 50/50 both when we are talking about a single plus state and a Bell state.  Needs a counterpoint where we have full information?  Show that the single plus state always has a specific outcome when measuring in the X basis.} Added above.
-
 If we change the measurement basis to a Pauli $Y$ basis, again we find that the probability of the $+1$ outcome is the same as the probability of the $-1$ outcome. It is the same for the $X$ basis, and in fact in any basis that you measure qubit $A$, you will get the same result: both outcomes are fifty-fifty. In fact, the local measurement results are uniformly random in any basis.
 Remember that the global state of the system is pure.
 We know exactly what it is, yet no matter in what basis we measure the states locally we are getting 50 percent one outcome and 50 percent the other outcome.
@@ -373,33 +330,7 @@ Often these photons are referred to as the \textbf{\emph{signal}}\index{signal p
 
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.5\textwidth]{lesson4/pump.pdf}
-    \begin{tikzpicture}[scale=2, every node/.style={scale=1.3},wave/.style={semithick,color=#1,smooth}]
-        % \draw[semithick,darkred!70,decorate,decoration={coil,aspect=0,segment length=2mm}] (0.5,0.8)  -- (0.5,0.2);
-        
-        \begin{scope}
-            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x-0.6, {0.2*e^(-\x*\x/0.005)+0.5});
-            \draw[thick, -latex, line cap=round] (-1.1,0.5) -- (-0.1, 0.5);
-            \node[black] at (-0.6,0.8) {\scriptsize pump};
-        \end{scope}
-
-        \begin{scope}[rotate around={30:(0.0,0.5)}]
-            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x+0.6, {0.2*e^(-\x*\x/0.005)+0.5});
-            \draw[thick, -latex] (0.0,0.5) -- (1.1,0.5);
-        \end{scope}
-
-        \begin{scope}[rotate around={-30:(0.0,0.5)}]
-            \draw[wave=black, fill=black!10, variable=\x, samples at={-0.3,-0.29,...,0.3}] plot (\x+0.6, {0.2*e^(-\x*\x/0.005)+0.5});
-            \draw[thick, -latex] (0.0,0.5) -- (1.1,0.5);
-        \end{scope}
-        
-        \draw[thick, fill=gray!20] (-0.1,0) rectangle (0.1,1);
-
-        % \node[text width=1.5cm] at (0.1,-0.4) {\scriptsize beta barium borate (BBO)};
-        \node[] at (0,-0.2) {\scriptsize BBO};
-        \node[] at (1.2,1.05) {\scriptsize signal};
-        \node[] at (1.2,-0.05) {\scriptsize idler};
-    \end{tikzpicture}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter04/BW/4-4_SPDC_BW.pdf}
     \caption[Spontaneous parametric down conversion (SPDC).]{Symmetric parametric down conversion (SPDC) turns one high-energy pump photon into two lower-energy photons, with some very low probability.}
     \label{fig:spdc}
 \end{figure}
@@ -410,7 +341,7 @@ In a spontaneous process, no other input is needed, only the incoming photon of 
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter04/Color/4-8_spdc.pdf}
+    \includegraphics[width=0.8\textwidth]{Figures/Chapter04/BW/4-4_SPDC-atom_BW.pdf}
     \caption[Pump photon exciting an atom.]{A representation of the pump photon of energy $E_p$ and the energy levels of the atom. Energy level diagrams such as these are an abstraction that allows us to describe absorption and emission of photons by an atom. The circle indicates that there is a single electron in the ground state.
     The atom absorbs the energy provided by the pump photon and transitions to the excited state. The atom decays spontaneously after some time, releasing energy in the form of two photons with energies $E_s$ and $E_i$. Due to conservation of energy, we have $E_p = E_s + E_i$.}
     \label{fig:spdc-energy-levels}
@@ -438,24 +369,7 @@ A natural choice for the photons is their \textbf{\emph{polarization}}\index{pol
 
 \begin{figure}[t]
     \centering
-    \begin{tikzpicture}
-        \draw[semithick,dashed,black!50] (0,0) circle (1.5cm);
-        \draw[thick,latex-latex,newgreen] (-1.5,0) -- (1.5,0);
-        \draw[thick,latex-latex,darkred] (0,-1.5) -- (0,1.5);
-        \draw[thick,latex-latex,blue!50] (-1.06,-1.06) -- (1.06,1.06);
-
-        \draw[-latex] (0:0.75) arc (0:45:0.75);
-        \node[] at (1.0, 0.35) {\small $45\degree$};
-
-        \node[newgreen] at (2.5,0.2) {horizontal};
-        \node[newgreen] at (2.5,-0.2) {polarization};
-
-        \node[darkred] at (0, 2.2) {vertical};
-        \node[darkred] at (0, 1.8) {polarization};
-
-        \node[blue!50] at (1.9, 1.4) {diagonal};
-        \node[blue!50] at (2.15, 1.05) {polarization};
-    \end{tikzpicture}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter04/BW/4-4_linear-polarization_BW.pdf}
     \caption[Linear polarization of light.]{Linear polarization of light. Horizontally polarized light can be superposed with vertically polarized one to form diagonal polarization.}
     \label{fig:polarization}
 \end{figure}
@@ -475,59 +389,7 @@ Figure~\ref{fig:polarizer} shows what happens when light of different polarizati
 Horizontal polarizer lets through only horizontally polarized light, while a vertical polarizer lets through only vertically polarized light.
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.8\textwidth]{lesson4/linear_polarization.pdf}
-    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.8, >=stealth, axis/.style={thick,->}, wave/.style={thick,color=#1,smooth}, polaroid/.style={fill=black!30!white, opacity=0.7}]
-
-    \begin{scope}
-    \coordinate (O) at (0,0,0);
-
-    \draw[thick] (-3.25,0,0) -- (O);
-
-    % Electric fields
-    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
-
-    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
-        plot (\x,0,{sin(2*\x r)});
-
-    % Polarizer
-    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{polarizer};
-    \draw[thick,latex-latex] (0,-1.75,-1) -- (0,-0.75,-1);
-
-    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,{sin(2*\x r)},0);
-
-    \draw[axis] (O) -- (4,0,0) node [right] {};
-    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
-    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
-    \end{scope}
-
-    \begin{scope}[xshift=7cm]
-    % Axis
-    \coordinate (O) at (0,0,0);
-    \draw[axis] (O) -- (4,0,0) node [right] {};
-    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
-    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
-
-    \draw[thick] (-3.25,0,0) -- (O);
-
-    % Electric fields
-    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
-
-    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
-        plot (\x,0,{sin(2*\x r)});
-
-    % Polarizer
-    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{polarizer};
-    \draw[thick, <->] (0, -1.5,-1) -- (0, -1.5, 0);
-
-    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
-    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
-
-    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,0,{sin(2*\x r)});
-
-    \draw[axis] (O) -- (4,0,0) node [right] {};
-    \end{scope}
-    \end{tikzpicture}
-    
+    \includegraphics[width=\textwidth]{Figures/Chapter04/BW/4-4_polarizers_BW.pdf}
     \caption[Polarizing filter.]{Horizontal polarizer only lets through light of horizontal polarization as shown in the left image. Similarly, only vertically polarized light can pass through a vertical polarizer.}
     \label{fig:polarizer}
 \end{figure}
@@ -575,198 +437,14 @@ Rotating the whole setup by 90\degree, as shown on the right side of Fig.~\ref{f
 
 \begin{figure}[t]
     \centering
-    % \includegraphics[width=0.5\textwidth]{lesson4/horizontal_optical_axis.pdf}
-    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.9, >=stealth, wave/.style={thick,color=#1,smooth}]
-
-    \def\h{1}
-    \def\w{1.2}
-    \def\d{0.1}
-
-    % 1st BBO
-    \begin{scope}
-    \coordinate (O) at (0,0,0);
-    
-    % Pump photon
-    \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
-    \node[newgreen] at (-2,0.89,0) {\footnotesize $|H\rangle_p$};
-    \draw[newgreen,thick,line cap=round] (-3,0,0) -- (O);
-
-    % BBO
-    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
-    \draw[] (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,-\w,-\h) -- (-\d,-\w,-\h) -- cycle;
-    \draw[pattern=north east lines] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (\d,-\w,\h) -- (\d,-\w,-\h) -- cycle;
-    \draw[pattern=north east lines] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
-    \draw[] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
-    \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
-    \draw[-latex,thick,line cap=round] (0,-\w,0) -- (0,{-1.5*\w},0);
-
-    % signal photon
-    \begin{scope}[rotate around z=20]
-        \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,lightred,thick,line cap=round] (O) -- (2.3,0,0);
-    \end{scope}
-    \node[lightred] at (1.3,1.4,0) {\footnotesize $|V\rangle_s$};
-
-    % idler photon
-    \begin{scope}[rotate around z=-20]
-        \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,lightred,thick,line cap=round] (O) -- (2.3,0,0);
-    \end{scope}
-    \node[lightred] at (1.6,-0.1,0) {\footnotesize $|V\rangle_i$};
-
-    \node[] at (0.6,\w,\h/2) {\footnotesize BBO};
-    \node[] at (-0.6,-\w-0.5,0) {\footnotesize optic};
-    \node[] at (-0.6,-\w-0.5,-0.3) {\footnotesize axis};
-    \end{scope}
-
-    % 2nd BBO
-    \begin{scope}[xshift=5.5cm]
-    \coordinate (O) at (0,0,0);
-    
-    % Pump photon
-    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x-2,0,{0.5*e^(-\x*\x/0.02)});
-    \node[lightred] at (-2.2,0.8,0) {\footnotesize $|V\rangle_p$};
-    \draw[lightred,thick,line cap=round] (-3,0,0) -- (O);
-
-    % BBO
-    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (-\d,\w,\h) -- (-\d,\w,-\h) -- cycle;
-    \draw[pattern=north east lines] (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,-\w,-\h) -- (-\d,-\w,-\h) -- cycle;
-    \draw[] (-\d,-\w,-\h) -- (-\d,-\w,\h) -- (\d,-\w,\h) -- (\d,-\w,-\h) -- cycle;
-    \draw[] (-\d,\w,\h) -- (-\d,\w,-\h) -- (\d,\w,-\h) -- (\d,\w,\h) -- cycle;
-    \draw[pattern=north east lines] (-\d,-\w,\h) -- (-\d,\w,\h) -- (\d,\w,\h) -- (\d,-\w,\h) -- cycle;
-    \draw[] (\d,-\w,-\h) -- (\d,-\w,\h) -- (\d,\w,\h) -- (\d,\w,-\h) -- cycle;
-    \draw[-latex,thick,line cap=round] (0,0,\h) -- (0,0,{1.5*\h});
-
-    % signal photon
-    \begin{scope}[rotate around z=20]
-        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,newgreen,thick,line cap=round] (O) -- (2.3,0,0);
-    \end{scope}
-    \node[newgreen] at (1.3,1.4,0) {\footnotesize $|H\rangle_s$};
-
-    % idler photon
-    \begin{scope}[rotate around z=-20]
-        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.7,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,newgreen,thick,line cap=round] (O) -- (2.3,0,0);
-    \end{scope}
-    \node[newgreen] at (2,0,0) {\footnotesize $|H\rangle_i$};
-
-    \node[] at (0.6,\w,\h/2) {\footnotesize BBO};
-    \node[] at (0.2,0.2,1.8*\h) {\footnotesize optic axis};
-    \end{scope}
-    \end{tikzpicture}
+    \includegraphics[width=\textwidth]{Figures/Chapter04/BW/4-4_BBO_BW.pdf}
     \caption[Photon pair via SPDC.]{Horizontally polarized pump photons can be down-converted to a pair of vertically polarized photons by the BBO crystal as shown on the left side. Rotating the crystal by 90\degree makes it possible to convert a vertically polarized pump photon into a pair of horizontally polarized photons.}
     \label{fig:poalrization_BBO}
 \end{figure}
 
 \begin{figure}[t]
     \centering
-    \begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.9, wave/.style={thick,color=#1,smooth}]
-
-    % 1st Case with thick BBO
-    \begin{scope}
-    \def\h{1}
-    \def\w{1.2}
-    \def\d{0.3}
-    \coordinate (O) at (0,0,0);
-    
-    % Pump photon
-    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
-    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
-    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (2*\d,0,0);
-
-    % BBO 1
-    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
-    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
-    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
-    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
-    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
-    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
-
-    % BBO 2
-    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
-    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
-    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
-
-    % signal photon from BBO 1
-    \begin{scope}[rotate around z=20]
-        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
-    \end{scope}
-    \node[newgreen] at (2.5,1.5,0.2) {\footnotesize $|H\rangle_s$};
-
-    % idler photon from BBO 1
-    \begin{scope}[rotate around z=-20]
-        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,-{0.5*e^(-\x*\x/0.02)},0);
-    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
-    \end{scope}
-    \node[newgreen] at (2.5,-1.5,0) {\footnotesize $|H\rangle_i$};
-
-    % signal photon from BBO 2
-    \begin{scope}[rotate around z=-20,transform canvas={xshift=12,yshift=-7}]
-    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
-    \end{scope}
-    \node[lightred] at (1.6,1.38,0.05) {\footnotesize $|V\rangle_s$};
-
-    % idelr photon from BBO 2
-    \begin{scope}[rotate around z=20,transform canvas={xshift=12,yshift=-7}]
-    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
-    \end{scope}
-    \node[lightred] at (2.2,-0.1,0) {\footnotesize $|V\rangle_i$};
-
-    \node[] at (0,0,2.3) {\footnotesize Product photon pair};
-
-    \end{scope}
-
-    % 2nd Case with thin BBO
-    \begin{scope}[xshift=6cm]
-    \def\h{1}
-    \def\w{1.2}
-    \def\d{0.1}
-    \coordinate (O) at (0,0,0);
-    
-    % Pump photon
-    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
-    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
-    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (0,0,0);
-
-    % BBO 1
-    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
-    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
-    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
-    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
-    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
-    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
-
-    % BBO 2
-    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
-    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
-    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
-    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
-
-    % signal photon
-    \begin{scope}[rotate around z=20]
-    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,{0.5*e^(-\x*\x/0.02)},0);
-    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,thick] (O) -- (2.7,0,0);
-    \end{scope}
-
-    % idler photon
-    \begin{scope}[rotate around z=-20]
-    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,-{0.5*e^(-\x*\x/0.02)},0);
-    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
-    \draw[-latex,thick] (O) -- (2.7,0,0);
-    \end{scope}
-    \node[] at (0,0,2.3) {\footnotesize Entangled photon pair};
-    \end{scope}
-\end{tikzpicture}
+    \includegraphics[width=\textwidth]{Figures/Chapter04/BW/4-4_BBO-entanglement_BW.pdf}
     \caption[Entangled photon pairs via SPDC.]{If the crystals are too thick (left image) then the propagation paths for horizontal and vertical photons are distinguishable, resulting in a product state. The two BBO crystals must be sufficiently thin in order to erase the information about where the signal-idler pair were produced (right iamge). The gray color of the photon pair represents the fact that we cannot assign definite ket states to the individual photons since they are entangled.}
     \label{fig:entanglement_BBO}
 \end{figure}
@@ -802,33 +480,7 @@ The photons that are not down-converted simply pass through the crystal unaffect
 % insert broken connection 
 \begin{figure}[t]
    \centering
-    %\includegraphics[width=0.8\textwidth]{lesson4/CHSH_broken_entanglement.pdf}
-    \begin{tikzpicture}[auto, semithick, node distance=3cm]
-    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
-
-    \node[state,fill=red!50]    (R)                     {R};
-    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
-    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
-
-    \path
-    (R) edge[bend right,above,red!60,thick,->,>=stealth']	node[yshift=1pt]{$x$}	(A)
-    (R) edge[bend left,above,red!60,thick,->,>=stealth']	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
-    (A) edge[bend right,left,newgreen,thick,->,>=stealth']	node[yshift=1pt]{$a$}	(R)
-    (B) edge[bend left,right,newgreen,thick,->,>=stealth']	node[yshift=2pt]{$b$}	(R);
-
-    \coordinate (qubitA) at ($(A)+(0,-1)$);
-    \coordinate (qubitB) at ($(B)+(0,-1)$);
-
-    \draw[decorate,decoration={coil,aspect=0},thick] (qubitA)  -- (qubitB);
-    \filldraw[black!30,draw=black,thick] (qubitA) circle (5pt);
-    \filldraw[black!30,draw=black,thick] (qubitB) circle (5pt);
-
-    \node[] at (-3.6, -3.15) {measure qubit A};
-    \node[] at (3.6, -3.15) {measure qubit B};
-    \node[darkred] at (0, -3.15) {\xmark};
-
-    \end{tikzpicture}
-    
+    \includegraphics[width=\textwidth]{Figures/Chapter04/BW/4-5_resource_BW.pdf}
     \caption[CHSH game consumes entanglement.]{In the CHSH game, players consume one Bell pair every time they play with the optimal strategy of winning.}
     \label{fig:chsh-broken}
 \end{figure}
@@ -857,7 +509,7 @@ In order for the quantum network to be fully functional again, we must re-establ
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Chapter04/Color/4-5_resource_network.pdf}
+    \includegraphics[width=\textwidth]{Figures/Chapter04/BW/4-5_resource-network_BW.pdf}
     \caption[Consumption of entanglement in a quantum network.]{Entanglement is consumed as quantum information is propagated from the sender to the receiver.}
     \label{fig:4-5_resource_network}
 \end{figure}

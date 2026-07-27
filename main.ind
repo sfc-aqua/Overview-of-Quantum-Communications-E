@@ -18,7 +18,7 @@
   \item angle of reflection, \hyperpage{124}
   \item angle of refraction, \hyperpage{124}
   \item angular frequency, \hyperpage{103}
-  \item anti-bunched light, \hyperpage{99}
+  \item anti-bunched light, \hyperpage{98}
   \item asymmetric encryption, \hyperpage{155}
   \item attenuation, \hyperpage{97}, \hyperpage{191}
   \item attenuation parameter, \hyperpage{197}
@@ -47,7 +47,7 @@
   \item bra, \hyperpage{33}
   \item buffer, \hyperpage{128}
   \item bulk data enxryption, \hyperpage{154}
-  \item bunched light, \hyperpage{99}
+  \item bunched light, \hyperpage{98}
 
   \indexspace
 
@@ -59,7 +59,7 @@
   \item cladding, \hyperpage{128}
   \item clock synchronization, \hyperpage{255}
   \item cluster states, \hyperpage{254}
-  \item coherent light, \hyperpage{87}
+  \item coherent light, \hyperpage{86}
   \item complete graph, \hyperpage{264}
   \item complex conjugate, \hyperpage{27}
   \item computational basis, \hyperpage{31}
@@ -96,7 +96,7 @@
   \item Einstein's clock synchronization, \hyperpage{255}
   \item encryption, \hyperpage{16}
   \item energy relaxation, \hyperpage{231}
-  \item entangled state, \hyperpage{61}, \hyperpage{63}
+  \item entangled state, \hyperpage{61}, \hyperpage{64}
   \item entanglement swapping, \hyperpage{206}, \hyperpage{209}, 
 		\hyperpage{274}
   \item erbium-doped fiber amplifier (EDFA), \hyperpage{199}
@@ -127,14 +127,14 @@
   \indexspace
 
   \item Hadamard, \hyperpage{24}
-  \item heralded single-photon source, \hyperpage{99}
+  \item heralded single-photon source, \hyperpage{98}
   \item horizontally polarized, \hyperpage{69}
 
   \indexspace
 
   \item identity operation, \hyperpage{24}
   \item idler photon, \hyperpage{67}
-  \item incoherent light, \hyperpage{87}
+  \item incoherent light, \hyperpage{86}
   \item indistinguishability condition, \hyperpage{72}
   \item indistinguishable photons, \hyperpage{208}
   \item information processing, \hyperpage{43}
@@ -158,9 +158,9 @@
 
   \indexspace
 
-  \item laser, \hyperpage{89}
-  \item lasing transition, \hyperpage{93}
-  \item light amplification, \hyperpage{90}
+  \item laser, \hyperpage{88}
+  \item lasing transition, \hyperpage{92}
+  \item light amplification, \hyperpage{89}
   \item link state, \hyperpage{266}
   \item link-level entanglement, \hyperpage{206}
   \item local state, \hyperpage{62}
@@ -173,7 +173,7 @@
   \item measurement-based quantum computation, \hyperpage{257}
   \item memory-interfere-memory (MIM), \hyperpage{206}
   \item memoryless decay process, \hyperpage{232}
-  \item metastable state, \hyperpage{93}
+  \item metastable state, \hyperpage{92}
   \item minus state, \hyperpage{22}
   \item mixed state, \hyperpage{48}
   \item MM link, \hyperpage{208}
@@ -189,7 +189,7 @@
   \indexspace
 
   \item negative refractive index, \hyperpage{132}
-  \item nitrogen-vacancy, \hyperpage{100}
+  \item nitrogen-vacancy, \hyperpage{99}
   \item no-cloning theorem, \hyperpage{148}, \hyperpage{161}
   \item numerical aperture, \hyperpage{130}
 
@@ -198,7 +198,7 @@
   \item on-off keying, \hyperpage{191}
   \item one-time pad (OTP), \hyperpage{154}, \hyperpage{156}
   \item optic axis, \hyperpage{71}
-  \item optical cavity, \hyperpage{94}
+  \item optical cavity, \hyperpage{93}
   \item optical fiber, \hyperpage{128}, \hyperpage{221}
   \item outer product, \hyperpage{45}
 
@@ -241,7 +241,7 @@
 
   \indexspace
 
-  \item radiative excitation, \hyperpage{88}
+  \item radiative excitation, \hyperpage{87}
   \item recursion, \hyperpage{266}
   \item recursive network, \hyperpage{267}
   \item reflection, \hyperpage{123}
@@ -267,17 +267,17 @@
   \item single-mode fiber, \hyperpage{128}, \hyperpage{198}
   \item single-shot measurement, \hyperpage{35}
   \item spanning tree, \hyperpage{266}
-  \item spatial encoding, \hyperpage{117}
+  \item spatial encoding, \hyperpage{116}
   \item specification, \hyperpage{273}
-  \item spin, \hyperpage{100}, \hyperpage{234}
-  \item spontaneous emission, \hyperpage{88}
+  \item spin, \hyperpage{99}, \hyperpage{234}
+  \item spontaneous emission, \hyperpage{87}
   \item spontaneous parametric down-conversion, \hyperpage{67}
   \item spontaneous parametric down-conversion (SPDC), \hyperpage{180}
-  \item stable fixed point, \hyperpage{96}
+  \item stable fixed point, \hyperpage{95}
   \item standards, \hyperpage{261}
   \item state collapse, \hyperpage{31}
   \item state preparation, \hyperpage{43}
-  \item stimulated emission, \hyperpage{89}
+  \item stimulated emission, \hyperpage{88}
   \item superconducting qubits, \hyperpage{23}
   \item superposition, \hyperpage{19}
   \item symmetric key cryptosystem, \hyperpage{154}
@@ -297,8 +297,8 @@
 
   \indexspace
 
-  \item unstable fixed points, \hyperpage{96}
-  \item unstable state, \hyperpage{93}
+  \item unstable fixed points, \hyperpage{95}
+  \item unstable state, \hyperpage{92}
 
   \indexspace
 
@@ -310,7 +310,6 @@
 
   \item W state, \hyperpage{251}
   \item wave number, \hyperpage{103}
-  \item waveguides, \hyperpage{86}
   \item wavelength division multiplexing (WDM), \hyperpage{191}
 
 \end{theindex}

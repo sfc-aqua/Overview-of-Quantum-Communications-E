@@ -1,0 +1,124 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usepackage{gensymb}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,calc,patterns}
+
+\begin{document}
+
+\definecolor{darkred}{RGB}{200,0,0}
+\colorlet{lightred}{red!80!black}
+\definecolor{newgreen}{RGB}{33,172,47}
+\definecolor{newblue}{RGB}{43,174,222}
+\colorlet{darkgreen}{green!50!black}
+\colorlet{lightgreen}{green!80!black}
+
+\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.9, wave/.style={thick,color=#1,smooth}]
+
+    % 1st Case with thick BBO
+    \begin{scope}
+    \def\h{1}
+    \def\w{1.2}
+    \def\d{0.3}
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
+    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
+    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (2*\d,0,0);
+
+    % BBO 1
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
+    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
+    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
+
+    % BBO 2
+    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
+    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
+    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
+
+    % signal photon from BBO 1
+    \begin{scope}[rotate around z=20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
+    \end{scope}
+    \node[newgreen] at (2.5,1.5,0.2) {\footnotesize $|H\rangle_s$};
+
+    % idler photon from BBO 1
+    \begin{scope}[rotate around z=-20]
+        \draw[wave=newgreen, fill=newgreen!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2.5,-{0.5*e^(-\x*\x/0.02)},0);
+    \draw[-latex,newgreen,thick] (O) -- (3.3,0,0);
+    \end{scope}
+    \node[newgreen] at (2.5,-1.5,0) {\footnotesize $|H\rangle_i$};
+
+    % signal photon from BBO 2
+    \begin{scope}[rotate around z=-20,transform canvas={xshift=12,yshift=-7}]
+    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
+    \end{scope}
+    \node[lightred] at (1.6,1.38,0.05) {\footnotesize $|V\rangle_s$};
+
+    % idelr photon from BBO 2
+    \begin{scope}[rotate around z=20,transform canvas={xshift=12,yshift=-7}]
+    \draw[wave=lightred, fill=lightred!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+1.8,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,lightred,thick,line cap=round] (O) -- (3,0,0);
+    \end{scope}
+    \node[lightred] at (2.2,-0.1,0) {\footnotesize $|V\rangle_i$};
+
+    \node[] at (0,0,2.3) {\footnotesize Product photon pair};
+
+    \end{scope}
+
+    % 2nd Case with thin BBO
+    \begin{scope}[xshift=6cm]
+    \def\h{1}
+    \def\w{1.2}
+    \def\d{0.1}
+    \coordinate (O) at (0,0,0);
+    
+    % Pump photon
+    \draw[wave=blue!50, fill=blue!10, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin, rotate around x=45] plot (\x-2,{0.5*e^(-\x*\x/0.02)},0);
+    \node[blue!50] at (-2.1,0.89,0.2) {\footnotesize $|D\rangle_p$};
+    \draw[blue!50,line cap=round,thick] (-3,0,0) -- (0,0,0);
+
+    % BBO 1
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,-\w,-\h) -- (-2*\d,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,-\w,-\h) -- (-2*\d,-\w,\h) -- (0,-\w,\h) -- (0,-\w,-\h) -- cycle;
+    \draw[] (-2*\d,\w,\h) -- (-2*\d,\w,-\h) -- (0,\w,-\h) -- (0,\w,\h) -- cycle;
+    \draw[pattern=horizontal lines] (-2*\d,-\w,\h) -- (-2*\d,\w,\h) -- (0,\w,\h) -- (0,-\w,\h) -- cycle;
+    \draw[] (0,-\w,-\h) -- (0,-\w,\h) -- (0,\w,\h) -- (0,\w,-\h) -- cycle;
+    \draw[-latex,thick,line cap=round] (-\d,0,\h) -- (-\d,0,{1.6*\h});
+
+    % BBO 2
+    \draw[] (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,-\w,-\h) -- (0,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,-\w,-\h) -- (0,-\w,\h) -- (2*\d,-\w,\h) -- (2*\d,-\w,-\h) -- cycle;
+    \draw[pattern=horizontal lines] (0,\w,\h) -- (0,\w,-\h) -- (2*\d,\w,-\h) -- (2*\d,\w,\h) -- cycle;
+    \draw[] (2*\d,\w,\h) -- (2*\d,-\w,\h);
+    \draw[-latex,thick,line cap=round] (\d,-\w,0) -- (\d,{-1.6*\w},0);
+
+    % signal photon
+    \begin{scope}[rotate around z=20]
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,{0.5*e^(-\x*\x/0.02)},0);
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,thick] (O) -- (2.7,0,0);
+    \end{scope}
+
+    % idler photon
+    \begin{scope}[rotate around z=-20]
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,-{0.5*e^(-\x*\x/0.02)},0);
+    \draw[wave=black, fill=black!10, densely dotted, variable=\x, samples at={-0.35,-0.34,...,0.35}, thin] plot (\x+2,0,{0.5*e^(-\x*\x/0.02)});
+    \draw[-latex,thick] (O) -- (2.7,0,0);
+    \end{scope}
+    \node[] at (0,0,2.3) {\footnotesize Entangled photon pair};
+    \end{scope}
+\end{tikzpicture}
+
+
+\end{document}
