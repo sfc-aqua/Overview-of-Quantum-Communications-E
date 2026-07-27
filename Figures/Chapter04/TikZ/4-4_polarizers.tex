@@ -1,0 +1,69 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usepackage{gensymb}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,calc}
+
+\begin{document}
+
+\definecolor{darkred}{RGB}{200,0,0}
+\colorlet{lightred}{red!80!black}
+\definecolor{newgreen}{RGB}{33,172,47}
+\definecolor{newblue}{RGB}{43,174,222}
+\colorlet{darkgreen}{green!50!black}
+\colorlet{lightgreen}{green!80!black}
+
+\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.8, >=stealth, axis/.style={thick,->}, wave/.style={thick,color=#1,smooth}, polaroid/.style={fill=black!30!white, opacity=0.7}]
+
+    \begin{scope}
+    \coordinate (O) at (0,0,0);
+
+    \draw[thick] (-3.25,0,0) -- (O);
+
+    % Electric fields
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
+        plot (\x,0,{sin(2*\x r)});
+
+    % Polarizer
+    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{H polarizer};
+    \draw[thick,latex-latex] (0,-1.75,-1) -- (0,-0.75,-1);
+
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+    \end{scope}
+
+    \begin{scope}[xshift=7cm]
+    % Axis
+    \coordinate (O) at (0,0,0);
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+
+    \draw[thick] (-3.25,0,0) -- (O);
+
+    % Electric fields
+    \draw[wave=newgreen, fill=newgreen!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}] plot (\x,{sin(2*\x r)},0);
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={-3.14,-3.13,...,0}]
+        plot (\x,0,{sin(2*\x r)});
+
+    % Polarizer
+    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5) node[below, sloped, near end]{V polarizer};
+    \draw[thick, <->] (0, -1.5,-1) -- (0, -1.5, 0);
+
+    \draw[axis] (O) -- (0,2.5,0) node [right,newgreen] {$H$};
+    \draw[axis] (O) -- (0,0,2) node [above,lightred] {$V$};
+
+    \draw[wave=lightred, fill=lightred!60, fill opacity=0.2, variable=\x,samples at={0,0.01,...,3.14}] plot (\x,0,{sin(2*\x r)});
+
+    \draw[axis] (O) -- (4,0,0) node [right] {};
+    \end{scope}
+    \end{tikzpicture}
+
+
+\end{document}

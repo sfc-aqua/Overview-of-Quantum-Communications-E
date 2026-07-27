@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{newtxmath}
+
+% definitions for interference images
+\colorlet{wall}{blue!30!black}
+\colorlet{myblue}{blue!70!black}
+\colorlet{myorange}{orange!90!black!80}
+\colorlet{myred}{red!70!black}
+\colorlet{mydarkred}{red!50!black}
+\colorlet{mylightgreen}{green!60!black!70}
+\colorlet{mygreen}{green!60!black}
+\colorlet{myredgrey}{red!50!black!80}
+\colorlet{myshadow}{blue!30!black!90}
+\tikzstyle{wave}=[myblue,thick]
+
+\begin{document}
+
+\begin{tikzpicture}
+        \begin{axis}[xtick=\empty,
+                    ytick={-2,2},
+                    yticklabels={$-2A$,$2A$},
+                    axis lines=middle,
+                    enlarge x limits={abs=2},
+                    enlarge y limits={abs=0.6},
+                    x label style={anchor=north},
+                    y label style={anchor=east},
+                    xlabel={$x$},
+                    ylabel={$\Psi(x,t)$},
+                    width=12cm,
+                    height=6cm]
+        \addplot[domain=-1:100,samples=500,smooth,myblue,thick] {sin(deg(-2*x))+sin(deg(-2.1*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \addplot[domain=-1:100,samples=500,smooth,myorange,thick,dashed] {-2*cos(deg(-0.5*(2.0-2.1)*x))};
+        \end{axis}
+    \end{tikzpicture}
+
+\end{document}

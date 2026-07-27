@@ -31,15 +31,14 @@
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Entangled photon pairs via SPDC.}}{72}{figure.4.8}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces CHSH game consumes entanglement.}}{73}{figure.4.9}%
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Consumption of entanglement in a quantum network.}}{74}{figure.4.10}%
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Underwater cable map.}}{86}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Spontaneous emission.}}{88}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Incoherent emission.}}{89}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Light-matter interactions.}}{90}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Population inversion.}}{91}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Laser cycle.}}{92}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Laser construction.}}{94}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Dynamical model of a laser.}}{96}{figure.5.8}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Single photon sources.}}{98}{figure.5.9}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Spontaneous emission.}}{87}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Incoherent emission.}}{88}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Light-matter interactions.}}{89}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Population inversion.}}{91}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Laser cycle.}}{92}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Laser construction.}}{93}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Dynamical model of a laser.}}{95}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Single photon sources.}}{97}{figure.5.8}%
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Same frequency, different wave numbers.}}{104}{figure.6.1}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Same wavelength, different initial phase.}}{104}{figure.6.2}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Propagation of waves in time.}}{105}{figure.6.3}%
@@ -48,13 +47,13 @@
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Group velocity.}}{109}{figure.6.6}%
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Superposition of more than two waves.}}{110}{figure.6.7}%
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Double-slit experiment.}}{111}{figure.6.8}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Single-slit experiment with single photons.}}{112}{figure.6.9}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Single-slit experiment with single photons.}}{113}{figure.6.9}%
 \contentsline {figure}{\numberline {6.10}{\ignorespaces Double-slit experiment with single photons, naive expectation.}}{113}{figure.6.10}%
 \contentsline {figure}{\numberline {6.11}{\ignorespaces Double-slit experiment with single photons.}}{114}{figure.6.11}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Mach-Zehnder interferometer.}}{116}{figure.6.12}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces State $|0\rangle $ in the MI interferometer.}}{117}{figure.6.13}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces State $|1\rangle $ in the MI interferometer.}}{118}{figure.6.14}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Lower path blocked.}}{119}{figure.6.15}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Mach-Zehnder interferometer.}}{117}{figure.6.12}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces State $|0\rangle $ in the MI interferometer.}}{118}{figure.6.13}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces State $|1\rangle $ in the MI interferometer.}}{119}{figure.6.14}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Lower path blocked.}}{120}{figure.6.15}%
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Two Everests.}}{121}{figure.7.1}%
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Tyndall's experiment.}}{122}{figure.7.2}%
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Angle of incidence.}}{124}{figure.7.3}%

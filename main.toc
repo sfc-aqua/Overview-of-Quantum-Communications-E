@@ -39,15 +39,15 @@
 \contentsline {chapter}{\hbox to\@tempdima {5\hfill }{Coherent Light and Single Photons}}{85}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Introduction}{85}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Coherent vs incoherent light}{87}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Lasers I: Stimulated emission}{89}{section.5.3}%
+\contentsline {section}{\numberline {5.3}Lasers I: Stimulated emission}{88}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Lasers II: Population inversion}{92}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Single photons}{97}{section.5.5}%
-\contentsline {section}{\numberline {}Exercises}{101}{section*.23}%
+\contentsline {section}{\numberline {5.5}Single photons}{96}{section.5.5}%
+\contentsline {section}{\numberline {}Exercises}{100}{section*.23}%
 \contentsline {chapter}{\hbox to\@tempdima {6\hfill }{Interference}}{103}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Constructive and destructive interference}{103}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Phase and group velocities}{108}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Interference with single photons}{111}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Interference with qubits}{114}{section.6.4}%
+\contentsline {section}{\numberline {6.4}Interference with qubits}{115}{section.6.4}%
 \contentsline {section}{\numberline {}Exercises}{119}{section*.24}%
 \contentsline {chapter}{\hbox to\@tempdima {7\hfill }{Waveguides}}{121}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Brief history of guiding light}{121}{section.7.1}%

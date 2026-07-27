@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usepackage{pifont}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,calc,patterns,automata}
+
+\let\oldding\ding
+\renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}
+\newcommand{\xmark}{\ding[2.2]{56}}
+
+\begin{document}
+
+\definecolor{darkred}{RGB}{200,0,0}
+\colorlet{lightred}{red!80!black}
+\definecolor{newgreen}{RGB}{33,172,47}
+\definecolor{newblue}{RGB}{43,174,222}
+\colorlet{darkgreen}{green!50!black}
+\colorlet{lightgreen}{green!80!black}
+
+\begin{tikzpicture}[auto, semithick, node distance=3cm]
+    \tikzstyle{every state}=[draw=black,thick,text=black,scale=1]
+
+    \node[state,fill=red!50]    (R)                     {R};
+    \node[state,fill=newgreen!50]   (A)[below left of=R]    {A};
+    \node[state,fill=newgreen!50]   (B)[below right of=R]   {B};
+
+    \path
+    (R) edge[bend right,above,red!60,thick,->,>=stealth']	node[yshift=1pt]{$x$}	(A)
+    (R) edge[bend left,above,red!60,thick,->,>=stealth']	node[yshift=-1pt,xshift=1pt]{$y$}	(B)
+    (A) edge[bend right,left,newgreen,thick,->,>=stealth']	node[yshift=1pt]{$a$}	(R)
+    (B) edge[bend left,right,newgreen,thick,->,>=stealth']	node[yshift=2pt]{$b$}	(R);
+
+    \coordinate (qubitA) at ($(A)+(0,-1)$);
+    \coordinate (qubitB) at ($(B)+(0,-1)$);
+
+    \draw[decorate,decoration={coil,aspect=0},thick] (qubitA)  -- (qubitB);
+    \filldraw[black!30,draw=black,thick] (qubitA) circle (5pt);
+    \filldraw[black!30,draw=black,thick] (qubitB) circle (5pt);
+
+    \node[] at (-3.6, -3.15) {measure qubit A};
+    \node[] at (3.6, -3.15) {measure qubit B};
+    \node[darkred] at (0, -3.15) {\xmark};
+
+\end{tikzpicture}
+
+\end{document}

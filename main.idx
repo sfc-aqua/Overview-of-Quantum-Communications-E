@@ -55,7 +55,7 @@
 \indexentry{local state|hyperpage}{62}
 \indexentry{global state|hyperpage}{62}
 \indexentry{product state|hyperpage}{63}
-\indexentry{entangled state|hyperpage}{63}
+\indexentry{entangled state|hyperpage}{64}
 \indexentry{Bell states|hyperpage}{64}
 \indexentry{Bell-basis measurement|hyperpage}{65}
 \indexentry{spontaneous parametric down-conversion|hyperpage}{67}
@@ -73,32 +73,31 @@
 \indexentry{polarizer|hyperpage}{69}
 \indexentry{optic axis|hyperpage}{71}
 \indexentry{indistinguishability condition|hyperpage}{72}
-\indexentry{waveguides|hyperpage}{86}
-\indexentry{incoherent light|hyperpage}{87}
-\indexentry{coherent light|hyperpage}{87}
+\indexentry{incoherent light|hyperpage}{86}
+\indexentry{coherent light|hyperpage}{86}
 \indexentry{thermal excitation|hyperpage}{87}
-\indexentry{radiative excitation|hyperpage}{88}
-\indexentry{spontaneous emission|hyperpage}{88}
-\indexentry{laser|hyperpage}{89}
-\indexentry{stimulated emission|hyperpage}{89}
-\indexentry{light amplification|hyperpage}{90}
-\indexentry{unstable state|hyperpage}{93}
-\indexentry{metastable state|hyperpage}{93}
-\indexentry{lasing transition|hyperpage}{93}
+\indexentry{radiative excitation|hyperpage}{87}
+\indexentry{spontaneous emission|hyperpage}{87}
+\indexentry{laser|hyperpage}{88}
+\indexentry{stimulated emission|hyperpage}{88}
+\indexentry{light amplification|hyperpage}{89}
+\indexentry{unstable state|hyperpage}{92}
+\indexentry{metastable state|hyperpage}{92}
+\indexentry{lasing transition|hyperpage}{92}
 \indexentry{gain medium|hyperpage}{93}
-\indexentry{optical cavity|hyperpage}{94}
+\indexentry{optical cavity|hyperpage}{93}
 \indexentry{fixed points|hyperpage}{95}
-\indexentry{stable fixed point|hyperpage}{96}
-\indexentry{unstable fixed points|hyperpage}{96}
+\indexentry{stable fixed point|hyperpage}{95}
+\indexentry{unstable fixed points|hyperpage}{95}
 \indexentry{attenuation|hyperpage}{97}
 \indexentry{amplification|hyperpage}{97}
 \indexentry{second-order correlation function|hyperpage}{98}
-\indexentry{anti-bunched light|hyperpage}{99}
-\indexentry{bunched light|hyperpage}{99}
-\indexentry{heralded single-photon source|hyperpage}{99}
+\indexentry{anti-bunched light|hyperpage}{98}
+\indexentry{bunched light|hyperpage}{98}
+\indexentry{heralded single-photon source|hyperpage}{98}
 \indexentry{dark counts|hyperpage}{99}
-\indexentry{nitrogen-vacancy|hyperpage}{100}
-\indexentry{spin|hyperpage}{100}
+\indexentry{nitrogen-vacancy|hyperpage}{99}
+\indexentry{spin|hyperpage}{99}
 \indexentry{amplitude|hyperpage}{103}
 \indexentry{angular frequency|hyperpage}{103}
 \indexentry{wave number|hyperpage}{103}
@@ -110,7 +109,7 @@
 \indexentry{pulse|hyperpage}{111}
 \indexentry{Mach-Zehnder interferometer|hyperpage}{116}
 \indexentry{interferometer|hyperpage}{116}
-\indexentry{spatial encoding|hyperpage}{117}
+\indexentry{spatial encoding|hyperpage}{116}
 \indexentry{reflection|hyperpage}{123}
 \indexentry{refraction|hyperpage}{123}
 \indexentry{total internal reflection|hyperpage}{123}

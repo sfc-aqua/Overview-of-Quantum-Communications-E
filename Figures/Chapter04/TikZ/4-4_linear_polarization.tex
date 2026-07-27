@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usepackage{gensymb}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows,positioning,calc}
+
+\begin{document}
+
+\definecolor{newgreen}{RGB}{33,172,47}
+\definecolor{darkred}{RGB}{200,0,0}
+
+\begin{tikzpicture}
+    \draw[semithick,dashed,black!50] (0,0) circle (1.5cm);
+    \draw[thick,latex-latex,newgreen] (-1.5,0) -- (1.5,0);
+    \draw[thick,latex-latex,darkred] (0,-1.5) -- (0,1.5);
+    \draw[thick,latex-latex,blue!50] (-1.06,-1.06) -- (1.06,1.06);
+
+    \draw[-latex] (0:0.75) arc (0:45:0.75);
+    \node[] at (1.0, 0.35) {\small $45\degree$};
+
+    \node[newgreen] at (2.5,0.2) {horizontal};
+    \node[newgreen] at (2.5,-0.2) {polarization};
+
+    \node[darkred] at (0, 2.2) {vertical};
+    \node[darkred] at (0, 1.8) {polarization};
+
+    \node[blue!50] at (1.9, 1.4) {diagonal};
+    \node[blue!50] at (2.15, 1.05) {polarization};
+\end{tikzpicture}
+
+
+\end{document}
