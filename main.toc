@@ -69,8 +69,8 @@
 \contentsline {section}{\numberline {9.2}Key agreement and use}{154}{section.9.2}%
 \contentsline {section}{\numberline {9.3}BB84 Protocol}{157}{section.9.3}%
 \contentsline {section}{\numberline {9.4}Eavesdropper detection}{160}{section.9.4}%
-\contentsline {section}{\numberline {9.5}Existing QKD network testbeds}{165}{section.9.5}%
-\contentsline {section}{\numberline {}Exercises}{167}{section*.31}%
+\contentsline {section}{\numberline {9.5}Existing QKD network testbeds}{164}{section.9.5}%
+\contentsline {section}{\numberline {}Exercises}{166}{section*.31}%
 \contentsline {chapter}{\hbox to\@tempdima {10\hfill }{E91: Entanglement-based QKD}}{169}{chapter.10}%
 \contentsline {section}{\numberline {10.1}Introduction}{169}{section.10.1}%
 \contentsline {section}{\numberline {10.2}Basic ingredients}{171}{section.10.2}%
