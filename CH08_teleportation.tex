@@ -18,25 +18,25 @@ Nowadays, if we want to download data from a server, we encode the request in th
 The physical systems that encode the information, in this case photons, are transmitted from from us to the server hop-by-hop using intermediate nodes of the classical network.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/Color/quantum-network.png}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_network_BW.pdf}
     \caption[A quantum network of nodes and channels.]{A quantum network consists of quantum nodes, and quantum channels that we will call links.}
     \label{fig:quantum-network}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/Color/hop-by-hop.png}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_hop-by-hop_BW.pdf}
         \caption[Hop-by-hop transmission.]{Physically moving a quantum message hop-by-hop through a network.}
     \label{fig:hop-by-hop}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/Color/link-down.png}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_link_down_BW.pdf}
         \caption{Rerouting when a link goes down.}
     \label{fig:link-down}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/Color/partitioned.png}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_partitioned_BW.pdf}
         \caption{A partitioned network.}
     \label{fig:partition}
 \end{figure}
@@ -55,16 +55,10 @@ It may seem that we cannot transmit the message to the target...unless we use \t
 We can teleport this state from the sender to the target, provided that some initial conditions are met.
 We can move the information itself \textbf{\emph{without moving the actual physical system}}.
 That physical system remains stationary.
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{lesson8/teleportation-setup.png}
-%         \caption[The setup for teleportation.]{The setup for teleportation: Alice has the data qubit to be teleported, and Alice and Bob share a Bell pair.}
-%     \label{fig:teleportation-setup}
-% \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter08/Color/teleportation.png}
+    \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_teleportaion_outline_BW.pdf}
         \caption{Outline of the teleportation protocol.}
     \label{fig:teleportation}
 \end{figure}
@@ -253,18 +247,7 @@ The questions that we would like to naswer are teh following.
 Is such a transformation possible? If so, what does the unitary look like that can achieve such a transformation?
 \begin{figure}[t]
     \centering
-    \begin{tikzpicture}
-    \begin{yquant*}
-    qubit {$|\psi\rangle$} in;
-    qubit {$|0\rangle$} q;
-
-    [shape=yquant-rectangle, rounded corners=.25em, fill=blue!10, y radius=10pt]
-    box {cloning\\device\\$U$} (in, q);
-
-    output {$|\psi\rangle$} in;
-    output {$|\psi\rangle$} q;
-    \end{yquant*}
-    \end{tikzpicture}
+    \includegraphics[width=0.3\textwidth]{Figures/Chapter08/BW/8-3_no-cloning_BW.pdf}
     \caption[A hypothetical cloning device.]{A hypothetical cloning device would have to create an unentangled copy of the input state $\ket{\psi}$ on the second qubit initialized in $\ket{0}$.}
     \label{fig:cloner}
 \end{figure}
@@ -363,7 +346,7 @@ At time $t_0$, we said that Bob's qubit is part of a maximally entangled pair, w
 This means that if Bob measures his qubit in the Pauli $Z$ basis, he will get the outcome zero ($+1$ eigenvalue) with probability one half, or the outcome one ($-1$ eigenvalue) with probability one half. In fact, if he measures in any basis, he will get the outcome $+1$ or $-1$ with the same probability, so he's maximally unsure about his own state. That also means that he has no idea what state Alice is trying to send him.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figures/Chapter08/Color/teleportation-timeline.png}
+    \includegraphics[width=0.7\textwidth]{Figures/Chapter08/BW/8-3_teleportation_timeline_BW.pdf}
         \caption[Event timing in teleportation.]{The timeline of necessary events and messages in teleportation makes it clear that the speed of light is not violated.}
     \label{fig:teleportation-timeline}
 \end{figure}
