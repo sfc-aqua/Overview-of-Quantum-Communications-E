@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  28 JUL 2026 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  31 JUL 2026 22:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3345,11 +3345,11 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 10 []
  []
 
-<Figures/Chapter10/Color/eavesdropping-on-bb84.png, id=8590, 527.9725pt x 248.93pt>
-File: Figures/Chapter10/Color/eavesdropping-on-bb84.png Graphic file (type png)
-<use Figures/Chapter10/Color/eavesdropping-on-bb84.png>
-Package pdftex.def Info: Figures/Chapter10/Color/eavesdropping-on-bb84.png  used on input line 41.
-(pdftex.def)             Requested size: 249.60095pt x 117.68082pt.
+<Figures/Chapter10/BW/10-1_eavesdropping_BB84_BW.pdf, id=8590, 302.22678pt x 127.67258pt>
+File: Figures/Chapter10/BW/10-1_eavesdropping_BB84_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-1_eavesdropping_BB84_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-1_eavesdropping_BB84_BW.pdf  used on input line 41.
+(pdftex.def)             Requested size: 249.60095pt x 105.4422pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3359,11 +3359,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [169]
-<Figures/Chapter10/Color/e91-setup.png, id=8598, 507.8975pt x 259.97125pt>
-File: Figures/Chapter10/Color/e91-setup.png Graphic file (type png)
-<use Figures/Chapter10/Color/e91-setup.png>
-Package pdftex.def Info: Figures/Chapter10/Color/e91-setup.png  used on input line 57.
-(pdftex.def)             Requested size: 249.60095pt x 127.7599pt.
+<Figures/Chapter10/BW/10-1_e91_setup_BW.pdf, id=8597, 302.22678pt x 144.34096pt>
+File: Figures/Chapter10/BW/10-1_e91_setup_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-1_e91_setup_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-1_e91_setup_BW.pdf  used on input line 57.
+(pdftex.def)             Requested size: 218.39905pt x 104.30643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3372,12 +3372,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[170 <./Figures/Chapter10/Color/eavesdropping-on-bb84.png>]
-<Figures/Chapter10/Color/e91-eve-as-source.png, id=8605, 514.92375pt x 291.0875pt>
-File: Figures/Chapter10/Color/e91-eve-as-source.png Graphic file (type png)
-<use Figures/Chapter10/Color/e91-eve-as-source.png>
-Package pdftex.def Info: Figures/Chapter10/Color/e91-eve-as-source.png  used on input line 64.
-(pdftex.def)             Requested size: 249.60095pt x 141.0973pt.
+[170 <./Figures/Chapter10/BW/10-1_eavesdropping_BB84_BW.pdf>]
+<Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf, id=8645, 302.22678pt x 144.34096pt>
+File: Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf  used on input line 64.
+(pdftex.def)             Requested size: 218.39905pt x 104.30643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3386,7 +3386,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[171 <./Figures/Chapter10/Color/e91-setup.png> <./Figures/Chapter10/Color/e91-eve-as-source.png>]
+[171 <./Figures/Chapter10/BW/10-1_e91_setup_BW.pdf> <./Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/Chapter10/BW/10-1_e91_Eve_BW.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3403,11 +3406,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [173]
-<Figures/Chapter10/Color/chsh-values.png, id=8628, 620.3175pt x 108.405pt>
-File: Figures/Chapter10/Color/chsh-values.png Graphic file (type png)
-<use Figures/Chapter10/Color/chsh-values.png>
-Package pdftex.def Info: Figures/Chapter10/Color/chsh-values.png  used on input line 185.
-(pdftex.def)             Requested size: 249.60095pt x 43.61926pt.
+<Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf, id=8694, 336.65227pt x 43.1338pt>
+File: Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf  used on input line 185.
+(pdftex.def)             Requested size: 249.60095pt x 31.98102pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3416,7 +3419,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[174 <./Figures/Chapter10/Color/chsh-values.png>]
+[174 <./Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3425,15 +3428,15 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [175]
-<Figures/Chapter10/Color/10-3_bases.pdf, id=8647, 335.49823pt x 146.90631pt>
-File: Figures/Chapter10/Color/10-3_bases.pdf Graphic file (type pdf)
-<use Figures/Chapter10/Color/10-3_bases.pdf>
-Package pdftex.def Info: Figures/Chapter10/Color/10-3_bases.pdf  used on input line 257.
+<Figures/Chapter10/BW/10-3_bases_BW.pdf, id=8738, 335.49823pt x 146.90631pt>
+File: Figures/Chapter10/BW/10-3_bases_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-3_bases_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-3_bases_BW.pdf  used on input line 257.
 (pdftex.def)             Requested size: 218.39905pt x 95.63365pt.
-<Figures/Chapter10/Color/10-3-bases_key.pdf, id=8648, 335.49823pt x 196.7695pt>
-File: Figures/Chapter10/Color/10-3-bases_key.pdf Graphic file (type pdf)
-<use Figures/Chapter10/Color/10-3-bases_key.pdf>
-Package pdftex.def Info: Figures/Chapter10/Color/10-3-bases_key.pdf  used on input line 274.
+<Figures/Chapter10/Bw/10-3_bases_key_BW.pdf, id=8739, 335.49823pt x 196.7695pt>
+File: Figures/Chapter10/Bw/10-3_bases_key_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/Bw/10-3_bases_key_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/Bw/10-3_bases_key_BW.pdf  used on input line 274.
 (pdftex.def)             Requested size: 249.60095pt x 146.39378pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3443,11 +3446,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[176 <./Figures/Chapter10/Color/10-3_bases.pdf>]
-<Figures/Chapter10/Color/10-3_bases_CHSH.pdf, id=8657, 335.49823pt x 146.90631pt>
-File: Figures/Chapter10/Color/10-3_bases_CHSH.pdf Graphic file (type pdf)
-<use Figures/Chapter10/Color/10-3_bases_CHSH.pdf>
-Package pdftex.def Info: Figures/Chapter10/Color/10-3_bases_CHSH.pdf  used on input line 294.
+[176 <./Figures/Chapter10/BW/10-3_bases_BW.pdf>]
+<Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf, id=8757, 335.49823pt x 146.90631pt>
+File: Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf>
+Package pdftex.def Info: Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf  used on input line 294.
 (pdftex.def)             Requested size: 218.39905pt x 95.63365pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3457,7 +3460,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[177 <./Figures/Chapter10/Color/10-3-bases_key.pdf>]
+[177 <./Figures/Chapter10/Bw/10-3_bases_key_BW.pdf>]
 Overfull \hbox (0.59773pt too wide) in paragraph at lines 319--322
 []\OT1/ptm/m/n/10 Having cover the ba-sics of both single-photon and entanglement-based QKD,
  []
@@ -3470,7 +3473,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[178 <./Figures/Chapter10/Color/10-3_bases_CHSH.pdf>]
+[178 <./Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3582,10 +3585,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [191]
-<Figures/Chapter11/Color/11-2_dispersion.pdf, id=8775, 745.98486pt x 160.20833pt>
-File: Figures/Chapter11/Color/11-2_dispersion.pdf Graphic file (type pdf)
-<use Figures/Chapter11/Color/11-2_dispersion.pdf>
-Package pdftex.def Info: Figures/Chapter11/Color/11-2_dispersion.pdf  used on input line 112.
+<Figures/Chapter11/BW/11-2_dispersion_BW.pdf, id=8897, 745.98486pt x 160.20833pt>
+File: Figures/Chapter11/BW/11-2_dispersion_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter11/BW/11-2_dispersion_BW.pdf>
+Package pdftex.def Info: Figures/Chapter11/BW/11-2_dispersion_BW.pdf  used on input line 112.
 (pdftex.def)             Requested size: 312.0pt x 67.00589pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3595,11 +3598,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[192 <./Figures/Chapter11/Color/11-2_dispersion.pdf>]
-<Figures/Chapter11/Color/11-2_dispersion_delay.pdf, id=8792, 691.9683pt x 225.85773pt>
-File: Figures/Chapter11/Color/11-2_dispersion_delay.pdf Graphic file (type pdf)
-<use Figures/Chapter11/Color/11-2_dispersion_delay.pdf>
-Package pdftex.def Info: Figures/Chapter11/Color/11-2_dispersion_delay.pdf  used on input line 136.
+[192 <./Figures/Chapter11/BW/11-2_dispersion_BW.pdf>]
+<Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf, id=8920, 691.9683pt x 225.85773pt>
+File: Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf>
+Package pdftex.def Info: Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf  used on input line 136.
 (pdftex.def)             Requested size: 249.60095pt x 81.47069pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3609,7 +3612,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[193 <./Figures/Chapter11/Color/11-2_dispersion_delay.pdf>]
+[193 <./Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf>]
 Overfull \hbox (7.54808pt too wide) in paragraph at lines 181--184
 \OT1/ptm/m/n/10 where the last equal-ity comes from Eq. ([]7.8[]). Sub-sti-tut-ing for $[] \OML/txmi/m/it/10 ^^R[]$ \OT1/ptm/m/n/10 in Eq. ([]11.6[]),
  []
@@ -3623,10 +3626,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [194]
-<Figures/Chapter11/Color/11-3_attenuation.pdf, id=8816, 1626.84619pt x 669.85437pt>
-File: Figures/Chapter11/Color/11-3_attenuation.pdf Graphic file (type pdf)
-<use Figures/Chapter11/Color/11-3_attenuation.pdf>
-Package pdftex.def Info: Figures/Chapter11/Color/11-3_attenuation.pdf  used on input line 233.
+<Figures/Chapter11/BW/11-3_attenuation_BW.pdf, id=8950, 1626.84619pt x 669.85437pt>
+File: Figures/Chapter11/BW/11-3_attenuation_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter11/BW/11-3_attenuation_BW.pdf>
+Package pdftex.def Info: Figures/Chapter11/BW/11-3_attenuation_BW.pdf  used on input line 233.
 (pdftex.def)             Requested size: 312.0pt x 128.4593pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3644,11 +3647,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[196 <./Figures/Chapter11/Color/11-3_attenuation.pdf>]
-<Figures/Chapter11/Color/11-3_attenuation_dB.pdf, id=8871, 401.8221pt x 226.67014pt>
-File: Figures/Chapter11/Color/11-3_attenuation_dB.pdf Graphic file (type pdf)
-<use Figures/Chapter11/Color/11-3_attenuation_dB.pdf>
-Package pdftex.def Info: Figures/Chapter11/Color/11-3_attenuation_dB.pdf  used on input line 306.
+[196 <./Figures/Chapter11/BW/11-3_attenuation_BW.pdf>]
+<Figures/Chapter11/BW/11-3_attenuation_dB_BW.pdf, id=8978, 401.8221pt x 226.67014pt>
+File: Figures/Chapter11/BW/11-3_attenuation_dB_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter11/BW/11-3_attenuation_dB_BW.pdf>
+Package pdftex.def Info: Figures/Chapter11/BW/11-3_attenuation_dB_BW.pdf  used on input line 306.
 (pdftex.def)             Requested size: 187.2019pt x 105.60112pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3659,10 +3662,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [197]
-<Figures/Chapter11/Color/11-4_edfa.pdf, id=8883, 455.24413pt x 207.72064pt>
-File: Figures/Chapter11/Color/11-4_edfa.pdf Graphic file (type pdf)
-<use Figures/Chapter11/Color/11-4_edfa.pdf>
-Package pdftex.def Info: Figures/Chapter11/Color/11-4_edfa.pdf  used on input line 354.
+<Figures/Chapter11/BW/11-4_edfa_BW.pdf, id=8989, 455.24413pt x 207.72064pt>
+File: Figures/Chapter11/BW/11-4_edfa_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter11/BW/11-4_edfa_BW.pdf>
+Package pdftex.def Info: Figures/Chapter11/BW/11-4_edfa_BW.pdf  used on input line 354.
 (pdftex.def)             Requested size: 187.2019pt x 85.4164pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3672,7 +3675,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[198 <./Figures/Chapter11/Color/11-3_attenuation_dB.pdf>]
+[198 <./Figures/Chapter11/BW/11-3_attenuation_dB_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3680,7 +3683,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[199 <./Figures/Chapter11/Color/11-4_edfa.pdf>]
+[199 <./Figures/Chapter11/BW/11-4_edfa_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3720,11 +3723,11 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 12 []
  []
 
-<Figures/Chapter12/Color/12-1_all_to_all.pdf, id=8941, 323.40997pt x 172.64638pt>
-File: Figures/Chapter12/Color/12-1_all_to_all.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-1_all_to_all.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-1_all_to_all.pdf  used on input line 19.
-(pdftex.def)             Requested size: 265.2019pt x 141.57356pt.
+<Figures/Chapter12/BW/12-1_all_to_all_BW.pdf, id=9087, 322.93661pt x 172.64075pt>
+File: Figures/Chapter12/BW/12-1_all_to_all_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-1_all_to_all_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-1_all_to_all_BW.pdf  used on input line 19.
+(pdftex.def)             Requested size: 265.2019pt x 141.7876pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3746,11 +3749,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[206 <./Figures/Chapter12/Color/12-1_all_to_all.pdf>]
-<Figures/Chapter12/Color/12-2_MIM.pdf, id=8963, 252.41501pt x 233.3345pt>
-File: Figures/Chapter12/Color/12-2_MIM.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-2_MIM.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-2_MIM.pdf  used on input line 64.
+[206 <./Figures/Chapter12/BW/12-1_all_to_all_BW.pdf>]
+<Figures/Chapter12/BW/12-2_MIM_BW.pdf, id=9127, 252.41501pt x 233.3345pt>
+File: Figures/Chapter12/BW/12-2_MIM_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-2_MIM_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-2_MIM_BW.pdf  used on input line 64.
 (pdftex.def)             Requested size: 249.60095pt x 230.73839pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3760,21 +3763,21 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[207 <./Figures/Chapter12/Color/12-2_MIM.pdf>]
-<Figures/Chapter12/Color/12-2_MM_MSM.pdf, id=8978, 283.58035pt x 117.0678pt>
-File: Figures/Chapter12/Color/12-2_MM_MSM.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-2_MM_MSM.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-2_MM_MSM.pdf  used on input line 84.
+[207 <./Figures/Chapter12/BW/12-2_MIM_BW.pdf>]
+<Figures/Chapter12/BW/12-2_MM_MSM_BW.pdf, id=9142, 283.58035pt x 117.0678pt>
+File: Figures/Chapter12/BW/12-2_MM_MSM_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-2_MM_MSM_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-2_MM_MSM_BW.pdf  used on input line 84.
 (pdftex.def)             Requested size: 265.2019pt x 109.4864pt.
 
 Overfull \hbox (2.10692pt too wide) in paragraph at lines 89--97
 []\OT1/ptm/m/n/10 Figure []12.3[] shows two more link-level ar-chi-tec-tures. The first one is \OT1/ptm/b/it/10 memory-
  []
 
-<Figures/Chapter12/Color/12-3_entanglement_swapping.pdf, id=8982, 261.19954pt x 135.9027pt>
-File: Figures/Chapter12/Color/12-3_entanglement_swapping.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-3_entanglement_swapping.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-3_entanglement_swapping.pdf  used on input line 113.
+<Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf, id=9146, 261.19954pt x 135.9027pt>
+File: Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf  used on input line 113.
 (pdftex.def)             Requested size: 249.60095pt x 129.872pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3784,7 +3787,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[208 <./Figures/Chapter12/Color/12-2_MM_MSM.pdf>]
+[208 <./Figures/Chapter12/BW/12-2_MM_MSM_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3792,7 +3795,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[209 <./Figures/Chapter12/Color/12-3_entanglement_swapping.pdf>]
+[209 <./Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3809,10 +3812,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [211]
-<Figures/Chapter12/Color/12-4_purification.pdf, id=9030, 175.4037pt x 60.27222pt>
-File: Figures/Chapter12/Color/12-4_purification.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-4_purification.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-4_purification.pdf  used on input line 245.
+<Figures/Chapter12/BW/12-4_purification_BW.pdf, id=9206, 175.4037pt x 60.27222pt>
+File: Figures/Chapter12/BW/12-4_purification_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-4_purification_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-4_purification_BW.pdf  used on input line 245.
 (pdftex.def)             Requested size: 218.39905pt x 75.0513pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3830,7 +3833,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[213 <./Figures/Chapter12/Color/12-4_purification.pdf>]
+[213 <./Figures/Chapter12/BW/12-4_purification_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3839,10 +3842,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [214]
-<Figures/Chapter12/Color/12-5_routing_multiplexing.pdf, id=9064, 325.83247pt x 135.69626pt>
-File: Figures/Chapter12/Color/12-5_routing_multiplexing.pdf Graphic file (type pdf)
-<use Figures/Chapter12/Color/12-5_routing_multiplexing.pdf>
-Package pdftex.def Info: Figures/Chapter12/Color/12-5_routing_multiplexing.pdf  used on input line 359.
+<Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf, id=9240, 325.83247pt x 135.69626pt>
+File: Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf>
+Package pdftex.def Info: Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf  used on input line 359.
 (pdftex.def)             Requested size: 249.60095pt x 103.94809pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3860,7 +3863,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[216 <./Figures/Chapter12/Color/12-5_routing_multiplexing.pdf>]
+[216 <./Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf>]
 Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
@@ -3892,7 +3895,7 @@ Overfull \hbox (38.0pt too wide) detected at line 2
 \chapternumberfont 13 []
  []
 
-<Figures/Chapter13/Color/13-1_repeater.pdf, id=9107, 252.41505pt x 76.14255pt>
+<Figures/Chapter13/Color/13-1_repeater.pdf, id=9302, 252.41505pt x 76.14255pt>
 File: Figures/Chapter13/Color/13-1_repeater.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-1_repeater.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-1_repeater.pdf  used on input line 20.
@@ -3906,7 +3909,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [221]
-<Figures/Chapter13/Color/13-2_measurementPauli.pdf, id=9120, 377.19643pt x 114.72025pt>
+<Figures/Chapter13/Color/13-2_measurementPauli.pdf, id=9314, 377.19643pt x 114.72025pt>
 File: Figures/Chapter13/Color/13-2_measurementPauli.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-2_measurementPauli.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-2_measurementPauli.pdf  used on input line 70.
@@ -3920,7 +3923,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [222 <./Figures/Chapter13/Color/13-1_repeater.pdf>]
-<Figures/Chapter13/Color/13-2_measurementBell.pdf, id=9137, 582.47354pt x 116.92247pt>
+<Figures/Chapter13/Color/13-2_measurementBell.pdf, id=9331, 582.47354pt x 116.92247pt>
 File: Figures/Chapter13/Color/13-2_measurementBell.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-2_measurementBell.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-2_measurementBell.pdf  used on input line 108.
@@ -3942,7 +3945,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [224 <./Figures/Chapter13/Color/13-2_measurementBell.pdf>]
-<Figures/Chapter13/Color/13-3_PBS.pdf, id=9304, 200.82266pt x 79.99576pt>
+<Figures/Chapter13/Color/13-3_PBS.pdf, id=9498, 200.82266pt x 79.99576pt>
 File: Figures/Chapter13/Color/13-3_PBS.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-3_PBS.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-3_PBS.pdf  used on input line 165.
@@ -3956,7 +3959,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [225 <./Figures/Chapter13/Color/13-3_PBS.pdf>]
-<Figures/Chapter13/Color/13-3_PBS_measure.pdf, id=9331, 236.61319pt x 130.23994pt>
+<Figures/Chapter13/Color/13-3_PBS_measure.pdf, id=9525, 236.61319pt x 130.23994pt>
 File: Figures/Chapter13/Color/13-3_PBS_measure.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-3_PBS_measure.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-3_PBS_measure.pdf  used on input line 181.
@@ -3976,7 +3979,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [226 <./Figures/Chapter13/Color/13-3_PBS_measure.pdf>]
-<Figures/Chapter13/Color/13-3_BSA_clicks.pdf, id=9355, 180.72679pt x 161.92416pt>
+<Figures/Chapter13/Color/13-3_BSA_clicks.pdf, id=9550, 180.72679pt x 161.92416pt>
 File: Figures/Chapter13/Color/13-3_BSA_clicks.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-3_BSA_clicks.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-3_BSA_clicks.pdf  used on input line 213.
@@ -4022,7 +4025,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [231]
-<Figures/Chapter13/Color/13-4_memory-first.pdf, id=9403, 217.80095pt x 40.43756pt>
+<Figures/Chapter13/Color/13-4_memory-first.pdf, id=9597, 217.80095pt x 40.43756pt>
 File: Figures/Chapter13/Color/13-4_memory-first.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-4_memory-first.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-4_memory-first.pdf  used on input line 395.
@@ -4036,7 +4039,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [232 <./Figures/Chapter13/Color/13-4_memory-first.pdf>]
-<Figures/Chapter13/Color/13-4_memory-second.pdf, id=9423, 83.09715pt x 39.95605pt>
+<Figures/Chapter13/Color/13-4_memory-second.pdf, id=9617, 83.09715pt x 39.95605pt>
 File: Figures/Chapter13/Color/13-4_memory-second.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-4_memory-second.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-4_memory-second.pdf  used on input line 451.
@@ -4058,7 +4061,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [234 <./Figures/Chapter13/Color/13-4_memory-second.pdf>]
-<Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf, id=9443, 197.22539pt x 212.20244pt>
+<Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf, id=9637, 197.22539pt x 212.20244pt>
 File: Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf Graphic file (type pdf)
 <use Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf>
 Package pdftex.def Info: Figures/Chapter13/Color/13-4_MIM_with_energy_levels.pdf  used on input line 504.
@@ -4152,7 +4155,7 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 14 []
  []
 
-<Figures/Chapter14/Color/14-1_bipartite_network.pdf, id=9524, 398.8121pt x 271.87636pt>
+<Figures/Chapter14/Color/14-1_bipartite_network.pdf, id=9718, 398.8121pt x 271.87636pt>
 File: Figures/Chapter14/Color/14-1_bipartite_network.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-1_bipartite_network.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-1_bipartite_network.pdf  used on input line 18.
@@ -4174,7 +4177,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [246 <./Figures/Chapter14/Color/14-1_bipartite_network.pdf>]
-<Figures/Chapter14/Color/14-1_QKD.pdf, id=9545, 125.81955pt x 72.54498pt>
+<Figures/Chapter14/Color/14-1_QKD.pdf, id=9739, 125.81955pt x 72.54498pt>
 File: Figures/Chapter14/Color/14-1_QKD.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-1_QKD.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-1_QKD.pdf  used on input line 66.
@@ -4225,7 +4228,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [251]
-<Figures/Chapter14/Color/14-2_monogamy.pdf, id=9619, 425.6079pt x 116.58786pt>
+<Figures/Chapter14/Color/14-2_monogamy.pdf, id=9814, 425.6079pt x 116.58786pt>
 File: Figures/Chapter14/Color/14-2_monogamy.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-2_monogamy.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-2_monogamy.pdf  used on input line 245.
@@ -4239,7 +4242,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [252 <./Figures/Chapter14/Color/14-2_monogamy.pdf>]
-<Figures/Chapter14/Color/14-2_graph_state.pdf, id=9651, 300.30418pt x 137.76022pt>
+<Figures/Chapter14/Color/14-2_graph_state.pdf, id=9845, 300.30418pt x 137.76022pt>
 File: Figures/Chapter14/Color/14-2_graph_state.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-2_graph_state.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-2_graph_state.pdf  used on input line 279.
@@ -4253,12 +4256,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [253 <./Figures/Chapter14/Color/14-2_graph_state.pdf>]
-<Figures/Chapter14/Color/14-2_cluster_state.pdf, id=9669, 507.61162pt x 146.81622pt>
+<Figures/Chapter14/Color/14-2_cluster_state.pdf, id=9863, 507.61162pt x 146.81622pt>
 File: Figures/Chapter14/Color/14-2_cluster_state.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-2_cluster_state.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-2_cluster_state.pdf  used on input line 301.
 (pdftex.def)             Requested size: 312.0pt x 90.24103pt.
-<Figures/Chapter14/Color/14-3_clock_sync.pdf, id=9672, 425.18636pt x 126.22318pt>
+<Figures/Chapter14/Color/14-3_clock_sync.pdf, id=9866, 425.18636pt x 126.22318pt>
 File: Figures/Chapter14/Color/14-3_clock_sync.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-3_clock_sync.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-3_clock_sync.pdf  used on input line 332.
@@ -4272,7 +4275,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [254 <./Figures/Chapter14/Color/14-2_cluster_state.pdf>]
-<Figures/Chapter14/Color/14-3_bloch.pdf, id=9694, 1294.04622pt x 582.16115pt>
+<Figures/Chapter14/Color/14-3_bloch.pdf, id=9888, 1294.04622pt x 582.16115pt>
 File: Figures/Chapter14/Color/14-3_bloch.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-3_bloch.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-3_bloch.pdf  used on input line 359.
@@ -4286,7 +4289,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [255 <./Figures/Chapter14/Color/14-3_clock_sync.pdf>]
-<Figures/Chapter14/Color/14-4_distributed_qc.pdf, id=9726, 156.9297pt x 133.3887pt>
+<Figures/Chapter14/Color/14-4_distributed_qc.pdf, id=9921, 156.9297pt x 133.3887pt>
 File: Figures/Chapter14/Color/14-4_distributed_qc.pdf Graphic file (type pdf)
 <use Figures/Chapter14/Color/14-4_distributed_qc.pdf>
 Package pdftex.def Info: Figures/Chapter14/Color/14-4_distributed_qc.pdf  used on input line 395.
@@ -4332,7 +4335,7 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 15 []
  []
 
-<Figures/Chapter15/Color/R2L15fig1.pdf, id=9777, 722.7pt x 406.51875pt>
+<Figures/Chapter15/Color/R2L15fig1.pdf, id=9971, 722.7pt x 406.51875pt>
 File: Figures/Chapter15/Color/R2L15fig1.pdf Graphic file (type pdf)
 <use Figures/Chapter15/Color/R2L15fig1.pdf>
 Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig1.pdf  used on input line 22.
@@ -4380,12 +4383,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [265]
-<Figures/Chapter15/Color/R2L15fig2.pdf, id=9842, 313.004pt x 300.95897pt>
+<Figures/Chapter15/Color/R2L15fig2.pdf, id=10037, 313.004pt x 300.95897pt>
 File: Figures/Chapter15/Color/R2L15fig2.pdf Graphic file (type pdf)
 <use Figures/Chapter15/Color/R2L15fig2.pdf>
 Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig2.pdf  used on input line 94.
 (pdftex.def)             Requested size: 156.0pt x 149.99692pt.
-<Figures/Chapter15/Color/R2L15fig3.pdf, id=9843, 349.88995pt x 334.16078pt>
+<Figures/Chapter15/Color/R2L15fig3.pdf, id=10038, 349.88995pt x 334.16078pt>
 File: Figures/Chapter15/Color/R2L15fig3.pdf Graphic file (type pdf)
 <use Figures/Chapter15/Color/R2L15fig3.pdf>
 Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig3.pdf  used on input line 101.
@@ -4407,7 +4410,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [267 <./Figures/Chapter15/Color/R2L15fig3.pdf>]
-<Figures/Chapter15/Color/R2L15fig4.pdf, id=9866, 722.7pt x 406.51875pt>
+<Figures/Chapter15/Color/R2L15fig4.pdf, id=10061, 722.7pt x 406.51875pt>
 File: Figures/Chapter15/Color/R2L15fig4.pdf Graphic file (type pdf)
 <use Figures/Chapter15/Color/R2L15fig4.pdf>
 Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig4.pdf  used on input line 147.
@@ -4429,7 +4432,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [269 <./Figures/Chapter15/Color/R2L15fig4.pdf>]
-<Figures/Chapter15/Color/R2L15fig5.pdf, id=9928, 722.7pt x 406.51875pt>
+<Figures/Chapter15/Color/R2L15fig5.pdf, id=10122, 722.7pt x 406.51875pt>
 File: Figures/Chapter15/Color/R2L15fig5.pdf Graphic file (type pdf)
 <use Figures/Chapter15/Color/R2L15fig5.pdf>
 Package pdftex.def Info: Figures/Chapter15/Color/R2L15fig5.pdf  used on input line 170.
@@ -4642,17 +4645,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  41412 strings out of 467533
- 967005 string characters out of 5419489
- 1480627 words of memory out of 5000000
+ 967185 string characters out of 5419489
+ 1480638 words of memory out of 5000000
  68441 multiletter control sequences out of 15000+600000
  723398 words of font info for 229 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
  84i,21n,94p,2079b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (308 pages, 4665531 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on main.pdf (308 pages, 4529975 bytes).
 PDF statistics:
- 10681 PDF objects out of 10688 (max. 8388607)
- 7935 compressed objects within 80 object streams
+ 10873 PDF objects out of 12825 (max. 8388607)
+ 8060 compressed objects within 81 object streams
  1010 named destinations out of 1200 (max. 500000)
  1658 words of extra memory for PDF output out of 10000 (max. 10000000)
 
