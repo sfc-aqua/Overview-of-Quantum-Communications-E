@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex main"] 1785304973.8336 "main.aux" "main.bbl" "main" 1785505911.95976 0
+["bibtex main"] 1785304973.8336 "main.aux" "main.bbl" "main" 1785506535.84282 0
   "./main.bib" 1783995995.54083 9987 5c3794ec9d481c7de8ff12fdc146b8b3 ""
   "./mit-chicago.bst" 1783995995.54116 47334 7fc0feda303d325fede4cb1f627d1cd0 ""
-  "main.aux" 1785505911.53385 63893 e2c91b8fb149cc4f05bd52929bf19bc6 "pdflatex"
+  "main.aux" 1785506535.41403 63893 e2c91b8fb149cc4f05bd52929bf19bc6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1785304973.71783 "main.idx" "main.ind" "main" 1785505911.95962 0
-  "main.idx" 1785505911.53876 11646 ba53a75ed1a8a6284753816ea4217361 "pdflatex"
+["makeindex main.idx"] 1785304973.71783 "main.idx" "main.ind" "main" 1785506535.84271 0
+  "main.idx" 1785506535.41881 11646 ba53a75ed1a8a6284753816ea4217361 "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1785505909.31557 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1785505911.95993 0
+["pdflatex"] 1785506533.17813 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1785506535.84299 0
   "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" 1784165744.47602 52261 fbd0ac2ce5f68d849e1ef2969342ab14 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -346,7 +346,7 @@
   "CH07_Waveguides.tex" 1785159463.78417 28334 17a60f6a07245f019a3d48e72d39b1c8 ""
   "CH08_Teleportation.tex" 1785222648.90999 30667 edaeb7e2dd08dfed79d058263b315f67 ""
   "CH09_BB84.tex" 1785246576.6252 40584 a7c5219d0ecdc54bc1e41293a9ff88f4 ""
-  "CH10_E91.tex" 1785329319.00668 34906 2d7354a50746305ca29f08f46bc2d16b ""
+  "CH10_E91.tex" 1785506533.0528 34906 dbfe96777a20c143f2f4dc11e72d881f ""
   "CH11_Long-Distance-Communication.tex" 1785459646.42595 35164 273c18829f01246657614ce18e79f303 ""
   "CH12_Quantum-Repeaters.tex" 1785505909.18528 36255 7506ace8efb61fe9aa7aa59273942616 ""
   "CH13_Physical-Layer-Components.tex" 1784079189.03944 44775 b528e2ea53f87f62c15d904ebc07f114 ""
@@ -434,7 +434,7 @@
   "Figures/Chapter10/BW/10-2_CHSH_correlation_BW.pdf" 1785327837.08868 13827 767e79bb6b73c22caabbc84f740c1617 ""
   "Figures/Chapter10/BW/10-3_bases_BW.pdf" 1785328626.40615 7197 ddcd11ef6b6983608fd5c037b9c06067 ""
   "Figures/Chapter10/BW/10-3_bases_CHSH_BW.pdf" 1785329305.96087 5678 c2f8649f3a295892b3f0aff066ca2d35 ""
-  "Figures/Chapter10/Bw/10-3_bases_key_BW.pdf" 1785328942.58231 23766 92a239eb6545d60934cab5e9cb86c52f ""
+  "Figures/Chapter10/BW/10-3_bases_key_BW.pdf" 1785328942.58231 23766 92a239eb6545d60934cab5e9cb86c52f ""
   "Figures/Chapter11/BW/11-2_dispersion_BW.pdf" 1785461078.81757 18207 30e162aa22bccdb8263e58fa416284ad ""
   "Figures/Chapter11/BW/11-2_dispersion_delay_BW.pdf" 1785457814.08075 5565 23a3d60d05d256abe01b6a15d98b4fe5 ""
   "Figures/Chapter11/BW/11-3_attenuation_BW.pdf" 1785462868.01126 15545 9ef2e41f61a05e7d4d54d8732f0951a2 ""
@@ -473,13 +473,13 @@
   "intro-block-3.tex" 1783995995.50827 1638 1029850ed0644be4136b6a6502721c67 ""
   "intro-block-4.tex" 1783995995.50835 971 94bf8973f259d3d2a50aa4d5bd3a45b2 ""
   "intro-block-5.tex" 1783995995.50843 466 ccabc94a270e8fba698b5c197876f122 ""
-  "main.aux" 1785505911.53385 63893 e2c91b8fb149cc4f05bd52929bf19bc6 "pdflatex"
+  "main.aux" 1785506535.41403 63893 e2c91b8fb149cc4f05bd52929bf19bc6 "pdflatex"
   "main.bbl" 1785304973.95977 13485 9190c286e3b66c743dcda225ca46a0b8 "bibtex main"
   "main.ind" 1785304973.83231 10657 624490fe16081cce5d428ad2ffe5efd4 "makeindex main.idx"
-  "main.lof" 1785505911.53903 12082 906ad6c8c6a21e5ebe0fbfa6ecfc35c7 "pdflatex"
-  "main.out" 1785505911.53851 19331 916eba63dd7823a7bf4e367100b052a0 "pdflatex"
+  "main.lof" 1785506535.41906 12082 906ad6c8c6a21e5ebe0fbfa6ecfc35c7 "pdflatex"
+  "main.out" 1785506535.41852 19331 916eba63dd7823a7bf4e367100b052a0 "pdflatex"
   "main.tex" 1784165744.47602 52261 fbd0ac2ce5f68d849e1ef2969342ab14 ""
-  "main.toc" 1785505911.53889 9869 b4cfd7524ed0f434390e15e6b50d52fd "pdflatex"
+  "main.toc" 1785506535.41894 9869 b4cfd7524ed0f434390e15e6b50d52fd "pdflatex"
   "newmath.cls" 1783995995.54136 76503 fd9fe661cb3a15f896aef9b2f135ca1f ""
   "preface.tex" 1783995995.54153 2162 871895519cbdedf4a3f5e46a80dd80c6 ""
   "tikz-3dplot-circleofsphere.sty" 1783995995.54168 16835 12e91436ad62c15f5dafdc3be3fbc7f6 ""
