@@ -240,18 +240,18 @@
 \indexentry{TCP/IP|hyperpage}{265}
 \indexentry{Border Gateway Protocol (BGP)|hyperpage}{265}
 \indexentry{virtualization|hyperpage}{265}
-\indexentry{recursion|hyperpage}{266}
+\indexentry{recursion|hyperpage}{265}
 \indexentry{autonomous system|hyperpage}{266}
 \indexentry{link state|hyperpage}{266}
 \indexentry{spanning tree|hyperpage}{266}
 \indexentry{recursive network|hyperpage}{267}
 \indexentry{IPsec|hyperpage}{268}
-\indexentry{Transport Layer Security (TLS)|hyperpage}{269}
+\indexentry{Transport Layer Security (TLS)|hyperpage}{268}
 \indexentry{public key cryptography|hyperpage}{269}
 \indexentry{Diffie-Hellman key exchange|hyperpage}{269}
 \indexentry{Advanced Encryption Standard (AES)|hyperpage}{269}
-\indexentry{man-in-the-middle|hyperpage}{270}
-\indexentry{mode dispersion|hyperpage}{273}
+\indexentry{man-in-the-middle|hyperpage}{269}
+\indexentry{mode dispersion|hyperpage}{272}
 \indexentry{specification|hyperpage}{273}
 \indexentry{Request for Comments|hyperpage}{273}
 \indexentry{entanglement swapping|hyperpage}{274}

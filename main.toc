@@ -113,7 +113,7 @@
 \contentsline {chapter}{\hbox to\@tempdima {15\hfill }{Quantum Internet}}{261}{chapter.15}%
 \contentsline {section}{\numberline {15.1}Networks of networks}{261}{section.15.1}%
 \contentsline {section}{\numberline {15.2}Integration with classical systems}{268}{section.15.2}%
-\contentsline {section}{\numberline {15.3}Putting it all together}{274}{section.15.3}%
+\contentsline {section}{\numberline {15.3}Putting it all together}{273}{section.15.3}%
 \contentsline {section}{Quiz}{278}{section*.45}%
 \contentsline {section}{Further reading chapters 14-15}{278}{section*.46}%
 \vskip 8pt
