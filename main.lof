@@ -70,7 +70,7 @@
 \contentsline {figure}{\numberline {8.4}{\ignorespaces A partitioned network.}}{140}{figure.8.4}%
 \contentsline {figure}{\numberline {8.5}{\ignorespaces Outline of the teleportation protocol.}}{141}{figure.8.5}%
 \contentsline {figure}{\numberline {8.6}{\ignorespaces A hypothetical cloning device.}}{146}{figure.8.6}%
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Event timing in teleportation.}}{149}{figure.8.7}%
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Event timing in teleportation.}}{148}{figure.8.7}%
 \contentsline {figure}{\numberline {9.1}{\ignorespaces Eve's ideal (but impossible) eavesdropping arrangement.}}{161}{figure.9.1}%
 \contentsline {figure}{\numberline {9.2}{\ignorespaces Eve's measurements disturb the qubits.}}{161}{figure.9.2}%
 \contentsline {figure}{\numberline {9.3}{\ignorespaces Probability of detecting the presence of Eve.}}{164}{figure.9.3}%
@@ -90,7 +90,7 @@
 \contentsline {figure}{\numberline {12.2}{\ignorespaces MIM link architecture.}}{207}{figure.12.2}%
 \contentsline {figure}{\numberline {12.3}{\ignorespaces MM and MSM architectures.}}{208}{figure.12.3}%
 \contentsline {figure}{\numberline {12.4}{\ignorespaces Entanglement swapping.}}{209}{figure.12.4}%
-\contentsline {figure}{\numberline {12.5}{\ignorespaces Entanglement purification for Pauli X errors.}}{213}{figure.12.5}%
+\contentsline {figure}{\numberline {12.5}{\ignorespaces Entanglement purification for Pauli X errors.}}{212}{figure.12.5}%
 \contentsline {figure}{\numberline {12.6}{\ignorespaces Routing and multiplexing.}}{216}{figure.12.6}%
 \contentsline {figure}{\numberline {13.1}{\ignorespaces MIM link hardware.}}{222}{figure.13.1}%
 \contentsline {figure}{\numberline {13.2}{\ignorespaces Changing the basis of measurements.}}{223}{figure.13.2}%
