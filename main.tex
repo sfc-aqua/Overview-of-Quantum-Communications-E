@@ -24,7 +24,15 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{etoolbox} %ifthen
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{xsim}
 \tikzset{>=latex}
+\xsimsetup{
+  exercise/name = Exercise,
+  solution/name = Solution,
+  exercise/within = chapter % Numbers exercises by chapter (e.g., 1.1, 1.2)
+}
 
 
 \let\oldding\ding
