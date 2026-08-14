@@ -798,74 +798,202 @@ $\left(\begin{array}{ll}
 \fi
 
 \newpage
-\begin{exercises}
-\exer{Consider the following quantum state:}
-\begin{equation*}
-\ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}
-\end{equation*}
-\subexer{Find the probability of measuring a zero.}
-\subexer{Find the probability of measuring a one.}
-\exer{Write out the vectors corresponding to the following tensor products. Confirm that the vectors remain normalized. Note that the order of writing the qubits matters, but the order of taking the products does not.} \subexer{$\ket{+}\otimes \ket{1}$.}
-\subexer{$\ket{1}\otimes \ket{+}$.}
-\subexer{$\ket{+}\otimes \ket{+}$.}
-\subexer{$\ket{-}\otimes \ket{+}$.}
-\subexer{$\ket{+}\otimes \ket{-}$.}
-\subexer{$\ket{-}\otimes \ket{-}$.}
-\subexer{$\ket{0}\otimes \ket{0} \otimes\ket{0}$.}
-\subexer{$\ket{0}\otimes \ket{0} \otimes\ket{1}$.}
-\subexer{$\ket{0}\otimes \ket{1} \otimes\ket{0}$.}
-\subexer{$\ket{1}\otimes \ket{0} \otimes\ket{0}$.}
-\subexer{$\ket{1}\otimes \ket{1} \otimes\ket{1}$.}
-\subexer{$\ket{1}\otimes \ket{+} \otimes\ket{0}$.}
+% \begin{exercises}
 
-\exer{Write out the matrices corresponding to the following tensor products.} \subexer{$X\otimes X$.}
-\subexer{$Z\otimes Z$.}
-\subexer{$I\otimes X$.}
-\subexer{$I\otimes Z$.}
-\subexer{$X\otimes Z$.}
-\subexer{$Z\otimes X$.}
+\begin{exercise}
+Consider the following quantum state,
+    \begin{equation*}
+        \ket{\psi} = \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}.
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the probability of measuring \ket{0}.
+        \item Find the probability of measuring \ket{1}.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+Probability of measuring value \ket{x} with a pure state \ket{\psi} is given by the modulus squared of the inner product between the two kets, $|\innp{x}{\psi}|^2$. Therefore,
+  \begin{enumerate}[label=(\alph*)]
+    \item Probability of measuring \ket{0} is $|\innp{0}{\psi}|^2=3/4$.
+    \item Probability of measuring \ket{1} is $|\innp{1}{\psi}|^2=1/4$.
+  \end{enumerate}
+\end{solution}
 
-\exer{Find the expectation value $\langle Z\rangle$ for the following single-qubit states.}
-\subexer{$\ket{0}$}
-\subexer{$\ket{1}$}
-\subexer{$\ket{+}$}
-\subexer{$\ket{-}$}
-\subexer{$\frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}$}
+\begin{exercise}
+Write out the vectors corresponding to the following tensor products. Confirm that the vectors remain normalized. Note that the order of writing the qubits matters, but the order of taking the products does not.
+\begin{multicols}{3}
+    \begin{enumerate}[label=(\alph*)]
+    \item $\ket{+}\ket{1}$.
+    \item $\ket{1}\ket{+}$.
+    \item $\ket{-}\ket{+}$.
+    \item $\ket{+}\ket{-}$.
+    \item $\ket{-}\ket{-}$.
+    \item $\ket{0}\ket{0}\ket{0}$.
+    \item $\ket{0}\ket{0}\ket{1}$.
+    \item $\ket{0}\ket{1}\ket{0}$.
+    \item $\ket{1}\ket{0}\ket{0}$.
+    \item $\ket{1}\ket{1}\ket{1}$.
+    \item $\ket{1}\ket{+}\ket{0}$.
+    \end{enumerate}
+\end{multicols}
+\end{exercise}
+\begin{solution}
+This is a straightforward application of the rule for writing tensor products in vector form.
+\begin{multicols}{2}
+    \begin{enumerate}[label=(\alph*)]
+    \item $\frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 & 1 \end{pmatrix}^T$.
+    \item $\frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 0 & 1 & 1 \end{pmatrix}^T$.
+    \item $\frac{1}{2} \begin{pmatrix} 1 & 1 & -1 & -1 \end{pmatrix}^T$.
+    \item $\frac{1}{2} \begin{pmatrix} 1 & -1 & 1 & -1 \end{pmatrix}^T$.
+    \item $\frac{1}{2} \begin{pmatrix} 1 & -1 & -1 & 1 \end{pmatrix}^T$.
+    \item $\begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}^T$.
+    \item $\begin{pmatrix} 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}^T$.
+    \item $\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}^T$.
+    \item $\begin{pmatrix} 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \end{pmatrix}^T$.
+    \item $\begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \end{pmatrix}^T$.
+    \item $\frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \end{pmatrix}^T$.
+    \end{enumerate}
+\end{multicols}
+\end{solution}
 
-\exer{Since we can find the expectation value of $Z$, you might suspect that we can do the same for $X$. Find the expectation value $\langle X\rangle$ for the following single-qubit states.}
-\subexer{$\ket{0}$}
-\subexer{$\ket{1}$}
-\subexer{$\ket{+}$}
-\subexer{$\ket{-}$}
-\subexer{$\frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}$}
+\begin{exercise}
+Write out the matrices corresponding to the following tensor products.
+\begin{multicols}{3}
+    \begin{enumerate}[label=(\alph*)]
+        \item $X\otimes X$.
+        \item $Z\otimes Z$.
+        \item $I\otimes X$.
+        \item $I\otimes Z$.
+        \item $X\otimes Z$.
+        \item $Z\otimes X$.
+    \end{enumerate}
+\end{multicols}
+\end{exercise}
+\begin{solution}
+\begin{multicols}{3}
+    \begin{enumerate}[label=(\alph*)]
+    \item $\begin{pmatrix}
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \end{pmatrix}$.
+    \item $\begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & 1 \end{pmatrix}$.
+    \item $\begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \end{pmatrix}$.
+    \item $\begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & -1 \end{pmatrix}$.
+    \item $\begin{pmatrix}
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & -1 \\
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \end{pmatrix}$.
+    \item $\begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & -1 \\
+        0 & 0 & -1 & 0 \end{pmatrix}$.
+    \end{enumerate}
+\end{multicols}
+\end{solution}
 
-\exer{We said above that the Hadamard gate is not just a y-axis rotation.  To explore this further, calculate the following. \\
-Use $\ket{\lambda_{+}} = \frac{\sqrt{2 + \sqrt{2}}}{2}\ket{0}+\frac{1}{\sqrt{2(2 + \sqrt{2})}}\ket{1}$ and $\ket{\lambda_{-}}=\frac{\sqrt{2 - \sqrt{2}}}{2}\ket{0} - \frac{1}{\sqrt{2(2 - \sqrt{2})}}\ket{1}$.
-\subexer{$H\ket{i}$}
-\subexer{$R_Y(\pi/2)\ket{i}$}
-\subexer{$R_Y(\pi)\ket{i}$}
-\subexer{$H(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
-\subexer{$R_Y(\pi/2)(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
-\subexer{$R_Y(\pi)(\sqrt{3}\ket{0}+\ket{1})/\sqrt{2}$}
-\subexer{$H\ket{\lambda_+}$}
-\subexer{$H\ket{\lambda_-}$}
-\subexer{$R_Y(\pi/2)\ket{\lambda_+}$}
-\subexer{$R_Y(\pi/2)\ket{\lambda_-}$}
-\subexer{$R_Y(\pi)\ket{\lambda_+}$}
-\subexer{$R_Y(\pi)\ket{\lambda_-}$}
-}
-% \exer{
-% \label{ex:dirac-notation-measurement}
-% Let's explore single-qubit measurement in more depth. This will come in handy when we explore entanglement swapping in Sec.~\ref{sec:12-3_reaching_for_distance}. Another way of expressing measurement is to use $\operatorname{Prob}(i) = \bra{\psi}M_i\ket{\psi}$, where $\{M_i\}$ corresponds to the set of outcomes of our measurement operation. Each $M_i$ is written as an operator, $M_i = \ketbra{\psi_i}{\psi_i}$, and assuming there are two outcomes to the operation, $\pm 1$, then we have $M_{+1} = \ketbra{0}{0}$ and $M_{-1} = \ketbra{1}{1}$. Sometimes, we will write $M_{+1}^Z$ or $\Pi_{+1}^Z$ for measurement in the $Z$ basis, or even just $Z$.
-% \subexer{
-% Show that $\bra{\psi}M_i\ket{\psi}$ gives $|\alpha|^2$ and $|\beta|^2$ for \ket{0} and \ket{1}.
-% }
-% \subexer{
-% Find the set of operators $\{M_i\}$ when measuring in the $X$ basis. Show that they produce the same probabilities as Eq.~\ref{eq:plus-measurement} and \ref{eq:minus-measurement}.
-% }
-% \subexer{One way to find the post-measurement state of a state is
-% $$\ket{\psi'} = \frac{M_i\ket{\psi}}{\sqrt{\bra{\psi} M_i\ket{\psi}}}$$ when the outcome is $i$. Show that this gives exactly \ket{0} or \ket{1} when measuring in the computational basis, when $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, for any valid values of $\alpha$ and $\beta$.
-% }
-% }
-\end{exercises}
+\begin{exercise}
+Find the expectation value $\langle Z\rangle$ for the following single-qubit states.
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*)]
+    \item $\ket{0}$.
+    \item $\ket{1}$.
+    \item $\ket{+}$.
+    \item $\ket{-}$.
+    \item $\frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}$.
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+\begin{solution}
+The expectation value $\langle Z\rangle$ when the state is $\ket{\psi}$ is given by $\langle\psi|Z|\psi\rangle$.
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 1.
+    \item -1.
+    \item 0.
+    \item 0.
+    \item $\frac{1}{2}$.
+\end{enumerate}
+\end{multicols}
+\end{solution}
 
+\begin{exercise}
+Since we can find the expectation value of $Z$, you might suspect that we can do the same for $X$. Find the expectation value $\langle X\rangle$ for the following single-qubit states.
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*)]
+    \item $\ket{0}$.
+    \item $\ket{1}$.
+    \item $\ket{+}$.
+    \item $\ket{-}$.
+    \item $\frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}$.
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+\begin{solution}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*)]
+    \item 0.
+    \item 0.
+    \item 1.
+    \item -1.
+    \item $\frac{\sqrt{3}}{2}$.
+\end{enumerate}
+\end{multicols}
+\end{solution}
+
+\begin{exercise}
+We said above that the Hadamard gate is not just a y-axis rotation.  To explore this further, calculate the following. Use
+\begin{equation}
+    \ket{\lambda_{+}} = \cos\frac{\pi}{8}\ket{0}+\sin\frac{\pi}{8}\ket{1}, \quad\text{and}\quad\ket{\lambda_{-}} = -\sin\frac{\pi}{8}\ket{0}+\cos\frac{\pi}{8}\ket{1}.
+\end{equation}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*)]
+    \item $H\ket{i}$.
+    \item $R_y(\pi/2)\ket{i}$.
+    \item $R_y(\pi)\ket{i}$.
+    \item $H\left(\frac{\sqrt{3}}{2}\ket{0}+\frac{1}{2}\ket{1}\right)$.
+    \item $R_y(\pi/2)\left(\frac{\sqrt{3}}{2}\ket{0}+\frac{1}{2}\ket{1}\right)$.
+    \item $R_y(\pi)\left(\frac{\sqrt{3}}{2}\ket{0}+\frac{1}{2}\ket{1}\right)$.
+    \item $H\ket{\lambda_+}$.
+    \item $H\ket{\lambda_-}$.
+    \item $R_y(\pi/2)\ket{\lambda_+}$.
+    \item $R_y(\pi/2)\ket{\lambda_-}$.
+    \item $R_y(\pi)\ket{\lambda_+}$.
+    \item $R_y(\pi)\ket{\lambda_-}$.
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+\begin{solution}
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\alph*)]
+        \item $\frac{1+i}{2}\ket{0} + \frac{1-i}{2}\ket{1}$.
+        \item $\frac{1-i}{\sqrt{2}}\ket{i}$.
+        \item $-i\ket{i}$.
+        \item $\frac{\sqrt{3}+1}{2\sqrt{2}}\ket{0} + \frac{\sqrt{3}-1}{2\sqrt{2}}\ket{1}$.
+        \item $\frac{\sqrt{3}-1}{2\sqrt{2}}\ket{0} + \frac{\sqrt{3}+1}{2\sqrt{2}}\ket{1}$.
+        \item $-\frac{1}{2}\ket{0} + \frac{\sqrt{3}}{2}\ket{1}$.
+        \item $\cos\frac{\pi}{8}\ket{0} + \sin\frac{\pi}{8}\ket{1}=\ket{\lambda_+}$.
+        \item $\sin\frac{\pi}{8}\ket{0} - \cos\frac{\pi}{8}\ket{1}=-\ket{\lambda_-}$.
+        \item $\cos\frac{3\pi}{8}\ket{0}+\sin\frac{3\pi}{8}\ket{1}$.
+        \item $-\sin\frac{3\pi}{8}\ket{0}+\cos\frac{3\pi}{8}\ket{1}$.
+        \item $-\sin\frac{\pi}{8}\ket{0}+\cos\frac{\pi}{8}\ket{1}=\ket{\lambda_-}$.
+        \item $-\cos\frac{\pi}{8}\ket{0}-\sin\frac{\pi}{8}\ket{1}=-\ket{\lambda_+}$.
+    \end{enumerate}
+    \end{multicols}
+\end{solution}
+
+\newpage
+\printsolutions[chapter={2}]
