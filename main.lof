@@ -17,100 +17,100 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Measurement in the $Z$ basis.}}{31}{figure.2.7}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Measurement in the Pauli $X$ basis.}}{32}{figure.2.8}%
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Repeated measurements.}}{35}{figure.2.9}%
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Noisy world.}}{46}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Noisy quantum communication.}}{50}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Bit-flip channel.}}{51}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Bloch sphere and mixed states.}}{53}{figure.3.4}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces CHSH game.}}{62}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Optimal quantum CHSH game strategy.}}{64}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Spontaneous parametric down conversion (SPDC).}}{69}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Pump photon exciting an atom.}}{70}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Linear polarization of light.}}{71}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Polarizing filter.}}{72}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Photon pair via SPDC.}}{73}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Entangled photon pairs via SPDC.}}{74}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces CHSH game consumes entanglement.}}{75}{figure.4.9}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Consumption of entanglement in a quantum network.}}{76}{figure.4.10}%
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Spontaneous emission.}}{89}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Incoherent emission.}}{90}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Light-matter interactions.}}{91}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Population inversion.}}{93}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Laser cycle.}}{94}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Laser construction.}}{95}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Dynamical model of a laser.}}{97}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Single photon sources.}}{99}{figure.5.8}%
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Same frequency, different wave numbers.}}{106}{figure.6.1}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Same wavelength, different initial phase.}}{106}{figure.6.2}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Propagation of waves in time.}}{107}{figure.6.3}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Superposition of two waves.}}{109}{figure.6.4}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Phase velocity.}}{110}{figure.6.5}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Group velocity.}}{111}{figure.6.6}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Superposition of more than two waves.}}{112}{figure.6.7}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Double-slit experiment.}}{113}{figure.6.8}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Single-slit experiment with single photons.}}{115}{figure.6.9}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Double-slit experiment with single photons, naive expectation.}}{115}{figure.6.10}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Double-slit experiment with single photons.}}{116}{figure.6.11}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Mach-Zehnder interferometer.}}{119}{figure.6.12}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces State $|0\rangle $ in the MI interferometer.}}{120}{figure.6.13}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces State $|1\rangle $ in the MI interferometer.}}{121}{figure.6.14}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Lower path blocked.}}{122}{figure.6.15}%
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Two Everests.}}{123}{figure.7.1}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Tyndall's experiment.}}{124}{figure.7.2}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Angle of incidence.}}{126}{figure.7.3}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Snell's law.}}{128}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Total internal reflection.}}{128}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Critical angle.}}{129}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Anatomy of an optical fiber.}}{130}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Multimode and singlemode fibers.}}{131}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Acceptance cone.}}{131}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces TAT-8.}}{133}{figure.7.10}%
-\contentsline {figure}{\numberline {8.1}{\ignorespaces A quantum network of nodes and channels.}}{141}{figure.8.1}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Hop-by-hop transmission.}}{142}{figure.8.2}%
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Rerouting when a link goes down.}}{142}{figure.8.3}%
-\contentsline {figure}{\numberline {8.4}{\ignorespaces A partitioned network.}}{142}{figure.8.4}%
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Outline of the teleportation protocol.}}{143}{figure.8.5}%
-\contentsline {figure}{\numberline {8.6}{\ignorespaces A hypothetical cloning device.}}{148}{figure.8.6}%
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Event timing in teleportation.}}{150}{figure.8.7}%
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Eve's ideal (but impossible) eavesdropping arrangement.}}{163}{figure.9.1}%
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Eve's measurements disturb the qubits.}}{163}{figure.9.2}%
-\contentsline {figure}{\numberline {9.3}{\ignorespaces Probability of detecting the presence of Eve.}}{166}{figure.9.3}%
-\contentsline {figure}{\numberline {10.1}{\ignorespaces Successful eavesdropping on BB84.}}{172}{figure.10.1}%
-\contentsline {figure}{\numberline {10.2}{\ignorespaces E91 setup.}}{173}{figure.10.2}%
-\contentsline {figure}{\numberline {10.3}{\ignorespaces E91 with Eve as Bell pair source.}}{173}{figure.10.3}%
-\contentsline {figure}{\numberline {10.4}{\ignorespaces Possible CHSH values.}}{176}{figure.10.4}%
-\contentsline {figure}{\numberline {10.5}{\ignorespaces E91 measurement bases.}}{178}{figure.10.5}%
-\contentsline {figure}{\numberline {10.6}{\ignorespaces E91 example of a series of basis choices for measurements.}}{179}{figure.10.6}%
-\contentsline {figure}{\numberline {10.7}{\ignorespaces E91 - CHSH bases.}}{180}{figure.10.7}%
-\contentsline {figure}{\numberline {11.1}{\ignorespaces Mode dispersion.}}{194}{figure.11.1}%
-\contentsline {figure}{\numberline {11.2}{\ignorespaces Time delay due to mode dispersion.}}{195}{figure.11.2}%
-\contentsline {figure}{\numberline {11.3}{\ignorespaces Attenuation losses.}}{198}{figure.11.3}%
-\contentsline {figure}{\numberline {11.4}{\ignorespaces Power loss in fiber.}}{200}{figure.11.4}%
-\contentsline {figure}{\numberline {11.5}{\ignorespaces Erbium-doped fiber amplifier (EDFA).}}{201}{figure.11.5}%
-\contentsline {figure}{\numberline {12.1}{\ignorespaces All-to-all coupling between network nodes.}}{208}{figure.12.1}%
-\contentsline {figure}{\numberline {12.2}{\ignorespaces MIM link architecture.}}{209}{figure.12.2}%
-\contentsline {figure}{\numberline {12.3}{\ignorespaces MM and MSM architectures.}}{210}{figure.12.3}%
-\contentsline {figure}{\numberline {12.4}{\ignorespaces Entanglement swapping.}}{211}{figure.12.4}%
-\contentsline {figure}{\numberline {12.5}{\ignorespaces Entanglement purification for Pauli X errors.}}{214}{figure.12.5}%
-\contentsline {figure}{\numberline {12.6}{\ignorespaces Routing and multiplexing.}}{218}{figure.12.6}%
-\contentsline {figure}{\numberline {13.1}{\ignorespaces MIM link hardware.}}{224}{figure.13.1}%
-\contentsline {figure}{\numberline {13.2}{\ignorespaces Changing the basis of measurements.}}{225}{figure.13.2}%
-\contentsline {figure}{\numberline {13.3}{\ignorespaces Bell state measurement via Pauli Z measurements.}}{226}{figure.13.3}%
-\contentsline {figure}{\numberline {13.4}{\ignorespaces A polarizing beam splitter (PBS).}}{227}{figure.13.4}%
-\contentsline {figure}{\numberline {13.5}{\ignorespaces A polarizing beam splitter (PBS) measuring a qubit.}}{228}{figure.13.5}%
-\contentsline {figure}{\numberline {13.6}{\ignorespaces A four-detector Bell-state analyzer (BSA).}}{229}{figure.13.6}%
-\contentsline {figure}{\numberline {13.7}{\ignorespaces First idea for memory.}}{234}{figure.13.7}%
-\contentsline {figure}{\numberline {13.8}{\ignorespaces Our second idea for memory.}}{236}{figure.13.8}%
-\contentsline {figure}{\numberline {13.9}{\ignorespaces Physical implementation of the MIM link.}}{237}{figure.13.9}%
-\contentsline {figure}{\numberline {14.1}{\ignorespaces Bipartite and multipartite entanglement.}}{248}{figure.14.1}%
-\contentsline {figure}{\numberline {14.2}{\ignorespaces Eavesdropper Eve.}}{249}{figure.14.2}%
-\contentsline {figure}{\numberline {14.3}{\ignorespaces Monogamy of entanglement.}}{254}{figure.14.3}%
-\contentsline {figure}{\numberline {14.4}{\ignorespaces Graph state.}}{255}{figure.14.4}%
-\contentsline {figure}{\numberline {14.5}{\ignorespaces Cluster state.}}{256}{figure.14.5}%
-\contentsline {figure}{\numberline {14.6}{\ignorespaces Clock synchronization.}}{257}{figure.14.6}%
-\contentsline {figure}{\numberline {14.7}{\ignorespaces Qubit clocks.}}{258}{figure.14.7}%
-\contentsline {figure}{\numberline {14.8}{\ignorespaces Distributed quantum computation.}}{259}{figure.14.8}%
-\contentsline {figure}{\numberline {15.1}{\ignorespaces Network of Networks.}}{264}{figure.15.1}%
-\contentsline {figure}{\numberline {15.2}{\ignorespaces A simple network.}}{268}{figure.15.2}%
-\contentsline {figure}{\numberline {15.3}{\ignorespaces A recursive network.}}{269}{figure.15.3}%
-\contentsline {figure}{\numberline {15.4}{\ignorespaces IPsec with QKD.}}{271}{figure.15.4}%
-\contentsline {figure}{\numberline {15.5}{\ignorespaces Uses of quantum networking.}}{272}{figure.15.5}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Noisy world.}}{44}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Noisy quantum communication.}}{48}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Bit-flip channel.}}{49}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Bloch sphere and mixed states.}}{51}{figure.3.4}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces CHSH game.}}{64}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Optimal quantum CHSH game strategy.}}{66}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Spontaneous parametric down conversion (SPDC).}}{71}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Pump photon exciting an atom.}}{72}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Linear polarization of light.}}{73}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Polarizing filter.}}{74}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Photon pair via SPDC.}}{75}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Entangled photon pairs via SPDC.}}{76}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces CHSH game consumes entanglement.}}{77}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Consumption of entanglement in a quantum network.}}{78}{figure.4.10}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Spontaneous emission.}}{91}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Incoherent emission.}}{92}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Light-matter interactions.}}{93}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Population inversion.}}{95}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Laser cycle.}}{96}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Laser construction.}}{97}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Dynamical model of a laser.}}{99}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Single photon sources.}}{101}{figure.5.8}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Same frequency, different wave numbers.}}{108}{figure.6.1}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Same wavelength, different initial phase.}}{108}{figure.6.2}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Propagation of waves in time.}}{109}{figure.6.3}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Superposition of two waves.}}{111}{figure.6.4}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Phase velocity.}}{112}{figure.6.5}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Group velocity.}}{113}{figure.6.6}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Superposition of more than two waves.}}{114}{figure.6.7}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Double-slit experiment.}}{115}{figure.6.8}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Single-slit experiment with single photons.}}{117}{figure.6.9}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Double-slit experiment with single photons, naive expectation.}}{117}{figure.6.10}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Double-slit experiment with single photons.}}{118}{figure.6.11}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Mach-Zehnder interferometer.}}{121}{figure.6.12}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces State $|0\rangle $ in the MI interferometer.}}{122}{figure.6.13}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces State $|1\rangle $ in the MI interferometer.}}{123}{figure.6.14}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Lower path blocked.}}{124}{figure.6.15}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Two Everests.}}{125}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Tyndall's experiment.}}{126}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Angle of incidence.}}{128}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Snell's law.}}{130}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Total internal reflection.}}{130}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Critical angle.}}{131}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Anatomy of an optical fiber.}}{132}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Multimode and singlemode fibers.}}{133}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Acceptance cone.}}{133}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces TAT-8.}}{135}{figure.7.10}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces A quantum network of nodes and channels.}}{143}{figure.8.1}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Hop-by-hop transmission.}}{144}{figure.8.2}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Rerouting when a link goes down.}}{144}{figure.8.3}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces A partitioned network.}}{144}{figure.8.4}%
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Outline of the teleportation protocol.}}{145}{figure.8.5}%
+\contentsline {figure}{\numberline {8.6}{\ignorespaces A hypothetical cloning device.}}{150}{figure.8.6}%
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Event timing in teleportation.}}{152}{figure.8.7}%
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Eve's ideal (but impossible) eavesdropping arrangement.}}{165}{figure.9.1}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Eve's measurements disturb the qubits.}}{165}{figure.9.2}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Probability of detecting the presence of Eve.}}{168}{figure.9.3}%
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Successful eavesdropping on BB84.}}{174}{figure.10.1}%
+\contentsline {figure}{\numberline {10.2}{\ignorespaces E91 setup.}}{175}{figure.10.2}%
+\contentsline {figure}{\numberline {10.3}{\ignorespaces E91 with Eve as Bell pair source.}}{175}{figure.10.3}%
+\contentsline {figure}{\numberline {10.4}{\ignorespaces Possible CHSH values.}}{178}{figure.10.4}%
+\contentsline {figure}{\numberline {10.5}{\ignorespaces E91 measurement bases.}}{180}{figure.10.5}%
+\contentsline {figure}{\numberline {10.6}{\ignorespaces E91 example of a series of basis choices for measurements.}}{181}{figure.10.6}%
+\contentsline {figure}{\numberline {10.7}{\ignorespaces E91 - CHSH bases.}}{182}{figure.10.7}%
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Mode dispersion.}}{196}{figure.11.1}%
+\contentsline {figure}{\numberline {11.2}{\ignorespaces Time delay due to mode dispersion.}}{197}{figure.11.2}%
+\contentsline {figure}{\numberline {11.3}{\ignorespaces Attenuation losses.}}{200}{figure.11.3}%
+\contentsline {figure}{\numberline {11.4}{\ignorespaces Power loss in fiber.}}{202}{figure.11.4}%
+\contentsline {figure}{\numberline {11.5}{\ignorespaces Erbium-doped fiber amplifier (EDFA).}}{203}{figure.11.5}%
+\contentsline {figure}{\numberline {12.1}{\ignorespaces All-to-all coupling between network nodes.}}{210}{figure.12.1}%
+\contentsline {figure}{\numberline {12.2}{\ignorespaces MIM link architecture.}}{211}{figure.12.2}%
+\contentsline {figure}{\numberline {12.3}{\ignorespaces MM and MSM architectures.}}{212}{figure.12.3}%
+\contentsline {figure}{\numberline {12.4}{\ignorespaces Entanglement swapping.}}{213}{figure.12.4}%
+\contentsline {figure}{\numberline {12.5}{\ignorespaces Entanglement purification for Pauli X errors.}}{216}{figure.12.5}%
+\contentsline {figure}{\numberline {12.6}{\ignorespaces Routing and multiplexing.}}{220}{figure.12.6}%
+\contentsline {figure}{\numberline {13.1}{\ignorespaces MIM link hardware.}}{226}{figure.13.1}%
+\contentsline {figure}{\numberline {13.2}{\ignorespaces Changing the basis of measurements.}}{227}{figure.13.2}%
+\contentsline {figure}{\numberline {13.3}{\ignorespaces Bell state measurement via Pauli Z measurements.}}{228}{figure.13.3}%
+\contentsline {figure}{\numberline {13.4}{\ignorespaces A polarizing beam splitter (PBS).}}{229}{figure.13.4}%
+\contentsline {figure}{\numberline {13.5}{\ignorespaces A polarizing beam splitter (PBS) measuring a qubit.}}{230}{figure.13.5}%
+\contentsline {figure}{\numberline {13.6}{\ignorespaces A four-detector Bell-state analyzer (BSA).}}{231}{figure.13.6}%
+\contentsline {figure}{\numberline {13.7}{\ignorespaces First idea for memory.}}{236}{figure.13.7}%
+\contentsline {figure}{\numberline {13.8}{\ignorespaces Our second idea for memory.}}{238}{figure.13.8}%
+\contentsline {figure}{\numberline {13.9}{\ignorespaces Physical implementation of the MIM link.}}{239}{figure.13.9}%
+\contentsline {figure}{\numberline {14.1}{\ignorespaces Bipartite and multipartite entanglement.}}{250}{figure.14.1}%
+\contentsline {figure}{\numberline {14.2}{\ignorespaces Eavesdropper Eve.}}{251}{figure.14.2}%
+\contentsline {figure}{\numberline {14.3}{\ignorespaces Monogamy of entanglement.}}{256}{figure.14.3}%
+\contentsline {figure}{\numberline {14.4}{\ignorespaces Graph state.}}{257}{figure.14.4}%
+\contentsline {figure}{\numberline {14.5}{\ignorespaces Cluster state.}}{258}{figure.14.5}%
+\contentsline {figure}{\numberline {14.6}{\ignorespaces Clock synchronization.}}{259}{figure.14.6}%
+\contentsline {figure}{\numberline {14.7}{\ignorespaces Qubit clocks.}}{260}{figure.14.7}%
+\contentsline {figure}{\numberline {14.8}{\ignorespaces Distributed quantum computation.}}{261}{figure.14.8}%
+\contentsline {figure}{\numberline {15.1}{\ignorespaces Network of Networks.}}{266}{figure.15.1}%
+\contentsline {figure}{\numberline {15.2}{\ignorespaces A simple network.}}{270}{figure.15.2}%
+\contentsline {figure}{\numberline {15.3}{\ignorespaces A recursive network.}}{271}{figure.15.3}%
+\contentsline {figure}{\numberline {15.4}{\ignorespaces IPsec with QKD.}}{273}{figure.15.4}%
+\contentsline {figure}{\numberline {15.5}{\ignorespaces Uses of quantum networking.}}{274}{figure.15.5}%
