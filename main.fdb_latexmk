@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex main"] 1786667766.00774 "main.aux" "main.bbl" "main" 1786667792.86983 0
+["bibtex main"] 1786750331.52089 "main.aux" "main.bbl" "main" 1786754115.77476 0
   "./main.bib" 1783995995.54083 9987 5c3794ec9d481c7de8ff12fdc146b8b3 ""
   "./mit-chicago.bst" 1783995995.54116 47334 7fc0feda303d325fede4cb1f627d1cd0 ""
-  "main.aux" 1786667792.43934 63826 c19b7b2d9940934763e89a0b7e7852b0 "pdflatex"
+  "main.aux" 1786754115.24178 63825 ead3d210019a1598695c1bd5de535a19 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1786667765.921 "main.idx" "main.ind" "main" 1786667792.86967 0
-  "main.idx" 1786667792.4485 11653 b1e1da06badedf3fe3151e5d7a1425c7 "pdflatex"
+["makeindex main.idx"] 1786750331.40291 "main.idx" "main.ind" "main" 1786754115.77461 0
+  "main.idx" 1786754115.25902 11655 3c097ca2a55e50d58992b34d446def91 "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1786667789.89087 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1786667792.87001 0
+["pdflatex"] 1786754111.94741 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1786754115.77497 0
   "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" 1786596208.91014 52469 3c1743638d62777871c9c2c5a0338d0f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -346,8 +346,8 @@
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1771289770 3636351 86f02ac9cf6676be8ec685ab5c788b18 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "CH01_Introduction.tex" 1786362845.46739 33990 a18d349be9e46b2e275ec118ed5ff9ae ""
-  "CH02_Quantum-States.tex" 1786667789.75363 58489 4322526a101dc8999f507e8f5e835cc2 ""
-  "CH03_Pure-and-Mixed-States.tex" 1784164972.58038 37978 989bebbaf13c1e0bf9912491379d6661 ""
+  "CH02_Quantum-States.tex" 1786668386.0602 58473 dc4cc1d214713ac5385758438101b2ba ""
+  "CH03_Pure-and-Mixed-States.tex" 1786754107.74726 43871 62a3b9c34063671fa4482b6e16bc6ca8 ""
   "CH04_Entanglement.tex" 1784464180.26715 48407 ea233d52eb9881e60ce18fec05fffe21 ""
   "CH05_Coherent-Light-and-Single-photons.tex" 1784895432.59158 40485 673cbba231f7bb7a377f89258b339b82 ""
   "CH06_Interference.tex" 1785137982.28976 36314 31b2f64f552698c47f461aaa7a02fe1a ""
@@ -481,14 +481,14 @@
   "intro-block-3.tex" 1783995995.50827 1638 1029850ed0644be4136b6a6502721c67 ""
   "intro-block-4.tex" 1783995995.50835 971 94bf8973f259d3d2a50aa4d5bd3a45b2 ""
   "intro-block-5.tex" 1783995995.50843 466 ccabc94a270e8fba698b5c197876f122 ""
-  "main.aux" 1786667792.43934 63826 c19b7b2d9940934763e89a0b7e7852b0 "pdflatex"
-  "main.bbl" 1786667766.11467 13485 9190c286e3b66c743dcda225ca46a0b8 "bibtex main"
-  "main.ind" 1786667766.00658 10664 4de1c776b860d73123f3d480fe296834 "makeindex main.idx"
-  "main.lof" 1786667792.44868 12082 f1eb1ff511717a9f6bbe9aa79684464a "pdflatex"
-  "main.out" 1786667792.44818 19230 b81a1c1973d8da5bb0eb403759572007 "pdflatex"
+  "main.aux" 1786754115.24178 63825 ead3d210019a1598695c1bd5de535a19 "pdflatex"
+  "main.bbl" 1786750331.64103 13485 9190c286e3b66c743dcda225ca46a0b8 "bibtex main"
+  "main.ind" 1786750331.5197 10666 82e51e9aa08ea18a86b66c844ccffe34 "makeindex main.idx"
+  "main.lof" 1786754115.25927 12083 dc4384c0d66a32f6a9ca80e30a8dc551 "pdflatex"
+  "main.out" 1786754115.25855 19129 a46386ade53d14e33a0047edbbe7d763 "pdflatex"
   "main.tex" 1786596208.91014 52469 3c1743638d62777871c9c2c5a0338d0f ""
-  "main.toc" 1786667792.44859 9802 216f3d9f05cf6bc681b6feb8e7a72653 "pdflatex"
-  "main.xsim" 1786667792.43851 9266 0fe2e6238438b89b25d2009a45eb7d6b "pdflatex"
+  "main.toc" 1786754115.25917 9736 f5a147351a5a845eb8911ceb1d05c365 "pdflatex"
+  "main.xsim" 1786754115.24108 21900 83b6816378a6cd85509aad3688cc31f4 "pdflatex"
   "newmath.cls" 1783995995.54136 76503 fd9fe661cb3a15f896aef9b2f135ca1f ""
   "preface.tex" 1783995995.54153 2162 871895519cbdedf4a3f5e46a80dd80c6 ""
   "tikz-3dplot-circleofsphere.sty" 1783995995.54168 16835 12e91436ad62c15f5dafdc3be3fbc7f6 ""

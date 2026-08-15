@@ -793,8 +793,6 @@ INPUT ./Figures/Chapter03/BW/3-3_Bloch_pure_mixed_BW.pdf
 INPUT ./Figures/Chapter03/BW/3-3_Bloch_pure_mixed_BW.pdf
 INPUT ./Figures/Chapter03/BW/3-3_Bloch_pure_mixed_BW.pdf
 INPUT ./Figures/Chapter03/BW/3-3_Bloch_pure_mixed_BW.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT ./CH04_Entanglement.tex
 INPUT ./CH04_Entanglement.tex
 INPUT ./CH04_Entanglement.tex
@@ -850,6 +848,8 @@ INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/txfonts/txmi.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxmi.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxptmri.tfm
