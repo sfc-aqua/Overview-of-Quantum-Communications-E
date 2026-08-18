@@ -520,88 +520,206 @@ It is the job of quantum networks to distribute entanglement in order to satisfy
 
 
 \newpage
-\begin{exercises}
-\exer{\emph{Classical strategies for the CHSH game.} We have seen the optimal classical strategy. For each strategy described below, determine the probability of winning a round of the CHSH game.
-\subexer{Player $A$ and player $B$ reply with bits that are completely random, regardless of the bits received from the referee $R$.}
-\subexer{Reply bits from player $A$ and player $B$ are the same as the bits received from referee $R$. This means $a=x$ for player $A$, and $b=y$ for player $B$.
-}
-}
+\section{Exercises}
 
-\exer{\emph{Local measurements on two qubits.}
+\begin{exercise}
+\emph{Classical strategies for the CHSH game.} We have seen the optimal classical strategy. For each strategy described below, determine the probability of winning a round of the CHSH game.
+\begin{enumerate}[label=(\alph*)]
+    \item Player $A$ and player $B$ reply with bits that are completely random, regardless of the bits received from the referee $R$.
+    \item Player $A$ and player $B$ reply with the same bits they received from referee $R$. This means $a=x$ for player $A$, and $b=y$ for player $B$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Given a pair of referee qubits $x$ and $y$, let's compute that the probability that a randomly generated pair of qubits $a$ and $b$ satisfies the winning condition $x\cdot y = a\oplus b$.\\
+    If $x\cdot y=0$, which is true for $(x,y)\in\{(0,0), (0,1), (1,0)\}$, the winning condition is satisfied when $a$ and $b$ are the same. This occurs with probability of 1/2.\\
+    Similarly, if $x\cdot y=1$, which is true when $(x,y)=(1,1)$, the winning condition is satisfied when $a$ and $b$ are different. This happens again with probability of 1/2.\\
+    Therefore, for completely randomly generated bits $a$ and $b$, the players can win with 50\% probability.
+    \item Since $a=x$ and $b=y$, we need to consider four possible cases that summarized inthe table below.
+    \begin{table}[h]
+    \setcellgapes{5pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccccc}
+        \hline
+        $x$ & $y$ & $x\cdot y$ & $x\oplus y$ & W/L \\
+        \hline
+        0 & 0 & 0 & 0 & Win \\
+        0 & 1 & 0 & 1 & Loss \\
+        1 & 0 & 0 & 1 & Loss \\
+        1 & 1 & 1 & 0 & Loss \\
+        \hline
+    \end{tabular}
+    \end{table}
+
+    We see that the players win only 25\% of the time if they reply with the same bits that they received from the referee.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\emph{Local measurements on two qubits.}
 Eq.~(\ref{eq:local_projectors}) describes local measurement in Pauli $Z$ basis performed by player $A$.
 If player $B$ also measures in the Pauli $Z$ basis, the full projector is written as the tensor product of the two local projectors,
 \begin{equation}
     \Pi^A_{Z,\pm} \otimes \Pi^B_{Z,\pm}.
 \end{equation}
-\subexer{
-Consider a shared entangled state between the players $A$ and $B$ to be $|\Phi^+\rangle$.
-If players $A$ and $B$ both measure in the Pauli $Z$ basis, what are the possible outcomes of their measurements, and their corresponding probabilities?
-}
-\subexer{
-Measurements in other bases can be described in a straightforward fashion. If player $A$ measures in the $O_A$ basis and player $B$ measures in the $O_B$ basis, the two-qubit projector has the following form,
-\begin{equation}
+\begin{enumerate}[label=(\alph*)]
+    \item Consider a shared entangled state between the players $A$ and $B$ to be $|\Phi^+\rangle$. If players $A$ and $B$ both measure in the Pauli $Z$ basis, what are the possible outcomes of their measurements, and their corresponding probabilities?
+    \item Measurements in other bases can be described in a straightforward fashion. If player $A$ measures in the $O_A$ basis and player $B$ measures in the $O_B$ basis, the two-qubit projector has the following form,
+    \begin{equation}
     \Pi^A_{O_A,\pm} \otimes \Pi^B_{O_B,\pm}.
-\end{equation}
-Consider the case where the players still share $|\Phi^+\rangle$. $A$ measures in the Pauli $Z$ basis, but this time player $B$ measures in the Pauli $X$ basis.
-What are the possible measurements outcomes and their corresponding probabilities?
-}
-}
+    \end{equation}
+    Consider the case where the players still share $|\Phi^+\rangle$. $A$ measures in the Pauli $Z$ basis, but this time player $B$ measures in the Pauli $X$ basis. What are the possible measurements outcomes and their corresponding probabilities?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Since the shared state is the Bell pair $\ket{\Phi^+}=(\ket{00}+\ket{11})/\sqrt{2}$, the only possible outcomes are $(+1,+1)$, corresponding to post-measurement state $\ket{00}$, and $(-1,-1)$, corresponding to post-measurement state $\ket{11}$. Both outcomes are equally likely to occur.
+    \item This time all measurement outcomes are possible with equal probability.
+\end{enumerate}
+\end{solution}
 
-\exer{\emph{Quantum strategy for the CHSH game.} Consider a particular instance of the CHSH game, where the referee generates the bits $x=0$ and $y=0$.
-\subexer{
-What values of $a$ and $b$ will result in a win for the players?
-}
-\subexer{
-Assuming the players use the optimal quantum strategy, show that the probability of winning this round is $\frac{1+\sqrt{2}}{2\sqrt{2}}\approx0.85$.
-}
-}
+\begin{exercise}
+\emph{Quantum strategy for the CHSH game.} Consider a particular instance of the CHSH game, where the referee generates the bits $x=0$ and $y=0$.
+\begin{enumerate}[label=(\alph*)]
+    \item What values of $a$ and $b$ will result in a win for the players?
+    \item Assuming the players use the optimal quantum strategy, show that the probability of winning this round is $\frac{1+\sqrt{2}}{2\sqrt{2}}\approx0.85$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Given the referee bits, we have $x\cdot y=0$. In order to win, the players' bits must satisfy $a\oplus b=0$, which occurs when $a=b$. Either the players both reply with bit 0, or both with bit 1.
+    \item Since $x=0$ and $y=0$, player $A$ measures in the $Z$ basis and player $B$ measures in the $(Z+X)/\sqrt{2}$ basis. The corresponding four projectors are
+    \begin{align*}
+        \Pi^A_{Z,\pm} \otimes \Pi^B_{(Z+X)/\sqrt{2},\pm}.
+    \end{align*}
+    Probability of winning $p_{\text{win}}$ is given by the probability of obtaining two +1 or two -1 measurements.
+    Let's compute the probability of obtaining two +1 outcomes first.
+    \begin{align*}
+        p_{+1,+1} & = \text{Tr}\left\{ \Pi^A_{Z,+1} \otimes \Pi^B_{(Z+X)/\sqrt{2},+1} \outp{\Phi^+}{\Phi^+} \right\} \\
+        & = \bra{\Phi^+} \Pi^A_{Z,+1} \otimes \Pi^B_{(Z+X)/\sqrt{2},+1} \ket{\Phi^+} \\
+        & = \bra{\Phi^+} \left\{ \outp{0}{0} \otimes \frac{1}{2}\left[ I + \frac{Z+X}{\sqrt{2}} \right] \right\} \ket{\Phi^+} \\
+        & = \frac{1}{2\sqrt{2}} \bra{\Phi^+} I \otimes \left( I + \frac{Z+X}{\sqrt{2}} \right) \ket{00} \\
+        & = \frac{1}{2\sqrt{2}} \bra{\Phi^+} \left( \ket{00} + \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{01} \right) \\
+        & = \frac{1}{4} \left( 1 + \frac{1}{\sqrt{2}} \right) = \frac{\sqrt{2}+1}{4\sqrt{2}}.
+    \end{align*}
+    Probability of obtaining two -1 outcomes can be computed following the same steps, and is in fact equal to obtaining two +1 outcomes.
+    Therefore, the probaiblity of winning the CHSH game given $x=0$ and $y=0$ is
+    \begin{equation*}
+        p_{\text{win}} = p_{+1,+1} + p_{-1,-1} = \frac{1+\sqrt{2}}{2\sqrt{2}}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
 
-\exer{
+\begin{exercise}
 \emph{Bell basis.} We have seen that the four Bell pairs form a convenient basis when we consider two qubits.
-\subexer{
-Prove that the four Bell states are orthogonal to each other.
-}
-\subexer{
-Express an arbitrary pure two-qubit state,
-\begin{equation}
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that the four Bell states are orthogonal to each other.
+    \item Express an arbitrary pure two-qubit state,
+    \begin{equation*}
     |\psi\rangle = \alpha |00\rangle + \beta|01\rangle + \gamma|10\rangle + \delta|11\rangle,
-\end{equation}
-in the Bell basis.
-}
-\subexer{
-The two-qubit maximally mixed state is the tensor product of two local maximally mixed states, $I/2 \otimes I/2$.
-Write down this state in the Bell basis.
-}
-}
+    \end{equation*}
+    in the Bell basis.
+    \item The two-qubit maximally mixed state is the tensor product of two local maximally mixed states, $I/2 \otimes I/2$. Write down this state in the Bell basis.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Check that all Bell states are orthogonal can be done by individually computing all possible inner products between the various states,
+    \begin{align*}
+        \innp{\Phi^+}{\Phi^-} & = \innp{\Phi^+}{\Psi^+} = \innp{\Phi^+}{\Psi^-} = 0, \\
+        \innp{\Phi^-}{\Psi^+} & = \innp{\Phi^-}{\Psi^-} = 0, \\
+        \innp{\Psi^+}{\Psi^-} & = 0.
+    \end{align*}
+    \item We are looking for coefficients $\bar{\alpha}, \bar{\beta}, \bar{\gamma}$ and $\bar{\delta}$, such that
+    \begin{equation*}
+        \ket{\psi} = \bar{\alpha}\ket{\Phi^+} + \bar{\beta}\ket{\Psi^+} + \bar{\gamma}\ket{\Phi^-} + \bar{\delta}\ket{\Psi^-}.
+    \end{equation*}
+    One method to find these coefficients is to reexpress the computational basis states in terms of the Bell states,
+    \begin{align*}
+        \ket{00} & = \frac{1}{\sqrt{2}}\left(\ket{\Phi^+}+\ket{\Phi^-}\right), \quad \ket{10} = \frac{1}{\sqrt{2}}\left(\ket{\Psi^+}-\ket{\Psi^-}\right), \\
+        \ket{01} & = \frac{1}{\sqrt{2}}\left(\ket{\Psi^+}+\ket{\Psi^-}\right), \quad \ket{11} = \frac{1}{\sqrt{2}}\left(\ket{\Phi^+}-\ket{\Phi^-}\right),
+    \end{align*}
+    and substitute into the expression for $\ket{\psi}$.
+    Another method is to compute the inner product between the Bell basis states and the general state $\ket{\psi}$,
+    \begin{equation*}
+        \innp{\Phi^+}{\psi}, \quad \innp{\Psi^+}{\psi}, \quad \innp{\Phi^-}{\psi}, \quad \innp{\Psi^-}{\psi}.
+    \end{equation*}
+    Both methods lead to the same expression in the Bell basis,
+    \begin{equation*}
+        \ket{\psi} = \frac{\alpha+\delta}{\sqrt{2}}\ket{\Phi^+} + \frac{\beta+\gamma}{\sqrt{2}}\ket{\Psi^+} + \frac{\alpha-\delta}{\sqrt{2}}\ket{\Phi^-} + \frac{\beta-\gamma}{\sqrt{2}}\ket{\Psi^-}.
+    \end{equation*}
+    \item Again, there are two ways of obtaining the maximally mixed density matrix of two qubits.
+    The first method relies on computing all 16 inner products between the Bell states and the maximmalyh mixed state,
+    \begin{equation*}
+        \rho_{00} = \frac{1}{4}\bra{\Phi^+} I\otimes I\ket{\Phi^+}, \quad \rho_{01} = \frac{1}{4}\bra{\Phi^+} I\otimes I\ket{\Psi^+}, \ldots .
+    \end{equation*}
+    We see that the only nonvanishing matrix coefficients are the diagonal ones.
+    The other method is much simpler once we remember that the maximally mixed state describes the case where we are most uncertain about which Bell state the qubits are in.
+    This immediately leads to the following expression,
+    \begin{align*}
+        \frac{1}{4}I\otimes I = \frac{1}{4}\outp{\Phi^+}{\Phi^+} + \frac{1}{4}\outp{\Psi^+}{\Psi^+} + \frac{1}{4}\outp{\Phi^-}{\Phi^-} + \frac{1}{4}\outp{\Psi^-}{\Psi^-}.
+    \end{align*}
+\end{enumerate}
+\end{solution}
 
-\exer{\emph{Singe-qubit vs two-qubit measurement statistics.}
-On p.~\pageref{page:plus-is-pure}, we stated without proof that measuring the state of a single qubit provides different outcome statistics than measuring one qubit that is part of a Bell pair.
-Let's prove this now.
-\subexer{
-Consider single qubit in $|+\rangle$. Compute outcome probabilities when this state is measured in the Pauli $X$, $Y$, and $Z$ bases.
-}
-\subexer{
-Now consider a shared two-qubit Bell pair, say $|\Psi^+\rangle$.
-Again, compute the outcome probabilities when the first qubit is measured in the Pauli $X$, $Y$, and $Z$ bases.
-}
-}
+\begin{exercise}
+\emph{Singe-qubit vs two-qubit measurement statistics.} On p.~\pageref{page:plus-is-pure}, we stated without proof that measuring the state of a single qubit provides different outcome statistics than measuring one qubit that is part of a Bell pair. Let's prove this now. 
+\begin{enumerate}[label=(\alph*)]
+    \item Consider single qubit in $|+\rangle$. Compute outcome probabilities when this state is measured in the Pauli $X$, $Y$, and $Z$ bases.
+    \item Now consider a shared two-qubit Bell pair, say $|\Psi^+\rangle$. Again, compute the outcome probabilities when the first qubit is measured in the Pauli $X$, $Y$, and $Z$ bases.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item When measuring the single-qubit pure state $\ket{+}$, we have the following statistics,
+    \begin{align*}
+        \text{Pauli }X\text{ basis:} \quad \text{Pr}\{+1\} & = 1, & \text{Pr}\{-1\} & = 0, \\
+        \text{Pauli }Y\text{ basis:} \quad \text{Pr}\{+1\} & = 1/2, & \text{Pr}\{-1\} & = 1/2, \\
+        \text{Pauli }Z\text{ basis:} \quad \text{Pr}\{+1\} & = 1/2, & \text{Pr}\{-1\} & = 1/2.
+    \end{align*}
+    \item In order to compute the measurement statistics when only the first qubit of $\ket{\Phi^+}$ is measured, we need to apply projectors of the following form,
+    \begin{equation*}
+        \Pi^A_{B,\pm} \otimes I, \quad\text{where }B\in\{X,Y,Z\}.
+    \end{equation*}
+    The probability is calculated as $\bra{\Phi^+}\Pi^A_{B,\pm} \otimes I\ket{\Phi^+}$, leading to
+    \begin{align*}
+        \text{Pauli }X\text{ basis:} \quad \text{Pr}\{+1\} & = 1/2, & \text{Pr}\{-1\} & = 1/2, \\
+        \text{Pauli }Y\text{ basis:} \quad \text{Pr}\{+1\} & = 1/2, & \text{Pr}\{-1\} & = 1/2, \\
+        \text{Pauli }Z\text{ basis:} \quad \text{Pr}\{+1\} & = 1/2, & \text{Pr}\{-1\} & = 1/2.
+    \end{align*}
+    We see that in this case, the statistics behave as if they had been obtained from a maximally mixed state.
+\end{enumerate}
+\end{solution}
 
-\exer{\emph{Rate of production of down-converted photons.}
-Consider a high power UV diode laser at wavelength 405 nm. The pump laser power is 15 mW.
-Consider that only 1 photon pair is produced on average per $10^{8}$ pump photons.
-\subexer{
-How many pump photons are incident on the BBO crystal per second? \\
-(\emph{Hint:} Energy of a photon is given by $E_{\text{photon}}=hc/\lambda$, where $h$ is Planck's constant, $c$ is speed of light in free space, $\lambda$ is the wavelength of light.)
-}
-\subexer{
-What is the rate at which down-converted photon pairs are produced?
-}
-\subexer{
-What is the wavelength of the down-converted photons if both have the same energy?
-}
-}
+\begin{exercise}
+\emph{Rate of production of down-converted photons.} Consider a high power UV diode laser at wavelength 405 nm. The pump laser power is 15 mW. Consider that only 1 photon pair is produced on average per $10^{8}$ pump photons.
+\begin{enumerate}[label=(\alph*)]
+    \item How many pump photons are incident on the BBO crystal per second?
+    (\emph{Hint:} Energy of a photon is given by $E_{\text{photon}}=hc/\lambda$, where $h$ is Planck's constant, $c$ is speed of light in free space, $\lambda$ is the wavelength of light.)
+    \item What is the rate at which down-converted photon pairs are produced?
+    \item What is the wavelength of the down-converted photons if both have the same energy?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The laser delivers 15 mJ of energy per second (since the power is 15 mW). Using the expression for the energy of a single photon, we arrive at the number of photons per second being
+    \begin{equation*}
+        \#\text{ of photons per second } =\frac{P}{E_{\text{photon}}} = \frac{P\lambda}{hc} = 3.07\times10^{14},
+    \end{equation*}
+    where we used $h=6.626\times10^{-34}$ J$\cdot$s as Planck's constant and $c=3\times10^8$ m$\cdot$s$^{-1}$ as the speed of light.
+    \item The rate of entangled pair production, $R_{\text{ent}}$, is the number of photons incident on the BBO crystal multiplied by the probability of converting a single photon into a pair of entangled ones,
+    \begin{equation*}
+        R_{\text{ent}} = 3.07\times10^{14} \cdot 10^{-8} = 3.07\times10^6.
+    \end{equation*}
+    The rate of production of entangled pairs is slightly above 3 GHz.
+    \item Due to conservation of energy, the energy of the incident photon must be the same as the total energy of the produced pair of photons. Given, that they both have the same energy, their wavelength is doubled compared to the incident photon. They both have wavelength 810 nm.
+\end{enumerate}    
+\end{solution}
 
-\end{exercises}
+\newpage
+\printsolutions[chapter={4}]
 
 
 \newpage

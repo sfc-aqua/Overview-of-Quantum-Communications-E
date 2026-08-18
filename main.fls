@@ -848,8 +848,6 @@ INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
 INPUT ./Figures/Chapter04/BW/4-5_resource-network_BW.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/txfonts/txmi.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxmi.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxptmri.tfm
@@ -903,6 +901,8 @@ INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT ./CH06_Interference.tex
 INPUT ./CH06_Interference.tex
 INPUT ./CH06_Interference.tex
