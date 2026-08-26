@@ -492,62 +492,98 @@ This vacancy is used to trap an electron whose \textbf{\emph{spin}}\index{spin} 
 The electron qubit can be manipulated optically, can retain its quantum properties even at room temperatures, and acts as an excellent source of single photons with nearly vanishing second-order correlation function $g^{(2)}(0)$.
 All these properties make NV centers in diamond very promising physical systems for quantum communication.
 
-
 \newpage
-\begin{exercises}
+\section{Exercises}
 
-\exer{
-\emph{Laser model.}
-We introduced our mathematical toy model of a laser, where the rate of change of the number of photons inside the optical cavity, $n$, is given by
+\begin{exercise}
+\emph{Laser model.} We introduced our mathematical toy model of a laser. The rate of change of the number of photons inside the optical cavity, $n$, is given by
 \begin{equation}
     \dot{n} = (G N_0 - k) n - \alpha G n^2,
 \end{equation}
-where $G$ is the gain coefficient, $N_0$ is the number of excited atoms maintain by the pump in the absence of lasing, $k$ is photon loss coefficient, and $\alpha$ is the rate of stimulated emission.
+where $G$ is the gain coefficient, $N_0$ is the number of excited atoms maintained by the pump in the absence of lasing, $k$ is the photon loss coefficient, and $\alpha$ is the rate of stimulated emission.
 We gained intuition into the dynamics of this model via graphic tools.
-Here, let's solve it mathematically.
-\subexer{
-By solving $\dot{n} = 0$, show that the there are two fixed points,
-\begin{equation}
-    n_1^* = 0, \qquad \text{and }\qquad n_2^*=\frac{GN_0 - k}{\alpha}.
-\end{equation}
-Determine under what conditions are both of these fixed points physical.
-}
-\subexer{
-Stability of the fixed points can be determined by \emph{linearizing} around the fixed points\footnote{This is the same idea used in calculus to determine whether a stationary point of a function is a maximum or a minimum.}.
-The trick is to look at the value of the derivative of the rate of change with respect to the photon number at the fixed point.
-If it is positive, the fixed point unstable.
-If it is negative, the fixed point is stable,
-\begin{equation}
-    \left.\frac{d\dot{n}}{dn}\right|_{n=n^*}\longrightarrow\begin{cases}
+Let's analyze this model mathematically.
+\begin{enumerate}[label=(\alph*)]
+    \item By solving $\dot{n} = 0$, show that the there are two fixed points,
+    \begin{equation}
+        n_1^* = 0, \qquad \text{and }\qquad n_2^*=\frac{GN_0 - k}{\alpha}.
+    \end{equation}
+    Determine under what conditions are both of these fixed points physical.
+    \item Stability of the fixed points can be determined by \emph{linearizing} around the fixed points\footnote{This is the same idea used in calculus to determine whether a stationary point of a function is a maximum or a minimum.}.
+    The trick is to look at the value of the derivative of the rate of change with respect to the photon number at the fixed point.
+    If it is positive, the fixed point is unstable.
+    If it is negative, the fixed point is stable,
+    \begin{equation}
+        \left.\frac{d\dot{n}}{dn}\right|_{n=n^*}\longrightarrow\begin{cases}
         <0, \quad\text{when } n^*\text{ is stable}, \\
         >0, \quad\text{when } n^*\text{ is unstable}.
     \end{cases}
-\end{equation}
-Determine the stability of all fixed points.\\
-(\emph{Hint}: For one of the fixed points you will find that $d\dot{n}/dn|_{n=n^*}=0$. This means that linearization around the fixed point is not enough to determine the stability of the fixed point. Use graphical methods instead.)
-}
-}
+    \end{equation}
+    Determine the stability of all fixed points.\\
+    (\emph{Hint}: For one of the fixed points you will find that $d\dot{n}/dn|_{n=n^*}=0$. This means that linearization around the fixed point is not enough to determine the stability of the fixed point. Use graphical methods instead.)
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item In order to solve an equation of the form $ax^2+bx+c=0$, we apply the quadratic formula,
+    \begin{align*}
+        n^* & = \frac{-b\pm\sqrt{b^2-4ac}}{2a} \\
+        & = \frac{-(GN_0-k) \pm (GN_0-k)}{-2\alpha G} \\
+	    & = \frac{GN_0-k}{2\alpha G} \mp \frac{GN_0-k}{2\alpha G}.
+    \end{align*}
+    This leads to the following two fixed points,
+    \begin{equation*}
+        n^*_1 = 0, \qquad n^*_2=\frac{GN_0-k}{\alpha G}.
+    \end{equation*}
+    The first fixed point describes the regime of an empty cavity with no photons, where the pump is not strong enough, there is no stimulated emission, and the laser acts as a lamp. The second fixed point exists only when $n_2^*\geq0$, since negative number of cavity photons does not make physical sense. This happens when $GN_0>k$, meaning the pump strength is over the lasing threshold.
+    \item Computing the derivative of $\dot{n}$ with respect to $n$, we obtain
+    \begin{equation*} 
+        \frac{d\dot{n}}{dn}=GN_0-k-\alpha Gn.
+    \end{equation*}
+    Derivatives of $\dot{n}$ with respect $n$ at the fixed points are
+    \begin{equation*}
+        \left.\frac{d\dot{n}}{dn}\right|_{n^*_1}=GN_0-k, \quad \left.\frac{d\dot{n}}{dn}\right|_{n^*_2}=0.
+    \end{equation*}
+    Looking at the first fixed point, we observe that in the weak-pump regime, $GN_0<k$, the derivative is negative and therefore the fixed point is stable. In the strong-pump regime, $GN_0>k$, the stability flips and the fixed point becomes unstable.
+    The second fixed point only exists in the strong-pump regime, $GN_0>k$. By examining Fig.~\ref{fig:5-4_lasing}, we see that this fixed point is stable.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Single photons via attenuation.}
-How many photons per second are in one milliwatt of laser power at a wavelength of 1550nm?  In order to solve this problem, you will need to know that the energy in a single photon is
+\begin{exercise}
+\emph{Single photons via attenuation.} How many photons per second are in one milliwatt of laser power at a wavelength of 1550nm?  In order to solve this problem, you will need to know that the energy in a single photon is
 \begin{equation}
-    E = \frac{hc}{\lambda}
+    E = \frac{hc}{\lambda},
 \end{equation}
-where $\lambda$ is the wavelength of the light and $h$ is Planck's constant,
-\begin{equation}
-    h = 6.62607015\times 10^{-34} \frac{\text{J}}{\text{Hz}}.
-\end{equation}
-(You may need to look up the relationship between energy in joules (J) and power in watts.)
-\subexer{
-Assume an attenuator plate blocks 99\% of the incoming photons.
-Find the average number of photons per second after the light passes through (i) 1 attenuator plate, (ii) 2 attuantor plates, (iii) $m$ attenuator plates.
-}
-\subexer{
-How many attenuator plates are needed in order for the average number of photons per second to drop below 1?
-}
-}
+where $\lambda$ is the wavelength of the light and $h=6.626\times 10^{-34} \text{Js}$ is Planck's constant.
+(You may need to look up the relationship between energy in joules and power in watts.)
+\begin{enumerate}[label=(\alph*)]
+    \item Assume an attenuator plate blocks 99\% of the incoming photons.
+    Find the average number of photons per second after the light passes through (i) 1 attenuator plate, (ii) 2 attuantor plates, (iii) $m$ attenuator plates.
+    \item How many attenuator plates are needed in order for the average number of photons per second to drop below 1?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+Power $P$ in watts measures how much energy in joules is delivered per time in seconds. Therefore, the laser delivers $10^{-3}$ joules of energy every second. Knowing the energy of every photon $E_{\text{photon}}$, we can compute the number of photons per second,
+\begin{equation*}
+    \#\text{ of photons per second} = \frac{P}{E_{\text{photon}}} = \frac{P\lambda}{hc} = 7.8\times10^{15}.
+\end{equation*}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{enumerate}[label=(\roman*)]
+        \item 1 attenuator plate: $7.8\times10^{15} \times 0.99=7.8\times10^{13}$.
+        \item  2 attenuator plate: $7.8\times10^{15} \times 0.99^2=7.8\times10^{11}$.
+        \item $m$ attenuator plate: $7.8\times10^{15} \times 0.99^m$.
+    \end{enumerate}
+    \item We are looking for an integer $m$ such that
+    \begin{align*}
+        7.8\times10^{15} \times 0.99^m & \leq 1 \\
+        0.99^m & \leq 7.8\times10^{-15} \\
+        \ln (0.99)^m & \leq \ln (7.8\times10^{-15}) \\
+        m\ln (0.99) & \leq \ln (7.8\times10^{-15}) \\
+        m & \leq \frac{\ln (7.8\times10^{-15})}{\ln (0.99)} = 3640.96.
+    \end{align*}
+    Tehrefore, we require at least $m=3641$ attenuators in order for the average number of photons per second to drop below 1. 
+\end{enumerate}
+\end{solution}
 
-
-\end{exercises}
-
+\newpage
+\printsolutions[chapter={5}]
