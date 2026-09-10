@@ -475,65 +475,119 @@ That is why we see both possibilities D0 and D1.
     \label{fig:m-z-blocked}
 \end{figure}
 
-
 \newpage
-\begin{exercises}
 
-\exer{
+\section{Exercises}
+
+\begin{exercise}
 \emph{Visualization of wave propagation.}
-Significant portions of this Chapter discuss propagation of waves in time. Naturally, this is can be only partially visualized in the form of a book. This exercise gives you the opportunity to write some basic code that will create an animation depicting interference of two waves in time. You can choose any package or library. If you are not familiar with creating animations, we suggest you look in to {\tt Python} library called {\tt matplotlib}.
-\subexer{
-Begin by replicating Fig.~\ref{fig:6-2_superposition}. Choose any two sinusoidal waves, but make sure you can clearly see the fast and slow oscillations.
-}
-\subexer{
-Create an animation that clearly shows how the interference of the two waves propagates in time.
-}
-\subexer{
-Using a small square, mark a point of constant phase on the interference pattern.
-Using a small circle, mark a point on the envelope that modulates the oscillations.
-For your chosen parameters, which point has higher velocity?
-}
-\subexer{
-Change the parameters and make sure you can create animations that demonstrate the following three cases clearly: $v_p>v_g$, $v_p=v_g$, $v_p<v_g$.
-}
-\subexer{
-Can you find parameters for the two waves, such that the phase velocity of the resulting wave is negative, $v_p<0$?
-}
-}
+Significant portions of this Chapter discuss propagation of waves in time. Naturally, this can be only partially visualized in the form of a book. This exercise gives you the opportunity to write some basic code that will create an animation depicting interference of two waves in time. You can choose any package or library. If you are not familiar with creating animations, we suggest you look into {\tt Python} library called {\tt matplotlib}.
+\begin{enumerate}[label=(\alph*)]
+    \item Begin by replicating Fig.~\ref{fig:6-2_superposition}. Choose any two sinusoidal waves, but make sure you can clearly see the fast and slow oscillations.
+    \item Create an animation that clearly shows how the interference of the two waves propagates in time.
+    \item Using a small square, mark a point of constant phase on the interference pattern. Using a small circle, mark a point on the envelope that modulates the oscillations. For your chosen parameters, which point has higher velocity?
+    \item Change the parameters and make sure you can create animations that demonstrate the following three cases clearly: $v_p>v_g$, $v_p=v_g$, $v_p<v_g$.
+    \item Can you find parameters for the two waves, such that the phase velocity of the resulting wave is negative, $v_p<0$?
+\end{enumerate}
+\end{exercise}
 
-\exer{
+\begin{exercise}
 \emph{Single-qubit interference.}
 Consider the Mach-Zehnder interferometer of Fig.~\ref{fig:mach-zehnder}.
-\subexer{
-Show that BS1 and BS2 are not hermitian conjugates of each other, that $\text{BS}1\cdot\text{BS}2\neq I$.
-}
-\subexer{
-What are the detection probabilities of the D0 and D1 if the input state is an equal superposition $(|0\rangle + |1\rangle)/\sqrt{2}$?
-}
-\subexer{
-Can you think of a way to physically implement such an input state?
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item Show that BS1 and BS2 are not hermitian conjugates of each other, that $\text{BS}2\cdot\text{BS}1\neq I$.
+    \item What is the state of the path-encoded photon immediately before it gets detected if the input is state $\ket{0}$? What are the probabilities of detecting the photon at D0 and D1?
+    \item What are the detection probabilities of both detectors D0 and D1 registering a click if the input state is an equal superposition $(|0\rangle + |1\rangle)/\sqrt{2}$?
+    \item Can you think of a way to physically implement such an input state?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The matrix representations for the two unitary operators are
+    \begin{equation*}
+        \text{BS2}\cdot\text{BS1} = \frac{1}{2}\begin{pmatrix}
+            -1 & 1 \\
+            1 & 1
+        \end{pmatrix} \cdot \begin{pmatrix}
+            1 & 1 \\
+            1 & -1
+        \end{pmatrix} \\
+        = \begin{pmatrix}
+            0 & -1 \\
+            1 & 0
+        \end{pmatrix} \neq I.
+    \end{equation*}
+    \item The input state $\ket{0}$ means that photon is incident on BS1 from the upper port. Following the same calculation as in Eq.~(\ref{eq:BS2-BS1})
+    \begin{equation*}
+        \text{BS2}\cdot\text{BS1}\ket{0} = \begin{pmatrix}
+            0 & -1 \\ 1 & 0
+        \end{pmatrix} \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix} = \begin{pmatrix}
+            0 \\ 1
+        \end{pmatrix} = \ket{1}.
+    \end{equation*}
+    This shows that the photon will exit the second beam splitter through the lower port.
+    The photon will always be detected by D1 (lower detector) as there is zero probability to be detected by D0 (upper detector).
+    \item Repeating hte same calculation for the equal superposition input state, the output state is
+    \begin{equation*}
+        \text{BS2}\cdot\text{BS1}\ket{+} = \begin{pmatrix}
+            0 & -1 \\ 1 & 0
+        \end{pmatrix} \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 \\ 1
+        \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            -1 \\ 1
+        \end{pmatrix} = \ket{-},
+    \end{equation*}
+    up to a global phase. The output state is also an equal superposition meaning both detectors have an equal probability of detecting the photon.
+    \item The equal superposition input state can be prepared by prepending the MZI with another MZI, whose input state is $\ket{0}$.
+\end{enumerate}
+\end{solution}
 
-\exer{
+\begin{exercise}
 \emph{Destroying the interference.}
-We said that the interference at BS2 can be destroyed by placing an obstacle in one of the arms of the Mach-Zehnder interferometer, see Fig.~\ref{fig:m-z-blocked}. Let's better quantitative intuition into this scenario by replacing the obstacle with another detector, labelled by D2.
-\subexer{
-What is the state of the qubit immediately after BS1?
-}
-\subexer{
-What is the probability of detector D2 detecting a photon?
-}
-\subexer{
-What is the state of the qubit given that detector D2 did not click?
-}
-\subexer{
-What are the individual click probabilities for the three detectors?
-}
-\subexer{
-If we input a photon in the top port of BS1, where is it most likely going to be detected?
-}
-}
+We said that the interference at BS2 can be destroyed by placing an obstacle in one of the arms of the Mach-Zehnder interferometer, see Fig.~\ref{fig:m-z-blocked}. Let's gain better quantitative intuition into this scenario by replacing the obstacle with another detector, labelled by D2.
+\begin{enumerate}[label=(\alph*)]
+    \item What is the state of the qubit immediately after BS1?
+    \item What is the probability of detector D2 detecting a photon?
+    \item What is the state of the qubit given that detector D2 did not click?
+    \item What are the individual click probabilities for the three detectors?
+    \item If we input a photon in the top port of BS1, where is it most likely going to be detected?
+\end{enumerate} 
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item From Fig.~\ref{fig:m-z-blocked}, we see that the input state is $\ket{1}$. Immediately after BS1, the state of the qubit is
+    \begin{equation*}
+        \ket{\psi}_{\text{BS}1}=\text{BS}1\cdot\ket{1} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 & 1 \\ 1 & -1
+        \end{pmatrix}
+        \begin{pmatrix}
+            0 \\ 1
+        \end{pmatrix} = \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 \\ -1
+        \end{pmatrix}.
+    \end{equation*}
+    \item Probability of detecting the photon at D2 is.
+    \begin{equation*}
+        \bra{\psi}_{\text{BS}1} \cdot \outp{1}{1} \cdot \ket{\psi}_{\text{BS}1} = \frac{1}{2}.
+    \end{equation*}
+    \item Detector D2 not clicking means the coherent superposition of the qubit right after BS1 is projected onto the $\ket{0}$ state.
+    \item We have shown that the coherent superposition of the qubit immediately after BS1 is projected onto either $\ket{0}$ or $\ket{1}$ with probability 1/2. If it is projected onto $\ket{1}$ (D2 clicks) then detectors D0 and D1 cannot click since the photon has been detected. If D2 does not click (superposition after BS1 is projected onto $\ket{0}$), then both D0 and D1 have probability of 1/2 to detect the photon. We can write the joint probability of observing a particular pattern of clicks as
+    \begin{equation*}
+        \text{Pr}\{m_{\text{D}2}, m_{\text{D}0}, m_{\text{D}1}\},
+    \end{equation*}
+    where $m_i\in\{\text{yes}, \text{no}\}$ represents whether detector $i$ detected a photon or not.
+    There are eight possible patterns with the following corresponding probabilities,
+    \begin{align*}
+        \text{Pr}\{\text{yes},\text{yes},\text{yes}\} & = 0, & \text{Pr}\{\text{no},\text{yes},\text{yes}\} & = 0, \\
+        \text{Pr}\{\text{yes},\text{yes},\text{no}\} & = 0, & \text{Pr}\{\text{no},\text{yes},\text{no}\} & = 1/4, \\
+        \text{Pr}\{\text{yes},\text{no},\text{yes}\} & = 0, & \text{Pr}\{\text{no},\text{no},\text{yes}\} & = 1/4, \\
+        \text{Pr}\{\text{yes},\text{no},\text{no}\} & = 1/2, & \text{Pr}\{\text{no},\text{no},\text{no}\} & = 0.
+    \end{align*}
+\end{enumerate}
+\end{solution}
 
-\end{exercises}
-
+\newpage
+\printsolutions[chapter={6}]

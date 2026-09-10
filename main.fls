@@ -901,9 +901,6 @@ INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
 INPUT ./Figures/Chapter05/BW/5-5_single_photons_BW.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/txfonts/txr.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxptmr.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxr.tfm
 INPUT ./CH06_Interference.tex
 INPUT ./CH06_Interference.tex
 INPUT ./CH06_Interference.tex
@@ -984,9 +981,7 @@ INPUT ./Figures/Chapter06/BW/6-4_MZ_blocked_BW.pdf
 INPUT ./Figures/Chapter06/BW/6-4_MZ_blocked_BW.pdf
 INPUT ./Figures/Chapter06/BW/6-4_MZ_blocked_BW.pdf
 INPUT ./Figures/Chapter06/BW/6-4_MZ_blocked_BW.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT ./CH07_Waveguides.tex
@@ -1044,7 +1039,9 @@ INPUT ./Figures/Chapter07/BW/7-4_TAT8_BW.pdf
 INPUT ./Figures/Chapter07/BW/7-4_TAT8_BW.pdf
 INPUT ./Figures/Chapter07/BW/7-4_TAT8_BW.pdf
 INPUT ./Figures/Chapter07/BW/7-4_TAT8_BW.pdf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
 INPUT ./intro-block-3.tex
@@ -1082,6 +1079,9 @@ INPUT ./Figures/Chapter08/BW/8-1_teleportaion_outline_BW.pdf
 INPUT ./Figures/Chapter08/BW/8-1_teleportaion_outline_BW.pdf
 INPUT ./Figures/Chapter08/BW/8-1_teleportaion_outline_BW.pdf
 INPUT ./Figures/Chapter08/BW/8-1_teleportaion_outline_BW.pdf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/txfonts/txr.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxptmr.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/rtxr.tfm
 INPUT ./Figures/Chapter08/BW/8-3_no-cloning_BW.pdf
 INPUT ./Figures/Chapter08/BW/8-3_no-cloning_BW.pdf
 INPUT ./Figures/Chapter08/BW/8-3_no-cloning_BW.pdf
@@ -1402,6 +1402,9 @@ INPUT ./Figures/Chapter15/BW/15-2_distributed_BW.pdf
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
