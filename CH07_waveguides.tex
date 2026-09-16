@@ -329,58 +329,124 @@ The bandwidth was 280 Mbits/s, which can carry around 40,000 phone circuits simu
 Instead, the capacity was reached in eighteen months, necessitating the laying of more cables.
 
 \newpage
-\begin{exercises}
-\exer{
-\emph{How far is the horizon?}
-We motivated the need for optical fibers by saying that direct line of sight transmission of information is limited in range.
+\section{Exercises}
+
+\begin{exercise}
+\emph{How far is the horizon?} We motivated the need for optical fibers by saying that direct line of sight transmission of information is limited in range.
 How far is the horizon for an average human?
 Assume spherical Earth, no dispersion due to atmosphere, and average human height of 1.7 meters.
-}
+\end{exercise}
+\begin{solution}
+The considered scenario is pictured below.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1.2]{Figures/Chapter07/BW/solution_1.pdf}
+\end{figure}
+The radius of Earth is $R=|\text{CS}|=|\text{CH}|=6.371$km, the height of the observer is $h=|\text{SO}|=1.7$m, and the unknown distance to the horizon is $d=|\text{HO}|$. Applying the Pythagorean theorem, we have
+\begin{align*}
+    R^2+d^2 & = (R+h)^2 = R^2 + 2Rh + h^2 \\
+    d^2 & = 2Rh + h^2 \\
+    d & = \sqrt{2Rh + h^2}.
+\end{align*}
+We simplify this expression by realizing that the observer's height is negligible compared to the radius of the Earth, $h\ll R$.
+This leads to the final answer,
+\begin{equation*}
+    d = \sqrt{2Rh} = 4.65\text{km}.
+\end{equation*}
+\end{solution}
 
-\exer{
-\emph{Light passing through a glass tube.}
-Consider a ray of light being incident onto a long glass tube at angle $\theta_i$. The light gets refracted when entering the tube and when leaving the tube.
-\subexer{
-Draw this scenario. Using your drawing, what is the angle to the normal at which the light ray exits the glass tube.
-}
-\subexer{
-Confirm your previous answer by calculating it from Snell's law. 
-}
-\subexer{
-If the thickness of the glass tube is $h$, calculate the deviation $\Delta$ of the light ray with respect to its original path.
-}
-}
+\begin{exercise}
+\emph{Light passing through a glass plane.} Consider a ray of light being incident onto a glass plane of thickness $h$ at angle $\theta_i$. The light gets refracted when entering and leaving the plane.
+\begin{enumerate}[label=(\alph*)]
+    \item Draw this scenario. Using your drawing, what is the angle to the normal at which the light ray exits the glass tube.
+    \item Confirm your previous answer by calculating it from Snell's law. 
+    \item Calculate the deviation $\Delta$ of the light ray with respect to its original path in terms of the thickness $h$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The scenario is shown below on the left side.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{Figures/Chapter07/BW/solution_3.pdf}
+    \end{figure}
+    \item Using Snell's Law at the first (air $\rightarrow$ glass) and the second (glass $\rightarrow$ air) interface,
+    \begin{equation*}
+        n_i\sin\theta_i = n_r\sin\theta_r, \quad n_r\sin\theta_r = n_r\sin\theta_j,
+    \end{equation*}
+    respectively. We can immediately see that $n_i\sin\theta_i = n_r\sin\theta_j$, leading to
+    \begin{equation*}
+        \theta_i = \theta_j.
+    \end{equation*}
+    \item The figure above on the right shows that scenario more clearly. The relevant right angle triangle is ABC. The first step is to obtain the distance the light travels in glass, given by $|\text{AB}|$,
+    \begin{equation*}
+        |\text{AB}| = \frac{h}{\cos\theta_r}.
+    \end{equation*}
+    The triangle's angle at the vertex A is given by $\theta_i-\theta_r$. We can now compute the deviation $\Delta$,
+    \begin{align*}
+        \Delta & = |AB|\sin(\theta_i-\theta_r) \\
+        & = \frac{h\sin(\theta_i-\theta_r)}{\cos\theta_r} \\
+        & = \frac{h (\sin\theta_i\cos\theta_r - \cos\theta_i\sin\theta_r)}{\cos\theta_r} \\
+        & = h(\sin\theta_i-\tan\theta_r).
+    \end{align*}
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Negative refractive index.}
-We mentioned in this chapter that the refractive index is a positive number. This is true of conventional materials light air, water, or glass. However, metamaterials can be engineered to have a \textbf{\emph{negative refractive index}}\index{negative refractive index}.
-\subexer{
-Can you guess what happens when a light ray, travelling through material with refractive index $n$, is incident onto a material with refractive index $-n$?
-}
-\subexer{
-Use Snell's law to check your answer.
-}
-}
+\begin{exercise}
+\emph{Negative refractive index.} We mentioned in this chapter that the refractive index is a positive number. This is true of conventional materials light air, water, or glass. However, metamaterials can be engineered to have a \textbf{\emph{negative refractive index}}\index{negative refractive index}.
+\begin{enumerate}[label=(\alph*)]
+    \item Can you guess what happens when a light ray, travelling through material with refractive index $n$, is incident onto a material with refractive index $-n$?
+    \item Use Snell's law to check your answer.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item For normal materials with positive refractive indices, the light refracts on the other side of the normal to the surface, see Fig.~\ref{fig:7-2_snell_law}. For metamaterials with a negative refractive index, the light refracts on the same side of the surface normal as show below.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{Figures/Chapter07/BW/solution_2.pdf}
+    \end{figure}
+    \item Snell's Law still holds in its usual form,
+    \begin{equation*}
+        n_i\sin\theta_i = n_r\sin\theta_r.
+    \end{equation*}
+    Since the refractive index is negative, $n_r<0$, the angle of refraction must also be negative, $\theta_r<0$. The magnitude of the angle of refractions stays the same but due to its negative sign, light appears to ``bounce back'' from the surface normal.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Acceptance angle for typical optical fibers.}
-Consider an optical fiber with core refractive index of $1.522$, and cladding refractive index of $1.343$.
-\subexer{
-What is the critical angle $\theta_c$ for this optical fiber?
-}
-\subexer{
-Compute the numerical aperture for this fiber?
-}
-\subexer{
-What is the angle of acceptance $\theta_{max}$ for this fiber?
-}
-\subexer{
-What does the angle of acceptance increase to if we use a diamond core?
-}
-}
+\begin{exercise}
+\emph{Acceptance angle for typical optical fibers.} Consider an optical fiber with core refractive index of $1.522$, and cladding refractive index of $1.343$.
+\begin{enumerate}[label=(\alph*)]
+    \item What is the critical angle $\theta_c$ for this optical fiber?
+    \item What is the angle of acceptance $\theta_{max}$ for this fiber?
+    \item What does the angle of acceptance increase to if we use a diamond core?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The critical angle is given by
+    \begin{equation*}
+        \theta_c = \sin^{-1}\left( \frac{n_r}{n_i} \right).
+    \end{equation*}
+    Substituting the values $n_i=1.522$ and $n_r=1.343$, we obtain the critical angle for a glass fiber is
+    \begin{equation*}
+        \theta_c = 61.9^{\circ}.
+    \end{equation*}
+    \item Assuming that the propagates through air first, $n_i=1$. The angle of acceptance is
+    \begin{equation*}
+        \theta_{max} = \sin^{-1} \sqrt{n_f^2 - n_c^2 }\approx 45.7^{\circ}, 
+    \end{equation*}
+    where we used $n_f=1.522$ and $n_c=1.343$.
+    \item The refractive index of diamond is approximately 2.417. Substituting this refractive index into the above equation,
+    \begin{equation*}
+        \theta_{max} = \sin^{-1}\sqrt{2.01}.
+    \end{equation*}
+    This equation does not have a solution! This means any incidence angle between 0 and 90$^{\circ}$ will result in the light coupling ot the fiber.
+\end{enumerate}
+\end{solution}
 
-
-\end{exercises}
+\newpage
+\printsolutions[chapter={7}]
 
 \newpage
 \section*{Quiz}
