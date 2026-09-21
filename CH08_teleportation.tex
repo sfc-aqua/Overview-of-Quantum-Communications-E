@@ -400,90 +400,178 @@ He applies the appropriate correction unitary ensuring his qubit is in the desir
 
 
 \newpage
-\begin{exercises}
+\section{Exercises}
 
-\exer{
-\emph{Filling in the gaps.}
-During our discussion of the teleportation we have skipped some details, which we will consider now.
-\subexer{
-Consider the input state of the three qubits $A_1,A_2$, and $B$ in Eq.~(\ref{eq:teleportation_initial_state}).
-Write down, both in Dirac and matrix notation, the initial state of each of the three qubits.
-}
-\subexer{
-Write down Alice's measurement operators in the computational basis and in both Dirac and matrix notation.
-}
-\subexer{
-Convince yourself that the probabilities of the four possible outcomes are independent of the initial state $A_1$.
-}
-}
+\begin{exercise}
+\emph{Filling in the gaps.} During our discussion of the teleportation we have skipped some details, which we will consider now.
+\begin{enumerate}[label=(\alph*)]
+    \item Consider the input state of the three qubits $A_1,A_2$, and $B$ in Eq.~(\ref{eq:teleportation_initial_state}). Write down, both in Dirac and matrix notation, the initial state of each of the three qubits.
+    \item Write down Alice's measurement operators in the computational basis and in both Dirac and matrix notation.
+    \item Convince yourself that the probabilities of the four possible outcomes are independent of the initial state $A_1$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Let's write down the initial state again,
+    \begin{equation*}
+        \ket{\psi} = (\alpha\ket{0}+\beta\ket{1})_{A_1} \otimes \frac{(\ket{00}+\ket{11})_{A_2B}}{\sqrt{2}}.
+    \end{equation*}
+    Initially, qubit $A_1$ is not entangled with the other two qubits. Therefore, its state is simply $(\alpha\ket{0}_{A_1}+\beta\ket{1}_{A_1})$. To get the state of the other qubits, we need to take the corresponding partial traces and obtain the following,
+    \begin{align*}
+        \text{qubit }A_2 & : \quad \frac{1}{2} (\outp{0}{0} + \outp{1}{1})_{A_2}, \\
+        \text{qubit }B & : \quad \frac{1}{2} (\outp{0}{0} + \outp{1}{1})_{B}.
+    \end{align*}
+    \item Alice's measurement operators are the following,
+    \begin{equation*}
+        \outp{\Phi^{\pm}}{\Phi^{\pm}} = \frac{1}{2}\begin{pmatrix}
+            1 & 0 & 0 & \pm1 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            \pm1 & 0 & 0 & 1
+        \end{pmatrix}, \quad \outp{\Psi^{\pm}}{\Psi^{\pm}} = \frac{1}{2}\begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 1 & \pm1 & 0 \\
+            0 & \pm1 & 1 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}.
+    \end{equation*}
+    \item In order for the probabilities of the possible measurement outcomes to be independent of the initial state of $A_1$, we must show that they do not depend on the probability amplitudes $\alpha$ and $\beta$. The initial state has the following form,
+    \begin{equation*}
+        \ket{\psi} = \frac{1}{\sqrt{2}}(\alpha\ket{000} + \alpha\ket{011} + \beta\ket{100} + \beta\ket{111}).
+    \end{equation*}
+    The probability that the measurement outcome is \ket{\Phi^+} is given by
+    \begin{align*}
+        \text{Pr}\left\{\ket{\Phi^+}\right\} & = \text{Tr}\left\{ \outp{\Phi^+}{\Phi^+} \otimes I \outp{\psi}{\psi} \right\} \\
+        & = \bra{\psi} \left( \outp{\Phi^+}{\Phi^+}\otimes I \right) \ket{\psi} \\
+        & = \frac{1}{2\sqrt{2}} \bra{\psi} \left( \alpha\ket{000} + \beta\ket{001} + \alpha\ket{110} + \beta\ket{111} \right) \\
+        & = \frac{1}{4} \left( |\alpha|^2 + |\beta|^2 \right) = \frac{1}{4},
+    \end{align*}
+    since the state \ket{\psi} is normalized.
+    One can repeat the same calculation for the case of probabilities corresponding to the other three measurement outcomes.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Teleporting the state \ket{0}.}
-Let's work through an example of teleportation to reinforce our understanding of the protocol.
-Rather than teleporting a general pure state \ket{\psi}, we wish to teleport the state \ket{0}.
-\subexer{
-Write down the initial state of all three qubits in the computational basis.
-}
-\subexer{
-Rewrite the initial state, such that Alice's qubits $A_1$ and $A_2$ are written in the Bell basis, while Bob's qubit is in the computational basis.
-}
-\subexer{
-How many possible outcomes of Alice's Bell-basis measurement are there?
-What are their corresponding probabilities?
-}
-\subexer{
-How many classical bits of information does Alice need to communicate to Bob to inform him of the measurement outcome?
-}
-\subexer{
-What correction operations does Bob need to apply to ensure he receives the state \ket{0} after the teleportation protocol is finished?
-}
-}
+\begin{exercise}
+\emph{Teleporting the state \ket{0}.} Let's work through an example of teleportation to reinforce our understanding of the protocol. Rather than teleporting a general pure state \ket{\psi}, we wish to teleport the state \ket{0}.
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the initial state of all three qubits in the computational basis.
+    \item Rewrite the initial state, such that Alice's qubits $A_1$ and $A_2$ are written in the Bell basis, while Bob's qubit is in the computational basis.
+    \item How many possible outcomes of Alice's Bell-basis measurement are there? What are their corresponding probabilities?
+    \item What correction operations does Bob need to apply to ensure he receives the state \ket{0} after the teleportation protocol is finished?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The initial state can be written as
+    \begin{equation*}
+        \ket{\psi} = \ket{0}_{A_1} \otimes \frac{\left(\ket{00}+\ket{11} \right)_{A_2B}}{\sqrt{2}}.
+    \end{equation*}
+    \item Using $\ket{00}=(\ket{\Phi^+}+\ket{\Phi^-})/\sqrt{2}$ and $\ket{01}=(\ket{\Psi^+}+\ket{\Psi^-})/\sqrt{2}$,
+    \begin{equation*}
+        \ket{\psi} = \frac{1}{2}\left( \ket{\Phi^+}\ket{0} + \ket{\Phi^-}\ket{0} + \ket{\Psi^+}\ket{1} + \ket{\Psi^-}\ket{1} \right)_{A_1A_2B}.
+    \end{equation*}
+    \item Alice's measurement has four possible outcomes. She can measure states all four Bell states with equal probability of 1/4.
+    \item Bob needs to apply a Pauli X operation if the outcome of Alice's measurement is either \ket{\Psi^+} or \ket{\Psi^-}.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Teleporting a mixed state.}
-So far we have only looked at the case when Alice wishes to teleport a pure state.
-Let's teleport a mixed state, for example a state that is diagonal in the computational basis,
+\begin{exercise}
+\emph{Teleporting a mixed state.} So far we have only looked at the case when Alice wishes to teleport a pure state. Let's teleport a mixed state, for example a state that is diagonal in the computational basis,
 \begin{equation}
     \rho = a \ket{0}\bra{0} + b \ket{1}\bra{1}.
 \end{equation}
-\subexer{
-Write down the initial state of all three qubits in the computational basis.
-}
-\subexer{
-Compute the probabilities of Alice's measurement outcomes on the two qubits.
-Did you expect your answer?
-}
-\subexer{
-Find the state of Bob's qubit when Alice obtains \ket{\Phi^+} as the outcome of her measurement.
-}
-\subexer{
-Find the state of Bob's qubit when Alice obtains \ket{\Phi^-} as the outcome of her measurement.
-}
-\subexer{
-What are the correction operations that Bob needs to apply in order to successfully receive the state $\rho$, regardless of Alice's measurement outcome?
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the initial state of all three qubits in the computational basis.
+    \item Compute the probabilities of Alice's measurement outcomes on the two qubits. Did you expect your answer?
+    \item Find the state of Bob's qubit when Alice obtains \ket{\Phi^+} as the outcome of her measurement.
+    \item Find the state of Bob's qubit when Alice obtains \ket{\Phi^-} as the outcome of her measurement.
+    \item What are the correction operations that Bob needs to apply in order to successfully receive the state $\rho$, regardless of Alice's measurement outcome?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The initial state in computational basis is
+    \begin{align*}
+        \rho_{A_1A_2B} & = \left( a\outp{0}{0} + b\outp{1}{1} \right)_{A_1} \otimes \outp{\Phi^+}{\Phi^+}_{A_2B} \\
+        & = \frac{1}{2} \left( a\outp{000}{000} + a\outp{000}{011} + a\outp{011}{000} + a\outp{011}{011} \right. \\
+        & + \left. b\outp{100}{100} + b\outp{100}{111} + b\outp{111}{100} + b\outp{111}{111} \right).
+    \end{align*}
+    \item Probabilities of obtaining state the four Bell pairs are
+    \begin{align*}
+        \text{Pr}\left\{\ket{\Phi^+}\right\} & = \text{Tr}\left\{\outp{\Phi^+}{\Phi^+}\rho\right\} = \frac{1}{4}(a+b) = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Phi^-}\right\} & = \text{Tr}\left\{\outp{\Phi^-}{\Phi^-}\rho\right\} = \frac{1}{4}(a+b) = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Psi^+}\right\} & = \text{Tr}\left\{\outp{\Psi^+}{\Psi^+}\rho\right\} = \frac{1}{4}(a+b) = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Psi^-}\right\} & = \text{Tr}\left\{\outp{\Psi^-}{\Psi^-}\rho\right\} = \frac{1}{4}(a+b) = \frac{1}{4}.
+    \end{align*}
+    \item Applying the projector $\outp{\Phi^+}{\Phi^+}_{A_1A_2}$ to the initial state and renormalizing,
+    \begin{align*}
+        \frac{\Pi_{\Phi^+}\rho_{A_1A_2B}\Pi_{\Phi^+}}{\text{Pr}\{\ket{\Phi^+}\}} & = \frac{\outp{\Phi^+}{\Phi^+}_{A_1A_2}\otimes I_B \rho_{A_1A_2B}\outp{\Phi^+}{\Phi^+}_{A_1A_2}\otimes I_B}{1/4} \\
+        & = a \ket{\Phi^+}\bra{\Phi^+}_{A_1A_2} \outp{0}{0}_B + b \outp{\Phi^+}{\Phi^+}_{A_1A_2} \outp{1}{1}_B \\
+        & = \outp{\Phi^+}{\Phi^+}_{A_1A_2}\rho_B.
+    \end{align*}
+    \item Similarly to the above case, we apply the projector $\outp{\Phi^-}{\Phi^-}_{A_1A_2}$,
+    \begin{align*}
+        \frac{\Pi_{\Phi^-}\rho_{A_1A_2B}\Pi_{\Phi^-}}{\text{Pr}\{\ket{\Phi^-}\}} & = \frac{\outp{\Phi^-}{\Phi^-}_{A_1A_2}\otimes I_B \rho_{A_1A_2B}\outp{\Phi^-}{\Phi^-}_{A_1A_2}\otimes I_B}{1/4} \\
+        & = a \ket{\Phi^-}\bra{\Phi^-}_{A_1A_2} \outp{0}{0}_B + b \outp{\Phi^-}{\Phi^-}_{A_1A_2} \outp{1}{1}_B \\
+        & = \outp{\Phi^-}{\Phi^-}_{A_1A_2}\rho_B.
+    \end{align*}
+    \item We have already computed the states when Alice's measurement results in states \ket{\Phi^{\pm}}. Doing the same for the two other possible measurement outcomes gives,
+    \begin{equation*}
+        \outp{\Psi^{\pm}}{\Psi^{\pm}}_{A_1A_2} \otimes \left( a\outp{1}{1}_B + b \outp{0}{0}_B \right).
+    \end{equation*}
+    We can see that Bob only needs to apply a Pauli X correction if the measurement outcome is \ket{\Psi^{\pm}}.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Different initial entangled states.}
-Up until now, we have consider the initial entangled state between Alice and Bob to be \ket{\Phi^+}.
-Let's see what happens when we use the other Bell states.
-\subexer{
-Go through the teleportation protocol in order to find out Bob's correction operations in the following cases.
-}
-\subexer{
-When the shared state is \ket{\Phi^-}.
-}
-\subexer{
-When the shared state is \ket{\Psi^+}.
-}
-\subexer{
-When the shared state is \ket{\Psi^-}.
-}
-\subexer{
-Can you see a pattern?
-}
-}
+\begin{exercise}
+\emph{Different initial entangled states.} Up until now, we have considered the initial entangled state between Alice and Bob to be \ket{\Phi^+}. Let's see what happens when we use the other Bell states. Go through the teleportation protocol in order to find out Bob's correction operations in the following cases.
+\begin{enumerate}[label=(\alph*)]
+    \item When the shared state is \ket{\Phi^-}.
+    \item When the shared state is \ket{\Psi^+}.
+    \item When the shared state is \ket{\Psi^-}.
+    \item Can you see a pattern?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+Let's denote the state that Alice would like to teleport by $\ket{\psi}=a\ket{0}+b\ket{1}$. The three initial states correspoding to three different Bell pairs are written below.
+\begin{enumerate}[label=(\alph*)]
+    \item When the shared entangled state is \ket{\Phi^-}, the initial state is
+    \begin{align*}
+        \ket{\Psi}_{A_1A_2B} & = \left( a\ket{0}+b\ket{1}\right)_{A_1} \frac{1}{\sqrt{2}}\left( \ket{00} - \ket{11} \right)_{A_2B} \\
+        & = \frac{1}{\sqrt{2}} \left( a\ket{000} - a\ket{011} + b\ket{100} - b\ket{111} \right) \\
+        & = \frac{1}{2}\left[ \ket{\Phi^+}_{A_1A_2}\left( Z\ket{\psi}_B \right) +  \ket{\Phi^-}_{A_1A_2} \ket{\psi}_B \right.\\
+        & \left. - \ket{\Psi^+}_{A_1A_2}\left( XZ \ket{\psi}_B \right) - \ket{\Psi^-}_{A_1A_2}\left( X\ket{\psi}_B \right) \right].
+    \end{align*}
+    \item When the shared entangled state is \ket{\Psi^+}, the initial state is
+    \begin{align*}
+        \ket{\Psi}_{A_1A_2B} & = \frac{1}{2}\left[ \ket{\Phi^+}_{A_1A_2}\left( X\ket{\psi}_B \right) +  \ket{\Phi^-}_{A_1A_2} \left( XZ \ket{\psi}_B \right) \right.\\
+        & \left. + \ket{\Psi^+}_{A_1A_2}\ket{\psi}_B + \ket{\Psi^-}_{A_1A_2}\left( Z\ket{\psi}_B \right) \right].
+    \end{align*}
+    \item When the shared entangled state is \ket{\Psi^-}, the initial state is
+    \begin{align*}
+        \ket{\Psi}_{A_1A_2B} & = \frac{1}{2}\left[ \ket{\Phi^+}_{A_1A_2}\left( XZ \ket{\psi}_B \right) +  \ket{\Phi^-}_{A_1A_2} \left( X \ket{\psi}_B \right) \right.\\
+        & \left. - \ket{\Psi^+}_{A_1A_2} \left(Z \ket{\psi}_B \right) - \ket{\Psi^-}_{A_1A_2} \ket{\psi}_B \right].
+    \end{align*}
+    \item Sumamry of the corrections that needs to apply is shown in the table below. Each row represents the case of a different initial Bell pair shared between Alice and Bob, while the columns represent different measurement outcomes.
+    \begin{table}[h]
+    \setcellgapes{5pt}
+    % \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{cccccc}
+        \hline
+        & & \multicolumn{4}{c}{\textbf{Measurement outcomes}} \\
+        & & $\mathbf{\ket{\Phi^+}}$ & $\mathbf{\ket{\Phi^-}}$ & $\mathbf{\ket{\Psi^+}}$ & $\mathbf{\ket{\Psi^-}}$ \\
+        \hline
+        \multirow{4}{*}{\rotatebox{90}{\textbf{Shared Bell pair}}} & $\mathbf{\ket{\Phi^+}}$ & $I$ & $Z$ & $X$ & $XZ$ \\
+        & $\mathbf{\ket{\Phi^-}}$ & $Z$ & $I$ & $XZ$ & $X$ \\
+        & $\mathbf{\ket{\Psi^+}}$ & $X$ & $XZ$ & $I$ & $Z$ \\
+        & $\mathbf{\ket{\Psi^-}}$ & $XZ$ & $X$ & $Z$ & $I$ \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{enumerate}
+\end{solution}
 
-\end{exercises}
-
+\newpage
+\printsolutions[chapter={8}]
