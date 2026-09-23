@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  23 SEP 2026 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  23 SEP 2026 12:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1197,28 +1197,28 @@ File: csquotes.cfg
 ))
 \g_xsim_collection_exercise_in_all exercises_int=\count413
 \c@totalexerciseinall exercises=\count414
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 166.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 165.
  (./main.aux (./main.xsim))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 165.
+LaTeX Font Info:    ... okay on input line 165.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count415
@@ -1240,25 +1240,25 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 166.
+ on input line 165.
 
 
 Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
 (hyperref)                using 11in.
 
-Package hyperref Info: Link coloring OFF on input line 166.
+Package hyperref Info: Link coloring OFF on input line 165.
 (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
-LaTeX Info: Redefining \celsius on input line 166.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 166.
+LaTeX Info: Redefining \celsius on input line 165.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 165.
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 166.
-Package gensymb Info: Using \Omega for \ohm on input line 166.
+LaTeX Info: Redefining \ohm on input line 165.
+Package gensymb Info: Using \Omega for \ohm on input line 165.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -1268,7 +1268,7 @@ Package gensymb Warning: Not defining \micro.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 166.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 165.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  
@@ -1282,11 +1282,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 178.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 177.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 178.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 177.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -1295,14 +1295,14 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [3]
-Underfull \hbox (badness 2253) in paragraph at lines 182--182
+Underfull \hbox (badness 2253) in paragraph at lines 181--181
 []\OT1/ptm/m/n/9 This work is li-censed un-der a []Cre-ative Com-mons
  []
 
 <doclicense-CC-by-sa-88x31.pdf, id=532, 90.3375pt x 31.61812pt>
 File: doclicense-CC-by-sa-88x31.pdf Graphic file (type pdf)
 <use doclicense-CC-by-sa-88x31.pdf>
-Package pdftex.def Info: doclicense-CC-by-sa-88x31.pdf  used on input line 182.
+Package pdftex.def Info: doclicense-CC-by-sa-88x31.pdf  used on input line 181.
 (pdftex.def)             Requested size: 90.0pt x 31.5003pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1310,12 +1310,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [4 </usr/local/texlive/2025/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by-sa-88x31.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 192--192
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--192
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 
  []
 
@@ -1490,10 +1490,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uppercase' on input line 257.
+(hyperref)                removing `\uppercase' on input line 256.
 
 
-Overfull \hbox (23.988pt too wide) in paragraph at lines 257--257
+Overfull \hbox (23.988pt too wide) in paragraph at lines 256--256
 \chapternumberfont I [] 
  []
 
@@ -2401,10 +2401,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uppercase' on input line 264.
+(hyperref)                removing `\uppercase' on input line 263.
 
 
-Overfull \hbox (35.97601pt too wide) in paragraph at lines 264--264
+Overfull \hbox (35.97601pt too wide) in paragraph at lines 263--263
 \chapternumberfont II [] 
  []
 
@@ -3089,10 +3089,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uppercase' on input line 270.
+(hyperref)                removing `\uppercase' on input line 269.
 
 
-Overfull \hbox (47.96402pt too wide) in paragraph at lines 270--270
+Overfull \hbox (47.96402pt too wide) in paragraph at lines 269--269
 \chapternumberfont III [] 
  []
 
@@ -3639,10 +3639,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [188]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uppercase' on input line 276.
+(hyperref)                removing `\uppercase' on input line 275.
 
 
-Overfull \hbox (49.98001pt too wide) in paragraph at lines 276--276
+Overfull \hbox (49.98001pt too wide) in paragraph at lines 275--275
 \chapternumberfont IV [] 
  []
 
@@ -4236,10 +4236,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uppercase' on input line 282.
+(hyperref)                removing `\uppercase' on input line 281.
 
 
-Overfull \hbox (37.992pt too wide) in paragraph at lines 282--282
+Overfull \hbox (37.992pt too wide) in paragraph at lines 281--281
 \chapternumberfont V [] 
  []
 
@@ -4776,7 +4776,7 @@ Here is how much of TeX's memory you used:
  1147 hyphenation exceptions out of 8191
  84i,21n,94p,42406b,835s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (312 pages, 4008475 bytes).
+Output written on main.pdf (312 pages, 4008332 bytes).
 PDF statistics:
  11668 PDF objects out of 12825 (max. 8388607)
  8690 compressed objects within 87 object streams

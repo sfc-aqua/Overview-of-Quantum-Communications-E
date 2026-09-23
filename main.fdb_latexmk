@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex main"] 1790124187.51886 "main.aux" "main.bbl" "main" 1790131657.39816 0
+["bibtex main"] 1790124187.51886 "main.aux" "main.bbl" "main" 1790132494.65124 0
   "./main.bib" 1783995995.54083 9987 5c3794ec9d481c7de8ff12fdc146b8b3 ""
   "./mit-chicago.bst" 1783995995.54116 47334 7fc0feda303d325fede4cb1f627d1cd0 ""
-  "main.aux" 1790131656.83967 64061 8c5894291aa2396d50c1a673d23319e1 "pdflatex"
+  "main.aux" 1790132494.10831 64061 8c5894291aa2396d50c1a673d23319e1 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1790079755.94221 "main.idx" "main.ind" "main" 1790131657.39797 0
-  "main.idx" 1790131656.88215 11646 619c14343ddac39d0aa2c2f70f145b32 "pdflatex"
+["makeindex main.idx"] 1790079755.94221 "main.idx" "main.ind" "main" 1790132494.65105 0
+  "main.idx" 1790132494.15267 11646 619c14343ddac39d0aa2c2f70f145b32 "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1790131651.31621 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1790131657.39842 0
-  "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" 1789994298.88205 52513 db13c0ad329773e6c5e4096e605fb0e7 ""
+["pdflatex"] 1790132488.56843 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1790132494.65148 0
+  "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" 1790132488.40166 52587 46c7ac3ea5595c61088ea0f1b05bf058 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -482,14 +482,14 @@
   "intro-block-3.tex" 1783995995.50827 1638 1029850ed0644be4136b6a6502721c67 ""
   "intro-block-4.tex" 1783995995.50835 971 94bf8973f259d3d2a50aa4d5bd3a45b2 ""
   "intro-block-5.tex" 1783995995.50843 466 ccabc94a270e8fba698b5c197876f122 ""
-  "main.aux" 1790131656.83967 64061 8c5894291aa2396d50c1a673d23319e1 "pdflatex"
+  "main.aux" 1790132494.10831 64061 8c5894291aa2396d50c1a673d23319e1 "pdflatex"
   "main.bbl" 1790124187.69941 13485 9190c286e3b66c743dcda225ca46a0b8 "bibtex main"
   "main.ind" 1790079756.05542 10657 badfcf7f21806a61253bd2cc54e860de "makeindex main.idx"
-  "main.lof" 1790131656.88251 12082 ab27e62f77dba24252738ad7c0bad29e "pdflatex"
-  "main.out" 1790131656.88176 19331 7ffde33a46cd125de89f7ac7c64fc014 "pdflatex"
-  "main.tex" 1789994298.88205 52513 db13c0ad329773e6c5e4096e605fb0e7 ""
-  "main.toc" 1790131656.88233 9893 333783143908184e24c0ff290ce3a2b5 "pdflatex"
-  "main.xsim" 1790131656.8388 77731 813c8f4ed4da22ce5422497ec46f4095 "pdflatex"
+  "main.lof" 1790132494.15299 12082 ab27e62f77dba24252738ad7c0bad29e "pdflatex"
+  "main.out" 1790132494.15217 19331 7ffde33a46cd125de89f7ac7c64fc014 "pdflatex"
+  "main.tex" 1790132488.40166 52587 46c7ac3ea5595c61088ea0f1b05bf058 ""
+  "main.toc" 1790132494.15284 9893 333783143908184e24c0ff290ce3a2b5 "pdflatex"
+  "main.xsim" 1790132494.10736 77731 813c8f4ed4da22ce5422497ec46f4095 "pdflatex"
   "newmath.cls" 1783995995.54136 76503 fd9fe661cb3a15f896aef9b2f135ca1f ""
   "preface.tex" 1783995995.54153 2162 871895519cbdedf4a3f5e46a80dd80c6 ""
   "tikz-3dplot-circleofsphere.sty" 1783995995.54168 16835 12e91436ad62c15f5dafdc3be3fbc7f6 ""

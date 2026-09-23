@@ -28,7 +28,6 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{xsim}
-% \usepackage{braket}
 \tikzset{>=latex}
 \xsimsetup{
   exercise/name = Exercise,
@@ -74,44 +73,44 @@
 %
 % Inner products bras kets etc 
 %
-\newcommand{\bra}[1]{%  dirac 'bra'
+\providecommand{\bra}[1]{%  dirac 'bra'
     \ensuremath{\left\langle #1 \right|}\xspace}
 
-\newcommand{\ket}[1]{%  dirac 'ket'
+\providecommand{\ket}[1]{%  dirac 'ket'
     \ensuremath{\left|  #1 \right\rangle}\xspace}
 
-\newcommand{\innp}[2]{%  dirac style inner product
+\providecommand{\innp}[2]{%  dirac style inner product
     \ensuremath{\langle #1 \mid #2 \rangle}}
 
-\newcommand{\outp}[2]{%  dirac style outer product
+\providecommand{\outp}[2]{%  dirac style outer product
     \ensuremath{\left|\left. #1 \rangle\right.\!\langle\left. #2 \right|\right. }}
 
-\newcommand{\norm}[1]{% define command to get spacing right
+\providecommand{\norm}[1]{% define command to get spacing right
         \ensuremath{\left| #1 \right| }}
 
-\newcommand{\braket}[2]{\ensuremath{\langle #1|#2 \rangle}}
-\newcommand{\ketbra}[2]{\ensuremath{|#1 \rangle \langle #2|}}
-\newcommand{\ro}[1]{\ensuremath{|#1 \rangle \langle #1|}}
-\newcommand{\av}[1]{\ensuremath{\langle #1 \rangle}}
-\newcommand{\real}{\ensuremath{\mathrm{Re}}}
-\newcommand{\trace}{\ensuremath{\textsf{Tr}}}
+\providecommand{\braket}[2]{\ensuremath{\langle #1|#2 \rangle}}
+\providecommand{\ketbra}[2]{\ensuremath{|#1 \rangle \langle #2|}}
+\providecommand{\ro}[1]{\ensuremath{|#1 \rangle \langle #1|}}
+\providecommand{\av}[1]{\ensuremath{\langle #1 \rangle}}
+\providecommand{\real}{\ensuremath{\mathrm{Re}}}
+\providecommand{\trace}{\ensuremath{\textsf{Tr}}}
 
 %% use the proper notation for CZ etc
-\newcommand{\CZ}{\ensuremath{\wedge Z}\xspace}
-\newcommand{\CX}{\ensuremath{\wedge X}\xspace}
-\newcommand{\CNot}{\CX}
-\newcommand{\cnot}{\textsc{cnot}\xspace}
-\newcommand{\ccnot}{\textsc{ccnot}\xspace}
+\providecommand{\CZ}{\ensuremath{\wedge Z}\xspace}
+\providecommand{\CX}{\ensuremath{\wedge X}\xspace}
+\providecommand{\CNot}{\CX}
+\providecommand{\cnot}{\textsc{cnot}\xspace}
+\providecommand{\ccnot}{\textsc{ccnot}\xspace}
 
-\newcommand{\PsiPlus}{\ensuremath{\ket{\Psi^+}}\xspace}
-\newcommand{\PsiMinus}{\ensuremath{\ket{\Psi^-}}\xspace}
-\newcommand{\PhiPlus}{\ensuremath{\ket{\Phi^+}}\xspace}
-\newcommand{\PhiMinus}{\ensuremath{\ket{\Phi^-}}\xspace}
+\providecommand{\PsiPlus}{\ensuremath{\ket{\Psi^+}}\xspace}
+\providecommand{\PsiMinus}{\ensuremath{\ket{\Psi^-}}\xspace}
+\providecommand{\PhiPlus}{\ensuremath{\ket{\Phi^+}}\xspace}
+\providecommand{\PhiMinus}{\ensuremath{\ket{\Phi^-}}\xspace}
 
-\newcommand{\sulPisP}{\ensuremath{\bra{\Psi^+}}\xspace}
-\newcommand{\suniMisP}{\ensuremath{\bra{\Psi^-}}\xspace}
-\newcommand{\sulPihP}{\ensuremath{\bra{\Phi^+}}\xspace}
-\newcommand{\suniMihP}{\ensuremath{\bra{\Phi^-}}\xspace}
+\providecommand{\sulPisP}{\ensuremath{\bra{\Psi^+}}\xspace}
+\providecommand{\suniMisP}{\ensuremath{\bra{\Psi^-}}\xspace}
+\providecommand{\sulPihP}{\ensuremath{\bra{\Phi^+}}\xspace}
+\providecommand{\suniMihP}{\ensuremath{\bra{\Phi^-}}\xspace}
 
 % useful operator names
 % trace
