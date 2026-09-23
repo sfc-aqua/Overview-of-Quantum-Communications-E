@@ -341,7 +341,7 @@ What can happen in this case?
 Remember, the preparation basis stored in the bit string $b$ is still kept secret by Alice.
 That basis has not yet been communicated over a public classical channel to Bob.
 Without access to this information, Eve has to pick either the $X$ or $Z$ basis at random for her measurement.
-Eve therefore runs the risk of disturbing and altering the state of hte qubits that she intercepted from Alice.
+Eve therefore runs the risk of disturbing and altering the state of the qubits that she intercepted from Alice.
 
 \begin{figure}[t]
     \centering
@@ -470,90 +470,130 @@ The eastern fiber network includes 700 individual links, and the network serves 
 
 
 \newpage
-\begin{exercises}
+\section{Exercises}
 
-\exer{
-\emph{One-time pad.}
-Alice would like to transmit her plaintext message $m$ to Bob, encoding it using the one-time pad with a secret key $k$ that she shares with Bob.
-The ciphertext is given by
+\begin{exercise}
+\emph{One-time pad.} Alice would like to transmit her plaintext message $m$ to Bob, encoding it using the one-time pad with a secret key $k$ that she shares with Bob. The ciphertext is given by
 \begin{equation}
     c = m \oplus k.
 \end{equation}
-\subexer{
-If the plaintext $m$ contains $n$ bits, what is the minimum length of the key?
-}
-\subexer{
-Show that in order to obtain the plaintext $m$, Bob needs to apply the one-time pad to the received ciphertext.
-}
-\subexer{
-Let's say that Alice's plaintext and shared key are
-\begin{align}
-    m & = 0101010111, \\
-    k & = 1010100111,
-\end{align}
-respectively.
-What is the ciphertext?
-}
-\subexer{
-Check that applying the key to the ciphertext decodes the message.
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item If the plaintext $m$ contains $n$ bits, what is the minimum length of the key?
+    \item Show that in order to obtain the plaintext $m$, Bob needs to apply the one-time pad to the received ciphertext.
+    \item Let's say that Alice's plaintext and shared key are
+    \begin{align*}
+        m & = 0101010111, \\
+        k & = 1010100111,
+    \end{align*}
+    respectively. What is the ciphertext?
+    \item Check that applying the key to the ciphertext decodes the message.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The secret key must be at least as long as the plaintext, $n$.
+    \item To decipher the message, Bob appleis the one-time pad,
+    \begin{equation*}
+        c \oplus k = \left( m \oplus k \right) \oplus k = m \oplus 0 = m,
+    \end{equation*}
+    where $0$ is a string of all zeros.
+    \item The ciphertext is
+    \begin{equation*}
+        m \oplus k = 1111110000.
+    \end{equation*}
+    \item Applying the one-time pad to decipher the message,
+    \begin{equation*}
+        1111110000 \oplus 1010100111 = 0101010111 = m.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Two-time pad.}
-We mentioned that the one-time pad is secure provided that it is used only once.
-Let's consider the scenario where Alice communicates two messages $m_1$ and $m_2$, but she is careless and uses the same key $k$ to encode them before transmission.
-Since the same key is used twice, it is called two-time pad.
-\subexer{
-Write down the two ciphertexts corresponding to Alice's messages. 
-}
-\subexer{
-Eve intercepts both transmissions.
-What information about Alice's messages $m_1$ and $m_2$ can she obtain and how? 
-}
-}
+\begin{exercise}
+\emph{Two-time pad.} We mentioned that the one-time pad is secure provided that it is used only once. Let's consider the scenario where Alice communicates two messages $m_1$ and $m_2$, but she is careless and uses the same key $k$ to encode them before transmission. Since the same key is used twice, it is called two-time pad.
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the two ciphertexts corresponding to Alice's messages.
+    \item Eve intercepts both transmissions. What information about Alice's messages $m_1$ and $m_2$ can she obtain and how? 
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The two ciphertexts are
+    \begin{equation*}
+        c_1 = m_1 \oplus k, \qquad c_2 = m_2 \oplus k.
+    \end{equation*}
+    \item Eve can XOR both ciphertexts together to obtain the following,
+    \begin{equation*}
+        c_1 \oplus c_2 = \left( m_1 \oplus k \right) \oplus \left( m_2 \oplus k \right) = m_1 \oplus m_2.
+    \end{equation*}
+    Eve can cancel the secret key and obtain the XOR of both plaintext messages. Becasue the secret key is absent from the messages, Eve can further use $m_1\oplus m_2$ to recover parts fo the original plaintext.
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Indistinguishability of quantum states.}
-In Sec.~\ref{sec:bb84-protocol}, we asserted that \ket{0} and \ket{+} are not orthogonal, and made statements about measurement probabilities without working through the mathematics.
-\subexer{
-Prove that the states are not orthogonal.
-}
-\subexer{
-Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $Z$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.
-}
-\subexer{
-Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $X$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.
-}
-}
+\begin{exercise}
+\emph{Indistinguishability of quantum states.} In Sec.~\ref{sec:bb84-protocol}, we asserted that \ket{0} and \ket{+} are not orthogonal, and made statements about measurement probabilities without working through the mathematics.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that the states are not orthogonal.
+    \item Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $Z$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.
+    \item Find the probability of the $\pm 1$ outcomes when measuring both of those states in the $X$ basis, using calculations similar to those in Sec.~\ref{sec:measurement}.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The two states are not orthogonal because their inner product does nto vanish,
+    \begin{equation*}
+        \innp{+}{0} = \frac{1}{\sqrt{2}}.
+    \end{equation*}
+    \item The probabilities of obtaining the different outcomes when measuring in the $Z$ basis,
+    \begin{align*}
+        \text{for state } \ket{0}&: & \text{Pr}\{+1\} & = 1, & \text{Pr}\{-1\} & = 0, \\
+        \text{for state } \ket{+}&: & \text{Pr}\{+1\} & = \frac{1}{2}, & \text{Pr}\{-1\} & = \frac{1}{2}.
+    \end{align*}
+    \item The probabilities of obtaining the different outcomes when measuring in the $X$ basis,
+    \begin{align*}
+        \text{for state } \ket{0}&: & \text{Pr}\{+1\} & = \frac{1}{2}, & \text{Pr}\{-1\} & = \frac{1}{2}, \\
+        \text{for state } \ket{+}&: & \text{Pr}\{+1\} & = 1, & \text{Pr}\{-1\} & = 0.
+    \end{align*}
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Biased random number generator.}
-Consider the scenario where Eve secretly tampers with Alice's random number generator and changes its output to be biased,
-\begin{equation}
-    P(0) = \frac{1}{4}, \quad\text{and } \quad P(1) = \frac{3}{4}.
-\end{equation}
+\begin{exercise}
+\emph{Biased random number generator.} Consider the scenario where Eve secretly tampers with Alice's random number generator and changes its output to be biased,
+\begin{equation*}
+    \text{Pr}\{0\} = \frac{1}{4}, \quad\text{and } \quad \text{Pr}\{1\} = \frac{3}{4}.
+\end{equation*}
 This random number generator is used by Alice to generate both of her random bit strings $a$ and $b$, as well as Eve's choice of measurement basis.
 Bob's random number generator is not compromised.
-\subexer{
-What are Alice's probabilities of preparing each of the basic encoding state,
-\begin{equation}
-    P(\ket{0}), \quad P(\ket{1}), \quad P(\ket{+}), \quad P(\ket{-})?
-\end{equation}
-}
-\subexer{
-What is the probability that Eve disturbs the intercepted state by measuring it in the wrong basis?
-}
-\subexer{
-What is the probability that Bob projects a disturbed state onto the wrong state?
-}
-\subexer{
-What is the probability that Alice and Bob detect Eve in a single round?
-How does this chance compare to the case of ideal random number generator?
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item What are Alice's probabilities of preparing each of the basic encoding state,
+    \begin{equation}
+        \text{Pr}(\ket{0}), \quad \text{Pr}(\ket{1}), \quad \text{Pr}(\ket{+}), \quad \text{Pr}(\ket{-})?
+    \end{equation}
+    \item What is the probability that Eve disturbs the intercepted state by measuring it in the wrong basis?
+    \item What is the probability that Bob projects a disturbed state onto the wrong state?
+    \item What is the probability that Alice and Bob detect Eve in a single round? How does this chance compare to the case of ideal random number generator?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item String $a$ determines which eigenstate Alice generates, while string $b$ determines the basis of the eigenstate. The probabilites ofthe four states are given below,
+    \begin{align*}
+        \text{Pr}\{\ket{0}\} & = \text{Pr}\{a_i=0\} \times \text{Pr}\{b_i=0\} = \frac{1}{16}, \\
+        \text{Pr}\{\ket{1}\} & = \text{Pr}\{a_i=1\} \times \text{Pr}\{b_i=0\} = \frac{3}{16}, \\
+        \text{Pr}\{\ket{+}\} & = \text{Pr}\{a_i=0\} \times \text{Pr}\{b_i=1\} = \frac{3}{16}, \\
+        \text{Pr}\{\ket{-}\} & = \text{Pr}\{a_i=1\} \times \text{Pr}\{b_i=1\} = \frac{9}{16}.
+    \end{align*}
+    \item Eve disturbs the intercepted qubit if she measures in the wrong basis. This happens with the following probability,
+    \begin{equation*}
+        \text{Pr}\{\text{disturbance}\} = \text{Pr}\{0\} \times \text{Pr}\{1\} + \text{Pr}\{1\} \times \text{Pr}\{0\} = \frac{3}{8}.
+    \end{equation*}
+    \item If the qubit is distruebd it means that it was either prepared in one of the $X$ eigenstates and Eve collapsed it onto one of the $Z$ eigenstates, or vice versa. In either case, Bob has a probability of 1/2 to project it onto the wrong state.
+    \item Probability of detecting Eve in a single round is
+    \begin{equation*}
+        \text{Pr}\{\text{disturbance}\} \times \text{Pr}\{\text{Bob projects onto the worng state}\} = \frac{3}{16}.
+    \end{equation*}
+    This is smaller than the probability of 1/4 of detecting Eve in the case of an unbiased random number generator.
+\end{enumerate}
+\end{solution}
 
-
-
-\end{exercises}
-
+\newpage
+\printsolutions[chapter={9}]
