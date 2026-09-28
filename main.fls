@@ -1189,8 +1189,16 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT ./Figures/Chapter10/BW/solution_1.pdf
+INPUT ./Figures/Chapter10/BW/solution_1.pdf
+INPUT ./Figures/Chapter10/BW/solution_1.pdf
+INPUT ./Figures/Chapter10/BW/solution_1.pdf
+INPUT ./Figures/Chapter10/BW/solution_1.pdf
+INPUT ./Figures/Chapter10/BW/solution_2.pdf
+INPUT ./Figures/Chapter10/BW/solution_2.pdf
+INPUT ./Figures/Chapter10/BW/solution_2.pdf
+INPUT ./Figures/Chapter10/BW/solution_2.pdf
+INPUT ./Figures/Chapter10/BW/solution_2.pdf
 INPUT ./intro-block-4.tex
 INPUT ./intro-block-4.tex
 INPUT ./intro-block-4.tex
@@ -1229,6 +1237,8 @@ INPUT ./Figures/Chapter11/BW/11-4_edfa_BW.pdf
 INPUT ./Figures/Chapter11/BW/11-4_edfa_BW.pdf
 INPUT ./Figures/Chapter11/BW/11-4_edfa_BW.pdf
 INPUT ./Figures/Chapter11/BW/11-4_edfa_BW.pdf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT ./CH12_Quantum-Repeaters.tex
 INPUT ./CH12_Quantum-Repeaters.tex
 INPUT ./CH12_Quantum-Repeaters.tex
@@ -1422,6 +1432,7 @@ INPUT main.xsim
 INPUT ./main.out
 INPUT ./main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb

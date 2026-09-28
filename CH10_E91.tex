@@ -363,86 +363,144 @@ Thus concludes our discussion of quantum key distribution protocols as a key use
 In the final two blocks, we will investigate the construction of quantum repeaters and networks.
 
 
+\newpage
+\section{Exercises}
+
+\begin{exercise}
+\emph{More measurement bases in E91.} In E91, Alice and Bob each have three choices of measurement basis, which they are expected to select randomly.  We described how six different pairs of choices are used to generate the secret key and to calculate the CHSH inequality to check for the presence of an eavesdropper.
+\begin{enumerate}[label=(\alph*)]
+    \item Sharp-eyed readers may have recognized that, in the explanation, we neglected two choices of basis.  Which ones did we not mention, and why?  What should be done with the data collected when those bases are chosen?
+    \item Taking into account the answer to the prior question, what fraction of total measurements are dedicated to key generation, and what fraction to CHSH testing?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The bases we did not mention are $(A_2,B_1)$, $(A_3,B_1)$, and $(A_3,B_2)$. $(A_2,B_1)$ and $(A_3,B_2)$ are orthogonal, meaning that the measurement outcomes for Alice and Bob are completely uncorrelated. $(A_3,B_1)$ measurement outcomes are partially correlated but still not able to generate perfectly correlated secret key. Outcomes of measurements in these three cases must be discarded.
+    \item Proportion of measurement rounds used for secret key generation is 2/9. For CHSH testing, it is 4/9 of the total measurement rounds. Finally, 1/3 of the measurement rounds is discarded.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\emph{Optimality of CHSH violation.} On the Bloch sphere, the four basis choice angles for CHSH are 45\degree apart. In this exercise we will explore why we measure at these angles and not some other ones.
+\begin{enumerate}[label=(\alph*)]
+    \item Let's fix Alice's measurements to be the same like in Eq.~(\ref{eq:CHSH-inequality-basis}). But Bob's measurement bases can be different. One basis, say $B_1$, is at angle $\theta$ as shown in the figure below.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.65]{Figures/Chapter10/BW/solution_1.pdf}
+    \end{figure}
+    The other basis, $B_2$, is orthogonal to it.
+    Write down the two observables, $B_1$ and $B_2$, that Bob measures in terms of the angle $\theta$.
+    \item Assuming that Alice and Bob share the Bell pair \ket{\Psi^+}, write down the four expectation values $\langle A_1B_1\rangle$, $\langle A_1B_2\rangle$, $\langle A_2B_1\rangle$, and $\langle A_2B_2\rangle$ in terms of the angle $\theta$.
+    \item Construct the CHSH value and find the angle $\theta$ that maximizes it.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The two bases are
+    \begin{equation*}
+        B_1 = \cos\theta X + \sin\theta Z, \quad B_2 = -\sin\theta X + \cos\theta Z.
+    \end{equation*}
+    \item The four expectation values are
+    \begin{align*}
+        \av{A_1B_1} & = -\sin\theta, & \av{A_1B_2} & = -\cos\theta, \\
+        \av{A_2B_1} & = \cos\theta, & \av{A_2B_2} & = -\sin\theta.
+    \end{align*}
+    \item The CHSH inequality is
+    \begin{equation*}
+        \mathcal{S} = |\langle A_1B_1\rangle + \langle A_1B_2\rangle - \langle A_2B_1\rangle - \langle A_2B_2\rangle|.
+    \end{equation*}
+    We are looking to maximize $\mathcal{S} = 2 |\sin\theta+\cos\theta|$. Taking the derivative of $\mathcal{S}$ with respect to $\theta$ and looking for the stationary point,
+    \begin{equation*}
+        \frac{d\mathcal{S}}{d\theta} = 2 \left( \cos\theta - \sin\theta \right) = 0 \rightarrow \sin\theta=\cos\theta.
+    \end{equation*}
+    This occurs only when $\theta=\pi/4$.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\emph{E91 with other Bell pairs.} We described E91 using \ket{\Psi^+} Bell pairs. Let's explore what happens when we use one of the other Bell pairs,
+\begin{equation}
+    \ket{\Phi^+} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11}).
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+    \item Compute the CHSH value $\mathcal{S}$ given in Eq.~(\ref{eq:CHSH-inequality-basis}). Did you expect this value?
+    \item Write a new CHSH expression tailored to the new Bell pair \ket{\Phi^+}. Does it recover the expected violation of $\mathcal{S}=2\sqrt{2}$?
+    \item What is maximum value of this new CHSH value if Alice and Bob only classical states?
+    \item Write down a CHSH inequality for the state \ket{\Psi^-}.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Using $A_1=Z$, $A_2=X$, $B_2=(Z-X)/\sqrt{2}$, and $B_3=(Z+X)/\sqrt{2}$, we have the following expectation values,
+    \begin{align*}
+        \av{A_1B_2} & = \frac{1}{\sqrt{2}}, & \av{A_2B_2} & = \frac{1}{\sqrt{2}}, \\
+        \av{A_1B_3} & = -\frac{1}{\sqrt{2}}, & \av{A_2B_3} & = \frac{1}{\sqrt{2}}.
+    \end{align*}
+    Substituting these into Eq.~(\ref{eq:CHSH-inequality-basis}),
+    \begin{equation*}
+        \mathcal{S} = \left| \av{A_1B_2} + \av{A_1B_3} + \av{A_2B_2} - \av{A_2B_3} \right| = \left| \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}} - \frac{1}{\sqrt{2}} - \frac{1}{\sqrt{2}} \right| = 0.
+    \end{equation*}
+    This may be surprising since \ket{\Phi^+} is maximally entangled yet the CHSH value vanishes. This happens because the Eq.~(\ref{eq:CHSH-inequality-basis}) is suitable only for \ket{\Psi^+}.
+    \item We need to shift the minus sign in front of the appropriate expectation value. CHSH expression suitable for \ket{\Phi^+} is
+    \begin{equation*}
+        \mathcal{S} = \left| \av{A_1B_2} + \av{A_1B_3} - \av{A_2B_2} + \av{A_2B_3} \right| = \frac{1}{\sqrt{2}}.
+    \end{equation*}
+    \item The maximum value for classically correlated state that Alice and Bob share is still $\mathcal{S}=2$.
+    \item If Alice and Bob share \ket{\Psi^-}, the appropriate CHSH expression is
+    \begin{equation*}
+        \mathcal{S} = \left| \av{A_1B_2} + \av{A_1B_3} - \av{A_2B_2} + \av{A_2B_3} \right|.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\emph{CHSH with noisy states.} Typically, the distributed entangled states will not be pure. Let's consider an imperfect source of entangled states, which produces the desired state \ket{\Psi^+} with probability $\operatorname{Pr}(\ket{\Psi^+})=1-p_{\epsilon}$. With equal probability the source produces one of the other Bell pairs, $\operatorname{Pr}(\ket{\Phi^+})=\operatorname{Pr}(\ket{\Phi^-})=\operatorname{Pr}(\ket{\Psi^-})=p_{\epsilon}$.
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the density matrix $\rho$ of the two-qubit state that the source generates in Dirac notation.
+    \item Compute the CHSH value $\mathcal{S}$ in terms of the error parameter $p_{\epsilon}$.
+    \item Compute the fidelity $F$ of the mixed state $\rho$.
+    \item Plot the CHSH value $\mathcal{S}$ and fidelity $F$ as functions of the error parameter $p_{\epsilon}$.
+    \item At what value of the error parameter $p_{\epsilon}$ can we no longer guarantee that the state is entangled? What is the fidelity of such a state?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The density matrix describing the state is
+    \begin{align*}
+        \rho & = (1-p_{\epsilon})\outp{\Psi^+}{\Psi^+} + \frac{p_{\epsilon}}{3}\left( \outp{\Phi^+}{\Phi^+} + \outp{\Phi^-}{\Phi^-} + \outp{\Psi^-}{\Psi^-} \right) \\
+        & = \left(1-\frac{4p_{\epsilon}}{3} \right)\outp{\Psi^+}{\Psi^+} + \frac{p_{\epsilon}}{3} I.
+    \end{align*}
+    The first expression is fine but it rather cumbersome when it comes to comuting the correlations in the rest of his question. The second expression is much easier to work with.
+    \item Using the expression for expectation values of mixed states, $\av{O}=\text{Tr}\{O\rho\}$, we obtain the following expectation values,
+    \begin{align*}
+        \av{A_1B_2} & = -\frac{1}{\sqrt{2}}\left( 1 - \frac{4p_{\epsilon}}{3} \right), & \av{A_2B_2} & = -\frac{1}{\sqrt{2}}\left( 1 - \frac{4p_{\epsilon}}{3} \right),\\
+        \av{A_1B_3} & = -\frac{1}{\sqrt{2}}\left( 1 - \frac{4p_{\epsilon}}{3} \right), & \av{A_2B_3} & = \frac{1}{\sqrt{2}}\left( 1 - \frac{4p_{\epsilon}}{3} \right).
+    \end{align*}
+    \item Using Eq.~(\ref{eq:CHSH-inequality-basis}), we have the following CHSH expression,
+    \begin{equation*}
+        \mathcal{S} = \frac{4}{\sqrt{2}}\left( 1 - \frac{4p_{\epsilon}}{3} \right).
+    \end{equation*}
+    \item The fidelity is
+    \begin{equation*}
+        F = \bra{\Psi^+} \rho \ket{\Psi^+} = 1 - p_{\epsilon}.
+    \end{equation*}
+    \item The plot showing the $\mathcal{S}$ value and the fidelity $F$ as functions of the error probability $p_{\epsilon}$.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{Figures/Chapter10/BW/solution_2.pdf}
+    \end{figure}
+    The two qubits are no longer entangled when $\mathcal{S}=2$. Solving for $p_{\epsilon}$, we can see that this occurs when
+    \begin{equation*}
+        p_{\epsilon} = \frac{3}{4}\left( 1 - \frac{\sqrt{2}}{2} \right) \approx 0.22.
+    \end{equation*}
+    The fidelity of such a state is then $F = 1 - p_{\epsilon} \approx 0.78$.
+\end{enumerate}
+\end{solution}
 
 
 
 \newpage
-\begin{exercises}
-\exer{
-\emph{More measurement bases in E91.}
-In E91, Alice and Bob each have three choices of measurement basis, which they are expected to select randomly.  We described how six different pairs of choices are used to generate the secret key and to calculate the CHSH inequality to check for the presence of an eavesdropper.
-\subexer{
-Sharp-eyed readers may have recognized that, in the explanation, we neglected three choices of basis.  Which ones did we not mention, and why?  What should be done with the data collected when those bases are chosen?
-}
-\subexer{Taking into account the answer to the prior question, what fraction of total measurements are dedicated to key generation, and what fraction to CHSH testing?}
-}
-
-\exer{
-\emph{Optimality of CHSH violation.}
-On the Bloch sphere, the four basis choice angles for CHSH are 45\degree apart.
-In this exercise we will explore why we measure at these angles and not some other ones.
-\subexer{
-Let's fix Alice's measurements to be the same like in Eq.~(\ref{eq:CHSH-inequality-basis}).
-But Bob's measurement basis can be different. It is at some angle $\theta$ as shown in the figure below.
-Write down the two observables, $B_1$ and $B_2$, that Bob measures in terms of the angle $\theta$.
-}
-\subexer{
-Write down the four expectation values $\langle A_1B_1\rangle$, $\langle A_1B_2\rangle$, $\langle A_2B_1\rangle$, and $\langle A_2B_2\rangle$ in terms of the angle $\theta$.
-}
-\subexer{
-Construct the CHSH value and find the angle $\theta$ that maximizes it.
-}
-}
-
-\exer{
-\emph{E91 with other Bell pairs.}
-We described E91 using \ket{\Psi^+} Bell pairs.
-Let's explore what happens when we use one of the other Bell pairs,
-\begin{equation}
-    |\Phi^+\rangle = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11}).
-\end{equation}
-\subexer{
-Compute the CHSH value $\mathcal{S}$ given in Eq.~(\ref{eq:CHSH-inequality-basis}). Did you expect this value?
-}
-\subexer{
-Write a new CHSH expression tailored to the new Bell pair $|\Phi^+\rangle$. Does it recover the expected violation of $\mathcal{S}=2\sqrt{2}$?
-}
-\subexer{
-What is maximum value of this new CHSH value if Alice and Bob only classical states?
-}
-\subexer{
-Write down a CHSH inequality for the state $|\Psi^-\rangle$.
-}
-}
-
-\exer{
-\emph{CHSH with noisy states.}
-Typically, the distributed entangled states will not be pure.
-Let's consider an imperfect source of entangled states, which produces the desired state \ket{\Psi^+} with probability $\operatorname{Pr}(\ket{\Psi^+})=1-p_{\epsilon}$.
-With equal probability the source produces one of the other Bell pairs, $\operatorname{Pr}(\ket{\Phi^+})=\operatorname{Pr}(\ket{\Phi^-})=\operatorname{Pr}(\ket{\Psi^-})=p_{\epsilon}$.
-\subexer{
-Write down the density matrix $\rho$ of the two-qubit state that the source generates in Dirac notation.
-}
-\subexer{
-Compute the CHSH value $\mathcal{S}$ for the desired output state \ket{\Psi^+} in terms of the error parameter $p_{\epsilon}$.
-}
-\subexer{
-Compute the fidelity $F$ of the mixed state $\rho$.
-}
-\subexer{
-Plot the CHSH value $\mathcal{S}$ and fidelity $F$ as functions of the error parameter $p_{\epsilon}$.
-}
-\subexer{
-At what value of the error parameter $p_{\epsilon}$ can we no longer guarantee that the state is entangled? What is the fidelity of such a state?
-}
-}
-
-% \exer{
-% If the success probability for transmitting a photon through $1,120$km of fiber is $10^{-14}$, determine the loss per kilometer, in dB.
-% }
-\end{exercises}
-
-
+\printsolutions[chapter={10}]
 
 
 \newpage
