@@ -31,11 +31,11 @@ In quantum networks, information encoded in qubits is not transmitted directly.
 Rather, we use entangled pairs of qubits to teleport the state of the qubit, as discussed in Chapter~\ref{sec:8_teleportation}.
 Each link connecting two devices shares a Bell pair that is used to pass the state of the qubit carrying the quantum message from one device to the next.
 We can go back to the right panel of Fig.~\ref{fig:12-1_all_to_all}, and this time think of it as a quantum network, where the quantum sender wishes to pass the state of a qubit to the recipient.
-The state of the sender's qubit can be teleported hop-by-hop along the red path until it reaches the recipient.
+The state of the sender's qubit can be teleported hop-by-hop along the thick black path until it reaches the recipient.
 A problem with this approach is that the operations required by the teleportation protocol as well as the memories used to store Bell pairs are not perfect.
-This decreases the fidelity of the teleported qubit.
-Repeating the teleportation in this hop-by-hop approach degrades the fidelity of the entangled state, resulting in a garbled quantum state being teleported to the recipient.
+Repeating the teleportation in this hop-by-hop approach degrades the fidelity of the teleported state, resulting in a garbled quantum state being teleported to the recipient.
 One way around this problem is to use the link-level Bell pairs to create a direct entangled connection between the sender and the recipient so that the quantum state can be teleported in one hop.
+The end-to-end entangled state will be noisy too but we can use error management techniques to boost its fidelity before consuming it for teleportation.
 The quantum nodes tasked with achieving this splicing of link-level entanglement are called \emph{\textbf{quantum repeaters}}\index{quantum repeater}, and they are indispensable in the design of long-distance quantum networks.
 
 We will address four requirements in this chapter.
@@ -52,12 +52,11 @@ Finally, we will look at management of networks, routing, multiplexing and resou
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section, we consider the task of creating link-level entanglement between two neighboring repeaters of a quantum network.
-One method for entangling two quantum memories and creating link-level entanglement, known as the \emph{\textbf{memory-interfere-memory}} (MIM)\index{memory-interfere-memory (MIM)} link architecture, is pictured in Fig.~\ref{fig:12-2_MIM}.
+One method for entangling two quantum memories and creating link-level entanglement, known as the \emph{\textbf{memory-interference-memory}} (MIM)\index{memory-interfere-memory (MIM)} link architecture, is pictured in Fig.~\ref{fig:12-2_MIM}.
 Another name for this architecture is ``meet-in-the-middle''.
 We tend to avoid using this term to reduce the chance of confusion with man-in-the-middle, which is a type of security attack.
 Each repeater node is equipped with a quantum memory, and is coupled to an optical fiber.
 The fibers lead to a \emph{\textbf{Bell state analyzer}} (BSA)\index{Bell state analyzer (BSA)}, an optical device which is capable of measuring two incoming photons in the Bell basis.
-We will discuss an implementation of the BSA in Section~\ref{sec:bell-state-measurements-II}.
 
 \begin{figure}[t]
     \centering
@@ -67,13 +66,14 @@ We will discuss an implementation of the BSA in Section~\ref{sec:bell-state-meas
 \end{figure}
 
 The protocol to generate entanglement between the quantum memories is the following.
-Each quantum memory emits a photon that is entangled with it, represented by the red dashed line in Step 1 of Fig.~\ref{fig:12-2_MIM}.
+Each quantum memory emits a photon that is entangled with it, represented by the black dashed line in Step 1 of Fig.~\ref{fig:12-2_MIM}.
 These photons are captured and coupled to a fiber, which guides them to the BSA.
 At the BSA they are measured in the Bell basis and destroyed in the process.
 The success probability of the Bell state measurement depends on the implementation of the BSA.
 Straightforward implementation using only linear optics elements results in success probability of at most $50\%$.
 This is assuming ideal couplers (to collect photons emitted by the memories), fibers, and detectors at the BSA.
 Once the measurement is successful, the entanglement between the memory-photon pairs is transferred to be between the memories as seen in Step 2.
+We will discuss an implementation of the BSA in Section~\ref{sec:bell-state-measurements-II}.
 
 A crucial point about this scheme, and other link-level architectures, is that the photons arriving at the BSA to be measured in the Bell basis must be \textit{\textbf{indistinguishable}}\index{indistinguishable photons}.
 This is achieved by arranging for the photons to arrive at the BSA simultaneously, and for the them to have identical spectral properties. 
@@ -95,6 +95,11 @@ The bottom panel of Fig.~\ref{fig:12-2_MM_MSM} shows the \textit{\textbf{memory-
 A source of entangled photon pairs is located between the quantum repeaters.
 These photons are sent to the quantum repeaters where they interfere with photons emitted locally by the quantum memories. This architecture sometimes is called ``mid-point source'' architecture.
 
+All of the above-mentioned architectures rely of the memories to emit a photon, which is then directed to a BSA for measurement.
+Some architectures also make use of \textit{\textbf{absorptive memories}}.
+These memories can capture an incoming photon directly to establish a remote entangled state with the memory that emitted the photon.
+In the remainder of the book, we will however focus exclusively on emissive memories.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Reaching for distance: Entanglement swapping}
@@ -111,15 +116,14 @@ The goal is to establish entanglement between Repeater 0 and Repeater 2.
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/Chapter12/BW/12-3_entanglement_swapping_BW.pdf}
-    \caption[Entanglement swapping.]{Entanglement swapping at Repeater 1 creates entanglement between Repeaters 0 and 2.}
+    \caption[Entanglement swapping.]{Entanglement swapping at Repeater 1 creates entanglement between Repeaters 0 and 2, shown by the dashed line.}
     \label{fig:12-3_entanglement_swapping}
 \end{figure}
 
 This is achieved by measuring the two qubits at Repeater 1 in the Bell basis.
 This measurement projects them onto one of the four Bell pairs.
-At the same, the effect of this measurement is to also project the qubits at Repeater 0 and Repeater 2 onto a Bell pair, creating entanglement between these two distant repeaters.
+The effect of this measurement is to also project the qubits at Repeater 0 and Repeater 2 onto a Bell pair, creating entanglement between these two distant repeaters.
 This procedure is known as \emph{\textbf{entanglement swapping}}\index{entanglement swapping}, and it is an indispensable tool in creating long-distance entanglement in quantum networks.
-This entanglement is between two repeaters which are not directly connected.
 
 Let's now get a little technical and show more rigorously that Repeater 0 and Repeater 2 are indeed entangled.
 We label the qubit at Repeater 0 $A$, and the qubit with which it is entangled at Repeater 1 $A^{\prime}$.
@@ -182,8 +186,8 @@ This introduces a time delay that limits how fast the process of establishing en
 
 Maybe you have noticed that entanglement swapping is very similar to creation of link-level entanglement described in Section~\ref{sec:12-2_making_link_level_rantanglement}.
 Mathematically the two procedures are very similar.
-At the  link level, memory-photon entanglement is swapped by measuring the photons at the Bell state analyzer, creating memory-memory entanglement.
-Whereas in end-to-end entanglement, we are only swapping entanglement between between pairs of memories.
+At the  link level, memory-photon entanglement is swapped by measuring the photons at the Bell state analyzer, creating memory-memory entanglement,
+whereas in end-to-end entanglement, we are swapping entanglement between between pairs of memories.
 Physically, this is quite a big difference: using linear optics, the maximum success probability of performing entanglement swapping on photons is limited to $50\%$, but entanglement swapping between memories can be done \textbf{\emph{deterministically}}, provided that we have good experimental techniques and we can limit the effects of noise.
 
 An alternative way of understanding entanglement swapping is through teleportation.
@@ -272,8 +276,7 @@ Expanding the initial state and applying the CNOT gates,
 In the above, we have omitted the normalization constants for clarity.
 We see that the CNOT gates have left our initial state unaffected.
 Measuring the second pair in the Pauli $Z$ basis will give us the state \ket{00} with probability $1/2$, or the state \ket{11} with probability of $1/2$.
-The outcomes will always be correlated and therefore Alice and Bob will always keep the first pair.
-As well as they should since the first pair is not affected by an error.
+The outcomes will always be correlated and therefore Alice and Bob will always keep the first pair, as well as they should since the first pair is not affected by an error.
 
 Let's see what happens when the first pair is affected by a Pauli $X$ error.
 Repeating the same calculation as in Eq.~(\ref{eq:12-4_purification_ideal}), we get
@@ -343,10 +346,10 @@ We start with a noisy state and end up with a new state of higher fidelity, a mo
 \label{sec:making-a-network}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have considered two important ingredients that are needed to make a network.
-We looked at how to create link-level entanglement between neighboring nodes, and how to extend it to end-to-end entanglement with entanglement swapping.
+We have considered three important ingredients that are needed to make a network.
+We looked at how to create link-level entanglement between neighboring nodes, and how to extend it to end-to-end entanglement with entanglement swapping, and one technique of dealing with errors.
 There are a few missing parts however.
-The main two are routing routing, and multiplexing.
+The main two are routing, and multiplexing.
 
 At the beginning of this chapter, we saw in Fig.~\ref{fig:12-1_all_to_all} that the job of a quantum network is to establish end-to-end entanglement between distant nodes, which is then consumed by applications.
 The network needs a way of picking a suitable path along which to execute entanglement swapping that leads to this end-to-end connection.
@@ -357,7 +360,7 @@ Therefore, the network should be able to satisfy multiple simultaneous connectio
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/Chapter12/BW/12-5_routing_multiplexing_BW.pdf}
-    \caption[Routing and multiplexing.]{Picking the best path along which to entanglement swap is the job of routing. The quantum network also needs to decide how to allocate its scarce resources in order to satisfy multiple simultaneous connection requests.}
+    \caption[Routing and multiplexing.]{Picking the best path along which to entanglement swap is the job of routing. The quantum network also needs to decide how to allocate its scarce resources in order to satisfy multiple simultaneous connection requests. Each request is illustrated by a different line type.}
     \label{fig:12-5_routing_multiplexing}
 \end{figure}
 
@@ -380,7 +383,7 @@ How do we combine these costs for each individual link in order to know the full
 One possibility is to use \emph{\textbf{Dijkstra's shortest path first algorithm}}\index{Dijkstra's shortest path first}\label{dijkstra}.
 We can sum the link-level costs for an individual path in order to estimate the total cost.
 We have seen that sometimes we need to purify Bell pairs, which reduces our effective throughput by at least a factor of two.
-In order to balance the trade off between the rate of making raw Bell pairs and fidelity and make the comparison between two links fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
+In order to balance the tradeoff between the rate of making raw Bell pairs and fidelity and make the comparison between two links fair, we demand that the link-level Bell pairs be of certain threshold fidelity, achieved using purification if necessary.
 The exact value of this threshold is dictated by the needs of the application that is requesting the Bell pairs.
 
 The next issue that networks have to deal with is \emph{\textbf{multiplexing}}\index{multiplexing}.
@@ -397,101 +400,153 @@ Next, we discussed how to use entanglement swapping to splice the link-level ent
 Finally, we briefly discussed routing and multiplexing in quantum networks.
 
 
-
-
-
 \newpage
-\begin{exercises}
-\exer{
-\emph{Fully connected networks.}
-How many connections are needed for a fully connected network covering all of the IoT devices in the global classical Internet?
-}
+\section{Exercises}
 
-\exer{
-\emph{Entanglement swapping with projectors.}
-We demonstrated that the procedure for entanglement swapping between qubits $AB_1$ and $B_2C$ works by rewriting the state of qubit $B_1$ and $B_2$ in the bell basis.
-Let's go through the derivation again but using the formalism of projectors. (If you need to get a refresher on projectors, take a look at the Exercises in Chapter \ref{sec:3_pure_mixed}.)
-\subexer{
-The initial state of the two entangled pairs is
-\begin{equation}
-    \ket{\psi} = \ket{\Phi^+}_{AB_1} \ket{\Phi^+}_{B_2C}.
-\end{equation}
-Write down the set of four projectors corresponding to the four possible measurement outcomes at Node $B$.
-}
-\subexer{
-Compute the probabilities of the four measurement outcomes using the these projectors.
-}
-\subexer{
-Write down the post-measurement states of qubits $AC$ corresponding to the four measurement outcomes using the projectors.
-}
-}
+\begin{exercise}
+\emph{Fully connected networks.} How many connections are needed for a fully connected network covering all of the IoT devices in the global classical Internet?
+\end{exercise}
+\begin{solution}
+In a fully connected network of $N$, the number of conenctions is given by
+\begin{equation*}
+    C = \frac{N(N-1)}{2}.
+\end{equation*}
+There are aroun 21.1 billion IoT devices. Threfore a fully-connected network of such size would require around $2.23\times 10^{20}$ connections.
+\end{solution}
 
-\exer{
-\emph{Entanglement swapping with noisy states.}
-Consider the case where the link-level entangled state between Nodes $A$ and $B$ is not the pure Bell pair \ket{\Phi^+}, but is affected by the bit flip channel.
-The Bell pair shared between Nodes $B$ and $C$ remains noiseless.
-\subexer{
-If the fidelity of the Bell pair between Nodes is $A$ and $B$ if $F_{AB}$, write down the total initial state.
-}
-\subexer{
-Write down the probabilities of the four outcomes of the measurements performed by Node $B$.
-}
-\subexer{
-What are the corresponding post-measurement states of qubits $A$ and $C$?
-}
-\subexer{
-How do the fidelities of the post-measurement states of qubits $A$ and $B$ depend on the fidelity $F_{AB_1}$ of the initial link-level entanglement? 
-}
-\subexer{
-Consider the case where the both entangled links are affected by the bit flip channel, and have fidelities $F_{AB_1}$ and $F_{B_2C}$.
-Compute the fidelity of the pair $AC$ obtained after entanglement swapping as a function of these initial fidelities.
-}
-}
+\begin{exercise}
+\emph{Entanglement swapping with projectors.} We demonstrated that the procedure for entanglement swapping between qubits $AB_1$ and $B_2C$ works by rewriting the state of qubit $B_1$ and $B_2$ in the Bell basis. Let's go through the derivation again but using the formalism of projectors. If you need to get a refresher on projectors, take a look at the Exercises in Chapter \ref{sec:3_pure_mixed}.
+\begin{enumerate}[label=(\alph*)]
+    \item The initial state of the two entangled pairs is
+    \begin{equation}
+        \ket{\psi} = \ket{\Phi^+}_{AB_1} \ket{\Phi^+}_{B_2C}.
+    \end{equation}
+    Write down the set of four projectors corresponding to the four possible measurement outcomes at Node $B$.
+    \item Compute the probabilities of the four measurement outcomes using the these projectors.
+    \item Write down the post-measurement states of qubits $AC$ corresponding to the four measurement outcomes using the projectors.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The four projectors onto the four Bell pairs are (acting on the four qubits)
+    \begin{align*}
+        \Pi^{B}_{\ket{\Phi^+}} & = I_A \otimes \outp{\Phi^+}{\Phi^+}_B \otimes I_C \\
+        & = I_A \otimes \frac{1}{2}\left( \outp{00}{00} + \outp{00}{11} + \outp{11}{00} + \outp{11}{11} \right)_B \otimes I_C, \\
+        \Pi^B_{\ket{\Phi^-}} & = I_A \otimes \outp{\Phi^-}{\Phi^-}_B \otimes I_C \\
+        & = I_A \otimes \frac{1}{2}\left( \outp{00}{00} - \outp{00}{11} - \outp{11}{00} + \outp{11}{11} \right)_B \otimes I_C, \\
+        \Pi^B_{\ket{\Psi^+}} & = I_A \otimes \outp{\Psi^+}{\Psi^+}_B \otimes I_C \\
+        & = I_A \otimes \frac{1}{2}\left( \outp{01}{01} + \outp{01}{10} + \outp{10}{01} + \outp{10}{10} \right)_B \otimes I_C, \\
+        \Pi^B_{\ket{\Psi^-}} & = I_A \otimes \outp{\Psi^-}{\Psi^-}_B \otimes I_C \\
+        & = I_A \otimes \frac{1}{2}\left( \outp{01}{01} - \outp{01}{10} + \outp{10}{01} + \outp{10}{10} \right)_B \otimes I_C,
+    \end{align*}
+    where the label $B$ denotes both qubits $B_1B_2$ that are located at Node $B$.
+    \item The probabilities of the four measurement outcomes are given by
+    \begin{align*}
+        \text{Pr}\left\{\ket{\Phi^+}_B\right\} & = \text{Tr}\left\{ \Pi^B_{\ket{\Phi^+}} \outp{\psi}{\psi} \right\} = \bra{\psi} \Pi^B_{\ket{\Phi^+}} \ket{\psi} = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Phi^-}_B\right\} & = \text{Tr}\left\{ \Pi^B_{\ket{\Phi^-}} \outp{\psi}{\psi} \right\} = \bra{\psi} \Pi^B_{\ket{\Phi^-}} \ket{\psi} = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Psi^+}_B\right\} & = \text{Tr}\left\{ \Pi^B_{\ket{\Psi^+}} \outp{\psi}{\psi} \right\} = \bra{\psi} \Pi^B_{\ket{\Psi^+}} \ket{\psi} = \frac{1}{4}, \\
+        \text{Pr}\left\{\ket{\Psi^+}_B\right\} & = \text{Tr}\left\{ \Pi^B_{\ket{\Psi^+}} \outp{\psi}{\psi} \right\} = \bra{\psi} \Pi^B_{\ket{\Psi^+}} \ket{\psi} = \frac{1}{4}.
+    \end{align*}
+    \item To obtain the post-measurement state of only qubits $AC$, we need to apply the corresponding projector onto the initial state and renormalize. The post-measurement states are given below.
+    \begin{align*}
+        \text{outcome } \ket{\Phi^+}_B & \rightarrow \ket{\Phi^+}_B \ket{\Phi^+}_{AC}, \\
+        \text{outcome } \ket{\Phi^-}_B & \rightarrow \ket{\Phi^-}_B \ket{\Phi^-}_{AC}, \\
+        \text{outcome } \ket{\Psi^+}_B & \rightarrow \ket{\Psi^+}_B \ket{\Psi^+}_{AC}, \\
+        \text{outcome } \ket{\Psi^-}_B & \rightarrow \ket{\Psi^-}_B \ket{\Psi^-}_{AC}.
+    \end{align*}
+\end{enumerate}
+\end{solution}
 
-\exer{
+\begin{exercise}
+\emph{Entanglement swapping with noisy states.} Consider the case where the link-level entangled state between Nodes $A$ and $B$ is not the pure Bell pair \ket{\Phi^+}, but is affected by the bit flip channel. The Bell pair shared between Nodes $B$ and $C$ remains noiseless.
+\begin{enumerate}[label=(\alph*)]
+    \item If the fidelity of the Bell pair between Nodes $A$ and $B$ is $F_{AB_1}$, write down the total initial state.
+    \item Write down the probabilities of the four outcomes of the measurements performed by Node $B$.
+    \item What are the corresponding post-measurement states of qubits $A$ and $C$?
+    \item How do the fidelities of the post-measurement states of qubits $A$ and $C$ depend on the fidelity $F_{AB_1}$ of the initial link-level entanglement? 
+    \item Consider the case where the both entangled links are affected by the bit flip channel, and have fidelities $F_{AB_1}$ and $F_{B_2C}$. Compute the fidelity of the pair $AC$ obtained after entanglement swapping as a function of these initial fidelities.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The initial state is
+    \begin{equation*}
+        \rho = \left[ F_{AB_1}\outp{\Phi^+}{\Phi^+} + (1-F_{AB_1})\outp{\Psi^+}{\Psi^+} \right]_{AB_1} \otimes \outp{\Phi^+}{\Phi^+}_{B_2C}.
+    \end{equation*}
+    \item We will work through the calculation for the probability of measuring \ket{\Phi^+} in more detail.
+    \begin{align*}
+        \text{Pr}\left\{ \ket{\Phi^+}_B \right\} & = \text{Tr}\left\{ \Pi^B_{\ket{\Phi^+}} \rho \right\} \\
+        & = F_{AB_1} \text{Tr}\left\{ \Pi^B_{\ket{\Phi^+}} \ket{\Phi^+}_{AB_1}\ket{\Phi^+}_{B_2C} \right\} \\
+        & + (1-F_{AB_1}) \text{Tr}\left\{ \Pi^B_{\ket{\Phi^+}} \ket{\Psi^+}_{AB_1}\ket{\Phi^+}_{B_2C} \right\}.
+    \end{align*}
+    Notice the expression for the probability splits into two terms, a probability of measuring \ket{\Phi^+} when the qubits are in the pure state $\ket{\Phi^+}_{AB_1}\ket{\Phi^+}_{B_2C}$, and a probability of measuring \ket{\Phi^+} when the qubits are in the pure state $\ket{\Psi^+}_{AB_1}\ket{\Phi^+}_{B_2C}$. These probabilities are weighted by coefficients $F_{AB_1}$ and $(1-F_{AB_1})$, respectively. We have already figured out the probability when the qubits are in $\ket{\Phi^+}_{AB_1}\ket{\Phi^+}_{B_2C}$ in the previous exercise, given by the first term. Therefore, we can write the following,
+    \begin{align*}
+        \text{Pr}\left\{ \ket{\Phi^+}_B \right\} & = \frac{1}{4}F_{AB_1} + (1-F_{AB_1}) \text{Tr}\left\{ \Pi^B_{\ket{\Phi^+}} \ket{\Psi^+}_{AB_1}\ket{\Phi^+}_{B_2C} \right\} \\
+        & = \frac{1}{4}F_{AB_1} + \frac{1}{4}(1-F_{AB_1}) \\
+        & = \frac{1}{4}.
+    \end{align*}
+    Notice that the probability of Node $B$ measuring the state \ket{\Phi^+} is independent of the initial fidelity $F_{AB_1}$. We can do through the same calculation for the other three cases to confirm that
+    \begin{equation*}
+        \text{Pr}\left\{ \ket{\Phi^-}_B \right\} = \text{Pr}\left\{ \ket{\Psi^+}_B \right\} = \text{Pr}\left\{ \ket{\Psi^-}_B \right\} = \frac{1}{4}.
+    \end{equation*}
+    \item The post-measurement states are the following,
+    \begin{align*}
+        \text{outcome } \ket{\Phi^+}_B & \rightarrow F_{AB_1}\outp{\Phi^+}{\Phi^+}_{AC} + (1-F_{AB_1})\outp{\Psi^+}{\Psi^+}_{AC}, \\
+        \text{outcome } \ket{\Phi^-}_B & \rightarrow F_{AB_1}\outp{\Phi^-}{\Phi^-}_{AC} + (1-F_{AB_1})\outp{\Psi^-}{\Psi^-}_{AC}, \\
+        \text{outcome } \ket{\Psi^+}_B & \rightarrow F_{AB_1}\outp{\Psi^+}{\Psi^+}_{AC} + (1-F_{AB_1})\outp{\Phi^+}{\Phi^+}_{AC}, \\
+        \text{outcome } \ket{\Psi^-}_B & \rightarrow F_{AB_1}\outp{\Psi^-}{\Psi^-}_{AC} + (1-F_{AB_1})\outp{\Phi^-}{\Phi^-}_{AC}.
+    \end{align*}
+    \item The fidelity of the post-swap state between qubits $A$ and $C$ is the same as that of the initial state shared between $A$ and $B_1$.
+    \item The initial state now is given by
+    \begin{align*}
+        \rho & = \left[ F_{AB_1}\outp{\Phi^+}{\Phi^+} + (1-F_{AB_1})\outp{\Psi^+}{\Psi^+} \right]_{AB_1} \\
+        & \otimes \left[ F_{B_2C}\outp{\Phi^+}{\Phi^+} + (1-F_{B_2C})\outp{\Psi^+}{\Psi^+} \right]_{B_2C}.
+    \end{align*}
+    Following the arguments as in the previous parts of this exercise, the fidelity of the post-measurement state is given by
+    \begin{equation*}
+        F_{AC} = F_{AB_1}F_{B_2C}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
 \emph{Entanglement swapping and MIM link architecture.}
 Recall that in the MIM link architecture, quantum memories are made to emit photons, which are then measured at the BSA, creating entanglement between the quantum memories.
 This architecture relies on entanglement swapping performed on photonic and matter qubits.
-Fig.~(TODO) shows a simplified atomic structure of the a quantum memory emitting a photon.
-If the memory transitions from the excited state \ket{e} to the ground state \ket{a_1}, it emits a horizontally polarized photon \ket{H}\footnote{To be precise, the memory emits a circularly polarized photon which is then converted to a linearly polarized photon.}.
-If the memory transitions to ground state \ket{a_2}, it emits a vertically polarized photon \ket{V}.
-\subexer{
-Write down the state of the memory-photon pair, given that the memory is equally likely to transition to states \ket{a_1} and \ket{a_2}.
-}
-\subexer{
-Write down the total state of both memory-photon pairs.
-Keep good track of the physical systems with subscripts.
-}
-\subexer{
-The two photons travel to the BSA where they get measured in the Bell basis.
-Write down the projectors corresponding to this measurement.
-}
-\subexer{
-What are the post-measurement states of the quantum memories?
-}
-\noindent The situation is actually more complicated than this.
-Bell-state measurement on photonic qubits cannot be implemented deterministically.
-Linear optics elements cannot distinguish all four photonic Bell pairs.
-We will learn why this is the case in our next book.
-}
+% Fig.~(TODO) shows a simplified atomic structure of the a quantum memory emitting a photon.
+If the memory transitions from the excited state \ket{E} to the ground state \ket{G_1}, it emits a horizontally polarized photon \ket{H}\footnote{To be precise, the memory emits a circularly polarized photon which is then converted to a linearly polarized photon.}.
+If the memory transitions to ground state \ket{G_2}, it emits a vertically polarized photon \ket{V}.
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the state of the memory-photon pair, given that the memory is equally likely to transition to states \ket{a_1} and \ket{a_2}.
+    \item Write down the total state of both memory-photon pairs. Keep good track of the physical systems with subscripts.
+    \item The two photons travel to the BSA where they get measured in the Bell basis. Write down the projectors corresponding to this measurement.
+    \item What are the post-measurement states of the quantum memories?
+    \noindent The situation is actually more complicated than this. Bell-state measurement on photonic qubits cannot be implemented deterministically. Linear optics elements cannot distinguish all four photonic Bell pairs. We will learn why this is the case in our next book.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item State of the memory-photon pair is given by
+    \begin{equation*}
+        \ket{\psi}_{AB_1} = \frac{1}{\sqrt{2}} \left( \ket{G_1,H} + \ket{G_2,V} \right).
+    \end{equation*}
+    \item The total state of both memory-photon pairs is
+    \begin{equation*}
+        \ket{\psi} = \frac{1}{2} \left( \ket{G_1,H} + \ket{G_2,V} \right)_{AB_1} \otimes \left( \ket{H, G_1} + \ket{V, G_2} \right)_{B_2C}.
+    \end{equation*}
+    \item The projectors corresponding to the 
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Purification and Pauli $Z$ errors.}
-We described the purification procedure on Bell pairs affected by the bit flip channel.
-Let's look at what happens when the Bell pairs undergo a Pauli $Z$ error.
-\subexer{
-Assume that only Alice's qubit $A_1$ is affected by the Pauli $Z$.
-Write down the total state of both Bell pairs.
-}
-\subexer{
-Apply the purification procedure.
-Is this the result you expected?
-}
-\subexer{
-If both Bell pairs are mixed states of fidelity $F$, what is the fidelity of the Bell pair after successful purification procedure?
-}
-}
+\begin{exercise}
+\emph{Purification and Pauli $Z$ errors.} We described the purification procedure on Bell pairs affected by the bit flip channel. Let's look at what happens when the Bell pairs undergo a Pauli $Z$ error.
+\begin{enumerate}[label=(\alph*)]
+    \item Assume that only Alice's qubit $A_1$ is affected by the Pauli $Z$. Write down the total state of both Bell pairs.
+    \item Apply the purification procedure. Is this the result you expected?
+    \item If both Bell pairs are mixed states of fidelity $F$, what is the fidelity of the Bell pair after successful purification procedure?
+\end{enumerate} 
+\end{exercise}
 
 
-\end{exercises}
-
+\newpage
+\printsolutions[chapter={12}]

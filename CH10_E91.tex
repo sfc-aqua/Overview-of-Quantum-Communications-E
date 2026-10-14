@@ -50,7 +50,7 @@ In this chapter, we will show that the E91 protocol is more robust against these
 The protocol relies on pre-shared entanglement between Alice and Bob.
 We will assume that Alice and Bob can communicate over a classical channel, and also that there is some source of entangled states, as in Fig.~\ref{fig:e91-setup}.
 This source generates multiple copies of an entangled state and distributes the qubits to Alice and to Bob.
-We will see that in this protocol, even if Eve controls the source of the qubits, as in Fig.~\ref{fig:eve-e91}, the protocol still remains secure in the sense that Alice and Bob can easily detect an eavesdropping Eve.
+We will see that even if Eve controls the source of the qubits, as in Fig.~\ref{fig:eve-e91}, the protocol still remains secure in the sense that Alice and Bob can easily detect an eavesdropping Eve.
 
 \begin{figure}[H]
     \centering
@@ -96,7 +96,7 @@ We can compute the probabilities of all four possible outcomes.
 \end{align}
 The probability that both Alice and Bob obtain a correlated result of \ket{++} is given by a half.
 The probability that they get a \ket{--} outcome is also a half,
-leaving the other wiht no probability of being observed.
+leaving the other with no probability of being observed.
 
 In this way, when Alice measures state \ket{+}, Bob always measures state \ket{+}.
 When Alice measures state \ket{-}, Bob always measures state \ket{-}.
@@ -114,11 +114,11 @@ The probability of correlated outcomes is zero this time.
 When Alice and Bob both measure in the $Z$ basis, the outcomes will never be $|00\rangle_{AB}$ or $|11\rangle_{AB}$.
 The outcomes are always anti-correlated, meaning that when Alice's outcome is $|0\rangle_A$, Bob will measure $|1\rangle_B$.
 Similarly, when Alice measures $|1\rangle_A$, Bob's outcome will be $|0\rangle_B$.
-An important thing to note is that both possibilities are equally probable, with $50\%$ probability they share $|01\rangle_{AB}$, and with the same probability they share $|10\rangle_{AB}$.
+An important thing to note is that both possibilities are equally probable. With $50\%$ probability they share $|01\rangle_{AB}$, and with the same probability they share $|10\rangle_{AB}$.
 The corresponding classical keys are anti-correlated as well.
 All that Bob has to do is flip his bits in order to obtain a random, correlated key, which can then be used to encrypt data for communication.
 
-The second ingredient of en entanglement-based QKD protocol is to verify that they have an entangled state.
+The second ingredient of an entanglement-based QKD protocol is to verify that they have an entangled state.
 Why do they need to do this verification?
 The first reason, as we just saw, is that entangled states can be used to generate a correlated random key, so it is crucial to confirm that we really have entanglement before we try to use it.
 There is a very important second reason: entanglement can be used for security as well, in a manner that goes beyond what BB84 can achieve. Maximally entangled states are guaranteed to be secure due to \textbf{\emph{monogamy of entanglement}}\index{monogamy of entanglement}.
@@ -134,7 +134,7 @@ key they establish is secure and Eve does not have any information about their s
 In general, there is a trade-off: if Alice and Bob share a non-maximally entangled state, they can still share some correlations with Eve.
 The stronger the entanglement that they share, the less correlated they are with Eve, until the point where they
 are maximally entangled and therefore they share no correlations with Eve.
-\textbf{\emph{Stronger entanglement between Alice and Bob implies more a secure key between Alice and Bob.}}
+\textbf{\emph{Stronger entanglement between Alice and Bob implies a more secure key between Alice and Bob.}}
 
 How can Alice and Bob verify that they share a maximally entangled key?
 This is done via the use of the \textbf{\emph{CHSH inequality}}\index{CHSH inequality}, which we hinted at back in Sec.~\ref{sec:chsh-game} when we introduced the CHSH game.
@@ -189,7 +189,7 @@ In quantum mechanics, the CHSH expression can go all the way up to a value of $2
 
 Let's consider a particular example.
 Take one of the Bell pairs, \ket{\Psi^+}.
-For the measurement settings, we consider the following: $A$ is the Pauli $Z$ basis, $\bar{A}$ is the $X$ observable, while $B$ and $\bar{B}$ are given by combinations of $Z$ and $X$, giving us rotated measurement bases $B=\frac{1}{\sqrt{2}}(Z-X)$ and $\bar{B}=\frac{1}{\sqrt{2}}(Z+X)$.
+For the measurement settings, we consider the following: $A$ is the Pauli $Z$ basis, $\bar{A}$ is the $X$ basis, while $B$ and $\bar{B}$ are given by combinations of $Z$ and $X$, giving us rotated measurement bases $B=\frac{1}{\sqrt{2}}(Z-X)$ and $\bar{B}=\frac{1}{\sqrt{2}}(Z+X)$.
 
 We can go through the algebra of computing the expectation values.
 We find that for a maximally entangled state, we obtain the CHSH expression of $\mathcal{S}=2\sqrt{2}$.
@@ -226,7 +226,7 @@ giving us a strong CHSH inequality violation.
     \label{tab:chsh-calculation}
 \end{table}
 
-This calculation gives us a way of verifying entangled states, and particularly verifying maximally entangled states, a very important condition for the entanglement-based QKD protocol.
+This calculation gives us a way of verifying entangled states, and particularly the degree to which the states are entangled, a very important condition for the entanglement-based QKD protocol.
 If we can demonstrate that we violate the CHSH inequality maximally, with a value of $S = 2\sqrt{2}$, then we can certify that
 the state Alice and Bob share is a maximally entangled state.
 If the states we are making are maximally entangled, then the principle of monogamy of entanglement\index{monogamy of entanglement} tells us that they are \textbf{\emph{not}} correlated with Eve, and therefore we can guarantee the security of Alice and Bob's secret key.
@@ -266,7 +266,7 @@ If both Alice and Bob measure the entangled state in the same basis, they can us
 This follows similar logic to BB84.
 Data from the basis choices $(A_1, B_1)$ or $(A_3,B_3)$ can be used for key generation.
 On the other hand, we need some rotated bases in order to compute the CHSH expression $\mathcal{S}$, and see if it violates the classical CHSH inequality.
-Violation of the inequality establish that Alice and Bob are really sharing an entangled state.
+Violation of the inequality establishes that Alice and Bob are really sharing an entangled state.
 For this calculation, we use the basis choices $(A_1,B_3)$, $(A_1,B_2)$, $(A_2,B_2)$, $(A_2,B_3)$.
 
 \begin{figure}[H]
@@ -297,7 +297,7 @@ Using these measurement outcomes, Alice and Bob then calculate the CHSH correlat
 \end{figure}
 
 This way, they don't need to discard information as was done in BB84. They get to use the information to calculate either the secret correlated key or the CHSH violation.
-If they obtain a CHSH correlation function such that $\mathcal{S} \leq 2$, they say ``okay, we cannot conclude whether or not we have an entangled state, but it's safer to just abort.''
+If they obtain a CHSH correlation function such that $\mathcal{S} \leq 2$, they say ``okay, we cannot conclude whether or not we have an entangled state, so it's safer to just abort.''
 If they have $\mathcal{S} > 2$, then they conclude, ``yes, we are sharing an entangled state, therefore we can proceed with the protocol.''
 Remember, we said that monogamy of entanglement ensures that if they have an entangled state, then Eve cannot be not strongly correlated with either of them.
 In particular, if Alice and Bob have a maximally entangled state, then Eve is not correlated with them at all.
@@ -314,9 +314,9 @@ One is called  \textbf{\emph{information reconciliation}}\index{information reco
 It increases the correlation between the secret bit strings obtained by Alice and Bob.
 As cryptosystems are generally designed so that a single bit difference in the keys changes half of the bits in the encrypted message~\footnote{A characteristic sometimes called the \textbf{\emph{avalanche effect}} or \textbf{\emph{strict avalanche criterion}} by cryptographers.}, they require that exactly the same key be used at both ends.
 Alice and Bob can also perform something known as \textbf{\emph{privacy amplification}}\index{privacy amplification}, where they take their generated secret key and produce a shorter, more secure key.
-Privacy amplification is a procedure that attempts to eliminate any possible correlations with Eve.
+Privacy amplification eliminates any possible correlations with Eve.
 
-Having cover the basics of both single-photon and entanglement-based QKD, can we say which protocol is better more secure?
+Having covered the basics of both single-photon and entanglement-based QKD, can we say which protocol is better or more secure?
 BB84 is based on the indistinguishability of single photons prepared in non-orthogonal bases to discover an eavesdropper, while E91 uses quantum correlations between two qubits to bound the information that is potentially compromised.
 Let's compare the two protocols from the point when the secret key is generated.
 
@@ -328,7 +328,7 @@ The secret key (or an extended form of it before photons are lost and their corr
 
 In BB84, a clever Eve can find a way to obtain some information about this secret bit string.
 In particular, we can consider a very paranoid scenario where the random number generator (RNG) that Alice is using to generate a random bit string was built by Eve herself.
-Eve constructed the RNG in such a way that any information about the random bit string that the device produces gets passed on to Eve iwthout Alice's knowledge.
+Eve constructed the RNG in such a way that any information about the random bit string that the device produces gets passed on to Eve without Alice's knowledge.
 We saw at the beginning of this chapter that this weakness poses a huge security risk for the BB84 protocol.
 
 In contrast, in the E91 protocol, the secret key is really generated after the entangled pairs of qubits are measured.
@@ -337,10 +337,11 @@ Even if Eve controls the generation and distribution of entangled pairs, she can
 \emph{However}, if Eve controls or can predict the output of the RNGs that Alice and Bob use for basis selection, she can defeat E91.
 Coupled with the ability to measure the entangled states in the quantum channel before Alice and Bob receive them, she can measure only the key pairs and recover the key in parallel with Alice and Bob, undetected. This process is harder for Eve, so perhaps we can say that E91 is more secure than BB84.
 
-Let's conclude this chapter by talking about some entanglement-based QKD experiments.
+In Chapter~\ref{sec:11_long-distance}, we will cover how entanglement can be created over distance in detail.
+For now, we will conclude this chapter by talking about some entanglement-based QKD experiments.
 We saw in the discussion of BB84 that there were network testbeds for single photon QKD networks.
 The development of entanglement-based QKD is not as advanced, but it exists at the level of establishing a secret key over a single link.
-One such experiment was performed over free space, meaning that the entangled photons traveled through through air.
+One such experiment was performed over free space, meaning that the entangled photons traveled through air.
 This experiment was done over a distance of 144 kilometers between La Palma and Tenerife, two islands in the Canary Islands.
 Photon pairs were produced by the spontaneous parametric down-conversion (SPDC)\index{spontaneous parametric down-conversion (SPDC)} process which we saw in Sec.~\ref{sec:4-4_spdc}.
 The qubits were encoded in the polarization of the photons.
@@ -351,16 +352,20 @@ The first distance was 311 kilometers over standard fiber, and the second distan
 In this experiment, the obtained bit rate for the secret key was of the order of $10^{-3}$ bits per second for the shorter distance, or $10^{-4}$ bits per second for the longer distance. These bit rates don't actually include the information reconciliation and privacy amplification parts of a full protocol.
 If we wish to use this scheme in real life, we would have to add these functions, further lowering the bit rate.
 
-Another fantastic experiment was performed with satellites, where the satellite was use to distribute entangled pairs between two ground stations 1,120 kilometers apart.
-Remember, we said that the light travels in a straight line, so by using a satellite we can overcome the complication of curved earth's surface (and reduce the atmospheric disturbance as well) to establish a quantum key over much longer distances.
+Another fantastic experiment was performed with a satellite, where the satellite was use to distribute entangled pairs between two ground stations 1,120 kilometers apart.
+Remember, we said that the light travels in a straight line, so by using a satellite we can overcome the complication of Earth's curved surface (and reduce the atmospheric disturbance as well) to establish a quantum key over much longer distances.
 The measured CHSH value was $\mathcal{S} = 2.56$, again showing a strong CHSH violation.
 The obtained bit rate was 0.12 bits per second.
 One could ask the question, what if we actually used a single fiber to connect these two ground stations?
 Well, the paper that reported these results estimated that the fiber would have been around eleven orders of magnitude less efficient than using the satellites.
 At the beginning of this chapter, we discussed the security-related reason for preferring E91 to BB84; arguably, an even bigger reason is simply the loss in fiber, which we will address in Ch.~\ref{sec:11_long-distance} and beyond.
 
-Thus concludes our discussion of quantum key distribution protocols as a key use of quantum effects in communication systems and this block of lessons.
-In the final two blocks, we will investigate the construction of quantum repeaters and networks.
+The secret key rates in these experiments are relatively low.
+This is not surprising given the pioneering nature of these demonstrations.
+However, a 2024 experiment from a group in China used a 200 km long optical fiber to distributed entangled photon pairs achieving an incredible 440 bits/second secret key rate.
+This highlights the progress that has been made in the field of QKD, and its potential for commercialization in the near future.
+In fact, there are companies that do sell QKD hardware, usually in the form of standard 19-inch rack mounts.
+Examples of such companies include ID Quantique from Switzerland nad Toshiba from Japan.
 
 
 \newpage
@@ -498,9 +503,6 @@ In the final two blocks, we will investigate the construction of quantum repeate
 \end{solution}
 
 
-
-\newpage
-\printsolutions[chapter={10}]
 
 
 \newpage

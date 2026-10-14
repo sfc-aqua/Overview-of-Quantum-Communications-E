@@ -192,10 +192,10 @@ Vol. \bseriesno{3}.
 \end{bbook}
 \endbibitem
 
-\bibitem[\protect\citeauthoryear{Hurley}{1994}]{hurley2020quantum}
+\bibitem[\protect\citeauthoryear{Hurley}{2020}]{hurley2020quantum}
 \begin{barticle}
 \bauthor{\bsnm{Hurley}, \binits{Dan}}.
-\byear{1994}.
+\byear{2020}.
 \batitle{{The Quantum Internet Will Blow Your Mind. Here’s What It Will Look Like}}.
 \bjtitle{{Discover Magazine}}.
 doi:\doiurl{10.1063/1.881418}.

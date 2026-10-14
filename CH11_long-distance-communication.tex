@@ -32,7 +32,7 @@ Let's go back to the year 1852 and consider some of the historical background of
     \caption[Communication before the telegraph.]{Duration a letter took to deliver from London the destination city. Prior to the invention and deployment of the telegraph, long-distance communication was very wslow.}
     \label{tab:london-letter}
 \end{table}
-Just before the widespread deployment of the telegraph, communication was extremely slow. To give you some idea, a letter sent from London to New York City took around twelve days to arrive, as shown in Tab.~\ref{tab:london-letter}. Delivering the letter to Sydney took staggering seventy three days. 
+Just before the widespread deployment of the telegraph, communication was extremely slow. To give you some idea, a letter sent from London to New York City took around twelve days to arrive, as shown in Tab.~\ref{tab:london-letter}. Delivering the letter to Sydney took a staggering seventy-three days. 
 A faster method was needed. 
 
 Long-distance communication became considerably faster with the invention of the electric telegraph.
@@ -49,7 +49,7 @@ Between 1902 and 1906, the first transpacific cables were laid, connecting mainl
 
 The telegraphic cables were eventually phased out and were replaced by telephone cables.
 The first transatlantic telecommunications cable, named TAT-1, was laid in 1956.
-This coaxial telephone cable was initially able to handle 36 concurrent telephone conversations, which was later upgraded to 72 ocncurrent conversations. 
+This coaxial telephone cable was initially able to handle 36 concurrent telephone conversations, which was later upgraded to 72 concurrent conversations. 
 Compare that with the state two decades later, when the last of the coaxial copper telephone cables, TAT-7, was in use.
 It could handle a staggering 4000 telephone conversations concurrently.
 The first transatlantic fiber optic cable, the TAT-8, was laid in 1988 and increased the bandwidth to the equivalent of forty thousand telephone conversations.
@@ -79,7 +79,7 @@ The bandwidth depends on both the physical properties of the fiber itself, as we
 With modern techniques such as \textbf{\emph{dense wavelength division multiplexing}} (DWDM)\index{dense wavelength division multiplexing (DWDM)}, we are able to reach some staggering speeds.
 For example, in a standard cable over the distance of 6,600 kilometers, speeds of around 65 terabits per second can be reached.
 In a more specialized cable and over shorter distances, this can be increased to over 150 terabits per second.
-Over very short distances, we achieved speeds of one petabit per second\footnote{For your reference, a terabit is $10^{12}$ bits, while a petabit is $10^{15}$ bits.}.
+Over very short distances, researchers achieved speeds of one petabit per second\footnote{For your reference, a terabit is $10^{12}$ bits, while a petabit is $10^{15}$ bits.}.
 
 No system is perfect, and what we put in is not exactly what we are going to get out at the end of the cable.
 We must consider the main sources of loss in optical fibers.
@@ -93,7 +93,9 @@ This naturally makes certain wavelengths more suitable for long-distance communi
 The three main wavelengths used for fiber optic communication are near 850, 1300, and 1550 nanometers, which all lie in the infrared spectrum.
 The wavelength of light is important in quantum communication for other reasons as well.
 Not all sources of light can produce single photons of the desired wavelength.
-Detector efficiencies depend on the wavelength of the photons, and quantum memories can couple to light only in certain wavelength regions. When multiple connections (whether classical or quantum) share the fiber, they are assigned separate wavelengths.
+Detector efficiencies depend on the wavelength of the photons, and quantum memories can couple to light only in certain wavelength regions.
+
+When multiple connections (whether classical or quantum) share the fiber, they are assigned separate wavelengths.
 If the assigned wavelengths are too far apart, then fewer channels can be carried; if they are too close together, \textbf{\emph{filtering}}\index{filtering}, or selecting out, the desired channel is hard and inter-channel interference becomes a problem. 
 All these factors introduce complications which must be accounted for when designing and implementing quantum networks.
 
@@ -120,9 +122,8 @@ The shortest route is the \textbf{\emph{axial path}}\index{axial path}, which tr
 The light can also take non-axial paths where it undergoes total internal reflection\index{total internal reflection}.
 The total length travelled by non-axial modes is longer than for the axial mode, resulting in a longer propagation time for those modes.
 
-It is important to quantify the time difference between the different modes.
 From Fig.~\ref{fig:11-2_mode_dispersion}, it is intuitive that depending on the angle with which the light is coupled to the fiber, the path that it takes will be different.
-The fastest mode, travels directly down the center of the fiber.
+The fastest mode travels directly down the center of the fiber.
 This is the axial mode.
 The slowest mode is the one that is incident on the cladding just at the critical angle, meaning it just barely gets internally reflected.
 
@@ -143,8 +144,9 @@ We are going to consider a horizontal length $L$ that the axial mode traverses.
 The time that the axial mode takes to cover distance $L$ is the following,
 \begin{equation}
     t_{\min } =\frac{L}{v_f}.
+    \label{eq:propagattion_t_min}
 \end{equation}
-The speed of of light in the fiber, $v_f$, depends on the refractive index of the material, $n_f$, that the fiber is made of, $v_f = c / n_f$.
+The speed of light in the fiber, $v_f$, depends on the refractive index of the material, $n_f$, that the fiber is made of, $v_f = c / n_f$.
 Therefore the minimum time can be written as
 \begin{equation}
     t_{\min } =\frac{Ln_f}{c}.
@@ -183,6 +185,7 @@ where the last equality comes from Eq.~(\ref{eq:7-4_crit_angle}).
 Substituting for $\cos\theta_r$ in Eq.~(\ref{eq:11-2_cos_theta_r}), we obtain the time it takes for the slowest mode to traverse the horizontal distance $L$,
 \begin{equation}
     t_{\max }=\frac{L n_f^2}{c n_c}.
+    \label{eq:propagation_t_max}
 \end{equation}
 
 It is now easy to put the expressions for $t_{\mathrm{max}}$ and $t_{\mathrm{min}}$ together, and obtain the time delay between the fastest and slowest modes, 
@@ -197,15 +200,16 @@ Using Eq.~(\ref{eq:11-2_time_delay}), we obtain the following time delay per kil
 \begin{equation}
     \frac{\Delta t}{L}=37 \mathrm{~ns} / \mathrm{km}.
 \end{equation}
-This does not seem much.
+This does not seem like much.
 Let's see the consequences of this small delay.
 The speed of light in this fiber is given by $c$ divided by the refractive index of this fiber, which is $v_f=c / n_f=2 \times 10^8 \mathrm{~m} / \mathrm{s}$.
 This time delay between the fastest and slowest modes means that our pulse spreads over a distance as it travels through the fiber. We can quantify this dispersion and obtain the value $7.4$ meters per kilometer -- our slowest signal is about three-quarters of one percent slower than our fastest. Every kilometer that our signal travels, it becomes more and more spread by this distance of $7.4$ meters.
-Because our wave packets are becoming more spread out, we are losing the sharpness of our signal and they become more difficult to decode.
+Because our signal is becoming more spread out, making it more difficult to decode.
 In order to be able to read the output signal clearly, we demand that the pulses that are coming out of our fiber be separated by twice the value of the spread.
 This means that in order for the dispersed signal that is coming out of the fiber to be intelligible, we require that the input pulses also be separated by at least $2\times 7.4 = 14.8$ meters even when connecting over a distance of only one kilometer.
 This inadvertently places a limit on how fast we can transmit information because the pulses have to be separated by a certain amount.
 Dispersion has a direct consequence on the maximum frequency of the input signal.
+A good rule of thumb when thinking about repetition rates and light propagating in fiber is to remember that a 1Gbps source produces a signal every 1ns, and in this time light travels 20cm in optical fiber.
 
 
 
@@ -246,7 +250,7 @@ Losses due to bending occur when the fiber is bent at a sharp enough angle that 
 Remember, we said that the angle of incidence is crucial for total internal reflection to take place, and therefore for the signal to propagate down the fiber.
 Typically, the manufacturers specify a minimum bending radius, usually around 10-20 times the diameter of the fiber.
 Inevitably, we will have to join two fibers together.
-If the coupling between the fibers introduces a gap, or if the fibers are not aligned correctly, some of the light will leak leading to attenuation of the signal.
+If the coupling between the fibers introduces a gap, or if the fibers are not aligned correctly, some of the light will leak, leading to attenuation of the signal.
 
 Now that we have covered the main sources of loss, let's discuss how to quantify the attenuation in the fiber.
 The degree of attenuation is expressed by a unit called the \textbf{\emph{decibel}}\index{decibel}.
@@ -329,15 +333,15 @@ Decreasing the cross-section of the fiber has the effect of limiting the number 
 Having only a single mode propagating in the fiber eliminates mode dispersion completely since there is nothing that can get dispersed.
 
 We mentioned that absorption and scattering can be reduced by improving the manufacturing process.
-Bending loss is reduced by keeping in mind manufacturer's advice about the maximum bending radius.
-Coupling errors can be eliminated, at least partially, by ensuring that the fibers are aligned properly and there is no gap between them.
+Bending loss is reduced by keeping in mind the manufacturer's advice about the maximum bending radius.
+Limiting coupling errors requires careful alignment of the optical fibers.
 
 No matter how many precautions we take when manufacturing and using the fiber, there will always be attenuation resulting in deterioration of the signal.
 In Fig.~\ref{fig:11-3_attenuation_dB}, even for a fiber with low attenuation parameter of $\alpha=0.18$ dB/km, the signal becomes attenuated.
 The power decreases to 80\% over a short distance of 5 kilometers.
 After 20 kilometers, the power drops to 44\%; after 50 kilometers to a mere 13\%, and at a hundred kilometers it is virtually zero.
-Hundred kilometers is not such a long distance.
-We require systems that can transmit signals over thousands of kilometers.
+A hundred kilometers is not such a long distance.
+We would like to transmit signals over thousands of kilometers.
 
 Long-distance transmission is achieved with the help of \textbf{\emph{repeaters}}\index{repeater (classical)}~\footnote{Just to remind you, we will encounter this term "repeater" in the next chapter as well, where we will be talking about quantum repeaters, but they work on a very different basis than classical repeaters. Here, we are talking only about classical repeaters.}, which are devices that are used to boost the signal strength.
 There are many different kinds of repeaters based on different physical principles; as an example, we introduce the \textbf{\emph{erbium-doped fiber amplifiers}}\index{amplifier}, or EDFA\index{erbium-doped fiber amplifier (EDFA)} for short.
@@ -375,7 +379,7 @@ Furthermore, these noisy photons may interact with other excited erbium atoms, s
 So far, we have considered classical signals comprised of large number of photons.
 In quantum communication, the signal is at the level of individual photons.
 Photon loss in the fiber therefore becomes a major problem.
-Losing a photon in from a classical signal slightly decreases the power of the signal.
+Losing a photon from a classical signal slightly decreases the power of the signal.
 Loss of a photon in quantum communication results in losing the entire signal itself!
 
 Can we combat photon loss the way it is done in classical communication?
@@ -386,7 +390,7 @@ This, however, would limit us to classical communication only.
 All the magic of quantum communication lies in non-orthogonal states and entangled states.
 We saw that creating copies of such states is not allowed by the no-cloning theorem in Sec.~\ref{sec:8-3_no-cloning}.
 
-Since copy and resend strategy is fundamentally not allowed in quantum communication, it would seem we have to resort to send the single photons and hope for the best that they arrive at the destination.
+Since the copy and resend strategy is fundamentally not allowed in quantum communication, it would seem we have to resort to sending the single photons and hoping for the best that they arrive at the destination.
 Let's do a quick calculation that will demonstrate that this also is not a viable strategy.
 The probability that we transmit the photon through a fiber with attenuation parameter $\alpha$ over distance $L$ is given by the following,
 \begin{equation}
@@ -403,83 +407,145 @@ We can see that even with ultra-low loss fibers over moderate distances, sending
 
 Loss is only one source of error that we have to contend with in long distance quantum communication.
 Other sources include unitary errors such as Pauli errors, namely $X$ errors that randomly flip the state of our photons, or $Z$ errors where we introduce a phase to the photons.
-There are several types of non-unitary errors such as relaxation that can affect the state of qubits.
+There are also several types of non-unitary errors such as relaxation that can affect the state of qubits.
 We do not have to deal with most of these errors in classical communication.
-The situation looks dire for quantum communication.
-However, we will see in the next Chapter that quantum problems require quantum solutions, and indeed there are clever ways that address these issues.
-
-
-
+In the next Chapter, we will learn how quantum mechanics can help in devising ways to overcome these challenges.
 
 
 \newpage
-\begin{exercises}
+\section{Exercises}
 
-\exer{
-\emph{Pulse broadening due to mode dispersion.}
-We would like to send a burst of light through a fiber of length $L$.
+\begin{exercise}
+\emph{Pulse broadening due to mode dispersion.} We would like to send a burst of light through a multimode fiber of length $L$.
 The light rays enter the fiber simultaneously but at different angles $\theta$, given by some distribution $d(\theta)$.
-\subexer{
-Draw the shape of the input signal.
-}
-\subexer{
-What is the shape of the output signal if all light rays are incident onto the fiber core along the fiber's axis? What is the delay in the output signal?
-}
-\subexer{
-What is the shape of the output signal if all light rays are incident a the maximum acceptance angle $\theta_{\text{max}}$? What is the delay in the output signal?
-}
-\subexer{
-What is the shape of the output signal if the distribution of the incident angles is
-\begin{equation}
-    d(\theta) = \frac{\delta(0)+\delta(\theta-\theta_{\text{max}})}{2},
-\end{equation}
-that is half of the light rays are incident along the fiber's axis, and half are incident at the maximum acceptance angle? What is the delay in the output signal?
-}
-\subexer{
-Write some code that lets the user input an arbitrary distribution of angles $d(\theta)$, refractive indices of the core the core and cladding, and computes the shape of the output pulse.
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item Draw the shape of the input signal.
+    \item What is the shape of the output signal if all light rays are incident onto the fiber core along the fiber's axis? What is the delay in the output signal?
+    \item What is the shape of the output signal if all light rays are incident a the maximum acceptance angle $\theta_{\text{max}}$? What is the delay in the output signal?
+    \item What is the shape of the output signal if the distribution of the incident angles is
+    \begin{equation}
+        d(\theta) = \frac{\delta(0)+\delta(\theta-\theta_{\text{max}})}{2},
+    \end{equation}
+    that is half of the light rays are incident along the fiber's axis, and half are incident at the maximum acceptance angle? What is the delay in the output signal?
+    \item Write some code that lets the user input an arbitrary distribution of angles $d(\theta)$, refractive indices of the core the core and cladding, and computes the shape of the output pulse.
+\end{enumerate}  
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Since all light rays enter the fiber at the same time, the signal intensity as a function of time is a narrow peak as shown below.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.9]{Figures/Chapter11/BW/solution_1.pdf}
+    \end{figure}
+    \item Since all rays are incident along the fiber's axis, the shape of the signal does not change as it propagates. The signal requires minimal time to propagate down the fiber given by Eq.~(\ref{eq:propagattion_t_min}),
+    \begin{equation*}
+        t_{\min } =\frac{Ln_f}{c}.
+    \end{equation*}
+    \item If all the rays are incident at the maximum accpetance angle $\theta_{\text{max}}$, the shape of the output signal is still the same as the shape of the input signal. The time to propagate through the fiber is now given by Eq.~(\ref{eq:propagation_t_max}),
+    \begin{equation*}
+        t_{\max }=\frac{L n_f^2}{c n_c}.
+    \end{equation*}
+    \item The distribution of incidnce angles is given by two delta functions, therefore the output signal will also have two delta functions. Half of the signal will arrive early, after time $t_{\text{min}}$, and half of the signal will arrive late, after time $t_{\text{max}}$.
+\end{enumerate} 
+\end{solution}
 
-\exer{
-\emph{Direct transmission of classical signals.}
-Consider a signal of some initial power $P_i$.
-After travelling in the fiber for length $L$, the power decreases to $P_o$.
-\subexer{
-How much of the initial signal remains if the signal undergoes a loss of 1 dB, 2 dB, 5 dB, 10 dB, and 50 dB?
-}
-\subexer{
-Plot the fraction of the remaining power of the signal, $P_o/P_i$, as a function of the number of dB.
-}
-\subexer{
-For each of the cases in subexercise \textbf{a)}, compute the attenuation parameter $\alpha$, if the length of the fiber is $L=10$ km.
-}
-}
+\begin{exercise}
+\emph{Direct transmission of classical signals.} Consider a signal of some initial power $P_i$. After travelling in the fiber for length $L$, the power decreases to $P_o$.
+\begin{enumerate}[label=(\alph*)]
+    \item How much of the initial signal remains if the signal undergoes a loss of 1 dB, 2 dB, 3 dB, 5 dB, 10 dB, and 50 dB?
+    \item Plot the fraction of the remaining power of the signal, $P_o/P_i$, as a function of the number of dB.
+    \item For each of the cases in subexercise (a), compute the attenuation parameter $\alpha$, if the length of the fiber is $L=10$ km.
+\end{enumerate} 
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Applying the definition of a decibel in Eq.~(\ref{eq:decibels}), we can compute the ratio of the output and input signals.
+    \begin{table}[h]
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccccccc}
+        \hline
+        & \textbf{1 dB} & \textbf{2 dB} & \textbf{3 dB} & \textbf{5 dB} & \textbf{10 dB} & \textbf{50 dB} \\
+        \hline
+        \textbf{signal ratio} \boldmath$P_o/P_i$ & 0.794 & 0.631 & 0.501 & 0.316 & 0.100 & 0.00001 \\
+        \hline
+    \end{tabular}
+    \end{table}
+    \item The ratio of the signals $P_o/P_i$ as a function of the number of decibels is shown below.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.9]{Figures/Chapter11/BW/solution_2.pdf}
+    \end{figure}
+    \item The attenuation parameter simply measures the loss in dB per kilometer. When $L=10$ km, we have the following attenuation parameters.
+    \begin{table}[h]
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccccccc}
+        \hline
+        & \textbf{1 dB} & \textbf{2 dB} & \textbf{3 dB} & \textbf{5 dB} & \textbf{10 dB} & \textbf{50 dB} \\
+        \hline
+        \textbf{attenuation parameter} \boldmath$\alpha$ & 0.1 & 0.2 & 0.3 & 0.5 & 1 & 5 \\
+        \hline
+    \end{tabular}
+    \end{table}
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Direct transmission of single photons.}
-Consider transmitting single photons through the fiber of length $L$.
-\subexer{
-Compute the probability of the photon being transmitted if it suffers loss of 1 dB, 2 dB, 5 dB, 10 dB, and 50 dB?
-}
-\subexer{
-Check the claim that we would need to wait 317 years on average to receive a photon sent through a 1000 km long fiber with attenuation parameter 0.1 dB/km, given the repetition rate is 1 Hz.
-}
-\subexer{
-How long would we expect to wait if the attenuation rate was 0.2 dB/km, but the repetition rate increased to 1 GHz?
-}
-}
+\begin{exercise}
+\emph{Direct transmission of single photons.} Consider transmitting single photons through the fiber of length $L$.
+\begin{enumerate}
+    \item Compute the probability of the photon being transmitted if it suffers loss of 1 dB, 2 dB, 5 dB, 10 dB, and 50 dB?
+    \item Check the claim that we would need to wait 317 years on average to receive a photon sent through a 1000 km long fiber with attenuation parameter 0.1 dB/km, given the repetition rate is 1 Hz.
+    \item How long would we expect to wait if the attenuation rate was 0.2 dB/km, but the repetition rate increased to 1 GHz?
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Using previous exercise, the probabilities are easy to obtain.
+    \begin{table}[h]
+    \setcellgapes{3pt}
+    \renewcommand\theadfont{}
+    \makegapedcells
+    \centering
+    \begin{tabular}{ccccccc}
+        \hline
+        & \textbf{1 dB} & \textbf{2 dB} & \textbf{3 dB} & \textbf{5 dB} & \textbf{10 dB} & \textbf{50 dB} \\
+        \hline
+        \textbf{transmission probability} & 79.4\% & 63.1\% & 50.1\% & 31.6\% & 10\% & 0.001\% \\
+        \hline
+    \end{tabular}
+    \end{table}
+    \item The probability that a single photon does not get lost during its propagation through the fiber is given by
+    \begin{equation*}
+        \text{Pr}\{\text{no loss}\} = 10^{-\alpha L/10}.
+    \end{equation*}
+    Given that the repetition rate is 1 Hz, the average time we need to wait for a single photon to survive the journey through the fiber is
+    \begin{equation*}
+        \text{Averate time} = \frac{1}{\text{Pr}\{\text{no loss}\}} = 10^{\alpha L/10} = 10^8 \text{ s} = 317 \text{ years}.
+    \end{equation*}
+    \item The average time is now given by
+    \begin{equation*}
+        \text{Averate time} = 10^9 \times 10^{\alpha L/10} = 10^{29} \text{ s} = 3.17 \times 10^{21} {\text{ years}}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
 
-\exer{
-\emph{Amplification of classical signals.}
-We have seen how Eq.~(\ref{eq:decibels}) describes decrease in power of the classical signal as it propagates through a fiber.
-But decibels can describe power gain, that is amplification, as well.
-\subexer{
-Can you think of a way of altering Eq.~(\ref{eq:decibels}) such that it describes power gain in dB?
-}
-\subexer{
-We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the fiber loss and the spacing of amplifiers in real-world deployments and the amount of gain an EDFA can generate.
-}
-}
-
-\end{exercises}
-
+\begin{exercise}
+\emph{Amplification of classical signals.} We have seen how Eq.~(\ref{eq:decibels}) describes decrease in power of the classical signal as it propagates through a fiber. But decibels can describe power gain, that is amplification, as well.
+\begin{enumerate}[label=\alph*]
+    \item Can you think of a way of altering Eq.~(\ref{eq:decibels}) such that it describes power gain in dB?
+    \item We suggested that amplifiers are used every 50km or so.  See if you can find more detailed information about the fiber loss and the spacing of amplifiers in real-world deployments and the amount of gain an EDFA can generate.
+\end{enumerate}  
+\end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Equation~(\ref{eq:decibels}) can be adpated to model amplification by changing the minus sign into a plus,
+    \begin{equation*}
+        \# \text { of } \mathrm{dB} = 10 \log _{10} \frac{P_o}{P_i}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}

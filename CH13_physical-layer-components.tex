@@ -18,24 +18,24 @@ In this chapter, we will see how individual physical components of a quantum rep
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/Chapter13/BW/13-1_repeater_BW.pdf}
-    \caption[MIM link hardware.]{The MIM link. The nodes at each end are repeaters with memories, shown by the atom symbols.  The node in the middle is the Bell-state analyzer (BSA). The red circles represent photons in flight, entangled with the memories.}
+    \caption[MIM link hardware.]{The MIM link. The nodes at each end are repeaters with memories, shown by the atom symbols.  The node in the middle is the Bell-state analyzer (BSA). The black circles represent photons in flight, entangled with the memories.}
     \label{fig:13-MIM-link}
 \end{figure}
 
 
 Fig.~\ref{fig:13-MIM-link} shows the basic MIM architecture for a quantum repeater link.
 What are the individual physical components of a quantum repeater system?
-We require a physical system that can be used as a suitable \textbf{\emph{quantum memory}}\index{quantum memory}, represented by the red atom symbols in the figure.
+We require a physical system that can be used as a suitable \textbf{\emph{quantum memory}}\index{quantum memory}, represented by the atom symbols in the figure.
 Ideally, we would like to interact with this system optically, meaning it is possible to use laser pulses to manipulate the state of the quantum memory, and make it emit photons.
 The difference between classical memories and quantum memories is quite substantial.
-Classical memories store 0s and 1s (classical bits), whereas quantum memories have to be able to store not only \ket{0} or \ket{1}, but also entangled state. 
+Classical memories store 0s and 1s (classical bits), whereas quantum memories have to be able to store not only \ket{0} or \ket{1}, but also a superposition state. 
 This state could be a pure superposition, or it could be part of a distributed entangled state.
 In fact, the latter case will be the usual scenario in our considerations.
 
 The photons emitted from the quantum memories must be collected into an optical fiber.
 We have covered optical fibers in Chapters~\ref{sec:7_waveguides}\index{optical fiber} and \ref{sec:11_long-distance} already.
 Finally, we need to think how to implement the BSA in the middle.
-We know what the function of a BSA is, but we have not discussed the physical components needed that can implement it.
+We know what the function of a BSA is, but we have not discussed the physical components needed to implement it.
 
 The first half of this chapter is dedicated to Bell-state measurements.
 We will discuss two different types of these measurements.
@@ -89,7 +89,7 @@ The state immediately before the measurement in the Pauli $Z$ basis is
 We can immediately see that the probabilities of obtaining measurement outcomes $+1$ or $-1$ are the same as the probabilities of measuring in the Pauli $X$ basis directly.
 
 How do we know that the unitary that is needed is the Hadamard $H$?
-The trick lies in realizing that the probability of obtaining the $c=+1$ outcome via a direct Pauli $X$ measurement must be the same as first rotating the state with some unitary operation $U$ and then measuring in Pauli $Z$ basis.
+The trick lies in realizing that the probability of obtaining the $c=+1$ outcome via a direct Pauli $X$ measurement must be the same as first rotating the state with some unitary operation $U$ and then measuring in the Pauli $Z$ basis.
 Written more formally, we require that
 \begin{equation}
     |\langle+|\psi\rangle|^2 = |\langle0|U^{\dagger}|\psi\rangle|^2.
@@ -139,7 +139,7 @@ This is the unitary operation that we need to apply to the state \ket{\psi} in o
 This trick is very useful in both quantum computation and quantum communication.
 
 This form of the Bell-state measurement is suited for quantum memories.
-The three operations required are the Hadamard gate, CNOT gate, and measurement in Pauli $Z$ basis.
+The three operations required are the Hadamard gate, CNOT gate, and measurement in the Pauli $Z$ basis.
 A candidate system for a quantum memory usable in a quantum repeater must be able to implement all three of these operations.
 
 
@@ -157,20 +157,20 @@ There are two reasons for this choice.
 First, it is intuitive and simple to visualize so it makes a good pedagogical example.
 Second, it is one of the most commonly used encodings in real experiments.
 
-In this encoding, a qubit in the state \ket{0} is represented as a single photon that is polarized in the horizontal direction, which we write as \ket{H}.
+In this encoding, a qubit in the state \ket{0} is represented as a single photon that is polarized in the horizontal direction, which we write as \ket{H}. Note that in this case, $H$ does not represent the Hadamard operation.
 The other computational basis state \ket{1} is represented as a single photon polarized in the vertical direction, and we write \ket{V}.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.6\textwidth]{Figures/Chapter13/BW/13-3_PBS_BW.pdf}
-    \caption[A polarizing beam splitter (PBS).]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation, red arrows, is normal to the \ket{H}-\ket{V} plane.}
+    \caption[A polarizing beam splitter (PBS).]{The action of a polarizing beam splitter (PBS).  The vertical rays represent vertically polarized light \ket{V}, while the diagonal rays represent horizontally polarized light \ket{H}.  The direction of propagation, is normal to the \ket{H}-\ket{V} plane.}
     \label{fig:13-PBS}
 \end{figure}
 
 The first question that we should ask is, ``how do we implement a Pauli $Z$ measurement with this encoding?''
 We need to distinguish horizontal and vertical polarizations.
 This can be done with a piece of crystal called a \emph{\textbf{polarizing beam splitter}} (PBS)\index{polarizing beam splitter (PBS)}, as shown in Fig.~\ref{fig:13-PBS}.
-A PBS transmits light of horizontal polarization only, and reflects vertically-polarized light.
+A PBS transmits light of horizontal polarization only, and reflects vertically-polarized light at a 90$^{\circ}$ angle.
 An incident beam of arbitrary polarization gets split into two beams by the PBS.
 The relative strength of the two beams depends on the polarization of the input light.
 The PBS is not creating or changing polarization, but rather sorting the input light into the two categories.
@@ -234,13 +234,13 @@ Using the arrangement in Fig.~\ref{fig:13-BSA-clicks}, we can only implement a p
     \hline
         \textbf{Pattern}  & \textbf{Result} & \textbf{Reason} & \textbf{Action} \\
         \hline
-        $D_1$ and $D_4$ & \ket{\Psi^-} & & \textcolor{mygreen}{keep} \\
-        $D_2$ and $D_3$ & \ket{\Psi^-} & & \textcolor{mygreen}{keep} \\
-        $D_1$ and $D_2$ & \ket{\Psi^+} & & \textcolor{mygreen}{keep} \\
-        $D_3$ and $D_4$ & \ket{\Psi^+} & & \textcolor{mygreen}{keep} \\
-        single click & \ket{\Phi^\pm}  & two photons together/only one arrived & \textcolor{myred}{discard} \\
-        no click & N/A & photons lost/detection failure & \textcolor{myred}{discard} \\
-        other pattern & N/A & detection error & \textcolor{myred}{discard} \\
+        $D_1$ and $D_4$ & \ket{\Psi^-} & & keep \\
+        $D_2$ and $D_3$ & \ket{\Psi^-} & & keep \\
+        $D_1$ and $D_2$ & \ket{\Psi^+} & & keep \\
+        $D_3$ and $D_4$ & \ket{\Psi^+} & & keep \\
+        single click & \ket{\Phi^\pm}  & two photons together/only one arrived & discard \\
+        no click & N/A & photons lost/detection failure & discard \\
+        other pattern & N/A & detection error & discard \\
         \hline
     \end{tabular}
     \caption[Four-detector BSA click patterns.]{4-detector BSA click patterns and their meaning, based on Fig.~\ref{fig:13-BSA-clicks}.}
@@ -263,7 +263,7 @@ The Bell-state measurement has failed and we did not establish entanglement betw
 \label{sec:statinary-and-flying-qubits}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let's begin by considering the basic requirements for a good quantum memory, known as \textbf{\emph{DiVincenzo criteria}}\index{DiVincenzo criteria}.
+We now shift to quantum memories and begin by considering the basic requirements for a good quantum memory, known as the \textbf{\emph{DiVincenzo criteria}}\index{DiVincenzo criteria}.
 These criteria were introduced in the context of quantum computation, but they also apply in the context of quantum networking, with slightly different emphasis on which ones are important.
 The extended list of these criteria, with the first five for quantum computing and the latter two for quantum communication, is as follows,
 \begin{enumerate}
@@ -281,20 +281,21 @@ Qubits do not come for free in nature.
 Most naturally occurring systems have a complicated energy level structure.
 In order to have a well-defined qubit, we must be able to take a system for which we can address two of those energy levels, distinguish them and control them as a pair, without slipping into the other energy levels.
 (Sometimes a third level is used as a temporary state to achieve certain effects such as emitting a photon, but the computation is done by restricting actions to the two levels we want to use.)
+We also have to be able to craete a coherent superposition of these energy levels.
 
 Second, we need to be able to \textbf{\emph{initialize}} this qubit.
 Initialization is important because knowing the initial state of the system is crucial for computation.
 Without reliable initialization, we would always get a different answer to out problem.
 (This initialization also sometimes involves the temporary use of a third state.)
 
-Third, the qubits need to have \textbf{\emph{long lifetimes}}. This means that the state of qubit, particularly a superposition state, stays stable for a sufficiently long time such that the required operations can be applied to it.
+Third, the qubits need to have \textbf{\emph{long lifetimes}}. This means that the state of a qubit, particularly a superposition state, stays stable for a sufficiently long time such that the required operations can be applied to it.
 Long lifetimes allow us to carry out longer quantum computations, which we need if we want to solve harder problems.
 This criterion is especially important in quantum networking, as we will see below.
 
 Fourth, we must be able to implement a \textbf{\emph{universal set of gates}}.
 The physical system implementing a qubit dictates how we can interact with and manipulate the state of the qubit.
 Typically this is done with a set of laser pulses in the case of ion qubits sitting in a magnetic trap, or with microwave pulses in the case of superconducting qubits.
-If is usually difficult to implement an arbitrary operation with a single pulse.
+It is usually difficult to implement an arbitrary operation with a single pulse.
 Luckily, any complicated operation can be broken down and approximated by a series of simpler operations.
 Usually, it is enough to be able to implement simple rotations of single qubits and apply entangling operations between two qubits.
 
@@ -315,7 +316,7 @@ It is for this reason that photons are a good physical system used for communica
 
 In this Section, we will look at the memory lifetime, and the two communications requirements.
 
-We mentioned already that the ratio of gate speed to memory lifetime is important in quantum computing.
+The ratio of gate speed to memory lifetime is important in quantum computing.
 Longer memory lifetimes and shorter gate speeds let us carry out more complex calculations
 In the context of quantum communications, we often store qubits for long periods of time without acting on them, as we await messages from partners in the network.
 Therefore, what is more important is not the gate speed itself, but the ratio of memory lifetime to communication time, 
@@ -324,7 +325,7 @@ provided that the gate time is short compared to the \textbf{\emph{round trip ti
 Let's consider how we establish link level entanglement using the MIM architecture.
 The quantum memories emit photons entangled with their respective memory.
 These photons are guided by the optical fiber to the BSA, where they get get measured in the Bell basis.
-The BSA then communicates the outcome of the measurement back to the  network nodes via a classical message.
+The BSA then communicates the outcome of the measurement back to the  network nodes via classical messages.
 The total time needed for the emitted photon to reach the BSA and the classical message to reach the node holding the quantum memory is the round trip time~\footnote{RTT for a link can be node to BSA and back again in some contexts, or all the way memory node to memory node and back again in others. It should be clear from the context which we mean.}.
 If the memory lifetime is shorter than the RTT, then we cannot reliably establish the link-level entanglement.
 Even if we successfully perform the Bell-state measurements on the photon pairs at the BSA, by the time the return messages are received, our memories will have decohered and are not useful anymore.
@@ -368,7 +369,7 @@ It tells the probability that a qubit initialized in \ket{1} is still in that st
 \begin{equation}
     \operatorname{Prob}(\ket{1})=e^{-t / T_1}.
 \end{equation}
-The probability that after $T_1$ seconds we still find our state in \ket{1} is given by $\frac{1}{e}$.
+The probability that after $T_1$ seconds we still find our state in \ket{1} is given by $1/e\approx 42 \%$.
 
 The dephasing time $T_2$ tells us about the time scale of a different decoherence process, namely the loss of phase coherence in the qubit.
 Unlike the relaxation process, the qubit does not necessarily lose energy, but its phase between the states \ket{0} and \ket{1} becomes uncertain over time.
@@ -393,12 +394,12 @@ Now that we have talked about the lifetimes of memories, why they are important,
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/Chapter13/BW/13-4_memory-first_BW.pdf}
-    \caption[First idea for memory.]{Our first idea for a memory qubit is to use two energy levels of a system, such as ground and excited states of an atom.}
+    \caption[First idea for memory.]{Our first idea for a memory qubit is to use two energy levels of a system, such as ground and excited states of an atom. The thick horizontal lines represent energy levels, or different states, of the atom. The lower energy state is usually called the ground state, denoted here by \ket{0}. The higher energy state, or the excited state, is denoted here by \ket{1}. The solid circles represent in which of these states the atom is.}
     \label{fig:13-memory-first}
 \end{figure}
 
-First we should consider what states of the atom represent the qubit basis states \ket{0} and \ket{1} in the quantum memory?
-Natural choice, though not the only one, for the state \ket{0} is to use the ground state of the atom, denoted by \ket{\textrm{g}}.
+First we should consider what states of the atom represent the qubit basis states \ket{0} and \ket{1} in the quantum memory.
+A natural choice, though not the only one, for the state \ket{0} is to use the ground state of the atom, denoted by \ket{\textrm{g}}.
 The other computational basis state of the qubit, \ket{1}, is then represented by one of the excited states of the atom, denoted by \ket{\textrm{e}}.
 Fig.~\ref{fig:13-memory-first} shows a two-level atom where $\ket{0}\equiv\ket{\textrm{g}}$ and $\ket{1}\equiv\ket{\textrm{e}}$.
 
@@ -444,7 +445,8 @@ In that case, our photonic qubit will be in the \textbf{\emph{no photon}} state.
 The atom also has a 50\% probability of being in the excited state, from where it can emit a photon.
 The final state of the photon is a superposition of both being and not being emitted.
 The initial superposition of the atom has been transferred to the photon.
-However, we can clearly see from Eq.~(\ref{eq:memory-photon-superpostion}) that the memory is entangled with the flying photon.
+However, we can clearly see from Eq.~(\ref{eq:memory-photon-superpostion}) that the memory is not entangled with the flying photon.
+The initial superposition of the atomic states has been transferred to the photon.
 
 \begin{figure}[t]
     \centering
@@ -454,13 +456,14 @@ However, we can clearly see from Eq.~(\ref{eq:memory-photon-superpostion}) that 
 \end{figure}
 
 This is a naive picture that demonstrates some of the basic principles of how stationary and flying qubits interact.
-However, it suffers from a few important shortcomings.
+However, it suffers from a three important shortcomings.
 The first one being the robustness of the encoding for the quantum memory.
 Using the excited state \ket{\textrm{e}} to represent one of the computational basis states makes the memory susceptible to energy relaxation, characterized by the $T_1$ time.
 Depending on the rate of energy relaxation and round trip times required, the state stored in the quantum memory might decohere and become useless.
 Second, our choice of encoding for the flying qubit is not suitable due to the attenuation of light in fiber. 
 If we are waiting for a message at the end of the fiber and we do not receive a photon, we cannot be sure if the original message was really \ket{\textrm{no photon}} (\ket{0}), or if the initial message was \ket{\textrm{photon}} (\ket{1}) and the photon just got lost along the way.
-To fix these two problems, we will now introduce a slightly more complex version of the atom for the quantum memory and a less ambiguous encoding for the flying qubit.
+The final shortcoming is that the memory is not entangled with the photon after its emission.
+To fix these problems, we will now introduce a slightly more complex version of the atom for the quantum memory and a less ambiguous encoding for the flying qubit.
 
 Figure~\ref{fig:13-memory-second-idea} shows the new atomic structure for quantum memory.
 The ground state is now degenerate~\footnote{Meaning ``having the same energy''; no moral weakness implied.}, and spanned by two orthogonal states.
@@ -501,7 +504,7 @@ This is clearly an entangled state of the quantum memory and the flying qubit re
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.7\textwidth]{Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf}
+    \includegraphics[width=0.6\textwidth]{Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf}
     \caption[Physical implementation of the MIM link.]{A different view of an MIM link. On the left are the energy level diagrams for the qubits, which decay into a superposition of two states while emitting photons entangled with the memories. On the right is a large view of the Bell state analyzer with three beam splitters and four photon detectors.}
     \label{fig:13-MIM-energy}
 \end{figure}
@@ -514,86 +517,56 @@ Each memory is prepared initially in the excited state \ket{\textrm{e}}, which d
 We do not know which state it decays into, leaving us with a flying photon that is entangled with its respective memory.
 These flying photons travel through the single mode fibers, then hit the central beam splitter, where (if all goes well) they interfere and we perform a Bell-state measurement using the setup we discussed in Sec.~\ref{sec:bell-state-measurements-II}.
 In this way, we can establish link-level entanglement between the atomic memories sitting at the ends of the link.
+
 This concludes our discussion of the physical implementation of the MIM link architecture.
 In fact out discussion applies to the MM link architecture as well, we just need to place the BSA inside one of the nodes.
 Addition of a source of entangled photon pairs, such as the one we discussed in Sec~\ref{sec:4-4_spdc} would cover also the physical implementation of the MSM link architecture.
 
 
-
-
-
-
 \newpage
-\begin{exercises}
-\exer{
-\emph{Bell-state measurement revisited.}
-Let's explore the quantum circuit for a Bell-state measurement in Fig.~\ref{fig:13-2_measurementBell} a bit more detail.
-\subexer{
-Consider the qubits to be initialized in \ket{11} state.
-What are the probabilities of the four measurement outcomes?
-}
-\subexer{
-How do the probabilities change when the input state is \ket{\Phi^+}?
-}
-\subexer{
-What input state should be used if the desired measurement outcome is $c_1=1$ and $c_2=1$?
-}
-}
+\section{Exercises}
 
-\exer{
-\emph{Measurement in the graph-state basis.}
-We have seen how to describe Bell-state measurements using the language of quantum circuits in Sec.~\ref{sec:bell-state-measurements-I}.
-In this exercise, we will explore a two-qubit measurement in a different but related basis.
-\subexer{
-Two-qubit graph state is an entangled state that is related to the Bell states,
-\begin{equation}
-    \ket{G_{00}} = I \otimes H \ket{\Phi^+}.
-    \label{eq:graph-state-G00}
-\end{equation}
-Write down the graph state \ket{G_{00}} in Dirac notation.
-}
-\subexer{
-Just like there are four Bell states, there are four orthogonal graph states,
-\begin{equation}
-    \ket{G_{mn}} = Z^m \otimes Z^n \ket{G_{00}}.
-\end{equation}
-Write down all four of these states in Dirac notation, and verify they are orthogonal.
-}
-\subexer{
-Draw the quantum circuit that prepares the state \ket{G_{00}}, given the input qubits are both initialized in the \ket{0} state.
-}
-\subexer{
-Draw the quantum circuit representation for a measurement in the graph state basis.
-}
-}
+\begin{exercise}
+\emph{Bell-state measurement revisited.} Let's explore the quantum circuit for a Bell-state measurement in Fig.~\ref{fig:13-2_measurementBell} in a bit more detail.
+\begin{enumerate}[label=(\alph*)]
+    \item Consider the qubits to be initialized in \ket{11} state. What are the probabilities of the four measurement outcomes?
+    \item How do the probabilities change when the input state is \ket{\Phi^+}?
+    \item What input state should be used if the desired measurement outcome is $c_1=1$ and $c_2=1$?
+\end{enumerate}
+\end{exercise}
 
-\exer{
-\emph{Round trip time and decohering memories.}
-Consider the MIM link architecture with memories that are affected by depolarizing noise with $T_1=100\mu$s.
-\subexer{
-Assume that the state of the memory-photon immediately after the photon emission is
-\begin{equation}
-    \ket{\Psi}_{\textrm{mem-phot}} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow}\ket{V} + \ket{\downarrow}\ket{H} \right).
-\end{equation}
-What is the fidelity of this state after time $t$ that the photon has spent in flight? 
-}
-\subexer{
-Assume that the distance of the BSA to either of the memories is $d=25$ km, and that the BSA succeeds without introducing any noise.
-What is the fidelity of the Bell pair shared between the quantum memories immediately after the BSA completes?
-}
-\subexer{
-The BSA communicates the success of entanglement swapping to the nodes.
-What is the fidelity of the Bell pair after the nodes receive the classical BSA message.
-}
-\subexer{
-Consider using a better quantum memory with $T_1=10$ ms.
-What is the fidelity of the memory-memory Bell pair after receiving the BSA message?
-}
-}
+\begin{exercise}
+\emph{Measurement in the graph-state basis.} We have seen how to describe Bell-state measurements using the language of quantum circuits in Sec.~\ref{sec:bell-state-measurements-I}. In this exercise, we will explore a two-qubit measurement in a different but related basis.
+\begin{enumerate}[label=(\alph*)]
+    \item Two-qubit graph state is an entangled state that is related to the Bell states,
+    \begin{equation*}
+        \ket{G_{00}} = I \otimes H \ket{\Phi^+}.
+    \end{equation*}
+    Write down the graph state \ket{G_{00}} in Dirac notation.
+    \item Just like there are four Bell states, there are four orthogonal graph states,
+    \begin{equation*}
+        \ket{G_{mn}} = Z^m \otimes Z^n \ket{G_{00}}.
+    \end{equation*}
+    Write down all four of these states in Dirac notation, and verify they are orthogonal.
+    \item Draw the quantum circuit that prepares the state \ket{G_{00}}, given the input qubits are both initialized in the \ket{0} state.
+    \item Draw the quantum circuit representation for a measurement in the graph state basis.
+\end{enumerate}
+\end{exercise}
 
+\begin{exercise}
+\emph{Round trip time and decohering memories.} Consider the MIM link architecture with memories that are affected by depolarizing noise with $T_1=100\mu$s.
+\begin{enumerate}[label=(\alph*)]
+    \item Assume that the state of the memory-photon immediately after the photon emission is
+    \begin{equation*}
+        \ket{\Psi}_{\textrm{mem-phot}} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow}\ket{V} + \ket{\downarrow}\ket{H} \right).
+    \end{equation*}
+    What is the fidelity of this state after time $t$ that the photon has spent in flight?
+    \item Assume that the distance of the BSA to either of the memories is $d=25$ km, and that the BSA succeeds without introducing any noise. What is the fidelity of the Bell pair shared between the quantum memories immediately after the BSA completes?
+    \item The BSA communicates the success of entanglement swapping to the nodes. What is the fidelity of the Bell pair after the nodes receive the classical BSA message.
+    \item Consider using a better quantum memory with $T_1=10$ ms. What is the fidelity of the memory-memory Bell pair after receiving the BSA message?
+\end{enumerate}
+\end{exercise}
 
-
-\end{exercises}
 
 \newpage
 \section*{Quiz}
@@ -637,4 +610,4 @@ Another fantastic review of physical layer components can be found here:
 
 Nicolas Sangouard, Christoph Simon, Hugues de Riedmatten, Nicolas Gisin, Quantum repeaters based on atomic ensembles and linear optics, \emph{Review of Modern Physics} 83, 33, 2011~\cite{sangouard2011quantum}.
 
-Again, the published version is behind a paywall. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.
+Again, the published version is behind a paywall. Be warned though, this paper starts with an excellent introduction but the technical details ramp up quickly after that and rely on a good grasp of quantum optics. So if you get lost after the introduction, don’t worry. You can come back to those parts later.

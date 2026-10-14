@@ -15,7 +15,7 @@ In Ch.~\ref{sec:1_Introduction}, we discussed the example of the Great Wall of C
 If a guard tower was under attack, the guards lit a fire to alert the other guard towers and ask for help.
 The message, in the form or light, was generated at the place of attack and travelled to the neighboring guard towers.
 Nowadays, if we want to download data from a server, we encode the request in the form of a light signal that is carried by optical fibers.
-The physical systems that encode the information, in this case photons, are transmitted from from us to the server hop-by-hop using intermediate nodes of the classical network.
+The physical systems that encode the information, in this case photons, are transmitted from us to the server hop-by-hop using intermediate nodes of the classical network.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Figures/Chapter08/BW/8-1_network_BW.pdf}
@@ -44,14 +44,14 @@ The physical systems that encode the information, in this case photons, are tran
 However, quantum networks offer different ways of transmitting information.
 Consider a small quantum network in Fig.~\ref{fig:quantum-network}.
 The circles represent our nodes and the lines represent the links, or quantum channels, between the nodes.
-The sender, represented by the blue node, is in possession of a pure state $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target given by the orange network node.
+The sender is in possession of a pure state $\ket{\psi} = \alpha\ket{0}+\beta\ket{1}$, and  wants to send this state to the target node.
 The transmission can be done hop-by-hop by encoding it in a physical system and sending that physical system along a path that connects to the target node.
 The network may decide to send the encoded quantum message via the path represented by the arrows in Fig.~\ref{fig:hop-by-hop}.
 What happens if one of the quantum links is down, as in Fig.~\ref{fig:link-down}?
 In this particular case, it's not a big problem because the message can be simply rerouted to go around the damaged link and still reach the target node.
 But what happens if yet another link is down, as in Fig.~\ref{fig:partition}?
 In this case, the quantum portion of our network is \textbf{\emph{partitioned}}.
-It may seem that we cannot transmit the message to the target...unless we use \textbf{\emph{teleportation}}\index{teleportation}\footnote{Here, we assume that the supporting classical network remains intact, only the quantum channels are going up or down.}
+It may seem that we cannot transmit the message to the target...unless we use \textbf{\emph{teleportation}}\index{teleportation}\footnote{We assume that the supporting classical network remains intact, only the quantum channels are going up or down, and that the quantum nodes have managed to establish shared entanglement prior to the link going down.}
 We can teleport this state from the sender to the target, provided that some initial conditions are met.
 We can move the information itself \textbf{\emph{without moving the actual physical system}}.
 That physical system remains stationary.
@@ -102,7 +102,7 @@ If we write out the initial three-qubit state in its full form, we have
 \end{align}
 
 Alice then performs a two-qubit measurement in the Bell basis.
-To refresh your memories, you may want to take a look at Sec.~\ref{sec:4_3-bell_states}, where we discussed Bell-state measurements.
+To refresh your memory, you may want to take a look at Sec.~\ref{sec:4_3-bell_states}, where we discussed Bell-state measurements.
 Doing a measurement in the Bell basis is basically asking the question: which of the following states is Alice's state in? 
 \begin{align}
 \begin{array}{ll}
@@ -111,7 +111,7 @@ Doing a measurement in the Bell basis is basically asking the question: which of
 \end{array}
 \end{align}
 To answer that question, we begin by rewriting our initial state in the Bell basis.
-We will use the following set of four identities relating computatinal basis to the Bell basis,
+We will use the following set of four identities relating the computational basis to the Bell basis,
 \begin{align}
 \begin{array}{ll}
     |00\rangle=\frac{1}{\sqrt{2}}\left(\left|\Phi^{+}\right\rangle+\left|\Phi^{-}\right\rangle\right), & |01\rangle=\frac{1}{\sqrt{2}}\left(\left|\Psi^{+}\right\rangle+\left|\Psi^{-}\right\rangle\right), \\
@@ -119,9 +119,9 @@ We will use the following set of four identities relating computatinal basis to 
 \end{array}
 \end{align}
 
-Going term by term of the initial state in Eq.~(\ref{eq:teleportation_initial_state}), we first look at the portion of Alice's state that is in $\ket{00}$.
+Going term by term through the initial state in Eq.~(\ref{eq:teleportation_initial_state}), we first look at the portion of Alice's state that is in $\ket{00}$.
 We substitute for it our superposition of Bell states $\ket{\Phi^+}$ and $\ket{\Phi^-}$.
-We do the same thing for the next term in the initial state $\ket{01}$, and we substitute for it the superposition of $\Psi^+$ and $\Psi^-$, and so on and so forth.
+We do the same thing for the next term in the initial state $\ket{01}$, and we substitute for it the superposition of $\ket{\Psi^+}$ and $\ket{\Psi^-}$, and so on.
 In full, we get the following superposition,
 \begin{align}
     \begin{aligned}
@@ -135,7 +135,7 @@ In full, we get the following superposition,
 \end{align}
 Let's collect all the terms that have the same Bell state for Alice's qubits $A_1$ and $A_2$.
 For example, the first term has a $\ket{\Phi^+}$, and also the last term has a $\ket{\Phi^+}$, but they differ in their amplitudes and also in the state of Bob's qubit.
-For the first term, we have probability amplitude $\alpha$ and Bob's qubit in the state $\ket{0}$.
+For the first term, we have probability amplitude $\alpha$ and Bob's qubit is  in the state $\ket{0}$.
 For the last term, we have probability amplitude $\beta$ and Bob's qubit is in the state $\ket{1}$.
 We collect them together, and we get the expression
 \begin{align}
@@ -152,7 +152,7 @@ Remember, we are not really doing anything yet.
 We are still dealing with the initial state, just rewriting it in a more convenient form.
 We are now in a position to answer the question that we asked earlier: in which of the Bell states are Alice's two qubits?
 Alice performs the two-qubit measurement, and obtains two classical bits as the measurement outcome.
-Probabilities of the four possible outcomes are all equal,
+The probabilities of the four possible outcomes are all equal,
 \begin{equation}
     \operatorname{Prob}\left(|\Phi^{\pm}\rangle\right)=\operatorname{Prob}\left(|\Psi^{\pm}\rangle\right)=\frac{1}{4}.
 \end{equation}
@@ -196,7 +196,7 @@ Alice needs to let Bob know which measurement outcome she obtained, and she does
 After receiving the classical bits, Bob knows exactly which correction he has to apply.
 If Alice measures $\ket{\Phi^+}$, he does nothing because he already has the state $\ket{\psi}$.
 If Alice measures $\ket{\Phi^-}$, then Bob knows he has to apply a Pauli $Z$ to his qubit.
-If she tells Bob that she obtained the measurement outcome $\ket{\Psi^+}$, he simply applies Pauli $X$, and if she obtains a $\ket{\Psi^-}$ then he just needs to apply $ZX$ to his qubit.  Summarizing,
+If she tells Bob that she obtained the measurement outcome $\ket{\Psi^+}$, he simply applies Pauli $X$, and if she obtains a $\ket{\Psi^-}$ then he needs to apply $ZX$ to his qubit.  Summarizing,
 
 \hspace{2cm} If Alice measures $\left|\Phi^{+}\right\rangle \rightarrow$ Bob applies $I$.
 
@@ -208,6 +208,7 @@ If she tells Bob that she obtained the measurement outcome $\ket{\Psi^+}$, he si
 
 Teleportation demonstrates the interchangeability of resources in quantum communication and quantum computation.
 We have exchanged one qubit of communication for one entangled pair and two classical bits.
+The entangled pair is sometimes also called an \textbf{\emph{entanglement bit}}, or \textbf{\emph{ebit}}\index{ebit} for short.
 What does this mean?
 It means that we can send the information about state $\ket{\psi}$ from Alice to Bob in two different ways.
 We can send it directly, like in Fig.~\ref{fig:hop-by-hop}, which is counted as one qubit of communication.
@@ -216,7 +217,7 @@ Or, as we outlined with the teleportation protocol, if Alice and Bob share an en
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{No-cloning theorem and Faster-than-light communication}
+\section{No-cloning theorem and faster-than-light communication}
 \label{sec:8-3_no-cloning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -233,17 +234,18 @@ She performed a measurement in the Bell basis that projected her two qubits onto
 Initially, the state of the qubit $A_1$ was $\ket{\psi}$, and the state of the qubit that Bob had in his possession, considered alone, was a maximally mixed state.
 After completing the protocol, the state of Alice's qubit $A_1$ became the maximally mixed state, whereas Bob's qubit became the state $\ket{\psi}$.
 There was no cloning or copying of the state even though there was no direct physical transmission of the state $\ket{\psi}$ from Alice to Bob.
+Bob managed to reconstruct Alice's state with the help of an ebit and two classical bits.
 This leads to another interesting and important question.
 \textbf{\emph{Is cloning possible?}}
 Let's have a look at this question.
 
 We will only consider cloning of pure states.
-Fig.~\ref{fig:cloner} shows what a hypothetical cloning device.
+Fig.~\ref{fig:cloner} shows a hypothetical cloning device.
 It takes two qubits as inputs.
 The first input is an arbitrary state $\ket{\psi}$ that we wish to clone, and the second one is initialized in \ket{0}.
 The cloning operation is represented by a  unitary operation $U$.
 The output is given by two copies of the arbitrary state \ket{\psi}.
-The questions that we would like to naswer are teh following.
+The questions that we would like to answer are the following.
 Is such a transformation possible? If so, what does the unitary look like that can achieve such a transformation?
 \begin{figure}[t]
     \centering
@@ -314,7 +316,7 @@ Therefore we can write
     \label{eq:cloning_scalars}
 \end{equation}
 The inner product \braket{\phi}{\psi} is complex scalar.
-Only scalars that satisfy Eq.~(\ref{eq:cloning_scalars}) are
+The only scalars that satisfy Eq.~(\ref{eq:cloning_scalars}) are
 \begin{equation}
     \braket{\phi}{\psi} = 0, \quad \text{and } \quad \braket{\phi}{\psi} = 1.
 \end{equation}
@@ -322,13 +324,15 @@ This tells us something interesting about the initial states \ket{\psi} and \ket
 Either the states are orthogonal, meaning $\braket{\phi}{\psi}=0$, or the states are the same, meaning $\braket{\phi}{\psi}=1$.
 Any other state, for example a superposition of \ket{\psi} and \ket{\phi}, will not satisfy Eq.~(\ref{eq:cloning_scalars}), and therefore will not be cloned successfully by the unitary $U$.
 
-This proves that our cloning really works \textbf{\emph{only}} for states that can be distinguished with certainty -- there is no ambiguity or overlap in their superpositions.
-(Remember, orthogonal states are always distinguishable deterministically.)
-So we can say that we cannot clone an arbitrary state in quantum mechanics, which is in stark contrast to classical physics.
-This is the essence of \textbf{\emph{no-cloning theorem}}\index{no-cloning theorem}.
+How about cloning operations that are not unitary?
+If we drop the requirement of cloning the states deterministically, it is in fact possible to construct non-unitary operations that clone non-orthogonal states probabilitstically.
+This means that the non-unitary operations succeeds in cloning iwth probability of less than unity.
 
-The second interesting question that we would like to answer about teleportation is the following.
-\textbf{\emph{Is teleportation instantaneous?}}
+In summary, the essence of the \textbf{\emph{no-cloning theorem}}\index{no-cloning theorem} is that it is impossible to clone two non-orthogonal states deterministically.
+This is in start contrast to classical physics.
+The no-cloning theorem is one of the defining differences between classical and quantum information processing, necessitating development of novel appraoches to quantum communications.
+
+The second interesting question that we would like to answer about teleportation is the following: \textbf{\emph{Is teleportation instantaneous?}}
 Does it allow us to communicate faster than the speed of light?
 The short answer is no, otherwise teleportation would violate the special theory of relativity.
 In order to understand why this is the case, we have to consider the timeline of events during the teleportation protocol.
@@ -361,13 +365,14 @@ Let's look at what is known immediately after Alice measures in the Bell basis a
 Just after the measurement, Bob knows that with probability one quarter, Alice measured the outcome $\ket{\Phi^+}$, and with the same probability she could have obtained each of the other three  Bell states.
 So he knows that with probability $1/4$, he has the state $\ket{\psi}$, or with probability $1/4$ he has some equivalent state given by these following expressions,
 
-\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle+\beta|1\rangle$,
 
-\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle-\beta|1\rangle$
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Phi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|0\rangle-\beta|1\rangle$,
 
-\hspace{2cm} $\operatorname{Prob}\left(\left|\Psi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle+\beta|0\rangle$
+\hspace{2cm} $\operatorname{Prob}\left(\left|\Psi^{+}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle+\beta|0\rangle$,
 
 \hspace{2cm} $\operatorname{Prob}\left(\left|\Psi^{-}\right\rangle\right)=1 / 4, \quad$ Bob has $\alpha|1\rangle-\beta|0\rangle$.
+
 This is a distribution which we can write in the density matrix formalism.
 The calculation is a bit lengthy but stick with it.
 Bob's qubit can be written as follows:
@@ -394,6 +399,10 @@ Bob still has no information about the state \ket{\psi} because the information 
 Finally, at time $t_3$, Bob receives Alice's message about the measurement outcome.
 This changes the state of his qubit to one of the four possibilities in Eq.~(\ref{eq:teleportation_possible_states}).
 He applies the appropriate correction unitary ensuring his qubit is in the desired state \ket{\psi}.
+This demonstrates a crucial point about many quantum communication protocols that we will encounter.
+Entanglement by itself is not enough to interpret and utilize the quantum states.
+We need classical information as well.
+
 
 
 

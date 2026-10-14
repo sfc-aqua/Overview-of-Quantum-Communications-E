@@ -25,7 +25,7 @@ In order to increase the range, both need to be placed as high as possible.
     \label{fig:7-1_everest}
 \end{figure}
 
-Let's perform a little thought experiment in order to get an intuition for the maximum distance the transmitter and receiver can be separated by before they lose direct line of sight due to the curvature of the Earth.
+Let's perform a little thought experiment to determine the maximum distance the transmitter and receiver can be separated by before they lose direct line of sight due to the curvature of the Earth.
 Consider placing the light source at the highest point on Earth, the top of Mount Everest at 8849 meters above sea level, as shown in Fig.~\ref{fig:7-1_everest}.
 Let's say that there is another Mount Everest with the receiver placed at its top.
 How far apart can the two mountains be such that they are just able to maintain direct line of sight, assuming there are no obstacles between them?
@@ -50,10 +50,11 @@ He observed that light entering the water vessel did not exit the bucket through
 Remarkably, the light rays were guided by the water and seemingly followed the water's path.
 Tyndall noticed that the rays were being reflected at the boundary between the water and air, confining them to stay within the streaming water.
 
-This observation led many researchers to investigate fiber optics and how to guide light, particularly in glass.
-But it was only in 1960 with the invention of the laser when people truly realized the potential of using laser light coupled to fiber optics.
-They spent a lot of effort in researching how to do that, and in 1966 people managed to couple lasers with fiber optics.
-This really sparked the first information revolution (and was rewarded with a Nobel Prize in Physics).
+This observation led researchers to investigate how light can be guided in a controlled way, starting with glass tubes and eventually leading to the development of fiber optics.
+One of the first practical demonstrations of information transmission through a glass fiber was independently performed in the early 1950's by Narinder Singh Kapany and Abraham Van Heel, who managed to transmit images through bundles of fiber.
+With the invention of the laser, researchers in the early 1960's realized the potential of communicating using light coupled to optical fiber.
+In 1961, Elias Snitzer and Will Hicks were the first to demonstrate an optical fiber laser, laying foundations for hte development of a single-mode fiber as well as an optical amplifier.
+1966 marked a breakthrough year when Charles Kao developed a low-loss fiber suitable for optical communication, an achievement that was recognized with a Nobel Prize in 2009.
 
 Just to give you some idea how far we've come, in 1970 it was possible to transmit about one percent of the original light over a distance of one kilometer.
 If you put in light of some power at the beginning, after one kilometer, you only had one hundredth of the original signal remaining.
@@ -81,7 +82,7 @@ This scenario is described by \textbf{\emph{geometric optics}}\index{geometric o
 All that is required to understand geometric description of light is some basic knowledge of trigonometry, making it fairly straightforward to understand and use.
 
 However, light possesses wave properties as well.
-We have seen this on the example of the double-slit experiment in Section~\ref{sec:6-3_interference_single_photons}. 
+We have seen this in the example of the double-slit experiment in Section~\ref{sec:6-3_interference_single_photons}. 
 In order to correctly account for these phenomena, we have to abandon geometric optics and resort to the use of \textit{\textbf{wave optics}}.
 This description is necessary in some cases when light is travelling down a very narrow fiber.
 In such a case we need the full power of electromagnetism and Maxwell's equations.
@@ -95,7 +96,7 @@ We will not worry about such a detailed description in this Chapter.
 Similarly, wave optics are really only necessary for single-mode fibers that have cross-section $d$ comparable to the wavelength of light $\lambda$, where wave effects become important.
 We will mainly discuss multi-mode fibers with cross-sections much larger than the wavelength of light.
 Such fibers have cross-sections at the order of tens of micrometers, and
-they often carry light of wavelength $\lambda=1550$ nanometers.
+they often carry light of wavelength $\lambda=1550$ nanometers $=1.55$ micrometers.
 
 \begin{figure}[t]
     \centering
@@ -206,11 +207,11 @@ This is the basic working principle behind optical fibers and it is in fact resp
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/Chapter07/BW/7-3_crit_angle_BW.pdf}
-    \caption[Critical angle.]{The critical angle gets smaller as the refractive index increases.}
+    \caption[Critical angle.]{The critical angle $\theta_c$ gets smaller as the refractive index $n_i$ increases.}
     \label{fig:7-3_crit_angle}
 \end{figure}
 
-Left panel of Fig.~\ref{fig:7-3_crit_angle} shows a plot of how the critical angle $\theta_c$ changes with the refractive index $n_i$ of the material the waveguide is made from.
+The left panel of Fig.~\ref{fig:7-3_crit_angle} shows a plot of how the critical angle $\theta_c$ changes with the refractive index $n_i$ of the material the waveguide is made from.
 We assume that the material outside of the waveguide is still just air with a refractive index of $n_r = 1.00028$.
 As the refractive index of the waveguide increases, the critical angle decreases.
 This has important implications for the design of an optical fiber.
@@ -250,11 +251,11 @@ The refractive index of the cladding must be smaller than the refractive index o
 \end{figure}
 
 Depending on the thickness of the core, optical fibers are classified into two types, as shown in Fig.~\ref{fig:7-4_multimode_singlemode_fiber}.
-\textbf{\emph{Multimode fiber}}\index{multimode fiber} has cross-section diameter much larger than the wavelength of light.
+\textbf{\emph{Multi-mode fiber}}\index{multimode fiber} has cross-section diameter much larger than the wavelength of light.
 The mode of light here refers to the spatial direction in which each beam of light travels.
 The multimode fiber in Fig.~\ref{fig:7-4_multimode_singlemode_fiber} has three modes coupling to it but only two modes making the journey all the way to the end.
 We will discuss why this is shortly.
-\textbf{\emph{Singlemode fiber}} \index{single-mode fiber} has cross-section diameter comparable to the wavelength of light and is able to support only a single mode of light.
+\textbf{\emph{Single-mode fiber}} \index{single-mode fiber} has cross-section diameter comparable to the wavelength of light and is able to support only a single mode of light.
 This mode is called the \textbf{\emph{transverse mode}}\index{transverse mode} of light.
 
 Let's look at a multimode fiber first.
@@ -308,18 +309,18 @@ We will cover mode dispersion in more detail in Section~\ref{sec:11-2_mode_dispe
 Because of this, multimode fibers are more suitable for short distances, such as in data centers, offices and campus networks.
 On the other hand, because the core does not need to be extremely small, multimode fibers are easier to manufacture, leading to savings in production costs.
 
-In contrast, singlemode fibers are much more difficult to produce, as their core diameter is typically less than $10$ micrometers.
+In contrast, single-mode fibers are much more difficult to produce, as their core diameter is typically less than $10$ micrometers.
 For comparison, the average width of a human hair is larger than $20$ micrometers.
-Singlemode fibers support only the transverse mode, therefore there is no mode dispersion.
+Single-mode fibers support only the transverse mode, therefore there is no mode dispersion.
 Mode dispersion changes the shape of the signal received at the far end, so the rate at which a signal can be changed while maintaining a clean signal at the receiver is determined by the amount of this dispersion.
-Singlemode fibers allow for high rate of transfer of data, making them suitable for long distance communications.
+Single-mode fibers allow for high rate of transfer of data, making them suitable for long distance communications.
 They are still susceptible to attenuation, and therefore the signal must be boosted approximately every 50 kilometers.
 We will discuss how to combat attenuation in Section~\ref{sec:11-4_overcoming_losses}.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{Figures/Chapter07/BW/7-4_TAT8_BW.pdf}
-    \caption[TAT-8.]{The first transatlantic communications cable, TAT-8.}
+    \caption[TAT-8.]{The first transatlantic fiber communications cable, TAT-8.}
     \label{fig:7-4_TAT8}
 \end{figure}
 
@@ -462,7 +463,7 @@ A great discussion of lasing behaviour from the perspective of a mathematician i
 
 {\bf Chapter 6}\\
 
-Following three books are great excellent introductions as well as references for the topics of geometric and wave optics:
+The following three books are great excellent introductions as well as references for the topics of geometric and wave optics:
 \begin{enumerate}
     \item Eugene Hecht, \emph{Optics}~\cite{hecht2012optics}
     \item Grant R. Fowles, \emph{Introduction to Optics}~\cite{fowles1989introduction}

@@ -16,11 +16,11 @@ In section \ref{sec:14-3_clock_sync}, we discuss clock synchronization, and dist
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf}
-    \caption[Bipartite and multipartite entanglement.]{Bipartite and multipartite entanglement distribution in quantum networks.}
+    \caption[Bipartite and multipartite entanglement.]{Bipartite and multipartite entanglement distribution in quantum networks. The dashed line represent direct quantum channels.}
     \label{fig:14-1_bipartite_multipartite}
 \end{figure}
 
-One of the main jobs of a quantum network is to distribute entanglement.
+The main jobs of a quantum network is to distribute entanglement.
 Let's start by considering a concrete example.
 Figure~\ref{fig:14-1_bipartite_multipartite} shows a quantum network.
 The circles represent quantum nodes while the dashed lines represent physical links connecting neighboring quantum nodes.
@@ -80,7 +80,7 @@ We used the fact that applying the Pauli $Z$ operation twice cancels its effect,
 
 We saw that both extremes of the fidelity, $F(\rho,\ket{\psi}) = 1$ and $F(\rho,\ket{\psi}) = 0$, suggest that the distributed state is useful for quantum communication.
 Does this mean that distributed states with intermediate values of fidelity are useful too?
-Certainly not.
+Not always.
 Let's consider a fully decohered state of two qubits given by the maximally mixed state,
 \begin{equation}
     \rho = \frac{1}{4} \left( \ket{00}\bra{00} + \ket{01}\bra{01} + \ket{10}\bra{10} + \ket{11}\bra{11} \right).
@@ -90,10 +90,14 @@ The fidelity of this state with respect to the ideal Bell pair \ket{\Phi^+} is
     F \left( \rho, \ket{\Phi^+} \right) & = \frac{1}{4} \bra{\Phi^+} \left( \ket{00}\bra{00} + \ket{01}\bra{01} + \ket{10}\bra{10} + \ket{11}\bra{11} \right) \ket{\Phi^+} \nonumber\\
     & = \frac{1}{4} \left( \frac{1}{2} + \frac{1}{2} \right) = \frac{1}{4}.
 \end{align}
-Fidelity value of $F=0.25$ therefore signifies the distributed state is ``completely useless''.
+Despite the fidelity of this state being 1/4, the maximally state is nto very useful for quantum information processing.
+For example, applying a unitary gate to the maximally state leaves it invariant,
+\begin{equation*}
+    U \rho U^{\dagger} = \rho.
+\end{equation*}
 
 Fidelity is not the only useful metric when it comes to quantifying the quality of the distributed state.
-The other method relies on the CHSH inequality which we saw plays a crucial role in the E-91 QKD protocol in Chapter~\ref{sec:10_E91}.
+One other method relies on the CHSH inequality which we saw plays a crucial role in the E-91 QKD protocol in Chapter~\ref{sec:10_E91}.
 Named after its inventors Clauser, Horne, Shimony, and Holt, the CHSH inequality is a test of the quantumness of the correlations shared between Alice and Bob.
 We saw that to test that Alice and Bob share the \ket{\Psi^+} Bell pair, they have to repeatedly measure in the following bases,
 \begin{align}
@@ -105,7 +109,7 @@ Using the outcomes of the measurements, they can then compute the CHSH correlati
     \mathcal{S} = \langle A_1 \otimes B_1\rangle + \langle A_1 \otimes B_2\rangle + \langle A_2 \otimes B_1\rangle - \langle A_2 \otimes B_2\rangle.
     \label{eq:14-1_CHSH_Psi_plus}
 \end{equation}
-For the ideal state, the expectation values can be computed according to $\langle A_i B_j \rangle = \bra{\Psi^+} A_i \otimes B_j \ket{\Psi^+}$, leading to the CHSH correlation of
+For the ideal state, the expectation values can be computed according to $\langle A_i B_j \rangle = \bra{\Psi^+} A_i \otimes B_j \ket{\Psi^+}$, leading to the CHSH\footnote{John Clauser, the ``C'' in CHSH, was awarded the 2022 Nobel Prize along with Alain Aspect and Anton Zeilinger for pioneering experiments with photons, proving the violation of Bell's inequality.} correlation of
 \begin{equation}
     \left| \mathcal{S} \right| = 2\sqrt{2}.
 \end{equation}
@@ -114,11 +118,11 @@ The distributed state is entangled provided that
 \begin{equation}
     \left| \mathcal{S} \right| > 2.
 \end{equation}
-The CHSH inequality acts as a witness of entanglement, with $|\mathcal{S}| = 2$ being the critical threshold.
+The CHSH inequality acts as a \textbf{\emph{witness of entanglement}}, with $|\mathcal{S}| = 2$ being the critical threshold.
 When Alice and Bob measure $|\mathcal{S}| > 2$, they know they share an entangled state.
 On the other hand, when $|\mathcal{S}| < 2$, they cannot conclude anything. The distributed state could be entangled but it could be separable as well.
 CHSH inequality violation is also directly linked to the security of the key that Alice and Bob can establish.
-\textit{\textbf{Stronger violation of the CHSH inequality leads to more secure secret key.}}
+\textit{\textbf{Stronger violation of the CHSH inequality leads to a more secure secret key.}}
 
 What if the ideal state that Alice and Bob are trying to share is some other Bell pair, let's say \ket{\Phi^+}?
 Computing the CHSH violation in Eq.~(\ref{eq:14-1_CHSH_Psi_plus}) but computing the expectation values with respect to the new ideal state \ket{\Phi^+}, we get
@@ -137,7 +141,7 @@ All we need to do is exchange the plus and minus signs in front of the last two 
 \end{equation}
 Eq.~(\ref{eq:14-1_CHSH_Phi_plus}) yields $|\mathcal{S}| = 2\sqrt{2}$ when the expectation values are computed with respect to \ket{\Phi^+}.
 
-We have seen that both the fidelity as well as the CHSH inequality offer suitable tools to quantify the quality of the distributed bipartite state.
+We have seen that both the fidelity and the CHSH inequality offer suitable tools to quantify the quality of the distributed bipartite state.
 We have to remember to take care when computing both quantities.
 In order to obtain meaningful results, we need to use the correct ideal state in the case of fidelity, and the appropriate form of the correlation in the case of the CHSH inequality.
 
@@ -152,7 +156,7 @@ We have seen how quantum networks can establish bipartite entanglement between t
 We may wish to distribute entanglement shared between more than two nodes as shown in Fig.~\ref{fig:14-1_bipartite_multipartite}.
 Sometimes three clients may wish to engage in a quantum communication protocol that might require all of them to share a tripartite entangled state.
 Any entangled state of more than two subsystems is called an \textit{\textbf{entangled multipartite state}}\index{multipartite entanglement}.
-It is the job a quantum network to distribute multipartite entangled states between any disjoint subsets of nodes that ask for them.
+It is the job ofa quantum network to distribute multipartite entangled states between any disjoint subsets of nodes that ask for them.
 
 We begin by considering entangled states of three qubits.
 We saw that in the case of two qubits, there are four possible computational basis states, \ket{00}, \ket{01}, \ket{10}, and \ket{11}.
@@ -176,7 +180,7 @@ Depending on the values of the coefficients, we obtain different states, some of
 
 Let's look at a few examples of important entangled multipartite states.
 The first state is one of the simplest but also one of the most important.
-It is an equal superposition of \ket{000} and \ket{111}, and is known as the \emph{\textbf{GHZ state}}\index{GHZ state}, named after Greenberger, Horne, and Zeilinger,
+It is an equal superposition of \ket{000} and \ket{111}, and is known as the \emph{\textbf{GHZ state}}\index{GHZ state}, named after Greenberger, Horne, and Zeilinger\footnote{The same one that we just mentioned was awarded the 2022 Nobel Prize.},
 \begin{equation}
     \ket{GHZ} = \frac{1}{\sqrt{2}} \left( \ket{000} + \ket{111} \right).
 \end{equation}
@@ -247,7 +251,7 @@ The W state is more robust to qubit loss than the GHZ state.
     \label{fig:14-2_monogamy}
 \end{figure}
 
-Before moving onto $N$-partite entangled states, we will pause and think how the entanglement is shared between the three qubits.
+Before moving onto $N$-partite entangled states, let's pause and think how the entanglement is shared between the three qubits.
 There is a fundamental tradeoff to how strongly each pair of the qubits can be correlated, known as \emph{\textbf{monogamy of entanglement}}\index{monogamy of entanglement}.
 It states that the strength of entanglement between a pair of qubits places an upper bound on the amount of entanglement that the third qubit can share with either of the first two qubits.
 The left panel of Figure~\ref{fig:14-2_monogamy} shows a general entangled state of three qubits, where all three qubits are entangled with each other.
@@ -268,11 +272,12 @@ The $N$-qubit GHZ state has the following form,
     \ket{GHZ} = \frac{1}{\sqrt{2}} ( \underbrace{\ket{00\ldots0}}_{N\text{ zeroes}} + \underbrace{\ket{11\ldots1}}_{N \text{ ones}} ).
 \end{equation}
 Notice that the normalization factor has not changed, even though this is now a GHZ state of $N$ qubits.
+There are still only two terms in the superposition.
 The W state can be extended to arbitrary number of qubits as well,
 \begin{equation}
     \ket{W} = \frac{1}{\sqrt{N}} ( \underbrace{\ket{00\ldots01} + \ket{00\ldots10} + \ldots \ket{10\ldots00}}_{N \text{ terms}} )
 \end{equation}
-Since the $N$-qubit W state is an equal superposition of $N$ terms, he normalization factor is $1 / \sqrt{N}$.
+Since the $N$-qubit W state is an equal superposition of $N$ terms, the normalization factor is $1 / \sqrt{N}$.
 
 \begin{figure}[t]
     \centering
@@ -376,11 +381,11 @@ The schemes of Einstein and Eddington can be applied in this scenario as well.
 However, they both have the downside that they require direct transmission of light or matter.
 Depending on the scenario, this may be impractical or outright impossible.
 Thankfully, we can employ distributed entanglement between the two parties in order to synchronize their qubit clocks.
-The precise steps of the protocol that achieves this are beyond the scope of this book but more details can be found in the Further Reading section.
 
 Clock synchronization is another example where entanglement is used as a global resource.
 The correlations of a Bell pair can be used to establish a single time frame shared between two distant locations.
 Clock synchronization is not just another application of quantum networks but often is a hidden assumption behind many of the applications of quantum technologies, some of which we have discussed already.
+The precise steps of the protocol that achieves this are beyond the scope of this book but more details can be found in the Further Reading section.
 
 
 
@@ -411,13 +416,13 @@ Another way of achieving distributed quantum computation is to entangle the QC n
 In such a case, the nodes then need to coordinate their measurements accordingly.
 Whatever the means of achieving distributed quantum computation might be, quantum networks play an essential role in connecting the individually weak QC nodes using distributed entangled states.
 The main questions of interest in distributed quantum computation are how much entanglement is needed in order to exchange quantum messages between the nodes, and how to efficiently coordinate the computation between the QC nodes.
-An important question that needs to be addressed is whether the QC nodes can trust each other, and how much one node is willing to reveal to others about the local computation that it can execute.
+An important question that needs to be addressed is whether the QC nodes (including their classical controllers) can trust each other, and how much one node is willing to reveal to others about the local computation that it can execute.
 
 The issue of trust brings us to our next application of quantum networks.
 Early quantum computers will be sparse due to immense resources needed to run and maintain them.
 Users with very limited quantum resources will have to delegate their computation to these quantum servers.
 One way is to encode the instructions about the computation into classical bits and send them to the quantum server which then executes the computation.
-By doing this, the server will learn the input, the computation itself, as well as the output.
+By doing this, the server will learn the input, the computation itself, and the output.
 What if the client does not wish to disclose any of this information?
 Remarkably, the client can hide all this information by utilizing \textbf{\emph{blind quantum computation}}\index{blind quantum computation} (BQC).
 The client only needs very limited quantum resources to engage in BQC.
@@ -427,113 +432,64 @@ Different variants of BQC work on the basis that the client can only do single-q
 In either case, quantum networks will be needed in order to communicate the information contained in those qubits between the client and the server.
 
 
-
-
 \newpage
-\begin{exercises}
-\exer{
-\emph{CHSH for all Bell pairs.}
-Consider Alice's and Bob's measurement bases,
-\begin{align}
-    A_1 & = Z, & A_2 & = X \\
+\section{Exercises}
+
+\begin{exercise}
+\emph{CHSH for all Bell pairs.} Consider Alice's and Bob's measurement bases,
+\begin{align*}
+    A_1 & = Z, & A_2 & = X, \\
     B_1 & = \frac{Z - X}{\sqrt{2}}, & B_2 & = \frac{Z + X}{\sqrt{2}}.
-\end{align}
+\end{align*}
 We have derived the CHSH correlation function $\mathcal{S}$ for the two of the Bell pairs.
-\subexer{
-What is the CHSH expression $\mathcal{S}$ that maximally violates the CHSH inequality when applied to the state \ket{\Phi^-}?
-}
-\subexer{
-What is $\mathcal{S}$ that maximally violates the CHSH inequality for the state \ket{\Psi^-}?
-}
-\subexer{
-Consider an initial state \ket{\Phi^+}, under the effect of a bit-flip channel,
-\begin{equation}
-    \rho = F \ketbra{\Phi^+}{\Phi^+} + (1-F)\ketbra{\Psi^+}{\Psi^+}.
-\end{equation}
-Compute the appropriate CHSH correlation function $\mathcal{S}$ in terms of the fidelity of the state $F$.
-}
-\subexer{
-At what fidelity $F$ can we not guarantee anymore that the state is entangled?
-}
-}
+\begin{enumerate}[label=(\alph*)]
+    \item What is the CHSH expression $\mathcal{S}$ that maximally violates the CHSH inequality when applied to the state \ket{\Phi^-}?
+    \item What is $\mathcal{S}$ that maximally violates the CHSH inequality for the state \ket{\Psi^-}?
+    \item Consider an initial state \ket{\Phi^+}, under the effect of a bit-flip channel,
+    \begin{equation}
+        \rho = F \ketbra{\Phi^+}{\Phi^+} + (1-F)\ketbra{\Psi^+}{\Psi^+}.
+    \end{equation}
+    Compute the appropriate CHSH correlation function $\mathcal{S}$ in terms of the fidelity of the state $F$.
+    \item At what fidelity $F$ can we not guarantee anymore that the state is entangled?
+\end{enumerate}
+\end{exercise}
 
-\exer{
-\emph{Measurements on the $W$ state.}
-Let's look at measuring the W state in more detail.
-Consider the projectors $\Pi_{\pm 1}^Z$ in Tab.~\ref{tab:3-2_projectors}.  To extend the measurement operators to measuring a subset of qubits, we need to tensor the projection operators with the identity matrix. 
-\subexer{
-First, consider measuring a single qubit of the W state in the Pauli $Z$ basis.
-Calculate the probabilities of finding the $\pm1$ results using
-\begin{equation}
-\text{Pr} \{\pm 1\} = \langle W | \Pi_{\pm 1}^Z \otimes I \otimes I | W \rangle.
-\end{equation}
-}
-\subexer{Calculate the probabilities of finding the $\pm1$ results when measuring in the Pauli $X$ basis.
-}
-\subexer{Calculate the probabilities of finding the $\pm1$ results when measuring in the Pauli $Y$ basis.
-}
-\noindent Now consider measuring two of the three qubits in the W state. You will need four projectors instead of just two.
-\subexer{
-Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $Z$ basis.
-}
-\subexer{
-Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $X$ basis.
-}
-\subexer{
-Calculate the probabilities of finding the $(pm1,\pm1)$ results when measuring in the $Y$ basis.
-}
-}
+\begin{exercise}
+\emph{Measurements on the $W$ state.} Let's look at measuring the W state in more detail. Consider the projectors $\Pi_{\pm 1}^Z$ in Tab.~\ref{tab:3-2_projectors}. To extend the measurement operators to measuring a subset of qubits, we need to tensor the projection operators with the identity matrix.
+\begin{enumerate}[label=(\alph*)]
+    \item First, consider measuring a single qubit of the W state in the Pauli $Z$ basis. Calculate the probabilities of finding the $\pm1$ results using
+    \begin{equation*}
+        \text{Pr} \{\pm 1\} = \langle W | \Pi_{\pm 1}^Z \otimes I \otimes I | W \rangle.
+    \end{equation*}
+    \item Calculate the probabilities of finding the $\pm1$ results when measuring in the Pauli $X$ basis.
+    \item Calculate the probabilities of finding the $\pm1$ results when measuring in the Pauli $Y$ basis.
+    \item Now consider measuring two of the three qubits in the W state. You will need four projectors instead of just two. Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $Z$ basis.
+    \item Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $X$ basis.
+    \item Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $Y$ basis.
+\end{enumerate}
+\end{exercise}
 
-\exer{
-\emph{Measurements on the GHZ state.}
-Consider a three-qubit GHZ state.
-We saw that measuring its first qubit destroys the entanglement of the state.
-\subexer{
-Confirm that this is still true when the second or the third qubits are measured.}
-\subexer{
-Let's consider measuring the first qubit again, but this time in the Pauli $X$ basis.
-What are the probabilities of the two possible outcomes.}
-\subexer{
-Compute the post-measurement state for both measurement outcomes.
-Are all of the qubits disentangled?
-}
-\subexer{
-Consider measuring all three qubits of the GHZ state in the Pauli $Z$ basis.
-What are the possible outcomes of this measurement on this state?
-Can you think of a scenario where this result can be useful?
-}
-}
+\begin{exercise}
+\emph{Measurements on the GHZ state.} Consider a three-qubit GHZ state. We saw that measuring its first qubit destroys the entanglement of the state.
+\begin{enumerate}[label=(\alph*)]
+    \item Confirm that this is still true when the second or the third qubits are measured.
+    \item Let's consider measuring the first qubit again, but this time in the Pauli $X$ basis. What are the probabilities of the two possible outcomes.
+    \item Compute the post-measurement state for both measurement outcomes. Are all of the qubits disentangled?
+    \item Consider measuring all three qubits of the GHZ state in the Pauli $Z$ basis What are the possible outcomes of this measurement on this state? Can you think of a scenario where this result can be useful?
+\end{enumerate}
+\end{exercise}
 
-\exer{
-\emph{Examples of graph states.}
-Graph stats are an important class of multipartite entangled states.
-Let's consider some basic examples.
-\subexer{
-Write down the state for a two-qubit graph state \ket{G_2} in the computational basis following the procedure discussed in Sec.~\ref{sec:14-2_multipartite}.
-}
-\subexer{
-Let's rewrite the state \ket{G_2} in new basis, where the second qubit is written in the Pauli $X$ basis.
-}
-\subexer{
-You should be able to see that the state \ket{G_2} is very similar to a Bell pair.
-Find a suitable unitary operation $U$ that transforms \ket{G_2} in one of the Bell pairs, for example,
-\begin{equation}
-    \ket{\Phi^+} = U \ket{G_2}.
-\end{equation}
-}
-\subexer{
-Consider the three-vertex graph shown in the left panel of Fig.~\ref{fig:14-2_cluster_state}.
-Write down the state of its corresponding graph state \ket{G_3} in the computational basis.
-}
-\subexer{
-Rewrite the state \ket{G_3}, such that the first and the last qubits are written in the Pauli $X$ basis.
-}
-\subexer{
-Does this rewritten form of \ket{G_3} remind you of some three-qubit state that we have discussed?
-Find the unitary $U$ that transforms \ket{G_3} into this state.
-}
-}
-
-
-\end{exercises}
-
+\begin{exercise}
+\emph{Examples of graph states.} Graph stats are an important class of multipartite entangled states. Let's consider some basic examples.
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the state for a two-qubit graph state \ket{G_2} in the computational basis following the procedure discussed in Sec.~\ref{sec:14-2_multipartite}.
+    \item Let's rewrite the state \ket{G_2} in new basis, where the second qubit is written in the Pauli $X$ basis.
+    \item You should be able to see that the state \ket{G_2} is very similar to a Bell pair. Find a suitable unitary operation $U$ that transforms \ket{G_2} in one of the Bell pairs, for example,
+    \begin{equation}
+        \ket{\Phi^+} = U \ket{G_2}.
+    \end{equation}
+    \item Consider the three-vertex graph shown in the left panel of Fig.~\ref{fig:14-2_cluster_state}. Write down the state of its corresponding graph state \ket{G_3} in the computational basis.
+    \item Rewrite the state \ket{G_3}, such that the first and the last qubits are written in the Pauli $X$ basis.
+    \item Does this rewritten form of \ket{G_3} remind you of some three-qubit state that we have discussed? Find the unitary $U$ that transforms \ket{G_3} into this state.
+\end{enumerate}
+\end{exercise}

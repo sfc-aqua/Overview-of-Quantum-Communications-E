@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    width = 10cm,
+    height = 5cm,
+    axis lines = left,
+    ymin = 0,
+    ymax = 1,
+    xlabel = number of dB,
+    ylabel = Signal ratio $P_o/P_i$,
+]
+
+\addplot [
+    domain=0:50, 
+    samples=1000, 
+    color=black,
+    thick,
+]
+{10^(-x/10)};
+
+\end{axis}
+  
+\end{tikzpicture}
+
+\end{document}

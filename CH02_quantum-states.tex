@@ -23,7 +23,7 @@ First, let's discuss quantum bits, also known as \textbf{\emph{qubits}}\index{qu
 
 The most common notation for writing down the state of a qubit (or more than one qubit) is called the \textbf{\emph{Dirac notation}}\index{Dirac notation}, and it's extremely useful.
 A general superposition of a qubit can be written as pictured in Fig.~\ref{fig:ket-notation}.
-The funny angle bracket \ket{\cdot} is called a \textbf{\emph{ket}}\index{ket}. The symbol $\psi$ (Greek letter ``psi'') in a ket, which we will call ``state psi'' or ``ket psi'' interchangeably, is often used to describe a general state of a qubit. $\ket{0}$ and $\ket{1}$ are called the \textbf{\emph{basis states}}\index{basis states}, and they determine what our state is. This $\alpha$ and $\beta$ are \textbf{\emph{probability amplitudes}}\index{probability amplitudes} that tell us how much of the state is in zero and how much of the state is in one.  These probability amplitudes can be any complex numbers, provided that they satisfy the following normalization condition,
+The angle bracket \ket{\cdot} is called a \textbf{\emph{ket}}\index{ket}. The symbol $\psi$ (Greek letter ``psi'') in a ket, which we will call ``state psi'' or ``ket psi'' interchangeably, is often used to describe a general state of one or more qubits. $\ket{0}$ and $\ket{1}$ are called the \textbf{\emph{basis states}}\index{basis states}, and they determine what our state is. This $\alpha$ and $\beta$ are \textbf{\emph{probability amplitudes}}\index{probability amplitudes} that tell us how much of the state is in zero and how much of the state is in one.  These probability amplitudes can be any complex numbers, provided that they satisfy the following normalization condition,
 \begin{align}
     |\alpha|^2 + |\beta|^2 = 1.
     \label{eq:normalization-condition}
@@ -33,7 +33,7 @@ It should be read as ``mod alpha squared plus mod beta squared is equal to one''
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/Chapter02/BW/2-1_Bloch_sphere_BW.pdf}
-    \caption[Bloch sphere.]{Bloch sphere visualization of a pure state $|\psi\rangle$.}
+    \caption[Bloch sphere.]{Bloch sphere visualization of a pure single-qubit state $|\psi\rangle$.}
     \label{fig:bloch}
 \end{figure}
 
