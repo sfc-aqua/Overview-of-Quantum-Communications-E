@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    width = 10cm,
+    height = 5cm,
+    axis lines = left,
+    xtick = {0.5},
+    xticklabel = {$t_0$},
+    ymin = 0,
+    ymax = 1,
+    xlabel = Time,
+    ylabel = Light intensity,
+    ytick = 0.8,
+    yticklabel = $I_0$,
+]
+
+\addplot [
+    domain=0:1, 
+    samples=500, 
+    color=black,
+    thick,
+]
+coordinates {(0.5, 0) (0.5, 0.8)};
+
+\end{axis}
+  
+\end{tikzpicture}
+
+\end{document}
