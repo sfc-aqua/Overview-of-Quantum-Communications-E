@@ -198,62 +198,62 @@
 \indexentry{Dijkstra's shortest path first|hyperpage}{218}
 \indexentry{multiplexing|hyperpage}{218}
 \indexentry{contention|hyperpage}{219}
-\indexentry{quantum memory|hyperpage}{225}
-\indexentry{optical fiber|hyperpage}{225}
-\indexentry{polarizing beam splitter (PBS)|hyperpage}{229}
-\indexentry{DiVincenzo criteria|hyperpage}{232}
-\indexentry{rount trip time (RTT)|hyperpage}{234}
-\indexentry{energy relaxation|hyperpage}{235}
-\indexentry{dephasing|hyperpage}{235}
-\indexentry{$T_1$ time|hyperpage}{235}
-\indexentry{$T_2$ time|hyperpage}{235}
-\indexentry{Poisson process|hyperpage}{236}
-\indexentry{memoryless decay process|hyperpage}{236}
-\indexentry{spin|hyperpage}{238}
-\indexentry{multipartite entanglement|hyperpage}{254}
-\indexentry{GHZ state|hyperpage}{254}
-\indexentry{W state|hyperpage}{256}
-\indexentry{monogamy of entanglement|hyperpage}{257}
-\indexentry{graph state|hyperpage}{257}
-\indexentry{graph|hyperpage}{257}
-\indexentry{control-phase gate|hyperpage}{258}
-\indexentry{cluster states|hyperpage}{259}
-\indexentry{clock synchronization|hyperpage}{259}
-\indexentry{Einstein's clock synchronization|hyperpage}{260}
-\indexentry{Eddington clock synchronization|hyperpage}{260}
-\indexentry{distributed quantum computation|hyperpage}{261}
-\indexentry{measurement-based quantum computation|hyperpage}{262}
-\indexentry{blind quantum computation|hyperpage}{262}
-\indexentry{quantum Internet|hyperpage}{265}
-\indexentry{standards|hyperpage}{265}
-\indexentry{gateway|hyperpage}{266}
-\indexentry{border router|hyperpage}{266}
-\indexentry{scalability|hyperpage}{266}
-\indexentry{privacy|hyperpage}{266}
-\indexentry{autonomy|hyperpage}{266}
-\indexentry{adjacency|hyperpage}{267}
-\indexentry{peering|hyperpage}{267}
-\indexentry{peering agreement|hyperpage}{267}
-\indexentry{transit netwoek|hyperpage}{267}
-\indexentry{private peering|hyperpage}{268}
-\indexentry{Internet exchange point (IXP)|hyperpage}{268}
-\indexentry{complete graph|hyperpage}{268}
-\indexentry{TCP/IP|hyperpage}{269}
-\indexentry{Border Gateway Protocol (BGP)|hyperpage}{269}
-\indexentry{virtualization|hyperpage}{269}
-\indexentry{recursion|hyperpage}{269}
-\indexentry{autonomous system|hyperpage}{270}
-\indexentry{link state|hyperpage}{270}
-\indexentry{spanning tree|hyperpage}{270}
-\indexentry{recursive network|hyperpage}{271}
-\indexentry{IPsec|hyperpage}{272}
-\indexentry{Transport Layer Security (TLS)|hyperpage}{272}
-\indexentry{public key cryptography|hyperpage}{273}
-\indexentry{Diffie-Hellman key exchange|hyperpage}{273}
-\indexentry{Advanced Encryption Standard (AES)|hyperpage}{273}
-\indexentry{man-in-the-middle|hyperpage}{273}
-\indexentry{mode dispersion|hyperpage}{276}
-\indexentry{specification|hyperpage}{277}
-\indexentry{Request for Comments|hyperpage}{277}
-\indexentry{entanglement swapping|hyperpage}{278}
-\indexentry{ethics|hyperpage}{280}
+\indexentry{quantum memory|hyperpage}{227}
+\indexentry{optical fiber|hyperpage}{227}
+\indexentry{polarizing beam splitter (PBS)|hyperpage}{231}
+\indexentry{DiVincenzo criteria|hyperpage}{234}
+\indexentry{rount trip time (RTT)|hyperpage}{236}
+\indexentry{energy relaxation|hyperpage}{237}
+\indexentry{dephasing|hyperpage}{237}
+\indexentry{$T_1$ time|hyperpage}{237}
+\indexentry{$T_2$ time|hyperpage}{237}
+\indexentry{Poisson process|hyperpage}{238}
+\indexentry{memoryless decay process|hyperpage}{238}
+\indexentry{spin|hyperpage}{240}
+\indexentry{multipartite entanglement|hyperpage}{256}
+\indexentry{GHZ state|hyperpage}{256}
+\indexentry{W state|hyperpage}{258}
+\indexentry{monogamy of entanglement|hyperpage}{259}
+\indexentry{graph state|hyperpage}{259}
+\indexentry{graph|hyperpage}{259}
+\indexentry{control-phase gate|hyperpage}{260}
+\indexentry{cluster states|hyperpage}{261}
+\indexentry{clock synchronization|hyperpage}{261}
+\indexentry{Einstein's clock synchronization|hyperpage}{262}
+\indexentry{Eddington clock synchronization|hyperpage}{262}
+\indexentry{distributed quantum computation|hyperpage}{263}
+\indexentry{measurement-based quantum computation|hyperpage}{264}
+\indexentry{blind quantum computation|hyperpage}{264}
+\indexentry{quantum Internet|hyperpage}{267}
+\indexentry{standards|hyperpage}{267}
+\indexentry{gateway|hyperpage}{268}
+\indexentry{border router|hyperpage}{268}
+\indexentry{scalability|hyperpage}{268}
+\indexentry{privacy|hyperpage}{268}
+\indexentry{autonomy|hyperpage}{268}
+\indexentry{adjacency|hyperpage}{269}
+\indexentry{peering|hyperpage}{269}
+\indexentry{peering agreement|hyperpage}{269}
+\indexentry{transit netwoek|hyperpage}{269}
+\indexentry{private peering|hyperpage}{270}
+\indexentry{Internet exchange point (IXP)|hyperpage}{270}
+\indexentry{complete graph|hyperpage}{270}
+\indexentry{TCP/IP|hyperpage}{271}
+\indexentry{Border Gateway Protocol (BGP)|hyperpage}{271}
+\indexentry{virtualization|hyperpage}{271}
+\indexentry{recursion|hyperpage}{271}
+\indexentry{autonomous system|hyperpage}{272}
+\indexentry{link state|hyperpage}{272}
+\indexentry{spanning tree|hyperpage}{272}
+\indexentry{recursive network|hyperpage}{273}
+\indexentry{IPsec|hyperpage}{274}
+\indexentry{Transport Layer Security (TLS)|hyperpage}{274}
+\indexentry{public key cryptography|hyperpage}{275}
+\indexentry{Diffie-Hellman key exchange|hyperpage}{275}
+\indexentry{Advanced Encryption Standard (AES)|hyperpage}{275}
+\indexentry{man-in-the-middle|hyperpage}{275}
+\indexentry{mode dispersion|hyperpage}{278}
+\indexentry{specification|hyperpage}{279}
+\indexentry{Request for Comments|hyperpage}{279}
+\indexentry{entanglement swapping|hyperpage}{280}
+\indexentry{ethics|hyperpage}{282}

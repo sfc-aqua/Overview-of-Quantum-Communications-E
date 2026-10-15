@@ -517,7 +517,7 @@ This architecture relies on entanglement swapping performed on photonic and matt
 If the memory transitions from the excited state \ket{E} to the ground state \ket{G_1}, it emits a horizontally polarized photon \ket{H}\footnote{To be precise, the memory emits a circularly polarized photon which is then converted to a linearly polarized photon.}.
 If the memory transitions to ground state \ket{G_2}, it emits a vertically polarized photon \ket{V}.
 \begin{enumerate}[label=(\alph*)]
-    \item Write down the state of the memory-photon pair, given that the memory is equally likely to transition to states \ket{a_1} and \ket{a_2}.
+    \item Write down the state of the memory-photon pair, given that the memory is equally likely to transition to states \ket{G_1} and \ket{G_2}.
     \item Write down the total state of both memory-photon pairs. Keep good track of the physical systems with subscripts.
     \item The two photons travel to the BSA where they get measured in the Bell basis. Write down the projectors corresponding to this measurement.
     \item What are the post-measurement states of the quantum memories?
@@ -534,18 +534,62 @@ If the memory transitions to ground state \ket{G_2}, it emits a vertically polar
     \begin{equation*}
         \ket{\psi} = \frac{1}{2} \left( \ket{G_1,H} + \ket{G_2,V} \right)_{AB_1} \otimes \left( \ket{H, G_1} + \ket{V, G_2} \right)_{B_2C}.
     \end{equation*}
-    \item The projectors corresponding to the 
+    \item The projectors corresponding to the photonic Bell-state measurement are
+    \begin{align*}
+        \Pi^B_{\ket{\Phi^+}} & = \outp{\Phi^+}{\Phi^+}, & \text{with } \ket{\Phi^+} = \frac{1}{\sqrt{2}} \left( \ket{H,H} + \ket{V,V} \right)_{B_1B_2}, \\
+        \Pi^B_{\ket{\Phi^-}} & = \outp{\Phi^-}{\Phi^-}, & \text{with } \ket{\Phi^-} = \frac{1}{\sqrt{2}} \left( \ket{H,H} - \ket{V,V} \right)_{B_1B_2}, \\
+        \Pi^B_{\ket{\Psi^+}} & = \outp{\Psi^+}{\Psi^+}, & \text{with } \ket{\Psi^+} = \frac{1}{\sqrt{2}} \left( \ket{H,V} + \ket{V,H} \right)_{B_1B_2}, \\
+        \Pi^B_{\ket{\Psi^-}} & = \outp{\Psi^-}{\Psi^-}, & \text{with } \ket{\Psi^-} = \frac{1}{\sqrt{2}} \left( \ket{H,V} - \ket{V,H} \right)_{B_1B_2}.
+    \end{align*}
+    \item Depending on the measurement outcome, the post-measurement states of the memories can be the following,
+    \begin{align*}
+        \ket{\Phi^+}_{AC} & = \frac{1}{\sqrt{2}} \left( \ket{G_1,G_1} + \ket{G_2,G_2} \right)_{AC}, \\
+        \ket{\Phi^-}_{AC} & = \frac{1}{\sqrt{2}} \left( \ket{G_1,G_1} - \ket{G_2,G_2} \right)_{AC}, \\
+        \ket{\Psi^+}_{AC} & = \frac{1}{\sqrt{2}} \left( \ket{G_1,G_2} + \ket{G_2,G_1} \right)_{AC}, \\
+        \ket{\Psi^-}_{AC} & = \frac{1}{\sqrt{2}} \left( \ket{G_1,G_2} - \ket{G_2,G_1} \right)_{AC}.
+    \end{align*}
 \end{enumerate}
 \end{solution}
 
 \begin{exercise}
-\emph{Purification and Pauli $Z$ errors.} We described the purification procedure on Bell pairs affected by the bit flip channel. Let's look at what happens when the Bell pairs undergo a Pauli $Z$ error.
+\emph{Purification and Pauli $Z$ errors.} We described the purification procedure on Bell pairs affected by the bit flip channel. Let's look at what happens when the Bell pairs undergo a Pauli $Z$ error. The ideal state that Alice and Bob try to share is again \ket{\Phi^+}.
 \begin{enumerate}[label=(\alph*)]
-    \item Assume that only Alice's qubit $A_1$ is affected by the Pauli $Z$. Write down the total state of both Bell pairs.
-    \item Apply the purification procedure. Is this the result you expected?
+    \item Assume that only Alice's qubit $A_1$ is affected by the Pauli $Z$ error. Write down the total state of both Bell pairs in terms of the fidelity $F$.
+    \item Apply the purification procedure shown in Fig.~\ref{fig:12-4_purification}. Is this the result you expected?
     \item If both Bell pairs are mixed states of fidelity $F$, what is the fidelity of the Bell pair after successful purification procedure?
 \end{enumerate} 
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The state of the first pair is
+    \begin{equation*}
+        F \outp{\Phi^+}{\Phi^+}_{A_1B_1} + (1-F) \outp{\Phi^-}{\Phi^-}_{A_1B_1}.
+    \end{equation*}
+    The state of the second pair is $\ket{\Phi^+}_{A_2B_2}$ since it is not affected by the Pauli $Z$ error. The total state can therefore be written as follows,
+    \begin{equation*}
+        \rho_{AB} = \left[ F \outp{\Phi^+}{\Phi^+} + (1-F) \outp{\Phi^-}{\Phi^-} \right]_{A_1B_1} \otimes \outp{\Phi^+}{\Phi^+}_{A_2B_2}.
+    \end{equation*}
+    \item The purification protocol of Fig.~\ref{fig:12-4_purification} applies bilateral CNOT gates CNOT$_{A_1A_2}$ and CNOT$_{A_2B_2}$ followed by a measurement in the Pauli $Z$ basis on hte second Bell pair.
+    We have covered the first term $\ket{\Phi^+}_{A_1B_1}\ket{\Phi^+}_{A_2B_2}$, which stays invariant under the bilateral CNOT gates. Measuring the second pair in the Pauli $z$ basis always reuslts in correlated measurement outcomes, passing the purification .
+    We therefore have to check what happens to the second term,
+    \begin{align*}
+        \ket{\Phi^-}_{A_1B_1}\ket{\Phi^+}_{A_2B_2} & = \ket{00}\ket{00} + \ket{00}\ket{11} - \ket{11}\ket{00} - \ket{11}\ket{11} \\
+        & \xrightarrow{\text{CNOT}_A} \ket{00}\ket{00} + \ket{00}\ket{11} - \ket{11}\ket{10} - \ket{11}\ket{01} \\
+        & \xrightarrow{\text{CNOT}_B} \ket{00}\ket{00} + \ket{00}\ket{11} - \ket{11}\ket{11} - \ket{11}\ket{00} \\
+        & = \ket{\Phi^-}_{A_1A_2}\ket{\Phi^+}_{B_1B_2}.
+    \end{align*}
+    We see that this inout state is also invariant undet the bialteral CNOT gates, leading to correlated measurement outcomes when the second Bell pair is measured in the Pauli $Z$ basis.
+    In other words, the purification test is always passed even though the firs tBell pair is affected by an error.
+    This is because the purification test in Fig.~\ref{fig:12-4_purification} is designed to detect only Pauli $X$ errors and is oblivious to Pauli $Z$ errors.
+    \item We can check that the following holds true,
+    \begin{align*}
+        \ket{\Phi^+}_A\ket{\Phi^-}_B & \xrightarrow{\text{CNOT}_A,\text{ CNOT}_B} \ket{\Phi^-}_A\ket{\Phi^-}_B, \\
+        \ket{\Phi^-}_A\ket{\Phi^-}_B & \xrightarrow{\text{CNOT}_A,\text{ CNOT}_B} \ket{\Phi^+}_A\ket{\Phi^-}_B.
+    \end{align*}
+    Even though the two input states are not invariant under the bilateral CNOT gates, measuring the second Bell pair will always yield correlated measurement outcomes and the purification test will always be passed, regards of the initial fidelity of the Bell pairs.
+    Since the purification always succeeds, the fidelity of the first pair remains $F$.
+\end{enumerate}
+\end{solution}
 
 
 \newpage

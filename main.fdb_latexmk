@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex main"] 1791981374.55791 "main.aux" "main.bbl" "main" 1791981383.88164 0
+["bibtex main"] 1792024028.75894 "main.aux" "main.bbl" "main" 1792067157.51043 0
   "./main.bib" 1791943044.48457 9987 95d47ff3d1ab2508451ef848dd9b53a5 ""
   "./mit-chicago.bst" 1783995995.54116 47334 7fc0feda303d325fede4cb1f627d1cd0 ""
-  "main.aux" 1791981383.31828 64172 c2391d1a262cacec58f0b8f35f2d4c55 "pdflatex"
+  "main.aux" 1792067157.0889 64173 357934ed56a685e19d16fecb029ad38a "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1791981374.44355 "main.idx" "main.ind" "main" 1791981383.88147 0
-  "main.idx" 1791981383.38308 11679 95c42937812da58e48f3d9718aa099be "pdflatex"
+["makeindex main.idx"] 1792023254.42479 "main.idx" "main.ind" "main" 1792067157.51031 0
+  "main.idx" 1792067157.13769 11679 6233ebba4f14351b84e86d53ab8dddd9 "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1791981374.69012 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1791981383.88186 0
+["pdflatex"] 1792067150.46495 "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" "main.pdf" "main" 1792067157.51059 0
   "/Users/michal/Overview-of-Quantum-Communications-E/main.tex" 1790143434.28906 52587 46c7ac3ea5595c61088ea0f1b05bf058 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -357,7 +357,7 @@
   "CH09_BB84.tex" 1791513692.77801 44751 ac0c4ddeaa363e3c84e03874f151d927 ""
   "CH10_E91.tex" 1791680031.20641 40983 5d85380be30ecd663f714d17468098ac ""
   "CH11_Long-Distance-Communication.tex" 1791851036.85391 39772 44c27b1d2af42ab7ce25415f0727dae6 ""
-  "CH12_Quantum-Repeaters.tex" 1791939851.06223 43902 de7c0cb039549d515ff176b131c8cd8b ""
+  "CH12_Quantum-Repeaters.tex" 1792067145.54624 48013 e976f1b6e5bc833015a40cea2fce8b9e ""
   "CH13_Physical-Layer-Components.tex" 1791979963.73172 45519 d11cc8719da4425d4f7261f6b8cd3b0e ""
   "CH14_Entanglement-Revisited.tex" 1791981365.01459 36582 8d177ed45b211958b57f38e7a83d6a8d ""
   "CH15_Quantum-Internet.tex" 1791960963.73242 43449 f8acef23dc9f7e00ebcc9c540b6c1d8c ""
@@ -483,14 +483,14 @@
   "intro-block-3.tex" 1783995995.50827 1638 1029850ed0644be4136b6a6502721c67 ""
   "intro-block-4.tex" 1783995995.50835 971 94bf8973f259d3d2a50aa4d5bd3a45b2 ""
   "intro-block-5.tex" 1791943117.33453 467 059a2c21c9629f523a097590808a1d60 ""
-  "main.aux" 1791981383.31828 64172 c2391d1a262cacec58f0b8f35f2d4c55 "pdflatex"
-  "main.bbl" 1791981374.68159 13485 aaeff6bdd4352d775d6479bb5d34d0c3 "bibtex main"
-  "main.ind" 1791981374.55647 10687 290da2e36a55e0bf531f355cfc19e6f5 "makeindex main.idx"
-  "main.lof" 1791981383.38331 12082 587806992be05d61af10c12862d54dc3 "pdflatex"
-  "main.out" 1791981383.38245 19336 855380e128b1fc9df099a3dd9f266ae6 "pdflatex"
+  "main.aux" 1792067157.0889 64173 357934ed56a685e19d16fecb029ad38a "pdflatex"
+  "main.bbl" 1792024028.85455 13485 aaeff6bdd4352d775d6479bb5d34d0c3 "bibtex main"
+  "main.ind" 1792023254.51033 10687 b164489dd17a1e665aadf43d21154434 "makeindex main.idx"
+  "main.lof" 1792067157.13781 12082 a3b2b1dcc20d3cd90ba9664b8e778621 "pdflatex"
+  "main.out" 1792067157.13744 19337 94dde407de3c7f759bb8152116e8f353 "pdflatex"
   "main.tex" 1790143434.28906 52587 46c7ac3ea5595c61088ea0f1b05bf058 ""
-  "main.toc" 1791981383.38322 9918 a5bcb9a5b9e92de557b9500536ab053f "pdflatex"
-  "main.xsim" 1791981383.3173 118136 b2c34ced894d823b6d5511856023a2be "pdflatex"
+  "main.toc" 1792067157.13775 9919 416d91bddc703989f483f90a03b27abd "pdflatex"
+  "main.xsim" 1792067157.08808 122202 91a8e4ed2093a8d2fc5bfd526568c79c "pdflatex"
   "newmath.cls" 1783995995.54136 76503 fd9fe661cb3a15f896aef9b2f135ca1f ""
   "preface.tex" 1783995995.54153 2162 871895519cbdedf4a3f5e46a80dd80c6 ""
   "tikz-3dplot-circleofsphere.sty" 1783995995.54168 16835 12e91436ad62c15f5dafdc3be3fbc7f6 ""
