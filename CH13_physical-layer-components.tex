@@ -122,6 +122,7 @@ The outcomes of the measurements on the first and second qubit are denoted by $c
 We see that our desired unitary $U$ must satisfy $\langle\Phi^+| = \langle00|U^{\dagger}$, which can be expressed in the ket notation by taking the adjoint of both sides,
 \begin{equation}
     |\Phi^+\rangle = U |00\rangle.
+    \label{eq:string_to_bell}
 \end{equation}
 This means we need to find the unitary $U$ which transforms the input $|00\rangle$ into the Bell pair $|\Phi^+\rangle = (|00\rangle + |11\rangle) / \sqrt{2}$.
 This unitary operation is pictured in the middle panel of Fig.~\ref{fig:13-2_measurementBell},
@@ -380,11 +381,11 @@ The fully dephased state of the qubit is then an equal mixture,
     \rho = \frac{1}{2} ( \ketbra{+}{+}+\ketbra{-}{-} ) = \frac{1}{2} ( \ketbra{0}{0}+\ketbra{1}{1} ) = \frac{I}{2}.
 \end{equation}
 
-In Sec.~\ref{sec:3-3_density_matrices}, we saw the crucial difference between complete mixtures and equal superpositions. Here, if we prepare the state in the pure state, after some time $t$ we will have the mixed state,
+In Sec.~\ref{sec:3-3_density_matrices}, we saw the crucial difference between complete mixtures and equal superpositions. Here, if we prepare the state in the pure state \ket{+}, after some time $t$, we will have the mixed state,
 \begin{equation}
-    \rho = P |+\rangle\langle+| + (1-P)\frac{I}{2} \quad \text{, where }  P=e^{-t / T_2}.
+    \rho(t) = (1-p(t)) |+\rangle\langle+| + p(t) \outp{-}{-}, \quad \text{ where }  p(t)=(1-e^{-t / T_2})/2.
 \end{equation}
-With probability $P$, the state of the qubit will still be the initial \ket{+}, and with probability $1-P$, it will have decohered into a completely mixed state.
+With probability $1-p(t)$, the state of the qubit will still be the initial \ket{+}, and with probability $p(t)$, it will flip to the \ket{-} state.
 
 Both of these processes, the relaxation process and the dephasing process, are \textbf{\emph{Poisson processes}}\index{Poisson process}.
 It is a little bit ironic since we are talking about memories, but these processes are also called \textbf{\emph{memoryless decay processes}}\index{memoryless decay process}, meaning that their past history does not matter, only their current state.
@@ -534,6 +535,26 @@ Addition of a source of entangled photon pairs, such as the one we discussed in 
     \item What input state should be used if the desired measurement outcome is $c_1=1$ and $c_2=1$?
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Applying the CNOT and the Hadamard gates as shown in Fig.~\ref{fig:13-2_measurementBell}, the initial state \ket{11} is tranfsormed as follwos,
+    \begin{equation*}
+        \ket{11} \xrightarrow{CNOT} \ket{10} \xrightarrow{H} \ket{-0}. 
+    \end{equation*}
+    Measuring the qubits in the computational basis produces the following strings,
+    \begin{align*}
+        c_1c_2 & = 00, & \text{with probability } 1/2, \\
+        c_1c_2 & = 10, & \text{with probability } 1/2.
+    \end{align*}
+    Using Eq.~(\ref{eq:string_to_bell}), we can check that these strings correspond to projections onto the following Bell pairs,
+    \begin{equation*}
+        U\ket{00} = \ket{\Phi^+}, \qquad U\ket{10} = \ket{\Phi^-},
+    \end{equation*}
+    where $U=(H\otimes I)\cdot CNOT$.
+    \item The output string is always 00.
+    \item The input state should be \ket{\Psi^-}.
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 \emph{Measurement in the graph-state basis.} We have seen how to describe Bell-state measurements using the language of quantum circuits in Sec.~\ref{sec:bell-state-measurements-I}. In this exercise, we will explore a two-qubit measurement in a different but related basis.
@@ -543,7 +564,7 @@ Addition of a source of entangled photon pairs, such as the one we discussed in 
         \ket{G_{00}} = I \otimes H \ket{\Phi^+}.
     \end{equation*}
     Write down the graph state \ket{G_{00}} in Dirac notation.
-    \item Just like there are four Bell states, there are four orthogonal graph states,
+    \item Just like there are four Bell states, there are four orthogonal graph states for two qubits,
     \begin{equation*}
         \ket{G_{mn}} = Z^m \otimes Z^n \ket{G_{00}}.
     \end{equation*}
@@ -552,20 +573,130 @@ Addition of a source of entangled photon pairs, such as the one we discussed in 
     \item Draw the quantum circuit representation for a measurement in the graph state basis.
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Applying the Hadamard operation to the second qubit,
+    \begin{equation*}
+        \ket{G_{00}} = \frac{1}{\sqrt{2}} \left( \ket{0+} + \ket{1-} \right) = \frac{1}{2} \left( \ket{00} + \ket{01} + \ket{10} - \ket{11} \right).
+    \end{equation*}
+    \item The four grah states are
+    \begin{align*}
+        \ket{G_{00}} & = \frac{1}{\sqrt{2}} \left( \ket{0+} + \ket{1-} \right), & \ket{G_{10}} & = \frac{1}{\sqrt{2}} \left( \ket{0+} - \ket{1-} \right), \\
+        \ket{G_{01}} & = \frac{1}{\sqrt{2}} \left( \ket{0-} + \ket{1+} \right), & \ket{G_{11}} & = \frac{1}{\sqrt{2}} \left( \ket{0-} - \ket{1+} \right).
+    \end{align*}
+    We can see that these states are orthogonal eiher by direct calculation or a quick inspection,
+    \begin{equation*}
+        \innp{G_{kl}}{G_{mn}} = \delta_{km}\delta_{ln},
+    \end{equation*}
+    where teh Kronecker delta function is defined as follows,
+    \begin{equation*}
+        \delta_{ij} = \begin{cases}
+            1, \quad \text{if } i=j, \\
+            0, \quad \text{if } i\neq j.
+        \end{cases}
+    \end{equation*}
+    \item The quantum circuit that is described above is shown in the Figure below on the left, while the quantum circuit on the right is creates the same state \ket{G_{00}}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{Figures/Chapter13/BW/solution_1.pdf}
+    \end{figure}
+    \item Measurement in the graph-state basis can be represented by the following quantum circuit.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{Figures/Chapter13/BW/solution_2.pdf}
+    \end{figure}
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
-\emph{Round trip time and decohering memories.} Consider the MIM link architecture with memories that are affected by depolarizing noise with $T_1=100\mu$s.
+\emph{Round trip time and dephasing memories.} Consider the MIM link architecture with memories that are affected by the dephasing noise with coherence time $T_2=100\mu$s. The effect of the dephasing noise on an arbitrary state \ket{\rho} for a single qubit is described mathematically as follows,
+\begin{equation*}
+    \mathcal{E}(\rho) = (1-p) \rho + p Z\rho Z.
+\end{equation*}
+The state $\rho$ is unaffected by the noise with probability $1-p$ but with probability $p$, it undergoes a transformation by the Pauli $Z$ operator.
+The probability of error after time $t$ is related to the $T_2$ coherence time by
+\begin{equation*}
+    p(t)=\frac{1-e^{t/T_2}}{2}.
+\end{equation*}
+We will use $\mathcal{E}_t$ to emphasize that the initial state $\rho$ undergoes dephasing with probability $p(t)$.
 \begin{enumerate}[label=(\alph*)]
-    \item Assume that the state of the memory-photon immediately after the photon emission is
+    \item Convince yourself that an initial state \ket{+} undergoing dephasing with become maximally mixed in the long-time limit ($t\rightarrow\infty$).
+    \item Let's see how the dephasing noise affects entangled states shared between a quantum memory and an emitted photon. Assume that the state of the memory-photon immediately after the photon emission is
     \begin{equation*}
-        \ket{\Psi}_{\textrm{mem-phot}} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow}\ket{V} + \ket{\downarrow}\ket{H} \right).
+        \ket{\Psi} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow,V} + \ket{\downarrow,H} \right).
     \end{equation*}
     What is the fidelity of this state after time $t$ that the photon has spent in flight?
-    \item Assume that the distance of the BSA to either of the memories is $d=25$ km, and that the BSA succeeds without introducing any noise. What is the fidelity of the Bell pair shared between the quantum memories immediately after the BSA completes?
+    \item Consider the case where two memories emit a photon. Assume that the distance of the BSA to either of the memories is $d=25$ km, and that the BSA succeeds without introducing any noise. What is the fidelity of the Bell pair shared between the quantum memories immediately after the BSA completes?
     \item The BSA communicates the success of entanglement swapping to the nodes. What is the fidelity of the Bell pair after the nodes receive the classical BSA message.
-    \item Consider using a better quantum memory with $T_1=10$ ms. What is the fidelity of the memory-memory Bell pair after receiving the BSA message?
+    \item Consider using a better quantum memory with $T_s=1$ ms. What is the fidelity of the memory-memory Bell pair after receiving the BSA message?
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The initial state \ket{+} either remains unaffected with probability $1-p(t)$ or is flipped by the Pauli $Z$ operator and becomes \ket{-} with probability $p(t)$. The state of the qubit at time $t$ is given by
+    \begin{equation*}
+        \mathcal{E}_t\left( \outp{+}{+} \right) = \frac{1+e^{-t/T_2}}{2}\outp{+}{+} + \frac{1-e^{-t/T_2}}{2}\outp{-}{-}.
+    \end{equation*}
+    Taking the long-term limit $t\rightarrow\infty$, the probabilities of error and no error become the following,
+    \begin{align*}
+        1-p(t) & \rightarrow 1/2, \quad \text{probability of no error}, \\
+        p(t) & \rightarrow 1/2, \quad \text{probability of error}.
+    \end{align*}
+    Therefore, the state ofthe qubit approaches the maximally mixed state in this limit,
+    \begin{equation*}
+        \mathcal{E}_t\left( \outp{+}{+} \right) \rightarrow \frac{1}{2}\outp{+}{+} + \frac{1}{2}\outp{-}{-} = \frac{I}{2}.
+    \end{equation*}
+    \item Since only the memory that is undergoing dephasing, the state of the memory-photon pair is given by
+    \begin{equation*}
+        \mathcal{E}_t \left( \outp{\Psi}{\Psi} \right) = \frac{1+e^{-t/T_2}}{2} \outp{\Psi}{\Psi} + \frac{1-e^{-t/T_2}}{2} Z \otimes I \outp{\Psi}{\Psi} Z \otimes I.
+    \end{equation*}
+    In order to determine the fidelity with respect to the initial state \ket{\Psi}, we need to remember how the Pauli $Z$ operator acts on the state of the memory in the atomic basis $\{\ket{\uparrow},\ket{\downarrow}\}$,
+    \begin{equation*}
+        Z\ket{\uparrow} = \ket{\uparrow}, \quad Z\ket{\downarrow} = - \ket{\downarrow}.
+    \end{equation*}
+    Comapre this with the usual computational basis in Table~\ref{tab:physical_representation_updated}.
+    The fidelity at time $t$ is given by
+    \begin{align*}
+        F(t) & = \bra{\Psi} \mathcal{E}_t\left( \outp{\Psi}{\Psi} \right) \ket{\Psi} \\
+        & = \frac{1+e^{-t/T_2}}{2} + \frac{1-e^{-t/T_2}}{2} \left| \bra{\Psi} Z \otimes I \ket{\Psi} \right|^2.
+    \end{align*}
+    The Pauli operator $Z\otimes I$ takes the initial state \ket{\Psi} to an orthogonal state,
+    \begin{equation*}
+        Z \otimes I \ket{\Psi} = \frac{1}{\sqrt{2}} \left( \ket{\uparrow,V} - \ket{\downarrow,H} \right).
+    \end{equation*}
+    This means that $\bra{\Psi} Z \otimes I \ket{\Psi} = 0$, leading tothe following expression for the fidelity,
+    \begin{equation*}
+        F(t) = \frac{1 + e^{-t/T_2}}{2}.
+    \end{equation*}
+    \item First, we need to determine the time each photon takes to reach the BSA. The speed of light in fiber is approximately $c=2\times10^8$ meters per second, or 0.2 meters per nanosecond. Therefore, the time the photon takes to travel 25 km is
+    \begin{equation*}
+        t_{\text{mem}\rightarrow\text{BSA}} = \frac{d}{c} = 1.25\times10^{-4} \text{ s},
+    \end{equation*}
+    or 0.125 milliseconds.
+    We will denote the first memory-photon pair by $M_1P_1$ and the seonc pair by $M_2P_2$. The state of all four qubits just before the photons get measured at the BSA is given by
+    \begin{equation*}
+        \mathcal{E}_{t_{\text{mem}\rightarrow\text{BSA}}} \left( \outp{\Psi}{\Psi}_{M_1P_1} \right) \otimes \mathcal{E}_{t_{\text{mem}\rightarrow\text{BSA}}} \left( \outp{\Psi}{\Psi}_{M_2P_2} \right).
+    \end{equation*}
+    We can apply the one of the photonic Bell-pair projectors to obtain the resulting state of the memories $M_1M_2$.
+    If the applied projector is $\outp{\Phi^+}{\Phi^+}_{P_1P_2}$, the memories are in the desired state $\ket{\Phi^+}_{M_1M_2}$ if the initial Bell pairs were both error-free or both affected the Pauli $Z$ error.
+    Otherwise, the memories are in the $\ket{\Phi^-}_{M_1M_2}$ state.
+    therefore, the fidelity of the state stored in the memories immediately after teh BSM taeks place is
+    \begin{equation*}
+        F(\rho_{M_1M_2}) = F(t_{\text{mem}\rightarrow\text{BSA}})^2 + (1-F(t_{\text{mem}\rightarrow\text{BSA}}))^2 \approx 0.541.
+    \end{equation*}
+    \item The time tha tthe memories spend decohereing becomes twise as long, and their fidelity becomes
+    \begin{equation*}
+        F(\rho_{M_1M_2}) = F(2t_{\text{mem}\rightarrow\text{BSA}})^2 + (1-F(2t_{\text{mem}\rightarrow\text{BSA}}))^2 \approx 0.503.
+    \end{equation*}
+    \item Better memories with $T_2=1$ ms, the fidelity of the shared Bell pair after the classical message is received from the BSA increases to
+    \begin{equation*}
+        F(\rho_{M_1M_2}) \approx 0.803.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
+
+\newpage
+\printsolutions[chapter={13}]
 
 
 \newpage

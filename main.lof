@@ -92,15 +92,15 @@
 \contentsline {figure}{\numberline {12.4}{\ignorespaces Entanglement swapping.}}{211}{figure.12.4}%
 \contentsline {figure}{\numberline {12.5}{\ignorespaces Entanglement purification for Pauli X errors.}}{215}{figure.12.5}%
 \contentsline {figure}{\numberline {12.6}{\ignorespaces Routing and multiplexing.}}{218}{figure.12.6}%
-\contentsline {figure}{\numberline {13.1}{\ignorespaces MIM link hardware.}}{228}{figure.13.1}%
-\contentsline {figure}{\numberline {13.2}{\ignorespaces Changing the basis of measurements.}}{229}{figure.13.2}%
-\contentsline {figure}{\numberline {13.3}{\ignorespaces Bell state measurement via Pauli Z measurements.}}{230}{figure.13.3}%
-\contentsline {figure}{\numberline {13.4}{\ignorespaces A polarizing beam splitter (PBS).}}{231}{figure.13.4}%
-\contentsline {figure}{\numberline {13.5}{\ignorespaces A polarizing beam splitter (PBS) measuring a qubit.}}{232}{figure.13.5}%
-\contentsline {figure}{\numberline {13.6}{\ignorespaces A four-detector Bell-state analyzer (BSA).}}{233}{figure.13.6}%
-\contentsline {figure}{\numberline {13.7}{\ignorespaces First idea for memory.}}{238}{figure.13.7}%
-\contentsline {figure}{\numberline {13.8}{\ignorespaces Our second idea for memory.}}{240}{figure.13.8}%
-\contentsline {figure}{\numberline {13.9}{\ignorespaces Physical implementation of the MIM link.}}{241}{figure.13.9}%
+\contentsline {figure}{\numberline {13.1}{\ignorespaces MIM link hardware.}}{224}{figure.13.1}%
+\contentsline {figure}{\numberline {13.2}{\ignorespaces Changing the basis of measurements.}}{225}{figure.13.2}%
+\contentsline {figure}{\numberline {13.3}{\ignorespaces Bell state measurement via Pauli Z measurements.}}{226}{figure.13.3}%
+\contentsline {figure}{\numberline {13.4}{\ignorespaces A polarizing beam splitter (PBS).}}{227}{figure.13.4}%
+\contentsline {figure}{\numberline {13.5}{\ignorespaces A polarizing beam splitter (PBS) measuring a qubit.}}{228}{figure.13.5}%
+\contentsline {figure}{\numberline {13.6}{\ignorespaces A four-detector Bell-state analyzer (BSA).}}{229}{figure.13.6}%
+\contentsline {figure}{\numberline {13.7}{\ignorespaces First idea for memory.}}{234}{figure.13.7}%
+\contentsline {figure}{\numberline {13.8}{\ignorespaces Our second idea for memory.}}{236}{figure.13.8}%
+\contentsline {figure}{\numberline {13.9}{\ignorespaces Physical implementation of the MIM link.}}{237}{figure.13.9}%
 \contentsline {figure}{\numberline {14.1}{\ignorespaces Bipartite and multipartite entanglement.}}{252}{figure.14.1}%
 \contentsline {figure}{\numberline {14.2}{\ignorespaces Eavesdropper Eve.}}{253}{figure.14.2}%
 \contentsline {figure}{\numberline {14.3}{\ignorespaces Monogamy of entanglement.}}{258}{figure.14.3}%
