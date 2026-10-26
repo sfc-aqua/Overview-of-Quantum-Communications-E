@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usetikzlibrary{quantikz2}
+
+\begin{document}
+
+\begin{quantikz}
+    \lstick{\ket{0}} & \gate{H} & \ctrl{1} & &  \rstick[2]{$|G_{00}\rangle$} \\
+    \lstick{\ket{0}} & & \targ{} & \gate{H} & 
+\end{quantikz} = 
+\begin{quantikz}
+    \lstick{\ket{0}} & \gate{H} & \ctrl{1} & \rstick[2]{$|G_{00}\rangle$} \\
+    \lstick{\ket{0}} & \gate{H} & \ctrl{0} & 
+\end{quantikz}
+
+\end{document}

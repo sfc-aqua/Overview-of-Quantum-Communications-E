@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  15 OCT 2026 21:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.17)  26 OCT 2026 10:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3991,61 +3991,26 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[220]
+[220]) (./CH13_Physical-Layer-Components.tex
 Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
 [221]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[222]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[222
 
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[223]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[224]
-Overfull \hbox (12.30098pt too wide) in paragraph at lines 596--596
-[]\OT1/ptm/m/n/10 The pu-rifi-ca-tion pro-to-col of Fig. []12.5[] ap-plies bi-lat-eral CNOT gates CNOT$[]$
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[225]) (./CH13_Physical-Layer-Components.tex
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[226]
+]
 Chapter 13.
 
 Overfull \hbox (38.0pt too wide) detected at line 2
 \chapternumberfont 13 []
  []
 
-<Figures/Chapter13/BW/13-1_repeater_BW.pdf, id=9899, 252.98813pt x 77.63264pt>
+<Figures/Chapter13/BW/13-1_repeater_BW.pdf, id=9853, 252.98813pt x 77.63264pt>
 File: Figures/Chapter13/BW/13-1_repeater_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-1_repeater_BW.pdf>
 Package pdftex.def Info: Figures/Chapter13/BW/13-1_repeater_BW.pdf  used on input line 20.
@@ -4058,10 +4023,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[227
-
-]
-<Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf, id=9911, 377.19643pt x 114.72025pt>
+[223]
+<Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf, id=9865, 377.19643pt x 114.72025pt>
 File: Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf>
 Package pdftex.def Info: Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf  used on input line 70.
@@ -4074,8 +4037,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[228 <./Figures/Chapter13/BW/13-1_repeater_BW.pdf>]
-<Figures/Chapter13/BW/13-2_measurementBell_BW.pdf, id=9928, 582.47354pt x 116.92247pt>
+[224 <./Figures/Chapter13/BW/13-1_repeater_BW.pdf>]
+<Figures/Chapter13/BW/13-2_measurementBell_BW.pdf, id=9883, 582.47354pt x 116.92247pt>
 File: Figures/Chapter13/BW/13-2_measurementBell_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-2_measurementBell_BW.pdf>
 Package pdftex.def Info: Figures/Chapter13/BW/13-2_measurementBell_BW.pdf  used on input line 108.
@@ -4088,7 +4051,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[229 <./Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf>]
+[225 <./Figures/Chapter13/BW/13-2_measurementPauli_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4096,11 +4059,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[230 <./Figures/Chapter13/BW/13-2_measurementBell_BW.pdf>]
-<Figures/Chapter13/BW/13-3_PBS_BW.pdf, id=10095, 206.5376pt x 82.78877pt>
+[226 <./Figures/Chapter13/BW/13-2_measurementBell_BW.pdf>]
+<Figures/Chapter13/BW/13-3_PBS_BW.pdf, id=10051, 206.5376pt x 82.78877pt>
 File: Figures/Chapter13/BW/13-3_PBS_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-3_PBS_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-3_PBS_BW.pdf  used on input line 165.
+Package pdftex.def Info: Figures/Chapter13/BW/13-3_PBS_BW.pdf  used on input line 166.
 (pdftex.def)             Requested size: 187.2019pt x 75.03975pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -4110,18 +4073,18 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[231 <./Figures/Chapter13/BW/13-3_PBS_BW.pdf>]
-<Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf, id=10113, 236.61446pt x 130.24048pt>
+[227 <./Figures/Chapter13/BW/13-3_PBS_BW.pdf>]
+<Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf, id=10068, 236.61446pt x 130.24048pt>
 File: Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf  used on input line 181.
+Package pdftex.def Info: Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf  used on input line 182.
 (pdftex.def)             Requested size: 218.39905pt x 120.21617pt.
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 182.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 183.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 182.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -4130,11 +4093,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[232 <./Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf>]
-<Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf, id=10144, 180.72679pt x 161.92416pt>
+[228 <./Figures/Chapter13/BW/13-3_PBS_measure_BW.pdf>]
+<Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf, id=10098, 180.72679pt x 161.92416pt>
 File: Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf  used on input line 213.
+Package pdftex.def Info: Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf  used on input line 214.
 (pdftex.def)             Requested size: 187.2019pt x 167.7325pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -4144,7 +4107,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[233 <./Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf>]
+[229 <./Figures/Chapter13/BW/13-3_BSA_clicks_BW.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4152,7 +4115,51 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[234]
+[230]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[231]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[232]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[233]
+<Figures/Chapter13/BW/13-4_memory-first_BW.pdf, id=10146, 222.07567pt x 44.81293pt>
+File: Figures/Chapter13/BW/13-4_memory-first_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter13/BW/13-4_memory-first_BW.pdf>
+Package pdftex.def Info: Figures/Chapter13/BW/13-4_memory-first_BW.pdf  used on input line 397.
+(pdftex.def)             Requested size: 218.39905pt x 44.07294pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[234 <./Figures/Chapter13/BW/13-4_memory-first_BW.pdf>]
+<Figures/Chapter13/BW/13-4_memory-second_BW.pdf, id=10175, 83.09715pt x 39.95605pt>
+File: Figures/Chapter13/BW/13-4_memory-second_BW.pdf Graphic file (type pdf)
+<use Figures/Chapter13/BW/13-4_memory-second_BW.pdf>
+Package pdftex.def Info: Figures/Chapter13/BW/13-4_memory-second_BW.pdf  used on input line 454.
+(pdftex.def)             Requested size: 93.60095pt x 45.00833pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4168,55 +4175,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[236]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[237]
-<Figures/Chapter13/BW/13-4_memory-first_BW.pdf, id=10191, 222.07567pt x 44.81293pt>
-File: Figures/Chapter13/BW/13-4_memory-first_BW.pdf Graphic file (type pdf)
-<use Figures/Chapter13/BW/13-4_memory-first_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-4_memory-first_BW.pdf  used on input line 396.
-(pdftex.def)             Requested size: 218.39905pt x 44.07294pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[238 <./Figures/Chapter13/BW/13-4_memory-first_BW.pdf>]
-<Figures/Chapter13/BW/13-4_memory-second_BW.pdf, id=10220, 83.09715pt x 39.95605pt>
-File: Figures/Chapter13/BW/13-4_memory-second_BW.pdf Graphic file (type pdf)
-<use Figures/Chapter13/BW/13-4_memory-second_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-4_memory-second_BW.pdf  used on input line 453.
-(pdftex.def)             Requested size: 93.60095pt x 45.00833pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[239]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- 
- []
-
-[240 <./Figures/Chapter13/BW/13-4_memory-second_BW.pdf>]
-<Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf, id=10258, 197.22397pt x 212.19788pt>
+[236 <./Figures/Chapter13/BW/13-4_memory-second_BW.pdf>]
+<Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf, id=10213, 197.22397pt x 212.19788pt>
 File: Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf>
-Package pdftex.def Info: Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf  used on input line 507.
+Package pdftex.def Info: Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf  used on input line 508.
 (pdftex.def)             Requested size: 187.2019pt x 201.41846pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -4226,12 +4189,55 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[241 <./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf>]
+[237 <./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf>]
 Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[242]
+[238]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[239]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[240]
+<Figures/Chapter13/BW/solution_1.pdf, id=10290, 284.47781pt x 49.96266pt>
+File: Figures/Chapter13/BW/solution_1.pdf Graphic file (type pdf)
+<use Figures/Chapter13/BW/solution_1.pdf>
+Package pdftex.def Info: Figures/Chapter13/BW/solution_1.pdf  used on input line 699.
+(pdftex.def)             Requested size: 284.4771pt x 49.96252pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[241]
+<Figures/Chapter13/BW/solution_2.pdf, id=10305, 117.4548pt x 54.82483pt>
+File: Figures/Chapter13/BW/solution_2.pdf Graphic file (type pdf)
+<use Figures/Chapter13/BW/solution_2.pdf>
+Package pdftex.def Info: Figures/Chapter13/BW/solution_2.pdf  used on input line 699.
+(pdftex.def)             Requested size: 117.4545pt x 54.82468pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ 
+ []
+
+[242 <./Figures/Chapter13/BW/solution_1.pdf> <./Figures/Chapter13/BW/solution_2.pdf>]
+Overfull \hbox (11.18526pt too wide) in paragraph at lines 699--699
+\OT1/ptm/m/n/10 sult-ing state of the mem-o-ries $\OML/txmi/m/it/10 M[]M[]$\OT1/ptm/m/n/10 . If the ap-plied pro-jec-tor is $[][]$,
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4245,7 +4251,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [244]
-Overfull \hbox (3.63814pt too wide) in paragraph at lines 599--601
+Overfull \hbox (3.63814pt too wide) in paragraph at lines 730--732
 \OT1/ptm/m/n/10 Rodney Van Me-ter, \OT1/ptm/m/it/10 Quan-tum Net-work-ing\OT1/ptm/m/n/10 , Wiley-ISTE, 2014 []Van Me-ter[] ([]2014[]). 
  []
 
@@ -4307,7 +4313,7 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 14 []
  []
 
-<Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf, id=10374, 399.23901pt x 279.84383pt>
+<Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf, id=10407, 399.23901pt x 279.84383pt>
 File: Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf  used on input line 18.
@@ -4329,7 +4335,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [252 <./Figures/Chapter14/BW/14-1_bipartite_network_BW.pdf>]
-<Figures/Chapter14/BW/14-1_QKD_BW.pdf, id=10504, 113.67175pt x 71.03934pt>
+<Figures/Chapter14/BW/14-1_QKD_BW.pdf, id=10537, 113.67175pt x 71.03934pt>
 File: Figures/Chapter14/BW/14-1_QKD_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-1_QKD_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-1_QKD_BW.pdf  used on input line 66.
@@ -4380,7 +4386,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [257]
-<Figures/Chapter14/BW/14-2_monogamy_BW.pdf, id=10575, 414.10143pt x 105.73727pt>
+<Figures/Chapter14/BW/14-2_monogamy_BW.pdf, id=10607, 414.10143pt x 105.73727pt>
 File: Figures/Chapter14/BW/14-2_monogamy_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-2_monogamy_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-2_monogamy_BW.pdf  used on input line 249.
@@ -4394,7 +4400,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [258 <./Figures/Chapter14/BW/14-2_monogamy_BW.pdf>]
-<Figures/Chapter14/BW/14-2_graph_state_BW.pdf, id=10600, 300.30553pt x 137.31967pt>
+<Figures/Chapter14/BW/14-2_graph_state_BW.pdf, id=10632, 300.30553pt x 137.31967pt>
 File: Figures/Chapter14/BW/14-2_graph_state_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-2_graph_state_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-2_graph_state_BW.pdf  used on input line 284.
@@ -4408,7 +4414,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [259]
-<Figures/Chapter14/BW/14-2_cluster_state_BW.pdf, id=10610, 507.6129pt x 145.37483pt>
+<Figures/Chapter14/BW/14-2_cluster_state_BW.pdf, id=10642, 507.6129pt x 145.37483pt>
 File: Figures/Chapter14/BW/14-2_cluster_state_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-2_cluster_state_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-2_cluster_state_BW.pdf  used on input line 306.
@@ -4425,7 +4431,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 pdfTeX warning: pdflatex (file ./Figures/Chapter14/BW/14-2_cluster_state_BW.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<Figures/Chapter14/BW/14-3_clock_sync_BW.pdf, id=10700, 423.23943pt x 115.93802pt>
+<Figures/Chapter14/BW/14-3_clock_sync_BW.pdf, id=10732, 423.23943pt x 115.93802pt>
 File: Figures/Chapter14/BW/14-3_clock_sync_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-3_clock_sync_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-3_clock_sync_BW.pdf  used on input line 337.
@@ -4439,7 +4445,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [261 <./Figures/Chapter14/BW/14-3_clock_sync_BW.pdf>]
-<Figures/Chapter14/BW/14-3_bloch_BW.pdf, id=10758, 1294.04523pt x 578.75206pt>
+<Figures/Chapter14/BW/14-3_bloch_BW.pdf, id=10790, 1294.04523pt x 578.75206pt>
 File: Figures/Chapter14/BW/14-3_bloch_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-3_bloch_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-3_bloch_BW.pdf  used on input line 364.
@@ -4453,7 +4459,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [262 <./Figures/Chapter14/BW/14-3_bloch_BW.pdf>]
-<Figures/Chapter14/BW/14-4_distributed_qc_BW.pdf, id=10787, 161.40402pt x 134.4787pt>
+<Figures/Chapter14/BW/14-4_distributed_qc_BW.pdf, id=10819, 161.40402pt x 134.4787pt>
 File: Figures/Chapter14/BW/14-4_distributed_qc_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter14/BW/14-4_distributed_qc_BW.pdf>
 Package pdftex.def Info: Figures/Chapter14/BW/14-4_distributed_qc_BW.pdf  used on input line 400.
@@ -4491,7 +4497,7 @@ Overfull \hbox (38.0pt too wide) detected at line 1
 \chapternumberfont 15 []
  []
 
-<Figures/Chapter15/BW/15-1_Internet_BW.pdf, id=10846, 586.23111pt x 246.76175pt>
+<Figures/Chapter15/BW/15-1_Internet_BW.pdf, id=10878, 586.23111pt x 246.76175pt>
 File: Figures/Chapter15/BW/15-1_Internet_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter15/BW/15-1_Internet_BW.pdf>
 Package pdftex.def Info: Figures/Chapter15/BW/15-1_Internet_BW.pdf  used on input line 22.
@@ -4531,12 +4537,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [270]
-<Figures/Chapter15/BW/15-1_network_BW.pdf, id=10896, 313.004pt x 300.95897pt>
+<Figures/Chapter15/BW/15-1_network_BW.pdf, id=10929, 313.004pt x 300.95897pt>
 File: Figures/Chapter15/BW/15-1_network_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter15/BW/15-1_network_BW.pdf>
 Package pdftex.def Info: Figures/Chapter15/BW/15-1_network_BW.pdf  used on input line 94.
 (pdftex.def)             Requested size: 156.0pt x 149.99692pt.
-<Figures/Chapter15/BW/15-1_recursion_BW.pdf, id=10897, 349.88995pt x 334.16078pt>
+<Figures/Chapter15/BW/15-1_recursion_BW.pdf, id=10930, 349.88995pt x 334.16078pt>
 File: Figures/Chapter15/BW/15-1_recursion_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter15/BW/15-1_recursion_BW.pdf>
 Package pdftex.def Info: Figures/Chapter15/BW/15-1_recursion_BW.pdf  used on input line 101.
@@ -4566,7 +4572,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [273 <./Figures/Chapter15/BW/15-1_recursion_BW.pdf>]
-<Figures/Chapter15/BW/15-2_integration_BW.pdf, id=10968, 542.2328pt x 290.82422pt>
+<Figures/Chapter15/BW/15-2_integration_BW.pdf, id=11000, 542.2328pt x 290.82422pt>
 File: Figures/Chapter15/BW/15-2_integration_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter15/BW/15-2_integration_BW.pdf>
 Package pdftex.def Info: Figures/Chapter15/BW/15-2_integration_BW.pdf  used on input line 147.
@@ -4588,7 +4594,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [275 <./Figures/Chapter15/BW/15-2_integration_BW.pdf>]
-<Figures/Chapter15/BW/15-2_distributed_BW.pdf, id=11022, 640.96127pt x 258.88712pt>
+<Figures/Chapter15/BW/15-2_distributed_BW.pdf, id=11055, 640.96127pt x 258.88712pt>
 File: Figures/Chapter15/BW/15-2_distributed_BW.pdf Graphic file (type pdf)
 <use Figures/Chapter15/BW/15-2_distributed_BW.pdf>
 Package pdftex.def Info: Figures/Chapter15/BW/15-2_distributed_BW.pdf  used on input line 170.
@@ -4797,21 +4803,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 94DDE407DE3C7F759BB8152116E8F353;19337.
+(rerunfilecheck)             Checksum: A813F9C21D9A718328B73F4B5D437B5B;19336.
  ) 
 Here is how much of TeX's memory you used:
- 47608 strings out of 467533
- 1268777 string characters out of 5419489
- 2409571 words of memory out of 5000000
- 74211 multiletter control sequences out of 15000+600000
- 722284 words of font info for 229 fonts, out of 8000000 for 9000
+ 47627 strings out of 467533
+ 1277403 string characters out of 5419489
+ 2488091 words of memory out of 5000000
+ 74232 multiletter control sequences out of 15000+600000
+ 723362 words of font info for 230 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 84i,21n,94p,62601b,1152s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (314 pages, 4042194 bytes).
+ 84i,21n,94p,70508b,1155s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txbsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on main.pdf (314 pages, 4068559 bytes).
 PDF statistics:
- 11846 PDF objects out of 12825 (max. 8388607)
- 8861 compressed objects within 89 object streams
- 1399 named destinations out of 1440 (max. 500000)
- 1663 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11880 PDF objects out of 12825 (max. 8388607)
+ 8884 compressed objects within 89 object streams
+ 1396 named destinations out of 1440 (max. 500000)
+ 1673 words of extra memory for PDF output out of 10000 (max. 10000000)
 

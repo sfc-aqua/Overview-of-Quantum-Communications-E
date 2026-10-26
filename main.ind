@@ -1,7 +1,7 @@
 \begin{theindex}
 
-  \item $T_1$ time, \hyperpage{237}
-  \item $T_2$ time, \hyperpage{237}
+  \item $T_1$ time, \hyperpage{233}
+  \item $T_2$ time, \hyperpage{233}
 
   \indexspace
 
@@ -80,14 +80,14 @@
   \item degree of freedom, \hyperpage{69}
   \item dense wavelength division multiplexing (DWDM), \hyperpage{193}
   \item density matrix, \hyperpage{49}
-  \item dephasing, \hyperpage{237}
+  \item dephasing, \hyperpage{233}
   \item destructive interference, \hyperpage{107}
   \item diagonal polarization, \hyperpage{69}
   \item Diffie-Hellman key exchange, \hyperpage{275}
   \item Dijkstra's shortest path first, \hyperpage{218}
   \item Dirac notation, \hyperpage{20}
   \item distributed quantum computation, \hyperpage{263}
-  \item DiVincenzo criteria, \hyperpage{234}
+  \item DiVincenzo criteria, \hyperpage{230}
 
   \indexspace
 
@@ -96,7 +96,7 @@
   \item eigenvector, \hyperpage{31}
   \item Einstein's clock synchronization, \hyperpage{262}
   \item encryption, \hyperpage{16}
-  \item energy relaxation, \hyperpage{237}
+  \item energy relaxation, \hyperpage{233}
   \item entangled state, \hyperpage{61}, \hyperpage{64}
   \item entanglement swapping, \hyperpage{208}, \hyperpage{211}, 
 		\hyperpage{280}
@@ -173,7 +173,7 @@
   \item maximally mixed state, \hyperpage{51}
   \item measurement-based quantum computation, \hyperpage{264}
   \item memory-interfere-memory (MIM), \hyperpage{209}
-  \item memoryless decay process, \hyperpage{238}
+  \item memoryless decay process, \hyperpage{234}
   \item metastable state, \hyperpage{92}
   \item minus state, \hyperpage{22}
   \item mixed state, \hyperpage{48}
@@ -200,7 +200,7 @@
   \item one-time pad (OTP), \hyperpage{156}, \hyperpage{158}
   \item optic axis, \hyperpage{71}
   \item optical cavity, \hyperpage{93}
-  \item optical fiber, \hyperpage{130}, \hyperpage{227}
+  \item optical fiber, \hyperpage{130}, \hyperpage{223}
   \item outer product, \hyperpage{45}
 
   \indexspace
@@ -211,10 +211,10 @@
   \item peering agreement, \hyperpage{269}
   \item phase velocity, \hyperpage{108}
   \item plus state, \hyperpage{21}
-  \item Poisson process, \hyperpage{238}
+  \item Poisson process, \hyperpage{234}
   \item polarization, \hyperpage{69}
   \item polarizer, \hyperpage{69}
-  \item polarizing beam splitter (PBS), \hyperpage{231}
+  \item polarizing beam splitter (PBS), \hyperpage{227}
   \item pre-shared key (PSK), \hyperpage{156}
   \item principle of superposition, \hyperpage{106}
   \item privacy, \hyperpage{268}
@@ -236,7 +236,7 @@
   \item quantum communication, \hyperpage{44}
   \item quantum error correction (QEC), \hyperpage{214}
   \item quantum Internet, \hyperpage{267}
-  \item quantum memory, \hyperpage{227}
+  \item quantum memory, \hyperpage{223}
   \item quantum repeater, \hyperpage{208}
   \item qubit, \hyperpage{19}
 
@@ -253,7 +253,7 @@
   \item reversible operation, \hyperpage{24}
   \item rotated basis, \hyperpage{61}
   \item rotation, \hyperpage{28}
-  \item rount trip time (RTT), \hyperpage{236}
+  \item rount trip time (RTT), \hyperpage{232}
   \item routing algorithm, \hyperpage{217}
 
   \indexspace
@@ -270,7 +270,7 @@
   \item spanning tree, \hyperpage{272}
   \item spatial encoding, \hyperpage{116}
   \item specification, \hyperpage{279}
-  \item spin, \hyperpage{99}, \hyperpage{240}
+  \item spin, \hyperpage{99}, \hyperpage{236}
   \item spontaneous emission, \hyperpage{87}
   \item spontaneous parametric down-conversion, \hyperpage{67}
   \item spontaneous parametric down-conversion (SPDC), \hyperpage{182}

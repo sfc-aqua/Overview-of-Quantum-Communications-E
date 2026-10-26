@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{newtxmath}
+\usetikzlibrary{quantikz2}
+
+\begin{document}
+
+\begin{quantikz}
+    & \ctrl{1} & \gate{H} & \meter{} & \setwiretype{c} \rstick{$c_1$}  \\
+    & \ctrl{0} & \gate{H} & \meter{} & \setwiretype{c} \rstick{$c_2$}
+\end{quantikz}
+
+\end{document}
