@@ -1321,18 +1321,6 @@ INPUT ./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf
 INPUT ./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf
 INPUT ./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf
 INPUT ./Figures/Chapter13/BW/13-4_MIM_with_energy_levels_BW.pdf
-INPUT ./Figures/Chapter13/BW/solution_1.pdf
-INPUT ./Figures/Chapter13/BW/solution_1.pdf
-INPUT ./Figures/Chapter13/BW/solution_1.pdf
-INPUT ./Figures/Chapter13/BW/solution_1.pdf
-INPUT ./Figures/Chapter13/BW/solution_1.pdf
-INPUT ./Figures/Chapter13/BW/solution_2.pdf
-INPUT ./Figures/Chapter13/BW/solution_2.pdf
-INPUT ./Figures/Chapter13/BW/solution_2.pdf
-INPUT ./Figures/Chapter13/BW/solution_2.pdf
-INPUT ./Figures/Chapter13/BW/solution_2.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./intro-block-5.tex
 INPUT ./intro-block-5.tex
 INPUT ./intro-block-5.tex
@@ -1438,10 +1426,8 @@ INPUT main.aux
 INPUT main.xsim
 INPUT ./main.out
 INPUT ./main.out
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
@@ -1456,7 +1442,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txexa.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb

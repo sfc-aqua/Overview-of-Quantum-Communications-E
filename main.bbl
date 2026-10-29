@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 % BibTex style file: spr-chicago.bst, 2011-02-21
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1} \fi
@@ -201,6 +201,15 @@ Vol. \bseriesno{3}.
 doi:\doiurl{10.1063/1.881418}.
 \burl{https://www.discovermagazine.com/technology/the-quantum-internet-will-blow-your-mind-heres-what-it-will-look-like}.
 \end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Kazi}{2007}]{kazi2007optical}
+\begin{bbook}
+\bauthor{\bsnm{Kazi}, \binits{Khurram}}.
+\byear{2007}.
+\bbtitle{Optical networking standards: a comprehensive guide for professionals}.
+\bpublisher{Springer}.
+\end{bbook}
 \endbibitem
 
 \bibitem[\protect\citeauthoryear{Kimble}{2008}]{kimble08:_quant_internet}

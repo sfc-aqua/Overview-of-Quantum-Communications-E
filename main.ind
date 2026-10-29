@@ -40,7 +40,7 @@
   \item bending, \hyperpage{198}
   \item bit, \hyperpage{5}
   \item bit-flip channel, \hyperpage{48}
-  \item blind quantum computation, \hyperpage{264}
+  \item blind quantum computation, \hyperpage{260}
   \item Bloch sphere, \hyperpage{21}
   \item Border Gateway Protocol (BGP), \hyperpage{271}
   \item border router, \hyperpage{268}
@@ -57,8 +57,8 @@
   \item CHSH inequality, \hyperpage{175}
   \item CIA triad, \hyperpage{16}
   \item cladding, \hyperpage{130}
-  \item clock synchronization, \hyperpage{261}
-  \item cluster states, \hyperpage{261}
+  \item clock synchronization, \hyperpage{257}
+  \item cluster states, \hyperpage{257}
   \item coherent light, \hyperpage{86}
   \item complete graph, \hyperpage{270}
   \item complex conjugate, \hyperpage{27}
@@ -67,7 +67,7 @@
   \item confidentiality, \hyperpage{16}
   \item constructive interference, \hyperpage{107}
   \item contention, \hyperpage{219}
-  \item control-phase gate, \hyperpage{260}
+  \item control-phase gate, \hyperpage{256}
   \item core, \hyperpage{130}
   \item coupling, \hyperpage{198}
   \item critical angle, \hyperpage{129}
@@ -86,15 +86,15 @@
   \item Diffie-Hellman key exchange, \hyperpage{275}
   \item Dijkstra's shortest path first, \hyperpage{218}
   \item Dirac notation, \hyperpage{20}
-  \item distributed quantum computation, \hyperpage{263}
+  \item distributed quantum computation, \hyperpage{259}
   \item DiVincenzo criteria, \hyperpage{230}
 
   \indexspace
 
   \item ebit, \hyperpage{147}
-  \item Eddington clock synchronization, \hyperpage{262}
+  \item Eddington clock synchronization, \hyperpage{258}
   \item eigenvector, \hyperpage{31}
-  \item Einstein's clock synchronization, \hyperpage{262}
+  \item Einstein's clock synchronization, \hyperpage{258}
   \item encryption, \hyperpage{16}
   \item energy relaxation, \hyperpage{233}
   \item entangled state, \hyperpage{61}, \hyperpage{64}
@@ -119,10 +119,10 @@
   \item gain medium, \hyperpage{93}
   \item gateway, \hyperpage{268}
   \item geometric optics, \hyperpage{125}
-  \item GHZ state, \hyperpage{256}
+  \item GHZ state, \hyperpage{252}
   \item global state, \hyperpage{62}
-  \item graph, \hyperpage{259}
-  \item graph state, \hyperpage{259}
+  \item graph, \hyperpage{255}
+  \item graph state, \hyperpage{255}
   \item ground state, \hyperpage{68}
 
   \indexspace
@@ -171,7 +171,7 @@
   \item Mach-Zehnder interferometer, \hyperpage{116}
   \item man-in-the-middle, \hyperpage{275}
   \item maximally mixed state, \hyperpage{51}
-  \item measurement-based quantum computation, \hyperpage{264}
+  \item measurement-based quantum computation, \hyperpage{260}
   \item memory-interfere-memory (MIM), \hyperpage{209}
   \item memoryless decay process, \hyperpage{234}
   \item metastable state, \hyperpage{92}
@@ -181,10 +181,10 @@
   \item mode dispersion, \hyperpage{132}, \hyperpage{194}, 
 		\hyperpage{278}
   \item monogamy of entanglement, \hyperpage{174}, \hyperpage{177}, 
-		\hyperpage{259}
+		\hyperpage{255}
   \item MSM link, \hyperpage{210}
   \item multimode fiber, \hyperpage{130}, \hyperpage{194}
-  \item multipartite entanglement, \hyperpage{256}
+  \item multipartite entanglement, \hyperpage{252}
   \item multiplexing, \hyperpage{218}
 
   \indexspace
@@ -309,7 +309,7 @@
 
   \indexspace
 
-  \item W state, \hyperpage{258}
+  \item W state, \hyperpage{254}
   \item wave number, \hyperpage{103}
   \item wavelength division multiplexing (WDM), \hyperpage{193}
 
