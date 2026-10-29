@@ -441,7 +441,7 @@ In either case, quantum networks will be needed in order to communicate the info
     A_1 & = Z, & A_2 & = X, \\
     B_1 & = \frac{Z - X}{\sqrt{2}}, & B_2 & = \frac{Z + X}{\sqrt{2}}.
 \end{align*}
-We have derived the CHSH correlation function $\mathcal{S}$ for the two of the Bell pairs.
+We have derived the CHSH correlation function $\mathcal{S}$ for two of the Bell pairs.
 \begin{enumerate}[label=(\alph*)]
     \item What is the CHSH expression $\mathcal{S}$ that maximally violates the CHSH inequality when applied to the state \ket{\Phi^-}?
     \item What is $\mathcal{S}$ that maximally violates the CHSH inequality for the state \ket{\Psi^-}?
@@ -453,6 +453,35 @@ We have derived the CHSH correlation function $\mathcal{S}$ for the two of the B
     \item At what fidelity $F$ can we not guarantee anymore that the state is entangled?
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The CHSH expression $\mathcal{S}$ for the \ket{\Phi^+} is
+    \begin{equation*}
+        \mathcal{S} = A_1\otimes B_1 + A_1\otimes B_2 + A_2\otimes B_1 - A_2\otimes B_2.
+    \end{equation*}
+    \item For the \ket{\Phi^-} state, the appropriate CHSH expression is
+    \begin{equation*}
+        \mathcal{S} = A_1\otimes B_1 + A_1\otimes B_2 - A_2\otimes B_1 + A_2\otimes B_2.
+    \end{equation*}
+    \item The approprite CHSH expression for the \ket{\Phi^+} state is given by
+    \begin{equation*}
+        \mathcal{S} = A_1\otimes B_1 + A_1\otimes B_2 - A_2\otimes B_1 + A_2\otimes B_2.
+    \end{equation*}
+    Computing the expectation values of these operators with respect to the bit-flipped state $\rho$, we get the following,
+    \begin{align*}
+        \av{A_1 \otimes B_1} & = \frac{2F-1}{\sqrt{2}}, & \av{A_2 \otimes B_1} & = -\frac{1}{\sqrt{2}}, \\
+        \av{A_1 \otimes B_2} & = \frac{2F-1}{\sqrt{2}}, & \av{A_2 \otimes B_2} & = \frac{1}{\sqrt{2}}.
+    \end{align*}
+    The CHSH expression is therefore
+    \begin{equation*}
+        \mathcal{S} = 2\sqrt{2} F.
+    \end{equation*}
+    \item In order for the state to be entangled, we require that
+    \begin{equation*}
+        \mathcal{S} > 2, \quad \rightarrow F > \frac{1}{\sqrt{2}} \approx 0.71.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 \emph{Measurements on the $W$ state.} Let's look at measuring the W state in more detail. Consider the projectors $\Pi_{\pm 1}^Z$ in Tab.~\ref{tab:3-2_projectors}. To extend the measurement operators to measuring a subset of qubits, we need to tensor the projection operators with the identity matrix.
@@ -468,6 +497,38 @@ We have derived the CHSH correlation function $\mathcal{S}$ for the two of the B
     \item Calculate the probabilities of finding the $(\pm1,\pm1)$ results when measuring in the $Y$ basis.
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+The $W$ state can be written in the computational basis as follows,
+\begin{equation*}
+    \ket{W} = \frac{1}{\sqrt{3}} \left( \ket{001} + \ket{010} + \ket{100} \right).
+\end{equation*}
+\begin{enumerate}[label=(\alph*)]
+    \item The probabilities of the $\pm1$ outcomes when measuring the first qubit in the computational basis are given by
+    \begin{equation*}
+        \text{Pr}\{+1\} = \frac{2}{3}, \quad\text{and}\quad \text{Pr}\{-1\} = \frac{1}{3}.
+    \end{equation*}
+    \item The probabilities of the $\pm1$ outcomes when measuring the first qubit in the Pauli $X$ basis are given by
+    \begin{equation*}
+        \text{Pr}\{+1\} = \frac{2}{3}, \quad\text{and}\quad \text{Pr}\{-1\} = \frac{1}{3}.
+    \end{equation*}
+    \item The probablities are the same as for measurement in the Pauli $X$ basis,
+    \begin{equation*}
+        \text{Pr}\{+1\} = \frac{2}{3}, \quad\text{and}\quad \text{Pr}\{-1\} = \frac{1}{3}.
+    \end{equation*}
+    \item Without loss of generality, we assume that the first two qubits get measured in the Pauli $Z$ basis. The outcome probabilities are as follows,
+    \begin{equation*}
+        \text{Pr}\{+1,+1\} = \text{Pr}\{+1,-1\} = \text{Pr}\{-1,+1\} = \frac{1}{3}, \quad \text{and} \quad \text{Pr}\{-1,-1\} = 0.
+    \end{equation*}
+    \item When measuring the two qubits in the Pauli $X$ basis, the probabilities are all the same,
+    \begin{equation*}
+        \text{Pr}\{+1,+1\} = \text{Pr}\{+1,-1\} = \text{Pr}\{-1,+1\} = \text{Pr}\{-1,-1\} = \frac{1}{4}.
+    \end{equation*}
+    \item The above is true when measuring the two qubits in the Pauli $Y$ basis as well,
+    \begin{equation*}
+        \text{Pr}\{+1,+1\} = \text{Pr}\{+1,-1\} = \text{Pr}\{-1,+1\} = \text{Pr}\{-1,-1\} = \frac{1}{4}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 \emph{Measurements on the GHZ state.} Consider a three-qubit GHZ state. We saw that measuring its first qubit destroys the entanglement of the state.
@@ -478,6 +539,32 @@ We have derived the CHSH correlation function $\mathcal{S}$ for the two of the B
     \item Consider measuring all three qubits of the GHZ state in the Pauli $Z$ basis What are the possible outcomes of this measurement on this state? Can you think of a scenario where this result can be useful?
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item When measuring any one of the three qubits, the remaining two qubits get projected onto the \ket{00} or \ket{11} state. Therefore, a single measurement destroys the entanglement of the initial state.
+    \item When measuring the first qubit in the Pauli $X$ basis, the probabilities of obtaining the to outcomes are
+    \begin{equation*}
+        \text{Pr}\{+1\} = \text{Pr}\{-1\} = \frac{1}{2}.
+    \end{equation*}
+    \item The post-measurement state after obtaining the +1 outcome of the Pauli $X$ measurement on the first qubit is
+    \begin{align*}
+        \frac{\Pi^X_{+1} \ket{GHZ}}{\sqrt{\text{Pr}\{+1\}}} & = \sqrt{2} \outp{+}{+}\otimes I\otimes I \frac{\ket{000}+\ket{111}}{\sqrt{2}} \\
+        & = \frac{1}{\sqrt{2}} \left( \ket{+00} + \ket{+11} \right) \\
+        & = \ket{+}\ket{\Phi^+}. 
+    \end{align*}
+    When the measurement outcome is -1, the post-measurement state is
+    \begin{equation*}
+        \frac{\Pi^X_{-1} \ket{GHZ}}{\sqrt{\text{Pr}\{-1\}}} = \ket{-}\ket{\Phi^-}.
+    \end{equation*}
+    We can clearly see that unlike in the case of the Pauli $Z$ measurement, this time the two remaining qubits remain entangled.
+    \item When all three qubits are measured in the computational basis, all three measurement outcomes are perfectly correlated,
+    \begin{equation*}
+        \text{Pr}\{+1,+1,+1\} = \text{Pr}\{-1,-1,-1\} = \frac{1}{2}.
+    \end{equation*}
+    No other measurement outcomes are possible.
+    This can be useful in cryptography, where three users need to establish a secret key.
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 \emph{Examples of graph states.} Graph stats are an important class of multipartite entangled states. Let's consider some basic examples.
@@ -493,3 +580,34 @@ We have derived the CHSH correlation function $\mathcal{S}$ for the two of the B
     \item Does this rewritten form of \ket{G_3} remind you of some three-qubit state that we have discussed? Find the unitary $U$ that transforms \ket{G_3} into this state.
 \end{enumerate}
 \end{exercise}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item The two-qubit graph state has the following form in the computational basis,
+    \begin{equation*}
+        \ket{G_2} = \frac{1}{2} \left( \ket{00} + \ket{01} + \ket{10} - \ket{11} \right).
+    \end{equation*}
+    \item In the mixed basis, the same state can be written as follows,
+    \begin{equation*}
+        \ket{G_2} = \frac{1}{\sqrt{2}} \left( \ket{0+} + \ket{1-} \right).
+    \end{equation*}
+    \item The correct unitary is the Hamadard operation acting on the second qubit,
+    \begin{equation*}
+        \ket{\Phi^+} = I \otimes H \ket{G_2}.
+    \end{equation*}
+    \item The graph state corresponding to a linear graph of three qubits has the following form in the computational basis,
+    \begin{equation*}
+        \ket{G_3} = \frac{1}{\sqrt{8}} \left( \ket{000} + \ket{001} + \ket{010} - \ket{011} + \ket{100} + \ket{101} - \ket{110} + \ket{111} \right).
+    \end{equation*}
+    \item In the mixed basis, the same state can be expressed as
+    \begin{equation*}
+        \ket{G_3} = \frac{1}{\sqrt{2}} \left( \ket{+0+} + \ket{-1-} \right).
+    \end{equation*}
+    \item The state \ket{G_3} is very similar to the GHZ state. The two states are related by the following unitary operation,
+    \begin{equation*}
+        \ket{GHZ} = H \otimes I \otimes H \ket{G_3}.
+    \end{equation*}
+\end{enumerate}
+\end{solution}
+
+\newpage
+\printsolutions[chapter={14}]

@@ -100,22 +100,22 @@
 \contentsline {section}{\numberline {13.3}Bell State Measurements II}{227}{section.13.3}%
 \contentsline {section}{\numberline {13.4}Stationary and flying qubits}{230}{section.13.4}%
 \contentsline {section}{\numberline {13.5}Exercises}{239}{section.13.5}%
-\contentsline {section}{Quiz}{245}{section*.85}%
-\contentsline {section}{Further reading chapters 11-13}{245}{section*.86}%
-\contentsline {part}{\hbox to\@tempdima {\hskip 1pt V\hfill }{\uppercase {Quantum Repeater Systems}}}{247}{part.5}%
-\contentsline {partintro}{Introduction to the fifth lesson block}{249}{section*.87}%
-\contentsline {chapter}{\hbox to\@tempdima {14\hfill }{Entanglement Revisited}}{251}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Bipartite entanglement}{251}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Multipartite entanglement}{256}{section.14.2}%
-\contentsline {section}{\numberline {14.3}Clock synchronization}{261}{section.14.3}%
-\contentsline {section}{\numberline {14.4}Distributed and blind quantum computation}{263}{section.14.4}%
-\contentsline {section}{\numberline {14.5}Exercises}{265}{section.14.5}%
+\contentsline {section}{Quiz}{241}{section*.81}%
+\contentsline {section}{Further reading chapters 11-13}{241}{section*.82}%
+\contentsline {part}{\hbox to\@tempdima {\hskip 1pt V\hfill }{\uppercase {Quantum Repeater Systems}}}{243}{part.5}%
+\contentsline {partintro}{Introduction to the fifth lesson block}{245}{section*.83}%
+\contentsline {chapter}{\hbox to\@tempdima {14\hfill }{Entanglement Revisited}}{247}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Bipartite entanglement}{247}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Multipartite entanglement}{252}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Clock synchronization}{257}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Distributed and blind quantum computation}{259}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Exercises}{261}{section.14.5}%
 \contentsline {chapter}{\hbox to\@tempdima {15\hfill }{Quantum Internet}}{267}{chapter.15}%
 \contentsline {section}{\numberline {15.1}Networks of networks}{267}{section.15.1}%
 \contentsline {section}{\numberline {15.2}Integration with classical systems}{274}{section.15.2}%
 \contentsline {section}{\numberline {15.3}Putting it all together}{279}{section.15.3}%
-\contentsline {section}{Quiz}{284}{section*.93}%
-\contentsline {section}{Further reading chapters 14-15}{284}{section*.94}%
+\contentsline {section}{Quiz}{284}{section*.94}%
+\contentsline {section}{Further reading chapters 14-15}{284}{section*.95}%
 \vskip 8pt
-\contentsline {starchap}{Bibliography}{287}{section*.96}%
-\contentsline {starchap}{Index}{289}{section*.98}%
+\contentsline {starchap}{Bibliography}{287}{section*.97}%
+\contentsline {starchap}{Index}{289}{section*.99}%
